@@ -1,22 +1,17 @@
 {
   "mapid": "1",
   "name": "Hackney constituencies",
-  "abstract": "",
-  "layergroups": [
-    {
-      "name": "firework",
-      "groupicon": "css/images/star-christmas-duotone-default.svg",
-      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
-      "grouptext": "Fireworks"
-    }
-  ],
+  "abstract": "This map shows......",
+  "showMetadataUnderTitle":false,
+  "aboutTheData": "blabla",
+  "layergroups": [],
 
   "layers": [
     
     {
       "title": "Hackney constituencies",
       "geoserverLayerName": "boundaries:hackney_constituency",
-      "groups": [ "firework"],
+      "groups": [],
       "searchable": "false",
       "sortorder": "30",
       "icon": "route",

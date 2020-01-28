@@ -2,21 +2,16 @@
   "mapid": "1",
   "name": "Parking Zones in Hackney",
   "abstract": "This map shows where residents can park and when controls are operated.",
-  "layergroups": [
-    {
-      "name": "firework",
-      "groupicon": "css/images/star-christmas-duotone-default.svg",
-      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
-      "grouptext": "Fireworks"
-    }
-  ],
+  "showMetadataUnderTitle":true,
+  "aboutTheData": "",
+  "layergroups": [],
 
   "layers": [
     
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
-      "groups": [ "firework"],
+      "groups": [],
       "searchable": "false",
       "sortorder": "30",
       "icon": "route",
@@ -48,5 +43,5 @@
         ]
       }
     }
-      ]
+  ]
 }
