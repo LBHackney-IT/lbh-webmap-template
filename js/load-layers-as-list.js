@@ -90,9 +90,6 @@ function loadLayers(mapConfig) {
         var layercontrol = this.layercontrol;
         var overlayMaps = this.overlayMaps;
         var layerGroups = this.layerGroups;
-        var layers = this.layers;
-        var maptitle = mapConfig.name;
-        var mapabstract = mapConfig.abstract;
         var hover = this.configlayer.hover;  
         //Style variables
         var layerstyle = this.configlayer.style.stylename;
@@ -105,28 +102,6 @@ function loadLayers(mapConfig) {
         var layerlinedash = this.configlayer.style.layerlinedash;
         var stringtooltip = '';  
         
-        if (mapabstract){
-          console.log ('map abstract not empty');
-          var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
-        }
-        else{
-          var tootipdiv = '';
-        }
-
-          //Add title 
-       var title = L.control.custom({
-        id: 'title',
-        position: 'topleft',
-        collapsed:false,
-        content : maptitle + '     '+ tootipdiv,
-        //content : 'Hello',
-        classes : 'leaflet-control-layers map-title',
-        style   :{
-          margin: '12px',
-          padding: '12px',
-          background: 'white',
-        },
-      }).addTo(map);
 
         //Create layer
         var layer = new L.GeoJSON(data, { 
@@ -154,32 +129,13 @@ function loadLayers(mapConfig) {
             
                 if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
                   layer.bringToFront();
-                }
-  
-                title.remove(map);
-                //Add title 
-                var title = L.control.custom({
-                  id: 'title',
-                  position: 'topleft',
-                  collapsed:false,
-                  content : maptitle + '     '+ tootipdiv + 'hello',
-                  //content : 'Hello',
-                  classes : 'leaflet-control-layers map-title',
-                  style   :{
-                    margin: '12px',
-                    padding: '12px',
-                    background: 'white',
-                  },
-                }).addTo(map);
-  
-                             
-            }
+                }                 
+              }
         
               layer.on({
                 mouseover: highlightFeature,
                 mouseout: resetHighlight,
-            });
-
+              });
             }
             
 
@@ -315,9 +271,93 @@ function loadLayers(mapConfig) {
 
       }//end success    
     });//end ajax
-
-    
-
   } //end i
 }//end loadLayers
 
+function loadMetadata(mapConfig) {
+  var nbLoadedLayers = 0;
+  var layers = [];
+  var maptitle = mapConfig.name;
+  var mapabstract = mapConfig.abstract;
+  var aboutTheData = mapConfig.aboutTheData;
+  var showMetadataUnderTitle = mapConfig.showMetadataUnderTitle;
+  
+  //load metadata from geoserver
+  if (showMetadataUnderTitle){
+    if (mapConfig.layers.length > 0){
+      var cqlValues = "'"+mapConfig.layers[0].geoserverLayerName+"'";
+    }
+    //next values with commas
+    for (var i=1 ; i<mapConfig.layers.length ; i++) {   
+      cqlValues = cqlValues+",'"+mapConfig.layers[i].geoserverLayerName+"'";
+    }
+      
+    var url="https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName=metadata:public_metadata&outputFormat=json&cql_filter=layer_name IN ("+cqlValues+")";
+    //console.log (url);
+    $.ajax({
+      url: url,
+      dataType: 'json',
+      /* context freezes the values associated to indexes i and j. This way, when the ajax query succeeds, 
+      it will use the values as they were when the query was created, and not the values associated to 'current' i and j.
+      */ 
+      context: {},
+      success: function (data) {
+        //decode metadata to create nice formatted text
+        var metadataText = '';
+        for (var m=0 ; m<data.features.length ; m++){
+          metadataText = metadataText + '<p><b>'+data.features[m].properties.title+'</b><br>';
+          if (data.features[m].properties.abstract){
+            metadataText = metadataText + '<i>'+data.features[m].properties.abstract +'</i><br>';
+          }
+          metadataText = metadataText + '<b>Source:</b> '+data.features[m].properties.source +'<br>';
+          if (data.features[m].properties.lastupdatedate){
+            metadataText = metadataText + '<b>Last updated:</b> '+data.features[m].properties.lastupdatedate +'</p>';
+          }
+        }
+
+        //create the tooltip
+        createTitle(maptitle, mapabstract, metadataText);
+        console.log(metadataText);        
+      },
+   });
+  }
+  else if (aboutTheData){
+    createTitle(maptitle, mapabstract, aboutTheData);
+  }
+  else {
+    createTitle(maptitle, mapabstract, null);
+  }
+}
+
+function createTitle(maptitle, mapabstract, aboutTheData){
+  if (mapabstract){
+    console.log ('map abstract not empty');
+    var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
+  }
+  else{
+    var tootipdiv = '';
+  }
+
+  if (aboutTheData){
+    console.log ('about the data not empty');
+    var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
+  }
+  else{
+    var datatooltipdiv = '';
+  }
+
+  //Add title 
+  var title = L.control.custom({
+    id: 'title',
+    position: 'topleft',
+    collapsed:false,
+    content : maptitle + '     '+ tootipdiv + '<br>' + datatooltipdiv,
+    //content : 'Hello',
+    classes : 'leaflet-control-layers map-title',
+    style   :{
+      margin: '12px',
+      padding: '12px',
+      background: 'white',
+    }
+  }).addTo(map);
+}

@@ -179,6 +179,7 @@ $.ajax({
   success: function (data) {
     var mapConfig = data;
     loadLayers(mapConfig);
+    loadMetadata(mapConfig);
   }     
 });
 
