@@ -1,0 +1,41 @@
+{
+  "mapid": "1",
+  "name": "Hackney constituencies",
+  "abstract": "",
+  "layergroups": [
+    {
+      "name": "firework",
+      "groupicon": "css/images/star-christmas-duotone-default.svg",
+      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
+      "grouptext": "Fireworks"
+    }
+  ],
+
+  "layers": [
+    
+    {
+      "title": "Hackney constituencies",
+      "geoserverLayerName": "boundaries:hackney_constituency",
+      "groups": [ "firework"],
+      "searchable": "false",
+      "sortorder": "30",
+      "icon": "route",
+      "markercolour": "purple",
+      "metadata": "",
+      "style":
+      {
+        "stylename": "default",
+        "layerstroke": "true",
+        "layerstrokecolor": "black",
+        "layeropacity": "1",
+        "layerfillcolor": "grey",
+        "layerfillOpacity": 0.20,
+        "layerlinedash": "",
+        "layerweight": 2
+      },
+      "popup": {
+        "popuptitlefield": "name"
+      }
+    }
+      ]
+}

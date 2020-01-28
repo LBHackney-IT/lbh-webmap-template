@@ -1,0 +1,41 @@
+{
+  "mapid": "1",
+  "name": "Red routes in Hackney",
+  "abstract": "",
+  "layergroups": [
+    {
+      "name": "firework",
+      "groupicon": "css/images/star-christmas-duotone-default.svg",
+      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
+      "grouptext": "Fireworks"
+    }
+  ],
+
+  "layers": [
+    
+    {
+      "title": "Red routes",
+      "geoserverLayerName": "transport:tfl_road_line",
+      "groups": [ "firework"],
+      "searchable": "false",
+      "sortorder": "30",
+      "icon": "",
+      "markercolour": "",
+      "metadata": "",
+      "style":
+      {
+        "stylename": "default",
+        "layerstroke": "false",
+        "layerstrokecolor": "red",
+        "layeropacity": 0.70,
+        "layerfillcolor": "",
+        "layerfillOpacity": 0,
+        "layerlinedash": "",
+        "layerweight": 8
+      },
+      "popup": {
+        "popuptitlefield": ""
+      }
+    }
+      ]
+}

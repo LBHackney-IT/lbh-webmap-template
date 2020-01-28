@@ -1,0 +1,41 @@
+{
+  "mapid": "1",
+  "name": "Wards in Hackney",
+  "abstract": "",
+  "layergroups": [
+    {
+      "name": "firework",
+      "groupicon": "css/images/star-christmas-duotone-default.svg",
+      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
+      "grouptext": "Fireworks"
+    }
+  ],
+
+  "layers": [
+    
+    {
+      "title": "Parking Zones",
+      "geoserverLayerName": "boundaries:hackney_ward",
+      "groups": [ "firework"],
+      "searchable": "false",
+      "sortorder": "30",
+      "icon": "route",
+      "markercolour": "purple",
+      "metadata": "",
+      "style":
+      {
+        "stylename": "default",
+        "layerstroke": "true",
+        "layerstrokecolor": "darkblue",
+        "layeropacity": "1",
+        "layerfillcolor": "",
+        "layerfillOpacity": "0",
+        "layerlinedash": "",
+        "layerweight": "2"
+      },
+      "popup": {
+        "popuptitlefield": "name"
+      }
+    }
+      ]
+}
