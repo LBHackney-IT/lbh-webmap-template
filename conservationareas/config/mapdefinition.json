@@ -2,6 +2,7 @@
   "mapid": "1",
   "name": "Conservation Areas in Hackney",
   "abstract": "",
+  "showMetadataUnderTitle":true,
   "layergroups": [
     {
       "name": "firework",

@@ -2,21 +2,15 @@
   "mapid": "3",
   "name": "Cycle stands in Hackney",
   "abstract": "",
-  "layergroups": [
-    {
-      "name": "firework",
-      "groupicon": "css/images/star-christmas-duotone-default.svg",
-      "groupiconactive": "css/images/star-christmas-duotone-active2.svg",
-      "grouptext": "Fireworks"
-    }
-  ],
+  "showMetadataUnderTitle":true,
+  "layergroups": [],
 
   "layers": [
     
     {
       "title": "Cycle stands",
       "geoserverLayerName": "transport:cycle_stand",
-      "groups": [ "firework"],
+      "groups": [],
       "searchable": "false",
       "sortorder": "30",
       "icon": "fa-bicycle",
