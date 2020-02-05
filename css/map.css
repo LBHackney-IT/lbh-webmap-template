@@ -561,6 +561,7 @@ input:not(:checked) + span span.control-active-border {
     /* border-bottom: 1px dotted black; */
   } 
   
+  
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 250px;
@@ -577,8 +578,12 @@ input:not(:checked) + span span.control-active-border {
     opacity: 0;
     transition: opacity 0.3s;
   }
-  
-  
+
+  .tooltip .tooltiptext a {
+    color: #fff;
+    text-decoration: underline;   
+  }
+
   .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
@@ -586,6 +591,7 @@ input:not(:checked) + span span.control-active-border {
 
   .datatooltip {
     border-bottom: 1px dotted;
+    font-size: 14px;
   }
 
   .datatooltip .tooltiptext {
