@@ -82,41 +82,66 @@ function loadLayers(mapConfig) {
         var layername = this.configlayer.title; // get from context
         var parentgroups = this.configlayer.groups;
         var sortorder = this.configlayer.title;
-        var markericon = this.configlayer.icon;
-        var markercolour = this.configlayer.markercolour;
-        var metadata = this.configlayer.metadata;
-        var popuptitlefield = this.configlayer.popup.popuptitlefield;
-        var popupfields = this.configlayer.popup.popupfields;
         var layercontrol = this.layercontrol;
         var overlayMaps = this.overlayMaps;
         var layerGroups = this.layerGroups;
         var hover = this.configlayer.hover;  
+        
         //Style variables
-        var layerstyle = this.configlayer.style.stylename;
-        var layerstroke = this.configlayer.style.layerstroke;
-        var layerstrokecolor =this.configlayer.style.layerstrokecolor;
-        var layeropacity = this.configlayer.style.layeropacity;
-        var layerfillcolor = this.configlayer.style.layerfillcolor;
-        var layerfillOpacity = this.configlayer.style.layerfillOpacity;
-        var layerweight = this.configlayer.style.layerweight;
-        var layerlinedash = this.configlayer.style.layerlinedash;
+        var markertype = this.configlayer.pointstyle.markertype;
+        var markericon = this.configlayer.pointstyle.icon;
+        var markercolor = this.configlayer.pointstyle.markercolor;
+        var cluster = this.configlayer.pointstyle.cluster;
+        var layerstyle = this.configlayer.linepolygonstyle.stylename;
+        var layerstroke = this.configlayer.linepolygonstyle.layerstroke;
+        var layerstrokecolor =this.configlayer.linepolygonstyle.layerstrokecolor;
+        var layeropacity = this.configlayer.linepolygonstyle.layeropacity;
+        var layerfillcolor = this.configlayer.linepolygonstyle.layerfillcolor;
+        var layerfillOpacity = this.configlayer.linepolygonstyle.layerfillOpacity;
+        var layerweight = this.configlayer.linepolygonstyle.layerweight;
+        var layerlinedash = this.configlayer.linepolygonstyle.layerlinedash;
         var stringtooltip = '';  
         
+        //popup variables
+        var popupstatementbefore = this.configlayer.popup.popupstatementbefore;
+        var popuptitlefield = this.configlayer.popup.popuptitlefield;
+        var popupfields = this.configlayer.popup.popupfields;
+        var popupstatementafter = this.configlayer.popup.popupstatementafter;
 
         //Create layer
         var layer = new L.GeoJSON(data, { 
-          color: leafletMarkerColours[markercolour],
+          color: leafletMarkerColours[markercolor],
           pointToLayer: function (feature, latlng) {      
+            //font awseome style
+            if (markertype == 'AwesomeMarker'){
               var marker = L.marker(latlng, {
-                  icon: L.AwesomeMarkers.icon({ icon: markericon, prefix: 'fa', markerColor: markercolour, spin: false }),
-                  alt: layername
+                icon: L.AwesomeMarkers.icon({ icon: markericon, prefix: 'fa', markerColor: markercolor, spin: false }),
+                alt: layername
               });
-            return marker;               
+              return marker;   
+            }
+            //circle marker style
+            else if (markertype == 'CircleMarker') {
+              var marker = L.circleMarker(latlng, {
+                fillColor: markercolor,
+                radius:6,
+                stroke: true,
+                weight: 1,
+                color: markercolor,
+                fillOpacity: 0.6 
+              });             
+              return marker; 
+            }
+            //default style
+            else {
+              var marker = L.marker(latlng);             
+              return marker; 
+            }                        
           },
           
 
           onEachFeature: function (feature, layer) { 
-            if (hover == 'yes'){
+            if (hover){
               function highlightFeature(e) {
                 var layer = e.target;
             
@@ -151,8 +176,8 @@ function loadLayers(mapConfig) {
                       stringtooltip = stringtooltip + '<br><center><b>' + popupfields[i].fieldlabel + '</b>: ' + feature.properties[popupfields[i].fieldname] + '</center>';
                     }
                     else {
-                        stringtooltip = stringtooltip + '<br><center><b>' + popupfields[i].fieldlabel + '</b>: ' + feature.properties[popupfields[i].fieldname] + '</center>';
-                      }
+                      stringtooltip = stringtooltip + '<br><center><b>' + popupfields[i].fieldlabel + '</b>: ' + feature.properties[popupfields[i].fieldname] + '</center>';
+                    }
 
                   }                   
                 } 
@@ -176,8 +201,8 @@ function loadLayers(mapConfig) {
 
                  
         //if there is metadata for this layer in the config
-            if (metadata != ''){
-               stringpopup = stringpopup + '<br><center>' + metadata + '</center>';
+            if (popupstatementbefore){
+               stringpopup = stringpopup + '<br><center>' + popupstatementbefore + '</center>';
             }   
 
             //loop through the fields defined in the config and add them to the popup
@@ -196,6 +221,9 @@ function loadLayers(mapConfig) {
                 }                   
               }
             }
+            if (popupstatementafter){
+              stringpopup = stringpopup + '<br><center>' + popupstatementafter + '</center>';
+           }  
             var popup = L.popup({ closeButton: true }).setContent(stringpopup);
 
             //Add layer to the map.
@@ -266,8 +294,22 @@ function loadLayers(mapConfig) {
         //     this._div.innerHTML = ' ';
         // };
 
-    
-      layer.addTo(map);
+      //cluster style
+      if (cluster){
+        var markers = L.markerClusterGroup({
+          maxClusterRadius:60,
+          disableClusteringAtZoom:16,
+          spiderfyOnMaxZoom:false});
+        markers.addLayer(layer);
+        map.addLayer(markers);
+
+      }
+
+      //non cluster style
+      else{
+        layer.addTo(map);
+      }
+      
 
       }//end success    
     });//end ajax
@@ -317,7 +359,7 @@ function loadMetadata(mapConfig) {
 
         //create the tooltip
         createTitle(maptitle, mapabstract, metadataText);
-        console.log(metadataText);        
+        //console.log(metadataText);        
       },
    });
   }
@@ -330,34 +372,54 @@ function loadMetadata(mapConfig) {
 }
 
 function createTitle(maptitle, mapabstract, aboutTheData){
-  if (mapabstract){
-    console.log ('map abstract not empty');
-    var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
-  }
-  else{
-    var tootipdiv = '';
-  }
-
-  if (aboutTheData){
-    console.log ('about the data not empty');
-    var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
-  }
-  else{
-    var datatooltipdiv = '';
-  }
-
-  //Add title 
-  var title = L.control.custom({
-    id: 'title',
-    position: 'topleft',
-    collapsed:false,
-    content : maptitle + '     '+ tootipdiv + '<br>' + datatooltipdiv,
-    //content : 'Hello',
-    classes : 'leaflet-control-layers map-title',
-    style   :{
-      margin: '12px',
-      padding: '12px',
-      background: 'white',
+  var boxContent;
+  //with title
+  if (maptitle != ''){
+    if (mapabstract){
+      //console.log ('map abstract not empty');
+      var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
     }
-  }).addTo(map);
+    else{
+      var tootipdiv = '';
+    }
+  
+    if (aboutTheData){
+      //console.log ('about the data not empty');
+      var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
+    }
+    else{
+      var datatooltipdiv = '';
+    }
+    boxContent = maptitle + '     '+ tootipdiv + '<br>' + datatooltipdiv
+  }
+  //without title
+  else {
+    if (aboutTheData){
+      //console.log ('about the data not empty');
+      var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
+      boxContent = datatooltipdiv;
+    }
+    //without anything (no box)
+    else{
+      var datatooltipdiv = '';
+      boxContent = '';
+    }
+  }
+  
+
+  //Add box for title and metadata (if the box content is not empty)
+  if (boxContent!=''){
+    L.control.custom({
+      id: 'title',
+      position: 'topleft',
+      collapsed:false,
+      content : boxContent,
+      classes : 'leaflet-control-layers map-title',
+      style   :{
+        margin: '12px',
+        padding: '12px',
+        background: 'white',
+      }
+    }).addTo(map);
+  }
 }
