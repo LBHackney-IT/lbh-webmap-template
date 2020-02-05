@@ -1,8 +1,11 @@
 {
   "mapid": "3",
-  "name": "Cycle stands in Hackney",
+  "name": "Cycle parking in Hackney",
   "abstract": "",
   "showMetadataUnderTitle":true,
+  "basestyle":"",
+  "locatecontrol": true,
+  "resetzoomcontrol": true,
   "layergroups": [],
 
   "layers": [
@@ -11,31 +14,27 @@
       "title": "Cycle stands",
       "geoserverLayerName": "transport:cycle_stand",
       "groups": [],
-      "searchable": "false",
-      "sortorder": "30",
-      "icon": "fa-bicycle",
-      "markercolour": "cadetblue",
-      "metadata": "",
-      "hover": "no",
-      "style":
+      "searchable": false,
+      "sortorder": "",
+      "hover": false,
+      "pointstyle":
       {
-        "stylename": "",
-        "layerstroke": "",
-        "layerstrokecolor": "",
-        "layeropacity": "",
-        "layerfillcolor": "",
-        "layerfillOpacity": "",
-        "layerlinedash": "",
-        "layerweight": ""
+        "markertype": "CircleMarker",
+        "icon": "fa-bicycle",
+        "markercolor": "purple",
+        "cluster":true
       },
+      "linepolygonstyle":"",
       "popup": {
         "popuptitlefield": "",
+        "popupstatementbefore": "",
         "popupfields": [
           {
             "fieldlabel": "",
             "fieldname": "type"
           }
-        ]
+        ],
+        "popupstatementafter": "For more information visit <a href=''>this</a>"
       }
     }
       ]

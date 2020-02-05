@@ -4,6 +4,7 @@
   "abstract": "This map shows where residents can park and when controls are operated.",
   "showMetadataUnderTitle":true,
   "aboutTheData": "",
+  "basestyle": "streets",
   "layergroups": [],
 
   "layers": [
@@ -12,22 +13,20 @@
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
       "groups": [],
-      "searchable": "false",
-      "sortorder": "30",
-      "icon": "route",
-      "markercolour": "",
-      "style":
+      "searchable": false,
+      "sortorder": "",
+      "pointstyle":"",      
+      "linepolygonstyle":
       {
         "stylename": "random polygons",
-        "layerstroke": "true",
+        "layerstroke": true,
         "layerstrokecolor": "grey",
-        "layeropacity": "0",
+        "layeropacity": 0,
         "layerfillcolor": "",
-        "layerfillOpacity": "0.40",
+        "layerfillOpacity": 0.40,
         "layerlinedash": "",
         "layerweight": 1
       },
-      "metadata": "",
       "popup": {
         "popuptitlefield": "street_name",
         "popupfields": [

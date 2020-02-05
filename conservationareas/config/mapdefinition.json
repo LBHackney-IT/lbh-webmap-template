@@ -17,20 +17,18 @@
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
-      "groups": [ ""],
-      "searchable": "false",
-      "sortorder": "30",
-      "icon": "",
-      "markercolour": "",
-      "metadata": "",
-      "style":
+      "groups": [],
+      "searchable": false,
+      "sortorder": "",
+      "pointstyle":"",
+      "linepolygonstyle":
       {
         "stylename": "random polygons",
-        "layerstroke": "true",
+        "layerstroke": true,
         "layerstrokecolor": "grey",
-        "layeropacity": "0",
+        "layeropacity": 0,
         "layerfillcolor": "",
-        "layerfillOpacity": "0.50",
+        "layerfillOpacity": 0.50,
         "layerlinedash": "",
         "layerweight": 1.5
       },

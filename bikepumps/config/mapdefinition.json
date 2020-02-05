@@ -1,6 +1,7 @@
 {
   "mapid": "3",
-  "name": "Public bike pumps",
+  "name": "",
+  "aboutTheData":"",
   "abstract": "",
   "layergroups": [
     {
@@ -10,20 +11,20 @@
       "grouptext": "Fireworks"
     }
   ],
-
-  "layers": [
-    
+  "layers": [   
     {
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
       "groups": [ "firework"],
       "searchable": "false",
       "sortorder": "30",
-      "icon": "tire-flat",
-      "markercolour": "red",
-      "metadata": "",
-      "hover": "no",
-      "style":
+      "pointstyle":{
+        "markertype": "AwesomeMarker", 
+        "icon": "tire-flat",
+        "markercolour": "red"
+      }, 
+      "hover": false,
+      "linepolygonstyle":
       {
         "stylename": "",
         "layerstroke": "",
@@ -44,5 +45,5 @@
         ]
       }
     }
-      ]
+  ]
 }

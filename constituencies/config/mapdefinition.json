@@ -2,7 +2,7 @@
   "mapid": "1",
   "name": "Hackney constituencies",
   "abstract": "This map shows......",
-  "showMetadataUnderTitle":false,
+  "showMetadataUnderTitle":true,
   "aboutTheData": "blabla",
   "layergroups": [],
 
@@ -12,17 +12,16 @@
       "title": "Hackney constituencies",
       "geoserverLayerName": "boundaries:hackney_constituency",
       "groups": [],
-      "searchable": "false",
-      "sortorder": "30",
-      "icon": "route",
-      "markercolour": "purple",
-      "metadata": "",
-      "style":
+      "searchable": false,
+      "sortorder": "",
+      "hover":true,
+      "pointstyle": "",
+      "linepolygonstyle":
       {
         "stylename": "default",
-        "layerstroke": "true",
+        "layerstroke": true,
         "layerstrokecolor": "black",
-        "layeropacity": "1",
+        "layeropacity": 1,
         "layerfillcolor": "grey",
         "layerfillOpacity": 0.20,
         "layerlinedash": "",

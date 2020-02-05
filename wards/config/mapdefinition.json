@@ -2,6 +2,7 @@
   "mapid": "1",
   "name": "Wards in Hackney",
   "abstract": "",
+  "basestyle":"streets",
   "layergroups": [
     {
       "name": "firework",
@@ -14,24 +15,23 @@
   "layers": [
     
     {
-      "title": "Parking Zones",
+      "title": "Wards",
       "geoserverLayerName": "boundaries:hackney_ward",
-      "groups": [ "firework"],
-      "searchable": "false",
-      "sortorder": "30",
-      "icon": "route",
-      "markercolour": "purple",
+      "groups": [],
+      "searchable": false,
+      "sortorder": "",
       "metadata": "",
-      "style":
+      "pointstyle":"",
+      "linepolygonstyle":
       {
         "stylename": "default",
-        "layerstroke": "true",
+        "layerstroke": true,
         "layerstrokecolor": "darkblue",
-        "layeropacity": "1",
+        "layeropacity": 1,
         "layerfillcolor": "",
-        "layerfillOpacity": "0",
+        "layerfillOpacity": 0,
         "layerlinedash": "",
-        "layerweight": "2"
+        "layerweight": 2
       },
       "popup": {
         "popuptitlefield": "name"
