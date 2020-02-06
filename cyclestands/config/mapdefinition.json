@@ -4,6 +4,7 @@
   "abstract": "",
   "showMetadataUnderTitle":true,
   "basestyle":"",
+  "zoomtomastermap":true,
   "locatecontrol": true,
   "resetzoomcontrol": true,
   "layergroups": [],

@@ -80,6 +80,24 @@ else{
  });
 }
 map.addLayer(OSM_base);
+
+//add mastermap if in the config
+if (mapConfig.zoomtomastermap){
+  var mastermapLayer = L.tileLayer.wms("https://map.hackney.gov.uk/geoserver/wms", {
+    layers: 'osmm:OSMM_outdoor_leaflet',
+    format: 'image/png',
+    uppercase: true,
+    transparent: true,
+    continuousWorld : true,
+    tiled: true,
+    info_format: 'text/html',
+    opacity: 1,
+    identify: false,
+    minZoom: 10,
+    maxZoom: 20
+  });
+  map.addLayer(mastermapLayer);
+}
   
 //add Hackney mask
 var hackney_mask = L.tileLayer.wms("https://map.hackney.gov.uk/geoserver/wms", {

@@ -3,6 +3,7 @@
   "name": "Conservation Areas in Hackney",
   "abstract": "",
   "showMetadataUnderTitle":true,
+  "zoomtomastermap":true,
   "layergroups": [
     {
       "name": "firework",
