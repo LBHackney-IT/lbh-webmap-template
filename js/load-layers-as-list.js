@@ -225,12 +225,7 @@ function loadLayers(mapConfig) {
               stringpopup = stringpopup + '<br><center>' + popupstatementafter + '</center>';
            }  
             var popup = L.popup({ closeButton: true }).setContent(stringpopup);
-
-            //Add layer to the map.
-            // layer = L.geoJson(data, {style: style}).addTo(map);
-            //layer = L.geoJson(data).addTo(map);
-
-            layer.bindPopup(popup);
+            layer.bindPopup(popup, {maxWidth : 210});
             
 
           },
@@ -390,10 +385,10 @@ function createTitle(maptitle, mapabstract, aboutTheData){
     if (maptitle != ''){
       if (mapabstract){
         //console.log ('map abstract not empty');
-        var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
+        var tooltipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
       }
       else{
-        var tootipdiv = '';
+        var tooltipdiv = '';
       }
 
       if (aboutTheData){
@@ -403,7 +398,7 @@ function createTitle(maptitle, mapabstract, aboutTheData){
       else{
         var datatooltipdiv = '';
       }
-      titleBoxContent = maptitle + tootipdiv + '<br>' + datatooltipdiv
+      titleBoxContent = maptitle + tooltipdiv + '<br>' + datatooltipdiv
     }
     //without title
     else {
