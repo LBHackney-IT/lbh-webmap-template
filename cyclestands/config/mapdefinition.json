@@ -1,12 +1,13 @@
 {
   "mapid": "3",
   "name": "Cycle parking in Hackney",
-  "abstract": "",
+  "abstract": "This map shows the big efforts of ............",
   "showMetadataUnderTitle":true,
+  "aboutTheData":"Mapid (text - not in use): unique id which identifies the mapName (text): name o",
   "basestyle":"",
   "zoomtomastermap":true,
-  "locatecontrol": true,
-  "resetzoomcontrol": true,
+  "locatecontrol": false,
+  "resetzoomcontrol": false,
   "layergroups": [],
 
   "layers": [
@@ -38,5 +39,5 @@
         "popupstatementafter": "For more information visit <a href=''>this</a>"
       }
     }
-      ]
+  ]
 }

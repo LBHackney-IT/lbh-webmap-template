@@ -364,6 +364,7 @@ function loadMetadata(mapConfig) {
    });
   }
   else if (aboutTheData){
+    aboutTheData = '<p>'+aboutTheData+'</p>';
     createTitle(maptitle, mapabstract, aboutTheData);
   }
   else {
@@ -372,54 +373,112 @@ function loadMetadata(mapConfig) {
 }
 
 function createTitle(maptitle, mapabstract, aboutTheData){
-  var boxContent;
-  //with title
-  if (maptitle != ''){
-    if (mapabstract){
-      //console.log ('map abstract not empty');
-      var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
-    }
-    else{
-      var tootipdiv = '';
-    }
+  var titleBoxContent;
+  var metadataBoxContent;
   
-    if (aboutTheData){
-      //console.log ('about the data not empty');
-      var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
+  var metadataWindow = L.control.window(map,
+    {content: null,
+    modal: false,
+    position: 'left',
+    closeButton: true,
+    maxWidth: 280
+  });
+
+  //on desktop
+  if (!L.Browser.mobile){
+    //with title
+    if (maptitle != ''){
+      if (mapabstract){
+        //console.log ('map abstract not empty');
+        var tootipdiv = '<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">'+mapabstract+'</div></span>'
+      }
+      else{
+        var tootipdiv = '';
+      }
+
+      if (aboutTheData){
+        //console.log ('about the data not empty');
+        var datatooltipdiv = '<span class="datatooltip">About the data on this map</span>'
+      }
+      else{
+        var datatooltipdiv = '';
+      }
+      titleBoxContent = maptitle + tootipdiv + '<br>' + datatooltipdiv
     }
-    else{
-      var datatooltipdiv = '';
+    //without title
+    else {
+      if (aboutTheData){
+        //console.log ('about the data not empty');
+        var datatooltipdiv = '<span class="datatooltip">About the data on this map</span>'
+        titleBoxContent = datatooltipdiv;
+      }
+      //without anything (no box)
+      else{
+        var datatooltipdiv = '';
+        titleBoxContent = '';
+      }
     }
-    boxContent = maptitle + '     '+ tootipdiv + '<br>' + datatooltipdiv
+
+    //Add box for title and metadata (if the box content is not empty)
+    if (titleBoxContent!=''){
+      metadataWindow.content('<center><b>About the data on this map:</b></center>'+ aboutTheData)
+      L.control.custom({
+        id: 'title',
+        position: 'topleft',
+        collapsed:false,
+        content : titleBoxContent,
+        //classes : 'map-title',
+        classes : 'leaflet-control-layers map-title',
+        style   :{
+          margin: '12px',
+          padding: '12px',
+          background: 'white',
+          //border: 'none'
+        },
+        events: {
+          click: function(data){
+            metadataWindow.show();
+          }
+        }
+      }).addTo(map);
+    }
   }
-  //without title
+  //on mobile
+  else{
+  //var tooltipdiv = '<span class="tooltip"><i class="fas fa-info-circle fa-2x"></i><div class="tooltiptext"><b>'+maptitle +'</b><br><br> About the data: <br>'+ aboutTheData+'</div></span>';
+  if (maptitle){
+    metadataBoxContent = '<center><b>'+ maptitle +'</b><p>About the data on this map:</p></center>'+ aboutTheData;
+  }
   else {
-    if (aboutTheData){
-      //console.log ('about the data not empty');
-      var datatooltipdiv = '<span class="datatooltip">About the data<div class="tooltiptext">'+aboutTheData+'</div></span>'
-      boxContent = datatooltipdiv;
-    }
-    //without anything (no box)
-    else{
-      var datatooltipdiv = '';
-      boxContent = '';
-    }
+    metadataBoxContent = '<center><b>About the data on this map:</b></p></center>'+ aboutTheData;
   }
   
 
-  //Add box for title and metadata (if the box content is not empty)
-  if (boxContent!=''){
-    L.control.custom({
-      id: 'title',
-      position: 'topleft',
-      collapsed:false,
-      content : boxContent,
-      classes : 'leaflet-control-layers map-title',
-      style   :{
-        margin: '12px',
-        padding: '12px',
-        background: 'white',
-      }
-    }).addTo(map);
+    //Add box for title and metadata (if the box content is not empty)
+    if (metadataBoxContent!=''){
+      metadataWindow.content(metadataBoxContent);
+      L.control.custom({
+        id: 'title',
+        position: 'topleft',
+        collapsed:false,
+        content : '<i class="fas fa-info-circle fa-2x"></i>',
+        //classes : 'map-title',
+        classes : 'leaflet-control-layers map-title',
+        style   :{
+          margin: '12px',
+          padding: '8px',
+          //background: 'white',
+          border: 'none'
+        },
+        events: {
+          click: function(data){
+            metadataWindow.show();
+          }
+        }
+      }).addTo(map);
+    }
   }
+
+  
+  
 }

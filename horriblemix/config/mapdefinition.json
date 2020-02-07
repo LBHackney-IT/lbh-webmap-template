@@ -1,0 +1,132 @@
+{
+  "mapid": "3",
+  "name": "An horrible mix",
+  "abstract": "This map shows the big efforts of ............",
+  "showMetadataUnderTitle":true,
+  "aboutTheData":"Mapid (text - not in use): unique id which identifies the mapName (text): name o to download the data go to <a href=''>here</a>",
+  "basestyle":"",
+  "zoomtomastermap":true,
+  "locatecontrol": false,
+  "resetzoomcontrol": false,
+  "layergroups": [],
+
+  "layers": [
+    
+    {
+      "title": "Cycle stands",
+      "geoserverLayerName": "transport:cycle_stand",
+      "groups": [],
+      "searchable": false,
+      "sortorder": "",
+      "hover": false,
+      "pointstyle":
+      {
+        "markertype": "CircleMarker",
+        "icon": "fa-bicycle",
+        "markercolor": "purple",
+        "cluster":true
+      },
+      "linepolygonstyle":"",
+      "popup": {
+        "popuptitlefield": "",
+        "popupstatementbefore": "",
+        "popupfields": [
+          {
+            "fieldlabel": "",
+            "fieldname": "type"
+          }
+        ],
+        "popupstatementafter": "For more information visit <a href=''>this</a>"
+      }
+    },
+    {
+      "title": "Wards",
+      "geoserverLayerName": "boundaries:hackney_ward",
+      "groups": [],
+      "searchable": false,
+      "sortorder": "",
+      "metadata": "",
+      "pointstyle":"",
+      "linepolygonstyle":
+      {
+        "stylename": "default",
+        "layerstroke": true,
+        "layerstrokecolor": "darkblue",
+        "layeropacity": 1,
+        "layerfillcolor": "",
+        "layerfillOpacity": 0,
+        "layerlinedash": "",
+        "layerweight": 2
+      },
+      "popup": {
+        "popuptitlefield": "name"
+      }
+    },
+    {
+      "title": "Public bike pumps",
+      "geoserverLayerName": "transport:bike_pump",
+      "groups": [ "firework"],
+      "searchable": "false",
+      "sortorder": "30",
+      "pointstyle":{
+        "markertype": "AwesomeMarker", 
+        "icon": "tire-flat",
+        "markercolour": "red"
+      }, 
+      "hover": false,
+      "linepolygonstyle":
+      {
+        "stylename": "",
+        "layerstroke": "",
+        "layerstrokecolor": "",
+        "layeropacity": "",
+        "layerfillcolor": "",
+        "layerfillOpacity": "",
+        "layerlinedash": "",
+        "layerweight": ""
+      },
+      "popup": {
+        "popuptitlefield": "",
+        "popupfields": [
+          {
+            "fieldlabel": "",
+            "fieldname": "address"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Parking Zones",
+      "geoserverLayerName": "parking:controlled_parking_zone",
+      "groups": [],
+      "searchable": false,
+      "sortorder": "",
+      "pointstyle":"",      
+      "linepolygonstyle":
+      {
+        "stylename": "random polygons",
+        "layerstroke": true,
+        "layerstrokecolor": "grey",
+        "layeropacity": 0,
+        "layerfillcolor": "",
+        "layerfillOpacity": 0.40,
+        "layerlinedash": "",
+        "layerweight": 1
+      },
+      "popup": {
+        "popuptitlefield": "street_name",
+        "popupfields": [
+          {
+            "fieldlabel": "",
+            "fieldname": "location"
+          },
+          {
+            "fieldlabel": "Restricted hours:",
+            "fieldname": "start_info"
+          }
+
+        ]
+      }
+    }
+  ]
+}
