@@ -103,6 +103,7 @@ function loadLayers(mapConfig) {
         var stringtooltip = '';  
         
         //popup variables
+        var nopopup = this.configlayer.popup.nopopup;
         var popupstatementbefore = this.configlayer.popup.popupstatementbefore;
         var popuptitlefield = this.configlayer.popup.popuptitlefield;
         var popupfields = this.configlayer.popup.popupfields;
@@ -163,8 +164,8 @@ function loadLayers(mapConfig) {
               });
             }
             
-
-              //Add Tooltips !!!!!!! At the moment we are using the popup fields. Create new fields for tooltips!!!!!!!!!!!!
+            
+            if (!nopopup){
               
               for (var i in popupfields){
                 //if there are popup fields in the map config
@@ -182,52 +183,49 @@ function loadLayers(mapConfig) {
                   }                   
                 } 
               }      
-
-           
             
-            //Set up Pop up windows
-            //If the title is 'notitle', no title (an empty string) will be added at the top.
-            var stringpopup = '';
-            if (popuptitlefield === 'notitle'){
-              stringpopup = ' ';
-            }else{
-              // put the title field at the top of the popup in bold. If there is none in the config, just use the layer title instead.
-              if (popuptitlefield != ''){
-                stringpopup = '<center><b>'+feature.properties[popuptitlefield]+'</b></center>';
-              } else{
-                stringpopup = '<center><b>' + layername +'</b></center>';
+              //Set up Pop up windows
+              //If the title is 'notitle', no title (an empty string) will be added at the top.
+              var stringpopup = '';
+              if (popuptitlefield === 'notitle'){
+                stringpopup = ' ';
               }
-           }
-
-                 
-        //if there is metadata for this layer in the config
-            if (popupstatementbefore){
-               stringpopup = stringpopup + '<br><center>' + popupstatementbefore + '</center>';
-            }   
-
-            //loop through the fields defined in the config and add them to the popup
-            for (var i in popupfields){
-              //if there are popup fields in the map config
-              if (feature.properties[popupfields[i]] != ''){
-                //if there is a value for that field
-                if (feature.properties[popupfields[i].fieldname] != ''){
-                  //if there is a label for this field in the config
-                  if (popupfields[i].fieldlabel != ''){
-                      stringpopup = stringpopup + '<br><center><b>' + popupfields[i].fieldlabel + '</b>: ' + feature.properties[popupfields[i].fieldname] + '</center>';
-                  }
-                  else {
-                      stringpopup = stringpopup + '<br><center>' +  feature.properties[popupfields[i].fieldname] + '</center>';
-                  }
-                }                   
+              else{
+                // put the title field at the top of the popup in bold. If there is none in the config, just use the layer title instead.
+                if (popuptitlefield != ''){
+                  stringpopup = '<center><b>'+feature.properties[popuptitlefield]+'</b></center>';
+                } else{
+                  stringpopup = '<center><b>' + layername +'</b></center>';
+                }
               }
+
+
+              if (popupstatementbefore){
+                stringpopup = stringpopup + '<br><center>' + popupstatementbefore + '</center>';
+              }   
+
+              //loop through the fields defined in the config and add them to the popup
+              for (var i in popupfields){
+                //if there are popup fields in the map config
+                if (feature.properties[popupfields[i]] != ''){
+                  //if there is a value for that field
+                  if (feature.properties[popupfields[i].fieldname] != ''){
+                    //if there is a label for this field in the config
+                    if (popupfields[i].fieldlabel != ''){
+                        stringpopup = stringpopup + '<br><center><b>' + popupfields[i].fieldlabel + '</b>: ' + feature.properties[popupfields[i].fieldname] + '</center>';
+                    }
+                    else {
+                        stringpopup = stringpopup + '<br><center>' +  feature.properties[popupfields[i].fieldname] + '</center>';
+                    }
+                  }                   
+                }
+              }
+              if (popupstatementafter){
+                stringpopup = stringpopup + '<br><center>' + popupstatementafter + '</center>';
+              }  
+              var popup = L.popup({ closeButton: true }).setContent(stringpopup);
+              layer.bindPopup(popup, {maxWidth : 210});          
             }
-            if (popupstatementafter){
-              stringpopup = stringpopup + '<br><center>' + popupstatementafter + '</center>';
-           }  
-            var popup = L.popup({ closeButton: true }).setContent(stringpopup);
-            layer.bindPopup(popup, {maxWidth : 210});
-            
-
           },
           
           //alphabetic sorting of layers in legend

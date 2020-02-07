@@ -59,6 +59,7 @@
         "layerweight": 2
       },
       "popup": {
+        "nopopup": true,
         "popuptitlefield": "name"
       }
     },
