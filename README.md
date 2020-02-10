@@ -40,8 +40,9 @@ so), open your web browser and go to
 
 If you have a javascript error and you require more information than what is
 available in the console, you should set `isDist = false` in
-`tasks/gulp/compile-assets.js` (line 34). Please remember to set this back to
-`true` when you are ready to build and deploy to production.
+`tasks/gulp/compile-assets.js` (line 34) and then stop (CTRL+C) and re-run
+`npm start`. Please remember to set this back to `true` when you are ready to
+build and deploy to production.
 
 ## Contributing
 

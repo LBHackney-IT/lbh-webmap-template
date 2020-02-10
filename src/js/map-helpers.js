@@ -36,11 +36,12 @@ const pointToLayer = (
   }
 };
 
-const createTitle = (mapTitle, mapAbstract, aboutTheData) {
+const createTitle = (mapTitle, mapAbstract, aboutTheData) => {
   let titleBoxContent = "";
   let metadataBoxContent;
   let tooltip = "";
   let dataTooltip = "";
+  console.log(hello);
 
   const metadataWindow = L.control.window(map, {
     content: null,
@@ -120,6 +121,6 @@ const createTitle = (mapTitle, mapAbstract, aboutTheData) {
       });
     }
   }
-}
+};
 
 export { pointToLayer, createTitle };
