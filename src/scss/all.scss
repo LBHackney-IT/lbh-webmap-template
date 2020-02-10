@@ -1,0 +1,47 @@
+@import "node_modules/leaflet/dist/leaflet";
+@import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
+@import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
+@import "node_modules/leaflet-easybutton/src/easy-button";
+@import "node_modules/leaflet-control-window/src/L.Control.Window";
+@import "node_modules/leaflet.markercluster/dist/MarkerCluster";
+@import "node_modules/lbh-frontend/lbh/all";
+@import "./partials/map";
+@import "./partials/marker-cluster";
+
+// Start remove L.Control.Window undesired styles
+.modal {
+  background-color: unset;
+}
+
+.control-window {
+  background-color: lbh-colour("lbh-black");
+  color: lbh-colour("lbh-white");
+  font-family: "Montserrat";
+  font-size: 12px;
+
+  a {
+    color: lbh-colour("lbh-white");
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  b {
+    font-weight: 500;
+  }
+}
+
+.leaflet-control-window .titlebar {
+  min-height: unset;
+  padding: unset;
+}
+
+.leaflet-control-window .content {
+  padding: 16px 16px 0px 16px;
+}
+
+.leaflet-control-window .promptButtons {
+  padding: 0px 16px 16px 16px;
+}
+// End remove L.Control.Window undesired styles

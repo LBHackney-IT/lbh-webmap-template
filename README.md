@@ -2,28 +2,52 @@
 
 ## About
 
-This is a GitHub repository template to be used for creating new repositories within the LBHackney-IT organisation.
-## Build/Setup
+This is our Webmap template, which should be used to create webmaps for Hackney.
 
-Blah blah blah
+## Prerequisites
 
-## Setting Up Git
+You will need to have
+[git installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+You will also need [node and npm installed](https://nodejs.org/en/download/).
+
+## Setting Up
+
+Open terminal / bash and run the following:
 
 ```bash
-command run
+git clone `https://github.com/LBHackney-IT/lbh-webmap-template.git`
 ```
 
-## Branching
+You will need to create a file called `mapbox.js` in `src/js/helpers`. Sandrine
+Balley (sandrine.balley@hackney.gov.uk) or Marta Villalobos
+(marta.villalobos@hackney.gov.uk) can give you the file contents.
 
-Notes on GitFlow and links to docs
+Name your data file `map-definition.json` and add it to
+`data/YOUR_MAP_NAME_GOES_HERE/config/`.
 
-## Git Secrets
+Open terminal and run the following commands:
 
-- Blah blah blah
-- Blah blah blah
+```bash
+npm install
+npm start
+```
+
+When you see the text "Listening on port 9000..." (this could take a minute or
+so), open your web browser and go to
+`http://localhost:9000/?name=YOUR_MAP_NAME_GOES_HERE`
+
+## Troubleshooting
+
+If you have a javascript error and you require more information than what is
+available in the console, you should set `isDist = false` in
+`tasks/gulp/compile-assets.js` (line 34). Please remember to set this back to
+`true` when you are ready to build and deploy to production.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Pull requests are welcome. For major changes, please open an issue first to
+discuss what you would like to change.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
