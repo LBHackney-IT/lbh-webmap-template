@@ -41,7 +41,6 @@ const createTitle = (mapTitle, mapAbstract, aboutTheData) => {
   let metadataBoxContent;
   let tooltip = "";
   let dataTooltip = "";
-  console.log(hello);
 
   const metadataWindow = L.control.window(map, {
     content: null,

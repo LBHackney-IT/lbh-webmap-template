@@ -13,6 +13,12 @@ body,
   margin-top: unset;
 }
 
+.map-title {
+  font-size: 17px;
+  line-height: 1.47;
+  text-align: center;
+}
+
 .container-mask {
   pointer-events: none;
   width: 100%;
@@ -348,7 +354,10 @@ input:not(:checked) + span span.control-active-border {
 }
 
 @media (min-width: 768px) {
-  label:hover .leaflet-control-layers-selector + span span.control-active-border {
+  label:hover
+    .leaflet-control-layers-selector
+    + span
+    span.control-active-border {
     background: #003d2f !important;
   }
 
