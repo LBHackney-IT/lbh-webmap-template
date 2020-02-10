@@ -393,7 +393,7 @@ class Map {
     }
   }
 
-  addMetadata(data, mapTitle, mapAbstract, showMetadataUnderTitle) {
+  addMetadata(data, mapTitle, mapAbstract) {
     let metadataText = "";
     for (const feature of data.features) {
       metadataText += `<p><b>${feature.properties.title}</b><br>`;
@@ -406,12 +406,7 @@ class Map {
       }
     }
 
-    const control = createTitle(
-      mapTitle,
-      mapAbstract,
-      metadataText,
-      showMetadataUnderTitle
-    );
+    const control = createTitle(mapTitle, mapAbstract, metadataText);
     control.addTo(this.map);
   }
 
@@ -419,11 +414,13 @@ class Map {
     const mapTitle = this.mapConfig.name;
     const mapAbstract = this.mapConfig.abstract;
     const aboutTheData = this.mapConfig.aboutTheData;
-    const showMetadataUnderTitle = this.mapConfig.showMetadataUnderTitle;
     let control;
 
     //load metadata from geoserver
-    if (showMetadataUnderTitle && this.mapConfig.layers.length > 0) {
+    if (
+      this.mapConfig.showMetadataUnderTitle &&
+      this.mapConfig.layers.length > 0
+    ) {
       const cqlValues = this.mapConfig.layers
         .map(i => `'${i.geoserverLayerName}'`)
         .toString();
@@ -438,32 +435,16 @@ class Map {
       })
         .then(response => response.json())
         .then(data =>
-          this.addMetadata(
-            data,
-            mapTitle,
-            mapAbstract,
-            aboutTheData,
-            showMetadataUnderTitle
-          )
+          this.addMetadata(data, mapTitle, mapAbstract, aboutTheData)
         );
     } else if (aboutTheData) {
       aboutTheData = `<p>${aboutTheData}</p>`;
-      control = createTitle(
-        mapTitle,
-        mapAbstract,
-        aboutTheData,
-        showMetadataUnderTitle
-      );
+      control = createTitle(mapTitle, mapAbstract, aboutTheData);
       if (control) {
         control.addTo(this.map);
       }
     } else {
-      control = createTitle(
-        mapTitle,
-        mapAbstract,
-        null,
-        showMetadataUnderTitle
-      );
+      control = createTitle(mapTitle, mapAbstract, null);
       if (control) {
         control.addTo(this.map);
       }

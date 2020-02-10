@@ -36,7 +36,7 @@ const pointToLayer = (
   }
 };
 
-function createTitle(mapTitle, mapAbstract, aboutTheData) {
+const createTitle = (mapTitle, mapAbstract, aboutTheData) {
   let titleBoxContent = "";
   let metadataBoxContent;
   let tooltip = "";
