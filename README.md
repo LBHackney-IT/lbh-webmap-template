@@ -18,16 +18,18 @@ Open terminal / bash and run the following:
 git clone `https://github.com/LBHackney-IT/lbh-webmap-template.git`
 ```
 
-You will need to create a file called `mapbox.js` in `src/js/helpers`. Sandrine
-Balley (sandrine.balley@hackney.gov.uk) or Marta Villalobos
-(marta.villalobos@hackney.gov.uk) can give you the file contents.
+You will need to create a file called `mapbox.js` in `src/js/helpers`, and a
+file called `.npmrc` in the root of the project. Sandrine Balley
+(sandrine.balley@hackney.gov.uk) or Marta Villalobos
+(marta.villalobos@hackney.gov.uk) can give you the file contents for both files.
 
 Name your data file `map-definition.json` and add it to
 `data/YOUR_MAP_NAME_GOES_HERE/config/`.
 
-Open terminal and run the following commands:
+Go back to terminal and run the following commands:
 
 ```bash
+cd lbh-webmap-template
 npm install
 npm start
 ```
