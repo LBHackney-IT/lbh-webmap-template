@@ -7,38 +7,16 @@
 @import "node_modules/lbh-frontend/lbh/all";
 @import "./partials/map";
 @import "./partials/marker-cluster";
+@import "./partials/metadata";
 
 // Start remove L.Control.Window undesired styles
 .modal {
   background-color: unset;
 }
 
-.control-window {
-  background-color: lbh-colour("lbh-black");
-  color: lbh-colour("lbh-white");
-  font-family: "Montserrat";
-  font-size: 12px;
-
-  a {
-    color: lbh-colour("lbh-white");
-  }
-
-  i {
-    font-style: italic;
-  }
-
-  b {
-    font-weight: 500;
-  }
-}
-
 .leaflet-control-window .titlebar {
   min-height: unset;
   padding: unset;
-}
-
-.leaflet-control-window .content {
-  padding: 16px 16px 0px 16px;
 }
 
 .leaflet-control-window .promptButtons {

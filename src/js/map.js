@@ -6,7 +6,7 @@ import {
 import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
-import { pointToLayer, createTitle } from "./map-helpers";
+import { pointToLayer, createTitle } from "./map-metadata";
 import {
   MAX_ZOOM,
   MIN_ZOOM,
@@ -77,12 +77,8 @@ class Map {
       this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
     }
     mobileDesktopSwitch(
-      () => {
-        this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
-      },
-      () => {
-        this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
-      }
+      () => this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP),
+      () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE)
     );
 
     this.addBaseLayer();
@@ -397,14 +393,15 @@ class Map {
   addMetadata(data, mapTitle, mapAbstract) {
     let metadataText = "";
     for (const feature of data.features) {
-      metadataText += `<p><b>${feature.properties.title}</b><br>`;
+      metadataText += `<div class="metadata__feature"><h3 class="lbh-heading-h6">${feature.properties.title}</h3>`;
       if (feature.properties.abstract) {
-        metadataText += `<i>${feature.properties.abstract}</i><br>`;
+        metadataText += `<p class="lbh-body-xs">${feature.properties.abstract}</p>`;
       }
-      metadataText += `<b>Source:</b> ${feature.properties.source}<br>`;
+      metadataText += `<p class="lbh-body-xs"><b>Source:</b> ${feature.properties.source}<br></p>`;
       if (feature.properties.lastupdatedate) {
-        metadataText += `<b>Last updated:</b> ${feature.properties.lastupdatedate}</p>`;
+        metadataText += `<p class="lbh-body-xs"><b>Last updated:</b> ${feature.properties.lastupdatedate}</p>`;
       }
+      metadataText += "</div>";
     }
 
     const control = createTitle(this.map, mapTitle, mapAbstract, metadataText);
@@ -439,7 +436,7 @@ class Map {
           this.addMetadata(data, mapTitle, mapAbstract, aboutTheData)
         );
     } else if (aboutTheData) {
-      aboutTheData = `<p>${aboutTheData}</p>`;
+      aboutTheData = `<div class="metadata__feature"><p class="lbh-body-xs">${aboutTheData}</p></div>`;
       control = createTitle(this.map, mapTitle, mapAbstract, aboutTheData);
       if (control) {
         control.addTo(this.map);

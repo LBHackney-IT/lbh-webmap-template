@@ -1,13 +1,11 @@
-import PubSub from "pubsub-js";
-
-const isMobile = () => !window.matchMedia("(min-width: 768px)").matches;
+const isMobile = () => !window.matchMedia("(min-width: 48.0625em)").matches;
 
 const mobileDesktopSwitch = (callbackMobile, callbackDesktop) => {
-  const wasMobile = isMobile();
-  window.addEventListener("resize", event => {
+  let wasMobile = isMobile();
+  window.addEventListener("resize", () => {
     const isMobileNow = isMobile();
     if (isMobileNow && wasMobile) {
-      callBackDesktop();
+      callbackDesktop();
       wasMobile = false;
     } else if (!isMobileNow && !wasMobile) {
       callbackMobile();
