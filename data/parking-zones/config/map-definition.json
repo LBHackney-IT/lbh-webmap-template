@@ -1,44 +1,41 @@
 {
-  "mapid": "1",
+  "mapId": "1",
   "name": "Parking Zones in Hackney",
   "abstract": "This map shows where residents can park and when controls are operated.",
-  "showMetadataUnderTitle":true,
+  "showMetadataUnderTitle": true,
   "aboutTheData": "",
-  "basestyle": "streets",
-  "layergroups": [],
+  "baseStyle": "streets",
+  "layerGroups": [],
 
   "layers": [
-    
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
       "groups": [],
       "searchable": false,
-      "sortorder": "",
-      "pointstyle":"",      
-      "linepolygonstyle":
-      {
-        "stylename": "random polygons",
-        "layerstroke": true,
-        "layerstrokecolor": "grey",
-        "layeropacity": 0,
-        "layerfillcolor": "",
-        "layerfillOpacity": 0.40,
-        "layerlinedash": "",
-        "layerweight": 1
+      "sortOrder": "",
+      "pointStyle": "",
+      "linePolygonStyle": {
+        "styleName": "random polygons",
+        "layerStroke": true,
+        "layerStrokeColor": "grey",
+        "layerOpacity": 0,
+        "layerFillColor": "",
+        "layerFillOpacity": 0.4,
+        "layerLineDash": "",
+        "layerWeight": 1
       },
       "popup": {
-        "popuptitlefield": "street_name",
-        "popupfields": [
+        "popupTitleField": "street_name",
+        "popupFields": [
           {
-            "fieldlabel": "",
-            "fieldname": "location"
+            "fieldLabel": "",
+            "fieldName": "location"
           },
           {
-            "fieldlabel": "Restricted hours:",
-            "fieldname": "start_info"
+            "fieldLabel": "Restricted hours:",
+            "fieldName": "start_info"
           }
-
         ]
       }
     }

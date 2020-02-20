@@ -1,50 +1,51 @@
 {
-  "mapid": "1",
+  "mapId": "1",
   "name": "Conservation Areas in Hackney",
   "abstract": "",
   "showMetadataUnderTitle": true,
-  "zoomtomastermap": true,
-  "layergroups": [
+  "zoomToMasterMap": true,
+  "layerGroups": [
     {
       "name": "firework",
-      "groupicon": "images/star-christmas-duotone-default.svg",
-      "groupiconactive": "images/star-christmas-duotone-active2.svg",
-      "grouptext": "Fireworks"
+      "groupIcon": "images/star-christmas-duotone-default.svg",
+      "groupIconActive": "images/star-christmas-duotone-active2.svg",
+      "groupText": "Fireworks"
     }
   ],
-
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
       "groups": [],
       "searchable": false,
-      "sortorder": "",
-      "pointstyle": "",
-      "linepolygonstyle": {
-        "stylename": "random polygons",
-        "layerstroke": true,
-        "layerstrokecolor": "grey",
-        "layeropacity": 0,
-        "layerfillcolor": "",
-        "layerfillOpacity": 0.5,
-        "layerlinedash": "",
-        "layerweight": 1.5
+      "sortOrder": "",
+      "pointStyle": "",
+      "linePolygonStyle": {
+        "styleName": "random polygons",
+        "layerStroke": true,
+        "layerStrokeColor": "grey",
+        "layerOpacity": 0,
+        "layerFillColor": "",
+        "layerFillOpacity": 0.5,
+        "layerLineDash": "",
+        "layerWeight": 1.5
       },
       "popup": {
-        "popuptitlefield": "notitle",
-        "popupfields": [
+        "popupTitleField": "notitle",
+        "popupFields": [
           {
-            "fieldlabel": "Conservation area name",
-            "fieldname": "ca_name"
+            "fieldLabel": "Conservation area name",
+            "fieldName": "ca_name"
           },
           {
-            "fieldlabel": "Designation year",
-            "fieldname": "designation_date"
+            "fieldLabel": "Designation year",
+            "fieldName": "designation_date"
           },
           {
-            "fieldlabel": "",
-            "fieldname": "link"
+            "fieldLabel": "",
+            "fieldName": "link"
           }
         ]
       }

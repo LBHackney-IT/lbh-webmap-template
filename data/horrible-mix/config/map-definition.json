@@ -1,14 +1,14 @@
 {
-  "mapid": "3",
+  "mapId": "3",
   "name": "An horrible mix",
   "abstract": "This map shows the big efforts of ............",
   "showMetadataUnderTitle": true,
-  "aboutTheData": "Mapid (text - not in use): unique id which identifies the mapName (text): name o to download the data go to <a href=''>here</a>",
-  "basestyle": "",
-  "zoomtomastermap": true,
-  "locatecontrol": false,
-  "resetzoomcontrol": false,
-  "layergroups": [],
+  "aboutTheData": "mapId (text - not in use): unique id which identifies the mapName (text): name o to download the data go to <a href=''>here</a>",
+  "baseStyle": "",
+  "zoomToMasterMap": true,
+  "locateControl": true,
+  "resetZoomControl": true,
+  "layerGroups": [],
   "showHackneyMask": true,
   "layers": [
     {
@@ -16,25 +16,25 @@
       "geoserverLayerName": "transport:cycle_stand",
       "groups": [],
       "searchable": false,
-      "sortorder": "",
+      "sortOrder": "",
       "hover": false,
-      "pointstyle": {
-        "markertype": "CircleMarker",
+      "pointStyle": {
+        "markerType": "CircleMarker",
         "icon": "fa-bicycle",
-        "markercolor": "purple",
+        "markerColor": "purple",
         "cluster": true
       },
-      "linepolygonstyle": "",
+      "linePolygonStyle": "",
       "popup": {
-        "popuptitlefield": "",
-        "popupstatementbefore": "",
-        "popupfields": [
+        "popupTitleField": "",
+        "popupStatementBefore": "",
+        "popupFields": [
           {
-            "fieldlabel": "",
-            "fieldname": "type"
+            "fieldLabel": "",
+            "fieldName": "type"
           }
         ],
-        "popupstatementafter": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
+        "popupStatementAfter": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
       }
     },
     {
@@ -42,22 +42,22 @@
       "geoserverLayerName": "boundaries:hackney_ward",
       "groups": [],
       "searchable": false,
-      "sortorder": "",
+      "sortOrder": "",
       "metadata": "",
-      "pointstyle": "",
-      "linepolygonstyle": {
-        "stylename": "default",
-        "layerstroke": true,
-        "layerstrokecolor": "darkblue",
-        "layeropacity": 1,
-        "layerfillcolor": "",
-        "layerfillOpacity": 0,
-        "layerlinedash": "",
-        "layerweight": 2
+      "pointStyle": "",
+      "linePolygonStyle": {
+        "styleName": "default",
+        "layerStroke": true,
+        "layerStrokeColor": "darkblue",
+        "layerOpacity": 1,
+        "layerFillColor": "",
+        "layerFillOpacity": 0,
+        "layerLineDash": "",
+        "layerWeight": 2
       },
       "popup": {
-        "nopopup": true,
-        "popuptitlefield": "name"
+        "noPopup": true,
+        "popupTitleField": "name"
       }
     },
     {
@@ -65,29 +65,29 @@
       "geoserverLayerName": "transport:bike_pump",
       "groups": ["firework"],
       "searchable": "false",
-      "sortorder": "30",
-      "pointstyle": {
-        "markertype": "AwesomeMarker",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
         "icon": "tire-flat",
-        "markercolour": "red"
+        "markerColor": "red"
       },
       "hover": false,
-      "linepolygonstyle": {
-        "stylename": "",
-        "layerstroke": "",
-        "layerstrokecolor": "",
-        "layeropacity": "",
-        "layerfillcolor": "",
-        "layerfillOpacity": "",
-        "layerlinedash": "",
-        "layerweight": ""
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
       },
       "popup": {
-        "popuptitlefield": "",
-        "popupfields": [
+        "popupTitleField": "",
+        "popupFields": [
           {
-            "fieldlabel": "",
-            "fieldname": "address"
+            "fieldLabel": "",
+            "fieldName": "address"
           }
         ]
       }
@@ -97,28 +97,28 @@
       "geoserverLayerName": "parking:controlled_parking_zone",
       "groups": [],
       "searchable": false,
-      "sortorder": "",
-      "pointstyle": "",
-      "linepolygonstyle": {
-        "stylename": "random polygons",
-        "layerstroke": true,
-        "layerstrokecolor": "grey",
-        "layeropacity": 0,
-        "layerfillcolor": "",
-        "layerfillOpacity": 0.4,
-        "layerlinedash": "",
-        "layerweight": 1
+      "sortOrder": "",
+      "pointStyle": "",
+      "linePolygonStyle": {
+        "styleName": "random polygons",
+        "layerStroke": true,
+        "layerStrokeColor": "grey",
+        "layerOpacity": 0,
+        "layerFillColor": "",
+        "layerFillOpacity": 0.4,
+        "layerLineDash": "",
+        "layerWeight": 1
       },
       "popup": {
-        "popuptitlefield": "street_name",
-        "popupfields": [
+        "popupTitleField": "street_name",
+        "popupFields": [
           {
-            "fieldlabel": "",
-            "fieldname": "location"
+            "fieldLabel": "",
+            "fieldName": "location"
           },
           {
-            "fieldlabel": "Restricted hours:",
-            "fieldname": "start_info"
+            "fieldLabel": "Restricted hours:",
+            "fieldName": "start_info"
           }
         ]
       }

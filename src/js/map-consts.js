@@ -51,10 +51,6 @@ const MARKER_COLOURS = {
 
 const PERSONA_ACTIVE_CLASS = ".persona-button--active";
 
-const DEFAULT_OUTSIDE_HACKNEY_ERROR = "We only cover Hackney";
-const DEFAULT_NO_LOCATION_ERROR =
-  "We cannot find your location. Please enable Location Services for your browser in Settings or try again outside of your office as your network may block geolocation.";
-
 export {
   MAX_ZOOM,
   MIN_ZOOM,
@@ -71,7 +67,5 @@ export {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
-  PERSONA_ACTIVE_CLASS,
-  DEFAULT_OUTSIDE_HACKNEY_ERROR,
-  DEFAULT_NO_LOCATION_ERROR
+  PERSONA_ACTIVE_CLASS
 };

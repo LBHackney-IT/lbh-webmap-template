@@ -15,17 +15,13 @@ import {
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
-  HACKNEY_BOUNDS_1,
-  HACKNEY_BOUNDS_2,
   HACKNEY_GEOSERVER,
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
-  PERSONA_ACTIVE_CLASS,
-  DEFAULT_OUTSIDE_HACKNEY_ERROR,
-  DEFAULT_NO_LOCATION_ERROR
+  PERSONA_ACTIVE_CLASS
 } from "./map-consts";
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
 import "@fortawesome/fontawesome-pro/js/all";
@@ -42,13 +38,12 @@ class Map {
     this.hasPersonas =
       document.getElementById("personas") !== null ? true : false;
     this.clearButton = document.getElementById("map-clear");
-    this.hasGeolocation = map.getAttribute("data-geolocation") === "true";
     this.errorOutsideHackney =
       map.getAttribute("data-geolocation-error-outside-hackney") ||
-      DEFAULT_OUTSIDE_HACKNEY_ERROR;
+      GENERIC_OUTSIDE_HACKNEY_ERROR;
     this.errorNoLocation =
       map.getAttribute("data-geolocation-error-location") ||
-      DEFAULT_NO_LOCATION_ERROR;
+      GENERIC_GEOLOCATION_ERROR;
   }
 
   init() {
@@ -68,13 +63,6 @@ class Map {
         this.loadMetadata();
         if (this.clearButton) {
           this.toggleClearButton();
-        }
-        if (this.hasGeolocation) {
-          new Geolocation(
-            this.map,
-            this.errorNoLocation,
-            this.errorOutsideHackney
-          ).init();
         }
       })
       .catch(error => {
@@ -119,8 +107,6 @@ class Map {
   }
 
   createMap() {
-    const isMobile = isMobileFn();
-
     this.map = L.map("map", {
       zoomControl: false,
       maxZoom: MAX_ZOOM,
@@ -138,7 +124,7 @@ class Map {
 
     this.addBaseLayer();
 
-    if (this.mapConfig.zoomtomastermap) {
+    if (this.mapConfig.zoomToMasterMap) {
       this.addMasterMapLayer();
     }
 
@@ -146,16 +132,25 @@ class Map {
       this.addHackneyMaskLayer();
     }
 
-    // Disable zoom specifically on mobile devices, not based on screensize
+    if (this.mapConfig.showHackneyBoundary) {
+      this.addHackneyBoundaryLayer();
+    }
+
+    // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     }
 
     if (this.mapConfig.locateControl) {
-      this.addLocateControl();
+      new Geolocation(
+        this.map,
+        this.errorNoLocation,
+        this.errorOutsideHackney
+      ).init();
     }
 
-    if (this.mapConfig.resetzoomcontrol && !isMobile) {
+    // Add reset button specifically on non-mobile devices, not based on screensize.
+    if (this.mapConfig.resetZoomControl && !L.Browser.mobile) {
       this.addResetButton();
     }
   }
@@ -178,17 +173,17 @@ class Map {
   }
 
   addBaseLayer() {
-    if (this.mapConfig.basestyle == "streets") {
+    if (this.mapConfig.baseStyle == "streets") {
       this.OSM_base = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/cj8vnelpqfetn2rox0ik873ic/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
         TILE_LAYER_OPTIONS
       );
-    } else if (this.mapConfig.basestyle == "light") {
+    } else if (this.mapConfig.baseStyle == "light") {
       this.OSM_base = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.light" })
       );
-    } else if (this.mapConfig.basestyle == "dark") {
+    } else if (this.mapConfig.baseStyle == "dark") {
       this.OSM_base = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.dark" })
@@ -228,52 +223,16 @@ class Map {
     }
   }
 
-  addLocateControl() {
-    //prepare marker and event for geolocation
-    let locateCircle = null;
-    this.map.on("locationerror", function() {
-      alert(this.mapConfig.locationError || GENERIC_GEOLOCATION_ERROR);
-    });
-    L.easyButton(
-      "fa-location",
-      () => {
-        const onLocationFoundViaControl = e => {
-          if (locateCircle !== null) {
-            this.map.removeLayer(locateCircle);
-          }
-          locateCircle = L.circleMarker(e.latlng).addTo(this.map);
-          const hackneyBounds = L.bounds(HACKNEY_BOUNDS_1, HACKNEY_BOUNDS_2);
-          if (hackneyBounds.contains([e.latlng.lat, e.latlng.lng])) {
-            this.map.setView([e.latlng.lat, e.latlng.lng], 16);
-          } else {
-            alert(
-              this.mapConfig.outsideHackneyError ||
-                GENERIC_OUTSIDE_HACKNEY_ERROR
-            );
-            this.setZoom();
-          }
-          this.map.off("locationfound", onLocationFoundViaControl);
-        };
-
-        this.map.on("locationfound", onLocationFoundViaControl.bind(this));
-
-        this.map.locate({
-          setView: false,
-          timeout: 5000,
-          maximumAge: 0,
-          maxZoom: 16
-        });
-      },
-      "Show me where I am",
-      { position: "topright" }
-    ).addTo(this.map);
-  }
-
   addResetButton() {
     L.easyButton(
       "fa-globe",
       () => {
-        this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
+        // Still check this as someone may be on a desktop device at around 760px
+        if (isMobileFn()) {
+          this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+        } else {
+          this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
+        }
       },
       "Zoom to all Hackney",
       { position: "topright" }
@@ -281,10 +240,10 @@ class Map {
   }
 
   createPopupString(configLayer, feature, layerName) {
-    const popupStatementBefore = configLayer.popup.popupstatementbefore;
-    const popupTitleField = configLayer.popup.popuptitlefield;
-    const popupFields = configLayer.popup.popupfields;
-    const popupStatementAfter = configLayer.popup.popupstatementafter;
+    const popupStatementBefore = configLayer.popup.popupStatementBefore;
+    const popupTitleField = configLayer.popup.popupTitleField;
+    const popupFields = configLayer.popup.popupFields;
+    const popupStatementAfter = configLayer.popup.popupStatementAfter;
     // Set up Pop up windows
     // If the title is 'notitle', no title (an empty string) will be added at the top.
     let stringPopup = "";
@@ -304,16 +263,16 @@ class Map {
     for (const i in popupFields) {
       if (feature.properties[popupFields[i]] !== "") {
         if (
-          feature.properties[popupFields[i].fieldname] !== "" &&
-          feature.properties[popupFields[i].fieldname] !== null
+          feature.properties[popupFields[i].fieldName] !== "" &&
+          feature.properties[popupFields[i].fieldName] !== null
         ) {
-          if (popupFields[i].fieldlabel != "") {
+          if (popupFields[i].fieldLabel != "") {
             stringPopup += `<p class="popup__text"><span class="popup__label">${
-              popupFields[i].fieldlabel
-            }</span>: ${feature.properties[popupFields[i].fieldname]}</p>`;
+              popupFields[i].fieldLabel
+            }</span>: ${feature.properties[popupFields[i].fieldName]}</p>`;
           } else {
             stringPopup += `<p class="popup__text">${
-              feature.properties[popupFields[i].fieldname]
+              feature.properties[popupFields[i].fieldName]
             }</p>`;
           }
         }
@@ -331,23 +290,23 @@ class Map {
     const layerName = configLayer.title; // get from context
     const sortOrder = configLayer.title;
 
-    const markerType = configLayer.pointstyle.markertype;
-    const markerIcon = configLayer.pointstyle.icon;
-    const markerColor = configLayer.pointstyle.markercolor;
-    const cluster = configLayer.pointstyle.cluster;
-    const layerStyle = configLayer.linepolygonstyle.stylename;
+    const markerType = configLayer.pointStyle.markerType;
+    const markerIcon = configLayer.pointStyle.icon;
+    const markerColor = configLayer.pointStyle.markerColor;
+    const cluster = configLayer.pointStyle.cluster;
+    const layerStyle = configLayer.linePolygonStyle.styleName;
 
-    const layerOpacity = configLayer.linepolygonstyle.layeropacity;
-    const layerFillColor = configLayer.linepolygonstyle.layerfillcolor;
-    const layerLineDash = configLayer.linepolygonstyle.layerlinedash;
+    const layerOpacity = configLayer.linePolygonStyle.layerOpacity;
+    const layerFillColor = configLayer.linePolygonStyle.layerFillColor;
+    const layerLineDash = configLayer.linePolygonStyle.layerLineDash;
     const baseLayerStyles = {
-      stroke: configLayer.linepolygonstyle.layerstroke,
-      color: configLayer.linepolygonstyle.layerstrokecolor,
-      fillOpacity: configLayer.linepolygonstyle.layerfillOpacity,
-      weight: configLayer.linepolygonstyle.layerweight
+      stroke: configLayer.linePolygonStyle.layerStroke,
+      color: configLayer.linePolygonStyle.layerStrokeColor,
+      fillOpacity: configLayer.linePolygonStyle.layerFillOpacity,
+      weight: configLayer.linePolygonStyle.layerWeight
     };
 
-    const noPopup = configLayer.popup.nopopup;
+    const noPopup = configLayer.popup.noPopup;
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLOURS[markerColor],
@@ -371,7 +330,7 @@ class Map {
           layer.bindPopup(popup, { maxWidth: 210 });
         }
       },
-      sortorder: sortOrder,
+      sortOrder: sortOrder,
       style: function style() {
         if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
@@ -405,13 +364,13 @@ class Map {
   }
 
   loadLayers() {
-    for (const group of this.mapConfig.layergroups) {
+    for (const group of this.mapConfig.layerGroups) {
       //crate layergroup object with this new empty list of layers
       const layergroup = {
         group: group.name,
-        groupIcon: group.groupicon,
-        groupIconActive: group.groupiconactive,
-        groupText: group.grouptext,
+        groupIcon: group.groupIcon,
+        groupIconActive: group.groupIconActive,
+        groupText: group.groupText,
         alt: group.alt,
         collapsed: false,
         layersInGroup: [],
@@ -430,8 +389,8 @@ class Map {
       //Test
       //const url="http://lbhgiswebt01/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+configLayer.geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
 
-      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.layergroups[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-      //const iconn=this.mapConfig.layergroups[i].layers[j].icon;
+      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.layerGroups[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
+      //const iconn=this.mapConfig.layerGroups[i].layers[j].icon;
 
       fetch(url, {
         method: "get"

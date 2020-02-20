@@ -1,45 +1,47 @@
 {
-  "mapid": "3",
+  "mapId": "3",
   "name": "",
   "aboutTheData": "",
   "abstract": "",
-  "layergroups": [
+  "layerGroups": [
     {
       "name": "firework",
-      "groupicon": "images/star-christmas-duotone-default.svg",
-      "groupiconactive": "images/star-christmas-duotone-active2.svg",
-      "grouptext": "Fireworks"
+      "groupIcon": "images/star-christmas-duotone-default.svg",
+      "groupIconActive": "images/star-christmas-duotone-active2.svg",
+      "groupText": "Fireworks"
     }
   ],
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
       "groups": ["firework"],
       "searchable": "false",
-      "sortorder": "30",
-      "pointstyle": {
-        "markertype": "AwesomeMarker",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
         "icon": "tire-flat",
-        "markercolour": "red"
+        "markerColor": "red"
       },
       "hover": false,
-      "linepolygonstyle": {
-        "stylename": "",
-        "layerstroke": "",
-        "layerstrokecolor": "",
-        "layeropacity": "",
-        "layerfillcolor": "",
-        "layerfillOpacity": "",
-        "layerlinedash": "",
-        "layerweight": ""
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
       },
       "popup": {
-        "popuptitlefield": "",
-        "popupfields": [
+        "popupTitleField": "",
+        "popupFields": [
           {
-            "fieldlabel": "",
-            "fieldname": "address"
+            "fieldLabel": "",
+            "fieldName": "address"
           }
         ]
       }
