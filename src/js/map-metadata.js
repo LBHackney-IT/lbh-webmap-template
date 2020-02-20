@@ -3,7 +3,6 @@ import "leaflet.awesome-markers";
 import "leaflet.markercluster";
 import "leaflet-control-window";
 import "leaflet-control-custom";
-import { isMobile } from "./helpers/isMobile";
 
 const pointToLayer = (
   latlng,

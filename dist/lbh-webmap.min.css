@@ -6614,7 +6614,7 @@ body,
   padding: 0;
   margin: 0; }
 
-#map * + * {
+.map * + * {
   margin-top: unset; }
 
 .container-mask {
@@ -6746,12 +6746,12 @@ body,
 .leaflet-control-layers-expanded .leaflet-control-layers-list {
   height: auto !important; }
 
-.map-wrapper {
+.map__wrapper {
   height: 450px;
   position: relative;
   z-index: 0; }
   @media (min-width: 48.0625em) {
-    .map-wrapper {
+    .map__wrapper {
       height: 600px; } }
 
 .map-controls {

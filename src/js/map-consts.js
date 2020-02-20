@@ -6,7 +6,6 @@ const CENTER_DESKTOP = [51.549, -0.077928];
 const CENTER_MOBILE = [51.549, -0.059928];
 const DEFAULT_ZOOM_DESKTOP = 13;
 const DEFAULT_ZOOM_MOBILE = 11;
-const ZOOM_CONTROL = false;
 const MAP_BOUNDS = [
   [51.491112, -0.275464],
   [51.607351, 0.096129]
@@ -52,6 +51,10 @@ const MARKER_COLOURS = {
 
 const PERSONA_ACTIVE_CLASS = ".persona-button--active";
 
+const DEFAULT_OUTSIDE_HACKNEY_ERROR = "We only cover Hackney";
+const DEFAULT_NO_LOCATION_ERROR =
+  "We cannot find your location. Please enable Location Services for your browser in Settings or try again outside of your office as your network may block geolocation.";
+
 export {
   MAX_ZOOM,
   MIN_ZOOM,
@@ -59,7 +62,6 @@ export {
   CENTER_MOBILE,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
-  ZOOM_CONTROL,
   MAP_BOUNDS,
   HACKNEY_BOUNDS_1,
   HACKNEY_BOUNDS_2,
@@ -69,5 +71,7 @@ export {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
-  PERSONA_ACTIVE_CLASS
+  PERSONA_ACTIVE_CLASS,
+  DEFAULT_OUTSIDE_HACKNEY_ERROR,
+  DEFAULT_NO_LOCATION_ERROR
 };

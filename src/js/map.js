@@ -14,7 +14,6 @@ import {
   CENTER_MOBILE,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
-  ZOOM_CONTROL,
   MAP_BOUNDS,
   HACKNEY_BOUNDS_1,
   HACKNEY_BOUNDS_2,
@@ -24,10 +23,13 @@ import {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
-  PERSONA_ACTIVE_CLASS
+  PERSONA_ACTIVE_CLASS,
+  DEFAULT_OUTSIDE_HACKNEY_ERROR,
+  DEFAULT_NO_LOCATION_ERROR
 } from "./map-consts";
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
 import "@fortawesome/fontawesome-pro/js/all";
+import Geolocation from "./geolocation";
 
 class Map {
   constructor(map) {
@@ -40,6 +42,13 @@ class Map {
     this.hasPersonas =
       document.getElementById("personas") !== null ? true : false;
     this.clearButton = document.getElementById("map-clear");
+    this.hasGeolocation = map.getAttribute("data-geolocation") === "true";
+    this.errorOutsideHackney =
+      map.getAttribute("data-geolocation-error-outside-hackney") ||
+      DEFAULT_OUTSIDE_HACKNEY_ERROR;
+    this.errorNoLocation =
+      map.getAttribute("data-geolocation-error-location") ||
+      DEFAULT_NO_LOCATION_ERROR;
   }
 
   init() {
@@ -54,8 +63,15 @@ class Map {
         this.createMap();
         this.loadLayers();
         this.loadMetadata();
-        if (this.clearButton !== null) {
+        if (this.clearButton) {
           this.toggleClearButton();
+        }
+        if (this.hasGeolocation) {
+          new Geolocation(
+            this.map,
+            this.errorNoLocation,
+            this.errorOutsideHackney
+          ).init();
         }
       })
       .catch(error => {
@@ -103,7 +119,7 @@ class Map {
     const isMobile = isMobileFn();
 
     this.map = L.map("map", {
-      zoomControl: ZOOM_CONTROL,
+      zoomControl: false,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: CENTER_DESKTOP,
@@ -112,12 +128,9 @@ class Map {
 
     this.map.setMaxBounds(MAP_BOUNDS);
 
-    if (isMobile) {
-      this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
-    }
     mobileDesktopSwitch(
-      () => this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP),
-      () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE)
+      () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
+      () => this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP)
     );
 
     this.addBaseLayer();
@@ -130,7 +143,8 @@ class Map {
       this.addHackneyMaskLayer();
     }
 
-    if (!isMobile) {
+    // Disable zoom specifically on mobile devices, not based on screensize
+    if (!L.Browser.mobile) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     }
 
