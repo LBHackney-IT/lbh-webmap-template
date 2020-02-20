@@ -395,7 +395,10 @@ input:not(:checked) + span span.control-active-border {
   position: relative;
 }
 
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar,
 .leaflet-bar {
+  border: none;
   border-radius: 0;
   box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
 }
