@@ -291,14 +291,14 @@ class Map {
     if (popupTitleField !== "notitle") {
       // put the title field at the top of the popup in bold. If there is none in the config, just use the layer title instead.
       if (popupTitleField !== "") {
-        stringPopup = `<center><b>${feature.properties[popupTitleField]}</b></center>`;
+        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[popupTitleField]}</h3>`;
       } else {
-        stringPopup = `<center><b>${layerName}</b></center>`;
+        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
       }
     }
 
     if (popupStatementBefore) {
-      stringPopup += `<br><center>${popupStatementBefore}</center>`;
+      stringPopup += `<p class="popup__text">${popupStatementBefore}</p>`;
     }
 
     for (const i in popupFields) {
@@ -308,20 +308,20 @@ class Map {
           feature.properties[popupFields[i].fieldname] !== null
         ) {
           if (popupFields[i].fieldlabel != "") {
-            stringPopup += `<br><center><b>${popupFields[i].fieldlabel}</b>: ${
-              feature.properties[popupFields[i].fieldname]
-            }</center>`;
+            stringPopup += `<p class="popup__text"><span class="popup__label">${
+              popupFields[i].fieldlabel
+            }</span>: ${feature.properties[popupFields[i].fieldname]}</p>`;
           } else {
-            stringPopup += `<br><center>${
+            stringPopup += `<p class="popup__text">${
               feature.properties[popupFields[i].fieldname]
-            }</center>`;
+            }</p>`;
           }
         }
       }
     }
 
     if (popupStatementAfter) {
-      stringPopup += `<br><center>${popupStatementAfter}</center>`;
+      stringPopup += `<p class="popup__text">${popupStatementAfter}</p>`;
     }
 
     return stringPopup;

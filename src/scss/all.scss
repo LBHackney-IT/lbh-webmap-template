@@ -8,6 +8,8 @@
 @import "./partials/map";
 @import "./partials/marker-cluster";
 @import "./partials/metadata";
+@import "./partials/popup";
+@import "./partials/tooltip";
 
 // Start remove L.Control.Window undesired styles
 .modal {

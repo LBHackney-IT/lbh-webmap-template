@@ -261,7 +261,8 @@ body,
 }
 
 .leaflet-control-layers {
-  box-shadow: none;
+  border-radius: 0;
+  box-shadow: 0 0 3px lbh-colour("lbh-black");
   height: auto;
   padding: 0;
 }
@@ -394,10 +395,6 @@ input:not(:checked) + span span.control-active-border {
   position: relative;
 }
 
-.leaflet-popup-content {
-  font-family: Montserrat;
-}
-
 .leaflet-bar a,
 .leaflet-bar a:hover,
 .leaflet-touch .leaflet-bar a {
@@ -426,64 +423,6 @@ input:not(:checked) + span span.control-active-border {
   font-size: 18px;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  margin-left: 10px;
-  /* border-bottom: 1px dotted black; */
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 250px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  top: 200%;
-  /* right: 80%; */
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.tooltip .tooltiptext a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
-.datatooltip .tooltiptext {
-  visibility: hidden;
-  width: 250px;
-  background-color: #555;
-  color: #fff;
-  text-align: left;
-  font-size: 12px;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 1;
-  top: 110%;
-  /* right: 80%; */
-  margin-left: 40px;
-  opacity: 0;
-  transition: opacity 3s;
-  overflow: scroll;
-}
-
-.datatooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
 .info {
   height: 100px;
   width: 100px;
@@ -493,63 +432,4 @@ input:not(:checked) + span span.control-active-border {
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-}
-
-@include govuk-media-query($until: desktop) {
-  .tooltip {
-    position: relative;
-    display: inline-block;
-    /* border-bottom: 1px dotted black; */
-  }
-
-  .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 250px;
-    background-color: green;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    top: 200%;
-    /* right: 80%; */
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
-  .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .datatooltip {
-    border-bottom: 1px dotted;
-    font-size: 14px;
-  }
-
-  .datatooltip .tooltiptext {
-    visibility: hidden;
-    width: 250px;
-    background-color: green;
-    color: #fff;
-    text-align: left;
-    font-size: 12px;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    top: 110%;
-    /* right: 80%; */
-    margin-left: 40px;
-    opacity: 0;
-    transition: opacity 0.3s;
-    overflow: scroll;
-  }
-
-  .datatooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-  }
 }

@@ -1,0 +1,32 @@
+.leaflet-popup-content-wrapper {
+  border-radius: 0;
+  box-shadow: 0 0 3px lbh-colour("lbh-black");
+}
+
+.leaflet-popup-content {
+  @include lbh-rem("padding", 12);
+  font-family: Montserrat;
+  margin: 0;
+
+  p {
+    margin: 1.5em 0 0;
+  }
+}
+
+.leaflet-popup-close-button,
+.leaflet-container a.leaflet-popup-close-button {
+  @include lbh-rem("padding", 12);
+  @include lbh-rem("font-size", 32);
+  @include lbh-rem("width", 22);
+  @include lbh-rem("height", 22);
+  @include lbh-rem("line-height", 22);
+  font-weight: $lbh-font-weight-regular;
+}
+
+.popup__title {
+  @include lbh-rem("padding-right", 20);
+}
+
+.popup__label {
+  font-weight: $lbh-font-weight-bold;
+}

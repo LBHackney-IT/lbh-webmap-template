@@ -1,0 +1,34 @@
+.tooltip {
+  @include lbh-rem(font-size, 18);
+  @include lbh-rem(margin-left, 10);
+  position: relative;
+  display: inline-block;
+
+  .svg {
+    cursor: pointer;
+  }
+}
+
+.tooltip .tooltiptext {
+  @include lbh-rem(width, 250);
+  @include lbh-rem(padding, 8);
+  @include lbh-rem(left, 30);
+  pointer-events: none;
+  background-color: lbh-colour("lbh-black");
+  color: lbh-colour("lbh-white");
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.tooltip:hover .tooltiptext {
+  opacity: 1;
+}
