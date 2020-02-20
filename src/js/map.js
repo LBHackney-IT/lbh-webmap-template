@@ -26,6 +26,7 @@ import {
   MARKER_COLOURS
 } from "./map-consts";
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
+import "@fortawesome/fontawesome-pro/js/all";
 
 class Map {
   constructor(map) {
@@ -56,7 +57,7 @@ class Map {
   getDataName() {
     const url_string = window.location.href;
     const url = new URL(url_string);
-    this.dataFolder = `/data/${url.searchParams.get("name")}` || "/data";
+    this.dataFolder = `data/${url.searchParams.get("name")}` || "data";
   }
 
   createMap() {
@@ -169,7 +170,7 @@ class Map {
   }
 
   setZoom() {
-    if (isMobile()) {
+    if (isMobileFn()) {
       this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
     } else {
       this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
@@ -179,12 +180,12 @@ class Map {
   addLocateControl() {
     //prepare marker and event for geolocation
     let locateCircle = null;
-    this.map.on("locationerror", function(e) {
+    this.map.on("locationerror", function() {
       alert(this.mapConfig.locationError || GENERIC_GEOLOCATION_ERROR);
     });
-    const currentLocation2 = L.easyButton(
+    L.easyButton(
       "fa-location",
-      btn => {
+      () => {
         const onLocationFoundViaControl = e => {
           if (locateCircle !== null) {
             this.map.removeLayer(locateCircle);
@@ -192,7 +193,7 @@ class Map {
           locateCircle = L.circleMarker(e.latlng).addTo(this.map);
           const hackneyBounds = L.bounds(HACKNEY_BOUNDS_1, HACKNEY_BOUNDS_2);
           if (hackneyBounds.contains([e.latlng.lat, e.latlng.lng])) {
-            map.setView([e.latlng.lat, e.latlng.lng], 16);
+            this.map.setView([e.latlng.lat, e.latlng.lng], 16);
           } else {
             alert(
               this.mapConfig.outsideHackneyError ||
@@ -320,7 +321,7 @@ class Map {
         }
       },
       sortorder: sortOrder,
-      style: function style(feature) {
+      style: function style() {
         if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
             opacity: layerOpacity,
@@ -406,14 +407,14 @@ class Map {
       }
     }
 
-    const control = createTitle(mapTitle, mapAbstract, metadataText);
+    const control = createTitle(this.map, mapTitle, mapAbstract, metadataText);
     control.addTo(this.map);
   }
 
   loadMetadata() {
     const mapTitle = this.mapConfig.name;
     const mapAbstract = this.mapConfig.abstract;
-    const aboutTheData = this.mapConfig.aboutTheData;
+    let aboutTheData = this.mapConfig.aboutTheData;
     let control;
 
     //load metadata from geoserver
@@ -439,12 +440,12 @@ class Map {
         );
     } else if (aboutTheData) {
       aboutTheData = `<p>${aboutTheData}</p>`;
-      control = createTitle(mapTitle, mapAbstract, aboutTheData);
+      control = createTitle(this.map, mapTitle, mapAbstract, aboutTheData);
       if (control) {
         control.addTo(this.map);
       }
     } else {
-      control = createTitle(mapTitle, mapAbstract, null);
+      control = createTitle(this.map, mapTitle, mapAbstract, null);
       if (control) {
         control.addTo(this.map);
       }

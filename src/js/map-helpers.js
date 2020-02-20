@@ -36,7 +36,7 @@ const pointToLayer = (
   }
 };
 
-const createTitle = (mapTitle, mapAbstract, aboutTheData) => {
+const createTitle = (map, mapTitle, mapAbstract, aboutTheData) => {
   let titleBoxContent = "";
   let metadataBoxContent;
   let tooltip = "";
@@ -85,7 +85,7 @@ const createTitle = (mapTitle, mapAbstract, aboutTheData) => {
           background: "white"
         },
         events: {
-          click: function(data) {
+          click: function() {
             metadataWindow.show();
           }
         }
@@ -113,7 +113,7 @@ const createTitle = (mapTitle, mapAbstract, aboutTheData) => {
           border: "none"
         },
         events: {
-          click: function(data) {
+          click: function() {
             metadataWindow.show();
           }
         }
