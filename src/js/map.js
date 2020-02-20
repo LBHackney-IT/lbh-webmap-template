@@ -23,7 +23,8 @@ import {
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
-  MARKER_COLOURS
+  MARKER_COLOURS,
+  PERSONA_ACTIVE_CLASS
 } from "./map-consts";
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
 import "@fortawesome/fontawesome-pro/js/all";
@@ -34,6 +35,11 @@ class Map {
     this.dataFolder = null;
     this.mapConfig = null;
     this.layerGroups = [];
+    this.hackney_mask = null;
+    this.OSM_base = null;
+    this.hasPersonas =
+      document.getElementById("personas") !== null ? true : false;
+    this.clearButton = document.getElementById("map-clear");
   }
 
   init() {
@@ -48,10 +54,43 @@ class Map {
         this.createMap();
         this.loadLayers();
         this.loadMetadata();
+        if (this.clearButton !== null) {
+          this.toggleClearButton();
+        }
       })
       .catch(error => {
         console.log(error);
       });
+  }
+
+  toggleClearButton() {
+    this.map.on("layeradd", () => this.clearButton.show());
+    this.map.on("layerremove", () => {
+      let count = 0;
+      this.map.eachLayer(() => (count += 1));
+      if (count == 2) {
+        this.clearButton.hide();
+      }
+    });
+  }
+
+  clear() {
+    this.map.eachLayer(layer => {
+      if (layer !== this.OSM_base && layer !== this.hackney_mask) {
+        this.map.removeLayer(layer);
+      }
+    });
+
+    // $controls.removeClass(CONTROLS_OPEN_CLASS);
+    this.setZoom();
+    if (this.hasPersonas) {
+      const activePersonas = document.getElementsByClassName(
+        PERSONA_ACTIVE_CLASS
+      );
+      for (const persona of activePersonas) {
+        persona.classList.remove(PERSONA_ACTIVE_CLASS);
+      }
+    }
   }
 
   getDataName() {
@@ -122,38 +161,37 @@ class Map {
   }
 
   addBaseLayer() {
-    let OSM_base;
     if (this.mapConfig.basestyle == "streets") {
-      OSM_base = L.tileLayer(
+      this.OSM_base = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/cj8vnelpqfetn2rox0ik873ic/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
         TILE_LAYER_OPTIONS
       );
     } else if (this.mapConfig.basestyle == "light") {
-      OSM_base = L.tileLayer(
+      this.OSM_base = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.light" })
       );
     } else if (this.mapConfig.basestyle == "dark") {
-      OSM_base = L.tileLayer(
+      this.OSM_base = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.dark" })
       );
     } else {
-      OSM_base = L.tileLayer(
+      this.OSM_base = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.streets" })
       );
     }
-    this.map.addLayer(OSM_base);
+    this.map.addLayer(this.OSM_base);
   }
 
   addHackneyMaskLayer() {
-    const hackney_mask = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    this.hackney_mask = L.tileLayer.wms(HACKNEY_GEOSERVER, {
       layers: "boundaries:hackney_mask",
       transparent: true,
       format: "image/png"
     });
-    this.map.addLayer(hackney_mask);
+    this.map.addLayer(this.hackney_mask);
   }
 
   addHackneyBoundaryLayer() {

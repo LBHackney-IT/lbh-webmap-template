@@ -53,21 +53,19 @@ const createTitle = (map, mapTitle, mapAbstract, aboutTheData) => {
   });
 
   //on desktop
-  if (!isMobile()) {
-    if (aboutTheData) {
-      dataTooltip =
-        '<button class="lbh-link metadata__link">About the data on this map</button>';
+  if (aboutTheData) {
+    dataTooltip =
+      '<button class="lbh-link metadata__link">About the data on this map</button>';
+  }
+  //with title
+  if (mapTitle != "") {
+    if (mapAbstract) {
+      tooltip = `<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">${mapAbstract}</div></span>`;
     }
-    //with title
-    if (mapTitle != "") {
-      if (mapAbstract) {
-        tooltip = `<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">${mapAbstract}</div></span>`;
-      }
-      titleBoxContent = `<h2 class="lbh-heading-h6 metadata__title">${mapTitle}</h2>${tooltip}<br>${dataTooltip}`;
-    } else {
-      if (aboutTheData) {
-        titleBoxContent = dataTooltip;
-      }
+    titleBoxContent = `<h2 class="lbh-heading-h6 metadata__title">${mapTitle}</h2>${tooltip}<br>${dataTooltip}`;
+  } else {
+    if (aboutTheData) {
+      titleBoxContent = dataTooltip;
     }
   }
 

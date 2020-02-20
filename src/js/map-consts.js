@@ -50,6 +50,8 @@ const MARKER_COLOURS = {
   black: "#3b3b3b"
 };
 
+const PERSONA_ACTIVE_CLASS = ".persona-button--active";
+
 export {
   MAX_ZOOM,
   MIN_ZOOM,
@@ -66,5 +68,6 @@ export {
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
-  MARKER_COLOURS
+  MARKER_COLOURS,
+  PERSONA_ACTIVE_CLASS
 };
