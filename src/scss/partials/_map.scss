@@ -398,16 +398,22 @@ input:not(:checked) + span span.control-active-border {
   font-family: Montserrat;
 }
 
+.leaflet-bar a,
+.leaflet-bar a:hover,
 .leaflet-touch .leaflet-bar a {
+  font-size: 22px;
   width: 40px;
   height: 40px;
-  line-height: 45px;
+  line-height: 40px;
 }
 
+.leaflet-bar button,
+.leaflet-bar button:hover,
 .leaflet-touch .leaflet-bar button {
+  font-size: 22px;
   width: 40px;
   height: 40px;
-  line-height: 43px;
+  line-height: 40px;
 }
 
 .fa-location:before {

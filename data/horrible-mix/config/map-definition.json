@@ -9,7 +9,7 @@
   "locatecontrol": false,
   "resetzoomcontrol": false,
   "layergroups": [],
-
+  "showHackneyMask": true,
   "layers": [
     {
       "title": "Cycle stands",

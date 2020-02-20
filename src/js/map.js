@@ -54,6 +54,9 @@ class Map {
   init() {
     this.getDataName();
 
+    // Tell leaflet where to look for our images
+    L.Icon.Default.prototype.options.imagePath = "../images/";
+
     fetch(this.dataFolder + "/config/map-definition.json", {
       method: "get"
     })
