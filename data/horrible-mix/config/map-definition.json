@@ -10,6 +10,7 @@
   "resetZoomControl": true,
   "layerGroups": [],
   "showHackneyMask": true,
+  "showLegend": true,
   "layers": [
     {
       "title": "Cycle stands",
@@ -20,7 +21,7 @@
       "hover": false,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "icon": "fa-bicycle",
+        "icon": "bicycle",
         "markerColor": "purple",
         "cluster": true
       },
@@ -43,8 +44,11 @@
       "groups": [],
       "searchable": false,
       "sortOrder": "",
-      "metadata": "",
-      "pointStyle": "",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "map",
+        "markerColor": "orange"
+      },
       "linePolygonStyle": {
         "styleName": "default",
         "layerStroke": true,
@@ -98,7 +102,11 @@
       "groups": [],
       "searchable": false,
       "sortOrder": "",
-      "pointStyle": "",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "car",
+        "markerColor": "blue"
+      },
       "linePolygonStyle": {
         "styleName": "random polygons",
         "layerStroke": true,

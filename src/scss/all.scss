@@ -7,7 +7,9 @@
 @import "node_modules/lbh-frontend/lbh/all";
 @import "./partials/map";
 @import "./partials/marker-cluster";
+@import "./partials/map-controls";
 @import "./partials/metadata";
+@import "./partials/personas";
 @import "./partials/popup";
 @import "./partials/tooltip";
 
@@ -19,6 +21,14 @@
 .leaflet-control-window .titlebar {
   min-height: unset;
   padding: unset;
+}
+
+.leaflet-control-layers-toggle {
+  background-image: url("../images/layers.png");
+}
+
+.leaflet-retina .leaflet-control-layers-toggle {
+  background-image: url("../images/layers-2x.png");
 }
 
 .leaflet-control-window .promptButtons {

@@ -1,0 +1,79 @@
+.map-personas {
+  @include lbh-rem(padding, 10, 0);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include govuk-media-query($from: desktop) {
+    @include lbh-rem(margin, 24, 0);
+  }
+}
+
+.persona-button {
+  @include lbh-rem(margin-bottom, 12);
+  @include lbh-rem(padding, 12);
+  appearance: none;
+  -webkit-appearance: none;
+  background: #cc9d3a;
+  border: 0.5px solid lbh-colour("lbh-panel");
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 0;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  width: calc(50% - 6px);
+  width: calc(50% - 0.375rem);
+
+  @include govuk-media-query($from: desktop) {
+    @include lbh-rem(padding, 20);
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    width: calc(25% - 9px);
+    width: calc(25% - 0.5625rem);
+  }
+
+  // 980px
+  @include govuk-media-query($from: 61.25em) {
+    @include lbh-rem(width, 231);
+  }
+
+  &:hover {
+    background: #00513f;
+    color: #ffffff;
+  }
+}
+
+.persona-icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.persona-icon-active {
+  display: none;
+  margin: 0 auto;
+}
+
+.persona-button:active .persona-icon-active,
+.persona-button--active .persona-icon-active {
+  display: block;
+}
+
+.persona-button:active,
+.persona-button--active,
+.persona-button--active:hover {
+  background: #ffffff;
+  color: #000;
+  cursor: default;
+}
+
+.persona-button:active .persona-icon,
+.persona-button--active .persona-icon {
+  display: none;
+}

@@ -49,7 +49,8 @@ const MARKER_COLOURS = {
   black: "#3b3b3b"
 };
 
-const PERSONA_ACTIVE_CLASS = ".persona-button--active";
+const PERSONA_ACTIVE_CLASS = "persona-button--active";
+const LEGEND_OPEN_CLASS = "map-controls--open";
 
 export {
   MAX_ZOOM,
@@ -67,5 +68,6 @@ export {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
-  PERSONA_ACTIVE_CLASS
+  PERSONA_ACTIVE_CLASS,
+  LEGEND_OPEN_CLASS
 };

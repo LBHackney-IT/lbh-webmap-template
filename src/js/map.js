@@ -26,24 +26,26 @@ import {
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
 import "@fortawesome/fontawesome-pro/js/all";
 import Geolocation from "./geolocation";
+import Legend from "./legend";
 
 class Map {
   constructor(map) {
     this.map = map;
+    this.container = map.parentElement.parentElement;
     this.dataFolder = null;
     this.mapConfig = null;
     this.layerGroups = [];
-    this.hackney_mask = null;
-    this.OSM_base = null;
-    this.hasPersonas =
-      document.getElementById("personas") !== null ? true : false;
+    this.hackneyMask = null;
+    this.OSMBase = null;
+    this.hasPersonas = false;
     this.clearButton = document.getElementById("map-clear");
-    this.errorOutsideHackney =
-      map.getAttribute("data-geolocation-error-outside-hackney") ||
-      GENERIC_OUTSIDE_HACKNEY_ERROR;
-    this.errorNoLocation =
-      map.getAttribute("data-geolocation-error-location") ||
-      GENERIC_GEOLOCATION_ERROR;
+    this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
+    this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
+    this.legend = null;
+    this.overlayMaps = {};
+    this.layers = [];
+    this.layerCount = 0;
+    this.loadedLayerCount = 0;
   }
 
   init() {
@@ -58,11 +60,20 @@ class Map {
       .then(response => response.json())
       .then(data => {
         this.mapConfig = data;
+        this.layerCount = this.mapConfig.layers.length;
+        this.hasPersonas = this.mapConfig.hasPersonas || this.hasPersonas;
+        this.errorOutsideHackney =
+          this.mapConfig.errorOutsideHackney || this.errorOutsideHackney;
+        this.errorNoLocation =
+          this.mapConfig.errorNoLocation || this.errorNoLocation;
         this.createMap();
         this.loadLayers();
         this.loadMetadata();
         if (this.clearButton) {
           this.toggleClearButton();
+        }
+        if (this.mapConfig.showLegend) {
+          this.legend = new Legend(this).init();
         }
       })
       .catch(error => {
@@ -83,12 +94,11 @@ class Map {
 
   clear() {
     this.map.eachLayer(layer => {
-      if (layer !== this.OSM_base && layer !== this.hackney_mask) {
+      if (layer !== this.OSMBase && layer !== this.hackneyMask) {
         this.map.removeLayer(layer);
       }
     });
 
-    // $controls.removeClass(CONTROLS_OPEN_CLASS);
     this.setZoom();
     if (this.hasPersonas) {
       const activePersonas = document.getElementsByClassName(
@@ -156,63 +166,58 @@ class Map {
   }
 
   addMasterMapLayer() {
-    const mastermapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    const masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER, {
       layers: "osmm:OSMM_outdoor_leaflet",
       format: "image/png",
-      uppercase: true,
       transparent: true,
-      continuousWorld: true,
-      tiled: true,
-      info_format: "text/html",
-      opacity: 1,
-      identify: false,
       minZoom: 10,
-      maxZoom: 20
+      maxZoom: 20,
+      opacity: 1
     });
-    this.map.addLayer(mastermapLayer);
+    this.map.addLayer(masterMapLayer);
   }
 
   addBaseLayer() {
     if (this.mapConfig.baseStyle == "streets") {
-      this.OSM_base = L.tileLayer(
+      this.OSMBase = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/cj8vnelpqfetn2rox0ik873ic/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
         TILE_LAYER_OPTIONS
       );
     } else if (this.mapConfig.baseStyle == "light") {
-      this.OSM_base = L.tileLayer(
+      this.OSMBase = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.light" })
       );
     } else if (this.mapConfig.baseStyle == "dark") {
-      this.OSM_base = L.tileLayer(
+      this.OSMBase = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.dark" })
       );
     } else {
-      this.OSM_base = L.tileLayer(
+      this.OSMBase = L.tileLayer(
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.streets" })
       );
     }
-    this.map.addLayer(this.OSM_base);
+    this.map.addLayer(this.OSMBase);
   }
 
   addHackneyMaskLayer() {
-    this.hackney_mask = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    this.hackneyMask = L.tileLayer.wms(HACKNEY_GEOSERVER, {
       layers: "boundaries:hackney_mask",
       transparent: true,
       format: "image/png"
     });
-    this.map.addLayer(this.hackney_mask);
+    this.map.addLayer(this.hackneyMask);
   }
 
   addHackneyBoundaryLayer() {
-    const hackney_boundary = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    const hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER, {
       layers: "boundaries:hackney",
       transparent: true,
       format: "image/png"
     });
-    this.map.addLayer(hackney_boundary);
+    this.map.addLayer(hackneyBoundary);
   }
 
   setZoom() {
@@ -289,6 +294,7 @@ class Map {
   addWFSLayer(data, configLayer) {
     const layerName = configLayer.title; // get from context
     const sortOrder = configLayer.title;
+    const parentGroups = configLayer.groups;
 
     const markerType = configLayer.pointStyle.markerType;
     const markerIcon = configLayer.pointStyle.icon;
@@ -310,7 +316,7 @@ class Map {
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLOURS[markerColor],
-      pointToLayer: function(feature, latlng) {
+      pointToLayer: (feature, latlng) => {
         return pointToLayer(
           latlng,
           markerType,
@@ -331,7 +337,7 @@ class Map {
         }
       },
       sortOrder: sortOrder,
-      style: function style() {
+      style: () => {
         if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
             opacity: layerOpacity,
@@ -349,18 +355,74 @@ class Map {
         }
       }
     });
-    //cluster style
-    if (cluster) {
-      const markers = L.markerClusterGroup({
-        maxClusterRadius: 60,
-        disableClusteringAtZoom: 16,
-        spiderfyOnMaxZoom: false
-      });
-      markers.addLayer(layer);
-      this.map.addLayer(markers);
+
+    if (this.mapConfig.showLegend) {
+      this.layers.push(layer);
+      const count = layer.getLayers().length;
+      const legendEntry = `<span aria-hidden="true" class="control-active-border" style="background:${MARKER_COLOURS[markerColor]}"></span><i class="fas fa-${markerIcon}" style="color:${MARKER_COLOURS[markerColor]}"></i><span class="control-text">${layerName}</span><span class="control-count">${count} items shown</span>`;
+      this.overlayMaps[legendEntry] = layer;
+
+      for (const k in parentGroups) {
+        for (const l in this.layerGroups) {
+          if (this.layerGroups[l].group == parentGroups[k]) {
+            this.layerGroups[l].layersInGroup.push(layer);
+          }
+        }
+      }
+
+      this.loadedLayerCount++;
+      if (this.loadedLayerCount == this.layerCount) {
+        //add the layer control and keep the layercontrol javascript object
+        // const layerControl =
+        this.createControl();
+
+        //create easy buttons for each group
+        // for (const n in this.layerGroups) {
+        //this function filters out layers in the layer control, showing only the relevant layers for this persona
+        // this.createEasyButtons(
+        //   this.layerGroups[n],
+        //   this.layers,
+        //   this.overlayMaps,
+        //   layerControl,
+        //   n,
+        //   true
+        // );
+        // }
+      }
     } else {
-      layer.addTo(this.map);
+      if (cluster) {
+        const markers = L.markerClusterGroup({
+          maxClusterRadius: 60,
+          disableClusteringAtZoom: 16,
+          spiderfyOnMaxZoom: false
+        });
+        markers.addLayer(layer);
+        this.map.addLayer(markers);
+      } else {
+        layer.addTo(this.map);
+      }
     }
+  }
+
+  createControl() {
+    const layerControl = new L.control.layers(null, this.overlayMaps, {
+      collapsed: false,
+      sortLayers: true,
+      sortFunction: function(a, b) {
+        return a.options.sortOrder.localeCompare(b.options.sortOrder);
+      }
+    });
+    this.map.addControl(layerControl, {
+      collapsed: false,
+      position: "topleft"
+    });
+    const mapLegend = document.getElementById("map-legend");
+    mapLegend.appendChild(layerControl.getContainer());
+    L.DomEvent.on(layerControl.getContainer(), "click", () => {
+      L.DomEvent.stopPropagation;
+      // $(".persona-button--active").removeClass("persona-button--active");
+    });
+    return layerControl;
   }
 
   loadLayers() {

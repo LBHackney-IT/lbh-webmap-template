@@ -21,7 +21,7 @@
       "hover": false,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "icon": "fa-bicycle",
+        "icon": "bicycle",
         "markerColor": "purple",
         "cluster": true
       },

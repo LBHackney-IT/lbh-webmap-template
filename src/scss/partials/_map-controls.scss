@@ -1,0 +1,125 @@
+.map-controls {
+  display: block;
+  margin: 0 -18px;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  height: 48px;
+
+  @include govuk-media-query($from: desktop) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    justify-content: space-between;
+  }
+}
+
+.map-controls__sidebar {
+  background: #fff;
+  border-right: 1px solid #00664f;
+  bottom: 0;
+  box-sizing: border-box;
+  height: 450px;
+  overflow-y: scroll;
+  padding-top: 0;
+  pointer-events: all;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 500ms;
+  width: 270px;
+  z-index: 1;
+
+  @include govuk-media-query($from: desktop) {
+    background: transparent;
+    border: none;
+    height: 600px;
+  }
+}
+
+.map-controls--open .map-controls__sidebar {
+  transform: none;
+}
+
+.map-controls__sidebar-toggle {
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  margin: 12px 18px;
+  padding: 0;
+
+  @include govuk-media-query($from: desktop) {
+    margin-left: 0;
+  }
+}
+
+.map-controls__sidebar-toggle-text {
+  display: inline-block;
+  font-size: 14px;
+  font-family: Montserrat;
+  vertical-align: middle;
+  margin-top: 0;
+}
+
+.map-controls__sidebar-toggle:hover .map-controls__sidebar-toggle-text {
+  border-bottom: 1px solid #000;
+}
+
+.map-controls__sidebar-toggle-icon {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: -3px;
+  margin-right: 8px;
+  margin-top: 3px;
+  vertical-align: middle;
+}
+
+.map-controls__sidebar-toggle-text--hide,
+.map-controls--open .map-controls__sidebar-toggle-text--show {
+  display: none;
+}
+
+.map-controls--open .map-controls__sidebar-toggle-text--hide {
+  display: inline-block;
+}
+
+.map-controls__clear {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-family: Montserrat;
+  height: 24px;
+  line-height: 24px;
+  margin: 12px 18px;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &:hover .map-controls__clear-text {
+    border-bottom: 1px solid #000;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    margin-right: 0;
+    position: static;
+  }
+}
+
+.map-controls__clear-icon {
+  display: inline-block;
+  font-size: 24px;
+  line-height: 24px;
+  margin-right: 8px;
+  vertical-align: middle;
+}
