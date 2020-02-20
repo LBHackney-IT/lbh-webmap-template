@@ -262,7 +262,7 @@ body,
 
 .leaflet-control-layers {
   border-radius: 0;
-  box-shadow: 0 0 3px lbh-colour("lbh-black");
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
   height: auto;
   padding: 0;
 }
@@ -395,6 +395,11 @@ input:not(:checked) + span span.control-active-border {
   position: relative;
 }
 
+.leaflet-bar {
+  border-radius: 0;
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
+}
+
 .leaflet-bar a,
 .leaflet-bar a:hover,
 .leaflet-touch .leaflet-bar a {
@@ -411,6 +416,11 @@ input:not(:checked) + span span.control-active-border {
   width: 40px;
   height: 40px;
   line-height: 40px;
+}
+
+.map .leaflet-bar a,
+.map .leaflet-bar button {
+  border-radius: 0;
 }
 
 .fa-location:before {
@@ -430,6 +440,6 @@ input:not(:checked) + span span.control-active-border {
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
   border-radius: 5px;
 }

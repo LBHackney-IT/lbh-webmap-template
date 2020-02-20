@@ -27,7 +27,7 @@
     @include lbh-rem(padding, 12);
     @include lbh-rem(font-size, 14);
     background: lbh-colour("lbh-white");
-    box-shadow: 0 0 3px lbh-colour("lbh-black");
+    box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
     line-height: 1.47;
   }
 }

@@ -6864,7 +6864,7 @@ body,
 
 .leaflet-control-layers {
   border-radius: 0;
-  box-shadow: 0 0 3px #0b0c0c;
+  box-shadow: 0 0 3px rgba(11, 12, 12, 0.3);
   height: auto;
   padding: 0; }
 
@@ -6964,6 +6964,10 @@ input:not(:checked) + span span.control-active-border {
   overflow: hidden;
   position: relative; }
 
+.leaflet-bar {
+  border-radius: 0;
+  box-shadow: 0 0 3px rgba(11, 12, 12, 0.3); }
+
 .leaflet-bar a,
 .leaflet-bar a:hover,
 .leaflet-touch .leaflet-bar a {
@@ -6980,6 +6984,10 @@ input:not(:checked) + span span.control-active-border {
   height: 40px;
   line-height: 40px; }
 
+.map .leaflet-bar a,
+.map .leaflet-bar button {
+  border-radius: 0; }
+
 .fa-location:before {
   content: "\f601";
   font-size: 18px; }
@@ -6995,7 +7003,7 @@ input:not(:checked) + span span.control-active-border {
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: white;
   background: rgba(255, 255, 255, 0.8);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 3px rgba(11, 12, 12, 0.3);
   border-radius: 5px; }
 
 .marker-cluster-small {
@@ -7101,7 +7109,7 @@ input:not(:checked) + span span.control-active-border {
       font-size: 14px;
       font-size: 0.875rem;
       background: #ffffff;
-      box-shadow: 0 0 3px #0b0c0c;
+      box-shadow: 0 0 3px rgba(11, 12, 12, 0.3);
       line-height: 1.47; } }
 
 .metadata__title {
@@ -7170,7 +7178,7 @@ input:not(:checked) + span span.control-active-border {
 
 .leaflet-popup-content-wrapper {
   border-radius: 0;
-  box-shadow: 0 0 3px #0b0c0c; }
+  box-shadow: 0 0 3px rgba(11, 12, 12, 0.3); }
 
 .leaflet-popup-content {
   padding: 12px;

@@ -1,6 +1,6 @@
 .leaflet-popup-content-wrapper {
   border-radius: 0;
-  box-shadow: 0 0 3px lbh-colour("lbh-black");
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
 }
 
 .leaflet-popup-content {
