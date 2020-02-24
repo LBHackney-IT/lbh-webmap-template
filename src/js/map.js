@@ -24,9 +24,10 @@ import {
   PERSONA_ACTIVE_CLASS
 } from "./map-consts";
 import MAPBOX_ACCESS_KEY from "./helpers/mapbox";
+import { scrollTo } from "./helpers/scrollTo";
 import "@fortawesome/fontawesome-pro/js/all";
-import Geolocation from "./geolocation";
-import Legend from "./legend";
+import Geolocation from "./map-geolocation";
+import Controls from "./map-controls";
 
 class Map {
   constructor(map) {
@@ -38,10 +39,9 @@ class Map {
     this.hackneyMask = null;
     this.OSMBase = null;
     this.hasPersonas = false;
-    this.clearButton = document.getElementById("map-clear");
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
-    this.legend = null;
+    this.controls = null;
     this.overlayMaps = {};
     this.layers = [];
     this.layerCount = 0;
@@ -67,29 +67,16 @@ class Map {
         this.errorNoLocation =
           this.mapConfig.errorNoLocation || this.errorNoLocation;
         this.createMap();
+        if (this.mapConfig.showLegend) {
+          this.controls = new Controls(this);
+          this.controls.init();
+        }
         this.loadLayers();
         this.loadMetadata();
-        if (this.clearButton) {
-          this.toggleClearButton();
-        }
-        if (this.mapConfig.showLegend) {
-          this.legend = new Legend(this).init();
-        }
       })
       .catch(error => {
         console.log(error);
       });
-  }
-
-  toggleClearButton() {
-    this.map.on("layeradd", () => this.clearButton.show());
-    this.map.on("layerremove", () => {
-      let count = 0;
-      this.map.eachLayer(() => (count += 1));
-      if (count == 2) {
-        this.clearButton.hide();
-      }
-    });
   }
 
   clear() {
@@ -359,7 +346,7 @@ class Map {
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
-      const legendEntry = `<span aria-hidden="true" class="control-active-border" style="background:${MARKER_COLOURS[markerColor]}"></span><i class="fas fa-${markerIcon}" style="color:${MARKER_COLOURS[markerColor]}"></i><span class="control-text">${layerName}</span><span class="control-count">${count} items shown</span>`;
+      const legendEntry = `<span aria-hidden="true" class="map-control__active-border" style="background:${MARKER_COLOURS[markerColor]}"></span><i class="fas fa-${markerIcon}" style="color:${MARKER_COLOURS[markerColor]}"></i><span class="map-control__text">${layerName}</span><span class="map-control__count">${count} items shown</span>`;
       this.overlayMaps[legendEntry] = layer;
 
       for (const k in parentGroups) {
@@ -372,22 +359,17 @@ class Map {
 
       this.loadedLayerCount++;
       if (this.loadedLayerCount == this.layerCount) {
-        //add the layer control and keep the layercontrol javascript object
-        // const layerControl =
         this.createControl();
 
-        //create easy buttons for each group
-        // for (const n in this.layerGroups) {
-        //this function filters out layers in the layer control, showing only the relevant layers for this persona
-        // this.createEasyButtons(
-        //   this.layerGroups[n],
-        //   this.layers,
-        //   this.overlayMaps,
-        //   layerControl,
-        //   n,
-        //   true
-        // );
-        // }
+        if (this.mapConfig.showPersonas) {
+          const mapPersonas = document.createElement("div");
+          mapPersonas.setAttribute("id", "map-personas");
+          mapPersonas.classList.add("map-personas");
+          this.container.insertBefore(mapPersonas, this.container.firstChild);
+          for (let i = 0; i < this.layerGroups.length; i++) {
+            this.createEasyButtons(this.layerGroups[i], i, true);
+          }
+        }
       }
     } else {
       if (cluster) {
@@ -404,6 +386,65 @@ class Map {
     }
   }
 
+  createEasyButtons(layerGroup, i, keepAllInLayerControl) {
+    let button = document.createElement("button");
+    button.classList.add("map-persona__button");
+    button.setAttribute("id", "persona-button-" + i);
+
+    button.innerHTML = `<span class="map-persona__icon-wrapper"><img class="map-persona__icon map-persona__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="map-persona__icon map-persona__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span>`;
+    const mapPersonas = document.getElementById("map-personas");
+    mapPersonas.appendChild(button);
+
+    button = document.getElementById(`persona-button-${i}`);
+    button.addEventListener("click", e => {
+      e.stopPropagation();
+      if (button.parentNode.childNodes.classList) {
+        button.parentNode.childNodes.classList.remove("persona-button--active");
+      }
+      button.classList.add("persona-button--active");
+      this.controls.showClearButton();
+
+      this.switchGroup(layerGroup, keepAllInLayerControl);
+
+      //bit of code that switches the group
+
+      scrollTo("#map-toggle", 500, () => {
+        if (this.controls.isOpen) {
+          const onLayers = document.querySelectorAll(
+            ".leaflet-control-layers-selector:checked"
+          );
+          onLayers[0].focus();
+        } else {
+          const target = document.getElementById("map-toggle");
+          target.focus();
+        }
+      });
+    });
+  }
+
+  switchGroup(layerGroup, keepAllInLayerControl) {
+    //remove all layers
+    for (const layer of this.layers) {
+      this.map.removeLayer(layer);
+      //if the keep option is set to false, remove the corresponding entry in the layer control
+      if (!keepAllInLayerControl) {
+        this.layerControl.removeLayer(layer);
+      }
+    }
+
+    //add layers from that group
+    for (const layer of layerGroup.layersInGroup) {
+      this.map.addLayer(layer);
+      // if the keep option is set to false, we now need to re-add the layers to the control
+      if (!keepAllInLayerControl) {
+        for (const key in this.overlayMaps) {
+          if (this.overlayMaps[key] == layer) {
+            this.layerControl.addOverlay(this.overlayMaps[key], key);
+          }
+        }
+      }
+    }
+  }
   createControl() {
     const layerControl = new L.control.layers(null, this.overlayMaps, {
       collapsed: false,

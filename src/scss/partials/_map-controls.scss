@@ -1,10 +1,9 @@
 .map-controls {
+  @include lbh-rem(height, 48);
   display: block;
-  margin: 0 -18px;
   padding: 0;
   position: relative;
   z-index: 1;
-  height: 48px;
 
   @include govuk-media-query($from: desktop) {
     display: flex;
@@ -15,12 +14,13 @@
 }
 
 .map-controls__sidebar {
-  background: #fff;
-  border-right: 1px solid #00664f;
+  @include lbh-rem(height, 450);
+  @include lbh-rem(width, 270);
+  background: lbh-colour("lbh-white");
+  border-right: 1px solid lbh-colour("lbh-a01");
   bottom: 0;
   box-sizing: border-box;
-  height: 450px;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-top: 0;
   pointer-events: all;
   position: absolute;
@@ -28,13 +28,12 @@
   top: 0;
   transform: translateX(-100%);
   transition: transform 500ms;
-  width: 270px;
   z-index: 1;
 
   @include govuk-media-query($from: desktop) {
+    @include lbh-rem(height, 600);
     background: transparent;
     border: none;
-    height: 600px;
   }
 }
 
@@ -42,15 +41,24 @@
   transform: none;
 }
 
+.map__legend {
+  background: #ecebeb;
+  min-height: 100%;
+}
+
 .map-controls__sidebar-toggle {
+  @include lbh-rem(margin, 12, 18, 9, 18);
   -webkit-appearance: none;
   appearance: none;
   background: none;
   border: none;
-  color: #000;
+  color: lbh-colour("lbh-black");
   cursor: pointer;
-  margin: 12px 18px;
   padding: 0;
+
+  &:focus {
+    @include govuk-focused-text;
+  }
 
   @include govuk-media-query($from: desktop) {
     margin-left: 0;
@@ -58,24 +66,25 @@
 }
 
 .map-controls__sidebar-toggle-text {
+  @include lbh-rem(font-size, 14);
+  @include lbh-rem(margin-bottom, 3);
+  border-bottom: 1px solid transparent;
   display: inline-block;
-  font-size: 14px;
-  font-family: Montserrat;
+  font-family: "Montserrat";
   vertical-align: middle;
   margin-top: 0;
 }
 
 .map-controls__sidebar-toggle:hover .map-controls__sidebar-toggle-text {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid lbh-colour("lbh-black");
 }
 
 .map-controls__sidebar-toggle-icon {
+  @include lbh-rem(font-size, 24);
+  @include lbh-rem(margin-right, 8);
+  @include lbh-rem(margin-top, 3);
   display: inline-block;
-  font-size: 24px;
-  line-height: 24px;
-  margin-bottom: -3px;
-  margin-right: 8px;
-  margin-top: 3px;
+  line-height: 1;
   vertical-align: middle;
 }
 
@@ -89,37 +98,198 @@
 }
 
 .map-controls__clear {
+  @include lbh-rem(font-size, 14);
+  @include lbh-rem(height, 24);
+  @include lbh-rem(margin, 12, 18, 12, 18);
   appearance: none;
   -webkit-appearance: none;
   background: none;
   border: none;
-  color: black;
+  color: lbh-colour("lbh-black");
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
   font-family: Montserrat;
-  height: 24px;
-  line-height: 24px;
-  margin: 12px 18px;
+  line-height: 1;
   padding: 0;
   position: absolute;
   right: 0;
   top: 0;
 
   &:hover .map-controls__clear-text {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid lbh-colour("lbh-black");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
   }
 
   @include govuk-media-query($from: desktop) {
-    margin-right: 0;
     position: static;
+    margin-right: 0;
   }
 }
 
 .map-controls__clear-icon {
+  @include lbh-rem(font-size, 24);
+  @include lbh-rem(margin-right, 8);
   display: inline-block;
-  font-size: 24px;
-  line-height: 24px;
-  margin-right: 8px;
+  line-height: 1;
   vertical-align: middle;
+}
+
+.leaflet-control-layers {
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  padding: 0;
+}
+
+.leaflet-control-layers * + * {
+  margin-top: 0;
+}
+
+.leaflet-control-layers-selector {
+  @include govuk-visually-hidden;
+
+  & + span {
+    @include lbh-rem(padding, 17, 11, 9);
+    border: 3px solid transparent;
+    border-bottom: 1px solid lbh-colour("lbh-grey-3");
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background: #ecebeb;
+    position: relative;
+  }
+
+  &:checked + span {
+    background: lbh-colour("lbh-white");
+    border-bottom-color: lbh-colour("lbh-grey-3");
+  }
+
+  &:focus + span {
+    @include lbh-rem(padding-bottom, 7);
+    border: 3px solid lbh-colour("lbh-primary-focus");
+  }
+
+  @include govuk-media-query($from: desktop) {
+    .leaflet-control-layers-overlays label:hover & + span {
+      background: lbh-colour("lbh-primary-hover");
+      border-bottom-color: lbh-colour("lbh-primary-hover");
+      color: lbh-colour("lbh-white");
+    }
+
+    .leaflet-control-layers-overlays label:hover &:focus + span {
+      border-bottom-color: lbh-colour("lbh-primary-focus");
+    }
+
+    label:hover &:focus + span span.map-control__active-border {
+      background: lbh-colour("lbh-primary-focus") !important;
+    }
+  }
+}
+
+.map-control__text {
+  @include lbh-rem(font-size, 14);
+  @include lbh-rem(padding-left, 10);
+  box-sizing: border-box;
+  max-width: calc(100% - 32px);
+  max-width: calc(100% - 2rem);
+  font-weight: 500;
+}
+
+.map-control__count {
+  @include lbh-rem(font-size, 14);
+  @include lbh-rem(padding-left, 46);
+  font-weight: 300;
+  opacity: 0;
+  width: 100%;
+}
+
+.map-control__active-border {
+  @include lbh-rem(width, 8);
+  bottom: -3px;
+  left: -3px;
+  position: absolute;
+  top: -3px;
+}
+
+input:not(:checked) + span span.map-control__active-border {
+  background: lbh-colour("lbh-grey-2") !important;
+}
+
+@include govuk-media-query($from: desktop) {
+  label:hover .leaflet-control-layers-selector + span span.map-control__active-border {
+    background: lbh-colour("lbh-primary-inner-shadow") !important;
+  }
+
+  label:hover .leaflet-control-layers-selector + span .fas,
+  label:hover .leaflet-control-layers-selector + span .svg-inline--fa {
+    color: lbh-colour("lbh-white") !important;
+  }
+
+  .leaflet-control-layers-overlay label:hover > div > span {
+    background: lbh-colour("lbh-primary-hover");
+    color: lbh-colour("lbh-white");
+  }
+}
+
+.leaflet-control-layers-selector:checked + span .map-control__count {
+  opacity: 1;
+}
+
+.leaflet-control-layers-selector + span .fas,
+.leaflet-control-layers-selector + span .svg-inline--fa {
+  @include lbh-rem(font-size, 20);
+  @include lbh-rem(margin-top, 1);
+  @include lbh-rem(padding, 0, 6);
+  @include lbh-rem(width, 24);
+  text-align: center;
+}
+
+.leaflet-control-layers-selector:not(:checked) + span .fas,
+.leaflet-control-layers-selector:not(:checked) + span .svg-inline--fa {
+  color: lbh-colour("lbh-black") !important;
+}
+
+.leaflet-control {
+  background: none;
+  float: none;
+}
+
+.leaflet-control-layers-expanded .leaflet-control-layers-list {
+  overflow: hidden;
+  padding-right: 0;
+}
+
+.leaflet-control-layers-overlays label {
+  overflow: hidden;
+  position: relative;
+}
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar,
+.leaflet-bar {
+  border: none;
+  border-radius: 0;
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover,
+.leaflet-touch .leaflet-bar a,
+.leaflet-bar button,
+.leaflet-bar button:hover,
+.leaflet-touch .leaflet-bar button {
+  @include lbh-rem(font-size, 22);
+  @include lbh-rem(width, 40);
+  @include lbh-rem(height, 40);
+  @include lbh-rem(line-height, 40);
+}
+
+.map .leaflet-bar a,
+.map .leaflet-bar button {
+  border-radius: 0;
 }

@@ -8,14 +8,45 @@
   "zoomToMasterMap": true,
   "locateControl": true,
   "resetZoomControl": true,
-  "layerGroups": [],
+  "layerGroups": [
+    {
+      "name": "chilling",
+      "groupIcon": "../images/personas/persona-chilling.png",
+      "groupIconActive": "../images/personas/persona-chilling-active.png",
+      "groupText": "Chilling"
+    },
+    {
+      "name": "playing",
+      "groupIcon": "../images/personas/persona-playing.png",
+      "groupIconActive": "../images/personas/persona-playing-active.png",
+      "groupText": "Playing"
+    },
+    {
+      "name": "wandering",
+      "groupIcon": "../images/personas/persona-wandering.png",
+      "groupIconActive": "../images/personas/persona-wandering-active.png",
+      "groupText": "Wandering"
+    },
+    {
+      "name": "everything",
+      "groupIcon": "../images/personas/persona-everything.png",
+      "groupIconActive": "../images/personas/persona-everything-active.png",
+      "groupText": "Everything"
+    }
+  ],
   "showHackneyMask": true,
   "showLegend": true,
+  "showPersonas": true,
+  "controlsText": {
+    "showLegendText": "Show legend",
+    "hideLegendText": "Hide legend",
+    "clearMapText": "Clear"
+  },
   "layers": [
     {
       "title": "Cycle stands",
       "geoserverLayerName": "transport:cycle_stand",
-      "groups": [],
+      "groups": ["chilling", "everything"],
       "searchable": false,
       "sortOrder": "",
       "hover": false,
@@ -41,7 +72,7 @@
     {
       "title": "Wards",
       "geoserverLayerName": "boundaries:hackney_ward",
-      "groups": [],
+      "groups": ["chilling", "wandering", "everything"],
       "searchable": false,
       "sortOrder": "",
       "pointStyle": {
@@ -67,7 +98,7 @@
     {
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
-      "groups": ["firework"],
+      "groups": ["wandering", "everything"],
       "searchable": "false",
       "sortOrder": "30",
       "pointStyle": {
@@ -99,7 +130,7 @@
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
-      "groups": [],
+      "groups": ["playing", "everything"],
       "searchable": false,
       "sortOrder": "",
       "pointStyle": {

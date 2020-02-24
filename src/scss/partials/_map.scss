@@ -7,6 +7,7 @@ body,
   height: 100%;
   padding: 0;
   margin: 0;
+  font-family: "Montserrat";
 }
 
 .map * + * {
@@ -42,6 +43,7 @@ body,
 
 .map__container {
   @include lbh-rem(margin-bottom, 48);
+  font-family: "Montserrat";
   position: relative;
 }
 
@@ -58,176 +60,6 @@ body,
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(height, 600);
   }
-}
-
-.leaflet-control-layers {
-  border-radius: 0;
-  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
-  height: auto;
-  padding: 0;
-}
-
-.leaflet-control-layers * + * {
-  margin-top: 0;
-}
-
-.leaflet-control-layers-selector {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-
-  & + span {
-    border: 3px solid transparent;
-    border-bottom: 1px solid #dee0e2;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 17px 11px 9px;
-    background: #ecebeb;
-    position: relative;
-  }
-
-  &:focus + span {
-    border: 3px solid lbh-colour("lbh-primary-focus");
-    padding-bottom: 7px;
-  }
-
-  &:checked:focus + span {
-    border-bottom-color: lbh-colour("lbh-primary-focus");
-  }
-
-  @include govuk-media-query($from: desktop) {
-    .leaflet-control-layers-overlays label:hover & + span {
-      background: #00513f;
-      border-bottom-color: #00513f;
-      color: #ffffff;
-    }
-
-    .leaflet-control-layers-overlays label:hover &:focus + span {
-      border-bottom-color: lbh-colour("lbh-primary-focus");
-    }
-
-    label:hover &:focus + span span.control-active-border {
-      background: lbh-colour("lbh-primary-focus") !important;
-    }
-  }
-
-  &:checked + span {
-    background: #ffffff;
-    border-bottom-color: #dee0e2;
-  }
-}
-
-.control-text {
-  box-sizing: border-box;
-  max-width: calc(100% - 32px);
-  padding-left: 10px;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.control-count {
-  font-size: 14px;
-  font-weight: 300;
-  opacity: 0;
-  padding-left: 46px;
-  width: 100%;
-}
-
-.control-active-border {
-  bottom: -3px;
-  left: -3px;
-  position: absolute;
-  top: -3px;
-  width: 8px;
-}
-
-input:not(:checked) + span span.control-active-border {
-  background: #bfc1c3 !important;
-}
-
-@include govuk-media-query($from: desktop) {
-  label:hover .leaflet-control-layers-selector + span span.control-active-border {
-    background: #003d2f !important;
-  }
-
-  label:hover .leaflet-control-layers-selector + span .fas {
-    color: #fff !important;
-  }
-
-  .leaflet-control-layers-overlay label:hover > div > span {
-    background: #00513f;
-    color: #ffffff;
-  }
-}
-
-.leaflet-control-layers-selector:checked + span .control-count {
-  opacity: 1;
-}
-
-.leaflet-control-layers-selector + span .fas {
-  font-size: 20px;
-  margin-top: 1px;
-  padding: 0 6px;
-  text-align: center;
-  width: 24px;
-}
-
-.leaflet-control-layers-selector:not(:checked) + span .fas {
-  color: #000 !important;
-}
-
-.leaflet-control {
-  background: none;
-  float: none;
-}
-
-.leaflet-control-layers-expanded .leaflet-control-layers-list {
-  overflow: hidden;
-  padding-right: 0;
-}
-
-.leaflet-control-layers-overlays label {
-  overflow: hidden;
-  position: relative;
-}
-
-.leaflet-touch .leaflet-control-layers,
-.leaflet-touch .leaflet-bar,
-.leaflet-bar {
-  border: none;
-  border-radius: 0;
-  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
-}
-
-.leaflet-bar a,
-.leaflet-bar a:hover,
-.leaflet-touch .leaflet-bar a {
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-
-.leaflet-bar button,
-.leaflet-bar button:hover,
-.leaflet-touch .leaflet-bar button {
-  font-size: 22px;
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
-}
-
-.map .leaflet-bar a,
-.map .leaflet-bar button {
-  border-radius: 0;
 }
 
 .fa-location:before {

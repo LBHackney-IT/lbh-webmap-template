@@ -50,7 +50,10 @@ const MARKER_COLOURS = {
 };
 
 const PERSONA_ACTIVE_CLASS = "persona-button--active";
-const LEGEND_OPEN_CLASS = "map-controls--open";
+const CONTROLS_OPEN_CLASS = "map-controls--open";
+const CONTROLS_SHOW_LEGEND_TEXT = "Show list";
+const CONTROLS_HIDE_LEGEND_TEXT = "Hide list";
+const CONTROLS_CLEAR_MAP_TEXT = "Clear map";
 
 export {
   MAX_ZOOM,
@@ -69,5 +72,8 @@ export {
   TILE_LAYER_OPTIONS,
   MARKER_COLOURS,
   PERSONA_ACTIVE_CLASS,
-  LEGEND_OPEN_CLASS
+  CONTROLS_OPEN_CLASS,
+  CONTROLS_SHOW_LEGEND_TEXT,
+  CONTROLS_HIDE_LEGEND_TEXT,
+  CONTROLS_CLEAR_MAP_TEXT
 };

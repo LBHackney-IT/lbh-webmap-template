@@ -3,11 +3,13 @@
   "name": "Red routes in Hackney",
   "abstract": "This map shows major roads on which vehicles are not permitted to stop.",
   "baseStyle": "dark",
+  "showPersonas": true,
+  "showLegend": true,
   "layerGroups": [
     {
       "name": "firework",
-      "groupIcon": "images/star-christmas-duotone-default.svg",
-      "groupIconActive": "images/star-christmas-duotone-active2.svg",
+      "groupIcon": "../images/personas/persona-chilling.png",
+      "groupIconActive": "../images/personas/persona-chilling-active.png",
       "groupText": "Fireworks"
     }
   ],

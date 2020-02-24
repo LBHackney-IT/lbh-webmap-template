@@ -4,12 +4,20 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  .map__container:first-child & {
+    padding-top: 0;
+  }
+
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(margin, 24, 0);
+
+    .map__container:first-child & {
+      margin-top: 0;
+    }
   }
 }
 
-.persona-button {
+.map-persona__button {
   @include lbh-rem(margin-bottom, 12);
   @include lbh-rem(padding, 12);
   appearance: none;
@@ -24,6 +32,7 @@
   flex-grow: 0;
   flex-shrink: 0;
   font-weight: bold;
+  margin-top: 0;
   text-align: center;
   text-decoration: none;
   width: calc(50% - 6px);
@@ -50,30 +59,30 @@
   }
 }
 
-.persona-icon {
+.map-persona__icon-wrapper {
   display: block;
   margin: 0 auto;
 }
 
-.persona-icon-active {
+.map-persona__icon--active {
   display: none;
   margin: 0 auto;
+
+  .map-persona__button:active &,
+  .map-persona__button--active & {
+    display: block;
+  }
 }
 
-.persona-button:active .persona-icon-active,
-.persona-button--active .persona-icon-active {
-  display: block;
-}
-
-.persona-button:active,
-.persona-button--active,
-.persona-button--active:hover {
+.map-persona__button:active,
+.map-persona__button--active,
+.map-persona__button--active:hover {
   background: #ffffff;
   color: #000;
   cursor: default;
 }
 
-.persona-button:active .persona-icon,
-.persona-button--active .persona-icon {
+.map-persona__button:active .map-persona__icon--base,
+.map-persona__button--active .map-persona__icon--base {
   display: none;
 }
