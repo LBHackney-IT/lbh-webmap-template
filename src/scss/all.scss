@@ -18,6 +18,10 @@
   background-color: unset;
 }
 
+.leaflet-control-window {
+  transform: none !important;
+}
+
 .leaflet-control-window .titlebar {
   min-height: unset;
   padding: unset;
