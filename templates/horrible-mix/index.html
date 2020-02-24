@@ -1,0 +1,21 @@
+{% extends "template.njk" %}
+
+{% block head %}
+    <!-- Add styles -->
+    <link rel="stylesheet" href="../../dist/lbh-webmap.min.css">
+{% endblock %}
+
+{% block main %}
+  <div class="lbh-container">
+    <h1 class="lbh-heading-h1">Horrible mix</h1>
+    <div class="map__container">
+        <div class="map__wrapper">
+            <div class="map" id="map"></div>
+        </div>         
+    </div>
+  </div>
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="../../dist/lbh-webmap.min.js"></script>
+{% endblock %}

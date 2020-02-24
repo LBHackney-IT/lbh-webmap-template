@@ -35,9 +35,15 @@ app.use("/data", express.static("data"));
 app.get("/", function(req, res) {
   res.render("index.html");
 });
+
+app.get("/:project/:page", function(req, res) {
+  res.render('templates/' + req.params.project + '/' + req.params.page);
+});
+
 app.get("/:page", function(req, res) {
   res.render(req.params.page);
 });
+
 // Start server
 app.listen(port);
 console.log("Listening on port %s...", port);

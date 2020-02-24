@@ -15,7 +15,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^5.12.1",
     "govuk-frontend": "^3.5.0",
-    "lbh-frontend": "^1.6.3",
+    "lbh-frontend": "^1.8.3",
     "leaflet": "^1.6.0",
     "leaflet-control-custom": "^1.0.0",
     "leaflet-control-window": "^1.0.0",

@@ -98,9 +98,9 @@ class Map {
   }
 
   getDataName() {
-    const url_string = window.location.href;
-    const url = new URL(url_string);
-    this.dataFolder = `data/${url.searchParams.get("name")}` || "data";
+    const pathname = window.location.pathname;
+    const paths = pathname.split("/");
+    this.dataFolder = `../../data/${paths[1]}` || "../../data";
   }
 
   createMap() {
