@@ -36,7 +36,10 @@ npm start
 
 When you see the text "Listening on port 9000..." (this could take a minute or
 so), open your web browser and go to
-`http://localhost:9000/?name=YOUR_MAP_NAME_GOES_HERE`
+`http://localhost:9000/YOUR_MAP_NAME_GOES_HERE/index.html` for the whole page
+version (with header), or
+`http://localhost:9000/YOUR_MAP_NAME_GOES_HERE/embed.html` for the embed
+version.
 
 ## Troubleshooting
 

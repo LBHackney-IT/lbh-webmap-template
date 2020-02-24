@@ -32,10 +32,6 @@ app.use("/assets", express.static("node_modules/govuk-frontend/govuk/assets"));
 app.use("/data", express.static("data"));
 
 // Respond to all GET requests by rendering relevant page using Nunjucks
-app.get("/", function(req, res) {
-  res.render("index.html");
-});
-
 app.get("/:project/:page", function(req, res) {
   res.render('templates/' + req.params.project + '/' + req.params.page);
 });

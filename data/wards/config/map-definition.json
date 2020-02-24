@@ -6,8 +6,8 @@
   "layerGroups": [
     {
       "name": "firework",
-      "groupIcon": "images/star-christmas-duotone-default.svg",
-      "groupIconActive": "images/star-christmas-duotone-active2.svg",
+      "groupIcon": "../images/star-christmas-duotone-default.svg",
+      "groupIconActive": "../images/star-christmas-duotone-active2.svg",
       "groupText": "Fireworks"
     }
   ],

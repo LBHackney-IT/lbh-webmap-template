@@ -1,0 +1,20 @@
+{% extends "template.njk" %}
+
+{% block head %}
+    <!-- Add styles -->
+    <link rel="stylesheet" href="../../dist/lbh-webmap.min.css">
+{% endblock %}
+
+{% block content %}
+  {% block map %}
+    <div class="map__container">
+        <div class="map__wrapper">
+            <div class="map" id="map"></div>
+        </div>         
+    </div>
+  {% endblock %}
+{% endblock %}
+
+{% block bodyEnd %}
+  <script src="../../dist/lbh-webmap.min.js"></script>
+{% endblock %}
