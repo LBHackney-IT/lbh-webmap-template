@@ -8390,15 +8390,18 @@ html {
     width: 25%; } }
 
 .map-filters {
+  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
+  padding-top: 12px;
+  padding-top: 0.75rem;
   position: relative; }
   .map-filters .govuk-checkboxes__item {
     margin-bottom: 0; }
   @media (min-width: 48.0625em) {
     .map-filters .lbh-button {
-      top: -12px;
-      top: -0.75rem;
       margin-top: 0;
       position: absolute;
+      top: 0;
       right: 0; } }
   .map-filters .lbh-button--disabled {
     display: none; }

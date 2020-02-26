@@ -33,7 +33,14 @@ app.use("/data", express.static("data"));
 
 // Respond to all GET requests by rendering relevant page using Nunjucks
 app.get("/:project/:page", function(req, res) {
-  res.render('templates/' + req.params.project + '/' + req.params.page);
+  res.render('templates/' + req.params.project + '/' + req.params.page, {}, function(err, html) {
+    if (err) {
+      var template = req.params.page === 'index.html' ? 'template.njk' : req.params.page.replace(".html", ".njk");
+      res.render('templates/base-' + template);
+    } else {
+      res.send(html);
+    }
+  });
 });
 
 app.get("/:page", function(req, res) {

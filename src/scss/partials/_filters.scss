@@ -16,6 +16,8 @@
 }
 
 .map-filters {
+  @include lbh-rem(margin-bottom, 24);
+  @include lbh-rem(padding-top, 12);
   position: relative;
 
   .govuk-checkboxes__item {
@@ -24,9 +26,9 @@
 
   .lbh-button {
     @include govuk-media-query($from: desktop) {
-      @include lbh-rem(top, -12);
       margin-top: 0;
       position: absolute;
+      top: 0;
       right: 0;
     }
 
