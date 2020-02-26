@@ -49,12 +49,12 @@ const MARKER_COLOURS = {
   black: "#3b3b3b"
 };
 
-const PERSONA_ACTIVE_CLASS = "map-persona__button--active";
-const CONTROLS_OPEN_CLASS = "map-controls--open";
+const PERSONA_ACTIVE_CLASS = "personas__button--active";
+const CONTROLS_OPEN_CLASS = "controls--open";
 const CONTROLS_SHOW_LEGEND_TEXT = "Show list";
 const CONTROLS_HIDE_LEGEND_TEXT = "Hide list";
 const CONTROLS_CLEAR_MAP_TEXT = "Clear map";
-const FILTER_INPUT_CLASS = "map-filters__input";
+const FILTER_INPUT_CLASS = "filters__input";
 
 export {
   MAX_ZOOM,

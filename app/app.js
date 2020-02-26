@@ -35,7 +35,7 @@ app.use("/data", express.static("data"));
 app.get("/:project/:page", function(req, res) {
   res.render('templates/' + req.params.project + '/' + req.params.page, {}, function(err, html) {
     if (err) {
-      var template = req.params.page === 'index.html' ? 'template.njk' : req.params.page.replace(".html", ".njk");
+      var template = req.params.page === 'index.html' ? 'template.html' : req.params.page;
       res.render('templates/base-' + template);
     } else {
       res.send(html);

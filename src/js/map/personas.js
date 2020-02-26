@@ -17,10 +17,10 @@ class Personas {
 
   init() {
     const mapPersonas = document.createElement("div");
-    mapPersonas.setAttribute("id", "map-personas");
-    mapPersonas.classList.add("map-personas");
+    mapPersonas.setAttribute("id", "personas");
+    mapPersonas.classList.add("personas");
     this.container.insertBefore(mapPersonas, this.container.firstChild);
-    this.personas = document.getElementById("map-personas");
+    this.personas = document.getElementById("personas");
     for (let i = 0; i < this.layerGroups.length; i++) {
       this.createEasyButtons(this.layerGroups[i], i, true);
     }
@@ -28,11 +28,11 @@ class Personas {
 
   createEasyButtons(layerGroup, i, keepAllInLayerControl) {
     let buttonWrapper = document.createElement("span");
-    buttonWrapper.classList.add("map-persona__button-wrapper");
+    buttonWrapper.classList.add("personas__button-wrapper");
 
-    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="map-persona__button"><span class="map-persona__icon-wrapper"><img class="map-persona__icon map-persona__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="map-persona__icon map-persona__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span></button>`;
+    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="personas__icon-wrapper"><img class="personas__icon personas__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="personas__icon personas__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span></button>`;
 
-    const mapPersonas = document.getElementById("map-personas");
+    const mapPersonas = document.getElementById("personas");
     mapPersonas.appendChild(buttonWrapper);
 
     const button = document.getElementById(`persona-button-${i}`);
@@ -49,7 +49,7 @@ class Personas {
       if (this.isEmbed) {
         this.focusAfterPersona();
       } else {
-        scrollTo("#map-toggle", 500, () => this.focusAfterPersona());
+        scrollTo("#controls-toggle", 500, () => this.focusAfterPersona());
       }
     });
   }
@@ -70,7 +70,7 @@ class Personas {
       );
       onLayers[0].focus();
     } else {
-      const target = document.getElementById("map-toggle");
+      const target = document.getElementById("controls-toggle");
       target.focus();
     }
   }

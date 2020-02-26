@@ -19,8 +19,8 @@ class Controls {
 
   init() {
     this.createMarkup();
-    this.controls = document.getElementById("map-controls");
-    this.toggle = document.getElementById("map-toggle");
+    this.controls = document.getElementById("controls");
+    this.toggle = document.getElementById("controls-toggle");
     this.clear = document.getElementById("map-clear");
     this.toggle.addEventListener("click", this.toggleControls.bind(this));
 
@@ -39,30 +39,30 @@ class Controls {
 
   createMarkup() {
     const html = `
-      <button id="map-toggle" class="map-controls__sidebar-toggle">
-        <i class="fal fa-sliders-h map-controls__sidebar-toggle-icon"></i>
-        <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--hide">${(this
+      <button id="controls-toggle" class="controls__sidebar-toggle">
+        <i class="fal fa-sliders-h controls__sidebar-toggle-icon"></i>
+        <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--hide">${(this
           .mapConfig.controlsText &&
           this.mapConfig.controlsText.hideLegendText) ||
           CONTROLS_HIDE_LEGEND_TEXT}</span>
-        <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--show">${(this
+        <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--show">${(this
           .mapConfig.controlsText &&
           this.mapConfig.controlsText.showLegendText) ||
           CONTROLS_SHOW_LEGEND_TEXT}</span>
       </button>
-      <button id="map-clear" class="map-controls__clear" style="display:none">
-        <i class="fal fa-times map-controls__clear-icon"></i>
-        <span class="map-controls__clear-text">${(this.mapConfig.controlsText &&
+      <button id="map-clear" class="controls__clear" style="display:none">
+        <i class="fal fa-times controls__clear-icon"></i>
+        <span class="controls__clear-text">${(this.mapConfig.controlsText &&
           this.mapConfig.controlsText.clearMapText) ||
           CONTROLS_CLEAR_MAP_TEXT}</span>
       </button>
       <div class="container container__mask">
-        <sidebar class="map-controls__sidebar">
-          <div id="map-legend" class="map__legend"></div>
+        <sidebar class="controls__sidebar">
+          <div id="legend" class="legend"></div>
         </sidebar>
       </div>
     `;
-    this.mapClass.addMarkupToMap(html, "map-controls", "map-controls");
+    this.mapClass.addMarkupToMap(html, "controls", "controls");
   }
 
   toggleClearButton() {

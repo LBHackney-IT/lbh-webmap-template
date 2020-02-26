@@ -8374,7 +8374,7 @@ html {
   font-weight: 200 !important; }
 
 @media (min-width: 48.0625em) {
-  .map-filters__form-group {
+  .filters__form-group {
     margin-left: -10px;
     margin-left: -0.625rem;
     margin-right: -10px;
@@ -8383,30 +8383,30 @@ html {
     flex-wrap: wrap; } }
 
 @media (min-width: 48.0625em) {
-  .map-filters__fieldset {
+  .filters__fieldset {
     padding: 0px 10px;
     padding: 0rem 0.625rem;
     box-sizing: border-box;
     width: 25%; } }
 
-.map-filters {
+.filters {
   margin-bottom: 24px;
   margin-bottom: 1.5rem;
   padding-top: 12px;
   padding-top: 0.75rem;
   position: relative; }
-  .map-filters .govuk-checkboxes__item {
+  .filters .govuk-checkboxes__item {
     margin-bottom: 0; }
   @media (min-width: 48.0625em) {
-    .map-filters .lbh-button {
+    .filters .lbh-button {
       margin-top: 0;
       position: absolute;
       top: 0;
       right: 0; } }
-  .map-filters .lbh-button--disabled {
+  .filters .lbh-button--disabled {
     display: none; }
   @media (min-width: 48.0625em) {
-    .map-filters .govuk-details__text {
+    .filters .govuk-details__text {
       padding-top: 25px;
       padding-top: 1.5625rem; } }
 
@@ -8599,7 +8599,7 @@ body,
     background-image: url("../images/markers-shadow@2x.png");
     background-size: 720px 45px; } }
 
-.map-controls {
+.controls {
   height: 48px;
   height: 3rem;
   margin-left: -18px;
@@ -8611,13 +8611,13 @@ body,
   position: relative;
   z-index: 1; }
   @media (min-width: 48.0625em) {
-    .map-controls {
+    .controls {
       display: flex;
       flex-wrap: wrap;
       margin: 0;
       justify-content: space-between; } }
 
-.map-controls__sidebar {
+.controls__sidebar {
   height: 450px;
   height: 28.125rem;
   width: 270px;
@@ -8636,20 +8636,20 @@ body,
   transition: transform 500ms;
   z-index: 1; }
   @media (min-width: 48.0625em) {
-    .map-controls__sidebar {
+    .controls__sidebar {
       height: 600px;
       height: 37.5rem;
       background: transparent;
       border: none; } }
 
-.map-controls--open .map-controls__sidebar {
+.controls--open .controls__sidebar {
   transform: none; }
 
-.map__legend {
+.legend {
   background: #ecebeb;
   min-height: 100%; }
 
-.map-controls__sidebar-toggle {
+.controls__sidebar-toggle {
   margin: 12px 18px 9px 18px;
   margin: 0.75rem 1.125rem 0.5625rem 1.125rem;
   -webkit-appearance: none;
@@ -8659,17 +8659,17 @@ body,
   color: #0b0c0c;
   cursor: pointer;
   padding: 0; }
-  .map-controls__sidebar-toggle:focus {
+  .controls__sidebar-toggle:focus {
     outline: 3px solid transparent;
     color: #0b0c0c;
     background-color: #ffdd00;
     box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
     text-decoration: none; }
   @media (min-width: 48.0625em) {
-    .map-controls__sidebar-toggle {
+    .controls__sidebar-toggle {
       margin-left: 0; } }
 
-.map-controls__sidebar-toggle-text {
+.controls__sidebar-toggle-text {
   font-size: 14px;
   font-size: 0.875rem;
   margin-bottom: 3px;
@@ -8680,10 +8680,10 @@ body,
   vertical-align: middle;
   margin-top: 0; }
 
-.map-controls__sidebar-toggle:hover .map-controls__sidebar-toggle-text {
+.controls__sidebar-toggle:hover .controls__sidebar-toggle-text {
   border-bottom: 1px solid #0b0c0c; }
 
-.map-controls__sidebar-toggle-icon {
+.controls__sidebar-toggle-icon {
   font-size: 24px;
   font-size: 1.5rem;
   margin-right: 8px;
@@ -8694,14 +8694,14 @@ body,
   line-height: 1;
   vertical-align: middle; }
 
-.map-controls__sidebar-toggle-text--hide,
-.map-controls--open .map-controls__sidebar-toggle-text--show {
+.controls__sidebar-toggle-text--hide,
+.controls--open .controls__sidebar-toggle-text--show {
   display: none; }
 
-.map-controls--open .map-controls__sidebar-toggle-text--hide {
+.controls--open .controls__sidebar-toggle-text--hide {
   display: inline-block; }
 
-.map-controls__clear {
+.controls__clear {
   font-size: 14px;
   font-size: 0.875rem;
   height: 24px;
@@ -8721,20 +8721,20 @@ body,
   position: absolute;
   right: 0;
   top: 0; }
-  .map-controls__clear:hover .map-controls__clear-text {
+  .controls__clear:hover .controls__clear-text {
     border-bottom: 1px solid #0b0c0c; }
-  .map-controls__clear:focus {
+  .controls__clear:focus {
     outline: 3px solid transparent;
     color: #0b0c0c;
     background-color: #ffdd00;
     box-shadow: 0 -2px #ffdd00, 0 4px #0b0c0c;
     text-decoration: none; }
   @media (min-width: 48.0625em) {
-    .map-controls__clear {
+    .controls__clear {
       position: static;
       margin-right: 0; } }
 
-.map-controls__clear-icon {
+.controls__clear-icon {
   font-size: 24px;
   font-size: 1.5rem;
   margin-right: 8px;
@@ -8790,10 +8790,10 @@ body,
       color: #ffffff; }
     .leaflet-control-layers-overlays label:hover .leaflet-control-layers-selector:focus + span {
       border-bottom-color: #ffc845; }
-    label:hover .leaflet-control-layers-selector:focus + span span.map-control__active-border {
+    label:hover .leaflet-control-layers-selector:focus + span span.control__active-border {
       background: #ffc845 !important; } }
 
-.map-control__text {
+.control__text {
   font-size: 14px;
   font-size: 0.875rem;
   padding-left: 10px;
@@ -8803,7 +8803,7 @@ body,
   max-width: calc(100% - 2rem);
   font-weight: 500; }
 
-.map-control__count {
+.control__count {
   font-size: 14px;
   font-size: 0.875rem;
   padding-left: 46px;
@@ -8812,7 +8812,7 @@ body,
   opacity: 0;
   width: 100%; }
 
-.map-control__active-border {
+.control__active-border {
   width: 8px;
   width: 0.5rem;
   bottom: -3px;
@@ -8820,11 +8820,11 @@ body,
   position: absolute;
   top: -3px; }
 
-input:not(:checked) + span span.map-control__active-border {
+input:not(:checked) + span span.control__active-border {
   background: #bfc1c3 !important; }
 
 @media (min-width: 48.0625em) {
-  label:hover .leaflet-control-layers-selector + span span.map-control__active-border {
+  label:hover .leaflet-control-layers-selector + span span.control__active-border {
     background: #003d2f !important; }
   label:hover .leaflet-control-layers-selector + span .fas,
   label:hover .leaflet-control-layers-selector + span .svg-inline--fa {
@@ -8833,7 +8833,7 @@ input:not(:checked) + span span.map-control__active-border {
     background: #00513f;
     color: #ffffff; } }
 
-.leaflet-control-layers-selector:checked + span .map-control__count {
+.leaflet-control-layers-selector:checked + span .control__count {
   opacity: 1; }
 
 .leaflet-control-layers-selector + span .fas,
@@ -8985,7 +8985,7 @@ input:not(:checked) + span span.map-control__active-border {
   .metadata__window .content {
     padding: 0 16px 8px; }
 
-.map-personas {
+.personas {
   padding: 10px 0px;
   padding: 0.625rem 0rem;
   margin-left: -10px;
@@ -8994,26 +8994,26 @@ input:not(:checked) + span span.map-control__active-border {
   margin-right: -0.625rem;
   display: flex;
   flex-wrap: wrap; }
-  .map__container:first-child .map-personas {
+  .map__container:first-child .personas {
     padding-top: 0; }
   @media (min-width: 48.0625em) {
-    .map-personas {
+    .personas {
       margin: 24px -10px;
       margin: 1.5rem -0.625rem; }
-      .map__container:first-child .map-personas {
+      .map__container:first-child .personas {
         margin-top: 0; } }
 
-.map-persona__button-wrapper {
+.personas__button-wrapper {
   padding: 10px;
   padding: 0.625rem;
   box-sizing: border-box;
   margin-top: 0;
   width: 50%; }
   @media (min-width: 48.0625em) {
-    .map-persona__button-wrapper {
+    .personas__button-wrapper {
       width: 25%; } }
 
-.map-persona__button {
+.personas__button {
   margin-bottom: 12px;
   margin-bottom: 0.75rem;
   padding: 12px;
@@ -9032,37 +9032,37 @@ input:not(:checked) + span span.map-control__active-border {
   text-decoration: none;
   width: 100%; }
   @media (min-width: 48.0625em) {
-    .map-persona__button {
+    .personas__button {
       padding: 20px;
       padding: 1.25rem;
       align-items: center;
       display: flex;
       flex-direction: column;
       margin-bottom: 0; } }
-  .map-persona__button:hover {
+  .personas__button:hover {
     background: #00513f;
     color: #ffffff; }
 
-.map-persona__icon-wrapper {
+.personas__icon-wrapper {
   display: block;
   margin: 0 auto; }
 
-.map-persona__icon--active {
+.personas__icon--active {
   display: none;
   margin: 0 auto; }
-  .map-persona__button:active .map-persona__icon--active,
-  .map-persona__button--active .map-persona__icon--active {
+  .personas__button:active .personas__icon--active,
+  .personas__button--active .personas__icon--active {
     display: block; }
 
-.map-persona__button:active,
-.map-persona__button--active,
-.map-persona__button--active:hover {
+.personas__button:active,
+.personas__button--active,
+.personas__button--active:hover {
   background: #ffffff;
   color: #000;
   cursor: default; }
 
-.map-persona__button:active .map-persona__icon--base,
-.map-persona__button--active .map-persona__icon--base {
+.personas__button:active .personas__icon--base,
+.personas__button--active .personas__icon--base {
   display: none; }
 
 .leaflet-popup-content-wrapper {

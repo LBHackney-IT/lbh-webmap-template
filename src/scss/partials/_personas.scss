@@ -1,4 +1,4 @@
-.map-personas {
+.personas {
   @include lbh-rem(padding, 10, 0);
   @include lbh-rem(margin-left, -10);
   @include lbh-rem(margin-right, -10);
@@ -18,7 +18,7 @@
   }
 }
 
-.map-persona__button-wrapper {
+.personas__button-wrapper {
   @include lbh-rem(padding, 10);
   box-sizing: border-box;
   margin-top: 0;
@@ -29,7 +29,7 @@
   }
 }
 
-.map-persona__button {
+.personas__button {
   @include lbh-rem(margin-bottom, 12);
   @include lbh-rem(padding, 12);
   appearance: none;
@@ -60,30 +60,30 @@
   }
 }
 
-.map-persona__icon-wrapper {
+.personas__icon-wrapper {
   display: block;
   margin: 0 auto;
 }
 
-.map-persona__icon--active {
+.personas__icon--active {
   display: none;
   margin: 0 auto;
 
-  .map-persona__button:active &,
-  .map-persona__button--active & {
+  .personas__button:active &,
+  .personas__button--active & {
     display: block;
   }
 }
 
-.map-persona__button:active,
-.map-persona__button--active,
-.map-persona__button--active:hover {
+.personas__button:active,
+.personas__button--active,
+.personas__button--active:hover {
   background: #ffffff;
   color: #000;
   cursor: default;
 }
 
-.map-persona__button:active .map-persona__icon--base,
-.map-persona__button--active .map-persona__icon--base {
+.personas__button:active .personas__icon--base,
+.personas__button--active .personas__icon--base {
   display: none;
 }

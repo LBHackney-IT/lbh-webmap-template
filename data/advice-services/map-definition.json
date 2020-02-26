@@ -20,11 +20,11 @@
     },
     "languages": {
       "heading": "Languages",
-      "options": ["Turkish", "Chinese", "Vietnamese", "Bengali", "French"]
+      "options": ["Bengali", "Chinese", "French", "Turkish", "Vietnamese"]
     },
     "how_accessed": {
       "heading": "Type of service",
-      "options": ["Drop-in", "Appointment", "Home visit"]
+      "options": ["Appointment", "Drop-in", "Home visit"]
     }
   },
   "layerGroups": [

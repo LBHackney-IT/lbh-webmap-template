@@ -1,4 +1,4 @@
-.map-filters__form-group {
+.filters__form-group {
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(margin-left, -10);
     @include lbh-rem(margin-right, -10);
@@ -7,7 +7,7 @@
   }
 }
 
-.map-filters__fieldset {
+.filters__fieldset {
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(padding, 0, 10);
     box-sizing: border-box;
@@ -15,7 +15,7 @@
   }
 }
 
-.map-filters {
+.filters {
   @include lbh-rem(margin-bottom, 24);
   @include lbh-rem(padding-top, 12);
   position: relative;

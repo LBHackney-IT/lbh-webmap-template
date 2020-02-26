@@ -32,9 +32,9 @@ class Filters {
         Filters
       </span>
     </summary>
-    <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group map-filters__form-group">`;
+    <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group filters__form-group">`;
     for (const [key, filter] of Object.entries(this.filters)) {
-      html += `<fieldset class="govuk-fieldset map-filters__fieldset" aria-describedby="nationality-hint">
+      html += `<fieldset class="govuk-fieldset filters__fieldset" aria-describedby="nationality-hint">
         <legend class="govuk-fieldset__legend">
           ${filter.heading}
         </legend>
@@ -55,9 +55,9 @@ class Filters {
       html += `</div>
       </fieldset>`;
     }
-    html += `</div></div></details><button id="map-filters-clear" class="govuk-button lbh-button map-filters__clear">Clear filters</button></section>`;
-    this.mapClass.addMarkupToMap(html, "map-filters", "map-filters");
-    this.clearButton = document.getElementById("map-filters-clear");
+    html += `</div></div></details><button id="filters-clear" class="govuk-button lbh-button filters__clear">Clear filters</button></section>`;
+    this.mapClass.addMarkupToMap(html, "filters", "filters");
+    this.clearButton = document.getElementById("filters-clear");
   }
 
   //utility to empty and reload layers, using the cached data (not calling wfs again)

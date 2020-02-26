@@ -1,4 +1,4 @@
-.map-controls {
+.controls {
   @include lbh-rem(height, 48);
   @include lbh-rem(margin-left, -18);
   @include lbh-rem(margin-right, -18);
@@ -15,7 +15,7 @@
   }
 }
 
-.map-controls__sidebar {
+.controls__sidebar {
   @include lbh-rem(height, 450);
   @include lbh-rem(width, 270);
   background: lbh-colour("lbh-white");
@@ -39,16 +39,16 @@
   }
 }
 
-.map-controls--open .map-controls__sidebar {
+.controls--open .controls__sidebar {
   transform: none;
 }
 
-.map__legend {
+.legend {
   background: #ecebeb;
   min-height: 100%;
 }
 
-.map-controls__sidebar-toggle {
+.controls__sidebar-toggle {
   @include lbh-rem(margin, 12, 18, 9, 18);
   -webkit-appearance: none;
   appearance: none;
@@ -67,7 +67,7 @@
   }
 }
 
-.map-controls__sidebar-toggle-text {
+.controls__sidebar-toggle-text {
   @include lbh-rem(font-size, 14);
   @include lbh-rem(margin-bottom, 3);
   border-bottom: 1px solid transparent;
@@ -77,11 +77,11 @@
   margin-top: 0;
 }
 
-.map-controls__sidebar-toggle:hover .map-controls__sidebar-toggle-text {
+.controls__sidebar-toggle:hover .controls__sidebar-toggle-text {
   border-bottom: 1px solid lbh-colour("lbh-black");
 }
 
-.map-controls__sidebar-toggle-icon {
+.controls__sidebar-toggle-icon {
   @include lbh-rem(font-size, 24);
   @include lbh-rem(margin-right, 8);
   @include lbh-rem(margin-top, 3);
@@ -90,16 +90,16 @@
   vertical-align: middle;
 }
 
-.map-controls__sidebar-toggle-text--hide,
-.map-controls--open .map-controls__sidebar-toggle-text--show {
+.controls__sidebar-toggle-text--hide,
+.controls--open .controls__sidebar-toggle-text--show {
   display: none;
 }
 
-.map-controls--open .map-controls__sidebar-toggle-text--hide {
+.controls--open .controls__sidebar-toggle-text--hide {
   display: inline-block;
 }
 
-.map-controls__clear {
+.controls__clear {
   @include lbh-rem(font-size, 14);
   @include lbh-rem(height, 24);
   @include lbh-rem(margin, 12, 18, 12, 18);
@@ -117,7 +117,7 @@
   right: 0;
   top: 0;
 
-  &:hover .map-controls__clear-text {
+  &:hover .controls__clear-text {
     border-bottom: 1px solid lbh-colour("lbh-black");
   }
 
@@ -131,7 +131,7 @@
   }
 }
 
-.map-controls__clear-icon {
+.controls__clear-icon {
   @include lbh-rem(font-size, 24);
   @include lbh-rem(margin-right, 8);
   display: inline-block;
@@ -187,13 +187,13 @@
       border-bottom-color: lbh-colour("lbh-primary-focus");
     }
 
-    label:hover &:focus + span span.map-control__active-border {
+    label:hover &:focus + span span.control__active-border {
       background: lbh-colour("lbh-primary-focus") !important;
     }
   }
 }
 
-.map-control__text {
+.control__text {
   @include lbh-rem(font-size, 14);
   @include lbh-rem(padding-left, 10);
   box-sizing: border-box;
@@ -202,7 +202,7 @@
   font-weight: 500;
 }
 
-.map-control__count {
+.control__count {
   @include lbh-rem(font-size, 14);
   @include lbh-rem(padding-left, 46);
   font-weight: 300;
@@ -210,7 +210,7 @@
   width: 100%;
 }
 
-.map-control__active-border {
+.control__active-border {
   @include lbh-rem(width, 8);
   bottom: -3px;
   left: -3px;
@@ -218,12 +218,12 @@
   top: -3px;
 }
 
-input:not(:checked) + span span.map-control__active-border {
+input:not(:checked) + span span.control__active-border {
   background: lbh-colour("lbh-grey-2") !important;
 }
 
 @include govuk-media-query($from: desktop) {
-  label:hover .leaflet-control-layers-selector + span span.map-control__active-border {
+  label:hover .leaflet-control-layers-selector + span span.control__active-border {
     background: lbh-colour("lbh-primary-inner-shadow") !important;
   }
 
@@ -238,7 +238,7 @@ input:not(:checked) + span span.map-control__active-border {
   }
 }
 
-.leaflet-control-layers-selector:checked + span .map-control__count {
+.leaflet-control-layers-selector:checked + span .control__count {
   opacity: 1;
 }
 

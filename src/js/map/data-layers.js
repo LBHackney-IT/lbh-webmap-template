@@ -145,16 +145,16 @@ class DataLayers {
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
-      const legendEntry = `<span aria-hidden="true" class="map-control__active-border" style="background:${
+      const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
         MARKER_COLOURS[markerColor]
       }"></span><i class="fas fa-${markerIcon}" style="color:${
         MARKER_COLOURS[markerColor]
-      }"></i><span class="map-control__text">${layerName}</span><span id="map-layer-count-${layerName
+      }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layerName
         .toLowerCase()
         .replace(
           /\s+/g,
           "-"
-        )}" class="map-control__count">${count} items shown</span>`;
+        )}" class="control__count">${count} items shown</span>`;
       this.overlayMaps[legendEntry] = layer;
 
       for (const k in parentGroups) {
@@ -207,7 +207,7 @@ class DataLayers {
       collapsed: false,
       position: "topleft"
     });
-    const mapLegend = document.getElementById("map-legend");
+    const mapLegend = document.getElementById("legend");
     mapLegend.appendChild(this.layerControl.getContainer());
     L.DomEvent.on(this.layerControl.getContainer(), "click", () => {
       L.DomEvent.stopPropagation;
