@@ -225,6 +225,14 @@ class Map {
       { position: "topright" }
     ).addTo(this.map);
   }
+
+  addMarkupToMap(markup, id, className) {
+    const element = document.createElement("section");
+    element.setAttribute("id", id);
+    element.classList.add(className);
+    element.innerHTML = markup;
+    this.container.insertBefore(element, this.container.firstChild);
+  }
 }
 
 export default Map;

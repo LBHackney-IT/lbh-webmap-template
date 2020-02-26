@@ -8373,6 +8373,40 @@ html {
 .lbh-\!-font-weight-extra-light {
   font-weight: 200 !important; }
 
+@media (min-width: 48.0625em) {
+  .map-filters__form-group {
+    margin-left: -10px;
+    margin-left: -0.625rem;
+    margin-right: -10px;
+    margin-right: -0.625rem;
+    display: flex;
+    flex-wrap: wrap; } }
+
+@media (min-width: 48.0625em) {
+  .map-filters__fieldset {
+    padding: 0px 10px;
+    padding: 0rem 0.625rem;
+    box-sizing: border-box;
+    width: 25%; } }
+
+.map-filters {
+  position: relative; }
+  .map-filters .govuk-checkboxes__item {
+    margin-bottom: 0; }
+  @media (min-width: 48.0625em) {
+    .map-filters .lbh-button {
+      top: -12px;
+      top: -0.75rem;
+      margin-top: 0;
+      position: absolute;
+      right: 0; } }
+  .map-filters .lbh-button--disabled {
+    display: none; }
+  @media (min-width: 48.0625em) {
+    .map-filters .govuk-details__text {
+      padding-top: 25px;
+      padding-top: 1.5625rem; } }
+
 html,
 body,
 #map {
@@ -8542,10 +8576,10 @@ body,
   line-height: 30px; }
 
 .awesome-marker {
-  background: url("../images/markers-soft.png") no-repeat; }
+  background-image: url("../images/markers-soft.png"); }
 
 .awesome-marker-shadow {
-  background: url("../images/markers-shadow.png") no-repeat; }
+  background-image: url("../images/markers-shadow.png"); }
 
 .awesome-marker svg {
   color: #333;
@@ -8557,14 +8591,18 @@ body,
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
   .awesome-marker {
     background-image: url("../images/markers-soft@2x.png");
-    background-size: 712px 45px; }
+    background-size: 720px 45px; }
   .awesome-marker-shadow {
     background-image: url("../images/markers-shadow@2x.png");
-    background-size: 712px 45px; } }
+    background-size: 720px 45px; } }
 
 .map-controls {
   height: 48px;
   height: 3rem;
+  margin-left: -18px;
+  margin-left: -1.125rem;
+  margin-right: -18px;
+  margin-right: -1.125rem;
   display: block;
   padding: 0;
   position: relative;
@@ -8947,17 +8985,30 @@ input:not(:checked) + span span.map-control__active-border {
 .map-personas {
   padding: 10px 0px;
   padding: 0.625rem 0rem;
+  margin-left: -10px;
+  margin-left: -0.625rem;
+  margin-right: -10px;
+  margin-right: -0.625rem;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; }
+  flex-wrap: wrap; }
   .map__container:first-child .map-personas {
     padding-top: 0; }
   @media (min-width: 48.0625em) {
     .map-personas {
-      margin: 24px 0px;
-      margin: 1.5rem 0rem; }
+      margin: 24px -10px;
+      margin: 1.5rem -0.625rem; }
       .map__container:first-child .map-personas {
         margin-top: 0; } }
+
+.map-persona__button-wrapper {
+  padding: 10px;
+  padding: 0.625rem;
+  box-sizing: border-box;
+  margin-top: 0;
+  width: 50%; }
+  @media (min-width: 48.0625em) {
+    .map-persona__button-wrapper {
+      width: 25%; } }
 
 .map-persona__button {
   margin-bottom: 12px;
@@ -8966,21 +9017,17 @@ input:not(:checked) + span span.map-control__active-border {
   padding: 0.75rem;
   appearance: none;
   -webkit-appearance: none;
-  background: #cc9d3a;
+  background: #ecebeb;
   border: 0.5px solid #dee0e2;
   border-radius: 3px;
   box-sizing: border-box;
-  color: white;
+  color: #0b0c0c;
   cursor: pointer;
   display: block;
-  flex-grow: 0;
-  flex-shrink: 0;
   font-weight: bold;
-  margin-top: 0;
   text-align: center;
   text-decoration: none;
-  width: calc(50% - 6px);
-  width: calc(50% - 0.375rem); }
+  width: 100%; }
   @media (min-width: 48.0625em) {
     .map-persona__button {
       padding: 20px;
@@ -8988,13 +9035,7 @@ input:not(:checked) + span span.map-control__active-border {
       align-items: center;
       display: flex;
       flex-direction: column;
-      margin-bottom: 0;
-      width: calc(25% - 9px);
-      width: calc(25% - 0.5625rem); } }
-  @media (min-width: 61.25em) {
-    .map-persona__button {
-      width: 231px;
-      width: 14.4375rem; } }
+      margin-bottom: 0; } }
   .map-persona__button:hover {
     background: #00513f;
     color: #ffffff; }

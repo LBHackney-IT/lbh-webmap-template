@@ -1,7 +1,8 @@
 import { scrollTo } from "../helpers/scrollTo";
+import { PERSONA_ACTIVE_CLASS } from "./consts";
 
 class Personas {
-  constructor(map, layers, layerGroups, layerControl, overlayMaps) {
+  constructor(map, layers, layerGroups, layerControl, overlayMaps, filters) {
     this.container = map.container;
     this.layerGroups = layerGroups;
     this.layers = layers;
@@ -10,6 +11,8 @@ class Personas {
     this.layerControl = layerControl;
     this.overlayMaps = overlayMaps;
     this.isEmbed = map.isEmbed;
+    this.personas = null;
+    this.filters = filters;
   }
 
   init() {
@@ -17,27 +20,26 @@ class Personas {
     mapPersonas.setAttribute("id", "map-personas");
     mapPersonas.classList.add("map-personas");
     this.container.insertBefore(mapPersonas, this.container.firstChild);
+    this.personas = document.getElementById("map-personas");
     for (let i = 0; i < this.layerGroups.length; i++) {
       this.createEasyButtons(this.layerGroups[i], i, true);
     }
   }
 
   createEasyButtons(layerGroup, i, keepAllInLayerControl) {
-    let button = document.createElement("button");
-    button.classList.add("map-persona__button");
-    button.setAttribute("id", "persona-button-" + i);
+    let buttonWrapper = document.createElement("span");
+    buttonWrapper.classList.add("map-persona__button-wrapper");
 
-    button.innerHTML = `<span class="map-persona__icon-wrapper"><img class="map-persona__icon map-persona__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="map-persona__icon map-persona__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span>`;
+    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="map-persona__button"><span class="map-persona__icon-wrapper"><img class="map-persona__icon map-persona__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="map-persona__icon map-persona__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span></button>`;
+
     const mapPersonas = document.getElementById("map-personas");
-    mapPersonas.appendChild(button);
+    mapPersonas.appendChild(buttonWrapper);
 
-    button = document.getElementById(`persona-button-${i}`);
+    const button = document.getElementById(`persona-button-${i}`);
     button.addEventListener("click", e => {
       e.stopPropagation();
-      if (button.parentNode.childNodes.classList) {
-        button.parentNode.childNodes.classList.remove("persona-button--active");
-      }
-      button.classList.add("persona-button--active");
+      this.removeActiveClass();
+      button.classList.add(PERSONA_ACTIVE_CLASS);
       this.controls.showClearButton();
 
       this.switchGroup(layerGroup, keepAllInLayerControl);
@@ -50,6 +52,15 @@ class Personas {
         scrollTo("#map-toggle", 500, () => this.focusAfterPersona());
       }
     });
+  }
+
+  removeActiveClass() {
+    for (const personaWrapper of this.personas.childNodes) {
+      const persona = personaWrapper.firstChild;
+      if (persona.classList) {
+        persona.classList.remove(PERSONA_ACTIVE_CLASS);
+      }
+    }
   }
 
   focusAfterPersona() {
@@ -72,6 +83,10 @@ class Personas {
       if (!keepAllInLayerControl) {
         this.layerControl.removeLayer(layer);
       }
+    }
+
+    if (this.filters) {
+      this.filters.clearFilters();
     }
 
     //add layers from that group

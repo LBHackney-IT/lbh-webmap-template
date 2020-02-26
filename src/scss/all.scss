@@ -5,6 +5,7 @@
 @import "node_modules/leaflet-control-window/src/L.Control.Window";
 @import "node_modules/leaflet.markercluster/dist/MarkerCluster";
 @import "node_modules/lbh-frontend/lbh/all";
+@import "./partials/filters";
 @import "./partials/map";
 @import "./partials/marker-cluster";
 @import "./partials/map-controls";

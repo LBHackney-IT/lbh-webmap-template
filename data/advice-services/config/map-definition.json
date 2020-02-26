@@ -1,0 +1,324 @@
+{
+  "mapId": "1",
+  "name": "Advice Services",
+  "abstract": "Where to find advice services funded by Hackney council",
+  "showAllGroupsLayers": true,
+  "showPersonas": false,
+  "showLegend": true,
+  "filters": {
+    "days": {
+      "heading": "Days",
+      "options": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "languages": {
+      "heading": "Languages",
+      "options": ["Turkish", "Chinese", "Vietnamese", "Bengali", "French"]
+    },
+    "how_accessed": {
+      "heading": "Type of service",
+      "options": ["Drop-in", "Appointment", "Home visit"]
+    }
+  },
+  "layerGroups": [
+    {
+      "name": "Immigration",
+      "groupIcon": "passport",
+      "groupIconActive": "css/images/passport-solid.svg",
+      "groupText": "Find immigration advice"
+    },
+    {
+      "name": "Housing",
+      "groupIcon": "house",
+      "groupIconActive": "css/images/house-solid.svg",
+      "groupText": "Find housing advice"
+    },
+    {
+      "name": "Debt",
+      "groupIcon": "coin",
+      "groupIconActive": "css/images/coin-solid.svg",
+      "groupText": "Find debt advice"
+    },
+    {
+      "name": "Welfare",
+      "groupIcon": "pound-sign",
+      "groupIconActive": "css/images/pound-sign-solid.svg",
+      "groupText": "Find welfare and benefits advice"
+    },
+    {
+      "name": "Employment",
+      "groupIcon": "briefcase",
+      "groupIconActive": "css/images/briefcase-solid.svg",
+      "groupText": "Find employment advice"
+    }
+  ],
+  "layers": [
+    {
+      "title": "Employment advice",
+      "geoserverLayerName": "amenity:lbh_funded_advice_org_employment",
+      "groups": ["Employment"],
+      "searchable": "false",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "briefcase",
+        "markerColor": "purple"
+      },
+      "metadata": "",
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
+      },
+      "popup": {
+        "popupTitleField": "",
+        "popupFields": [
+          {
+            "fieldLabel": "Venue",
+            "fieldName": "address"
+          },
+          {
+            "fieldLabel": "Provider",
+            "fieldName": "provided_by"
+          },
+          {
+            "fieldLabel": "Booking",
+            "fieldName": "how_accessed"
+          },
+          {
+            "fieldLabel": "Schedule",
+            "fieldName": "when_provided"
+          },
+          {
+            "fieldLabel": "Contact",
+            "fieldName": "main_contact_and_details"
+          },
+          {
+            "fieldLabel": "",
+            "fieldName": "advice_provision"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Immigration advice",
+      "geoserverLayerName": "amenity:lbh_funded_advice_org_immigration",
+      "groups": ["Immigration"],
+      "searchable": "false",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "passport",
+        "markerColor": "darkpurple"
+      },
+      "metadata": "",
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
+      },
+      "popup": {
+        "popupTitleField": "",
+        "popupFields": [
+          {
+            "fieldLabel": "Venue",
+            "fieldName": "address"
+          },
+          {
+            "fieldLabel": "Provider",
+            "fieldName": "provided_by"
+          },
+          {
+            "fieldLabel": "Booking",
+            "fieldName": "how_accessed"
+          },
+          {
+            "fieldLabel": "Schedule",
+            "fieldName": "when_provided"
+          },
+          {
+            "fieldLabel": "Contact",
+            "fieldName": "main_contact_and_details"
+          },
+          {
+            "fieldLabel": "",
+            "fieldName": "advice_provision"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Housing advice",
+      "geoserverLayerName": "amenity:lbh_funded_advice_org_housing",
+      "groups": ["Housing"],
+      "searchable": "false",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "house",
+        "markerColor": "green"
+      },
+      "metadata": "",
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
+      },
+      "popup": {
+        "popupTitleField": "",
+        "popupFields": [
+          {
+            "fieldLabel": "Venue",
+            "fieldName": "address"
+          },
+          {
+            "fieldLabel": "Provider",
+            "fieldName": "provided_by"
+          },
+          {
+            "fieldLabel": "Booking",
+            "fieldName": "how_accessed"
+          },
+          {
+            "fieldLabel": "Schedule",
+            "fieldName": "when_provided"
+          },
+          {
+            "fieldLabel": "Contact",
+            "fieldName": "main_contact_and_details"
+          },
+          {
+            "fieldLabel": "",
+            "fieldName": "advice_provision"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Welfare Benefits advice",
+      "geoserverLayerName": "amenity:lbh_funded_advice_org_welfare_benefit",
+      "groups": ["Welfare"],
+      "searchable": "false",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "pound-sign",
+        "markerColor": "cadetblue"
+      },
+      "metadata": "",
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
+      },
+      "popup": {
+        "popupTitleField": "",
+        "popupFields": [
+          {
+            "fieldLabel": "Venue",
+            "fieldName": "address"
+          },
+          {
+            "fieldLabel": "Provider",
+            "fieldName": "provided_by"
+          },
+          {
+            "fieldLabel": "Booking",
+            "fieldName": "how_accessed"
+          },
+          {
+            "fieldLabel": "Schedule",
+            "fieldName": "when_provided"
+          },
+          {
+            "fieldLabel": "Contact",
+            "fieldName": "main_contact_and_details"
+          },
+          {
+            "fieldLabel": "",
+            "fieldName": "advice_provision"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Debt advice",
+      "geoserverLayerName": "amenity:lbh_funded_advice_org_debt",
+      "groups": ["Debt"],
+      "searchable": "false",
+      "sortOrder": "30",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "coin",
+        "markerColor": "orange"
+      },
+      "metadata": "",
+      "linePolygonStyle": {
+        "styleName": "",
+        "layerStroke": "",
+        "layerStrokeColor": "",
+        "layerOpacity": "",
+        "layerFillColor": "",
+        "layerFillOpacity": "",
+        "layerLineDash": "",
+        "layerWeight": ""
+      },
+      "popup": {
+        "popupTitleField": "",
+        "popupFields": [
+          {
+            "fieldLabel": "Venue",
+            "fieldName": "address"
+          },
+          {
+            "fieldLabel": "Provider",
+            "fieldName": "provided_by"
+          },
+          {
+            "fieldLabel": "Booking",
+            "fieldName": "how_accessed"
+          },
+          {
+            "fieldLabel": "Schedules",
+            "fieldName": "when_provided"
+          },
+          {
+            "fieldLabel": "Contact",
+            "fieldName": "main_contact_and_details"
+          },
+          {
+            "fieldLabel": "",
+            "fieldName": "advice_provision"
+          }
+        ]
+      }
+    }
+  ]
+}

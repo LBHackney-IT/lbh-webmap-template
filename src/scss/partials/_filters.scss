@@ -1,0 +1,43 @@
+.map-filters__form-group {
+  @include govuk-media-query($from: desktop) {
+    @include lbh-rem(margin-left, -10);
+    @include lbh-rem(margin-right, -10);
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.map-filters__fieldset {
+  @include govuk-media-query($from: desktop) {
+    @include lbh-rem(padding, 0, 10);
+    box-sizing: border-box;
+    width: 25%;
+  }
+}
+
+.map-filters {
+  position: relative;
+
+  .govuk-checkboxes__item {
+    margin-bottom: 0;
+  }
+
+  .lbh-button {
+    @include govuk-media-query($from: desktop) {
+      @include lbh-rem(top, -12);
+      margin-top: 0;
+      position: absolute;
+      right: 0;
+    }
+
+    &--disabled {
+      display: none;
+    }
+  }
+
+  .govuk-details__text {
+    @include govuk-media-query($from: desktop) {
+      @include lbh-rem(padding-top, 25);
+    }
+  }
+}

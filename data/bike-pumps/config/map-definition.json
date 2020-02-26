@@ -3,6 +3,7 @@
   "name": "",
   "aboutTheData": "",
   "abstract": "",
+  "showMetadataUnderTitle": false,
   "layerGroups": [
     {
       "name": "firework",

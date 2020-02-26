@@ -42,6 +42,28 @@
     "hideLegendText": "Hide legend",
     "clearMapText": "Clear"
   },
+  "filters": {
+    "days": {
+      "heading": "Days",
+      "options": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ]
+    },
+    "languages": {
+      "heading": "Languages",
+      "options": ["Turkish", "Chinese", "Vietnamese", "Bengali", "French"]
+    },
+    "how_accessed": {
+      "heading": "Type of service",
+      "options": ["Drop-in", "Appointment", "Home visit"]
+    }
+  },
   "layers": [
     {
       "title": "Cycle stands",
@@ -104,7 +126,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "tire-flat",
-        "markerColor": "red"
+        "markerColor": "blue"
       },
       "hover": false,
       "linePolygonStyle": {

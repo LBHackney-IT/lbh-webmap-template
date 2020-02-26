@@ -10,18 +10,15 @@ class Controls {
   constructor(mapClass) {
     this.mapClass = mapClass;
     this.map = mapClass.map;
-    this.container = mapClass.container;
     this.controls = null;
     this.toggle = null;
     this.clear = null;
-    this.controlsText = null;
     this.mapConfig = this.mapClass.mapConfig;
     this.isOpen = false;
   }
 
   init() {
     this.createMarkup();
-    this.addControls();
     this.controls = document.getElementById("map-controls");
     this.toggle = document.getElementById("map-toggle");
     this.clear = document.getElementById("map-clear");
@@ -41,31 +38,31 @@ class Controls {
   }
 
   createMarkup() {
-    this.controlsText = `
+    const html = `
       <button id="map-toggle" class="map-controls__sidebar-toggle">
-          <i class="fal fa-sliders-h map-controls__sidebar-toggle-icon"></i>
-          <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--hide">${(this
-            .mapConfig.controlsText &&
-            this.mapConfig.controlsText.hideLegendText) ||
-            CONTROLS_HIDE_LEGEND_TEXT}</span>
-          <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--show">${(this
-            .mapConfig.controlsText &&
-            this.mapConfig.controlsText.showLegendText) ||
-            CONTROLS_SHOW_LEGEND_TEXT}</span>
+        <i class="fal fa-sliders-h map-controls__sidebar-toggle-icon"></i>
+        <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--hide">${(this
+          .mapConfig.controlsText &&
+          this.mapConfig.controlsText.hideLegendText) ||
+          CONTROLS_HIDE_LEGEND_TEXT}</span>
+        <span class="map-controls__sidebar-toggle-text map-controls__sidebar-toggle-text--show">${(this
+          .mapConfig.controlsText &&
+          this.mapConfig.controlsText.showLegendText) ||
+          CONTROLS_SHOW_LEGEND_TEXT}</span>
       </button>
       <button id="map-clear" class="map-controls__clear" style="display:none">
-          <i class="fal fa-times map-controls__clear-icon"></i>
-          <span class="map-controls__clear-text">${(this.mapConfig
-            .controlsText &&
-            this.mapConfig.controlsText.clearMapText) ||
-            CONTROLS_CLEAR_MAP_TEXT}</span>
+        <i class="fal fa-times map-controls__clear-icon"></i>
+        <span class="map-controls__clear-text">${(this.mapConfig.controlsText &&
+          this.mapConfig.controlsText.clearMapText) ||
+          CONTROLS_CLEAR_MAP_TEXT}</span>
       </button>
       <div class="container container__mask">
-          <sidebar class="map-controls__sidebar">
-              <div id="map-legend" class="map__legend"></div>
-          </sidebar>
+        <sidebar class="map-controls__sidebar">
+          <div id="map-legend" class="map__legend"></div>
+        </sidebar>
       </div>
     `;
+    this.mapClass.addMarkupToMap(html, "map-controls", "map-controls");
   }
 
   toggleClearButton() {
@@ -81,14 +78,6 @@ class Controls {
 
   showClearButton() {
     this.clear.style.display = "block";
-  }
-
-  addControls() {
-    const controls = document.createElement("section");
-    controls.setAttribute("id", "map-controls");
-    controls.classList.add("map-controls");
-    controls.innerHTML = this.controlsText;
-    this.container.insertBefore(controls, this.container.firstChild);
   }
 
   toggleControls() {

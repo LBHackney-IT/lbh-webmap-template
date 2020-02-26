@@ -141,7 +141,7 @@ class Metadata {
       if (control) {
         control.addTo(this.map);
       }
-    } else {
+    } else if (mapTitle || aboutTheData) {
       control = createTitle(this.map, mapTitle, mapAbstract, null);
       if (control) {
         control.addTo(this.map);

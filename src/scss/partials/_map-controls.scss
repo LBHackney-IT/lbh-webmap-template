@@ -1,5 +1,7 @@
 .map-controls {
   @include lbh-rem(height, 48);
+  @include lbh-rem(margin-left, -18);
+  @include lbh-rem(margin-right, -18);
   display: block;
   padding: 0;
   position: relative;

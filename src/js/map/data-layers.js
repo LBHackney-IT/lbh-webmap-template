@@ -2,6 +2,7 @@ import L from "leaflet";
 import { pointToLayer } from "./metadata";
 import { MARKER_COLOURS } from "./consts";
 import Personas from "./personas";
+import Filters from "./filters";
 
 class DataLayers {
   constructor(map) {
@@ -16,6 +17,9 @@ class DataLayers {
     this.overlayMaps = {};
     this.layerGroups = [];
     this.layerControl = null;
+    this.filters = null;
+    this.personas = null;
+    this.layersData = [];
   }
 
   createMarkerPopup(configLayer, feature, layerName) {
@@ -130,10 +134,27 @@ class DataLayers {
       }
     });
 
+    this.layersData.push({ layer, data });
+
+    this.loadedLayerCount++;
+    if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
+      this.filters = new Filters(this.mapClass, this.layersData);
+      this.filters.init();
+    }
+
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
-      const legendEntry = `<span aria-hidden="true" class="map-control__active-border" style="background:${MARKER_COLOURS[markerColor]}"></span><i class="fas fa-${markerIcon}" style="color:${MARKER_COLOURS[markerColor]}"></i><span class="map-control__text">${layerName}</span><span class="map-control__count">${count} items shown</span>`;
+      const legendEntry = `<span aria-hidden="true" class="map-control__active-border" style="background:${
+        MARKER_COLOURS[markerColor]
+      }"></span><i class="fas fa-${markerIcon}" style="color:${
+        MARKER_COLOURS[markerColor]
+      }"></i><span class="map-control__text">${layerName}</span><span id="map-layer-count-${layerName
+        .toLowerCase()
+        .replace(
+          /\s+/g,
+          "-"
+        )}" class="map-control__count">${count} items shown</span>`;
       this.overlayMaps[legendEntry] = layer;
 
       for (const k in parentGroups) {
@@ -144,18 +165,19 @@ class DataLayers {
         }
       }
 
-      this.loadedLayerCount++;
       if (this.loadedLayerCount == this.layerCount) {
         this.createControl();
 
         if (this.mapConfig.showPersonas) {
-          new Personas(
+          this.personas = new Personas(
             this.mapClass,
             this.layers,
             this.layerGroups,
             this.layerControl,
-            this.overlayMaps
-          ).init();
+            this.overlayMaps,
+            this.filters
+          );
+          this.personas.init();
         }
       }
     } else {
@@ -189,7 +211,9 @@ class DataLayers {
     mapLegend.appendChild(this.layerControl.getContainer());
     L.DomEvent.on(this.layerControl.getContainer(), "click", () => {
       L.DomEvent.stopPropagation;
-      // $(".persona-button--active").removeClass("persona-button--active");
+      if (this.personas) {
+        this.personas.removeActiveClass();
+      }
     });
     return this.layerControl;
   }
