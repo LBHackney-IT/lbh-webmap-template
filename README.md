@@ -24,7 +24,7 @@ file called `.npmrc` in the root of the project. Sandrine Balley
 (marta.villalobos@hackney.gov.uk) can give you the file contents for both files.
 
 Name your data file `map-definition.json` and add it to
-`data/YOUR_MAP_NAME_GOES_HERE/config/`.
+`data/YOUR_MAP_NAME_GOES_HERE/`.
 
 Go back to terminal and run the following commands:
 
