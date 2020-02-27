@@ -31,6 +31,14 @@ app.use("/assets", express.static("node_modules/lbh-frontend/lbh/assets"));
 app.use("/assets", express.static("node_modules/govuk-frontend/govuk/assets"));
 app.use("/data", express.static("data"));
 
+app.get("/dist/:page", function(req, res) {
+  res.render('dist/' + req.params.page);
+});
+
+app.get("/images/:page", function(req, res) {
+  res.render('images/' + req.params.page);
+});
+
 // Respond to all GET requests by rendering relevant page using Nunjucks
 app.get("/:project/:page", function(req, res) {
   res.render('templates/' + req.params.project + '/' + req.params.page, {}, function(err, html) {
