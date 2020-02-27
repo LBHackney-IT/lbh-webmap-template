@@ -2,7 +2,6 @@
   "title": "Red routes in Hackney",
   "summary": "This map shows major roads on which vehicles are not permitted to stop.",
   "baseStyle": "dark",
-  "showLegend": true,
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
