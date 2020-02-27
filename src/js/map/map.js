@@ -95,6 +95,7 @@ class Map {
     const pathname = window.location.pathname;
     const paths = pathname.split("/");
     this.dataFolder = `../data/${paths[paths.length - 2]}` || "../data";
+    console.log(this.dataFolder, paths);
     this.isEmbed = paths[paths.length - 1] === "embed.html";
   }
 
