@@ -26,41 +26,6 @@
       "options": ["Appointment", "Drop-in", "Home visit"]
     }
   },
-<<<<<<< HEAD
-=======
-  "personas": [
-    {
-      "id": "Immigration",
-      "icon": "../images/personas/passport.svg",
-      "iconActive": "../images/personas/passport.svg",
-      "text": "Find immigration advice"
-    },
-    {
-      "id": "Housing",
-      "icon": "../images/personas/house.svg",
-      "iconActive": "../images/personas/house.svg",
-      "text": "Find housing advice"
-    },
-    {
-      "id": "Debt",
-      "icon": "../images/personas/coin.svg",
-      "iconActive": "../images/personas/coin.svg",
-      "text": "Find debt advice"
-    },
-    {
-      "id": "Welfare",
-      "icon": "../images/personas/pound.svg",
-      "iconActive": "../images/personas/pound.svg",
-      "text": "Find welfare and benefits advice"
-    },
-    {
-      "id": "Employment",
-      "icon": "../images/personas/briefcase.svg",
-      "iconActive": "../images/personas/briefcase.svg",
-      "text": "Find employment advice"
-    }
-  ],
->>>>>>> 3812d0502dcfaf58c5e8a98719b9f97eb932dada
   "layers": [
     {
       "title": "Employment advice",
