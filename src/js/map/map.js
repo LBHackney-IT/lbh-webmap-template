@@ -94,7 +94,7 @@ class Map {
   getDataName() {
     const pathname = window.location.pathname;
     const paths = pathname.split("/");
-    this.dataFolder = `../../data/${paths[1]}` || "../../data";
+    this.dataFolder = `../data/${paths[1]}` || "../data";
     this.isEmbed = paths[paths.length - 1] === "embed.html";
   }
 
