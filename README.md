@@ -52,7 +52,7 @@ The options for the data file are as follows:
 | `showGeoServerMetadata` | Boolean | optional | If `true` the code will try to read the metadata (from `metadata.public_metadata`) via geoserver and add it to the infoBox that appears when you click on "About the data of this map" on desktop or on the information icon on mobile. This is a view on Earthlight metadata. This includes the name of the layer, the abstract, source and last update date of each layer of the map. |
 | `aboutTheData` | Boolean | optional | If `showGeoServerMetadata` is set to false, `aboutTheData` can be used to populate the text in the infoBox described above. |
 | `baseStyle` | String | optional | Mapbox style to use for the base map. Possible values:<br>`streets`: the closest style to Google. Amended to remove commercial points of interest at small scale.<br>`light`: light grey style we used for the regeneration map.<br>`dark`: black style<br>any other value, empty or omitted: the classical beige style we used for the initial leaflet maps |
-| `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordinance Survey masterMap outdoor style. |
+| `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap outdoor style. |
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 
 | `showHackneyMask` | Boolean | optional | If `true` a semi-opaque white mask will be added to all areas that fall outside of Hackney. |
