@@ -1,38 +1,24 @@
 {
-  "mapId": "1",
-  "name": "Wards in Hackney",
-  "abstract": "",
+  "title": "Wards in Hackney",
   "baseStyle": "streets",
-  "layerGroups": [
-    {
-      "name": "firework",
-      "groupIcon": "../images/star-christmas-duotone-default.svg",
-      "groupIconActive": "../images/star-christmas-duotone-active2.svg",
-      "groupText": "Fireworks"
-    }
-  ],
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Wards",
       "geoserverLayerName": "boundaries:hackney_ward",
-      "groups": [],
-      "searchable": false,
-      "sortOrder": "",
-      "pointStyle": "",
       "linePolygonStyle": {
         "styleName": "default",
-        "layerStroke": true,
-        "layerStrokeColor": "darkblue",
-        "layerOpacity": 1,
-        "layerFillColor": "",
-        "layerFillOpacity": 0,
+        "stroke": true,
+        "strokeColor": "darkblue",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
         "layerLineDash": "",
-        "layerWeight": 2
+        "weight": 2
       },
       "popup": {
-        "popupTitleField": "name"
+        "title": "name"
       }
     }
   ]

@@ -1,6 +1,6 @@
 import L from "leaflet";
 import { pointToLayer } from "./metadata";
-import { MARKER_COLOURS } from "./consts";
+import { MARKER_COLORS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 
@@ -15,85 +15,88 @@ class DataLayers {
     this.layerCount = map.mapConfig.layers.length;
     this.loadedLayerCount = 0;
     this.overlayMaps = {};
-    this.layerGroups = [];
+    this.personas = [];
     this.layerControl = null;
+    this.personasClass = null;
     this.filters = null;
-    this.personas = null;
     this.layersData = [];
   }
 
   createMarkerPopup(configLayer, feature, layerName) {
-    const popupStatementBefore = configLayer.popup.popupStatementBefore;
-    const popupTitleField = configLayer.popup.popupTitleField;
-    const popupFields = configLayer.popup.popupFields;
-    const popupStatementAfter = configLayer.popup.popupStatementAfter;
-    // Set up Pop up windows
-    // If the title is 'notitle', no title (an empty string) will be added at the top.
+    const title = configLayer.popup.title;
+    const afterTitle = configLayer.popup.afterTitle;
+    const fields = configLayer.popup.fields;
+    const afterFields = configLayer.popup.afterFields;
+
     let stringPopup = "";
-    if (popupTitleField !== "notitle") {
-      // put the title field at the top of the popup in bold. If there is none in the config, just use the layer title instead.
-      if (popupTitleField !== "") {
-        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[popupTitleField]}</h3>`;
+    if (title !== "notitle") {
+      if (title) {
+        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[title]}</h3>`;
       } else {
         stringPopup = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
       }
     }
 
-    if (popupStatementBefore) {
-      stringPopup += `<p class="popup__text">${popupStatementBefore}</p>`;
+    if (afterTitle) {
+      stringPopup += `<p class="popup__text">${afterTitle}</p>`;
     }
 
-    for (const i in popupFields) {
-      if (feature.properties[popupFields[i]] !== "") {
+    for (const field of fields) {
+      if (feature.properties[field] !== "") {
         if (
-          feature.properties[popupFields[i].fieldName] !== "" &&
-          feature.properties[popupFields[i].fieldName] !== null
+          feature.properties[field.name] !== "" &&
+          feature.properties[field.name] !== null
         ) {
-          if (popupFields[i].fieldLabel != "") {
+          if (field.label != "") {
             stringPopup += `<p class="popup__text"><span class="popup__label">${
-              popupFields[i].fieldLabel
-            }</span>: ${feature.properties[popupFields[i].fieldName]}</p>`;
+              field.label
+            }</span>: ${feature.properties[field.name]}</p>`;
           } else {
             stringPopup += `<p class="popup__text">${
-              feature.properties[popupFields[i].fieldName]
+              feature.properties[field.name]
             }</p>`;
           }
         }
       }
     }
 
-    if (popupStatementAfter) {
-      stringPopup += `<p class="popup__text">${popupStatementAfter}</p>`;
+    if (afterFields) {
+      stringPopup += `<p class="popup__text">${afterFields}</p>`;
     }
 
     return stringPopup;
   }
 
   addWFSLayer(data, configLayer) {
-    const layerName = configLayer.title; // get from context
-    const sortOrder = configLayer.title;
-    const parentGroups = configLayer.groups;
+    const layerName = configLayer.title;
+    const sortOrder =
+      configLayer.sortOrder && !isNaN(configLayer.sortOrder)
+        ? configLayer.sortOrder
+        : configLayer.title;
 
-    const markerType = configLayer.pointStyle.markerType;
-    const markerIcon = configLayer.pointStyle.icon;
-    const markerColor = configLayer.pointStyle.markerColor;
-    const cluster = configLayer.pointStyle.cluster;
-    const layerStyle = configLayer.linePolygonStyle.styleName;
+    const pointStyle = configLayer.pointStyle;
+    const markerType = pointStyle && pointStyle.markerType;
+    const markerIcon = pointStyle && pointStyle.icon;
+    const markerColor = pointStyle && pointStyle.markerColor;
+    const cluster = pointStyle && pointStyle.cluster;
 
-    const layerOpacity = configLayer.linePolygonStyle.layerOpacity;
-    const layerFillColor = configLayer.linePolygonStyle.layerFillColor;
-    const layerLineDash = configLayer.linePolygonStyle.layerLineDash;
+    const linePolygonStyle = configLayer.linePolygonStyle;
+    const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
+    const opacity = linePolygonStyle && linePolygonStyle.opacity;
+    const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
+    const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
+
     const baseLayerStyles = {
-      stroke: configLayer.linePolygonStyle.layerStroke,
-      color: configLayer.linePolygonStyle.layerStrokeColor,
-      fillOpacity: configLayer.linePolygonStyle.layerFillOpacity,
-      weight: configLayer.linePolygonStyle.layerWeight
+      stroke: linePolygonStyle && linePolygonStyle.stroke,
+      color: linePolygonStyle && linePolygonStyle.strokeColor,
+      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
+      weight: linePolygonStyle && linePolygonStyle.weight
     };
 
     const noPopup = configLayer.popup.noPopup;
 
     const layer = new L.GeoJSON(data, {
-      color: MARKER_COLOURS[markerColor],
+      color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         return pointToLayer(
           latlng,
@@ -118,8 +121,8 @@ class DataLayers {
       style: () => {
         if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
-            opacity: layerOpacity,
-            fillColor: layerFillColor,
+            opacity: opacity,
+            fillColor: fillColor,
             dashArray: layerLineDash
           });
         } else if (layerStyle === "random polygons") {
@@ -137,7 +140,6 @@ class DataLayers {
     this.layersData.push({ layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
-      console.log("here");
       layer.addTo(this.map);
     }
 
@@ -151,38 +153,34 @@ class DataLayers {
       this.layers.push(layer);
       const count = layer.getLayers().length;
       const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
-        MARKER_COLOURS[markerColor]
+        MARKER_COLORS[markerColor]
       }"></span><i class="fas fa-${markerIcon}" style="color:${
-        MARKER_COLOURS[markerColor]
-      }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layerName
-        .toLowerCase()
-        .replace(
-          /\s+/g,
-          "-"
-        )}" class="control__count">${count} items shown</span>`;
+        MARKER_COLORS[markerColor]
+      }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layer.getLayerId(
+        layer
+      )}" class="control__count">${count} items shown</span>`;
       this.overlayMaps[legendEntry] = layer;
 
-      for (const k in parentGroups) {
-        for (const l in this.layerGroups) {
-          if (this.layerGroups[l].group == parentGroups[k]) {
-            this.layerGroups[l].layersInGroup.push(layer);
-          }
+      const layerPersonas = configLayer.personas;
+      for (const x in this.personas) {
+        if (layerPersonas.includes(this.personas[x].id)) {
+          this.personas[x].layers.push(layer);
         }
       }
 
       if (this.loadedLayerCount == this.layerCount) {
         this.createControl();
 
-        if (this.mapConfig.showPersonas) {
-          this.personas = new Personas(
+        if (this.mapConfig.personas && this.mapConfig.personas.length > 0) {
+          this.personasClass = new Personas(
             this.mapClass,
             this.layers,
-            this.layerGroups,
+            this.personas,
             this.layerControl,
             this.overlayMaps,
             this.filters
           );
-          this.personas.init();
+          this.personasClass.init();
         }
       }
     } else {
@@ -204,8 +202,14 @@ class DataLayers {
     this.layerControl = new L.control.layers(null, this.overlayMaps, {
       collapsed: false,
       sortLayers: true,
-      sortFunction: function(a, b) {
-        return a.options.sortOrder.localeCompare(b.options.sortOrder);
+      sortFunction: (a, b) => {
+        const x = a.options.sortOrder;
+        const y = b.options.sortOrder;
+        if (isNaN(x) && isNaN(y)) {
+          return x.localeCompare(y);
+        } else {
+          return x >= y ? 1 : -1;
+        }
       }
     });
     this.map.addControl(this.layerControl, {
@@ -216,27 +220,28 @@ class DataLayers {
     mapLegend.appendChild(this.layerControl.getContainer());
     L.DomEvent.on(this.layerControl.getContainer(), "click", () => {
       L.DomEvent.stopPropagation;
-      if (this.personas) {
-        this.personas.removeActiveClass();
+      if (this.personasClass) {
+        this.personasClass.removeActiveClass();
       }
     });
     return this.layerControl;
   }
 
   loadLayers() {
-    for (const group of this.mapConfig.layerGroups) {
-      //crate layergroup object with this new empty list of layers
-      const layergroup = {
-        group: group.name,
-        groupIcon: group.groupIcon,
-        groupIconActive: group.groupIconActive,
-        groupText: group.groupText,
-        alt: group.alt,
-        collapsed: false,
-        layersInGroup: [],
-        groupEasyButton: null
-      };
-      this.layerGroups.push(layergroup);
+    if (this.mapConfig.personas) {
+      for (const group of this.mapConfig.personas) {
+        //crate layergroup object with this new empty list of layers
+        const persona = {
+          id: group.id,
+          icon: group.icon,
+          iconActive: group.iconActive,
+          text: group.text,
+          collapsed: false,
+          layers: [],
+          easyButton: null
+        };
+        this.personas.push(persona);
+      }
     }
 
     //for each layer in the config file
@@ -249,8 +254,8 @@ class DataLayers {
       //Test
       //const url="http://lbhgiswebt01/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+configLayer.geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
 
-      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.layerGroups[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-      //const iconn=this.mapConfig.layerGroups[i].layers[j].icon;
+      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.personas[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
+      //const iconn=this.mapConfig.personas[i].layers[j].icon;
 
       fetch(url, {
         method: "get"

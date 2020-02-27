@@ -1,51 +1,37 @@
 {
-  "mapId": "1",
-  "name": "Conservation Areas in Hackney",
-  "abstract": "",
-  "showMetadataUnderTitle": true,
+  "title": "Conservation Areas in Hackney",
+  "showGeoServerMetadata": true,
   "zoomToMasterMap": true,
-  "layerGroups": [
-    {
-      "name": "firework",
-      "groupIcon": "images/star-christmas-duotone-default.svg",
-      "groupIconActive": "images/star-christmas-duotone-active2.svg",
-      "groupText": "Fireworks"
-    }
-  ],
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
-      "groups": [],
-      "searchable": false,
-      "sortOrder": "",
-      "pointStyle": "",
       "linePolygonStyle": {
         "styleName": "random polygons",
-        "layerStroke": true,
-        "layerStrokeColor": "grey",
-        "layerOpacity": 0,
-        "layerFillColor": "",
-        "layerFillOpacity": 0.5,
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0,
+        "fillColor": "",
+        "fillOpacity": 0.5,
         "layerLineDash": "",
-        "layerWeight": 1.5
+        "weight": 1.5
       },
       "popup": {
-        "popupTitleField": "notitle",
-        "popupFields": [
+        "title": "notitle",
+        "fields": [
           {
-            "fieldLabel": "Conservation area name",
-            "fieldName": "ca_name"
+            "label": "Conservation area name",
+            "name": "ca_name"
           },
           {
-            "fieldLabel": "Designation year",
-            "fieldName": "designation_date"
+            "label": "Designation year",
+            "name": "designation_date"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "link"
+            "label": "",
+            "name": "link"
           }
         ]
       }

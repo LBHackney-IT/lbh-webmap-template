@@ -1,9 +1,7 @@
 {
-  "mapId": "1",
-  "name": "Advice Services",
-  "abstract": "Where to find advice services funded by Hackney council",
+  "title": "Advice Services",
+  "summary": "Where to find advice services funded by Hackney council",
   "showLayersOnLoad": true,
-  "showPersonas": false,
   "showLegend": true,
   "filters": {
     "days": {
@@ -27,87 +25,74 @@
       "options": ["Appointment", "Drop-in", "Home visit"]
     }
   },
-  "layerGroups": [
+  "personas": [
     {
-      "name": "Immigration",
-      "groupIcon": "passport",
-      "groupIconActive": "css/images/passport-solid.svg",
-      "groupText": "Find immigration advice"
+      "id": "Immigration",
+      "icon": "passport",
+      "iconActive": "css/images/passport-solid.svg",
+      "text": "Find immigration advice"
     },
     {
-      "name": "Housing",
-      "groupIcon": "house",
-      "groupIconActive": "css/images/house-solid.svg",
-      "groupText": "Find housing advice"
+      "id": "Housing",
+      "icon": "house",
+      "iconActive": "css/images/house-solid.svg",
+      "text": "Find housing advice"
     },
     {
-      "name": "Debt",
-      "groupIcon": "coin",
-      "groupIconActive": "css/images/coin-solid.svg",
-      "groupText": "Find debt advice"
+      "id": "Debt",
+      "icon": "coin",
+      "iconActive": "css/images/coin-solid.svg",
+      "text": "Find debt advice"
     },
     {
-      "name": "Welfare",
-      "groupIcon": "pound-sign",
-      "groupIconActive": "css/images/pound-sign-solid.svg",
-      "groupText": "Find welfare and benefits advice"
+      "id": "Welfare",
+      "icon": "pound-sign",
+      "iconActive": "css/images/pound-sign-solid.svg",
+      "text": "Find welfare and benefits advice"
     },
     {
-      "name": "Employment",
-      "groupIcon": "briefcase",
-      "groupIconActive": "css/images/briefcase-solid.svg",
-      "groupText": "Find employment advice"
+      "id": "Employment",
+      "icon": "briefcase",
+      "iconActive": "css/images/briefcase-solid.svg",
+      "text": "Find employment advice"
     }
   ],
   "layers": [
     {
       "title": "Employment advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_employment",
-      "groups": ["Employment"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["Employment"],
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
         "markerColor": "purple"
       },
-      "metadata": "",
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Venue",
-            "fieldName": "address"
+            "label": "Venue",
+            "name": "address"
           },
           {
-            "fieldLabel": "Provider",
-            "fieldName": "provided_by"
+            "label": "Provider",
+            "name": "provided_by"
           },
           {
-            "fieldLabel": "Booking",
-            "fieldName": "how_accessed"
+            "label": "Booking",
+            "name": "how_accessed"
           },
           {
-            "fieldLabel": "Schedule",
-            "fieldName": "when_provided"
+            "label": "Schedule",
+            "name": "when_provided"
           },
           {
-            "fieldLabel": "Contact",
-            "fieldName": "main_contact_and_details"
+            "label": "Contact",
+            "name": "main_contact_and_details"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "advice_provision"
+            "label": "",
+            "name": "advice_provision"
           }
         ]
       }
@@ -115,51 +100,38 @@
     {
       "title": "Immigration advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_immigration",
-      "groups": ["Immigration"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["Immigration"],
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "passport",
         "markerColor": "darkpurple"
       },
-      "metadata": "",
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Venue",
-            "fieldName": "address"
+            "label": "Venue",
+            "name": "address"
           },
           {
-            "fieldLabel": "Provider",
-            "fieldName": "provided_by"
+            "label": "Provider",
+            "name": "provided_by"
           },
           {
-            "fieldLabel": "Booking",
-            "fieldName": "how_accessed"
+            "label": "Booking",
+            "name": "how_accessed"
           },
           {
-            "fieldLabel": "Schedule",
-            "fieldName": "when_provided"
+            "label": "Schedule",
+            "name": "when_provided"
           },
           {
-            "fieldLabel": "Contact",
-            "fieldName": "main_contact_and_details"
+            "label": "Contact",
+            "name": "main_contact_and_details"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "advice_provision"
+            "label": "",
+            "name": "advice_provision"
           }
         ]
       }
@@ -167,51 +139,38 @@
     {
       "title": "Housing advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_housing",
-      "groups": ["Housing"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["Housing"],
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "house",
         "markerColor": "green"
       },
-      "metadata": "",
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Venue",
-            "fieldName": "address"
+            "label": "Venue",
+            "name": "address"
           },
           {
-            "fieldLabel": "Provider",
-            "fieldName": "provided_by"
+            "label": "Provider",
+            "name": "provided_by"
           },
           {
-            "fieldLabel": "Booking",
-            "fieldName": "how_accessed"
+            "label": "Booking",
+            "name": "how_accessed"
           },
           {
-            "fieldLabel": "Schedule",
-            "fieldName": "when_provided"
+            "label": "Schedule",
+            "name": "when_provided"
           },
           {
-            "fieldLabel": "Contact",
-            "fieldName": "main_contact_and_details"
+            "label": "Contact",
+            "name": "main_contact_and_details"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "advice_provision"
+            "label": "",
+            "name": "advice_provision"
           }
         ]
       }
@@ -219,51 +178,38 @@
     {
       "title": "Welfare Benefits advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_welfare_benefit",
-      "groups": ["Welfare"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["Welfare"],
+      "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
         "markerColor": "cadetblue"
       },
-      "metadata": "",
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Venue",
-            "fieldName": "address"
+            "label": "Venue",
+            "name": "address"
           },
           {
-            "fieldLabel": "Provider",
-            "fieldName": "provided_by"
+            "label": "Provider",
+            "name": "provided_by"
           },
           {
-            "fieldLabel": "Booking",
-            "fieldName": "how_accessed"
+            "label": "Booking",
+            "name": "how_accessed"
           },
           {
-            "fieldLabel": "Schedule",
-            "fieldName": "when_provided"
+            "label": "Schedule",
+            "name": "when_provided"
           },
           {
-            "fieldLabel": "Contact",
-            "fieldName": "main_contact_and_details"
+            "label": "Contact",
+            "name": "main_contact_and_details"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "advice_provision"
+            "label": "",
+            "name": "advice_provision"
           }
         ]
       }
@@ -271,51 +217,38 @@
     {
       "title": "Debt advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_debt",
-      "groups": ["Debt"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["Debt"],
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "coin",
         "markerColor": "orange"
       },
-      "metadata": "",
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Venue",
-            "fieldName": "address"
+            "label": "Venue",
+            "name": "address"
           },
           {
-            "fieldLabel": "Provider",
-            "fieldName": "provided_by"
+            "label": "Provider",
+            "name": "provided_by"
           },
           {
-            "fieldLabel": "Booking",
-            "fieldName": "how_accessed"
+            "label": "Booking",
+            "name": "how_accessed"
           },
           {
-            "fieldLabel": "Schedules",
-            "fieldName": "when_provided"
+            "label": "Schedules",
+            "name": "when_provided"
           },
           {
-            "fieldLabel": "Contact",
-            "fieldName": "main_contact_and_details"
+            "label": "Contact",
+            "name": "main_contact_and_details"
           },
           {
-            "fieldLabel": "",
-            "fieldName": "advice_provision"
+            "label": "",
+            "name": "advice_provision"
           }
         ]
       }

@@ -80,9 +80,7 @@ class Filters {
       };
       layerData.layer.clearLayers();
       layerData.layer.addData(layerData.data);
-      const layerName = layerData.layer.options.sortOrder
-        .toLowerCase()
-        .replace(/\s+/g, "-");
+      const layerName = layerData.layer.getLayerId(layerData.layer);
       document.getElementById(`map-layer-count-${layerName}`).innerText = `${
         layerData.layer.getLayers().length
       } items shown`;

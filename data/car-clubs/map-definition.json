@@ -1,41 +1,24 @@
 {
-  "mapId": "3",
-  "name": "Car clubs in Hackney",
-  "abstract": "This map shows car club bays in Hackney by operator.",
-  "showMetadataUnderTitle": false,
+  "title": "Car clubs in Hackney",
+  "summary": "This map shows car club bays in Hackney by operator.",
+  "showGeoServerMetadata": false,
   "zoomToMasterMap": true,
-  "layerGroups": [],
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Car clubs",
       "geoserverLayerName": "parking:parking_order_car_club_zipcar",
-      "groups": ["firework"],
-      "searchable": "false",
-      "sortOrder": "30",
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fa-car",
         "markerColor": "green"
       },
-      "hover": false,
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Operator",
-            "fieldName": "operator"
+            "label": "Operator",
+            "name": "operator"
           }
         ]
       }
@@ -43,31 +26,16 @@
     {
       "title": "Car clubs",
       "geoserverLayerName": "parking:parking_order_car_club_hackney_transport",
-      "groups": ["firework"],
-      "searchable": "false",
-      "sortOrder": "30",
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fa-car",
         "markerColor": "blue"
       },
-      "hover": false,
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Operator",
-            "fieldName": "operator"
+            "label": "Operator",
+            "name": "operator"
           }
         ]
       }
@@ -75,31 +43,16 @@
     {
       "title": "Car clubs",
       "geoserverLayerName": "parking:parking_order_car_club_enterprise",
-      "groups": ["firework"],
-      "searchable": "false",
-      "sortOrder": "30",
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fa-car",
         "markerColor": "purple"
       },
-      "hover": false,
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "Operator",
-            "fieldName": "operator"
+            "label": "Operator",
+            "name": "operator"
           }
         ]
       }

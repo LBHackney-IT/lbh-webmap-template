@@ -1,41 +1,26 @@
 {
-  "mapId": "1",
-  "name": "Red routes in Hackney",
-  "abstract": "This map shows major roads on which vehicles are not permitted to stop.",
+  "title": "Red routes in Hackney",
+  "summary": "This map shows major roads on which vehicles are not permitted to stop.",
   "baseStyle": "dark",
-  "showPersonas": true,
   "showLegend": true,
-  "layerGroups": [
-    {
-      "name": "firework",
-      "groupIcon": "../images/personas/persona-chilling.png",
-      "groupIconActive": "../images/personas/persona-chilling-active.png",
-      "groupText": "Fireworks"
-    }
-  ],
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Red routes",
       "geoserverLayerName": "transport:tfl_road_line",
-      "groups": ["firework"],
-      "searchable": false,
-      "sortOrder": "",
-      "pointStyle": "",
       "linePolygonStyle": {
         "styleName": "default",
-        "layerStroke": "false",
-        "layerStrokeColor": "red",
-        "layerOpacity": 0.7,
-        "layerFillColor": "",
-        "layerFillOpacity": 0,
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 0.7,
+        "fillColor": "",
+        "fillOpacity": 0,
         "layerLineDash": "",
-        "layerWeight": 8
+        "weight": 8
       },
       "popup": {
-        "popupTitleField": "",
-        "popupStatementAfter": "Read more about Red routes on <a href='https://tfl.gov.uk/modes/driving/red-routes' target='blank'>TFL website</a>"
+        "afterFields": "Read more about Red routes on <a href='https://tfl.gov.uk/modes/driving/red-routes' target='blank'>TFL website</a>"
       }
     }
   ]

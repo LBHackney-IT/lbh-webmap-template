@@ -9138,6 +9138,9 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-window {
   transform: none !important; }
 
+.leaflet-control-window .content {
+  margin-top: 0; }
+
 .leaflet-control-window .titlebar {
   min-height: unset;
   padding: unset; }

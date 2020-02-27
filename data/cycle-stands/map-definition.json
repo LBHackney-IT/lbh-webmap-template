@@ -1,24 +1,16 @@
 {
-  "mapId": "3",
-  "name": "Cycle parking in Hackney",
-  "abstract": "This map shows the big efforts of ............",
-  "showMetadataUnderTitle": true,
-  "aboutTheData": "mapId (text - not in use): unique id which identifies the mapName (text): name o",
-  "baseStyle": "",
+  "title": "Cycle parking in Hackney",
+  "summary": "This map shows the big efforts of ............",
+  "showGeoServerMetadata": true,
   "zoomToMasterMap": true,
-  "locateControl": false,
-  "resetZoomControl": false,
-  "layerGroups": [],
+  "showLocateButton": false,
+  "showResetZoomButton": false,
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Cycle stands",
       "geoserverLayerName": "transport:cycle_stand",
-      "groups": [],
-      "searchable": false,
-      "sortOrder": "",
-      "hover": false,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "bicycle",
@@ -27,15 +19,13 @@
       },
       "linePolygonStyle": "",
       "popup": {
-        "popupTitleField": "",
-        "popupStatementBefore": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "",
-            "fieldName": "type"
+            "label": "",
+            "name": "type"
           }
         ],
-        "popupStatementAfter": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
+        "afterFields": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
       }
     }
   ]

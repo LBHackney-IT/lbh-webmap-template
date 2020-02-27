@@ -1,31 +1,23 @@
 {
-  "mapId": "1",
-  "name": "Hackney constituencies",
-  "abstract": "This map shows......",
-  "showMetadataUnderTitle": true,
-  "aboutTheData": "blabla",
-  "layerGroups": [],
+  "title": "Hackney constituencies",
+  "summary": "This map shows......",
+  "showGeoServerMetadata": true,
   "layers": [
     {
       "title": "Hackney constituencies",
       "geoserverLayerName": "boundaries:hackney_constituency",
-      "groups": [],
-      "searchable": false,
-      "sortOrder": "",
-      "hover": true,
-      "pointStyle": "",
       "linePolygonStyle": {
         "styleName": "default",
-        "layerStroke": true,
-        "layerStrokeColor": "black",
-        "layerOpacity": 1,
-        "layerFillColor": "grey",
-        "layerFillOpacity": 0.2,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "grey",
+        "fillOpacity": 0.2,
         "layerLineDash": "",
-        "layerWeight": 2
+        "weight": 2
       },
       "popup": {
-        "popupTitleField": "name"
+        "title": "name"
       }
     }
   ]

@@ -1,42 +1,38 @@
 {
-  "mapId": "3",
-  "name": "An horrible mix",
-  "abstract": "This map shows the big efforts of ............",
-  "showMetadataUnderTitle": true,
-  "aboutTheData": "mapId (text - not in use): unique id which identifies the mapName (text): name o to download the data go to <a href=''>here</a>",
-  "baseStyle": "",
+  "title": "An horrible mix",
+  "summary": "This map shows the big efforts of ............",
+  "showGeoServerMetadata": true,
   "zoomToMasterMap": true,
-  "locateControl": true,
-  "resetZoomControl": true,
-  "layerGroups": [
+  "showLocateButton": true,
+  "showResetZoomButton": true,
+  "personas": [
     {
-      "name": "chilling",
-      "groupIcon": "../images/personas/persona-chilling.png",
-      "groupIconActive": "../images/personas/persona-chilling-active.png",
-      "groupText": "Chilling"
+      "id": "chilling",
+      "icon": "../images/personas/persona-chilling.png",
+      "iconActive": "../images/personas/persona-chilling-active.png",
+      "text": "Chilling"
     },
     {
-      "name": "playing",
-      "groupIcon": "../images/personas/persona-playing.png",
-      "groupIconActive": "../images/personas/persona-playing-active.png",
-      "groupText": "Playing"
+      "id": "playing",
+      "icon": "../images/personas/persona-playing.png",
+      "iconActive": "../images/personas/persona-playing-active.png",
+      "text": "Playing"
     },
     {
-      "name": "wandering",
-      "groupIcon": "../images/personas/persona-wandering.png",
-      "groupIconActive": "../images/personas/persona-wandering-active.png",
-      "groupText": "Wandering"
+      "id": "wandering",
+      "icon": "../images/personas/persona-wandering.png",
+      "iconActive": "../images/personas/persona-wandering-active.png",
+      "text": "Wandering"
     },
     {
-      "name": "everything",
-      "groupIcon": "../images/personas/persona-everything.png",
-      "groupIconActive": "../images/personas/persona-everything-active.png",
-      "groupText": "Everything"
+      "id": "everything",
+      "icon": "../images/personas/persona-everything.png",
+      "iconActive": "../images/personas/persona-everything-active.png",
+      "text": "Everything"
     }
   ],
   "showHackneyMask": true,
   "showLegend": true,
-  "showPersonas": true,
   "controlsText": {
     "showLegendText": "Show legend",
     "hideLegendText": "Hide legend",
@@ -68,10 +64,7 @@
     {
       "title": "Cycle stands",
       "geoserverLayerName": "transport:cycle_stand",
-      "groups": ["chilling", "everything"],
-      "searchable": false,
-      "sortOrder": "",
-      "hover": false,
+      "personas": ["chilling", "everything"],
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "bicycle",
@@ -80,23 +73,19 @@
       },
       "linePolygonStyle": "",
       "popup": {
-        "popupTitleField": "",
-        "popupStatementBefore": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "",
-            "fieldName": "type"
+            "label": "",
+            "name": "type"
           }
         ],
-        "popupStatementAfter": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
+        "afterFields": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
       }
     },
     {
       "title": "Wards",
       "geoserverLayerName": "boundaries:hackney_ward",
-      "groups": ["chilling", "wandering", "everything"],
-      "searchable": false,
-      "sortOrder": "",
+      "personas": ["chilling", "wandering", "everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "map",
@@ -104,47 +93,32 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "layerStroke": true,
-        "layerStrokeColor": "darkblue",
-        "layerOpacity": 1,
-        "layerFillColor": "",
-        "layerFillOpacity": 0,
+        "stroke": true,
+        "strokeColor": "darkblue",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
         "layerLineDash": "",
-        "layerWeight": 2
+        "weight": 2
       },
       "popup": {
-        "noPopup": true,
-        "popupTitleField": "name"
+        "noPopup": true
       }
     },
     {
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
-      "groups": ["wandering", "everything"],
-      "searchable": "false",
-      "sortOrder": "30",
+      "personas": ["wandering", "everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "tire-flat",
         "markerColor": "blue"
       },
-      "hover": false,
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "",
-            "fieldName": "address"
+            "label": "",
+            "name": "address"
           }
         ]
       }
@@ -152,9 +126,7 @@
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
-      "groups": ["playing", "everything"],
-      "searchable": false,
-      "sortOrder": "",
+      "personas": ["playing", "everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "car",
@@ -162,24 +134,24 @@
       },
       "linePolygonStyle": {
         "styleName": "random polygons",
-        "layerStroke": true,
-        "layerStrokeColor": "grey",
-        "layerOpacity": 0,
-        "layerFillColor": "",
-        "layerFillOpacity": 0.4,
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0,
+        "fillColor": "",
+        "fillOpacity": 0.4,
         "layerLineDash": "",
-        "layerWeight": 1
+        "weight": 1
       },
       "popup": {
-        "popupTitleField": "street_name",
-        "popupFields": [
+        "title": "street_name",
+        "fields": [
           {
-            "fieldLabel": "",
-            "fieldName": "location"
+            "label": "",
+            "name": "location"
           },
           {
-            "fieldLabel": "Restricted hours:",
-            "fieldName": "start_info"
+            "label": "Restricted hours:",
+            "name": "start_info"
           }
         ]
       }

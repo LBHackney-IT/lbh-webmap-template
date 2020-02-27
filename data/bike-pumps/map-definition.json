@@ -1,48 +1,20 @@
 {
-  "mapId": "3",
-  "name": "",
-  "aboutTheData": "",
-  "abstract": "",
-  "showMetadataUnderTitle": false,
-  "layerGroups": [
-    {
-      "name": "firework",
-      "groupIcon": "../images/star-christmas-duotone-default.svg",
-      "groupIconActive": "../images/star-christmas-duotone-active2.svg",
-      "groupText": "Fireworks"
-    }
-  ],
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
-      "groups": ["firework"],
-      "searchable": "false",
-      "sortOrder": "30",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "tire-flat",
         "markerColor": "red"
       },
-      "hover": false,
-      "linePolygonStyle": {
-        "styleName": "",
-        "layerStroke": "",
-        "layerStrokeColor": "",
-        "layerOpacity": "",
-        "layerFillColor": "",
-        "layerFillOpacity": "",
-        "layerLineDash": "",
-        "layerWeight": ""
-      },
       "popup": {
-        "popupTitleField": "",
-        "popupFields": [
+        "fields": [
           {
-            "fieldLabel": "",
-            "fieldName": "address"
+            "label": "",
+            "name": "address"
           }
         ]
       }

@@ -2,16 +2,16 @@ import { scrollTo } from "../helpers/scrollTo";
 import { PERSONA_ACTIVE_CLASS } from "./consts";
 
 class Personas {
-  constructor(map, layers, layerGroups, layerControl, overlayMaps, filters) {
+  constructor(map, layers, personas, layerControl, overlayMaps, filters) {
     this.container = map.container;
-    this.layerGroups = layerGroups;
+    this.personas = personas;
     this.layers = layers;
     this.controls = map.controls;
     this.map = map.map;
     this.layerControl = layerControl;
     this.overlayMaps = overlayMaps;
     this.isEmbed = map.isEmbed;
-    this.personas = null;
+    this.personasContainer = null;
     this.filters = filters;
   }
 
@@ -20,17 +20,17 @@ class Personas {
     mapPersonas.setAttribute("id", "personas");
     mapPersonas.classList.add("personas");
     this.container.insertBefore(mapPersonas, this.container.firstChild);
-    this.personas = document.getElementById("personas");
-    for (let i = 0; i < this.layerGroups.length; i++) {
-      this.createEasyButtons(this.layerGroups[i], i, true);
+    this.personasContainer = document.getElementById("personas");
+    for (let i = 0; i < this.personas.length; i++) {
+      this.createEasyButtons(this.personas[i], i, true);
     }
   }
 
-  createEasyButtons(layerGroup, i, keepAllInLayerControl) {
+  createEasyButtons(persona, i, keepAllInLayerControl) {
     let buttonWrapper = document.createElement("span");
     buttonWrapper.classList.add("personas__button-wrapper");
 
-    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="personas__icon-wrapper"><img class="personas__icon personas__icon--base" height = 80px src="${layerGroup.groupIcon}" alt="${layerGroup.alt}"/><img class="personas__icon personas__icon--active" height = 80px src="${layerGroup.groupIconActive}" alt="${layerGroup.alt}"/></span><span class="button-text">${layerGroup.groupText}</span></button>`;
+    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="personas__icon-wrapper"><img class="personas__icon personas__icon--base" height = 80px src="${persona.icon}" alt="${persona.text}"/><img class="personas__icon personas__icon--active" height = 80px src="${persona.iconActive}" alt="${persona.text}"/></span><span class="button-text">${persona.text}</span></button>`;
 
     const mapPersonas = document.getElementById("personas");
     mapPersonas.appendChild(buttonWrapper);
@@ -42,7 +42,7 @@ class Personas {
       button.classList.add(PERSONA_ACTIVE_CLASS);
       this.controls.showClearButton();
 
-      this.switchGroup(layerGroup, keepAllInLayerControl);
+      this.switchGroup(persona, keepAllInLayerControl);
 
       //bit of code that switches the group
 
@@ -55,7 +55,7 @@ class Personas {
   }
 
   removeActiveClass() {
-    for (const personaWrapper of this.personas.childNodes) {
+    for (const personaWrapper of this.personasContainer.childNodes) {
       const persona = personaWrapper.firstChild;
       if (persona.classList) {
         persona.classList.remove(PERSONA_ACTIVE_CLASS);
@@ -75,7 +75,7 @@ class Personas {
     }
   }
 
-  switchGroup(layerGroup, keepAllInLayerControl) {
+  switchGroup(persona, keepAllInLayerControl) {
     //remove all layers
     for (const layer of this.layers) {
       this.map.removeLayer(layer);
@@ -90,7 +90,7 @@ class Personas {
     }
 
     //add layers from that group
-    for (const layer of layerGroup.layersInGroup) {
+    for (const layer of persona.layers) {
       this.map.addLayer(layer);
       // if the keep option is set to false, we now need to re-add the layers to the control
       if (!keepAllInLayerControl) {

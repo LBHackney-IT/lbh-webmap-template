@@ -133,7 +133,7 @@ class Map {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     }
 
-    if (this.mapConfig.locateControl) {
+    if (this.mapConfig.showLocateButton) {
       new Geolocation(
         this.map,
         this.errorNoLocation,
@@ -142,7 +142,7 @@ class Map {
     }
 
     // Add reset button specifically on non-mobile devices, not based on screensize.
-    if (this.mapConfig.resetZoomControl && !L.Browser.mobile) {
+    if (this.mapConfig.showResetZoomButton && !L.Browser.mobile) {
       this.addResetButton();
     }
   }
