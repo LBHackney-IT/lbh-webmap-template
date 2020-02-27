@@ -75,7 +75,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
       content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
       classes: "leaflet-control-layers metadata__title-box",
       events: {
-        click: () => metadataWindow.show()
+        click: () => aboutTheData && metadataWindow.show()
       }
     });
   }

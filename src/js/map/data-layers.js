@@ -41,20 +41,22 @@ class DataLayers {
       stringPopup += `<p class="popup__text">${afterTitle}</p>`;
     }
 
-    for (const field of fields) {
-      if (feature.properties[field] !== "") {
-        if (
-          feature.properties[field.name] !== "" &&
-          feature.properties[field.name] !== null
-        ) {
-          if (field.label != "") {
-            stringPopup += `<p class="popup__text"><span class="popup__label">${
-              field.label
-            }</span>: ${feature.properties[field.name]}</p>`;
-          } else {
-            stringPopup += `<p class="popup__text">${
-              feature.properties[field.name]
-            }</p>`;
+    if (fields) {
+      for (const field of fields) {
+        if (feature.properties[field] !== "") {
+          if (
+            feature.properties[field.name] !== "" &&
+            feature.properties[field.name] !== null
+          ) {
+            if (field.label != "") {
+              stringPopup += `<p class="popup__text"><span class="popup__label">${
+                field.label
+              }</span>: ${feature.properties[field.name]}</p>`;
+            } else {
+              stringPopup += `<p class="popup__text">${
+                feature.properties[field.name]
+              }</p>`;
+            }
           }
         }
       }
