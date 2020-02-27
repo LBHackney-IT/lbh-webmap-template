@@ -2,7 +2,7 @@
   "mapId": "1",
   "name": "Advice Services",
   "abstract": "Where to find advice services funded by Hackney council",
-  "showAllGroupsLayers": true,
+  "showLayersOnLoad": true,
   "showPersonas": false,
   "showLegend": true,
   "filters": {

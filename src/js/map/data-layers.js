@@ -136,6 +136,11 @@ class DataLayers {
 
     this.layersData.push({ layer, data });
 
+    if (this.mapConfig.showLayersOnLoad) {
+      console.log("here");
+      layer.addTo(this.map);
+    }
+
     this.loadedLayerCount++;
     if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
