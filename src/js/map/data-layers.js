@@ -75,7 +75,7 @@ class DataLayers {
       configLayer.sortOrder && !isNaN(configLayer.sortOrder)
         ? configLayer.sortOrder
         : configLayer.title;
-
+    const zoomOnDoubleClick = configLayer.zoomOnDoubleClick;
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
     const markerIcon = pointStyle && pointStyle.icon;
@@ -138,7 +138,16 @@ class DataLayers {
         }
       }
     });
-
+    
+    if (zoomOnDoubleClick){
+      let mm = this.map;
+      layer.on("dblclick", function (event) {
+        if (event.layer instanceof L.Polygon){
+          mm.fitBounds(event.layer.getBounds());
+        }       
+      });
+    }
+    
     this.layersData.push({ layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
