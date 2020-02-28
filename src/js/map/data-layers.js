@@ -190,7 +190,8 @@ class DataLayers {
         const markers = L.markerClusterGroup({
           maxClusterRadius: 60,
           disableClusteringAtZoom: 16,
-          spiderfyOnMaxZoom: false
+          spiderfyOnMaxZoom: false,
+          showCoverageOnHover: false
         });
         markers.addLayer(layer);
         this.map.addLayer(markers);
