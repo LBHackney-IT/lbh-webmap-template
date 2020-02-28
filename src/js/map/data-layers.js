@@ -1,6 +1,8 @@
 import L from "leaflet";
 import { pointToLayer } from "./metadata";
-import { MARKER_COLORS } from "./consts";
+import { 
+  MARKER_COLORS,
+  HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 
@@ -260,9 +262,7 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Live
       const url =
-        "https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName=" +
-        configLayer.geoserverLayerName +
-        "&outputFormat=json&SrsName=EPSG:4326";
+      HACKNEY_GEOSERVER_WFS+configLayer.geoserverLayerName; 
       //Test
       //const url="http://lbhgiswebt01/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+configLayer.geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
 
