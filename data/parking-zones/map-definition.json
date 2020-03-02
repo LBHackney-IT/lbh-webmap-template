@@ -7,6 +7,7 @@
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
+      "highlightAndZoomToFeature": true,
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,

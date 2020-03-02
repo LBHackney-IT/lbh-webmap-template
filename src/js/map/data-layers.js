@@ -76,6 +76,7 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
+    const highlightAndZoomToFeature = configLayer.highlightAndZoomToFeature;
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
     const markerIcon = pointStyle && pointStyle.icon;
@@ -138,6 +139,26 @@ class DataLayers {
         }
       }
     });
+
+    if (highlightAndZoomToFeature){
+      let mm = this.map;
+      layer.on("click", function (event) {
+        if (event.layer instanceof L.Polygon){
+          mm.fitBounds(event.layer.getBounds());
+        }       
+      });
+      layer.on("mouseover", function (event) {
+        event.layer.setStyle({
+            weight: 4
+        });      
+      });
+      layer.on("mouseout", function (event) {
+        event.layer.setStyle({
+            weight: 1
+        });      
+      });
+    }
+      
 
     this.layersData.push({ layer, data });
 
