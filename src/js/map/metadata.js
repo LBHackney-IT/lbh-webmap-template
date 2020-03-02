@@ -3,6 +3,7 @@ import "leaflet.awesome-markers";
 import "leaflet.markercluster";
 import "leaflet-control-window";
 import "leaflet-control-custom";
+import { isMobile } from "../helpers/isMobile";
 
 const pointToLayer = (
   latlng,
@@ -39,10 +40,12 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
   let titleBoxContent = null;
   let tooltip = "";
   let dataTooltip = "";
+  let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+  if (aboutTheData) {
+    title += "About the data on this map:";
+  }
   const metadataWindow = L.control.window(map, {
-    title:
-      mapTitle &&
-      `<span class='metadata__name'>${mapTitle}</span>About the data on this map:`,
+    title,
     content: null,
     modal: false,
     position: "topLeft",
@@ -75,7 +78,11 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
       content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
       classes: "leaflet-control-layers metadata__title-box",
       events: {
-        click: () => aboutTheData && metadataWindow.show()
+        click: () => {
+          if (isMobile() || aboutTheData) {
+            return metadataWindow.show();
+          }
+        }
       }
     });
   }

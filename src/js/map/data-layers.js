@@ -1,6 +1,8 @@
 import L from "leaflet";
 import { pointToLayer } from "./metadata";
-import { MARKER_COLORS } from "./consts";
+import { 
+  MARKER_COLORS,
+  HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 
@@ -76,8 +78,11 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
+
     const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
+
+
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
     const markerIcon = pointStyle && pointStyle.icon;
@@ -140,6 +145,7 @@ class DataLayers {
         }
       }
     });
+
 
     if (zoomToFeatureOnClick){
       layer.on("click", (event) => {
@@ -215,7 +221,8 @@ class DataLayers {
         const markers = L.markerClusterGroup({
           maxClusterRadius: 60,
           disableClusteringAtZoom: 16,
-          spiderfyOnMaxZoom: false
+          spiderfyOnMaxZoom: false,
+          showCoverageOnHover: false
         });
         markers.addLayer(layer);
         this.map.addLayer(markers);
@@ -275,14 +282,7 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Live
       const url =
-        "https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName=" +
-        configLayer.geoserverLayerName +
-        "&outputFormat=json&SrsName=EPSG:4326";
-      //Test
-      //const url="http://lbhgiswebt01/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+configLayer.geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-
-      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.personas[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-      //const iconn=this.mapConfig.personas[i].layers[j].icon;
+      HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName; 
 
       fetch(url, {
         method: "get"
