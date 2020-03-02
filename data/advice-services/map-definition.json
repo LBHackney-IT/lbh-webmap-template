@@ -1,8 +1,9 @@
 {
   "title": "Advice Services",
   "summary": "Where to find advice services funded by Hackney council",
-  "showLayersOnLoad": true,
-  "showLegend": true,
+  "showHackneyBoundary": true,
+  "showLayersOnLoad": false,
+  "showLegend": false,
   "filters": {
     "days": {
       "heading": "Days",
@@ -25,44 +26,12 @@
       "options": ["Appointment", "Drop-in", "Home visit"]
     }
   },
-  "personas": [
-    {
-      "id": "Immigration",
-      "icon": "../images/personas/passport.svg",
-      "iconActive": "../images/personas/passport.svg",
-      "text": "Find immigration advice"
-    },
-    {
-      "id": "Housing",
-      "icon": "../images/personas/house.svg",
-      "iconActive": "../images/personas/house.svg",
-      "text": "Find housing advice"
-    },
-    {
-      "id": "Debt",
-      "icon": "../images/personas/coin.svg",
-      "iconActive": "../images/personas/coin.svg",
-      "text": "Find debt advice"
-    },
-    {
-      "id": "Welfare",
-      "icon": "../images/personas/pound.svg",
-      "iconActive": "../images/personas/pound.svg",
-      "text": "Find welfare and benefits advice"
-    },
-    {
-      "id": "Employment",
-      "icon": "../images/personas/briefcase.svg",
-      "iconActive": "../images/personas/briefcase.svg",
-      "text": "Find employment advice"
-    }
-  ],
   "layers": [
     {
       "title": "Employment advice",
       "geoserverLayerName": "amenity:lbh_funded_advice_org_employment",
       "personas": ["Employment"],
-      "sortOrder": 4,
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
