@@ -77,6 +77,12 @@ class DataLayers {
       configLayer.sortOrder && !isNaN(configLayer.sortOrder)
         ? configLayer.sortOrder
         : configLayer.title;
+
+
+    const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
+    const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
+
+
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
     const markerIcon = pointStyle && pointStyle.icon;
@@ -139,7 +145,31 @@ class DataLayers {
         }
       }
     });
-    
+
+
+    if (zoomToFeatureOnClick){
+      layer.on("click", (event) => {
+        if (event.layer instanceof L.Polygon) {
+          this.map.fitBounds(event.layer.getBounds());
+        }
+      });
+    }
+
+    if (highlightFeatureOnHover){
+      layer.on("mouseover", (event) => {
+        event.layer.setStyle({
+          weight: 4
+        });      
+      });
+      
+      layer.on("mouseout", (event) => {
+        event.layer.setStyle({
+          weight: baseLayerStyles.weight
+        });      
+      });
+    }
+
+      
     this.layersData.push({ layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
