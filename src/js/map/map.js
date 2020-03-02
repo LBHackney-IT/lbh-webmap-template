@@ -101,7 +101,6 @@ class Map {
   createMap() {
     this.map = L.map("map", {
       zoomControl: false,
-      doubleClickZoom: false,
       zoomSnap: 0.3,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
