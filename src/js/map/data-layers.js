@@ -262,12 +262,7 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Live
       const url =
-      HACKNEY_GEOSERVER_WFS+configLayer.geoserverLayerName; 
-      //Test
-      //const url="http://lbhgiswebt01/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+configLayer.geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-
-      //const url="http://localhost:8080/geoserver/ows?service=WFS&version=2.0&request=GetFeature&typeName="+this.mapConfig.personas[i].layers[j].geoserverLayerName+"&outputFormat=json&SrsName=EPSG:4326";
-      //const iconn=this.mapConfig.personas[i].layers[j].icon;
+      HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName; 
 
       fetch(url, {
         method: "get"
