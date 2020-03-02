@@ -14,7 +14,7 @@ import {
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
-  HACKNEY_GEOSERVER,
+  HACKNEY_GEOSERVER_WMS,
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
@@ -148,7 +148,7 @@ class Map {
   }
 
   addMasterMapLayer() {
-    const masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    const masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "osmm:OSMM_outdoor_leaflet",
       format: "image/png",
       transparent: true,
@@ -185,7 +185,7 @@ class Map {
   }
 
   addHackneyMaskLayer() {
-    this.hackneyMask = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    this.hackneyMask = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney_mask",
       transparent: true,
       format: "image/png"
@@ -194,7 +194,7 @@ class Map {
   }
 
   addHackneyBoundaryLayer() {
-    const hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER, {
+    const hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney",
       transparent: true,
       format: "image/png"

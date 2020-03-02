@@ -109,6 +109,7 @@
       "title": "Public bike pumps",
       "geoserverLayerName": "transport:bike_pump",
       "personas": ["wandering", "everything"],
+      "zoomOnDoubleClick": true, 
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "tire-flat",
