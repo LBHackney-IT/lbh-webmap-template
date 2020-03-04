@@ -152,6 +152,7 @@ class Map {
     const masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "osmm:OSMM_outdoor_leaflet",
       format: "image/png",
+      tiled: true,
       transparent: true,
       minZoom: 10,
       maxZoom: 20,
