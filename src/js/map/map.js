@@ -35,6 +35,7 @@ class Map {
     this.dataFolder = null;
     this.mapConfig = null;
     this.hackneyMask = null;
+    this.hackneyBoundary = null;
     this.OSMBase = null;
     this.hasPersonas = false;
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
@@ -75,7 +76,7 @@ class Map {
 
   clear() {
     this.map.eachLayer(layer => {
-      if (layer !== this.OSMBase && layer !== this.hackneyMask) {
+      if (layer !== this.OSMBase && layer !== this.hackneyMask && layer !== this.hackneyBoundary) {
         this.map.removeLayer(layer);
       }
     });
@@ -194,12 +195,12 @@ class Map {
   }
 
   addHackneyBoundaryLayer() {
-    const hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
+    this.hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney",
       transparent: true,
       format: "image/png"
     });
-    this.map.addLayer(hackneyBoundary);
+    this.map.addLayer(this.hackneyBoundary);
   }
 
   setZoom() {

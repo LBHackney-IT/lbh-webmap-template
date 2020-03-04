@@ -3,7 +3,7 @@
   "summary": "Where to find advice services funded by Hackney council",
   "showHackneyBoundary": true,
   "showLayersOnLoad": false,
-  "showLegend": false,
+  "showLegend": true,
   "filters": {
     "days": {
       "heading": "Days",
