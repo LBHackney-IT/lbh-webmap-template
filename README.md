@@ -82,6 +82,8 @@ Object properties:
 | `geoserverLayerName` | String | required | Name (not title) of the layer in geoserver which usually follows the following structure `[Schema_name]:[table_name]` (e.g. `planning:conversation_area`). The geoserver name does not need to be the same as the table name in the database, but will be by default. |
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
+| `highlightFeatureOnHover` | Boolean | optional | If true, polygon features will be highlighted on mouse hover. |
+| `zoomToFeatureOnClick` | Boolean | optional | If true, clicking on a polygon features will zoom to its extent. |
 | `pointStyle` | Object | optional | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
 | `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
