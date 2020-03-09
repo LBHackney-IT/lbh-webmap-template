@@ -1,8 +1,9 @@
 {
   "title": "Parking Zones in Hackney",
-  "summary": "This map shows where residents can park and when controls are operated.",
+  "summary": "Click on parking zone to browse details",
   "showGeoServerMetadata": true,
   "baseStyle": "streets",
+  "zoomToMasterMap": true,
   "layers": [
     {
       "title": "Parking Zones",
