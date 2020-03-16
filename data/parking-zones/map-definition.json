@@ -1,5 +1,5 @@
 {
-  "title": "Parking Zones in Hackney",
+  "title": "Parking zones",
   "summary": "Click on parking zone to browse details",
   "showGeoServerMetadata": true,
   "baseStyle": "streets",

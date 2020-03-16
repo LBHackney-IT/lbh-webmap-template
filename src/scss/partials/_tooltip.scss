@@ -12,7 +12,7 @@
 .tooltip .tooltiptext {
   @include lbh-rem(width, 250);
   @include lbh-rem(padding, 8);
-  @include lbh-rem(left, 30);
+  @include lbh-rem(right, 30);
   pointer-events: none;
   background-color: lbh-colour("lbh-black");
   color: lbh-colour("lbh-white");

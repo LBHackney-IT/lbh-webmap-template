@@ -72,6 +72,8 @@
   color: lbh-colour("lbh-white");
   font-family: "Montserrat";
   font-size: 12px;
+  bottom: 0;
+  right: 0;
 
   .title {
     @include lbh-heading-h6;

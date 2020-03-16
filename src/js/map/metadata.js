@@ -48,7 +48,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
     title,
     content: null,
     modal: false,
-    position: "topLeft",
+    position: "bottomRight",
     closeButton: true,
     maxWidth: 280,
     className: "control-window metadata__window"
@@ -73,7 +73,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
     metadataWindow.content(aboutTheData);
     return L.control.custom({
       id: "title",
-      position: "topleft",
+      position: "bottomright",
       collapsed: false,
       content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
       classes: "leaflet-control-layers metadata__title-box",
