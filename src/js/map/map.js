@@ -9,7 +9,8 @@ import "leaflet-control-window";
 import {
   MAX_ZOOM,
   MIN_ZOOM,
-  CENTER_DESKTOP,
+  CENTER_DESKTOP_LEGEND,
+  CENTER_DESKTOP_NO_LEGEND,
   CENTER_MOBILE,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
@@ -43,6 +44,7 @@ class Map {
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
     this.controls = null;
     this.isEmbed = false;
+    this.centerDesktop = null;
   }
 
   init() {
@@ -62,6 +64,12 @@ class Map {
           this.mapConfig.errorOutsideHackney || this.errorOutsideHackney;
         this.errorNoLocation =
           this.mapConfig.errorNoLocation || this.errorNoLocation;
+        if (this.mapConfig.showLegend) {
+          this.centerDesktop = CENTER_DESKTOP_LEGEND;
+        }
+        else{
+          this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
+        }
         this.createMap();
         if (this.mapConfig.showLegend) {
           this.controls = new Controls(this);
@@ -105,7 +113,7 @@ class Map {
       zoomControl: false,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
-      center: CENTER_DESKTOP,
+      center: this.centerDesktop,
       zoom: DEFAULT_ZOOM_DESKTOP
     });
 
@@ -113,7 +121,7 @@ class Map {
 
     mobileDesktopSwitch(
       () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
-      () => this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP)
+      () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
     );
 
     this.addBaseLayer();
@@ -209,7 +217,7 @@ class Map {
     if (isMobileFn()) {
       this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
     } else {
-      this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
+      this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
     }
   }
 
@@ -221,7 +229,7 @@ class Map {
         if (isMobileFn()) {
           this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
         } else {
-          this.map.setView(CENTER_DESKTOP, DEFAULT_ZOOM_DESKTOP);
+          this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
         }
       },
       "Zoom to all Hackney",

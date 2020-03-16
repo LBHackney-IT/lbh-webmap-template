@@ -4,6 +4,7 @@
   "showGeoServerMetadata": true,
   "baseStyle": "streets",
   "zoomToMasterMap": true,
+  "showLegend": false,
   "layers": [
     {
       "title": "Parking Zones",
