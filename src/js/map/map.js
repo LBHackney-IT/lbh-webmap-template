@@ -173,13 +173,13 @@ class Map {
   addBaseLayer() {
     if (this.mapConfig.baseStyle == "streets") {
       this.OSMBase = L.tileLayer(
-        `https://api.mapbox.com/styles/v1/hackneygis/cj8vnelpqfetn2rox0ik873ic/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
+        `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
         TILE_LAYER_OPTIONS
       );
     } else if (this.mapConfig.baseStyle == "light") {
       this.OSMBase = L.tileLayer(
-        MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.light" })
+        `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
+        TILE_LAYER_OPTIONS
       );
     } else if (this.mapConfig.baseStyle == "dark") {
       this.OSMBase = L.tileLayer(
