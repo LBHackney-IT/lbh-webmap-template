@@ -3,11 +3,12 @@
   "summary": "",
   "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services. ",
   "showHackneyBoundary": true,
-  "showLayersOnLoad": false,
+  "showLayersOnLoad": true,
   "showLegend": true,
+  "baseStyle": "streets",
   "layers": [
     {
-      "title": "Exercise",
+      "title": "Exercise or Physical Activity",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
       "sortOrder": 3,
       "pointStyle": {
@@ -38,7 +39,7 @@
       }
     },
     {
-      "title": "Mental health",
+      "title": "Anxiety or Mental Health",
       "geoserverLayerName": "statmap:covid_assistance_mental_health",
       "sortOrder": 2,
       "pointStyle": {
@@ -69,13 +70,13 @@
       }
     },
     {
-      "title": "Active mind",
+      "title": "Art or Creative Activities",
       "geoserverLayerName": "statmap:covid_assistance_active_mind",
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "palette",
-        "markerColor": "blue"
+        "markerColor": "darkblue"
       },
       "popup": {
         "title": "organisation_name",
@@ -100,7 +101,7 @@
       }
     },
     {
-      "title": "Isolation",
+      "title": "Socially Isolated or Lonely",
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
       "sortOrder": 1,
       "pointStyle": {
@@ -131,7 +132,7 @@
       }
     },
     {
-      "title": "Food",
+      "title": "Food or Meals",
       "geoserverLayerName": "statmap:covid_assistance_food",
       "sortOrder": 5,
       "pointStyle": {
