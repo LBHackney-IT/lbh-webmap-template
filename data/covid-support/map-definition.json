@@ -1,14 +1,139 @@
 {
   "title": "",
   "summary": "",
+  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services. ",
   "showHackneyBoundary": true,
   "showLayersOnLoad": false,
   "showLegend": true,
   "layers": [
     {
+      "title": "Exercise",
+      "geoserverLayerName": "statmap:covid_assistance_exercise",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "walking",
+        "markerColor": "red"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Mental health",
+      "geoserverLayerName": "statmap:covid_assistance_mental_health",
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "head-side-brain",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Active mind",
+      "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "sortOrder": 4,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "palette",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Isolation",
+      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "user-friends",
+        "markerColor": "purple"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
       "title": "Food",
       "geoserverLayerName": "statmap:covid_assistance_food",
-      "sortOrder": 7,
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
