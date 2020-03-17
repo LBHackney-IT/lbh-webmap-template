@@ -8952,7 +8952,9 @@ input:not(:checked) + span span.control__active-border {
   background-color: #0b0c0c;
   color: #ffffff;
   font-family: "Montserrat";
-  font-size: 12px; }
+  font-size: 12px;
+  bottom: 0;
+  right: 0; }
   .metadata__window .title {
     font-family: "Montserrat";
     -webkit-font-smoothing: antialiased;
@@ -9113,8 +9115,8 @@ input:not(:checked) + span span.control__active-border {
   width: 15.625rem;
   padding: 8px;
   padding: 0.5rem;
-  left: 30px;
-  left: 1.875rem;
+  right: 30px;
+  right: 1.875rem;
   pointer-events: none;
   background-color: #0b0c0c;
   color: #ffffff;

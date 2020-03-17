@@ -1,0 +1,40 @@
+{
+  "title": "",
+  "summary": "",
+  "showHackneyBoundary": true,
+  "showLayersOnLoad": false,
+  "showLegend": true,
+  "layers": [
+    {
+      "title": "Food",
+      "geoserverLayerName": "statmap:covid_assistance_food",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "apple-alt",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    }
+  ]
+}
