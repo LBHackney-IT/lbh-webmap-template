@@ -7,7 +7,7 @@
   "showLegend": true,
   "layers": [
     {
-      "title": "Exercise or Physical Activity",
+      "title": "Get active",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
       "sortOrder": 3,
       "pointStyle": {
@@ -38,7 +38,7 @@
       }
     },
     {
-      "title": "Anxiety or Mental Health",
+      "title": "Feeling anxious",
       "geoserverLayerName": "statmap:covid_assistance_mental_health",
       "sortOrder": 2,
       "pointStyle": {
@@ -69,7 +69,7 @@
       }
     },
     {
-      "title": "Art or Creative Activities",
+      "title": "Exercise the brain",
       "geoserverLayerName": "statmap:covid_assistance_active_mind",
       "sortOrder": 4,
       "pointStyle": {
@@ -100,7 +100,7 @@
       }
     },
     {
-      "title": "Socially Isolated or Lonely",
+      "title": "Feeling lonely",
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
       "sortOrder": 1,
       "pointStyle": {
