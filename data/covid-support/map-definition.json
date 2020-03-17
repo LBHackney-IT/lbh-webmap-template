@@ -5,7 +5,6 @@
   "showHackneyBoundary": true,
   "showLayersOnLoad": true,
   "showLegend": true,
-  "baseStyle": "streets",
   "layers": [
     {
       "title": "Exercise or Physical Activity",
