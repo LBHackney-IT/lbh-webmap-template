@@ -1,5 +1,6 @@
 import { scrollTo } from "../helpers/scrollTo";
 import { PERSONA_ACTIVE_CLASS } from "./consts";
+import "classlist-polyfill";
 
 class Personas {
   constructor(map, layers, personas, layerControl, overlayMaps, filters) {

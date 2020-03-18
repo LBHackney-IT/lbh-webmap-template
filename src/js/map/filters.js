@@ -1,4 +1,6 @@
 import { FILTER_INPUT_CLASS } from "./consts";
+import "../helpers/forEachPolyfill";
+import "classlist-polyfill";
 
 class Filters {
   constructor(map, layersData) {

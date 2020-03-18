@@ -1,8 +1,6 @@
 import L from "leaflet";
 import { pointToLayer } from "./metadata";
-import { 
-  MARKER_COLORS,
-  HACKNEY_GEOSERVER_WFS } from "./consts";
+import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 
@@ -78,10 +76,8 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
-
     const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
-
 
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
@@ -146,30 +142,28 @@ class DataLayers {
       }
     });
 
-
-    if (zoomToFeatureOnClick){
-      layer.on("click", (event) => {
+    if (zoomToFeatureOnClick) {
+      layer.on("click", event => {
         if (event.layer instanceof L.Polygon) {
           this.map.fitBounds(event.layer.getBounds());
         }
       });
     }
 
-    if (highlightFeatureOnHover){
-      layer.on("mouseover", (event) => {
+    if (highlightFeatureOnHover) {
+      layer.on("mouseover", event => {
         event.layer.setStyle({
           weight: 4
-        });      
+        });
       });
-      
-      layer.on("mouseout", (event) => {
+
+      layer.on("mouseout", event => {
         event.layer.setStyle({
           weight: baseLayerStyles.weight
-        });      
+        });
       });
     }
 
-      
     this.layersData.push({ layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
@@ -281,8 +275,7 @@ class DataLayers {
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
       //Live
-      const url =
-      HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName; 
+      const url = HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName;
 
       fetch(url, {
         method: "get"

@@ -5,6 +5,7 @@ import {
   CONTROLS_CLEAR_MAP_TEXT
 } from "./consts";
 import { isMobile } from "../helpers/isMobile";
+import "classlist-polyfill";
 
 class Controls {
   constructor(mapClass) {

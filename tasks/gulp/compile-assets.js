@@ -31,7 +31,7 @@ const postcsspseudoclasses = require("postcss-pseudo-classes")({
 // --------------------------------------
 
 // Set this to false to help with debugging, set to true for production
-const isDist = false;
+const isDist = true;
 
 const errorHandler = function(error) {
   // Log the error to the console
@@ -42,11 +42,11 @@ const errorHandler = function(error) {
   this.emit("end");
 };
 // different entry points for both streams below and depending on destination flag
-const compileStyleshet = configPaths.src + "scss/all.scss";
+const compileStylesheet = configPaths.src + "scss/all.scss";
 
 gulp.task("scss:compile", () => {
   const compile = gulp
-    .src(compileStyleshet)
+    .src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sass())
     // minify css add vendor prefixes and normalize to compiled css
@@ -70,7 +70,6 @@ gulp.task("js:compile", () => {
   const srcFiles = configPaths.src + "/js/main.js";
   return gulp
     .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
-    .pipe(babel({presets: [["@babel/preset-env"]]}))
     .pipe(named())
     .pipe(
       webpack({
@@ -81,6 +80,9 @@ gulp.task("js:compile", () => {
         }
       })
     )
+    .pipe(babel({
+      presets: ["@babel/preset-env"]
+    }))
     .pipe(
       gulpif(
         isDist,

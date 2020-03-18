@@ -1,3 +1,5 @@
+import "./matchMediaPolyfill";
+
 const isMobile = () => !window.matchMedia("(min-width: 48.0625em)").matches;
 
 const mobileDesktopSwitch = (callbackMobile, callbackDesktop) => {

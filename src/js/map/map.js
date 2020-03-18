@@ -28,6 +28,7 @@ import Geolocation from "./geolocation";
 import Controls from "./controls";
 import DataLayers from "./data-layers";
 import Metadata from "./metadata";
+import "classlist-polyfill";
 
 class Map {
   constructor(map) {
@@ -66,8 +67,7 @@ class Map {
           this.mapConfig.errorNoLocation || this.errorNoLocation;
         if (this.mapConfig.showLegend) {
           this.centerDesktop = CENTER_DESKTOP_LEGEND;
-        }
-        else{
+        } else {
           this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
         }
         this.createMap();
@@ -85,7 +85,12 @@ class Map {
 
   clear() {
     this.map.eachLayer(layer => {
-      if (layer !== this.OSMBase && layer !== this.hackneyMask && layer !== this.hackneyBoundary && layer !== this.masterMapLayer) {
+      if (
+        layer !== this.OSMBase &&
+        layer !== this.hackneyMask &&
+        layer !== this.hackneyBoundary &&
+        layer !== this.masterMapLayer
+      ) {
         this.map.removeLayer(layer);
       }
     });

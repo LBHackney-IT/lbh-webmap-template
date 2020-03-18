@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import Map from "./map/map";
 
 const mapDiv = document.getElementById("map");

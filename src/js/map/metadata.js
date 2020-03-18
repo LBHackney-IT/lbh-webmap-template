@@ -4,6 +4,7 @@ import "leaflet.markercluster";
 import "leaflet-control-window";
 import "leaflet-control-custom";
 import { isMobile } from "../helpers/isMobile";
+import "whatwg-fetch";
 
 const pointToLayer = (
   latlng,
