@@ -1,5 +1,5 @@
 {
-  "title": "Use the left panel to filter<br>the list of services",
+  "title": "Use the left panel to filter<br>the list of services<br><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address&cql_filter=hidden<>1&outputformat=csv'> Downolad the data from this map</a>",
   "summary": "",
   "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services. ",
   "showHackneyBoundary": true,
