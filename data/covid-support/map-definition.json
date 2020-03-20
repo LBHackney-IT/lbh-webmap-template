@@ -14,7 +14,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "walking",
-        "markerColor": "red"
+        "markerColor": "darkpurple"
       },
       "popup": {
         "title": "organisation_name",
@@ -138,7 +138,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
-        "markerColor": "green"
+        "markerColor": "darkgreen"
       },
       "popup": {
         "title": "organisation_name",
