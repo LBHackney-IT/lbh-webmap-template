@@ -1,7 +1,7 @@
 {
   "title": "Use the left panel to filter<br>the list of services",
   "summary": "",
-  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services. ",
+  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address&cql_filter=hidden<>1&outputformat=csv'>Download a snapshot of the data</a></b>",
   "showHackneyBoundary": true,
   "showLayersOnLoad": true,
   "showLegend": true,
@@ -14,7 +14,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "walking",
-        "markerColor": "darkpurple"
+        "markerColor": "darkred"
       },
       "popup": {
         "title": "organisation_name",
@@ -139,6 +139,130 @@
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
         "markerColor": "darkgreen"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Benefits advice",
+      "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "info",
+        "markerColor": "cadetblue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Debt advice",
+      "geoserverLayerName": "statmap:covid_assistance_debt",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "pound-sign",
+        "markerColor": "beige"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Employment advice",
+      "geoserverLayerName": "statmap:covid_assistance_employment",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "briefcase",
+        "markerColor": "darkpurple"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Housing advice",
+      "geoserverLayerName": "statmap:covid_assistance_housing",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "house",
+        "markerColor": "blue"
       },
       "popup": {
         "title": "organisation_name",
