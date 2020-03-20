@@ -231,7 +231,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
-        "markerColor": "lightgreen"
+        "markerColor": "black"
       },
       "popup": {
         "title": "organisation_name",
