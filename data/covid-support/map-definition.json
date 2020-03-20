@@ -1,9 +1,9 @@
 {
-  "title": "",
+  "title": "Use the left panel to filter<br>the list of services",
   "summary": "",
   "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services. ",
   "showHackneyBoundary": true,
-  "showLayersOnLoad": false,
+  "showLayersOnLoad": true,
   "showLegend": true,
   "baseStyle": "streets",
   "layers": [
