@@ -14,7 +14,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "walking",
-        "markerColor": "red"
+        "markerColor": "darkpurple"
       },
       "popup": {
         "title": "organisation_name",
@@ -138,7 +138,100 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
-        "markerColor": "green"
+        "markerColor": "darkgreen"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Benefits advice",
+      "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "pound-sign",
+        "markerColor": "cadetblue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Debt advice",
+      "geoserverLayerName": "statmap:covid_assistance_debt",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "coin",
+        "markerColor": "beige"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Employment advice",
+      "geoserverLayerName": "statmap:covid_assistance_employment",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "briefcase",
+        "markerColor": "lightgreen"
       },
       "popup": {
         "title": "organisation_name",
