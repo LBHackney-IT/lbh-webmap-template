@@ -14,7 +14,7 @@ class Search {
     }
 
     createMarkup(){
-        
+        map.addControl( new L.Control.Search({layer: this.layersData[0]}));
     }
 
 }

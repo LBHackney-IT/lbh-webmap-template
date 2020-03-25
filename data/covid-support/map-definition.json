@@ -10,7 +10,7 @@
   "baseStyle": "streets",
   "search": {
     "searchableLayer": "",
-    "searchableField": "",
+    "searchableFields": "",
     "SearchBoxText":"Type organisation name"
   },
   "layers": [
