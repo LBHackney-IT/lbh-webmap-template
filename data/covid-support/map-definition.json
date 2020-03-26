@@ -9,14 +9,14 @@
   "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address&cql_filter=hidden<>1&outputformat=csv'>Download a snapshot of the data</a></b>",
   "baseStyle": "streets",
   "search": {
-    "searchableLayer": "",
-    "searchableFields": "",
-    "SearchBoxText":"Type organisation name"
+    "searchField": "organisation_name",
+    "searchBoxText":"Type organisation name"
   },
   "layers": [
     {
       "title": "Get active",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
+      "searchable": true,
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -48,6 +48,7 @@
     {
       "title": "Feeling anxious",
       "geoserverLayerName": "statmap:covid_assistance_mental_health",
+      "searchable": true,
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -79,6 +80,7 @@
     {
       "title": "Exercise the brain",
       "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "searchable": true,
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -110,6 +112,7 @@
     {
       "title": "Feeling lonely",
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "searchable": true,
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -141,6 +144,7 @@
     {
       "title": "Food or Meals",
       "geoserverLayerName": "statmap:covid_assistance_food",
+      "searchable": true,
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -172,6 +176,7 @@
     {
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "searchable": true,
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -203,6 +208,7 @@
     {
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
+      "searchable": true,
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -234,6 +240,7 @@
     {
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
+      "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -265,6 +272,7 @@
     {
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
+      "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
