@@ -1,5 +1,6 @@
 class Search {
     constructor(mapClass) {
+        this.mapClass = mapClass;
         this.map = mapClass.map;
         this.mapConfig = mapClass.mapConfig;
         this.search = null;
@@ -13,8 +14,20 @@ class Search {
     }
 
     createMarkup(){
+        let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Search
+      </span>
+    </summary>
+    <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group" id="searchdiv"></div>
+    </div></details>`;
+
+    this.mapClass.addMarkupToMap(html, "search", "filters");
+        
         const controlSearch = new L.Control.Search({
-            position:'topleft',		
+            //position:'topleft',		
+            container: 'searchdiv',
             layer: this.searchLayer,
             propertyName: this.search.searchField,
             textPlaceholder: this.search.searchBoxText,
