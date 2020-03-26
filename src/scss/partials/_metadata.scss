@@ -33,7 +33,8 @@
 }
 
 .metadata__title {
-  display: inline-block;
+  //display: inline-block;
+  float: right;
   line-height: 1.3rem
 }
 
@@ -46,6 +47,7 @@
   padding: 0;
   text-decoration: underline;
   -webkit-appearance: none;
+  float: right;
 
   #map & {
     @include lbh-rem(margin-top, 5);
