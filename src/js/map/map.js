@@ -6,6 +6,7 @@ import {
 import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
+import "leaflet-search";
 import {
   MAX_ZOOM,
   MIN_ZOOM,

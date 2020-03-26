@@ -3,6 +3,7 @@ import { pointToLayer } from "./metadata";
 import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
+import Search from "./search";
 
 class DataLayers {
   constructor(map) {
@@ -223,6 +224,11 @@ class DataLayers {
       } else {
         layer.addTo(this.map);
       }
+    }
+
+    if (this.mapConfig.search){
+      this.search = new Search(this.mapClass, layer);
+      this.search.init();
     }
   }
 

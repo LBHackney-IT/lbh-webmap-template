@@ -1,20 +1,21 @@
 class Search {
-    constructor(map, layersData) {
-        this.mapClass = map;
-        this.checkboxStates = {};
+    constructor(map, layer) {
+        this.map = map;
         this.mapConfig = map.mapConfig;
-        this.layersData = layersData;
+        //this.layersData = layersData;
+        this.layer = layer;
         this.container = map.container;
         this.search = null;
     }
     
     init() {
         this.search = this.mapConfig.search;
-        this.createMarkup();
+        //this.createMarkup();
+        L.Control.Search({layer: this.layer}).addTo(this.map);
     }
 
     createMarkup(){
-        map.addControl( new L.Control.Search({layer: this.layersData[0]}));
+        
     }
 
 }
