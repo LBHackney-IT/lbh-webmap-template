@@ -21,6 +21,7 @@ class DataLayers {
     this.personasClass = null;
     this.filters = null;
     this.layersData = [];
+    this.search = null;
   }
 
   createMarkerPopup(configLayer, feature, layerName) {
@@ -79,6 +80,7 @@ class DataLayers {
 
     const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
+    const searchable = configLayer.searchable;
 
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
@@ -172,6 +174,8 @@ class DataLayers {
     }
 
     this.loadedLayerCount++;
+
+    //only happens once, after the last layer has loaded
     if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
       this.filters.init();
@@ -195,7 +199,8 @@ class DataLayers {
           this.personas[x].layers.push(layer);
         }
       }
-
+      
+      //only happens once, after the last layer has loaded
       if (this.loadedLayerCount == this.layerCount) {
         this.createControl();
 
@@ -226,9 +231,15 @@ class DataLayers {
       }
     }
 
-    if (this.mapConfig.search){
-      this.search = new Search(this.mapClass, layer);
-      this.search.init();
+    if (this.mapConfig.search && searchable){
+      // this.search = new Search(this.mapClass, layer);
+      // this.search.init();
+      this.search.searchLayer.addLayer(layer);
+      
+      //only happens once, after the last layer has loaded
+      if (this.loadedLayerCount == this.layerCount){
+        this.search.createMarkup();
+      }     
     }
   }
 
@@ -277,7 +288,11 @@ class DataLayers {
         this.personas.push(persona);
       }
     }
-
+    if (this.mapConfig.search){
+      //this.searchLayer = new L.LayerGroup([]);
+      this.search = new Search(this.mapClass);
+      this.search.init();
+    }
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
       //Live
