@@ -17,13 +17,15 @@ class Search {
         let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">
-        Search
+        Map search
       </span>
     </summary>
-    <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group" id="searchdiv"></div>
-    </div></details>`;
 
-    this.mapClass.addMarkupToMap(html, "search", "filters");
+  <div id="searchdiv"></div>
+  </details>
+    </section>`;
+
+    this.mapClass.addMarkupToMap(html, "search", "search");
         
         const controlSearch = new L.Control.Search({
             //position:'topleft',		
@@ -35,6 +37,7 @@ class Search {
             initial: false,
             //zoom: 18,
             marker: false
+            //class: 'govuk-input  lbh-input'
         });
         controlSearch.on('search:locationfound', function(e) {           
             if(e.layer._popup)
