@@ -9160,15 +9160,17 @@ input:not(:checked) + span span.control__active-border {
   visibility: hidden; }
 
 .leaflet-control-search .search-cancel {
-  width: 22px;
-  height: 22px;
+  width: 46px;
+  height: 46px;
   position: absolute;
-  right: 28px;
+  left: 500px;
+  top: 53px;
+  color: black;
   margin: 6px 0;
-  background: url("../images/search-icon.png") no-repeat 0 -46px;
+  background: url("../images/close-black.svg") no-repeat;
   text-decoration: none;
   filter: alpha(opacity=80);
-  opacity: 0.8; }
+  opacity: 0.3; }
 
 .leaflet-control-search .search-cancel:hover {
   filter: alpha(opacity=100);
@@ -9186,6 +9188,9 @@ input:not(:checked) + span span.control__active-border {
   color: #aaa; }
 
 .leaflet-control-search .search-button {
+  position: absolute;
+  left: 550px;
+  top: 40px;
   width: 30px;
   height: 30px;
   background: url("../images/search-icon.png") no-repeat 4px 4px #fff;
