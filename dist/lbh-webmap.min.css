@@ -9153,7 +9153,6 @@ input:not(:checked) + span span.control__active-border {
 
 .leaflet-control-search.search-exp {
   /*expanded*/
-  background: red;
   background-clip: padding-box;
   display: inherit;
   max-width: 500; }
