@@ -9136,21 +9136,6 @@ input:not(:checked) + span span.control__active-border {
 .tooltip:hover .tooltiptext {
   opacity: 1; }
 
-.leaflet-container .leaflet-control-search {
-  position: relative;
-  float: left;
-  background: #fff;
-  color: #1978cf;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-  background-clip: padding-box;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
-  z-index: 1000;
-  margin-left: 10px;
-  margin-top: 10px; }
-
 .leaflet-control-search.search-exp {
   /*expanded*/
   background-clip: padding-box;
@@ -9243,11 +9228,9 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-search .search-alert {
   cursor: pointer;
   clear: both;
-  font-size: .75em;
   margin-bottom: 5px;
   padding: 0 .25em;
-  color: #e00;
-  font-weight: bold;
+  color: grey;
   border-radius: .25em; }
 
 .search {
