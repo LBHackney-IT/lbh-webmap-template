@@ -9145,32 +9145,44 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-search .search-input {
   font-family: 'Montserrat';
   border: 2px solid #0b0c0c;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.42;
   padding: 10px;
-  width: 500px;
+  width: 200px;
   margin-top: 20px;
   margin-bottom: 20px; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search .search-input {
+      width: 400px;
+      font-size: 19px; } }
 
-.leaflet-control-search.search-load .search-input {
-  background: url("../images/loader.gif") no-repeat center right #fff; }
-
-.leaflet-control-search.search-load .search-cancel {
-  visibility: hidden; }
+.leaflet-control-search .search-input:focus {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px; }
 
 .leaflet-control-search .search-cancel {
-  width: 46px;
-  height: 46px;
+  width: 20px;
+  height: 20px;
   position: absolute;
-  left: 500px;
-  top: 53px;
+  left: 195px;
+  top: 13px;
   color: black;
-  margin: 6px 0;
+  margin: 0px;
+  padding: 0px;
   background: url("../images/close-black.svg") no-repeat;
+  background-size: 20px 20px;
   text-decoration: none;
   filter: alpha(opacity=80);
   opacity: 0.3; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search .search-cancel {
+      width: 25px;
+      height: 25px;
+      background-size: 25px 25px;
+      left: 387px;
+      top: 13px; } }
 
 .leaflet-control-search .search-cancel:hover {
   filter: alpha(opacity=100);
@@ -9186,13 +9198,12 @@ input:not(:checked) + span span.control__active-border {
 
 .leaflet-control-search .search-button {
   position: absolute;
-  left: 500px;
-  top: 17px;
-  border-radius: 4px;
+  top: 0px;
+  left: 224px;
   background-color: #00664f;
   color: #ffffff;
   text-decoration: none;
-  box-shadow: 0 2px 0 #002d18;
+  box-shadow: 0 2px 0 #003d2f;
   text-align: center;
   vertical-align: top;
   cursor: pointer;
@@ -9200,19 +9211,21 @@ input:not(:checked) + span span.control__active-border {
   border: 2px solid transparent;
   box-sizing: border-box;
   width: auto;
-  line-height: 1.42rem;
-  font-size: 19;
+  line-height: 1.3rem;
+  font-size: 16px;
   font-weight: 400;
   padding: 10px;
-  border-radius: 4px;
-  margin-top: 1.5em;
-  margin-bottom: 0; }
-
-.leaflet-control-search .search-button:hover {
-  background-color: #005a30; }
-
-.leaflet-control-search .search-button:after {
-  content: 'Search'; }
+  border-radius: 0px 4px 4px 0px;
+  margin: 0px; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search .search-button {
+      left: 424px;
+      font-size: 19px;
+      line-height: 1.5rem; } }
+  .leaflet-control-search .search-button:hover {
+    background-color: #00513f; }
+  .leaflet-control-search .search-button:after {
+    content: 'Search'; }
 
 .leaflet-control-search .search-tooltip {
   margin-top: 10px;
@@ -9235,9 +9248,6 @@ input:not(:checked) + span span.control__active-border {
   text-decoration: none;
   white-space: nowrap; }
 
-.leaflet-control-search .search-button:hover {
-  background-color: #f4f4f4; }
-
 .leaflet-control-search .search-tip-select,
 .leaflet-control-search .search-tip:hover {
   background-color: #ecebeb; }
@@ -9247,8 +9257,7 @@ input:not(:checked) + span span.control__active-border {
   clear: both;
   margin-bottom: 5px;
   padding: 0 .25em;
-  color: grey;
-  border-radius: .25em; }
+  color: #6f777b; }
 
 .search {
   margin-bottom: 24px;

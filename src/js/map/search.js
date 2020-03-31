@@ -20,7 +20,9 @@ class Search {
       +this.search.searchSectionTitle
       +`</span>
     </summary>
-  <div class="govuk-details__text" id="searchdiv"></div>
+  <div class="govuk-details__text">
+      <div id="searchdiv"></div>
+  </div>
   </details>
     </section>`;
 

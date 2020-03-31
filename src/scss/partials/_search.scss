@@ -18,8 +18,6 @@
 // 	font-family: 'Montserrat';
 // }
 .leaflet-control-search.search-exp {/*expanded*/
-	//background: red;
-	//border: 2px solid rgba(0,0,0,0.2);
 	background-clip: padding-box;	
 	display: inherit;
 	max-width: 500px;
@@ -28,53 +26,58 @@
 .leaflet-control-search .search-input {
   font-family: 'Montserrat';
   border: 2px solid #0b0c0c;
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.42;
   padding: 10px;
-  width: 500px;
+  width: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
-  //display:block;
-  //margin: 20px 0;
+
+  @include govuk-media-query($from: desktop) {
+	width: 400px;
+	font-size: 19px;
+	}
 }
 
-// .leaflet-control-search .search-input {
-// 	//display:block;
-// 	//float:left;
-// 	background: #fff;
-// 	border:1px solid #666;
-// 	border-radius:2px;
-// 	height:22px;
-// 	padding:0 20px 0 2px;
-// 	margin:4px 0 4px 4px;
-// }
-.leaflet-control-search.search-load .search-input {
-	background: url('../images/loader.gif') no-repeat center right #fff;
+.leaflet-control-search .search-input:focus{
+	outline: $govuk-focus-width solid $govuk-focus-colour;
+    // Ensure outline appears outside of the element
+    outline-offset: 0;
+    // Double the border by adding its width again. Use `box-shadow` to do
+    // this instead of changing `border-width` (which changes element size) and
+    // since `outline` is already used for the yellow focus state.
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
 }
-.leaflet-control-search.search-load .search-cancel {
-	visibility:hidden;
-}
+
+
 .leaflet-control-search .search-cancel {
-	//display:block;
-	width:46px;
-	height:46px;
+	width:20px;
+	height:20px;
 	position:absolute;
-	left: 500px;
-	top: 53px;
+	left: 195px;
+	top: 13px;
 	color: black;
-	//right:28px;
-	margin:6px 0;
-	// background: url('../images/search-icon.png') no-repeat 0 -46px;
+	margin: 0px;
+	padding: 0px;
 	background: url('../images/close-black.svg') no-repeat;
+	background-size: 20px 20px;
 	text-decoration:none;
 	filter: alpha(opacity=80);
-	opacity: 0.3;		
+	opacity: 0.3;
+	@include govuk-media-query($from: desktop) {
+		width:25px;
+		height:25px;
+		background-size: 25px 25px;
+		left: 387px;
+		top: 13px;
+	}		
 }
 .leaflet-control-search .search-cancel:hover {
 	filter: alpha(opacity=100);
 	opacity: 1;
 }
+
 .leaflet-control-search .search-cancel span {
 	display:none;/* comment for cancel button imageless */
 	font-size:18px;
@@ -82,23 +85,16 @@
 	color:#ccc;
 	font-weight:bold;
 }
-// .leaflet-control-search .search-cancel:hover span {
-// 	color:#aaa;
-// }
+
 .leaflet-control-search .search-button {
-	//display:block;
-	//float:left;
+
 	position:absolute;
-	left: 500px;
-	top: 17px;
-	// width:30px;
-	// height:30px;	
-	//background: url('../images/search-icon.png') no-repeat 4px 4px #fff;
-	border-radius:4px;
-	background-color: #00664f;
+	top: 0px;
+	left: 224px;
+	background-color: lbh-colour("lbh-primary-button");
 	color: #ffffff;
 	text-decoration: none;
-	box-shadow: 0 2px 0 #002d18;
+	box-shadow: 0 2px 0 lbh-colour("lbh-primary-inner-shadow");
 	text-align: center;
 	vertical-align: top;
 	cursor: pointer;
@@ -106,22 +102,24 @@
 	border: 2px solid transparent;
 	box-sizing: border-box;
 	width: auto;
-	line-height: 1.42rem;
-	font-size: 19;
+	line-height: 1.3rem;
+	font-size: 16px;
 	font-weight: 400;
 	padding: 10px;
-	border-radius: 4px;
-	margin-top: 1.5em;
-	margin-bottom: 0;
+	border-radius: 0px 4px 4px 0px;
+	margin: 0px;
+	@include govuk-media-query($from: desktop) {
+		left: 424px;
+		font-size: 19px;
+		line-height: 1.5rem;
+	}
+	&:hover{
+		background-color: lbh-colour("lbh-primary-hover");
+	} 
+	&:after {
+		content: 'Search';
+	}
 }
-.leaflet-control-search .search-button:hover {
-	background-color: #005a30;
-}
-
-.leaflet-control-search .search-button:after {
-	content: 'Search';
-}
-
 
 
 .leaflet-control-search .search-tooltip {
@@ -144,11 +142,8 @@
 	background:	white;
 	text-decoration:none;	
 	white-space:nowrap;
+}
 
-}
-.leaflet-control-search .search-button:hover {
-	background-color: #f4f4f4;
-}
 .leaflet-control-search .search-tip-select,
 .leaflet-control-search .search-tip:hover {
 	background-color:#ecebeb;;
@@ -156,30 +151,13 @@
 .leaflet-control-search .search-alert {
 	cursor:pointer;
 	clear:both;
-	//font-size:.75em;
 	margin-bottom:5px;
 	padding:0 .25em;
-	color:grey;
-	//font-weight:bold;
-	border-radius:.25em;
-	//font-family: 'Montserrat';
+	color: lbh-colour("lbh-grey-1");
 }
 
 
 
-
-
-// .leaflet-control-search .search-button {
-// 	display: none;		
-//   box-shadow: inset 0 -2px 0 0 #003d2f;
-//   background-color: #00664f;
-//   font-size: 19px;
-//   line-height: 1.42;
-//   color: #fff;
-//   padding: 12px 24px;
-//   margin: 20px 0 10px;
-//   border-radius: 0 4px 4px 0;
-// }
 
 .search {
 	@include lbh-rem(margin-bottom, 24);
