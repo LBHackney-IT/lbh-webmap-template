@@ -12,7 +12,8 @@
     "searchSectionTitle": "Search organisation",
     "searchField": "organisation_name",
     "searchPlaceholderText": "Type organisation name",
-    "notFoundText": "No organisation found with this name"
+    "notFoundText": "No organisation found with this name",
+    "clearMapAfterSearch": true
   },
   "layers": [
     {

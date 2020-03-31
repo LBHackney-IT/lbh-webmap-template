@@ -36,7 +36,7 @@ class Search {
             textPlaceholder: this.search.searchPlaceholderText,
             collapsed: false,
             initial: false,
-            //zoom: 18,
+            //zoom: 16,
             marker: false,
             textErr: this.search.notFoundText,
             autoCollapseTime: 4000
@@ -49,8 +49,10 @@ class Search {
         // });
         controlSearch.on('search:locationfound', (e) => {           
           if(e.layer._popup)
-          this.mapClass.clear();  
-          e.layer.addTo(this.map);
+          if(this.search.clearMapAfterSearch){
+            this.mapClass.clear();  
+            e.layer.addTo(this.map);
+          }
           e.layer.openPopup();      
       });
         this.map.addControl(controlSearch);
