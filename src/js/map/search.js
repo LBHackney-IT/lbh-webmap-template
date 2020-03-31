@@ -48,13 +48,15 @@ class Search {
         //       e.layer.addTo(this.map);      
         // });
         controlSearch.on('search:locationfound', (e) => {           
-          if(e.layer._popup)
+          
           if(this.search.clearMapAfterSearch){
             this.mapClass.clear();  
             e.layer.addTo(this.map);
           }
-          e.layer.openPopup();      
-      });
+          if(e.layer._popup){
+            e.layer.openPopup();    
+          }           
+        });
         this.map.addControl(controlSearch);
     }
 
