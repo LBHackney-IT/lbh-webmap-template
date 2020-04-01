@@ -9229,7 +9229,7 @@ input:not(:checked) + span span.control__active-border {
   .leaflet-control-search .search-button:hover {
     background-color: #00513f; }
   .leaflet-control-search .search-button:after {
-    content: 'Search'; }
+    content: 'Go'; }
 
 .leaflet-control-search .search-tooltip {
   margin-top: 10px;
