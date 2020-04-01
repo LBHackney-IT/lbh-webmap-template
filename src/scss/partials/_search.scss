@@ -29,14 +29,16 @@
   font-size: 16px;
   font-weight: 300;
   line-height: 1.42;
-  padding: 10px;
+  padding: 7px 25px 7px 7px;
   width: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
-
+  box-sizing: border-box;
+  border-radius: 0px;
   @include govuk-media-query($from: desktop) {
-	width: 400px;
+	width: 500px;
 	font-size: 19px;
+	padding: 10px 35px 10px 10px;
 	}
 }
 
@@ -55,8 +57,8 @@
 	width:20px;
 	height:20px;
 	position:absolute;
-	left: 195px;
-	top: 13px;
+	left: 175px;
+	top: 10px;
 	color: black;
 	margin: 0px;
 	padding: 0px;
@@ -69,8 +71,8 @@
 		width:25px;
 		height:25px;
 		background-size: 25px 25px;
-		left: 387px;
-		top: 13px;
+		left: 467px;
+		top: 12px;
 	}		
 }
 .leaflet-control-search .search-cancel:hover {
@@ -90,7 +92,7 @@
 
 	position:absolute;
 	top: 0px;
-	left: 224px;
+	left: 200px;
 	background-color: lbh-colour("lbh-primary-button");
 	color: #ffffff;
 	text-decoration: none;
@@ -105,13 +107,14 @@
 	line-height: 1.3rem;
 	font-size: 16px;
 	font-weight: 400;
-	padding: 10px;
+	padding: 7px;
 	border-radius: 0px 4px 4px 0px;
 	margin: 0px;
 	@include govuk-media-query($from: desktop) {
-		left: 424px;
+		left: 500px;
 		font-size: 19px;
 		line-height: 1.5rem;
+		padding: 10px;
 	}
 	&:hover{
 		background-color: lbh-colour("lbh-primary-hover");
