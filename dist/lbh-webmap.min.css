@@ -9149,7 +9149,7 @@ input:not(:checked) + span span.control__active-border {
   font-weight: 300;
   line-height: 1.42;
   padding: 7px 25px 7px 7px;
-  width: 200px;
+  width: 230px;
   margin-top: 20px;
   margin-bottom: 20px;
   box-sizing: border-box;
@@ -9169,7 +9169,7 @@ input:not(:checked) + span span.control__active-border {
   width: 20px;
   height: 20px;
   position: absolute;
-  left: 175px;
+  left: 205px;
   top: 10px;
   color: black;
   margin: 0px;
@@ -9202,7 +9202,7 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-search .search-button {
   position: absolute;
   top: 0px;
-  left: 200px;
+  left: 230px;
   background-color: #00664f;
   color: #ffffff;
   text-decoration: none;
