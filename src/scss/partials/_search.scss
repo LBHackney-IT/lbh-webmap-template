@@ -105,14 +105,14 @@
 	line-height: 1.3rem;
 	font-size: 16px;
 	font-weight: 400;
-	padding: 7px;
+	padding: 7px 12px 7px 12px;
 	border-radius: 0px 4px 4px 0px;
 	margin: 0px;
 	@include govuk-media-query($from: desktop) {
 		left: 500px;
 		font-size: 19px;
 		line-height: 1.5rem;
-		padding: 10px;
+		padding: 10px 20px 10px 20px;
 	}
 	&:hover{
 		background-color: lbh-colour("lbh-primary-hover");

@@ -9217,7 +9217,7 @@ input:not(:checked) + span span.control__active-border {
   line-height: 1.3rem;
   font-size: 16px;
   font-weight: 400;
-  padding: 7px;
+  padding: 7px 12px 7px 12px;
   border-radius: 0px 4px 4px 0px;
   margin: 0px; }
   @media (min-width: 48.0625em) {
@@ -9225,7 +9225,7 @@ input:not(:checked) + span span.control__active-border {
       left: 500px;
       font-size: 19px;
       line-height: 1.5rem;
-      padding: 10px; } }
+      padding: 10px 20px 10px 20px; } }
   .leaflet-control-search .search-button:hover {
     background-color: #00513f; }
   .leaflet-control-search .search-button:after {
