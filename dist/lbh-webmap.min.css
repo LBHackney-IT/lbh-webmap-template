@@ -9140,7 +9140,11 @@ input:not(:checked) + span span.control__active-border {
   /*expanded*/
   background-clip: padding-box;
   display: inherit;
-  max-width: 500px; }
+  max-width: 500px;
+  height: 100px; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search.search-exp {
+      height: 145px; } }
 
 .leaflet-control-search .search-input {
   font-family: 'Montserrat';
@@ -9150,8 +9154,8 @@ input:not(:checked) + span span.control__active-border {
   line-height: 1.42;
   padding: 7px 25px 7px 7px;
   width: 230px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 0px;
+  margin-bottom: 7px;
   box-sizing: border-box;
   border-radius: 0px; }
   @media (min-width: 48.0625em) {
@@ -9232,20 +9236,24 @@ input:not(:checked) + span span.control__active-border {
     content: 'Go'; }
 
 .leaflet-control-search .search-tooltip {
-  margin-top: 10px;
+  margin-top: 5px;
   list-style: none;
   padding-left: 0;
   min-width: 120px;
-  max-height: 122px;
-  max-width: 500px;
+  max-height: 60px;
+  max-width: 280px;
   z-index: 1010;
   overflow-y: auto;
   overflow-x: hidden;
   cursor: pointer; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search .search-tooltip {
+      max-width: 500px;
+      max-height: 96px; } }
 
 .leaflet-control-search .search-tip {
   margin: 0;
-  padding: 2px 4px;
+  padding: 1px 4px;
   display: block;
   color: black;
   background: white;
