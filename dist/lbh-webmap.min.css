@@ -8634,7 +8634,7 @@ body,
   position: absolute;
   left: 0;
   top: 0;
-  transform: translateX(-100%);
+  transform: translateX(-110%);
   transition: transform 500ms;
   z-index: 1; }
   @media (min-width: 48.0625em) {
