@@ -9140,8 +9140,7 @@ input:not(:checked) + span span.control__active-border {
   /*expanded*/
   background-clip: padding-box;
   display: inherit;
-  max-width: 500px;
-  height: 115px; }
+  max-width: 500px; }
   @media (min-width: 48.0625em) {
     .leaflet-control-search.search-exp {
       height: 145px; } }

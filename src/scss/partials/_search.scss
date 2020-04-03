@@ -19,7 +19,7 @@
 	background-clip: padding-box;	
 	display: inherit;
 	max-width: 500px;
-	height: 115px;
+	// height: 115px;
 	@include govuk-media-query($from: desktop) {
 		height: 145px;
 	}
