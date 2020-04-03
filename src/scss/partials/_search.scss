@@ -21,7 +21,7 @@
 	max-width: 500px;
 	// height: 115px;
 	@include govuk-media-query($from: desktop) {
-		height: 145px;
+		height: 160px;
 	}
 }
 
@@ -53,7 +53,11 @@ margin-bottom: 7px;
     // Double the border by adding its width again. Use `box-shadow` to do
     // this instead of changing `border-width` (which changes element size) and
     // since `outline` is already used for the yellow focus state.
-    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+	box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+	width: 230px;
+	@include govuk-media-query($from: desktop) {
+		width: 500px;
+	}
 }
 
 
@@ -144,7 +148,7 @@ margin-bottom: 7px;
 	cursor: pointer;
 	@include govuk-media-query($from: desktop) {
 		max-width: 500px;
-		max-height: 96px;
+		max-height: 110px;
 	}
 }
 .leaflet-control-search .search-tip {

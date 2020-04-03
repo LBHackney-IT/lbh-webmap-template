@@ -9143,7 +9143,7 @@ input:not(:checked) + span span.control__active-border {
   max-width: 500px; }
   @media (min-width: 48.0625em) {
     .leaflet-control-search.search-exp {
-      height: 145px; } }
+      height: 160px; } }
 
 .leaflet-control-search .search-input {
   font-family: 'Montserrat';
@@ -9166,7 +9166,11 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-search .search-input:focus {
   outline: 3px solid #ffdd00;
   outline-offset: 0;
-  box-shadow: inset 0 0 0 2px; }
+  box-shadow: inset 0 0 0 2px;
+  width: 230px; }
+  @media (min-width: 48.0625em) {
+    .leaflet-control-search .search-input:focus {
+      width: 500px; } }
 
 .leaflet-control-search .search-cancel {
   width: 20px;
@@ -9248,7 +9252,7 @@ input:not(:checked) + span span.control__active-border {
   @media (min-width: 48.0625em) {
     .leaflet-control-search .search-tooltip {
       max-width: 500px;
-      max-height: 96px; } }
+      max-height: 110px; } }
 
 .leaflet-control-search .search-tip {
   margin: 0;
