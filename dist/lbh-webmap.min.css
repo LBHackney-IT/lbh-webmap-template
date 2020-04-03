@@ -8622,6 +8622,8 @@ body,
   height: 28.125rem;
   width: 270px;
   width: 16.875rem;
+  margin-left: 18px;
+  margin-left: 1.125rem;
   background: #ffffff;
   border-right: 1px solid #00664f;
   bottom: 0;
@@ -8639,6 +8641,8 @@ body,
     .controls__sidebar {
       height: 600px;
       height: 37.5rem;
+      margin-left: 0px;
+      margin-left: 0rem;
       background: transparent;
       border: none; } }
 
