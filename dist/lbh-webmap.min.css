@@ -9141,7 +9141,7 @@ input:not(:checked) + span span.control__active-border {
   background-clip: padding-box;
   display: inherit;
   max-width: 500px;
-  height: 100px; }
+  height: 115px; }
   @media (min-width: 48.0625em) {
     .leaflet-control-search.search-exp {
       height: 145px; } }
@@ -9240,7 +9240,7 @@ input:not(:checked) + span span.control__active-border {
   list-style: none;
   padding-left: 0;
   min-width: 120px;
-  max-height: 60px;
+  max-height: 70px;
   max-width: 280px;
   z-index: 1010;
   overflow-y: auto;
