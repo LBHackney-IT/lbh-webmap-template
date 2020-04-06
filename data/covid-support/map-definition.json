@@ -1,17 +1,25 @@
 {
-  "title": "Use the left panel to filter the list of services",
+  "title": "",
   "summary": "",
-  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address,website&outputformat=csv'>Download a snapshot of the data</a></b>",
+  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address,website&outputformat=csv'>Download a snapshot of the data</a></b>",
   "showHackneyBoundary": true,
   "showHackneyMask": true,
   "showLayersOnLoad": true,
   "showLegend": true,
-  "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address&cql_filter=hidden<>1&outputformat=csv'>Download a snapshot of the data</a></b>",
+  "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address&outputformat=csv'>Download a snapshot of the data</a></b>",
   "baseStyle": "streets",
+  "search": {
+    "searchSectionTitle": "Search organisation",
+    "searchField": "organisation_name",
+    "searchPlaceholderText": "Type organisation name",
+    "notFoundText": "No organisation found with this name",
+    "clearMapAfterSearch": true
+  },
   "layers": [
     {
       "title": "Get active",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
+      "searchable": true,
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -43,6 +51,7 @@
     {
       "title": "Feeling anxious",
       "geoserverLayerName": "statmap:covid_assistance_mental_health",
+      "searchable": true,
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -68,12 +77,14 @@
             "label": "",
             "name": "link3"
           }
-        ]
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>More mental health support, tips and guidance</a>"
       }
     },
     {
       "title": "Exercise the brain",
       "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "searchable": true,
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -99,12 +110,14 @@
             "label": "",
             "name": "link3"
           }
-        ]
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>More mental health support, tips and guidance</a>"
       }
     },
     {
       "title": "Feeling lonely",
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "searchable": true,
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -130,12 +143,14 @@
             "label": "",
             "name": "link3"
           }
-        ]
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>More mental health support, tips and guidance</a>"
       }
     },
     {
       "title": "Food or Meals",
       "geoserverLayerName": "statmap:covid_assistance_food",
+      "searchable": true,
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -167,6 +182,7 @@
     {
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "searchable": true,
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -198,6 +214,7 @@
     {
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
+      "searchable": true,
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -229,6 +246,7 @@
     {
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
+      "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -260,6 +278,7 @@
     {
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
+      "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",

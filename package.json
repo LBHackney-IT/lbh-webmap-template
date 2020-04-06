@@ -23,6 +23,7 @@
     "leaflet-control-window": "^1.0.0",
     "leaflet-easybutton": "^2.4.0",
     "leaflet-panel-layers": "^1.2.6",
+    "leaflet-search": "^2.9.8",
     "leaflet.awesome-markers": "^2.0.5",
     "leaflet.markercluster": "^1.4.1",
     "pubsub-js": "^1.8.0",

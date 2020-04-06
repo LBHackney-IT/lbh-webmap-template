@@ -57,7 +57,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
 
   if (aboutTheData) {
     dataTooltip =
-      '<button class="lbh-link metadata__link">About the data/Download</button>';
+      '<button class="lbh-link metadata__link">About the data</button>';
   }
 
   if (mapTitle) {
