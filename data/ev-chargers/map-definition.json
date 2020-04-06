@@ -1,0 +1,79 @@
+{
+  "title": "Electrical vehicles chargers",
+  "aboutTheData": "this information is correct at time of publishing and is kept up to date. This is a test. Needs to be replaced with the layer metadata",
+  "showLayersOnLoad": true,
+  "baseStyle": "streets",
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Ubitricity lamp column charger",
+      "geoserverLayerName": "statmap:usr_streetscene_lamp_column",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-battery-three-quarters",
+        "markerColor": "red"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Location",
+            "name": "kml_name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "SourceLondon freestanding charger",
+      "geoserverLayerName": "statmap:usr_streetscene_sl_slowcharger",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-battery-three-quarters",
+        "markerColor": "black"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Location",
+            "name": "kml_name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Hackney rapid charger",
+      "geoserverLayerName": "statmap:usr_streetscene_H_rapidcharger",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-battery-three-quarters",
+        "markerColor": "green"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Location",
+            "name": "kml_name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "TFL rapid charger",
+      "geoserverLayerName": "statmap:usr_streetscene_tfl_rapid_char",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-battery-three-quarters",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Location",
+            "name": "kml_name"
+          }
+        ]
+      }
+    }
+
+  ]
+}
