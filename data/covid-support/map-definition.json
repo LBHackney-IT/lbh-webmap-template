@@ -20,7 +20,7 @@
       "title": "Get active",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
       "searchable": true,
-      "sortOrder": 3,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "walking",
@@ -82,10 +82,42 @@
       }
     },
     {
+      "title": "Stay safe and healthy",
+      "geoserverLayerName": "statmap:covid_assistance_safe_healthy",
+      "searchable": true,
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "heartbeat",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
       "title": "Exercise the brain",
       "geoserverLayerName": "statmap:covid_assistance_active_mind",
       "searchable": true,
-      "sortOrder": 4,
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "palette",
@@ -151,7 +183,7 @@
       "title": "Food or Meals",
       "geoserverLayerName": "statmap:covid_assistance_food",
       "searchable": true,
-      "sortOrder": 5,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
@@ -183,7 +215,7 @@
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
       "searchable": true,
-      "sortOrder": 6,
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "info",
@@ -215,7 +247,7 @@
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
       "searchable": true,
-      "sortOrder": 7,
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
@@ -247,7 +279,7 @@
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
@@ -279,7 +311,7 @@
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "house",
