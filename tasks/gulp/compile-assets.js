@@ -31,7 +31,7 @@ const postcsspseudoclasses = require("postcss-pseudo-classes")({
 // --------------------------------------
 
 // Set this to false to help with debugging, set to true for production
-const isDist = false;
+const isDist = true;
 
 const errorHandler = function(error) {
   // Log the error to the console
