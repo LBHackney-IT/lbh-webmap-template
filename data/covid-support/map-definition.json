@@ -147,7 +147,7 @@
       }
     },
     {
-      "title": "Feeling lonely",
+      "title": "Chat and check-in",
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
       "searchable": true,
       "sortOrder": 1,
