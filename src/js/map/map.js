@@ -46,6 +46,7 @@ class Map {
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
     this.controls = null;
     this.isEmbed = false;
+    this.isFullScreen = false;
     this.centerDesktop = null;
   }
 
@@ -112,6 +113,7 @@ class Map {
     const paths = pathname.split("/");
     this.dataFolder = `../data/${paths[paths.length - 2]}` || "../data";
     this.isEmbed = paths[paths.length - 1] === "embed.html";
+    this.isFullScreen = paths[paths.length - 1] === "fullscreen.html";
   }
 
   createMap() {
@@ -122,6 +124,8 @@ class Map {
       center: this.centerDesktop,
       zoom: DEFAULT_ZOOM_DESKTOP
     });
+
+    
 
     this.map.setMaxBounds(MAP_BOUNDS);
 
@@ -161,6 +165,13 @@ class Map {
     if (this.mapConfig.showResetZoomButton && !L.Browser.mobile) {
       this.addResetButton();
     }
+
+    //Add fullscreen button
+    if (this.mapConfig.showFullScreenButton) {
+      this.addFullScreenButton();
+    }
+    
+    
   }
 
   addMasterMapLayer() {
@@ -239,6 +250,24 @@ class Map {
         }
       },
       "Zoom to all Hackney",
+      { position: "topright" }
+    ).addTo(this.map);
+  }
+
+  addFullScreenButton() {
+    L.easyButton(
+      "fa-expand",
+      () => {
+        // Open a new page
+        window.open(
+          //fullscreen,
+          this.isFullScreen,
+          //window.location.pathname,
+          //'http://www.google.com',
+          '_blank'
+        );
+      },
+      "Go to full screen mode",
       { position: "topright" }
     ).addTo(this.map);
   }
