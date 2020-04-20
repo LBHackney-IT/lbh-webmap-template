@@ -153,7 +153,7 @@
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "user-friends",
+        "icon": "comments",
         "markerColor": "purple"
       },
       "popup": {
@@ -212,10 +212,42 @@
       }
     },
     {
+      "title": "Families",
+      "geoserverLayerName": "statmap:covid_assistance_families",
+      "searchable": true,
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "user-friends",
+        "markerColor": "pink"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "",
+            "name": "link1"
+          },
+          {
+            "label": "",
+            "name": "link2"
+          },
+          {
+            "label": "",
+            "name": "link3"
+          }
+        ]
+      }
+    },
+    {
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
       "searchable": true,
-      "sortOrder": 7,
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "info",
@@ -247,7 +279,7 @@
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
@@ -279,7 +311,7 @@
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
       "searchable": true,
-      "sortOrder": 9,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
@@ -311,7 +343,7 @@
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
       "searchable": true,
-      "sortOrder": 10,
+      "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "house",
