@@ -51,6 +51,9 @@ body,
   position: relative;
 }
 
+
+
+
 .leaflet-control-layers-expanded .leaflet-control-layers-list {
   height: auto !important;
 }
@@ -65,6 +68,28 @@ body,
     @include lbh-rem(height, 600);
   }
 }
+
+// styles added for the fullscreen mode
+
+.fullscreen{
+  min-width: 100%;
+  position: fixed;
+  top: 100px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+}
+
+.map__container_fullscreen .controls__sidebar{
+  height: fit-content;
+}
+
+.map__container_fullscreen .container__mask{
+  height: 800px;
+    /* overflow: hidden;*/
+}
+
 
 .fa-location:before {
   content: "\f601";
