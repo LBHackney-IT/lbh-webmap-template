@@ -40,24 +40,15 @@ class Search {
             marker: false,
             textErr: this.search.notFoundText,
             autoCollapseTime: 4000
-            //class: 'govuk-input  lbh-input'
         });
-        // controlSearch.on('search:locationfound', function(e) {           
-        //     if(e.layer._popup)
-        //       e.layer.openPopup(); 
-        //       e.layer.addTo(this.map);      
-        // });
+
         controlSearch.on('search:locationfound', (e) => {           
           
           if(this.search.clearMapAfterSearch){
             this.mapClass.clear();  
-            //e.layer.addTo(this.map);
             //the search engine only retrieves the first match. Here we search for other features matching the search term
             this.searchLayer.eachLayer(lay => {
               lay.eachLayer(feat => {
-                console.log(feat.feature);
-                console.log(feat.feature.properties[this.search.searchField]);
-                console.log(e.layer.feature.properties[this.search.searchField]);
                 if (feat.feature.properties[this.search.searchField] == e.layer.feature.properties[this.search.searchField]){
                   feat.addTo(this.map);
                 }
