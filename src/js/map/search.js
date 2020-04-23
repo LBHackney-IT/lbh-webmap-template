@@ -8,9 +8,9 @@ class Search {
     }
     
     init() {
-        this.search = this.mapConfig.search;
-        //this.createMarkup();
-        this.searchLayer = new L.LayerGroup([]);
+      this.search = this.mapConfig.search;
+      //this.createMarkup();
+      this.searchLayer = new L.LayerGroup([]); 
     }
 
     createMarkup(){
@@ -28,7 +28,17 @@ class Search {
 
     this.mapClass.addMarkupToMap(html, "search", "search");
         
-        const controlSearch = new L.Control.Search({
+      //extension of search plugin that does NOT add the searched layer to the map
+      const HackneyLeafletSearch = L.Control.Search.extend({
+        setLayer: function(layer) {	//set search layer at runtime
+          //this.options.layer = layer; //setting this, run only this._recordsFromLayer()
+          this._layer = layer;
+          //this._layer.addTo(this._map);
+          return this;
+        },
+      }); 
+    
+      const controlSearch = new HackneyLeafletSearch({
             //position:'topleft',		
             container: 'searchdiv',
             layer: this.searchLayer,
@@ -61,6 +71,7 @@ class Search {
         });
         this.map.addControl(controlSearch);
     }
+
 
 }
 
