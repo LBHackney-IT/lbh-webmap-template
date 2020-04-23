@@ -172,6 +172,9 @@ class DataLayers {
     if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
     }
+    else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+      layer.addTo(this.map);
+    }
 
     this.loadedLayerCount++;
 
