@@ -1,7 +1,7 @@
 {
   "title": "",
   "summary": "",
-  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address,website&outputformat=csv'>Download a snapshot of the data</a></b>",
+  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address,website,phone&outputformat=csv'>Download a snapshot of the data</a></b>",
   "showHackneyBoundary": true,
   "showHackneyMask": true,
   "showLayersOnLoad": true,
@@ -35,6 +35,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -65,6 +69,10 @@
           {
             "label": "",
             "name": "about_us"
+          },
+          {
+            "label": "Phone",
+            "name": "phone"
           },
           {
             "label": "",
@@ -100,6 +108,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -130,6 +142,10 @@
           {
             "label": "",
             "name": "about_us"
+          },
+          {
+            "label": "Phone",
+            "name": "phone"
           },
           {
             "label": "",
@@ -165,6 +181,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -196,6 +216,10 @@
           {
             "label": "",
             "name": "about_us"
+          },
+          {
+            "label": "Phone",
+            "name": "phone"
           },
           {
             "label": "",
@@ -230,6 +254,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -260,6 +288,10 @@
           {
             "label": "",
             "name": "about_us"
+          },
+          {
+            "label": "Phone",
+            "name": "phone"
           },
           {
             "label": "",
@@ -294,6 +326,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -326,6 +362,10 @@
             "name": "about_us"
           },
           {
+            "label": "Phone",
+            "name": "phone"
+          },
+          {
             "label": "",
             "name": "link1"
           },
@@ -356,6 +396,10 @@
           {
             "label": "",
             "name": "about_us"
+          },
+          {
+            "label": "Phone",
+            "name": "phone"
           },
           {
             "label": "",
