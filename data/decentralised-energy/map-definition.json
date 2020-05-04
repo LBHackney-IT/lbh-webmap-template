@@ -1,0 +1,36 @@
+{
+  "title": "Decentralised Energy Opportunity Areas",
+  "summary": "",
+  "showGeoServerMetadata": true,
+  "baseStyle": "streets",
+  "showHackneyBoundary": true,
+  "showHackneyMask": true,
+  "showLegend": false,
+  "layers": [
+    {
+      "title": "Opportunity Areas",
+      "geoserverLayerName": "energy:heat_opportunity_area",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": false,
+      "linePolygonStyle": {
+        "styleName": "random polygons",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0,
+        "fillColor": "",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "cluster",
+        "fields": [
+          {
+            "label": "",
+            "name": "link1"
+          }
+        ]
+      }
+    }
+  ]
+}
