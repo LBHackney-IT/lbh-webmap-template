@@ -217,10 +217,38 @@
       }
     },
     {
+      "title": "Faith groups",
+      "geoserverLayerName": "statmap:covid_assistance_faith",
+      "searchable": true,
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "hand-holding-heart",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
+      }
+    },
+    {
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "info",
@@ -248,7 +276,7 @@
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
       "searchable": true,
-      "sortOrder": 9,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
@@ -276,7 +304,7 @@
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
       "searchable": true,
-      "sortOrder": 10,
+      "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
@@ -304,7 +332,7 @@
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
       "searchable": true,
-      "sortOrder": 11,
+      "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "house",
