@@ -71,6 +71,54 @@ class DataLayers {
     return stringPopup;
   }
 
+  createTooltip(configLayer, feature, layerName) {
+    const title = configLayer.tooltip.title;
+    const afterTitle = configLayer.tooltip.afterTitle;
+    const fields = configLayer.tooltip.fields;
+    const afterFields = configLayer.tooltip.afterFields;
+
+
+    let stringTooltip = "";
+    if (title !== "notitle") {
+      if (title) {
+        stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[title]}</h3>`;
+      } else {
+        stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
+      }
+    }
+
+    if (afterTitle) {
+      stringTooltip += `<p class="popup__text">${afterTitle}</p>`;
+    }
+
+    if (fields) {
+      for (const field of fields) {
+        if (feature.properties[field] !== "") {
+          if (
+            feature.properties[field.name] !== "" &&
+            feature.properties[field.name] !== null
+          ) {
+            if (field.label != "") {
+              stringTooltip += `<p class="popup__text"><span class="popup__label">${
+                field.label
+              }</span>: ${feature.properties[field.name]}</p>`;
+            } else {
+              stringTooltip += `<p class="popup__text">${
+                feature.properties[field.name]
+              }</p>`;
+            }
+          }
+        }
+      }
+    }
+
+    if (afterFields) {
+      stringTooltip += `<p class="popup__text">${afterFields}</p>`;
+    }
+
+    return stringTooltip;
+  }
+
   addWFSLayer(data, configLayer) {
     const layerName = configLayer.title;
     const sortOrder =
@@ -123,6 +171,16 @@ class DataLayers {
           );
           const popup = L.popup({ closeButton: true }).setContent(popupString);
           layer.bindPopup(popup, { maxWidth: 210 });
+        }
+
+        if (configLayer.tooltip){
+          const tooltipString = this.createTooltip(
+            configLayer,
+            feature,
+            layerName
+          );
+          const tooltip = L.tooltip().setContent(tooltipString);
+          layer.bindTooltip(tooltip, { maxWidth: 210, direction: 'center'});
         }
       },
       sortOrder: sortOrder,

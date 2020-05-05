@@ -21,6 +21,15 @@
         "fillOpacity": 0.4,
         "layerLineDash": "",
         "weight": 1
+      },
+      "tooltip": {
+        "title": "notitle",
+        "fields": [
+          {
+            "label": "",
+            "name": "cluster"
+          }
+        ]
       }
     }
   ]
