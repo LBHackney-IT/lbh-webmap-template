@@ -101,7 +101,7 @@ class DataLayers {
       weight: linePolygonStyle && linePolygonStyle.weight
     };
 
-    const noPopup = configLayer.popup.noPopup;
+    //const noPopup = configLayer.popup.noPopup;
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
@@ -115,7 +115,7 @@ class DataLayers {
         );
       },
       onEachFeature: (feature, layer) => {
-        if (!noPopup) {
+        if (configLayer.popup) {
           const popupString = this.createMarkerPopup(
             configLayer,
             feature,

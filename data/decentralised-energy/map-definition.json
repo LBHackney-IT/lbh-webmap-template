@@ -21,15 +21,6 @@
         "fillOpacity": 0.4,
         "layerLineDash": "",
         "weight": 1
-      },
-      "popup": {
-        "title": "cluster",
-        "fields": [
-          {
-            "label": "",
-            "name": "link1"
-          }
-        ]
       }
     }
   ]
