@@ -68,8 +68,17 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "purple"
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
