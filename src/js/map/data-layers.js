@@ -182,6 +182,12 @@ class DataLayers {
           const tooltip = L.tooltip().setContent(tooltipString);
           layer.bindTooltip(tooltip, { maxWidth: 210, direction: 'center'});
         }
+
+        if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
+          layer.on("click", (event) => {
+            window.location = feature.properties[configLayer.followLinkOnClick];
+          });
+        }
       },
       sortOrder: sortOrder,
       style: () => {

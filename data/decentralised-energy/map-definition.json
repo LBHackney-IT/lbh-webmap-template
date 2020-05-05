@@ -12,6 +12,7 @@
       "geoserverLayerName": "energy:heat_opportunity_area",
       "highlightFeatureOnHover": true,
       "zoomToFeatureOnClick": false,
+      "followLinkOnClick": "link1",
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,
