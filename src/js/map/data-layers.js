@@ -185,7 +185,12 @@ class DataLayers {
 
         if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
           layer.on("click", (event) => {
-            window.location = feature.properties[configLayer.followLinkOnClick];
+            if (feature.properties[configLayer.followLinkOnClick].startsWith('http')){
+              window.open(feature.properties[configLayer.followLinkOnClick], '_blank');
+            }
+            else{
+              window.location = feature.properties[configLayer.followLinkOnClick];
+            }           
           });
         }
       },
