@@ -31,6 +31,7 @@ import DataLayers from "./data-layers";
 import Metadata from "./metadata";
 import "classlist-polyfill";
 
+
 class Map {
   constructor(map) {
     this.map = map;
