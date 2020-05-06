@@ -12,6 +12,7 @@
       "geoserverLayerName": "energy:heat_opportunity_area",
       "highlightFeatureOnHover": true,
       "zoomToFeatureOnClick": false,
+      "followLinkOnClick": "link1",
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,
@@ -22,12 +23,12 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "popup": {
-        "title": "cluster",
+      "tooltip": {
+        "title": "notitle",
         "fields": [
           {
             "label": "",
-            "name": "link1"
+            "name": "cluster"
           }
         ]
       }
