@@ -6,12 +6,6 @@
   "showLegend": true,
   "personas": [
     {
-      "id": "hackney",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
-      "text": "Hackney"
-    },
-    {
       "id": "employment",
       "icon": "../images/personas/.png",
       "iconActive": "../images/personas/.png",
