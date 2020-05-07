@@ -31,7 +31,12 @@ class Personas {
     let buttonWrapper = document.createElement("span");
     buttonWrapper.classList.add("personas__button-wrapper");
 
-    buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="personas__icon-wrapper"><img class="personas__icon personas__icon--base" height = 80px src="${persona.icon}" alt="${persona.text}"/><img class="personas__icon personas__icon--active" height = 80px src="${persona.iconActive}" alt="${persona.text}"/></span><span class="button-text">${persona.text}</span></button>`;
+    if (persona.icon != ""){
+      buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="personas__icon-wrapper"><img class="personas__icon personas__icon--base" height = 80px src="${persona.icon}" alt="${persona.text}"/><img class="personas__icon personas__icon--active" height = 80px src="${persona.iconActive}" alt="${persona.text}"/></span><span class="button-text">${persona.text}</span></button>`;
+    } else{ 
+      buttonWrapper.innerHTML = `<button id="persona-button-${i}" class="personas__button"><span class="button-text">${persona.text}</span></button>`;
+    }
+    
 
     const mapPersonas = document.getElementById("personas");
     mapPersonas.appendChild(buttonWrapper);

@@ -7,50 +7,50 @@
   "personas": [
     {
       "id": "employment",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Employment spaces"
     },
     {
       "id": "flooding",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Flooding"
     },
     {
       "id": "green",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Green and Open Land"
     },
     {
       "id": "historic",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Historic Environment "
     },
     {
       "id": "londonplan",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "London Plan"
     },
     {
       "id": "retail",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Retail"
     },
     {
       "id": "waste",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "Waste Sites"
     },
     {
       "id": "lldc",
-      "icon": "../images/personas/.png",
-      "iconActive": "../images/personas/.png",
+      "icon": "",
+      "iconActive": "",
       "text": "LLDC Area"
     }
   ],
@@ -59,9 +59,97 @@
       "title": "Priority Industial Areas",
       "geoserverLayerName": "planning:lp33_priority_industial_area",
       "personas": ["employment"],
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Priority Office Areas",
+      "geoserverLayerName": "planning:lp33_priority_office_area",
+      "personas": ["employment"],
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    }, 
+    {
+      "title": "Locally Strategic Industrial Sites",
+      "geoserverLayerName": "planning:lp33_local_significant_industrial",
+      "personas": ["employment"],
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkgreen",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#728224",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Local Open Spaces",
+      "geoserverLayerName": "planning:lp33_open_space_ex_amenity",
+      "personas": ["green"],
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
+        "markerColor": "red",
         "icon": "rectangle-landscape"
       },
       "linePolygonStyle": {
@@ -84,71 +172,24 @@
       }
     },
     {
-      "title": "Priority Office Areas",
-      "geoserverLayerName": "planning:lp33_priority_office_area",
-      "personas": ["employment"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "green"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    }, 
-    {
-      "title": "Locally Strategic Industrial Sites",
-      "geoserverLayerName": "planning:lp33_local_significant_industrial",
-      "personas": ["employment"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Local Open Spaces",
-      "geoserverLayerName": "planning:lp33_open_space_ex_amenity",
-      "personas": ["green"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
       "title": "Metropolitan Open Land",
       "geoserverLayerName": "planning:lp33_metropolitan_open_land",
       "personas": ["green"],
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -166,8 +207,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -204,8 +255,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -223,8 +284,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -242,8 +313,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -280,8 +361,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -299,8 +390,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "darkgreen"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -318,8 +419,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "darkgreen"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -337,8 +448,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "darkgreen"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -356,8 +477,18 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "darkgreen"
+        "markerColor": "red",
+        "icon": "rectangle-landscape"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
       },
       "popup": {
         "fields": [
