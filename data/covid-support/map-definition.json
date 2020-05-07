@@ -217,7 +217,7 @@
       }
     },
     {
-      "title": "Faith groups",
+      "title": "Faith-led activities",
       "geoserverLayerName": "statmap:covid_assistance_faith",
       "searchable": true,
       "sortOrder": 8,
