@@ -30,6 +30,8 @@ app.use("/images", express.static("images"));
 app.use("/assets", express.static("node_modules/lbh-frontend/lbh/assets"));
 app.use("/assets", express.static("node_modules/govuk-frontend/govuk/assets"));
 app.use("/data", express.static("data"));
+app.use("/lbhfrontend", express.static("node_modules/lbh-frontend/lbh"));
+
 
 app.get("/dist/:page", function(req, res) {
   res.render('dist/' + req.params.page);
@@ -54,6 +56,8 @@ app.get("/:project/:page", function(req, res) {
 app.get("/:page", function(req, res) {
   res.render(req.params.page);
 });
+
+
 
 // Start server
 app.listen(port);
