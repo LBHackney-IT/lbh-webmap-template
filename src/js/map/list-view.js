@@ -48,6 +48,8 @@ class List {
   </div>`;
     
     this.mapClass.addMarkupToMap(html, "listview", "listview");
+    //activate component from lbh-frontend
+    window.LBHFrontend.initAll();
 
   }
  
