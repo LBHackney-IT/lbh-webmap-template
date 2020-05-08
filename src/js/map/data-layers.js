@@ -169,7 +169,7 @@ class DataLayers {
       });
     }
 
-    this.layersData.push({layerName, layer, data });
+    this.layersData.push({configLayer, layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);

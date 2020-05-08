@@ -1,4 +1,5 @@
 import DataLayers from "./data-layers";
+import { MARKER_COLORS } from "./consts";
 
 class List {
   constructor(map, layersData) {
@@ -11,7 +12,8 @@ class List {
 
   init() {
     this.list = this.mapConfig.list;
-     console.log(this.layersData);
+    this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
+    console.log(this.layersData);
     this.createMarkup();
   }
 
@@ -23,7 +25,8 @@ class List {
       <div class="govuk-accordion__section-header">
         <h5 class="govuk-accordion__section-heading">
           <span class="govuk-accordion__section-button" id="default-example-heading-1">
-          ${layerData.layerName} (${layerData.layer.getLayers().length})
+          <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>&nbsp &nbsp
+          ${layerData.configLayer.title} (${layerData.layer.getLayers().length})
           </span>
         </h5>
       </div>`;
