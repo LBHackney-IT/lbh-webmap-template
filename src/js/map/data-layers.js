@@ -169,7 +169,7 @@ class DataLayers {
       });
     }
 
-    this.layersData.push({ layer, data });
+    this.layersData.push({layerName, layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
@@ -183,11 +183,12 @@ class DataLayers {
       this.filters.init();
     }
 
-    //create list view if true in mapconfig
-    if (this.mapConfig.list) {
-      this.list = new List(this.mapClass,layerName);
+    //only happens once, after the last layer has loaded - create list view if true in mapconfig
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.list = new List(this.mapClass,this.layersData);
       this.list.init();
     }
+
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
