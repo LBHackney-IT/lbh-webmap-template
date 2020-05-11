@@ -1,13 +1,16 @@
 {
   "title": "",
   "summary": "",
-  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address,website&outputformat=csv'>Download a snapshot of the data</a></b>",
+  "aboutTheData": "We are working closely with external providers to make sure this information is correct at time of publishing and is kept up to date. The map is for information only; we do not endorse any of the listed organisations or services.<br><br><b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address,phone,website1,website2,website3&outputformat=csv'>Download a snapshot of the data</a></b>",
   "showHackneyBoundary": true,
   "showHackneyMask": true,
-  "showLayersOnLoad": true,
   "showLegend": true,
-  "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,about_us,address&cql_filter=hidden<>1&outputformat=csv'>Download a snapshot of the data</a></b>",
+  "showFirstLayerOnLoad": true,
+  "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address&outputformat=csv'>Download a snapshot of the data</a></b>",
   "baseStyle": "streets",
+  "list":{
+    "sectionHeader": "List of all organisations"
+  },
   "search": {
     "searchSectionTitle": "Search organisation",
     "searchField": "organisation_name",
@@ -20,7 +23,7 @@
       "title": "Get active",
       "geoserverLayerName": "statmap:covid_assistance_exercise",
       "searchable": true,
-      "sortOrder": 3,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "walking",
@@ -34,16 +37,33 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
@@ -66,31 +86,17 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
-          },
-          {
-            "label": "",
-            "name": "link3"
+            "name": "links"
           }
-        ]
-      }
-    },
-    {
-      "title": "Exercise the brain",
-      "geoserverLayerName": "statmap:covid_assistance_active_mind",
-      "searchable": true,
-      "sortOrder": 4,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "palette",
-        "markerColor": "darkblue"
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
       },
-      "popup": {
+      "listView": {
         "title": "organisation_name",
         "fields": [
           {
@@ -98,48 +104,16 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
-          },
-          {
-            "label": "",
-            "name": "link3"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Feeling lonely",
-      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
-      "searchable": true,
-      "sortOrder": 1,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "user-friends",
-        "markerColor": "purple"
-      },
-      "popup": {
-        "title": "organisation_name",
-        "fields": [
-          {
-            "label": "",
-            "name": "about_us"
-          },
-          {
-            "label": "",
-            "name": "link1"
-          },
-          {
-            "label": "",
-            "name": "link2"
-          },
-          {
-            "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
@@ -148,7 +122,7 @@
       "title": "Stay safe and healthy",
       "geoserverLayerName": "statmap:covid_assistance_safe_healthy",
       "searchable": true,
-      "sortOrder": 1,
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "heartbeat",
@@ -162,16 +136,133 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields":[
+        {
+          "label": "",
+          "name": "about_us"
+        },
+        {
+          "label": "Address",
+          "name": "address_link"
+        },
+        {
+          "label": "Tel",
+          "name": "phone_link"
+        },
+        {
+          "label": "",
+          "name": "links"
+        }
+      ]
+      }
+    },
+    {
+      "title": "Exercise the brain",
+      "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "searchable": true,
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "palette",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
+          }
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Chat and check-in",
+      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "searchable": true,
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "comments",
+        "markerColor": "purple"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
           }
         ]
       }
@@ -180,7 +271,7 @@
       "title": "Food or Meals",
       "geoserverLayerName": "statmap:covid_assistance_food",
       "searchable": true,
-      "sortOrder": 5,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "apple-alt",
@@ -194,16 +285,132 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Families",
+      "geoserverLayerName": "statmap:covid_assistance_families",
+      "searchable": true,
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "user-friends",
+        "markerColor": "pink"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ],
+        "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Faith-led activities",
+      "geoserverLayerName": "statmap:covid_assistance_faith",
+      "searchable": true,
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "hand-holding-heart",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
           }
         ]
       }
@@ -212,7 +419,7 @@
       "title": "Benefits advice",
       "geoserverLayerName": "statmap:covid_assistance_benefits",
       "searchable": true,
-      "sortOrder": 6,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "info",
@@ -226,16 +433,33 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
@@ -244,7 +468,7 @@
       "title": "Debt advice",
       "geoserverLayerName": "statmap:covid_assistance_debt",
       "searchable": true,
-      "sortOrder": 7,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
@@ -258,16 +482,33 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
@@ -276,7 +517,7 @@
       "title": "Employment advice",
       "geoserverLayerName": "statmap:covid_assistance_employment",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "briefcase",
@@ -290,16 +531,33 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
@@ -308,7 +566,7 @@
       "title": "Housing advice",
       "geoserverLayerName": "statmap:covid_assistance_housing",
       "searchable": true,
-      "sortOrder": 8,
+      "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "house",
@@ -322,16 +580,33 @@
             "name": "about_us"
           },
           {
-            "label": "",
-            "name": "link1"
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link2"
+            "name": "links"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
           },
           {
             "label": "",
-            "name": "link3"
+            "name": "links"
           }
         ]
       }
