@@ -251,6 +251,14 @@ class Map {
     element.innerHTML = markup;
     this.container.insertBefore(element, this.container.firstChild);
   }
+
+  addMarkupToMapAfter(markup, id, className) {
+    const element = document.createElement("section");
+    element.setAttribute("id", id);
+    element.classList.add(className);
+    element.innerHTML = markup;
+    this.container.insertAdjacentElement("beforeend", element);
+  }
 }
 
 export default Map;

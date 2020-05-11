@@ -177,17 +177,18 @@ class DataLayers {
 
     this.loadedLayerCount++;
 
-    //only happens once, after the last layer has loaded
+    //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
       this.filters.init();
     }
 
-    //only happens once, after the last layer has loaded - create list view if true in mapconfig
+    //only happens once, after the last layer has loaded - create list view after the map
     if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
       this.list = new List(this.mapClass,this.layersData);
       this.list.init();
     }
+
 
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
@@ -249,6 +250,9 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
+
+
+
   }
 
   createControl() {
