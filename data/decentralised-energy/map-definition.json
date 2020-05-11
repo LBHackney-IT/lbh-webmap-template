@@ -1,0 +1,37 @@
+{
+  "title": "Click on an area to see <br> energetic opportunities",
+  "summary": "",
+  "showGeoServerMetadata": true,
+  "baseStyle": "streets",
+  "showHackneyBoundary": true,
+  "showHackneyMask": true,
+  "showLegend": false,
+  "layers": [
+    {
+      "title": "Opportunity Areas",
+      "geoserverLayerName": "energy:heat_opportunity_area",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": false,
+      "followLinkOnClick": "link1",
+      "linePolygonStyle": {
+        "styleName": "random polygons",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0,
+        "fillColor": "",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "title": "notitle",
+        "fields": [
+          {
+            "label": "",
+            "name": "cluster"
+          }
+        ]
+      }
+    }
+  ]
+}

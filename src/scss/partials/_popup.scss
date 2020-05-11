@@ -28,5 +28,11 @@
 }
 
 .popup__label {
-  font-weight: $lbh-font-weight-bold;
+  // font-weight: $lbh-font-weight-bold;
+  font-weight: $lbh-font-weight-regular;
+}
+
+.leaflet-tooltip {
+  border-radius: 0;
+  box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
 }
