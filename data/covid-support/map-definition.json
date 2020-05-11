@@ -8,7 +8,9 @@
   "showLegend": true,
   "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address&outputformat=csv'>Download a snapshot of the data</a></b>",
   "baseStyle": "streets",
-  "list":true,
+  "list":{
+    "sectionHeader": "List of the organisations shown on the map:"
+  },
   "search": {
     "searchSectionTitle": "Search organisation",
     "searchField": "organisation_name",

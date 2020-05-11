@@ -19,7 +19,7 @@ class List {
 
   createMarkup() {
     
-    let html = `<div class="listview-container"><h3>List of the organisations shown on the map:</h3>`;
+    let html = `<div class="listview-container"><h3>${this.list.sectionHeader}</h3>`;
     html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" id="default-example" data-attribute="value">`;
     for (var layerData of this.layersData){
       console.log(layerData)
