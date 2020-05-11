@@ -1,10 +1,10 @@
+//$lbh-global-styles: true;
 @import "node_modules/leaflet/dist/leaflet";
 @import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
 @import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
 @import "node_modules/leaflet-easybutton/src/easy-button";
 @import "node_modules/leaflet-control-window/src/L.Control.Window";
 @import "node_modules/leaflet.markercluster/dist/MarkerCluster";
-
 @import "node_modules/lbh-frontend/lbh/all";
 @import "./partials/filters";
 @import "./partials/map";

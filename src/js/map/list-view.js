@@ -20,14 +20,14 @@ class List {
   createMarkup() {
     
     let html = `<div class="listview-container"><h3>${this.list.sectionHeader}</h3>`;
-    html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" id="default-example" data-attribute="value">`;
+    html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">`;
     for (var layerData of this.layersData){
       console.log(layerData)
       if (layerData.configLayer.listView){
         html += `<div class="govuk-accordion__section ">
         <div class="govuk-accordion__section-header">
           <h5 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="default-example-heading-1">
+            <span class="govuk-accordion__section-button">
             ${layerData.configLayer.title} &nbsp <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>
             </span>
           </h5>

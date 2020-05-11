@@ -1,3 +1,7 @@
 .listview-container{
 	margin-top: 70px
 }
+
+.listview-container a {
+	@include lbh-link;
+  }
