@@ -28,8 +28,7 @@ class List {
         <div class="govuk-accordion__section-header">
           <h5 class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button" id="default-example-heading-1">
-            <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>&nbsp &nbsp
-            ${layerData.configLayer.title} (${layerData.layer.getLayers().length})
+            ${layerData.configLayer.title} &nbsp <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>
             </span>
           </h5>
         </div>`;

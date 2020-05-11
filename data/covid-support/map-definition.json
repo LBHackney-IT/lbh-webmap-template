@@ -226,6 +226,27 @@
           }
         ],
         "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -263,6 +284,27 @@
           }
         ],
         "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -297,6 +339,27 @@
           {
             "label": "",
             "name": "link3"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
           }
         ]
       }
@@ -335,6 +398,27 @@
             "name": "link3"
           }
         ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -369,6 +453,27 @@
           {
             "label": "",
             "name": "link3"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
           }
         ]
       }
@@ -407,6 +512,27 @@
             "name": "link3"
           }
         ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -443,6 +569,27 @@
             "name": "link3"
           }
         ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -477,6 +624,27 @@
           {
             "label": "",
             "name": "link3"
+          }
+        ]
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address"
+          },
+          {
+            "label": "Tel",
+            "name": "phone"
+          },
+          {
+            "label": "",
+            "name": "links"
           }
         ]
       }
