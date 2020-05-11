@@ -38,7 +38,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -55,11 +55,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -87,7 +87,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -105,11 +105,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -137,7 +137,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -154,11 +154,11 @@
         },
         {
           "label": "Address",
-          "name": "address"
+          "name": "address_link"
         },
         {
           "label": "Tel",
-          "name": "phone"
+          "name": "phone_link"
         },
         {
           "label": "",
@@ -186,7 +186,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -204,11 +204,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -236,7 +236,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -254,11 +254,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -286,7 +286,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -303,11 +303,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -335,7 +335,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -343,6 +343,27 @@
           }
         ],
         "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a>"
+      },
+      "listView": {
+        "title": "organisation_name",
+        "fields": [
+          {
+            "label": "",
+            "name": "about_us"
+          },
+          {
+            "label": "Address",
+            "name": "address_link"
+          },
+          {
+            "label": "Tel",
+            "name": "phone_link"
+          },
+          {
+            "label": "",
+            "name": "links"
+          }
+        ]
       }
     },
     {
@@ -364,7 +385,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -381,11 +402,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -413,7 +434,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -430,11 +451,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -462,7 +483,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -479,11 +500,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -511,7 +532,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -528,11 +549,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -560,7 +581,7 @@
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
@@ -577,11 +598,11 @@
           },
           {
             "label": "Address",
-            "name": "address"
+            "name": "address_link"
           },
           {
             "label": "Tel",
-            "name": "phone"
+            "name": "phone_link"
           },
           {
             "label": "",
