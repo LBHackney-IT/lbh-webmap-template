@@ -15,7 +15,8 @@ $lbh-global-styles: true;
 @import "./partials/popup";
 @import "./partials/tooltip";
 @import "./partials/search";
-//@import "./partials/accordion";
+@import "./partials/listview";
+
 
 // Start remove L.Control.Window undesired styles
 .modal {
