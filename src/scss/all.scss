@@ -4,7 +4,7 @@
 @import "node_modules/leaflet-easybutton/src/easy-button";
 @import "node_modules/leaflet-control-window/src/L.Control.Window";
 @import "node_modules/leaflet.markercluster/dist/MarkerCluster";
-//@import "node_modules/leaflet-search/src/leaflet-search";
+$lbh-global-styles: true;
 @import "node_modules/lbh-frontend/lbh/all";
 @import "./partials/filters";
 @import "./partials/map";
@@ -15,6 +15,8 @@
 @import "./partials/popup";
 @import "./partials/tooltip";
 @import "./partials/search";
+@import "./partials/listview";
+
 
 // Start remove L.Control.Window undesired styles
 .modal {

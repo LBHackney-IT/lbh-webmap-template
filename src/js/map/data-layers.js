@@ -4,6 +4,7 @@ import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 import Search from "./search";
+import List from "./list-view";
 
 class DataLayers {
   constructor(map) {
@@ -22,6 +23,7 @@ class DataLayers {
     this.filters = null;
     this.layersData = [];
     this.search = null;
+    this.list = null;
   }
 
   createMarkerPopup(configLayer, feature, layerName) {
@@ -236,7 +238,7 @@ class DataLayers {
       });
     }
 
-    this.layersData.push({ layer, data });
+    this.layersData.push({configLayer, layer, data });
 
     if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
@@ -247,11 +249,18 @@ class DataLayers {
 
     this.loadedLayerCount++;
 
-    //only happens once, after the last layer has loaded
+    //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
       this.filters.init();
     }
+
+    //only happens once, after the last layer has loaded - create list view after the map
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.list = new List(this.mapClass,this.layersData);
+      this.list.init();
+    }
+
 
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
@@ -313,6 +322,9 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
+
+
+
   }
 
   createControl() {
