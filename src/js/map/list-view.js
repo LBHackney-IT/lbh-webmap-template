@@ -18,37 +18,55 @@ class List {
   }
 
   createMarkup() {
-    let html = `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" id="default-example" data-attribute="value">`;
+    
+    let html = `<div class="listview-container"><h3>List of the organisations shown on the map:</h3>`;
+    html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" id="default-example" data-attribute="value">`;
     for (var layerData of this.layersData){
       console.log(layerData)
-      html += `<div class="govuk-accordion__section ">
-      <div class="govuk-accordion__section-header">
-        <h5 class="govuk-accordion__section-heading">
-          <span class="govuk-accordion__section-button" id="default-example-heading-1">
-          <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>&nbsp &nbsp
-          ${layerData.configLayer.title} (${layerData.layer.getLayers().length})
-          </span>
-        </h5>
-      </div>`;
-      for (var feat of layerData.layer.getLayers()){
-        //for (var feature of layerData.data.features){
-        // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
-        // <ul class="lbh-list lbh-list--bullet">
-        // <li>${feature.properties.organisation_name}</li>
-        // </ul></div>`;
-        html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
-        <h6>${feat.feature.properties.organisation_name}</h6>
-        <p class="lbh-body-s">${feat.feature.properties.about_us}
-        <br>Address - ${feat.feature.properties.address}
-        <br>Tel - ${feat.feature.properties.phone}
-        <br>${feat.feature.properties.links}</p>
+      if (layerData.configLayer.listView){
+        html += `<div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header">
+          <h5 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="default-example-heading-1">
+            <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>&nbsp &nbsp
+            ${layerData.configLayer.title} (${layerData.layer.getLayers().length})
+            </span>
+          </h5>
         </div>`;
+        for (var feat of layerData.layer.getLayers()){
+          //for (var feature of layerData.data.features){
+          // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
+          // <ul class="lbh-list lbh-list--bullet">
+          // <li>${feature.properties.organisation_name}</li>
+          // </ul></div>`;
+          html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
+          <h6>${feat.feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          if (layerData.configLayer.listView.fields) {
+            html += `<p class="lbh-body-s">`;
+            for (const field of layerData.configLayer.listView.fields) {
+              if (feat.feature.properties[field] !== "") {
+                if (
+                  feat.feature.properties[field.name] !== "" &&
+                  feat.feature.properties[field.name] !== null
+                ) {
+                  if (field.label != "") {
+                    html += `${field.label}</span>: ${feat.feature.properties[field.name]}<br>`;
+                  } else {
+                    html += `${feat.feature.properties[field.name]}<br>`;
+                  }
+                }     
+              }
+            }
+            html += `</p>`
+          }          
+          html += `</div>`;
+        }
+        html += `</div>`;
       }
-      html += `</div>`;
     }
-  html += `</div>`;
+    html += `</div></div>`;
     
-    this.mapClass.addMarkupToMap(html, "listview", "listview");
+    this.mapClass.addMarkupToMapAfter(html, "listview", "listview");
     //activate component from lbh-frontend
     window.LBHFrontend.initAll();
 
