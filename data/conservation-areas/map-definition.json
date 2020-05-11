@@ -4,10 +4,19 @@
   "zoomToMasterMap": true,
   "showHackneyMask": true,
   "showHackneyBoundary": true,
+  "list":{
+    "sectionHeader": "List of all conservation areas",
+    "showIcons": false
+  },
   "layers": [
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "rectangle-landscape"
+      },
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,
@@ -19,12 +28,21 @@
         "weight": 1.5
       },
       "popup": {
-        "title": "notitle",
+        "title": "ca_name",
         "fields": [
           {
-            "label": "Conservation area name",
-            "name": "ca_name"
+            "label": "Designation year",
+            "name": "designation_date"
           },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      },
+      "listView": {
+        "title": "ca_name",
+        "fields": [
           {
             "label": "Designation year",
             "name": "designation_date"
