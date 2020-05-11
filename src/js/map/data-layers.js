@@ -187,12 +187,21 @@ class DataLayers {
 
         if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
           layer.on("click", (event) => {
+            //external link opens in a new tab
             if (feature.properties[configLayer.followLinkOnClick].startsWith('http')){
               window.open(feature.properties[configLayer.followLinkOnClick], '_blank');
             }
-            else{
-              window.location = feature.properties[configLayer.followLinkOnClick];
-            }           
+            //internal link changes page location
+            else{ 
+              //from an iframe
+              if (window.location != window.parent.location){
+                window.parent.location = feature.properties[configLayer.followLinkOnClick];
+              }
+              //from the main window
+              else {
+                window.location = feature.properties[configLayer.followLinkOnClick];
+              }      
+            }     
           });
         }
       },
