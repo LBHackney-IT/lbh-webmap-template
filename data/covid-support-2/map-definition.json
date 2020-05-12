@@ -13,7 +13,7 @@
     "showIcons": true
   },
   "search": {
-    "searchSectionTitle": "Search organisation",
+    "searchSectionTitle": "Search organisation on the map",
     "searchField": "organisation_name",
     "searchPlaceholderText": "Type organisation name",
     "notFoundText": "No organisation found with this name",
