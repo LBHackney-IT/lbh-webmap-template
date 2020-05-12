@@ -4,4 +4,15 @@
 
 .listview-container a {
 	@include lbh-link;
-  }
+}
+
+//from gov front end
+
+// JavaScript enabled
+.js-enabled {
+	
+	// This fix prevents a horizontal scrollbar if the accordion is in an iframe
+    .govuk-accordion__open-all {
+		padding-right: 1px;
+	  }
+}
