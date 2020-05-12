@@ -473,7 +473,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "pound-sign",
-        "markerColor": "beige"
+        "markerColor": "lightred"
       },
       "popup": {
         "title": "organisation_name",
