@@ -1,5 +1,5 @@
 .listview-container{
-	margin-top: 70px
+	margin-top: 70px;
 }
 
 .listview-container a {
@@ -7,6 +7,9 @@
 }
 
 //from gov front end
+.govuk-accordion__section {
+	background-color:#f8f8f8; /*lbh-grey-4*/
+}
 
 // JavaScript enabled
 .js-enabled {
