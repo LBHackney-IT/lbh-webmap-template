@@ -23,3 +23,10 @@ gulp.task("copy-files", () => {
     .pipe(scssFiles.restore)
     .pipe(gulp.dest("dist/"));
 });
+
+gulp.task("copy-3rd-parties", () => gulp
+    .src([
+      "node_modules/iframe-resizer/js/iframeResizer.contentWindow.min.js"
+    ])
+    .pipe(gulp.dest("dist/"))
+);

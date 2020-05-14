@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-pro": "^5.12.1",
     "classlist-polyfill": "^1.2.0",
     "govuk-frontend": "^3.5.0",
+    "iframe-resizer": "^4.2.10",
     "lbh-frontend": "^2.0.0",
     "leaflet": "^1.6.0",
     "leaflet-control-custom": "^1.0.0",
