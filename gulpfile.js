@@ -41,7 +41,7 @@ gulp.task("test", gulp.series("scss:compile"));
 // Copy assets task for local & heroku --
 // Copies files to dist
 // --------------------------------------
-gulp.task("copy-assets", gulp.series("styles", "scripts"));
+gulp.task("copy-assets", gulp.series("styles", "scripts", "copy-3rd-parties"));
 
 // Serve task ---------------------------
 // Restarts node app when there is changed
