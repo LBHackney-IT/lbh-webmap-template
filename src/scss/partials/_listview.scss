@@ -6,20 +6,6 @@
 	@include lbh-link;
 }
 
-//from gov front end
-
-.govuk-accordion__section {
-	background-color:#ecebeb; /*same grey as the map legend*/
-}
-
-.govuk-accordion__section-header {
-	border-left: solid 8px #bfc1c3;
-	padding-left: 10px;
-}
-
-.govuk-accordion__section-content {
-	padding-left: 18px;
-}
 
 // JavaScript enabled
 .js-enabled {
