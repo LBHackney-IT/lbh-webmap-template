@@ -4,4 +4,3 @@ node_modules
 src/js/helpers/mapbox.js
 .npmrc
 web.config
-dist/
