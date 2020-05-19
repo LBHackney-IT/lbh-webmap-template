@@ -144,7 +144,8 @@
             "label": "",
             "name": "links"
           }
-        ]
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
       },
       "listView": {
         "title": "organisation_name",
@@ -343,7 +344,7 @@
             "name": "links"
           }
         ],
-        "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a>"
+        "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a><br><br><a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
       },
       "listView": {
         "title": "organisation_name",
