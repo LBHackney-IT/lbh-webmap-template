@@ -1,0 +1,32 @@
+{
+  "title": "Cycle parking in Hackney",
+  "summary": "This map shows the big efforts of ............",
+  "showGeoServerMetadata": true,
+  "zoomToMasterMap": true,
+  "showLocateButton": false,
+  "showResetZoomButton": false,
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Chat and Check In",
+      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "comments",
+        "markerColor": "purple",
+        "cluster": true
+      },
+      "linePolygonStyle": "",
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "type"
+          }
+        ],
+        "afterFields": "For more information visit <a href='https://www.hackney.gov.uk'>our website</a>"
+      }
+    }
+  ]
+}
