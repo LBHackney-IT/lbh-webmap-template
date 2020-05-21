@@ -84,8 +84,8 @@ Object properties:
 | --- | --- | --- | --- |
 | `searchSectionTitle` | String | required | Label of the search tool. Clicking on the label expands the search bar. |
 | `searchField` | String | required | Name of the data attribute that will be searched against. All searchable layers must have this comon attribute. |
-| `searchPlaceholderText` | String | required | Clue Text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
-| `notFoundText` | String | required | Message apearing under the serach box if no result is found. |
+| `searchPlaceholderText` | String | required | Hint text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
+| `notFoundText` | String | required | Message appearing under the search box if no result is found. |
 | `clearMapAfterSearch` | Boolean | required | If true, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
 
 
