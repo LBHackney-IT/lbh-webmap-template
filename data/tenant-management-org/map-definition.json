@@ -1,0 +1,29 @@
+{
+  "title": "Tenant management organisations",
+  "summary": "",
+  "showGeoServerMetadata": false,
+  "zoomToMasterMap": true,
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Tenant management organisations",
+      "geoserverLayerName": "housing:tenant_management_organisation",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-house",
+        "markerColor": "purple"
+      },
+      "tooltip": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "address"
+          }
+        ]
+      }
+    }
+        ]
+      }
+  
