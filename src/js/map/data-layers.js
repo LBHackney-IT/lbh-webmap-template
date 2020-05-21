@@ -1,4 +1,4 @@
-import L from "leaflet";
+import L, { Point } from "leaflet";
 import { pointToLayer } from "./metadata";
 import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
@@ -151,7 +151,6 @@ class DataLayers {
       weight: linePolygonStyle && linePolygonStyle.weight
     };
 
-    //const noPopup = configLayer.popup.noPopup;
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
@@ -182,7 +181,10 @@ class DataLayers {
             layerName
           );
           const tooltip = L.tooltip().setContent(tooltipString);
-          layer.bindTooltip(tooltip, { maxWidth: 210, direction: 'center'});
+          layer.bindTooltip(tooltip, { 
+            direction: configLayer.tooltip.direction || 'auto',
+            offset: configLayer.tooltip.offset || [0,0]
+          });
         }
 
         if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
