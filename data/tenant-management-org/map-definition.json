@@ -15,6 +15,8 @@
         "markerColor": "purple"
       },
       "tooltip": {
+        "direction": "top",
+        "offset": [0,-40],
         "title": "name",
         "fields": [
           {
