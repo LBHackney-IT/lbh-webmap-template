@@ -5,6 +5,7 @@
   "zoomToMasterMap": true,
   "showHackneyMask": true,
   "showHackneyBoundary": true,
+  "baseStyle": "streets",
   "layers": [
     {
       "title": "Tenant management organisations",
