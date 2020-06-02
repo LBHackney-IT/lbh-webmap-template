@@ -83,6 +83,10 @@ class Map {
       .catch(error => {
         console.log(error);
       });
+
+      // if (document.getElementById("fullscreen_container")){
+      //   this.isFullScreen = true;
+      // }
   }
 
   clear() {
@@ -113,7 +117,7 @@ class Map {
     const paths = pathname.split("/");
     this.dataFolder = `../data/${paths[paths.length - 2]}` || "../data";
     this.isEmbed = paths[paths.length - 1] === "embed.html";
-    this.isFullScreen = paths[paths.length - 1] === "fullscreen.html";
+    this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
   createMap() {
@@ -167,7 +171,7 @@ class Map {
     }
 
     //Add fullscreen button
-    if (this.mapConfig.showFullScreenButton) {
+    if (this.mapConfig.showFullScreenButton && !this.isFullScreen) {
       this.addFullScreenButton();
     }
     
@@ -259,15 +263,17 @@ class Map {
       "fa-expand",
       () => {
         // Open a new page
+        console.log(this.isFullScreen);
+        console.log(window.location.pathname);
         window.open(
-          //fullscreen,
-          this.isFullScreen,
+          'fullscreen',
+          //this.isFullScreen,
           //window.location.pathname,
           //'http://www.google.com',
           '_blank'
         );
       },
-      "Go to full screen mode",
+      "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
   }
