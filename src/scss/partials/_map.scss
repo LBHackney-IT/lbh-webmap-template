@@ -81,33 +81,15 @@ body,
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 0px;
-  
-//   @include lbh-rem(margin-bottom, 48);
-//   font-family: "Montserrat";
-//   position: relative;
-//   width: 100%;
-//   min-height: 100%;
-//   display: block;
-//   background-color: brown;
+}  
 
-
-  // .map__wrapper {
-  //   min-width: 100%;
-  //   height: 100%;
-  //   position: fixed;
-  //   top: 100px;
-  //   left: 0;
-  //   bottom: 0;
-  //   right: 0;
-  //   overflow: auto;
-  // }
-  
-   .map__wrapper {
+.fullscreen{  
+  .map__wrapper {
     margin-top: 0;
     position: relative;
     z-index: 0;
-    border-top: 1px solid #DEE0E2;
-    border-bottom: 1px solid #DEE0E2;
+    // border-top: 1px solid #DEE0E2;
+    // border-bottom: 1px solid #DEE0E2;
     @include govuk-media-query($from: desktop) {
       height: 1000px;
     }
@@ -168,9 +150,7 @@ body,
     }
   }
 
-  // .search{
-  //   margin-left: 20px;
-  // }
+
 
   #fullscreen_sidebar{
     position: fixed;
@@ -180,8 +160,8 @@ body,
     z-index: 1;
     top: 100px;
   }
-
 }
+
 
 
 
