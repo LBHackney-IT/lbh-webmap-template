@@ -123,11 +123,14 @@ body,
     left: 0;
     top: 0;
     //height: 100%;
-    height: fit-content;
+    //height: fit-content;
     border-top: 1px solid #DEE0E2;
+    overflow-y: auto;
+    overflow-x: hidden;
     @include govuk-media-query($from: desktop) {
       @include lbh-rem(width, 400);
       transform: translateX(-400px);
+      height: 1000px;
     }
   }
 
@@ -137,9 +140,11 @@ body,
     }
   }
 
-  // .controls__sidebar-toggle {
-  //   margin-left: 20px;
-  // }
+  .personas__button-wrapper {  
+    @include govuk-media-query($from: desktop) {
+      width: 12.5%;
+    }
+  }
 
   .legend_toggle_hamburger_button{
     position: absolute;
@@ -159,7 +164,7 @@ body,
   .container__mask{
     @include govuk-media-query($from: desktop) {
       height: 1000px;
-      overflow: hidden;
+      // overflow: hidden;
     }
   }
 
