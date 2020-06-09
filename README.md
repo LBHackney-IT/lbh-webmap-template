@@ -84,8 +84,8 @@ Object properties:
 | --- | --- | --- | --- |
 | `searchSectionTitle` | String | required | Label of the search tool. Clicking on the label expands the search bar. |
 | `searchField` | String | required | Name of the data attribute that will be searched against. All searchable layers must have this comon attribute. |
-| `searchPlaceholderText` | String | required | Clue Text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
-| `notFoundText` | String | required | Message apearing under the serach box if no result is found. |
+| `searchPlaceholderText` | String | required | Hint text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
+| `notFoundText` | String | required | Message appearing under the search box if no result is found. |
 | `clearMapAfterSearch` | Boolean | required | If true, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
 
 
@@ -104,7 +104,7 @@ Object properties:
 | `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
-| `searchable` | Boolean | optional | If true, and if there is `search` defined for this map, the layer will be included in the search. The layer must have the attribute with the name specified in `searchField` at the map level. |
+| `searchable` | Boolean | optional | If true, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listView-options) |
 
 ### Point Style Options
