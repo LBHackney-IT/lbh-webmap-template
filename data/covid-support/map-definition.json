@@ -270,7 +270,7 @@
       }
     },
     {
-      "title": "Food or Meals",
+      "title": "Food or Shopping",
       "geoserverLayerName": "statmap:covid_assistance_food",
       "searchable": true,
       "sortOrder": 6,
