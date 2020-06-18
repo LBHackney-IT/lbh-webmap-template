@@ -48,6 +48,7 @@ class Map {
     this.controls = null;
     this.isEmbed = false;
     this.centerDesktop = null;
+    this.isFullScreen = false;
   }
 
   init() {
@@ -83,6 +84,9 @@ class Map {
       .catch(error => {
         console.log(error);
       });
+      // if (document.getElementById("fullscreen_container")){
+      //   this.isFullScreen = true;
+      // }
   }
 
   clear() {
@@ -113,6 +117,7 @@ class Map {
     const paths = pathname.split("/");
     this.dataFolder = `../data/${paths[paths.length - 2]}` || "../data";
     this.isEmbed = paths[paths.length - 1] === "embed.html";
+    this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
   createMap() {
@@ -162,6 +167,12 @@ class Map {
     if (this.mapConfig.showResetZoomButton && !L.Browser.mobile) {
       this.addResetButton();
     }
+
+     //Add fullscreen button
+     if (this.mapConfig.showFullScreenButton && !this.isFullScreen) {
+      this.addFullScreenButton();
+    }
+
   }
 
   addMasterMapLayer() {
@@ -240,6 +251,26 @@ class Map {
         }
       },
       "Zoom to all Hackney",
+      { position: "topright" }
+    ).addTo(this.map);
+  }
+
+  addFullScreenButton() {
+    L.easyButton(
+      "fa-expand",
+      () => {
+        // Open a new page
+        console.log(this.isFullScreen);
+        console.log(window.location.pathname);
+        window.open(
+          'fullscreen',
+          //this.isFullScreen,
+          //window.location.pathname,
+          //'http://www.google.com',
+          '_blank'
+        );
+      },
+      "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
   }

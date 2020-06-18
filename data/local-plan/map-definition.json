@@ -4,6 +4,7 @@
   "showHackneyBoundary": true,
   "showLayersOnLoad": false,
   "showLegend": true,
+  "showFullScreenButton": true,
   "personas": [
     {
       "id": "employment",
