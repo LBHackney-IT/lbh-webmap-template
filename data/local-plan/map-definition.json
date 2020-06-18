@@ -2,9 +2,9 @@
   "title": "Local Plan 2033",
   "summary": "",
   "showHackneyBoundary": true,
-  "showLayersOnLoad": false,
-  "showLegend": true,
   "showFullScreenButton": true,
+  "showLegend": true,
+  "baseStyle": "light",
   "personas": [
     {
       "id": "employment",
@@ -57,18 +57,415 @@
   ],
   "layers": [
     {
-      "title": "Priority Industial Areas",
+      "title": "Priority industial areas",
       "geoserverLayerName": "planning:lp33_priority_industial_area",
       "personas": ["employment"],
-      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "goldenrod",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Priority office areas",
+      "geoserverLayerName": "planning:lp33_priority_office_area",
+      "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "orange",
-        "icon": "rectangle-landscape"
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    }, 
+    {
+      "title": "Industrial sites",
+      "geoserverLayerName": "planning:lp33_local_significant_industrial",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Local open spaces",
+      "geoserverLayerName": "planning:lp33_open_space_ex_amenity",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkgreen",
+        "markerColorIcon2": "green",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Metropolitan open land",
+      "geoserverLayerName": "planning:lp33_metropolitan_open_land",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "SINC",
+      "geoserverLayerName": "planning:lp33_sinc",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {}
+    },
+    {
+      "title": "Major town centres",
+      "geoserverLayerName": "planning:lp33_major_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkpurple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#5b396b",
+        "opacity": 1,
+        "fillColor": "#5b396b",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "District town centres",
+      "geoserverLayerName": "planning:lp33_district_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Street markets",
+      "geoserverLayerName": "planning:lp33_street_market",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "darkred",
+        "opacity": 1,
+        "fillColor": "darkred",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Critical drainage areas",
+      "geoserverLayerName": "flood:critical_drainage_area",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "markerColorIcon2": "lightblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#8adaff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {}
+    },
+    {
+      "title": "Registered parks & gardens",
+      "geoserverLayerName": "planning:registered_park_garden_point",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "far fa-leaf-maple"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "Name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Site allocations",
+      "geoserverLayerName": "planning:lp33_site_allocation",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "lightgray",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Green corridors",
+      "geoserverLayerName": "planning:lp33_green_corridor",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "fas fa-ellipsis-h"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.8,
+        "layerLineDash": 6,
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Green links",
+      "geoserverLayerName": "planning:lp33_green_link",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkolivegreen",
+        "icon": "fas fa-horizontal-rule"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#566e4b",
+        "opacity": 1,
+        "fillColor": "#566e4b",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Regionally important geological site",
+      "geoserverLayerName": "planning:lp33_potential_geological_importance_site",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "markerColorIcon2": "orange",
+        "icon": "fas fa-axe"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
         "strokeColor": "#F69730",
         "opacity": 1,
         "fillColor": "#F69730",
@@ -86,21 +483,138 @@
       }
     },
     {
-      "title": "Priority Office Areas",
-      "geoserverLayerName": "planning:lp33_priority_office_area",
-      "personas": ["employment"],
-      "sortOrder": 2,
+      "title": "Archeological priority areas",
+      "geoserverLayerName": "planning:lp33_area_archaeological_priority",
+      "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "lightred",
-        "icon": "rectangle-landscape"
+        "markerColor": "orange",
+        "markerColorIcon2": "lightgray",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "#fc8e7f",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Conservation areas",
+      "geoserverLayerName": "planning:lp33_conservation_area",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
         "opacity": 1,
         "fillColor": "#fc8e7f",
+        "fillOpacity": 0.6,
+        "layerLineDash":"",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Central activities zone",
+      "geoserverLayerName": "planning:lp33_central_activity_zone",
+      "personas": ["londonplan"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "fields": []
+      }
+    },
+    {
+      "title": "Upper Lea Valley OAPF",
+      "geoserverLayerName": "planning:lp33_upper_lea_valley_oapf",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "markerColorIcon2": "pink",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#D252BA",
+        "opacity": 1,
+        "fillColor": "#ff91ea",
+        "fillOpacity": 0.3,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Strategic view",
+      "geoserverLayerName": "planning:lp33_strategic_view",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "darkpurple",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#5b396b",
+        "opacity": 1,
+        "fillColor": "#5b396b",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
@@ -113,26 +627,290 @@
           }
         ]
       }
-    }, 
+    },
     {
-      "title": "Locally Strategic Industrial Sites",
-      "geoserverLayerName": "planning:lp33_local_significant_industrial",
-      "personas": ["employment"],
-      "sortOrder": 3,
+      "title": "Primary shopping areas",
+      "geoserverLayerName": "planning:lp33_primary_shopping_area",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "yellow",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "yellow",
+        "opacity": 1,
+        "fillColor": "yellow",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Primary shopping frontages",
+      "geoserverLayerName": "planning:lp33_primary_shopping_frontage",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-horizontal-rule"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },{
+      "title": "Local shopping centres",
+      "geoserverLayerName": "planning:lp33_local_shopping_centre",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkpurple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#5b396b",
+        "opacity": 1,
+        "fillColor": "#5b396b",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Existing waste sites",
+      "geoserverLayerName": "planning:lp33_existing_waste",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Area centres",
+      "geoserverLayerName": "planning:lp33_lldc_area_centre",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "goldenrod",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Employment Areas",
+      "geoserverLayerName": "planning:lp33_lldc_employment_area",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "orange",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Site allocations",
+      "geoserverLayerName": "planning:lp33_lldc_site_allocation",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "lightgray",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Boundary",
+      "geoserverLayerName": "planning:lp33_lldc_boundary",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#D252BA",
+        "opacity": 1,
+        "fillColor": "#D252BA",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": []
+      }
+    },
+    {
+      "title": "LLDC Conservation areas",
+      "geoserverLayerName": "planning:lp33_lldc_conservation_area",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.6,
+        "layerLineDash":"",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Local open spaces",
+      "geoserverLayerName": "planning:lp33_lldc_adopted_los",
+      "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkgreen",
-        "icon": "rectangle-landscape"
+        "markerColorIcon2": "green",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stroke": "false",
+        "stripesAngle": 100,
+        "stroke": false,
         "strokeColor": "#728224",
         "opacity": 1,
-        "fillColor": "#728224",
-        "fillOpacity": 0.5,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.6,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 0
       },
       "popup": {
         "fields": [
@@ -144,22 +922,24 @@
       }
     },
     {
-      "title": "Local Open Spaces",
-      "geoserverLayerName": "planning:lp33_open_space_ex_amenity",
+      "title": "Area action plan",
+      "geoserverLayerName": "planning:lp33_area_action_plan",
       "personas": ["green"],
-      "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
+        "markerColor": "darkred",
+        "markerColorIcon2": "thistle",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#a23336",
         "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
         "layerLineDash": "",
         "weight": 2
       },
@@ -173,323 +953,24 @@
       }
     },
     {
-      "title": "Metropolitan Open Land",
-      "geoserverLayerName": "planning:lp33_metropolitan_open_land",
+      "title": "LLDC Metropolitan open land",
+      "geoserverLayerName": "planning:lp33_lldc_metropolitan_open_area",
       "personas": ["green"],
-      "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
+        "stripesAngle": 100,
+        "stroke": false,
+        "strokeColor": "#728224",
         "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
         "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Sites of Importance for Nature Conservation",
-      "geoserverLayerName": "planning:lp33_sinc",
-      "personas": ["green"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Conservation Areas",
-      "geoserverLayerName": "planning:lp33_conservation_area",
-      "personas": ["historic"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Local Shopping Centres",
-      "geoserverLayerName": "planning:lp33_local_shopping_centre",
-      "personas": ["retail"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Major Town Centres",
-      "geoserverLayerName": "planning:lp33_major_town_centre",
-      "personas": ["retail"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "District Town Centres",
-      "geoserverLayerName": "planning:lp33_district_town_centre",
-      "personas": ["retail"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Street Markets",
-      "geoserverLayerName": "planning:lp33_street_market",
-      "personas": ["retail"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "rectangle-landscape",
-        "markerColor": "blue"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Critical Drainage Areas",
-      "geoserverLayerName": "flood:critical_drainage_area",
-      "personas": ["flooding"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Registered Parks & Gardens",
-      "geoserverLayerName": "planning:registered_park_garden",
-      "personas": ["green"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Flood Zone 2",
-      "geoserverLayerName": "planning:lp33_flood_zone_2",
-      "personas": ["flooding"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Flood Zone 3a",
-      "geoserverLayerName": "planning:lp33_flood_zone_3a",
-      "personas": ["flooding"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Flood Zone 3b",
-      "geoserverLayerName": "planning:lp33_flood_zone_3b",
-      "personas": ["flooding"],
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "rectangle-landscape"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "red",
-        "opacity": 1,
-        "fillColor": "red",
-        "fillOpacity": 0.5,
-        "layerLineDash": "",
-        "weight": 2
+        "weight": 0
       },
       "popup": {
         "fields": [

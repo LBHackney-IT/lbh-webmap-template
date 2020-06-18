@@ -7,7 +7,7 @@ body,
   min-height: 100%;
   padding: 0;
   margin: 0;
-  font-family: "Montserrat";
+  font-family: "Open Sans";
 }
 
 #map {
@@ -42,12 +42,12 @@ body,
 .button-text {
   @include lbh-rem(font-size, 14);
   @include lbh-rem(padding-top, 12);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 .map__container {
   @include lbh-rem(margin-bottom, 48);
-  font-family: "Montserrat";
+  font-family: "Open Sans";
   position: relative;
 }
 
@@ -74,7 +74,7 @@ body,
 
 .map__container_fullscreen {
   //@include lbh-rem(margin-bottom, 48);
-  font-family: "Montserrat";
+  font-family: "Open Sans";
   position: relative;
   //background-color: chartreuse;
   margin-top: 0px;
