@@ -203,21 +203,71 @@
       }
     },
     {
+      "title": "Flood zone 2",
+      "geoserverLayerName": "flood:flood_zone_2_dissolved",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "markerColorIcon2": "lightblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#8adaff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": []
+      }
+    },
+    {
+      "title": "Flood zone 3",
+      "geoserverLayerName": "flood:flood_zone_3_dissolved",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stripesAngle": 100,
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": []
+      }
+    },
+    {
       "title": "SINC",
       "geoserverLayerName": "planning:lp33_sinc",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "orange",
+        "markerColor": "darkolivegreen",
         "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "#F69730",
+        "strokeColor": "#566e4b",
         "opacity": 1,
-        "fillColor": "#F69730",
+        "fillColor": "#566e4b",
         "fillOpacity": 0,
         "layerLineDash": 6,
         "weight": 3
@@ -318,9 +368,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkblue",
-        "markerColorIcon2": "lightblue",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -328,9 +376,9 @@
         "stroke": true,
         "strokeColor": "#0e67a3",
         "opacity": 1,
-        "fillColor": "#8adaff",
-        "fillOpacity": 0.6,
-        "layerLineDash": "",
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
         "weight": 2
       },
       "popup": {}
@@ -478,6 +526,10 @@
           {
             "label": "Name",
             "name": "name"
+          },
+          {
+            "label": "Note",
+            "name": "comment"
           }
         ]
       }
@@ -565,36 +617,6 @@
       },
       "popup": {
         "fields": []
-      }
-    },
-    {
-      "title": "Upper Lea Valley OAPF",
-      "geoserverLayerName": "planning:lp33_upper_lea_valley_oapf",
-      "personas": ["green"],
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "purple",
-        "markerColorIcon2": "pink",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#D252BA",
-        "opacity": 1,
-        "fillColor": "#ff91ea",
-        "fillOpacity": 0.3,
-        "layerLineDash": "",
-        "weight": 3
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
       }
     },
     {
@@ -837,7 +859,7 @@
       }
     },
     {
-      "title": "LLDC Boundary",
+      "title": "LLDC Area",
       "geoserverLayerName": "planning:lp33_lldc_boundary",
       "personas": ["green"],
       "pointStyle": {
@@ -856,7 +878,12 @@
         "weight": 4
       },
       "popup": {
-        "fields": []
+        "fields": [
+          {
+            "label": "Note:",
+            "name": "comment"
+          }
+        ]
       }
     },
     {
