@@ -306,12 +306,12 @@ class DataLayers {
       // )}" class="control__count">${count} items shown</span>`;
       // this.overlayMaps[legendEntry] = layer;
 
-      // const layerPersonas = configLayer.personas;
-      // for (const x in this.personas) {
-      //   if (layerPersonas.includes(this.personas[x].id)) {
-      //     this.personas[x].layers.push(layer);
-      //   }
-      // }
+      const layerPersonas = configLayer.personas;
+      for (const x in this.personas) {
+        if (layerPersonas.includes(this.personas[x].id)) {
+          this.personas[x].layers.push(layer);
+        }
+      }
       
       //only happens once, after the last layer has loaded
       if (this.loadedLayerCount == this.layerCount) {
