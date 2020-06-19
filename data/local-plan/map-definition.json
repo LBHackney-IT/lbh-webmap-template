@@ -767,7 +767,7 @@
     },
     {
       "title": "LLDC Area centres",
-      "geoserverLayerName": "planning:lp33_lldc_area_centre",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_area_centre",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -798,7 +798,7 @@
     },
     {
       "title": "LLDC Employment Areas",
-      "geoserverLayerName": "planning:lp33_lldc_employment_area",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_employment_area",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -829,7 +829,7 @@
     },
     {
       "title": "LLDC Site allocations",
-      "geoserverLayerName": "planning:lp33_lldc_site_allocation",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_site_allocation",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -888,7 +888,7 @@
     },
     {
       "title": "LLDC Conservation areas",
-      "geoserverLayerName": "planning:lp33_lldc_conservation_area",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_conservation_area",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -919,7 +919,7 @@
     },
     {
       "title": "LLDC Local open spaces",
-      "geoserverLayerName": "planning:lp33_lldc_adopted_los",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_adopted_los",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -981,7 +981,7 @@
     },
     {
       "title": "LLDC Metropolitan open land",
-      "geoserverLayerName": "planning:lp33_lldc_metropolitan_open_area",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_area",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
