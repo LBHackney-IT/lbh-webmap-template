@@ -11,7 +11,8 @@
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(padding, 0, 10);
     box-sizing: border-box;
-    width: 25%;
+    //width: 25%;
+    width: 50%;
   }
 }
 

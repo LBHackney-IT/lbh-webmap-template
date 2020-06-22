@@ -19,6 +19,23 @@
     "notFoundText": "No organisation found with this name",
     "clearMapAfterSearch": true
   },
+  "filters": {
+    "tags": {
+      "heading": "",
+      "options": [
+        "Anyone",
+        "Carers",
+        "Children & young people or families",
+        "Cultural",
+        "Disabilities and autism",
+        "Health conditions",
+        "Men",
+        "Neighbourhood",
+        "Older",
+        "Women"  
+      ]
+    }
+  },
   "layers": [
     {
       "title": "Get active",
