@@ -21,9 +21,9 @@
   },
   "filters": {
     "tags": {
+      "filtersSectionTitle": "Apply filters to categories",
       "heading": "",
       "options": [
-        "Anyone",
         "Carers",
         "Children & young people or families",
         "Cultural",
