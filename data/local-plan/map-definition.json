@@ -568,7 +568,7 @@
     },
     {
       "title": "Conservation areas",
-      "geoserverLayerName": "planning:lp33_conservation_area",
+      "geoserverLayerName": "planning:conservation_area",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -592,7 +592,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "ca_name"
           }
         ],
         "afterFields": "Conservation Areas are areas of special architectural or historic interest whose character or appearance we want to preserve or enhance in Hackney. <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
