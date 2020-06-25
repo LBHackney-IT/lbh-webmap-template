@@ -255,7 +255,7 @@
     },
     {
       "title": "SINC",
-      "geoserverLayerName": "planning:lp33_sinc",
+      "geoserverLayerName": "planning:nature_conservation_interest",
       "personas": ["green"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -273,7 +273,14 @@
         "layerLineDash": 6,
         "weight": 3
       },
-      "popup": {}
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "site_name"
+          }
+        ]
+      }
     },
     {
       "title": "Major town centres",
@@ -414,7 +421,7 @@
     },
     {
       "title": "Site allocations",
-      "geoserverLayerName": "planning:lp33_site_allocation",
+      "geoserverLayerName": "statmap:site_allocation_adoption_stage",
       "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
