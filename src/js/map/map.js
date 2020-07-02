@@ -121,7 +121,9 @@ class Map {
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      zoom: DEFAULT_ZOOM_DESKTOP
+      zoom: DEFAULT_ZOOM_DESKTOP,
+      dragging: !L.Browser.mobile,
+      tap: !L.Browser.mobile
     });
 
     this.map.setMaxBounds(MAP_BOUNDS);
