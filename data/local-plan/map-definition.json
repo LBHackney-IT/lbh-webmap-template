@@ -4,7 +4,7 @@
   "showHackneyBoundary": true,
   "showFullScreenButton": true,
   "showLegend": true,
-  "showGeoServerMetadata": true,
+  "showGeoServerMetadata": false,
   "baseStyle": "light",
   "personas": [
     {
@@ -226,7 +226,10 @@
         "weight": 1
       },
       "popup": {
-        "fields": []
+        "fields": [
+          {}
+        ],
+        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Environmental Agency).<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
       }
     },
     {
@@ -250,7 +253,10 @@
         "weight": 1
       },
       "popup": {
-        "fields": []
+        "fields": [
+          {}
+        ],
+        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Environmental Agency).<br><br>For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
       }
     },
     {
@@ -279,7 +285,9 @@
             "label": "Name",
             "name": "site_name"
           }
-        ]
+        ],
+        "afterFields": "Sites of Importance for Nature Conservation (SINCs) are areas designated for their importance for wildlife and for people to experience nature.<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+
       }
     },
     {
@@ -389,7 +397,12 @@
         "layerLineDash": 6,
         "weight": 2
       },
-      "popup": {}
+      "popup": {
+        "fields": [
+          {}
+        ],
+        "afterFields": "Critical Drainage Areas (CDAs) are areas that have critical drainage problems in Hackney (Environmental Agency). <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+      }
     },
     {
       "title": "Registered parks & gardens",
@@ -414,9 +427,10 @@
         "fields": [
           {
             "label": "Name",
-            "name": "Name"
+            "name": "site_name"
           }
-        ]
+        ],
+        "afterFields": "Registered parks & gardens are parks and gardens of particular importance in Hackney (Historic England). <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
       }
     },
     {
@@ -539,7 +553,8 @@
             "label": "Note",
             "name": "comment"
           }
-        ]
+        ],
+        "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology.<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
       }
     },
     {
