@@ -151,7 +151,7 @@ class Map {
     }
 
     // Disable zoom specifically on mobile devices, not based on screensize.
-    if (!L.Browser.mobile) {
+    if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     }
 

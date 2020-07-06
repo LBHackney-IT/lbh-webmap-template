@@ -74,7 +74,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
     metadataWindow.content(aboutTheData);
     return L.control.custom({
       id: "title",
-      position: "bottomright",
+      position: "topright",
       collapsed: false,
       content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
       classes: "leaflet-control-layers metadata__title-box",
@@ -85,14 +85,15 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
           }
         }
       }
-    });
-  }
+    }); 
+  } 
 };
 
 class Metadata {
   constructor(map) {
     this.mapConfig = map.mapConfig;
     this.map = map.map;
+    this.isFullScreen = map.isFullScreen;
   }
 
   addMetadata(data, mapTitle, mapSummary) {
@@ -111,6 +112,9 @@ class Metadata {
 
     const control = createTitle(this.map, mapTitle, mapSummary, metadataText);
     control.addTo(this.map);
+    if(this.isFullScreen){
+      L.control.zoom({ position: "topright" }).addTo(this.map);
+    } 
   }
 
   loadMetadata() {
@@ -143,11 +147,17 @@ class Metadata {
       control = createTitle(this.map, mapTitle, mapSummary, aboutTheData);
       if (control) {
         control.addTo(this.map);
+        if(this.isFullScreen){
+          L.control.zoom({ position: "topright" }).addTo(this.map);
+        } 
       }
     } else if (mapTitle) {
       control = createTitle(this.map, mapTitle, mapSummary, null);
       if (control) {
         control.addTo(this.map);
+        if(this.isFullScreen){
+          L.control.zoom({ position: "topright" }).addTo(this.map);
+        } 
       }
     }
   }
