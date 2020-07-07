@@ -74,6 +74,58 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
     metadataWindow.content(aboutTheData);
     return L.control.custom({
       id: "title",
+      position: "bottomright",
+      collapsed: false,
+      content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
+      classes: "leaflet-control-layers metadata__title-box",
+      events: {
+        click: () => {
+          if (isMobile() || aboutTheData) {
+            return metadataWindow.show();
+          }
+        }
+      }
+    }); 
+  } 
+};
+
+const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
+  let titleBoxContent = null;
+  let tooltip = "";
+  let dataTooltip = "";
+  let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+  if (aboutTheData) {
+    title += "About the data on this map:";
+  }
+  const metadataWindow = L.control.window(map, {
+    title,
+    content: null,
+    modal: false,
+    position: "bottomRight",
+    closeButton: true,
+    maxWidth: 280,
+    className: "control-window metadata__window"
+  });
+
+  if (aboutTheData) {
+    dataTooltip =
+      '<button class="lbh-link metadata__link">About the data</button>';
+  }
+
+  if (mapTitle) {
+    if (mapSummary) {
+      tooltip = `<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">${mapSummary}</div></span>`;
+    }
+    titleBoxContent = `<h2 class="lbh-heading-h6 metadata__title">${mapTitle}</h2>${tooltip}<br>${dataTooltip}`;
+  } else if (aboutTheData) {
+    titleBoxContent = dataTooltip;
+  }
+
+  //Add box for title and metadata (if the box content is not empty)
+  if (titleBoxContent) {
+    metadataWindow.content(aboutTheData);
+    return L.control.custom({
+      id: "title",
       position: "topright",
       collapsed: false,
       content: `<span class="metadata__title-box--mobile"><i class="fas fa-info-circle fa-2x"></i></span><span class="metadata__title-box--desktop">${titleBoxContent}</span>`,
@@ -144,21 +196,33 @@ class Metadata {
         .then(data => this.addMetadata(data, mapTitle, mapSummary));
     } else if (aboutTheData) {
       aboutTheData = `<div class="metadata__feature"><p class="lbh-body-xs">${aboutTheData}</p></div>`;
+      if(this.isFullScreen){
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null);
+        if (control) {
+          control.addTo(this.map);
+        }
+        L.control.zoom({ position: "topright" }).addTo(this.map);
+      } else{
       control = createTitle(this.map, mapTitle, mapSummary, aboutTheData);
       if (control) {
         control.addTo(this.map);
-        if(this.isFullScreen){
-          L.control.zoom({ position: "topright" }).addTo(this.map);
-        } 
+      }
       }
     } else if (mapTitle) {
-      control = createTitle(this.map, mapTitle, mapSummary, null);
-      if (control) {
-        control.addTo(this.map);
-        if(this.isFullScreen){
-          L.control.zoom({ position: "topright" }).addTo(this.map);
-        } 
+      if(this.isFullScreen){
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null);
+        if (control) {
+          control.addTo(this.map);
+        }
+        L.control.zoom({ position: "topright" }).addTo(this.map);
+      } else{
+        control = createTitle(this.map, mapTitle, mapSummary, null);
+        if (control) {
+          control.addTo(this.map);
+        }
+
       }
+     
     }
   }
 }
