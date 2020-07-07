@@ -37,13 +37,13 @@ const pointToLayer = (
   }
 };
 
-const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
+const createTitle = (map, mapTitle, mapSummary, about, aboutTitle) => {
   let titleBoxContent = null;
   let tooltip = "";
   let dataTooltip = "";
   let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
-  if (aboutTheData) {
-    title += "About the data on this map:";
+  if (aboutTitle) {
+    title += `${aboutTitle}:`;
   }
   const metadataWindow = L.control.window(map, {
     title,
@@ -55,9 +55,8 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
     className: "control-window metadata__window"
   });
 
-  if (aboutTheData) {
-    dataTooltip =
-      '<button class="lbh-link metadata__link">About the data</button>';
+  if (aboutTitle) {
+    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
 
   if (mapTitle) {
@@ -65,13 +64,13 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
       tooltip = `<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">${mapSummary}</div></span>`;
     }
     titleBoxContent = `<h2 class="lbh-heading-h6 metadata__title">${mapTitle}</h2>${tooltip}<br>${dataTooltip}`;
-  } else if (aboutTheData) {
+  } else if (about) {
     titleBoxContent = dataTooltip;
   }
 
   //Add box for title and metadata (if the box content is not empty)
   if (titleBoxContent) {
-    metadataWindow.content(aboutTheData);
+    metadataWindow.content(about);
     return L.control.custom({
       id: "title",
       position: "bottomright",
@@ -80,7 +79,7 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
       classes: "leaflet-control-layers metadata__title-box",
       events: {
         click: () => {
-          if (isMobile() || aboutTheData) {
+          if (isMobile() || about) {
             return metadataWindow.show();
           }
         }
@@ -89,13 +88,13 @@ const createTitle = (map, mapTitle, mapSummary, aboutTheData) => {
   } 
 };
 
-const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
+const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle) => {
   let titleBoxContent = null;
   let tooltip = "";
   let dataTooltip = "";
   let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
-  if (aboutTheData) {
-    title += "About the data on this map:";
+  if (aboutTitle) {
+    title += `${aboutTitle}:`;
   }
   const metadataWindow = L.control.window(map, {
     title,
@@ -107,9 +106,8 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
     className: "control-window metadata__window__fullscreen"
   });
 
-  if (aboutTheData) {
-    dataTooltip =
-      '<button class="lbh-link metadata__link">About the data</button>';
+  if (aboutTitle) {
+    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
 
   if (mapTitle) {
@@ -117,13 +115,13 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
       tooltip = `<span class="tooltip"><i class="fas fa-info-circle"></i><div class="tooltiptext">${mapSummary}</div></span>`;
     }
     titleBoxContent = `<h2 class="lbh-heading-h6 metadata__title">${mapTitle}</h2>${tooltip}<br>${dataTooltip}`;
-  } else if (aboutTheData) {
+  } else if (about) {
     titleBoxContent = dataTooltip;
   }
 
   //Add box for title and metadata (if the box content is not empty)
   if (titleBoxContent) {
-    metadataWindow.content(aboutTheData);
+    metadataWindow.content(about);
     return L.control.custom({
       id: "title",
       position: "topright",
@@ -132,7 +130,7 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
       classes: "leaflet-control-layers metadata__title-box",
       events: {
         click: () => {
-          if (isMobile() || aboutTheData) {
+          if (isMobile() || about) {
             return metadataWindow.show();
           }
         }
@@ -177,7 +175,9 @@ class Metadata {
   loadMetadata() {
     const mapTitle = this.mapConfig.title;
     const mapSummary = this.mapConfig.summary;
-    let aboutTheData = this.mapConfig.aboutTheData;
+    //let aboutTheData = this.mapConfig.aboutTheData;
+    let about = this.mapConfig.about;
+    let aboutTitle = this.mapConfig.aboutTitle;
     let control;
 
     //load metadata from geoserver
@@ -199,29 +199,29 @@ class Metadata {
       })
         .then(response => response.json())
         .then(data => this.addMetadata(data, mapTitle, mapSummary));
-      } else if (aboutTheData) {
-        aboutTheData = `<div class="metadata__feature"><p class="lbh-body-xs">${aboutTheData}</p></div>`;
+      } else if (about) {
+        about = `<div class="metadata__feature"><p class="lbh-body-xs">${about}</p></div>`;
         if(this.isFullScreen){
-        control = createTitleFullscreen(this.map, mapTitle, mapSummary, aboutTheData);
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, about, aboutTitle);
         if (control) {
           control.addTo(this.map);
         }
         L.control.zoom({ position: "topright" }).addTo(this.map);
       } else {
-        control = createTitle(this.map, mapTitle, mapSummary, aboutTheData);
+        control = createTitle(this.map, mapTitle, mapSummary, about, aboutTitle);
         if (control) {
           control.addTo(this.map);
         }
       }
       } else if (mapTitle) {
       if(this.isFullScreen){
-        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null);
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null, null);
         if (control) {
           control.addTo(this.map);
         }
         L.control.zoom({ position: "topright" }).addTo(this.map);
       } else{
-        control = createTitle(this.map, mapTitle, mapSummary, null);
+        control = createTitle(this.map, mapTitle, mapSummary, null, null);
         if (control) {
           control.addTo(this.map);
         }
