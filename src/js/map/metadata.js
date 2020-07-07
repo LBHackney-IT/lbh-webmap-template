@@ -101,10 +101,10 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, aboutTheData) => {
     title,
     content: null,
     modal: false,
-    position: "bottomRight",
+    position: "topRight",
     closeButton: true,
     maxWidth: 280,
-    className: "control-window metadata__window"
+    className: "control-window metadata__window__fullscreen"
   });
 
   if (aboutTheData) {
@@ -162,11 +162,16 @@ class Metadata {
       metadataText += "</div>";
     }
 
-    const control = createTitle(this.map, mapTitle, mapSummary, metadataText);
-    control.addTo(this.map);
     if(this.isFullScreen){
+      const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText);
+      control.addTo(this.map);
       L.control.zoom({ position: "topright" }).addTo(this.map);
-    } 
+    } else {
+      const control = createTitle(this.map, mapTitle, mapSummary, metadataText);
+      control.addTo(this.map);
+    }
+    
+   
   }
 
   loadMetadata() {
@@ -194,21 +199,21 @@ class Metadata {
       })
         .then(response => response.json())
         .then(data => this.addMetadata(data, mapTitle, mapSummary));
-    } else if (aboutTheData) {
-      aboutTheData = `<div class="metadata__feature"><p class="lbh-body-xs">${aboutTheData}</p></div>`;
-      if(this.isFullScreen){
-        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null);
+      } else if (aboutTheData) {
+        aboutTheData = `<div class="metadata__feature"><p class="lbh-body-xs">${aboutTheData}</p></div>`;
+        if(this.isFullScreen){
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, aboutTheData);
         if (control) {
           control.addTo(this.map);
         }
         L.control.zoom({ position: "topright" }).addTo(this.map);
-      } else{
-      control = createTitle(this.map, mapTitle, mapSummary, aboutTheData);
-      if (control) {
-        control.addTo(this.map);
+      } else {
+        control = createTitle(this.map, mapTitle, mapSummary, aboutTheData);
+        if (control) {
+          control.addTo(this.map);
+        }
       }
-      }
-    } else if (mapTitle) {
+      } else if (mapTitle) {
       if(this.isFullScreen){
         control = createTitleFullscreen(this.map, mapTitle, mapSummary, null);
         if (control) {

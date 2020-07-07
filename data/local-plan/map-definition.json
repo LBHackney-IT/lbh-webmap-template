@@ -2,6 +2,7 @@
   "title": "Local Plan 2033",
   "summary": "",
   "showHackneyBoundary": true,
+  "aboutTheData": "For more information about the Local Plan 2033, please visit: <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>.",
   "showFullScreenButton": true,
   "showLegend": true,
   "showGeoServerMetadata": false,

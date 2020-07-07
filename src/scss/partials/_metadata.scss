@@ -105,3 +105,40 @@
     padding: 0 16px 8px;
   }
 }
+
+
+.metadata__window__fullscreen {
+  background-color: lbh-colour("lbh-black");
+  color: lbh-colour("lbh-white");
+  font-family: "Montserrat";
+  font-size: 12px;
+  top:0;
+  right: 0;
+
+  .title {
+    @include lbh-heading-h6;
+    color: lbh-colour("lbh-white");
+    padding: 16px 44px 0 16px;
+
+    .metadata__name {
+      display: block;
+      margin-bottom: 8px;
+
+      @include govuk-media-query($from: desktop) {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    color: lbh-colour("lbh-white");
+  }
+
+  b {
+    font-weight: 500;
+  }
+
+  .content {
+    padding: 0 16px 8px;
+  }
+}
