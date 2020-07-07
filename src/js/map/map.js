@@ -129,8 +129,6 @@ class Map {
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
       zoom: DEFAULT_ZOOM_DESKTOP,
-      dragging: !L.Browser.mobile,
-      tap: !L.Browser.mobile,
       gestureHandling: L.Browser.mobile
     });
 
