@@ -75,7 +75,7 @@ class Personas {
       const onLayers = document.querySelectorAll(
         ".leaflet-control-layers-selector:checked"
       );
-      onLayers[0].focus();
+      //onLayers[0].focus();
     } else {
       const target = document.getElementById("controls-toggle");
       target.focus();
