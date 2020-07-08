@@ -229,9 +229,8 @@
       },
       "popup": {
         "fields": [
-          {}
         ],
-        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Environmental Agency).<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency)."
       }
     },
     {
@@ -256,12 +255,11 @@
       },
       "popup": {
         "fields": [
-          {}
         ],
-        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Environmental Agency).<br><br>For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency)."
       }
     },
-    {
+        {
       "title": "SINC",
       "geoserverLayerName": "planning:nature_conservation_interest",
       "personas": ["green"],
@@ -288,8 +286,7 @@
             "name": "site_name"
           }
         ],
-        "afterFields": "Sites of Importance for Nature Conservation (SINCs) are areas designated for their importance for wildlife and for people to experience nature.<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
-
+        "afterFields": "Sites of Importance for Nature Conservation (SINCs) are areas designated for their importance for wildlife and for people to experience nature."
       }
     },
     {
@@ -401,15 +398,14 @@
       },
       "popup": {
         "fields": [
-          {}
         ],
-        "afterFields": "Critical Drainage Areas (CDAs) are areas that have critical drainage problems in Hackney (Environmental Agency). <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Critical Drainage Areas (CDAs) are areas that have critical drainage problems in Hackney (Source: Environmental Agency)."
       }
     },
     {
       "title": "Registered parks & gardens",
       "geoserverLayerName": "planning:registered_park_garden_point",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "green",
@@ -432,7 +428,7 @@
             "name": "site_name"
           }
         ],
-        "afterFields": "Registered parks & gardens are parks and gardens of particular importance in Hackney (Historic England). <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Registered parks & gardens are parks and gardens of particular importance in Hackney (Source: Historic England)."
       }
     },
     {
@@ -556,13 +552,13 @@
             "name": "comment"
           }
         ],
-        "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology.<br><br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology."
       }
     },
     {
       "title": "Archeological priority areas",
       "geoserverLayerName": "planning:lp33_area_archaeological_priority",
-      "personas": ["green"],
+      "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "orange",
@@ -593,7 +589,7 @@
     {
       "title": "Conservation areas",
       "geoserverLayerName": "planning:conservation_area",
-      "personas": ["green"],
+      "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -619,7 +615,7 @@
             "name": "ca_name"
           }
         ],
-        "afterFields": "Conservation Areas are areas of special architectural or historic interest whose character or appearance we want to preserve or enhance in Hackney. <br> <br> For more information about the Local Plan 2033, please visit the website <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>."
+        "afterFields": "Conservation Areas are areas of special architectural or historic interest whose character or appearance we want to preserve or enhance in Hackney."
       }
     },
     {
@@ -648,7 +644,7 @@
     {
       "title": "Strategic view",
       "geoserverLayerName": "planning:lp33_strategic_view",
-      "personas": ["green"],
+      "personas": ["londonplan"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -679,7 +675,7 @@
     {
       "title": "Primary shopping areas",
       "geoserverLayerName": "planning:lp33_primary_shopping_area",
-      "personas": ["green"],
+      "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "yellow",
@@ -708,7 +704,7 @@
     {
       "title": "Primary shopping frontages",
       "geoserverLayerName": "planning:lp33_primary_shopping_frontage",
-      "personas": ["green"],
+      "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkred",
@@ -736,7 +732,7 @@
     },{
       "title": "Local shopping centres",
       "geoserverLayerName": "planning:lp33_local_shopping_centre",
-      "personas": ["green"],
+      "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkpurple",
@@ -765,7 +761,7 @@
     {
       "title": "Existing waste sites",
       "geoserverLayerName": "planning:lp33_existing_waste",
-      "personas": ["green"],
+      "personas": ["waste"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -794,7 +790,7 @@
     {
       "title": "LLDC Area centres",
       "geoserverLayerName": "planning:lp33_lldc_hackney_area_centre",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -825,7 +821,7 @@
     {
       "title": "LLDC Employment Areas",
       "geoserverLayerName": "planning:lp33_lldc_hackney_employment_area",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -856,7 +852,7 @@
     {
       "title": "LLDC Site allocations",
       "geoserverLayerName": "planning:lp33_lldc_hackney_site_allocation",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -887,7 +883,7 @@
     {
       "title": "LLDC Area",
       "geoserverLayerName": "planning:lp33_lldc_boundary",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "purple",
@@ -915,7 +911,7 @@
     {
       "title": "LLDC Conservation areas",
       "geoserverLayerName": "planning:lp33_lldc_hackney_conservation_area",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -946,7 +942,7 @@
     {
       "title": "LLDC Local open spaces",
       "geoserverLayerName": "planning:lp33_lldc_hackney_adopted_los",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkgreen",
@@ -1008,7 +1004,7 @@
     {
       "title": "LLDC Metropolitan open land",
       "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_area",
-      "personas": ["green"],
+      "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "thistle",

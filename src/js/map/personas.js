@@ -12,6 +12,7 @@ class Personas {
     this.layerControl = layerControl;
     this.overlayMaps = overlayMaps;
     this.isEmbed = map.isEmbed;
+    this.isFullScreen = map.isFullScreen;
     this.personasContainer = null;
     this.filters = filters;
   }
@@ -52,7 +53,7 @@ class Personas {
 
       //bit of code that switches the group
 
-      if (this.isEmbed) {
+      if (this.isEmbed || this.isFullScreen) {
         this.focusAfterPersona();
       } else {
         scrollTo("#controls-toggle", 500, () => this.focusAfterPersona());
