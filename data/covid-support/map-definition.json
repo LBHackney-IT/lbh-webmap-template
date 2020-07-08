@@ -27,7 +27,7 @@
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "walking",
+        "icon": "fas fa-walking",
         "markerColor": "darkred"
       },
       "popup": {
@@ -76,7 +76,7 @@
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "head-side-brain",
+        "icon": "fas fa-head-side-brain",
         "markerColor": "orange"
       },
       "popup": {
@@ -126,7 +126,7 @@
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "heartbeat",
+        "icon": "fas fa-heartbeat",
         "markerColor": "green"
       },
       "popup": {
@@ -176,7 +176,7 @@
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "palette",
+        "icon": "fas fa-palette",
         "markerColor": "darkblue"
       },
       "popup": {
@@ -226,7 +226,7 @@
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "comments",
+        "icon": "fas fa-comments",
         "markerColor": "purple"
       },
       "popup": {
@@ -276,7 +276,7 @@
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "apple-alt",
+        "icon": "fas fa-apple-alt",
         "markerColor": "darkgreen"
       },
       "popup": {
@@ -325,7 +325,7 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "user-friends",
+        "icon": "fas fa-user-friends",
         "markerColor": "pink"
       },
       "popup": {
@@ -375,7 +375,7 @@
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "hand-holding-heart",
+        "icon": "fas fa-hand-holding-heart",
         "markerColor": "blue"
       },
       "popup": {
@@ -424,7 +424,7 @@
       "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "info",
+        "icon": "fas fa-info",
         "markerColor": "cadetblue"
       },
       "popup": {
@@ -473,7 +473,7 @@
       "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "pound-sign",
+        "icon": "fas fa-pound-sign",
         "markerColor": "lightred"
       },
       "popup": {
@@ -522,7 +522,7 @@
       "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "briefcase",
+        "icon": "fas fa-briefcase",
         "markerColor": "darkpurple"
       },
       "popup": {
@@ -571,7 +571,7 @@
       "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "house",
+        "icon": "fas fa-house",
         "markerColor": "blue"
       },
       "popup": {
