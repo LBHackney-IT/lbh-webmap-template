@@ -405,7 +405,7 @@
     {
       "title": "Registered parks & gardens",
       "geoserverLayerName": "planning:registered_park_garden_point",
-      "personas": ["lldc"],
+      "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "green",
