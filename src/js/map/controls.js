@@ -20,11 +20,9 @@ class Controls {
 
   init() {
     if (this.mapClass.isFullScreen){
-      console.log("full screen mode");
       this.createMarkup();
     }
     else{
-      console.log("embedded or standalone mode");
       this.createMarkup();
     }
 
@@ -110,24 +108,6 @@ class Controls {
     this.mapClass.addMarkupToMap(html, "controls", "controls");
   }
 
-  createMarkupFullScreen2() {
-    //check if we are in fullscreen mode. Different mark up is used
-    const html = `Hello`;
-    console.log(document.getElementById("fullscreen_sidebar"));
-    // const html = `
-    //   <div class="container container__mask">  
-    //     <sidebar class="controls__sidebar">
-    //       <div id="legend" class="legend"></div>
-    //       <div id="controls-toggle" class="legend_toggle_hamburger_button">
-    //         <span></span>
-    //         <span></span>
-    //         <span></span>
-    //       </div>
-    //     </sidebar>
-    //   </div>    
-    // `;
-    //this.mapClass.addMarkupToMap(html, "controls", "controls");
-  }
 
   toggleClearButton() {
     this.map.on("layeradd", () => this.showClearButton());
