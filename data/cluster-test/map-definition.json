@@ -13,7 +13,7 @@
       "geoserverLayerName": "statmap:covid_assistance_social_isolation",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "comments",
+        "icon": "fas fa-comments",
         "markerColor": "purple",
         "cluster": true
       },

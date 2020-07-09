@@ -67,7 +67,7 @@
       "personas": ["chilling", "everything"],
       "pointStyle": {
         "markerType": "CircleMarker",
-        "icon": "bicycle",
+        "icon": "fas fa-bicycle",
         "markerColor": "purple",
         "cluster": true
       },
@@ -109,7 +109,7 @@
       "zoomOnDoubleClick": true, 
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "tire-flat",
+        "icon": "fas fa-tire-flat",
         "markerColor": "blue"
       },
       "popup": {
@@ -127,7 +127,7 @@
       "personas": ["playing", "everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "car",
+        "icon": "fas fa-car",
         "markerColor": "blue"
       },
       "linePolygonStyle": {

@@ -12,7 +12,7 @@
       "geoserverLayerName": "housing:tenant_management_organisation",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-house",
+        "icon": "fas fa-house",
         "markerColor": "purple"
       },
       "tooltip": {

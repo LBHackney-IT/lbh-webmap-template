@@ -39,6 +39,7 @@ so), open your web browser and go to
 `http://localhost:9000/YOUR_MAP_NAME_GOES_HERE/index.html` for the whole page
 version (with header), or
 `http://localhost:9000/YOUR_MAP_NAME_GOES_HERE/embed.html` for the embed
+version, or `http://localhost:9000/YOUR_MAP_NAME_GOES_HERE/fullscreen.html` for the fullscreen
 version.
 
 ## Data file options
@@ -55,6 +56,7 @@ The options for the data file are as follows:
 | `baseStyle` | String | optional | Mapbox style to use for the base map. Possible values:<br>`streets`: the closest style to Google. Amended to remove commercial points of interest at small scale.<br>`light`: light grey style we used for the regeneration map.<br>`dark`: black style<br>any other value, empty or omitted: the classical beige style we used for the initial leaflet maps |
 | `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap outdoor style. |
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
+| `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 
 | `showHackneyMask` | Boolean | optional | If `true` a semi-opaque white mask will be added to all areas that fall outside of Hackney. |
 | `showHackneyBoundary` | Boolean | optional | If `true` the Hackney boundary will be added to the map |
@@ -114,7 +116,9 @@ Object properties:
 | --- | --- | --- | --- |
 | `markerType` | String | optional |  Possible values: <br>`"AwesomeMarker"`: uses font awesome and the icon element below,<br>`"CircleMarker"`: 6m circle with semi-transparent fill,<br>Empty or anything else: the default Leaflet blue marker.| 	
 | `icon` | String | optional | FontAwesome icon name of the marker when `markerType` is set to `"AwesomeMarker"`. |
+| `icon2` | String | optional | A second FontAwesome icon can be used when an advanced style is required (e.g: an outline and a filled colour with different colours). Both icons will be stacked using the FontAwesome data-fa transformations.|
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
+| `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 17. Beyond zoom 17 the individual markers will be used as defined above. We use a purple cluster style with a level of transparency depending on the size of the cluster. |
 
 ### Line Polygon Options

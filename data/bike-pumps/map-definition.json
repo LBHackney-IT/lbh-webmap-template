@@ -7,7 +7,7 @@
       "geoserverLayerName": "transport:bike_pump",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "tire-flat",
+        "icon": "fas fa-tire-flat",
         "markerColor": "red"
       },
       "popup": {

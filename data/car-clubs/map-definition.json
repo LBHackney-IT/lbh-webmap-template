@@ -11,7 +11,7 @@
       "geoserverLayerName": "parking:parking_order_car_club_zipcar",
       "pointStyle": {
         "markerType": "CircleMarker",
-        "icon": "fa-car",
+        "icon": "fas fa-car",
         "markerColor": "green"
       },
       "popup": {

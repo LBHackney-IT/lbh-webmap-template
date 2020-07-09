@@ -1,6 +1,7 @@
 {
   "title": "Electrical vehicles chargers",
-  "aboutTheData": "this information is correct at time of publishing and is kept up to date. This is a test. Needs to be replaced with the layer metadata",
+  "about": "this information is correct at time of publishing and is kept up to date. This is a test. Needs to be replaced with the layer metadata",
+  "aboutTitle": "About the data",
   "showLayersOnLoad": true,
   "baseStyle": "streets",
   "showHackneyMask": true,
@@ -11,7 +12,7 @@
       "geoserverLayerName": "statmap:usr_streetscene_lamp_column",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
+        "icon": "fas fa-battery-bolt",
         "markerColor": "red"
       },
       "popup": {
