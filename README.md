@@ -50,7 +50,8 @@ The options for the data file are as follows:
 | `title` | String | optional | Title of the map that displays in the title box and the metadata box |
 | `summary` | String | optional | Summary of the map. If title and summary are present, an information icon will appear next to the title and the text added in `summary` will appear as a tooltip when you hover on the icon (desktop only) |
 | `showGeoServerMetadata` | Boolean | optional | If `true` the code will try to read the metadata (from `metadata.public_metadata`) via geoserver and add it to the infoBox that appears when you click on "About the data of this map" on desktop or on the information icon on mobile. This is a view on Earthlight metadata. This includes the name of the layer, the abstract, source and last update date of each layer of the map. |
-| `aboutTheData` | Boolean | optional | If `showGeoServerMetadata` is set to false, `aboutTheData` can be used to populate the text in the infoBox described above. |
+| `about` | String | optional | If `showGeoServerMetadata` is set to false, `about` can be used to populate the text in the infoBox described above. |
+| `aboutTitle` | String | optional | If `showGeoServerMetadata` is set to false and `about` is not empty, `aboutTitle` can be used to populate the title of the infoBox described above. |
 | `baseStyle` | String | optional | Mapbox style to use for the base map. Possible values:<br>`streets`: the closest style to Google. Amended to remove commercial points of interest at small scale.<br>`light`: light grey style we used for the regeneration map.<br>`dark`: black style<br>any other value, empty or omitted: the classical beige style we used for the initial leaflet maps |
 | `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap outdoor style. |
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |

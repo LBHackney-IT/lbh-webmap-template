@@ -112,7 +112,7 @@
   color: lbh-colour("lbh-black");
   cursor: pointer;
   display: inline-block;
-  font-family: Montserrat;
+  font-family: "Montserrat";
   line-height: 1;
   padding: 0;
   position: absolute;
@@ -206,7 +206,7 @@
 
 .control__count {
   @include lbh-rem(font-size, 14);
-  @include lbh-rem(padding-left, 46);
+  //@include lbh-rem(padding-left, 46);
   font-weight: 300;
   opacity: 0;
   width: 100%;
@@ -248,7 +248,7 @@ input:not(:checked) + span span.control__active-border {
 .leaflet-control-layers-selector + span .svg-inline--fa {
   @include lbh-rem(font-size, 20);
   @include lbh-rem(margin-top, 1);
-  @include lbh-rem(padding, 0, 6);
+  //@include lbh-rem(padding, 0, 6);
   @include lbh-rem(width, 24);
   text-align: center;
 }
@@ -296,4 +296,9 @@ input:not(:checked) + span span.control__active-border {
 .map .leaflet-bar a,
 .map .leaflet-bar button {
   border-radius: 0;
+}
+
+.fa-fw {
+  text-align: center;
+  width: 2.25em;
 }

@@ -2,27 +2,19 @@
   @include lbh-rem(padding, 10, 0);
   @include lbh-rem(margin-left, -10);
   @include lbh-rem(margin-right, -10);
+  display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
 
-  .map__container:first-child & {
-    padding-top: 0;
-  }
-
-  @include govuk-media-query($from: desktop) {
-    @include lbh-rem(margin, 24, -10);
-
-    .map__container:first-child & {
-      margin-top: 0;
-    }
-  }
 }
+  
 
 .personas__button-wrapper {
   @include lbh-rem(padding, 10);
   box-sizing: border-box;
   margin-top: 0;
   width: 50%;
+  display: flex;
 
   @include govuk-media-query($from: desktop) {
     width: 25%;
@@ -30,7 +22,7 @@
 }
 
 .personas__button {
-  @include lbh-rem(margin-bottom, 12);
+  // @include lbh-rem(margin-bottom, 12);
   @include lbh-rem(padding, 12);
   appearance: none;
   -webkit-appearance: none;

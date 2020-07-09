@@ -135,7 +135,9 @@ class DataLayers {
     const pointStyle = configLayer.pointStyle;
     const markerType = pointStyle && pointStyle.markerType;
     const markerIcon = pointStyle && pointStyle.icon;
+    const markerIcon2 = pointStyle && pointStyle.icon2;
     const markerColor = pointStyle && pointStyle.markerColor;
+    const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
 
     const linePolygonStyle = configLayer.linePolygonStyle;
@@ -276,14 +278,33 @@ class DataLayers {
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
-      const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
-        MARKER_COLORS[markerColor]
-      }"></span><i class="fas fa-${markerIcon}" style="color:${
-        MARKER_COLORS[markerColor]
-      }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layer.getLayerId(
-        layer
-      )}" class="control__count">${count} items shown</span>`;
-      this.overlayMaps[legendEntry] = layer;
+
+      if (markerIcon2){
+            const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
+              MARKER_COLORS[markerColorIcon2]
+            }"></span><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span><br><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+              layer
+            )}" class="control__count">${count} items shown</span>`;
+            this.overlayMaps[legendEntry] = layer;
+       
+      } else {
+        const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
+          MARKER_COLORS[markerColor]
+        }"></span><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span><br><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+          layer
+        )}" class="control__count">${count} items shown</span>`;
+        this.overlayMaps[legendEntry] = layer;
+
+      }
+
+      // const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
+      //   MARKER_COLORS[markerColor]
+      // }"></span><i class="fas fa-${markerIcon}" style="color:${
+      //   MARKER_COLORS[markerColor]
+      // }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layer.getLayerId(
+      //   layer
+      // )}" class="control__count">${count} items shown</span>`;
+      // this.overlayMaps[legendEntry] = layer;
 
       const layerPersonas = configLayer.personas;
       for (const x in this.personas) {

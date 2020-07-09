@@ -19,26 +19,34 @@ class Controls {
   }
 
   init() {
-    this.createMarkup();
+    if (this.mapClass.isFullScreen){
+      this.createMarkup();
+    }
+    else{
+      this.createMarkup();
+    }
+
     this.controls = document.getElementById("controls");
     this.toggle = document.getElementById("controls-toggle");
     this.clear = document.getElementById("map-clear");
-    this.toggle.addEventListener("click", this.toggleControls.bind(this));
+    this.toggle.addEventListener("click", this.toggleControls.bind(this));  
 
     if (!isMobile()) {
       this.openControls();
     }
 
     this.map.addEventListener("click", this.closeIfMobile.bind(this));
-    this.clear.addEventListener("click", () => {
-      this.closeIfMobile();
-      this.mapClass.clear();
-    });
-
-    this.toggleClearButton();
+    if (this.clear){
+      this.clear.addEventListener("click", () => {
+        this.closeIfMobile();
+        this.mapClass.clear();
+      });
+      this.toggleClearButton();
+    }
   }
 
   createMarkup() {
+    //check if we are in fullscreen mode. Different mark up is used
     const html = `
       <button id="controls-toggle" class="controls__sidebar-toggle">
         <i class="fal fa-sliders-h controls__sidebar-toggle-icon"></i>
@@ -57,7 +65,7 @@ class Controls {
           this.mapConfig.controlsText.clearMapText) ||
           CONTROLS_CLEAR_MAP_TEXT}</span>
       </button>
-      <div class="container container__mask">
+      <div class="container container__mask"> 
         <sidebar class="controls__sidebar">
           <div id="legend" class="legend"></div>
         </sidebar>
@@ -65,6 +73,41 @@ class Controls {
     `;
     this.mapClass.addMarkupToMap(html, "controls", "controls");
   }
+
+  createMarkupFullScreen() {
+    //check if we are in fullscreen mode. Different mark up is used
+    const html = `
+    <button id="controls-toggle" class="controls__sidebar-toggle">
+    <i class="fal fa-sliders-h controls__sidebar-toggle-icon"></i>
+    <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--hide">${(this
+      .mapConfig.controlsText &&
+      this.mapConfig.controlsText.hideLegendText) ||
+      CONTROLS_HIDE_LEGEND_TEXT}</span>
+    <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--show">${(this
+      .mapConfig.controlsText &&
+      this.mapConfig.controlsText.showLegendText) ||
+      CONTROLS_SHOW_LEGEND_TEXT}</span>
+  </button>
+  <button id="map-clear" class="controls__clear" style="display:none">
+    <i class="fal fa-times controls__clear-icon"></i>
+    <span class="controls__clear-text">${(this.mapConfig.controlsText &&
+      this.mapConfig.controlsText.clearMapText) ||
+      CONTROLS_CLEAR_MAP_TEXT}</span>
+  </button>  
+    <div class="container container__mask">  
+        <sidebar class="controls__sidebar">
+          <div id="legend" class="legend"></div>
+          <div id="controls-toggle" class="legend_toggle_hamburger_button">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </sidebar>
+      </div>    
+    `;
+    this.mapClass.addMarkupToMap(html, "controls", "controls");
+  }
+
 
   toggleClearButton() {
     this.map.on("layeradd", () => this.showClearButton());
