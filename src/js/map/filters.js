@@ -30,9 +30,9 @@ class Filters {
   createMarkup() {
     let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
     <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        Filters
-      </span>
+      <span class="govuk-details__summary-text">`
+      + this.filters.tags.filtersSectionTitle
+        +`</span>
     </summary>
     <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group filters__form-group">`;
     for (const [key, filter] of Object.entries(this.filters)) {

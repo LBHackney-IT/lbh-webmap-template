@@ -63,8 +63,8 @@ const MARKER_COLORS = {
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
 const CONTROLS_OPEN_CLASS = "controls--open";
-const CONTROLS_SHOW_LEGEND_TEXT = "Show list";
-const CONTROLS_HIDE_LEGEND_TEXT = "Hide list";
+const CONTROLS_SHOW_LEGEND_TEXT = "Show list of categories";
+const CONTROLS_HIDE_LEGEND_TEXT = "Hide list of categories";
 const CONTROLS_CLEAR_MAP_TEXT = "Clear map";
 const FILTER_INPUT_CLASS = "filters__input";
 

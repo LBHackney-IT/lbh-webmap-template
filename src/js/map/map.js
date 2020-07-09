@@ -7,6 +7,7 @@ import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
 import "leaflet-search";
+import { GestureHandling } from "leaflet-gesture-handling";
 import {
   MAX_ZOOM,
   MIN_ZOOM,
@@ -120,13 +121,20 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
+
+  
   createMap() {
+
+    //gesture handler
+    L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+
     this.map = L.map("map", {
       zoomControl: false,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      zoom: DEFAULT_ZOOM_DESKTOP
+      zoom: DEFAULT_ZOOM_DESKTOP,
+      gestureHandling: L.Browser.mobile
     });
 
     this.map.setMaxBounds(MAP_BOUNDS);
