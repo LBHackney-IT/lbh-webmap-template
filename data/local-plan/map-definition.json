@@ -207,7 +207,7 @@
     },
     {
       "title": "Flood zone 2",
-      "geoserverLayerName": "flood:flood_zone_2_dissolved",
+      "geoserverLayerName": "flood:flood_zone_2_dissolved_generalized",
       "personas": ["flooding"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -235,7 +235,7 @@
     },
     {
       "title": "Flood zone 3",
-      "geoserverLayerName": "flood:flood_zone_3_dissolved",
+      "geoserverLayerName": "flood:flood_zone_3_dissolved_generalized",
       "personas": ["flooding"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
