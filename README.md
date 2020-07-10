@@ -55,6 +55,7 @@ The options for the data file are as follows:
 | `aboutTitle` | String | optional | If `showGeoServerMetadata` is set to false and `about` is not empty, `aboutTitle` can be used to populate the title of the infoBox described above. |
 | `baseStyle` | String | optional | Mapbox style to use for the base map. Possible values:<br>`streets`: the closest style to Google. Amended to remove commercial points of interest at small scale.<br>`light`: light grey style we used for the regeneration map.<br>`dark`: black style<br>any other value, empty or omitted: the classical beige style we used for the initial leaflet maps |
 | `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap outdoor style. |
+| `zoomToMasterMapBW` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap black and white style. |
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 

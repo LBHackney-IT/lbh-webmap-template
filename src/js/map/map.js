@@ -96,7 +96,8 @@ class Map {
         layer !== this.OSMBase &&
         layer !== this.hackneyMask &&
         layer !== this.hackneyBoundary &&
-        layer !== this.masterMapLayer
+        layer !== this.masterMapLayer &&
+        layer !== this.masterMapLayerBW
       ) {
         this.map.removeLayer(layer);
       }
@@ -150,6 +151,10 @@ class Map {
       this.addMasterMapLayer();
     }
 
+    if (this.mapConfig.zoomToMasterMapBW) {
+      this.addMasterMapLayerBW();
+    }
+
     if (this.mapConfig.showHackneyMask) {
       this.addHackneyMaskLayer();
     }
@@ -194,6 +199,20 @@ class Map {
       opacity: 1
     });
     this.map.addLayer(this.masterMapLayer);
+  }
+
+
+  addMasterMapLayerBW() {
+    this.masterMapLayerBW = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
+      layers: "osmm:OSMM_blackwhite_leaflet",
+      format: "image/png",
+      tiled: true,
+      transparent: true,
+      minZoom: 10,
+      maxZoom: 20,
+      opacity: 1
+    });
+    this.map.addLayer(this.masterMapLayerBW);
   }
 
   addBaseLayer() {
