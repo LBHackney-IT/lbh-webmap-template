@@ -2,7 +2,7 @@
   "title": "Local Plan 2033",
   "summary": "",
   "showHackneyBoundary": true,
-  "zoomToMasterMapBW": true,
+  "zoomToMasterMapBW": false,
   "about": "This map shows the layers of the new borough-wide local plan 2033, known as LP33, which will be the key strategic planning document used to direct and guide development in the borough up to 2033. <br> <br> For more information about the local plan 2033, please visit: <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>.",
   "aboutTitle": "About the map",
   "showFullScreenButton": true,
@@ -71,12 +71,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "goldenrod",
         "opacity": 1,
         "fillColor": "#c7c704",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 0
       },
@@ -100,12 +99,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#F69730",
         "opacity": 1,
         "fillColor": "#F69730",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 0
       },
@@ -159,7 +157,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": false,
         "strokeColor": "#728224",
         "opacity": 1,
@@ -188,7 +185,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": false,
         "strokeColor": "#728224",
         "opacity": 1,
@@ -219,7 +215,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#0e67a3",
         "opacity": 1,
@@ -231,7 +226,7 @@
       "popup": {
         "fields": [
         ],
-        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency)."
+        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency). <br><br> Note: The polygons have been generalized in order to improve the performance of the page."
       }
     },
     {
@@ -245,7 +240,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#0e67a3",
         "opacity": 1,
@@ -257,7 +251,7 @@
       "popup": {
         "fields": [
         ],
-        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency)."
+        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency).<br><br> Note: The polygons have been generalized in order to improve the performance of the page."
       }
     },
         {
@@ -271,7 +265,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#566e4b",
         "opacity": 1,
@@ -296,19 +289,18 @@
       "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "darkpurple",
-        "icon": "fas fa-square"
+        "markerColor": "lightred",
+        "icon": "far fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "#5b396b",
+        "strokeColor": "#fc8e7f",
         "opacity": 1,
-        "fillColor": "#5b396b",
-        "fillOpacity": 0.6,
-        "layerLineDash": "",
-        "weight": 2
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -330,12 +322,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#7966fe",
         "opacity": 1,
         "fillColor": "#7966fe",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 0
       },
@@ -359,12 +350,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "darkred",
         "opacity": 1,
         "fillColor": "darkred",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 2
       },
@@ -388,7 +378,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#0e67a3",
         "opacity": 1,
@@ -418,7 +407,7 @@
         "strokeColor": "red",
         "opacity": 1,
         "fillColor": "red",
-        "fillOpacity": 0.5,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 2
       },
@@ -438,21 +427,18 @@
       "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "markerColorIcon2": "lightgray",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "markerColor": "lightgray",
+        "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "goldenrod",
         "opacity": 1,
         "fillColor": "#a3a3a3",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 0
       },
       "popup": {
         "fields": [
@@ -474,12 +460,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#70ad26",
         "opacity": 1,
         "fillColor": "#70ad26",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": 6,
         "weight": 4
       },
@@ -503,12 +488,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#566e4b",
         "opacity": 1,
         "fillColor": "#566e4b",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 4
       },
@@ -533,12 +517,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#F69730",
         "opacity": 1,
         "fillColor": "#F69730",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 2
       },
@@ -547,10 +530,6 @@
           {
             "label": "Name",
             "name": "name"
-          },
-          {
-            "label": "Note",
-            "name": "comment"
           }
         ],
         "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology."
@@ -562,19 +541,18 @@
       "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "orange",
+        "markerColor": "gray",
         "markerColorIcon2": "lightgray",
         "icon": "far fa-square",
         "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "orange",
+        "strokeColor": "#575757",
         "opacity": 1,
         "fillColor": "#a3a3a3",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 1
       },
@@ -594,21 +572,20 @@
       "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
+        "markerColor": "darkred",
         "markerColorIcon2": "lightred",
         "icon": "far fa-square",
         "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#a23336",
         "opacity": 1,
         "fillColor": "#fc8e7f",
-        "fillOpacity": 0.6,
+        "fillOpacity": 0.65,
         "layerLineDash":"",
-        "weight": 2
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -649,19 +626,18 @@
       "personas": ["londonplan"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "markerColorIcon2": "darkpurple",
+        "markerColor": "darkpurple",
+        "markerColorIcon2": "thistle",
         "icon": "far fa-square",
         "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#5b396b",
         "opacity": 1,
-        "fillColor": "#5b396b",
-        "fillOpacity": 0.8,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 2
       },
@@ -685,12 +661,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "yellow",
         "opacity": 1,
         "fillColor": "yellow",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 0
       },
@@ -714,12 +689,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "#a23336",
         "opacity": 1,
         "fillColor": "#a23336",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 4
       },
@@ -737,19 +711,18 @@
       "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "darkpurple",
-        "icon": "fas fa-square"
+        "markerColor": "cadetblue",
+        "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "#5b396b",
+        "strokeColor": "#436978",
         "opacity": 1,
-        "fillColor": "#5b396b",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 0
+        "fillColor": "#436978",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -771,12 +744,11 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
         "strokeColor": "black",
         "opacity": 1,
         "fillColor": "black",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
         "weight": 2
       },
@@ -795,21 +767,18 @@
       "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "markerColorIcon2": "goldenrod",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "markerColor": "darkblue",
+        "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#0e67a3",
         "opacity": 1,
-        "fillColor": "#c7c704",
-        "fillOpacity": 0.6,
-        "layerLineDash": "",
-        "weight": 2
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
       },
       "popup": {
         "fields": [
@@ -826,21 +795,18 @@
       "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "markerColorIcon2": "orange",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "markerColor": "pink",
+        "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#ff91ea",
         "opacity": 1,
-        "fillColor": "#F69730",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 2
+        "fillColor": "#ff91ea",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
       },
       "popup": {
         "fields": [
@@ -857,21 +823,18 @@
       "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "markerColorIcon2": "lightgray",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "markerColor": "lightgray",
+        "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "goldenrod",
         "opacity": 1,
         "fillColor": "#a3a3a3",
-        "fillOpacity": 0.8,
+        "fillOpacity": 0.65,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 0
       },
       "popup": {
         "fields": [
@@ -888,15 +851,15 @@
       "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "purple",
+        "markerColor": "goldenrod",
         "icon": "far fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#D252BA",
+        "strokeColor": "#c7c704",
         "opacity": 1,
-        "fillColor": "#D252BA",
+        "fillColor": "#c7c704",
         "fillOpacity": 0,
         "layerLineDash": "",
         "weight": 4
@@ -916,21 +879,20 @@
       "personas": ["lldc"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
+        "markerColor": "darkred",
         "markerColorIcon2": "lightred",
         "icon": "far fa-square",
         "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#a23336",
         "opacity": 1,
         "fillColor": "#fc8e7f",
-        "fillOpacity": 0.6,
+        "fillOpacity": 0.65,
         "layerLineDash":"",
-        "weight": 2
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -954,7 +916,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": false,
         "strokeColor": "#728224",
         "opacity": 1,
@@ -975,24 +936,21 @@
     {
       "title": "Area action plan",
       "geoserverLayerName": "planning:lp33_area_action_plan",
-      "personas": ["green"],
+      "personas": ["londonplan"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "darkred",
-        "markerColorIcon2": "thistle",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "markerColor": "orange",
+        "icon": "fas fa-expand"
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": true,
-        "strokeColor": "#a23336",
+        "strokeColor": "#F69730",
         "opacity": 1,
-        "fillColor": "#dbb7ff",
-        "fillOpacity": 0.6,
-        "layerLineDash": "",
-        "weight": 2
+        "fillColor": "#F69730",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
       },
       "popup": {
         "fields": [
@@ -1014,7 +972,6 @@
       },
       "linePolygonStyle": {
         "styleName": "default",
-        "stripesAngle": 100,
         "stroke": false,
         "strokeColor": "#728224",
         "opacity": 1,
