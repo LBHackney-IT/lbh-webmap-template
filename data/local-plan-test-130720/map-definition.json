@@ -1,0 +1,994 @@
+{
+  "title": "Local Plan 2033",
+  "summary": "",
+  "showHackneyBoundary": true,
+  "zoomToMasterMapBW": true,
+  "about": "This map shows the layers of the new borough-wide local plan 2033, known as LP33, which will be the key strategic planning document used to direct and guide development in the borough up to 2033. <br> <br> For more information about the local plan 2033, please visit: <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>.",
+  "aboutTitle": "About the map",
+  "showFullScreenButton": true,
+  "showLegend": true,
+  "showGeoServerMetadata": false,
+  "baseStyle": "light",
+  "personas": [
+    {
+      "id": "employment",
+      "icon": "",
+      "iconActive": "",
+      "text": "Employment spaces"
+    },
+    {
+      "id": "flooding",
+      "icon": "",
+      "iconActive": "",
+      "text": "Flooding"
+    },
+    {
+      "id": "green",
+      "icon": "",
+      "iconActive": "",
+      "text": "Green and Open Land"
+    },
+    {
+      "id": "historic",
+      "icon": "",
+      "iconActive": "",
+      "text": "Historic Environment "
+    },
+    {
+      "id": "londonplan",
+      "icon": "",
+      "iconActive": "",
+      "text": "London Plan"
+    },
+    {
+      "id": "retail",
+      "icon": "",
+      "iconActive": "",
+      "text": "Retail"
+    },
+    {
+      "id": "waste",
+      "icon": "",
+      "iconActive": "",
+      "text": "Waste Sites"
+    },
+    {
+      "id": "lldc",
+      "icon": "",
+      "iconActive": "",
+      "text": "LLDC Area"
+    }
+  ],
+  "layers": [
+    {
+      "title": "Priority industial areas",
+      "geoserverLayerName": "planning:lp33_priority_industial_area",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "goldenrod",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Priority office areas",
+      "geoserverLayerName": "planning:lp33_priority_office_area",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    }, 
+    {
+      "title": "Industrial sites",
+      "geoserverLayerName": "planning:lp33_local_significant_industrial",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Local open spaces",
+      "geoserverLayerName": "planning:lp33_open_space_ex_amenity",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkgreen",
+        "markerColorIcon2": "green",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Metropolitan open land",
+      "geoserverLayerName": "planning:lp33_metropolitan_open_land",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Flood zone 2",
+      "geoserverLayerName": "flood:flood_zone_2_dissolved_generalized",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "markerColorIcon2": "lightblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#8adaff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+        ],
+        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency). <br><br> Note: The polygons have been generalized in order to improve the performance of the page."
+      }
+    },
+    {
+      "title": "Flood zone 3",
+      "geoserverLayerName": "flood:flood_zone_3_dissolved_generalized",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+        ],
+        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency).<br><br> Note: The polygons have been generalized in order to improve the performance of the page."
+      }
+    },
+        {
+      "title": "SINC",
+      "geoserverLayerName": "planning:nature_conservation_interest",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkolivegreen",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#566e4b",
+        "opacity": 1,
+        "fillColor": "#566e4b",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "site_name"
+          }
+        ],
+        "afterFields": "Sites of Importance for Nature Conservation (SINCs) are areas designated for their importance for wildlife and for people to experience nature."
+      }
+    },
+    {
+      "title": "Major town centres",
+      "geoserverLayerName": "planning:lp33_major_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "District town centres",
+      "geoserverLayerName": "planning:lp33_district_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Street markets",
+      "geoserverLayerName": "planning:lp33_street_market",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkred",
+        "opacity": 1,
+        "fillColor": "darkred",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Critical drainage areas",
+      "geoserverLayerName": "flood:critical_drainage_area",
+      "personas": ["flooding"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+        ],
+        "afterFields": "Critical Drainage Areas (CDAs) are areas that have critical drainage problems in Hackney (Source: Environmental Agency)."
+      }
+    },
+    {
+      "title": "Registered parks & gardens",
+      "geoserverLayerName": "planning:registered_park_garden_point",
+      "personas": ["historic"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "far fa-leaf-maple"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "site_name"
+          }
+        ],
+        "afterFields": "Registered parks & gardens are parks and gardens of particular importance in Hackney (Source: Historic England)."
+      }
+    },
+    {
+      "title": "Site allocations",
+      "geoserverLayerName": "statmap:site_allocation_adoption_stage",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightgray",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "goldenrod",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Green corridors",
+      "geoserverLayerName": "planning:lp33_green_corridor",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "fas fa-ellipsis-h"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.65,
+        "layerLineDash": 6,
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Green links",
+      "geoserverLayerName": "planning:lp33_green_link",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkolivegreen",
+        "icon": "fas fa-horizontal-rule"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#566e4b",
+        "opacity": 1,
+        "fillColor": "#566e4b",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Regionally important geological site",
+      "geoserverLayerName": "planning:lp33_potential_geological_importance_site",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "markerColorIcon2": "orange",
+        "icon": "fas fa-axe"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ],
+        "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology."
+      }
+    },
+    {
+      "title": "Archeological priority areas",
+      "geoserverLayerName": "planning:lp33_area_archaeological_priority",
+      "personas": ["historic"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "gray",
+        "markerColorIcon2": "lightgray",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#575757",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ], 
+        "afterFields": "Archaeological Priority Areas (APAs) are areas where there is significant known archaeological interest or potential for new discoveries (Source: Historic England)."
+      }
+    },
+    {
+      "title": "Conservation areas",
+      "geoserverLayerName": "planning:conservation_area",
+      "personas": ["historic"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "ca_name"
+          }
+        ],
+        "afterFields": "Conservation Areas are areas of special architectural or historic interest whose character or appearance we want to preserve or enhance in Hackney."
+      }
+    },
+    {
+      "title": "Central activities zone",
+      "geoserverLayerName": "planning:lp33_central_activity_zone",
+      "personas": ["londonplan"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "fields": []
+      }
+    },
+    {
+      "title": "Strategic view",
+      "geoserverLayerName": "planning:lp33_strategic_view",
+      "personas": ["londonplan"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkpurple",
+        "markerColorIcon2": "thistle",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#5b396b",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Primary shopping areas",
+      "geoserverLayerName": "planning:lp33_primary_shopping_area",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "yellow",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "yellow",
+        "opacity": 1,
+        "fillColor": "yellow",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Primary shopping frontages",
+      "geoserverLayerName": "planning:lp33_primary_shopping_frontage",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-horizontal-rule"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },{
+      "title": "Local shopping centres",
+      "geoserverLayerName": "planning:lp33_local_shopping_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "cadetblue",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436978",
+        "opacity": 1,
+        "fillColor": "#436978",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Existing waste sites",
+      "geoserverLayerName": "planning:lp33_existing_waste",
+      "personas": ["waste"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Area centres",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_area_centre",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Employment Areas",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_employment_area",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "pink",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#ff91ea",
+        "opacity": 1,
+        "fillColor": "#ff91ea",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Site allocations",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_site_allocation",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightgray",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "goldenrod",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Area",
+      "geoserverLayerName": "planning:lp33_lldc_boundary",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#c7c704",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Note:",
+            "name": "comment"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Conservation areas",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_conservation_area",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Local open spaces",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_adopted_los",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkgreen",
+        "markerColorIcon2": "green",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Area action plan",
+      "geoserverLayerName": "planning:lp33_area_action_plan",
+      "personas": ["londonplan"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LLDC Metropolitan open land",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_area",
+      "personas": ["lldc"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    }
+
+          ]
+}
