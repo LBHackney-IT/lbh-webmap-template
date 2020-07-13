@@ -12,11 +12,14 @@ import {
   MAX_ZOOM,
   MIN_ZOOM,
   CENTER_DESKTOP_LEGEND,
+  CENTER_DESKTOP_LEGEND_FULLSCREEN,
   CENTER_DESKTOP_NO_LEGEND,
+  CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,
   CENTER_MOBILE,
+  //CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
-  MAP_BOUNDS,
+  //MAP_BOUNDS,
   HACKNEY_GEOSERVER_WMS,
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
@@ -70,9 +73,17 @@ class Map {
         this.errorNoLocation =
           this.mapConfig.errorNoLocation || this.errorNoLocation;
         if (this.mapConfig.showLegend) {
-          this.centerDesktop = CENTER_DESKTOP_LEGEND;
+          if(this.isFullScreen){
+            this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN;
+          } else{
+            this.centerDesktop = CENTER_DESKTOP_LEGEND;
+          }
         } else {
-          this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
+          if(this.isFullScreen){
+            this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN;
+          }else{
+            this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
+          }
         }
         this.createMap();
         if (this.mapConfig.showLegend) {
@@ -138,11 +149,11 @@ class Map {
       gestureHandling: L.Browser.mobile
     });
 
-    this.map.setMaxBounds(MAP_BOUNDS);
+    //this.map.setMaxBounds(MAP_BOUNDS);
 
     mobileDesktopSwitch(
-      () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
-      () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
+        () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
+        () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
     );
 
     this.addBaseLayer();
@@ -260,11 +271,12 @@ class Map {
 
   setZoom() {
     if (isMobileFn()) {
-      this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
-    } else {
-      this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
-    }
-  }
+        this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+      } else {
+        this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
+      }
+      } 
+  
 
   addResetButton() {
     L.easyButton(
