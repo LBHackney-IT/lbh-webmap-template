@@ -35,28 +35,10 @@
       "text": "Historic Environment "
     },
     {
-      "id": "londonplan",
-      "icon": "",
-      "iconActive": "",
-      "text": "London Plan"
-    },
-    {
       "id": "retail",
       "icon": "",
       "iconActive": "",
       "text": "Retail"
-    },
-    {
-      "id": "waste",
-      "icon": "",
-      "iconActive": "",
-      "text": "Waste Sites"
-    },
-    {
-      "id": "lldc",
-      "icon": "",
-      "iconActive": "",
-      "text": "LLDC Area"
     }
   ],
   "layers": [
@@ -373,17 +355,19 @@
       "personas": ["flooding"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "darkblue",
-        "icon": "fas fa-expand"
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "cadetblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#0e67a3",
+        "strokeColor": "#436978",
         "opacity": 1,
-        "fillColor": "#0e67a3",
-        "fillOpacity": 0,
-        "layerLineDash": 6,
+        "fillColor": "#436978",
+        "fillOpacity": 0.3,
+        "layerLineDash": "",
         "weight": 2
       },
       "popup": {
@@ -415,7 +399,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "site_name"
+            "name": "Name"
           }
         ],
         "afterFields": "Registered parks & gardens are parks and gardens of particular importance in Hackney (Source: Historic England)."
@@ -427,18 +411,20 @@
       "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "lightgray",
-        "icon": "fas fa-square"
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "darkblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "goldenrod",
+        "strokeColor": "#436978",
         "opacity": 1,
-        "fillColor": "#a3a3a3",
+        "fillColor": "#0e67a3",
         "fillOpacity": 0.65,
-        "layerLineDash": "",
-        "weight": 0
+        "layerLineDash":"",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -466,7 +452,7 @@
         "fillColor": "#70ad26",
         "fillOpacity": 0.65,
         "layerLineDash": 6,
-        "weight": 4
+        "weight": 6
       },
       "popup": {
         "fields": [
@@ -494,7 +480,7 @@
         "fillColor": "#566e4b",
         "fillOpacity": 0.65,
         "layerLineDash": "",
-        "weight": 4
+        "weight": 6
       },
       "popup": {
         "fields": [
@@ -536,7 +522,7 @@
       }
     },
     {
-      "title": "Archeological priority areas",
+      "title": "Archaeological priority areas",
       "geoserverLayerName": "planning:lp33_area_archaeological_priority",
       "personas": ["historic"],
       "pointStyle": {
@@ -568,7 +554,7 @@
     },
     {
       "title": "Conservation areas",
-      "geoserverLayerName": "planning:conservation_area",
+      "geoserverLayerName": "planning:conservation_area_without_lldc_ca",
       "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -592,15 +578,17 @@
           {
             "label": "Name",
             "name": "ca_name"
+          },
+          {
+            "label": "",
+            "name": "notes"
           }
-        ],
-        "afterFields": "Conservation Areas are areas of special architectural or historic interest whose character or appearance we want to preserve or enhance in Hackney."
-      }
+        ]      }
     },
     {
       "title": "Central activities zone",
       "geoserverLayerName": "planning:lp33_central_activity_zone",
-      "personas": ["londonplan"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkred",
@@ -617,13 +605,14 @@
         "weight": 5
       },
       "popup": {
-        "fields": []
+        "fields": [],
+        "afterFields": "For more information about the London Plan, please visit: <a href='https://www.london.gov.uk/what-we-do/planning/london-plan/current-london-plan' target='_blank'>the current London Plan website</a>."
       }
     },
     {
       "title": "Strategic view",
       "geoserverLayerName": "planning:lp33_strategic_view",
-      "personas": ["londonplan"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkpurple",
@@ -647,7 +636,8 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "For more information about the London Plan, please visit: <a href='https://www.london.gov.uk/what-we-do/planning/london-plan/current-london-plan' target='_blank'>the current London Plan website</a>."
       }
     },
     {
@@ -736,7 +726,7 @@
     {
       "title": "Existing waste sites",
       "geoserverLayerName": "planning:lp33_existing_waste",
-      "personas": ["waste"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -764,7 +754,7 @@
     {
       "title": "LLDC Area centres",
       "geoserverLayerName": "planning:lp33_lldc_hackney_area_centre",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkblue",
@@ -786,13 +776,14 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
       "title": "LLDC Employment Areas",
       "geoserverLayerName": "planning:lp33_lldc_hackney_employment_area",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "pink",
@@ -814,27 +805,30 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
       "title": "LLDC Site allocations",
       "geoserverLayerName": "planning:lp33_lldc_hackney_site_allocation",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "lightgray",
-        "icon": "fas fa-square"
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "darkblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "goldenrod",
+        "strokeColor": "#436978",
         "opacity": 1,
-        "fillColor": "#a3a3a3",
+        "fillColor": "#0e67a3",
         "fillOpacity": 0.65,
-        "layerLineDash": "",
-        "weight": 0
+        "layerLineDash":"",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -842,13 +836,14 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
       "title": "LLDC Area",
       "geoserverLayerName": "planning:lp33_lldc_boundary",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "goldenrod",
@@ -865,18 +860,14 @@
         "weight": 4
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Note:",
-            "name": "comment"
-          }
-        ]
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
       "title": "LLDC Conservation areas",
       "geoserverLayerName": "planning:lp33_lldc_hackney_conservation_area",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkred",
@@ -900,13 +891,14 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
       "title": "LLDC Local open spaces",
       "geoserverLayerName": "planning:lp33_lldc_hackney_adopted_los",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkgreen",
@@ -930,13 +922,14 @@
             "label": "Name",
             "name": "name"
           }
-        ]
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
     {
-      "title": "Area action plan",
+      "title": "Area action plans",
       "geoserverLayerName": "planning:lp33_area_action_plan",
-      "personas": ["londonplan"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "orange",
@@ -957,14 +950,18 @@
           {
             "label": "Name",
             "name": "name"
+          },
+          {
+            "label": "",
+            "name": "notes"
           }
-        ]
+        ]      
       }
     },
     {
       "title": "LLDC Metropolitan open land",
       "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_area",
-      "personas": ["lldc"],
+      "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "thistle",
@@ -981,12 +978,8 @@
         "weight": 0
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     }
 

@@ -124,7 +124,7 @@ body,
 
   .personas__button-wrapper {  
     @include govuk-media-query($from: desktop) {
-      width: 12.5%;
+      width: 20%;
     }
   }
 
