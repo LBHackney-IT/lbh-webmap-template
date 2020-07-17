@@ -3,7 +3,7 @@
   "summary": "",
   "showHackneyBoundary": true,
   "zoomToMasterMapBW": true,
-  "about": "This map shows the layers of the new borough-wide local plan 2033, known as LP33, which will be the key strategic planning document used to direct and guide development in the borough up to 2033. <br> <br> For more information about the local plan 2033, please visit: <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>.",
+  "about": "This map represents the geographical areas considered in the new borough-wide local plan 2033, known as LP33, which will be the key strategic planning document used to direct and guide development in the borough up to 2033. <br> <br> For more information about the local plan 2033, please visit: <a href='https://hackney.gov.uk/lp33' target='_blank'>https://hackney.gov.uk/lp33</a>. <br> <br> This map should only be used as a complement to the local plan document. To view general planning information, or check planning constraints on a specific property, please visit <a href='https://map.hackney.gov.uk/lbhackneymap/' target='_blank'>Map.Hackney",
   "aboutTitle": "About the map",
   "showFullScreenButton": true,
   "showLegend": true,
@@ -208,7 +208,7 @@
       "popup": {
         "fields": [
         ],
-        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency). <br><br> Note: The polygons have been generalized in order to improve the performance of the page."
+        "afterFields": "Flood zone 2 is the land assessed as having between a 1 in 100 and 1 in 1,000 annual probability of river flooding (1% – 0.1%), or between a 1 in 200 and 1 in 1,000 annual probability of sea flooding (0.5% – 0.1%) in any year (Source: Environmental Agency). <br><br> Note: zone boundaries have been simplified in order to improve the performance of the page. For precise boundaries please consult the Environmental Agency."
       }
     },
     {
@@ -233,7 +233,7 @@
       "popup": {
         "fields": [
         ],
-        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency).<br><br> Note: The polygons have been generalized in order to improve the performance of the page."
+        "afterFields": "Flood zone 3 is the  land assessed as having a 1 in 100 or greater annual probability of river flooding (>1%), or a 1 in 200 or greater annual probability of flooding from the sea (>0.5%) in any year (Source: Environmental Agency).<br><br> Note: zone boundaries have been simplified in order to improve the performance of the page. For precise boundaries please consult the Environmental Agency."
       }
     },
         {
