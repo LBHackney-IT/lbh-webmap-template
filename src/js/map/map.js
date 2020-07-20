@@ -16,7 +16,7 @@ import {
   CENTER_DESKTOP_NO_LEGEND,
   CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,
   CENTER_MOBILE,
-  //CENTER_MOBILE_FULLSCREEN,
+  CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
@@ -151,10 +151,18 @@ class Map {
 
     this.map.setMaxBounds(MAP_BOUNDS);
 
-    mobileDesktopSwitch(
+    if (this.isFullScreen){
+      mobileDesktopSwitch(
+        () => this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE),
+        () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
+      );
+    } else{
+      mobileDesktopSwitch(
         () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
         () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
-    );
+      );
+    }
+    
 
     this.addBaseLayer();
 
@@ -275,7 +283,11 @@ class Map {
 
   setZoom() {
     if (isMobileFn()) {
-        this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+        if (this.isFullScreen){
+          this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
+        } else {
+          this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+        }  
       } else {
         this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
       }
@@ -288,7 +300,11 @@ class Map {
       () => {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
-          this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+          if (this.isFullScreen){
+            this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
+          } else {
+            this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+          } 
         } else {
           this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
         }
