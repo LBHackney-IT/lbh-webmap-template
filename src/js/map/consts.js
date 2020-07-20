@@ -14,16 +14,11 @@ const DEFAULT_ZOOM_MOBILE = 11;
 //   [51.491112, -0.275464],
 //   [51.607351, 0.096129]
 // ];
-// const MAP_BOUNDS = [
-//   [51.491280, -0.275464],
-//   [51.795044, 0.089187]
-// ];
-// const MAP_BOUNDS = [
-//   [51.491112, -0.275464],
-//   [51.793054, 0.089187]
-// ];
-const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
-const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
+const MAP_BOUNDS = [
+  [51.281112, -0.5],
+  [51.793054, 0.45]
+];
+
 const HACKNEY_GEOSERVER_WFS = "https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=json&SrsName=EPSG:4326&typeName=";
 const HACKNEY_GEOSERVER_WMS = "https://map.hackney.gov.uk/geoserver/wms";
 const MAPBOX_TILES_URL =
@@ -86,9 +81,9 @@ export {
   CENTER_MOBILE,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
-  //MAP_BOUNDS,
-  HACKNEY_BOUNDS_1,
-  HACKNEY_BOUNDS_2,
+  MAP_BOUNDS,
+  //HACKNEY_BOUNDS_1,
+  //HACKNEY_BOUNDS_2,
   HACKNEY_GEOSERVER_WMS,
   HACKNEY_GEOSERVER_WFS,
   MAPBOX_TILES_URL,

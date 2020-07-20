@@ -19,7 +19,7 @@ import {
   //CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
-  //MAP_BOUNDS,
+  MAP_BOUNDS,
   HACKNEY_GEOSERVER_WMS,
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
@@ -149,7 +149,7 @@ class Map {
       gestureHandling: L.Browser.mobile
     });
 
-    //this.map.setMaxBounds(MAP_BOUNDS);
+    this.map.setMaxBounds(MAP_BOUNDS);
 
     mobileDesktopSwitch(
         () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
@@ -205,7 +205,7 @@ class Map {
       format: "image/png",
       tiled: true,
       transparent: true,
-      minZoom: 10,
+      minZoom: 18,
       maxZoom: 20,
       opacity: 1
     });
@@ -219,7 +219,7 @@ class Map {
       format: "image/png",
       tiled: true,
       transparent: true,
-      minZoom: 10,
+      minZoom: 18,
       maxZoom: 20,
       opacity: 1
     });
@@ -247,6 +247,10 @@ class Map {
         MAPBOX_TILES_URL,
         Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.streets" })
       );
+    }
+    //limit zoom for OSM if mastermap is shown
+    if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
+      this.OSMBase.maxZoom = 17;
     }
     this.map.addLayer(this.OSMBase);
   }
