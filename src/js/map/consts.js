@@ -18,6 +18,8 @@ const MAP_BOUNDS = [
   [51.281112, -0.5],
   [51.793054, 0.45]
 ];
+const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
+const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
 
 const HACKNEY_GEOSERVER_WFS = "https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=json&SrsName=EPSG:4326&typeName=";
 const HACKNEY_GEOSERVER_WMS = "https://map.hackney.gov.uk/geoserver/wms";
@@ -82,8 +84,8 @@ export {
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
-  //HACKNEY_BOUNDS_1,
-  //HACKNEY_BOUNDS_2,
+  HACKNEY_BOUNDS_1,
+  HACKNEY_BOUNDS_2,
   HACKNEY_GEOSERVER_WMS,
   HACKNEY_GEOSERVER_WFS,
   MAPBOX_TILES_URL,
