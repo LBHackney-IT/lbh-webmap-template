@@ -163,7 +163,9 @@ class Metadata {
     if(this.isFullScreen){
       const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText);
       control.addTo(this.map);
-      L.control.zoom({ position: "topright" }).addTo(this.map);
+      if (!L.Browser.mobile){
+        L.control.zoom({ position: "topright" }).addTo(this.map);
+      }
     } else {
       const control = createTitle(this.map, mapTitle, mapSummary, metadataText);
       control.addTo(this.map);
@@ -206,7 +208,9 @@ class Metadata {
         if (control) {
           control.addTo(this.map);
         }
-        L.control.zoom({ position: "topright" }).addTo(this.map);
+        if (!L.Browser.mobile){
+          L.control.zoom({ position: "topright" }).addTo(this.map);
+        }
       } else {
         control = createTitle(this.map, mapTitle, mapSummary, about, aboutTitle);
         if (control) {
@@ -219,7 +223,9 @@ class Metadata {
         if (control) {
           control.addTo(this.map);
         }
-        L.control.zoom({ position: "topright" }).addTo(this.map);
+        if (!L.Browser.mobile){
+          L.control.zoom({ position: "topright" }).addTo(this.map);
+        }
       } else{
         control = createTitle(this.map, mapTitle, mapSummary, null, null);
         if (control) {
