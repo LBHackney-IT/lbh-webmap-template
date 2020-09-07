@@ -11,6 +11,7 @@ const vinylPaths = require("vinyl-paths");
 // check for the flag passed by the task
 
 const isDist = true;
+
 //const isDist = false;
 
 // Update assets' versions ----------
