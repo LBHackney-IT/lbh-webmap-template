@@ -43,7 +43,7 @@
   ],
   "layers": [
     {
-      "title": "Priority industial areas",
+      "title": "Priority industrial areas",
       "geoserverLayerName": "planning:lp33_priority_industial_area",
       "personas": ["employment"],
       "pointStyle": {
@@ -407,7 +407,7 @@
     },
     {
       "title": "Site allocations",
-      "geoserverLayerName": "statmap:site_allocation_adoption_stage",
+      "geoserverLayerName": "planning:site_allocation",
       "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -464,7 +464,7 @@
       }
     },
     {
-      "title": "Green links",
+      "title": "Green chains",
       "geoserverLayerName": "planning:lp33_green_link",
       "personas": ["green"],
       "pointStyle": {
@@ -772,10 +772,7 @@
       },
       "popup": {
         "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
+          {}
         ],
         "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
@@ -800,15 +797,35 @@
         "weight": 3
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ],
+        "fields": [],
         "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
+    {
+      "title": "Potential green chains",
+      "geoserverLayerName": "planning:lp33_potential_green_chain",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkolivegreen",
+        "markerColorIcon2": "darkolivegreen",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#566e4b",
+        "opacity": 1,
+        "fillColor": "#566e4b",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+    "popup": {
+      "fields": []
+    }
+  },
     {
       "title": "LLDC Site allocations",
       "geoserverLayerName": "planning:lp33_lldc_hackney_site_allocation",
@@ -831,12 +848,7 @@
         "weight": 1
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ],
+        "fields": [],
         "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
@@ -886,12 +898,7 @@
         "weight": 1
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ],
+        "fields": [],
         "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
@@ -917,12 +924,7 @@
         "weight": 0
       },
       "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ],
+        "fields": [],
         "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
       }
     },
@@ -960,7 +962,7 @@
     },
     {
       "title": "LLDC Metropolitan open land",
-      "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_area",
+      "geoserverLayerName": "planning:lp33_lldc_hackney_metropolitan_open_land",
       "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
