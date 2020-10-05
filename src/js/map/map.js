@@ -269,6 +269,7 @@ class Map {
     this.hackneyMask = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney_mask",
       transparent: true,
+      tiled: true,
       format: "image/png"
     });
     this.map.addLayer(this.hackneyMask);
@@ -278,6 +279,7 @@ class Map {
     this.hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney",
       transparent: true,
+      tiled: true,
       format: "image/png"
     });
     this.map.addLayer(this.hackneyBoundary);
