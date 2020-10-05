@@ -2,13 +2,14 @@
   "title": "Electrical vehicles chargers",
   "about": "This map shows the location of all the electric vehicle charging points in Hackney. It will be updated periodically, as new charge points go in.",
   "aboutTitle": "About the map",
+  "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "streets",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "Ubitricity lamp column charger",
+      "title": "Ubitricity charger",
       "geoserverLayerName": "statmap:usr_streetscene_lamp_column",
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -25,11 +26,11 @@
       }
     },
     {
-      "title": "SourceLondon freestanding charger",
+      "title": "SourceLondon charger",
       "geoserverLayerName": "statmap:usr_streetscene_sl_slowcharger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
+        "icon": "fas fa-battery-bolt",
         "markerColor": "black"
       },
       "popup": {
@@ -42,11 +43,11 @@
       }
     },
     {
-      "title": "Hackney rapid charger",
+      "title": "Hackney charger",
       "geoserverLayerName": "statmap:usr_streetscene_H_rapidcharger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
+        "icon": "fas fa-battery-bolt",
         "markerColor": "green"
       },
       "popup": {
@@ -59,11 +60,11 @@
       }
     },
     {
-      "title": "TFL rapid charger",
+      "title": "TFL charger",
       "geoserverLayerName": "statmap:usr_streetscene_tfl_rapid_char",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
+        "icon": "fas fa-battery-bolt",
         "markerColor": "darkblue"
       },
       "popup": {
