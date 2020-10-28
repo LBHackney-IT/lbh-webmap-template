@@ -21,8 +21,8 @@ const MAP_BOUNDS = [
 const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
 const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
 
-const HACKNEY_GEOSERVER_WFS = "https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=json&SrsName=EPSG:4326&typeName=";
-const HACKNEY_GEOSERVER_WMS = "https://map.hackney.gov.uk/geoserver/wms";
+const HACKNEY_GEOSERVER_WFS = "https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=json&SrsName=EPSG:4326&typeName=";
+const HACKNEY_GEOSERVER_WMS = "https://map2.hackney.gov.uk/geoserver/wms";
 const MAPBOX_TILES_URL =
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}";
 const GENERIC_GEOLOCATION_ERROR =
