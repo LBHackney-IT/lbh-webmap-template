@@ -9,8 +9,8 @@
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "Ubitricity charger",
-      "geoserverLayerName": "statmap:usr_streetscene_lamp_column",
+      "title": "Lamp Columns",
+      "geoserverLayerName": "transport:ev_charger_lamp_column",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-battery-bolt",
@@ -20,14 +20,14 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
     },
     {
       "title": "SourceLondon charger",
-      "geoserverLayerName": "statmap:usr_streetscene_sl_slowcharger",
+      "geoserverLayerName": "transport:ev_charger_source_london",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-battery-bolt",
@@ -37,14 +37,14 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
     },
     {
       "title": "Hackney charger",
-      "geoserverLayerName": "statmap:usr_streetscene_H_rapidcharger",
+      "geoserverLayerName": "transport:ev_charger_hackney",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-battery-bolt",
@@ -54,7 +54,7 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }

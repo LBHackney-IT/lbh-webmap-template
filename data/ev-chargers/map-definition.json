@@ -9,7 +9,7 @@
   "layers": [
     {
       "title": "Ubitricity lamp column charger",
-      "geoserverLayerName": "statmap:usr_streetscene_lamp_column",
+      "geoserverLayerName": "transport:electrical_vehicle_charger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-battery-bolt",
@@ -19,14 +19,14 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
     },
     {
       "title": "SourceLondon freestanding charger",
-      "geoserverLayerName": "statmap:usr_streetscene_sl_slowcharger",
+      "geoserverLayerName": "transport:electrical_vehicle_charger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fa-battery-bolt",
@@ -36,14 +36,14 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
     },
     {
       "title": "Hackney rapid charger",
-      "geoserverLayerName": "statmap:usr_streetscene_H_rapidcharger",
+      "geoserverLayerName": "transport:electrical_vehicle_charger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fa-battery-bolt",
@@ -53,14 +53,14 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
     },
     {
       "title": "TFL rapid charger",
-      "geoserverLayerName": "statmap:usr_streetscene_tfl_rapid_char",
+      "geoserverLayerName": "transport:electrical_vehicle_charger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fa-battery-bolt",
@@ -70,7 +70,7 @@
         "fields": [
           {
             "label": "Location",
-            "name": "kml_name"
+            "name": "location"
           }
         ]
       }
