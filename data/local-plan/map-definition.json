@@ -349,8 +349,36 @@
       }
     },
     {
+      "title": "Street markets",
+      "geoserverLayerName": "planning:street_market",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkred",
+        "opacity": 1,
+        "fillColor": "darkred",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
       "title": "Registered parks & gardens",
-      "geoserverLayerName": "planning:registered_park_garden",
+      "geoserverLayerName": "planning:registered_park_garden_point",
       "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -495,8 +523,66 @@
       }
     },
     {
+      "title": "Regionally important geological site",
+      "geoserverLayerName": "planning:geological_importance_site",
+      "personas": ["green"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "markerColorIcon2": "orange",
+        "icon": "fas fa-axe"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ],
+        "afterFields": "Regionally Important Geological Sites (RIGS) are sites of regional and local importance for their geology."
+      }
+    },
+    {
+      "title": "Existing waste sites",
+      "geoserverLayerName": "planning:existing_waste_site",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
       "title": "Conservation areas",
-      "geoserverLayerName": "planning:conservation_area",
+      "geoserverLayerName": "planning:conservation_area_without_lldc_area",
       "personas": ["historic"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -666,8 +752,84 @@
       }
     },
     {
+      "title": "LLDC Area centres",
+      "geoserverLayerName": "planning:lldc_hackney_area_centre",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {}
+        ],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
+      "title": "LLDC Employment Areas",
+      "geoserverLayerName": "planning:lldc_hackney_employment_area",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "pink",
+        "icon": "fas fa-expand"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#ff91ea",
+        "opacity": 1,
+        "fillColor": "#ff91ea",
+        "fillOpacity": 0,
+        "layerLineDash": 6,
+        "weight": 3
+      },
+      "popup": {
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
+      "title": "LLDC Site allocations",
+      "geoserverLayerName": "planning:lldc_hackney_site_allocation",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "darkblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436978",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
       "title": "LLDC Area",
-      "geoserverLayerName": "planning:lp33_lldc_boundary",
+      "geoserverLayerName": "planning:lldc_boundary",
       "personas": [],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -683,6 +845,82 @@
         "fillOpacity": 0,
         "layerLineDash": "",
         "weight": 4
+      },
+      "popup": {
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
+      "title": "LLDC Conservation areas",
+      "geoserverLayerName": "planning:lldc_hackney_conservation_area",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
+      "title": "LLDC Local open spaces",
+      "geoserverLayerName": "planning:lldc_hackney_local_open_space",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkgreen",
+        "markerColorIcon2": "green",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [],
+        "afterFields": "The London Legacy Development Corporation acts as the planning authority for the area around and including Queen Elizabeth Olympic Park. <br> <br> For more information, please visit the <a href='https://www.queenelizabetholympicpark.co.uk/planning-authority' target='_blank'>LLDC website</a>."
+      }
+    },
+    {
+      "title": "LLDC Metropolitan open land",
+      "geoserverLayerName": "planning:lldc_hackney_metropolitan_open_land",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": false,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 0
       },
       "popup": {
         "fields": [],
