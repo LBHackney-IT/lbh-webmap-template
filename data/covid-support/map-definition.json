@@ -22,7 +22,7 @@
   "layers": [
     {
       "title": "Get active",
-      "geoserverLayerName": "statmap:covid_assistance_exercise",
+      "geoserverLayerName": "amenities:support_service_exercise",
       "searchable": true,
       "sortOrder": 4,
       "pointStyle": {
@@ -71,7 +71,7 @@
     },
     {
       "title": "Feeling anxious",
-      "geoserverLayerName": "statmap:covid_assistance_mental_health",
+      "geoserverLayerName": "amenities:support_service_mental_health",
       "searchable": true,
       "sortOrder": 2,
       "pointStyle": {
@@ -121,7 +121,7 @@
     },
     {
       "title": "Stay safe and healthy",
-      "geoserverLayerName": "statmap:covid_assistance_safe_healthy",
+      "geoserverLayerName": "amenities:support_service_safe_healthy",
       "searchable": true,
       "sortOrder": 3,
       "pointStyle": {
@@ -171,7 +171,7 @@
     },
     {
       "title": "Exercise the brain",
-      "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "geoserverLayerName": "amenities:support_service_active_mind",
       "searchable": true,
       "sortOrder": 5,
       "pointStyle": {
@@ -221,7 +221,7 @@
     },
     {
       "title": "Chat and check-in",
-      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "geoserverLayerName": "amenities:support_service_social_isolation",
       "searchable": true,
       "sortOrder": 1,
       "pointStyle": {
@@ -271,7 +271,7 @@
     },
     {
       "title": "Food or Shopping",
-      "geoserverLayerName": "statmap:covid_assistance_food",
+      "geoserverLayerName": "amenities:support_service_food",
       "searchable": true,
       "sortOrder": 6,
       "pointStyle": {
@@ -320,7 +320,7 @@
     },
     {
       "title": "Families",
-      "geoserverLayerName": "statmap:covid_assistance_families",
+      "geoserverLayerName": "amenities:support_service_families",
       "searchable": true,
       "sortOrder": 7,
       "pointStyle": {
@@ -370,7 +370,7 @@
     },
     {
       "title": "Faith-led activities",
-      "geoserverLayerName": "statmap:covid_assistance_faith",
+      "geoserverLayerName": "amenities:support_service_faith",
       "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
@@ -419,7 +419,7 @@
     },
     {
       "title": "Benefits advice",
-      "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "geoserverLayerName": "amenities:support_service_benefits",
       "searchable": true,
       "sortOrder": 9,
       "pointStyle": {
@@ -468,7 +468,7 @@
     },
     {
       "title": "Debt advice",
-      "geoserverLayerName": "statmap:covid_assistance_debt",
+      "geoserverLayerName": "amenities:support_service_debt",
       "searchable": true,
       "sortOrder": 10,
       "pointStyle": {
@@ -517,7 +517,7 @@
     },
     {
       "title": "Employment advice",
-      "geoserverLayerName": "statmap:covid_assistance_employment",
+      "geoserverLayerName": "amenities:support_service_employment",
       "searchable": true,
       "sortOrder": 11,
       "pointStyle": {
@@ -566,7 +566,7 @@
     },
     {
       "title": "Housing advice",
-      "geoserverLayerName": "statmap:covid_assistance_housing",
+      "geoserverLayerName": "amenities:support_service_housing",
       "searchable": true,
       "sortOrder": 12,
       "pointStyle": {
