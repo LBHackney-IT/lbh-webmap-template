@@ -46,7 +46,7 @@ body,
 }
 
 .map__container {
-  @include lbh-rem(margin-bottom, 48);
+  // @include lbh-rem(margin-bottom, 48);
   font-family: "Montserrat";
   position: relative;
 }
