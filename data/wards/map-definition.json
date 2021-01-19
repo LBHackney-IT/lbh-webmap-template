@@ -1,6 +1,6 @@
 {
   "title": "Wards in Hackney",
-  "baseStyle": "streets",
+  "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [

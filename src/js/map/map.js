@@ -29,6 +29,7 @@ import {
   PERSONA_ACTIVE_CLASS
 } from "./consts";
 import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
+import OS_RASTER_API_KEY  from "../helpers/osdata";
 import "@fortawesome/fontawesome-pro/js/all";
 import Geolocation from "./geolocation";
 import Controls from "./controls";
@@ -241,6 +242,21 @@ class Map {
     if (this.mapConfig.baseStyle == "streets") {
       this.OSMBase = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
+        TILE_LAYER_OPTIONS
+      );
+    } else if (this.mapConfig.baseStyle == "OSoutdoor") {
+      this.OSMBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        TILE_LAYER_OPTIONS
+      );
+    } else if (this.mapConfig.baseStyle == "OSlight") {
+      this.OSMBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        TILE_LAYER_OPTIONS
+      );
+    } else if (this.mapConfig.baseStyle == "OSroad") {
+      this.OSMBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS
       );
     } else if (this.mapConfig.baseStyle == "light") {
