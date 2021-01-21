@@ -1,0 +1,205 @@
+{
+  "title": "Where is Hackney building",
+  "baseStyle": "OSlight",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "showHackneyBoundary": true,
+  "search": {
+    "searchField": "name",
+    "searchSectionTitle": "Search",
+    "searchPlaceholderText": "Type development name",
+    "notFoundText": "No development found with this name",
+    "clearMapAfterSearch": false
+  },
+  "layers": [
+    {
+      "title": "Approved",
+      "geoserverLayerName": "housing:regeneration_programme_approved",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "searchable": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkpurple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#5b396b",
+        "opacity": 1,
+        "fillColor": "#5b396b",
+        "fillOpacity": 0.70,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "image"
+          },
+          {
+            "label": "",
+            "name": "overview"
+          },
+          {
+            "label": "Number of homes",
+            "name": "no_homes"
+          },
+          {
+            "label": "Completion date",
+            "name": "complet_date"
+          },
+          {
+            "label": "",
+            "name": "more_info"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Under construction",
+      "geoserverLayerName": "housing:regeneration_programme_under_construction",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "searchable": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "image"
+          },
+          {
+            "label": "",
+            "name": "overview"
+          },
+          {
+            "label": "Number of homes",
+            "name": "no_homes"
+          },
+          {
+            "label": "Completion date",
+            "name": "complet_date"
+          },
+          {
+            "label": "",
+            "name": "more_info"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Completed",
+      "geoserverLayerName": "housing:regeneration_programme_completed",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "searchable": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "greenpantone",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#00b33c",
+        "opacity": 1,
+        "fillColor": "#00b33c",
+        "fillOpacity": 0.70,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "image"
+          },
+          {
+            "label": "",
+            "name": "overview"
+          },
+          {
+            "label": "Number of homes",
+            "name": "no_homes"
+          },
+          {
+            "label": "Completion date",
+            "name": "complet_date"
+          },
+          {
+            "label": "",
+            "name": "more_info"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Design and consultation",
+      "geoserverLayerName": "housing:regeneration_programme_design_consultation",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "searchable": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.70,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "image"
+          },
+          {
+            "label": "",
+            "name": "overview"
+          },
+          {
+            "label": "Number of homes",
+            "name": "no_homes"
+          },
+          {
+            "label": "Completion date",
+            "name": "complet_date"
+          },
+          {
+            "label": "",
+            "name": "more_info"
+          }
+        ]
+      }
+    }
+
+  ]
+}

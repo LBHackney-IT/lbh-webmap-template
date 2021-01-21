@@ -53,6 +53,7 @@ const MARKER_COLORS = {
   red: "#d43e2a",
   orange: "#F69730",
   green: "#70ad26",
+  greenpantone:"#00b33c",
   blue: "#38aadd",
   purple: "#D252BA",
   darkred: "#a23336",
@@ -73,7 +74,7 @@ const MARKER_COLORS = {
   yellow: "#ffff01",
   mediumslateblue:"#7966fe",
   thistle: "#dbb7ff",
-  goldenrod: "#c7c704"
+  goldenrod: "#c7c704",
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
