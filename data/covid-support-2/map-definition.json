@@ -7,7 +7,7 @@
   "showLegend": true,
   "showFirstLayerOnLoad": true,
   "downloadLink": "<b><a href='https://map.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=statmap:covid_assistance_all&propertyName=organisation_name,categories,about_us,address&outputformat=csv'>Download a snapshot of the data</a></b>",
-  "baseStyle": "streets",
+  "baseStyle": "OSoutdoor",
   "list":{
     "sectionHeader": "List of all organisations",
     "showIcons": true
@@ -19,32 +19,15 @@
     "notFoundText": "No organisation found with this name",
     "clearMapAfterSearch": true
   },
-  "filters": {
-    "tags": {
-      "filtersSectionTitle": "Apply filters to categories",
-      "heading": "",
-      "options": [
-        "Carers",
-        "Children & young people or families",
-        "Cultural",
-        "Disabilities and autism",
-        "Health conditions",
-        "Men",
-        "Neighbourhood",
-        "Older",
-        "Women"  
-      ]
-    }
-  },
   "layers": [
     {
       "title": "Get active",
-      "geoserverLayerName": "statmap:covid_assistance_exercise",
+      "geoserverLayerName": "amenities:support_service_exercise",
       "searchable": true,
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "walking",
+        "icon": "fas fa-walking",
         "markerColor": "darkred"
       },
       "popup": {
@@ -88,12 +71,12 @@
     },
     {
       "title": "Feeling anxious",
-      "geoserverLayerName": "statmap:covid_assistance_mental_health",
+      "geoserverLayerName": "amenities:support_service_mental_health",
       "searchable": true,
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "head-side-brain",
+        "icon": "fas fa-head-side-brain",
         "markerColor": "orange"
       },
       "popup": {
@@ -138,12 +121,12 @@
     },
     {
       "title": "Stay safe and healthy",
-      "geoserverLayerName": "statmap:covid_assistance_safe_healthy",
+      "geoserverLayerName": "amenities:support_service_safe_healthy",
       "searchable": true,
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "heartbeat",
+        "icon": "fas fa-heartbeat",
         "markerColor": "green"
       },
       "popup": {
@@ -161,7 +144,8 @@
             "label": "",
             "name": "links"
           }
-        ]
+        ],
+        "afterFields": "<a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
       },
       "listView": {
         "title": "organisation_name",
@@ -187,12 +171,12 @@
     },
     {
       "title": "Exercise the brain",
-      "geoserverLayerName": "statmap:covid_assistance_active_mind",
+      "geoserverLayerName": "amenities:support_service_active_mind",
       "searchable": true,
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "palette",
+        "icon": "fas fa-palette",
         "markerColor": "darkblue"
       },
       "popup": {
@@ -237,12 +221,12 @@
     },
     {
       "title": "Chat and check-in",
-      "geoserverLayerName": "statmap:covid_assistance_social_isolation",
+      "geoserverLayerName": "amenities:support_service_social_isolation",
       "searchable": true,
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "comments",
+        "icon": "fas fa-comments",
         "markerColor": "purple"
       },
       "popup": {
@@ -286,13 +270,13 @@
       }
     },
     {
-      "title": "Food or Meals",
-      "geoserverLayerName": "statmap:covid_assistance_food",
+      "title": "Food or Shopping",
+      "geoserverLayerName": "amenities:support_service_food",
       "searchable": true,
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "apple-alt",
+        "icon": "fas fa-apple-alt",
         "markerColor": "darkgreen"
       },
       "popup": {
@@ -336,12 +320,12 @@
     },
     {
       "title": "Families",
-      "geoserverLayerName": "statmap:covid_assistance_families",
+      "geoserverLayerName": "amenities:support_service_families",
       "searchable": true,
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "user-friends",
+        "icon": "fas fa-user-friends",
         "markerColor": "pink"
       },
       "popup": {
@@ -360,7 +344,7 @@
             "name": "links"
           }
         ],
-        "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a>"
+        "afterFields": "<a href='https://www.hackneylocaloffer.co.uk/kb5/hackney/localoffer/advice.page?id=ze3NwtRTW9w' target='_blank'>SEND specific information and resources</a><br><br><a href='https://hackney.gov.uk/mental-health' target='_blank'>Mental health helplines, support and guidance</a>"
       },
       "listView": {
         "title": "organisation_name",
@@ -386,12 +370,12 @@
     },
     {
       "title": "Faith-led activities",
-      "geoserverLayerName": "statmap:covid_assistance_faith",
+      "geoserverLayerName": "amenities:support_service_faith",
       "searchable": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "hand-holding-heart",
+        "icon": "fas fa-hand-holding-heart",
         "markerColor": "blue"
       },
       "popup": {
@@ -435,12 +419,12 @@
     },
     {
       "title": "Benefits advice",
-      "geoserverLayerName": "statmap:covid_assistance_benefits",
+      "geoserverLayerName": "amenities:support_service_benefits",
       "searchable": true,
       "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "info",
+        "icon": "fas fa-info",
         "markerColor": "cadetblue"
       },
       "popup": {
@@ -484,12 +468,12 @@
     },
     {
       "title": "Debt advice",
-      "geoserverLayerName": "statmap:covid_assistance_debt",
+      "geoserverLayerName": "amenities:support_service_debt",
       "searchable": true,
       "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "pound-sign",
+        "icon": "fas fa-pound-sign",
         "markerColor": "lightred"
       },
       "popup": {
@@ -533,12 +517,12 @@
     },
     {
       "title": "Employment advice",
-      "geoserverLayerName": "statmap:covid_assistance_employment",
+      "geoserverLayerName": "amenities:support_service_employment",
       "searchable": true,
       "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "briefcase",
+        "icon": "fas fa-briefcase",
         "markerColor": "darkpurple"
       },
       "popup": {
@@ -582,12 +566,12 @@
     },
     {
       "title": "Housing advice",
-      "geoserverLayerName": "statmap:covid_assistance_housing",
+      "geoserverLayerName": "amenities:support_service_housing",
       "searchable": true,
       "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "house",
+        "icon": "fas fa-house",
         "markerColor": "blue"
       },
       "popup": {

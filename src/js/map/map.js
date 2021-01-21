@@ -25,7 +25,8 @@ import {
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
-  TILE_LAYER_OPTIONS,
+  TILE_LAYER_OPTIONS_MAPBOX,
+  TILE_LAYER_OPTIONS_OS,
   PERSONA_ACTIVE_CLASS
 } from "./consts";
 import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
@@ -242,37 +243,37 @@ class Map {
     if (this.mapConfig.baseStyle == "streets") {
       this.OSMBase = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS
+        TILE_LAYER_OPTIONS_MAPBOX
       );
     } else if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.OSMBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        TILE_LAYER_OPTIONS
+        TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
       this.OSMBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        TILE_LAYER_OPTIONS
+        TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
       this.OSMBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        TILE_LAYER_OPTIONS
+        TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "light") {
       this.OSMBase = L.tileLayer(
         `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS
+        TILE_LAYER_OPTIONS_MAPBOX
       );
     } else if (this.mapConfig.baseStyle == "dark") {
       this.OSMBase = L.tileLayer(
         MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.dark" })
+        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.dark" })
       );
     } else {
       this.OSMBase = L.tileLayer(
         MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS, { id: "mapbox.streets" })
+        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.streets" })
       );
     }
     //limit zoom for OSM if mastermap is shown

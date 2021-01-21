@@ -1,7 +1,8 @@
 {
   "title": "Hackney constituencies",
-  "summary": "This map shows......",
-  "showGeoServerMetadata": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Hackney constituencies",

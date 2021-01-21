@@ -1,11 +1,10 @@
 {
   "title": "Conservation Areas in Hackney",
   "showGeoServerMetadata": true,
-  "zoomToMasterMap": true,
-  "showHackneyMask": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyBoundary": true,
   "highlightFeatureOnHover": true,
   "zoomToFeatureOnClick": true,
-  "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Conservation Areas",
@@ -30,7 +29,7 @@
         "fields": [
           {
             "label": "Designation year",
-            "name": "designation_date"
+            "name": "designation"
           },
           {
             "label": "",

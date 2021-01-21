@@ -1,4 +1,6 @@
 import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
+import OS_RASTER_API_KEY from "../helpers/osdata";
+
 
 const MAX_ZOOM = 19;
 const MIN_ZOOM = 12;
@@ -29,13 +31,22 @@ const GENERIC_GEOLOCATION_ERROR =
   "We cannot find your location. Please enable Location Services for your browser in Settings or try again outside of your office as your network may block geolocation.";
 const GENERIC_OUTSIDE_HACKNEY_ERROR = "This map only covers Hackney";
 
-const TILE_LAYER_OPTIONS = {
+const TILE_LAYER_OPTIONS_MAPBOX = {
   fadeAnimation: false,
   opacity: 1,
   attribution:
     'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://mapbox.com">Mapbox</a>',
   maxZoom: 19,
   accessToken: MAPBOX_ACCESS_KEY
+};
+
+const TILE_LAYER_OPTIONS_OS = {
+  fadeAnimation: false,
+  opacity: 1,
+  attribution:
+    'Map data &copy; Crown copyright and database rights 2021 <a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey</a> 100019635.' ,
+  maxZoom: 19,
+  accessToken: OS_RASTER_API_KEY
 };
 
 const MARKER_COLORS = {
@@ -91,7 +102,8 @@ export {
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
-  TILE_LAYER_OPTIONS,
+  TILE_LAYER_OPTIONS_MAPBOX,
+  TILE_LAYER_OPTIONS_OS,
   MARKER_COLORS,
   PERSONA_ACTIVE_CLASS,
   CONTROLS_OPEN_CLASS,
@@ -100,3 +112,4 @@ export {
   CONTROLS_CLEAR_MAP_TEXT,
   FILTER_INPUT_CLASS
 };
+

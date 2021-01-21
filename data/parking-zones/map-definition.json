@@ -2,11 +2,11 @@
   "title": "Parking zones",
   "summary": "Click on parking zone to browse details",
   "showGeoServerMetadata": true,
-  "baseStyle": "streets",
+  "baseStyle": "OSoutdoor",
   "zoomToMasterMap": true,
   "showLegend": false,
   "search": {
-    "searchField": "street_name",
+    "searchField": "zone",
     "searchSectionTitle": "Search",
     "searchPlaceholderText": "Type zone letter",
     "notFoundText": "No zone found with this name",
@@ -30,15 +30,11 @@
         "weight": 1
       },
       "popup": {
-        "title": "street_name",
+        "title": "zone",
         "fields": [
           {
-            "label": "",
-            "name": "location"
-          },
-          {
             "label": "Restricted hours:",
-            "name": "start_info"
+            "name": "controlled_hours"
           }
         ]
       }

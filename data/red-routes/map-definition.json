@@ -1,13 +1,11 @@
 {
   "title": "Red routes in Hackney",
-  "summary": "This map shows major roads on which vehicles are not permitted to stop.",
-  "baseStyle": "dark",
-  "showHackneyMask": true,
+  "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
   "layers": [
     {
       "title": "Red routes",
-      "geoserverLayerName": "transport:tfl_road_line",
+      "geoserverLayerName": "transport:tfl_owned_road_line",
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": "false",
@@ -16,7 +14,7 @@
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 8
+        "weight": 4
       },
       "popup": {
         "afterFields": "Read more about Red routes on <a href='https://tfl.gov.uk/modes/driving/red-routes' target='blank'>TFL website</a>"
