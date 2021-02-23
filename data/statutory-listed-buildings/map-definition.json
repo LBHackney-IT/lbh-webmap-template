@@ -1,0 +1,46 @@
+{
+  "title": "Statutory listed buildings in Hackney",
+  "showGeoServerMetadata": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyBoundary": true,
+   "layers": [
+    {
+      "title": "Statutory listed buildings",
+      "geoserverLayerName": "planning:statutory_listed_building_point",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-landmark",
+        "markerColor": "orange",
+        "cluster": true
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          },
+          {
+            "label": "Grade",
+            "name": "grade"
+          },
+          {
+            "label": "Typology",
+            "name": "typology"
+          },
+          {
+            "label": "Date first listed",
+            "name": "listed_date"
+          },
+          {
+            "label": "Date if most recent amendment",
+            "name": "amended_date"
+          },
+          {
+            "label": "",
+            "name": "hyperlink"
+          }
+        ]
+      }
+    }
+  ]
+}

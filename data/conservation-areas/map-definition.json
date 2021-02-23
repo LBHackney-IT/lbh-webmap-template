@@ -20,7 +20,7 @@
         "strokeColor": "grey",
         "opacity": 0,
         "fillColor": "",
-        "fillOpacity": 0.65,
+        "fillOpacity": 0.50,
         "layerLineDash": "",
         "weight": 1.5
       },
@@ -33,7 +33,7 @@
           },
           {
             "label": "",
-            "name": "link"
+            "name": "notes"
           }
         ]
       }

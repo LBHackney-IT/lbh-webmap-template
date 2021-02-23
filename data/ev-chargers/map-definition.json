@@ -8,58 +8,7 @@
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "Ubitricity lamp column charger",
-      "geoserverLayerName": "transport:electrical_vehicle_charger",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
-        "markerColor": "red"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Location",
-            "name": "location"
-          }
-        ]
-      }
-    },
-    {
-      "title": "SourceLondon freestanding charger",
-      "geoserverLayerName": "transport:electrical_vehicle_charger",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
-        "markerColor": "black"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Location",
-            "name": "location"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Hackney rapid charger",
-      "geoserverLayerName": "transport:electrical_vehicle_charger",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
-        "markerColor": "green"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Location",
-            "name": "location"
-          }
-        ]
-      }
-    },
-    {
-      "title": "TFL rapid charger",
+      "title": "",
       "geoserverLayerName": "transport:electrical_vehicle_charger",
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -67,6 +16,7 @@
         "markerColor": "darkblue"
       },
       "popup": {
+	    "title": "type",
         "fields": [
           {
             "label": "Location",

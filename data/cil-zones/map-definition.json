@@ -1,0 +1,33 @@
+{
+  "title": "Hackney community infrastructure levy zones",
+  "showGeoServerMetadata": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "CIL Zones",
+      "geoserverLayerName": "planning:cil_zone",
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#F69730",
+        "opacity": 0.7,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Charges",
+            "name": "charge_per"
+          }
+        ],
+        "afterFields": "Read more about CIL zones on <a href='https://hackney.gov.uk/hcil' target='blank'>Hackney Council website</a>"
+      }
+    }
+  ]
+  
+}

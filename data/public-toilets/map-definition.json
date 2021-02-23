@@ -1,0 +1,32 @@
+{
+  "title": "Public toilets in Hackney",
+  "summary": "",
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "baseStyle": "OSoutdoor",
+  "layers": [
+    {
+      "title": "Public Toilets",
+      "geoserverLayerName": "amenities:public_toilet",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-restroom",
+        "markerColor": "black"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
+          {
+            "label": "Opening times",
+            "name": "opening_times"
+          }
+        ]
+      }
+    }
+        ]
+      }
+  

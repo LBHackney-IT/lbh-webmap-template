@@ -1,0 +1,55 @@
+{
+  "title": "Tree preservation orders",
+  "showHackneyBoundary": true,
+  "baseStyle": "OSoutdoor",
+  "layers": [
+    {
+      "title": "",
+      "geoserverLayerName": "planning:tree_preservation_order_point",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-tree",
+        "markerColor": "green",
+        "cluster": true
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          }
+        ]
+      }
+    },
+    {
+      "title": "",
+      "geoserverLayerName": "planning:tpo_area_as_point",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-tree",
+        "markerColor": "green",
+        "cluster": true
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          }
+        ]
+      }
+    }
+    
+
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Locally listed buildings in Hackney",
+  "showGeoServerMetadata": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyBoundary": true,
+   "layers": [
+    {
+      "title": "Locally listed buildings",
+      "geoserverLayerName": "planning:locally_listed_building_point",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-landmark",
+        "markerColor": "blue",
+        "cluster": true
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "image"
+          },
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Description",
+            "name": "description"
+          },
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    }
+  ]
+}
