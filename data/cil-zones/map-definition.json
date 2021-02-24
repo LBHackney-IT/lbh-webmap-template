@@ -1,6 +1,5 @@
 {
-  "title": "Hackney community infrastructure levy zones",
-  "showGeoServerMetadata": true,
+  "title": "Community infrastructure levy zones (CIL zones)",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
   "layers": [

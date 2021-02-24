@@ -1,6 +1,5 @@
 {
-  "title": "Statutory listed buildings in Hackney",
-  "showGeoServerMetadata": true,
+  "title": "Statutory listed buildings",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
    "layers": [

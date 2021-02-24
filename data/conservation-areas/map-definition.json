@@ -1,6 +1,5 @@
 {
-  "title": "Conservation Areas in Hackney",
-  "showGeoServerMetadata": true,
+  "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
   "highlightFeatureOnHover": true,
