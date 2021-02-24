@@ -9,8 +9,8 @@
       "geoserverLayerName": "planning:locally_listed_building_point",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-landmark",
-        "markerColor": "blue",
+        "icon": "",
+        "markerColor": "green",
         "cluster": true
       },
       "popup": {

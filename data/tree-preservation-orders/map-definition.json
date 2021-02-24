@@ -8,7 +8,7 @@
       "geoserverLayerName": "planning:tree_preservation_order_point",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-tree",
+        "icon": "",
         "markerColor": "green",
         "cluster": true
       },
