@@ -234,7 +234,7 @@
       },
       {
         "title": "The Chesham Arms Pub",
-        "geoserverLayerName": "planning:a4d_chesham_arms_public_house2",
+        "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
         "sortOrder": 10,
         "pointStyle": {
           "markerType": "AwesomeMarker",
