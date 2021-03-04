@@ -1,9 +1,8 @@
 {
-  "title": "Playgrounds",
-  "summary": "",
   "showHackneyBoundary": true,
   "baseStyle": "OSoutdoor",
   "showLegend": true, 
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Adventure playgrounds",
