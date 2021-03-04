@@ -5,6 +5,7 @@
     "showHackneyBoundary": true,
     "highlightFeatureOnHover": false,
     "zoomToFeatureOnClick": false,
+    "showFirstLayerOnLoad": true,
     "showLegend": true,
     "layers": [
       {
