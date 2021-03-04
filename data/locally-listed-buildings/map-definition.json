@@ -1,7 +1,5 @@
 {
   "title": "Locally listed buildings",
-  "about": "List of buildings that are of architectural or historical interest at a local level.",
-  "aboutTitle": "About the data",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
    "layers": [
@@ -16,10 +14,6 @@
       },
       "popup": {
         "fields": [
-          {
-            "label": "",
-            "name": "image"
-          },
           {
             "label": "Type",
             "name": "type"

@@ -27,8 +27,7 @@
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Light Industrial to Residential",
+          "title": "designation",
           "fields": []
         }
       },
@@ -52,8 +51,7 @@
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Storage and Distribution to Residential",
+          "title": "designation",
           "fields": []
         }
       },
@@ -77,8 +75,7 @@
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Office to Residential",
+          "title": "designation",
           "fields": []
         }
       },
@@ -102,8 +99,7 @@
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Flexible Town Centre Use",
+          "title": "designation",
           "fields": []
         }
       },
@@ -113,22 +109,21 @@
         "sortOrder": 5,
         "pointStyle": {
           "markerType": "AwesomeMarker",
-          "markerColor": "cadetblue",
+          "markerColor": "orange",
           "icon": "fas fa-square"
         },
         "linePolygonStyle": {
           "styleName": "default",
           "stroke": true,
-          "strokeColor": "#436978",
+          "strokeColor": "orange",
           "opacity": 1,
-          "fillColor": "#436978",
+          "fillColor": "orange",
           "fillOpacity": 0.30,
           "layerLineDash": "",
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Retail to Resid.",
+          "title": "designation",
           "fields": []
         }
       },
@@ -152,33 +147,31 @@
           "weight": 5
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Launderette to Residential",
+          "title": "designation",
           "fields": []
         }
       },
       {
-        "title": "De Beauvoir Cons Area",
+        "title": "De Beauvoir Con. Area",
         "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
         "sortOrder": 7,
         "pointStyle": {
           "markerType": "AwesomeMarker",
-          "markerColor": "orange",
+          "markerColor": "cadetblue",
           "icon": "fas fa-square"
         },
         "linePolygonStyle": {
           "styleName": "default",
           "stroke": true,
-          "strokeColor": "orange",
+          "strokeColor": "cadetblue",
           "opacity": 1,
-          "fillColor": "orange",
+          "fillColor": "cadetblue",
           "fillOpacity": 0.30,
           "layerLineDash": "",
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D De Beauvoir Con. Area",
+          "title": "designation",
           "fields": []
         }
       },
@@ -197,13 +190,12 @@
           "strokeColor": "#c7c704",
           "opacity": 1,
           "fillColor": "#c7c704",
-          "fillOpacity": 0.30,
+          "fillOpacity": 0.50,
           "layerLineDash": "",
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D Shacklewell Green Conservation Area",
+          "title": "designation",
           "fields": []
         }
       },
@@ -227,8 +219,7 @@
           "weight": 1
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D St Marks Conservation Area",
+          "title": "designation",
           "fields": []
         }
       },
@@ -252,8 +243,7 @@
           "weight": 5
         },
         "popup": {
-          "title": "notitle",
-          "afterTitle": "A4D The Chesham Arms Public House",
+          "title": "designation",
           "fields": []
         }
       }

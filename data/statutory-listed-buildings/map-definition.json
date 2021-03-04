@@ -8,7 +8,7 @@
       "geoserverLayerName": "planning:statutory_listed_building_point",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-archway",
+        "icon": "fa-landmark",
         "markerColor": "darkred",
         "cluster": true
       },
