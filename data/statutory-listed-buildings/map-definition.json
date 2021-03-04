@@ -7,8 +7,9 @@
       "title": "Statutory listed buildings",
       "geoserverLayerName": "planning:statutory_listed_building_point",
       "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "green",
+        "markerType": "AwesomeMarker",
+        "icon": "fa-archway",
+        "markerColor": "darkred",
         "cluster": true
       },
       "popup": {

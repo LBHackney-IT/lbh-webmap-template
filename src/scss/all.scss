@@ -19,6 +19,10 @@
 @import "./partials/listview";
 
 
+:root {
+  --cluster-color: #0d0b52;
+ }
+
 // Start remove L.Control.Window undesired styles
 .modal {
   background-color: unset;

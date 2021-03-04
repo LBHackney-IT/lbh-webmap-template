@@ -8,7 +8,7 @@
       "geoserverLayerName": "planning:tree_preservation_order_point",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "",
+        "icon": "fa-tree",
         "markerColor": "green",
         "cluster": true
       },
@@ -31,7 +31,7 @@
       "geoserverLayerName": "planning:tpo_area_as_point",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-tree",
+        "icon": "fa-trees",
         "markerColor": "green",
         "cluster": true
       },

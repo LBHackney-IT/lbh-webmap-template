@@ -328,9 +328,14 @@ class DataLayers {
       }
     } else {
       if (cluster) {
+        //set the clusters color
+        document.documentElement.style.setProperty(
+          '--cluster-color', MARKER_COLORS[markerColor]
+        );
+        //create clusters
         const markers = L.markerClusterGroup({
           maxClusterRadius: 60,
-          disableClusteringAtZoom: 16,
+          disableClusteringAtZoom: 18,
           spiderfyOnMaxZoom: false,
           showCoverageOnHover: false
         });
