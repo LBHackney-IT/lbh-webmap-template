@@ -33,10 +33,6 @@
           {
             "label": "Date if most recent amendment",
             "name": "amended_date"
-          },
-          {
-            "label": "",
-            "name": "hyperlink"
           }
         ]
       }
