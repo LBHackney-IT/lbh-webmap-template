@@ -1,0 +1,35 @@
+{
+  "title": "Playgrounds",
+  "summary": "",
+  "showHackneyBoundary": true,
+  "baseStyle": "OSoutdoor",
+  "layers": [
+    {
+      "title": "Adventure playgrounds",
+      "geoserverLayerName": "amenities:adventure_playground",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-child",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "description"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    }
+        ]
+      }
+  
