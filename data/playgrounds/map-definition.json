@@ -1,8 +1,8 @@
 {
-  "title": "Playgrounds",
-  "summary": "",
   "showHackneyBoundary": true,
   "baseStyle": "OSoutdoor",
+  "showLegend": true, 
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Adventure playgrounds",
@@ -26,6 +26,28 @@
           {
             "label": "",
             "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Play areas in Parks",
+      "geoserverLayerName": "greenspaces:park_playarea",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-child",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "park",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "more_info"
           }
         ]
       }
