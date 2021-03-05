@@ -2,12 +2,11 @@
   "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
-  "highlightFeatureOnHover": true,
-  "zoomToFeatureOnClick": true,
   "layers": [
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
+      "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
