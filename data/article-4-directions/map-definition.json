@@ -2,6 +2,8 @@
     "title": "Article 4 Directions",
     "showGeoServerMetadata": false,
     "baseStyle": "OSlight",
+    "about": "This map shows areas where some permitted development rights cannot be used. For example, office to residential conversions cannot take place in Shoreditch. Click on the legend to turn on/off different categories of restrictions.",
+    "aboutTitle": "About the map",
     "showHackneyBoundary": true,
     "highlightFeatureOnHover": false,
     "zoomToFeatureOnClick": false,
@@ -29,7 +31,20 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Site",
+              "name": "site_name"
+            },
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -53,7 +68,20 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Site",
+              "name": "site_name"
+            },
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -77,7 +105,16 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -101,7 +138,20 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Site",
+              "name": "site_name"
+            },
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -125,7 +175,20 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Site",
+              "name": "site_name"
+            },
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -149,7 +212,20 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Site",
+              "name": "address"
+            },
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -197,7 +273,16 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       },
       {
@@ -245,7 +330,16 @@
         },
         "popup": {
           "title": "designation",
-          "fields": []
+          "fields": [
+            {
+              "label": "Made",
+              "name": "made"
+            },
+            {
+              "label": "With effect from",
+              "name": "wef"
+            }
+          ]
         }
       }
     ]
