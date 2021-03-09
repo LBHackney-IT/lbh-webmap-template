@@ -2,7 +2,7 @@
   "title": "Article 4 Directions",
   "showGeoServerMetadata": false,
   "baseStyle": "OSlight",
-  "about": "This map shows areas where some permitted development rights cannot be used. For example, office to residential conversions cannot take place in Shoreditch. Click on the legend to turn on/off different categories of restrictions.",
+  "about": "This map shows the Article 4 exemption areas in Hackney where certain permitted development rights cannot be utilised.  Click on the legend to turn on/off the different Article 4 Directions. Click on an Article 4 Direction on the map to see the details of the exemption.",
   "aboutTitle": "About the map",
   "showHackneyBoundary": true,
   "showFirstLayerOnLoad": true,
