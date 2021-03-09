@@ -42,10 +42,6 @@
         "title": "park",
         "fields": [
           {
-            "label": "Location",
-            "name": "address"
-          },
-          {
             "label": "",
             "name": "more_info"
           }
