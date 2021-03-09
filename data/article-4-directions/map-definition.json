@@ -1,346 +1,340 @@
 {
-    "title": "Article 4 Directions",
-    "showGeoServerMetadata": false,
-    "baseStyle": "OSlight",
-    "about": "This map shows areas where some permitted development rights cannot be used. For example, office to residential conversions cannot take place in Shoreditch. Click on the legend to turn on/off different categories of restrictions.",
-    "aboutTitle": "About the map",
-    "showHackneyBoundary": true,
-    "highlightFeatureOnHover": false,
-    "zoomToFeatureOnClick": false,
-    "showFirstLayerOnLoad": true,
-    "showLegend": true,
-    "layers": [
-      {
-        "title": "Light Industrial to Resid.",
-        "geoserverLayerName": "planning:a4d_light_industrial_to_residential",
-        "sortOrder": 3,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "gray",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#a3a3a3",
-          "opacity": 0,
-          "fillColor": "#a3a3a3",
-          "fillOpacity": 0.15,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Site",
-              "name": "site_name"
-            },
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
+  "title": "Article 4 Directions",
+  "showGeoServerMetadata": false,
+  "baseStyle": "OSlight",
+  "about": "This map shows areas where some permitted development rights cannot be used. For example, office to residential conversions cannot take place in Shoreditch. Click on the legend to turn on/off different categories of restrictions.",
+  "aboutTitle": "About the map",
+  "showHackneyBoundary": true,
+  "showFirstLayerOnLoad": true,
+  "showLegend": true,
+  "layers": [
+    {
+      "title": "Light Industrial to Resid.",
+      "geoserverLayerName": "planning:a4d_light_industrial_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "gray",
+        "icon": "fas fa-square"
       },
-      {
-        "title": "Storage/Distrib. to Resid.",
-        "geoserverLayerName": "planning:a4d_storage_dist_to_residential",
-        "sortOrder": 2,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "thistle",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#dbb7ff",
-          "opacity": 0,
-          "fillColor": "#dbb7ff",
-          "fillOpacity": 0.15,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Site",
-              "name": "site_name"
-            },
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a3a3a3",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.15,
+        "layerLineDash": "",
+        "weight": 0
       },
-      {
-        "title": "Office to Residential",
-        "geoserverLayerName": "planning:a4d_office_to_residential",
-        "sortOrder": 1,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "darkblue",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#0e67a3",
-          "opacity": 1,
-          "fillColor": "#0e67a3",
-          "fillOpacity": 0.30,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Flexible Town Centre Use",
-        "geoserverLayerName": "planning:a4d_flexible_town_centres_uses",
-        "sortOrder": 4,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "green",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#70ad26",
-          "opacity": 1,
-          "fillColor": "#70ad26",
-          "fillOpacity": 0.20,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Site",
-              "name": "site_name"
-            },
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Retail to Residential",
-        "geoserverLayerName": "planning:a4d_retail_to_residential",
-        "sortOrder": 5,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "orange",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "orange",
-          "opacity": 1,
-          "fillColor": "orange",
-          "fillOpacity": 0.30,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Site",
-              "name": "site_name"
-            },
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Launderette to Resid.",
-        "geoserverLayerName": "planning:a4d_laund_to_residential",
-        "sortOrder": 6,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "mediumslateblue",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#7966fe",
-          "opacity": 1,
-          "fillColor": "#7966fe",
-          "fillOpacity": 0.50,
-          "layerLineDash": "",
-          "weight": 5
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Site",
-              "name": "address"
-            },
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
-      },
-      {
-        "title": "De Beauvoir Con. Area",
-        "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
-        "sortOrder": 7,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "cadetblue",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "cadetblue",
-          "opacity": 1,
-          "fillColor": "cadetblue",
-          "fillOpacity": 0.30,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": []
-        }
-      },
-      {
-        "title": "Shacklewell Gr Con. Area",
-        "geoserverLayerName": "planning:a4d_shacklewell_green_ca",
-        "sortOrder": 8,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "goldenrod",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "#c7c704",
-          "opacity": 1,
-          "fillColor": "#c7c704",
-          "fillOpacity": 0.50,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
-      },
-      {
-        "title": "St Marks Con. Area",
-        "geoserverLayerName": "planning:a4d_st_marks_ca",
-        "sortOrder": 9,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "purple",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "purple",
-          "opacity": 1,
-          "fillColor": "purple",
-          "fillOpacity": 0.30,
-          "layerLineDash": "",
-          "weight": 1
-        },
-        "popup": {
-          "title": "designation",
-          "fields": []
-        }
-      },
-      {
-        "title": "The Chesham Arms Pub",
-        "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
-        "sortOrder": 10,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "black",
-          "icon": "fas fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "black",
-          "opacity": 1,
-          "fillColor": "black",
-          "fillOpacity": 0.30,
-          "layerLineDash": "",
-          "weight": 5
-        },
-        "popup": {
-          "title": "designation",
-          "fields": [
-            {
-              "label": "Made",
-              "name": "made"
-            },
-            {
-              "label": "With effect from",
-              "name": "wef"
-            }
-          ]
-        }
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
       }
-    ]
-  }
+    },
+    {
+      "title": "Storage/Distrib. to Resid.",
+      "geoserverLayerName": "planning:a4d_storage_dist_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#dbb7ff",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.15,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "Made",
+            "name": "made"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Office to Residential",
+      "geoserverLayerName": "planning:a4d_office_to_residential",
+      "sortOrder": 1,
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Flexible Town Centre Use",
+      "geoserverLayerName": "planning:a4d_flexible_town_centres_uses",
+      "sortOrder": 4,
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.20,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Retail to Residential",
+      "geoserverLayerName": "planning:a4d_retail_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "orange",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Launderette to Resid.",
+      "geoserverLayerName": "planning:a4d_laund_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "address"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "De Beauvoir Con. Area",
+      "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "cadetblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "cadetblue",
+        "opacity": 1,
+        "fillColor": "cadetblue",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Shacklewell Gr Con. Area",
+      "geoserverLayerName": "planning:a4d_shacklewell_green_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#c7c704",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "St Marks Con. Area",
+      "geoserverLayerName": "planning:a4d_st_marks_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 9,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "purple",
+        "opacity": 1,
+        "fillColor": "purple",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "The Chesham Arms Pub",
+      "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 10,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    }
+  ]
+}
