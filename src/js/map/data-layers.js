@@ -237,7 +237,7 @@ class DataLayers {
     if (highlightFeatureOnHover) {
       layer.on("mouseover", event => {
         event.layer.setStyle({
-          weight: 4
+          weight: 3
         });
       });
 
