@@ -7,6 +7,10 @@
   "showHackneyBoundary": true,
   "showFirstLayerOnLoad": true,
   "showLegend": true,
+  "controlsText":{
+    "showLegendText": "Show list of A4 directions",
+    "hideLegendText": "Hide list of A4 directions"
+  },
   "layers": [
     {
       "title": "Light Industrial to Resid.",
