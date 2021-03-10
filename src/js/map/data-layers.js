@@ -47,20 +47,18 @@ class DataLayers {
 
     if (fields) {
       for (const field of fields) {
-        if (feature.properties[field] !== "") {
-          if (
-            feature.properties[field.name] !== "" &&
-            feature.properties[field.name] !== null
-          ) {
-            if (field.label != "") {
-              stringPopup += `<p class="popup__text"><span class="popup__label">${
-                field.label
-              }</span>: ${feature.properties[field.name]}</p>`;
-            } else {
-              stringPopup += `<p class="popup__text">${
-                feature.properties[field.name]
-              }</p>`;
-            }
+        if (
+          feature.properties[field.name] !== "" &&
+          feature.properties[field.name] !== null
+        ) {
+          if (field.label != "") {
+            stringPopup += `<p class="popup__text"><span class="popup__label">${
+              field.label
+            }</span>: ${feature.properties[field.name]}</p>`;
+          } else {
+            stringPopup += `<p class="popup__text">${
+              feature.properties[field.name]
+            }</p>`;
           }
         }
       }
@@ -95,17 +93,15 @@ class DataLayers {
 
     if (fields) {
       for (const field of fields) {
-        if (feature.properties[field]) {
-          if (feature.properties[field.name]) {
-            if (field.label) {
-              stringTooltip += `<p class="popup__text"><span class="popup__label">${
-                field.label
-              }</span>: ${feature.properties[field.name]}</p>`;
-            } else {
-              stringTooltip += `<p class="popup__text">${
-                feature.properties[field.name]
-              }</p>`;
-            }
+        if (feature.properties[field.name]) {
+          if (field.label) {
+            stringTooltip += `<p class="popup__text"><span class="popup__label">${
+              field.label
+            }</span>: ${feature.properties[field.name]}</p>`;
+          } else {
+            stringTooltip += `<p class="popup__text">${
+              feature.properties[field.name]
+            }</p>`;
           }
         }
       }
