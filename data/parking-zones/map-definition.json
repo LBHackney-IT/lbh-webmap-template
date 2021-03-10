@@ -1,24 +1,15 @@
 {
-  "title": "Parking zones",
+  "title": "Controlled Parking zones",
   "summary": "Click on parking zone to browse details",
-  "showGeoServerMetadata": true,
   "baseStyle": "OSoutdoor",
   "zoomToMasterMap": true,
   "showLegend": false,
-  "search": {
-    "searchField": "zone",
-    "searchSectionTitle": "Search",
-    "searchPlaceholderText": "Type zone letter",
-    "notFoundText": "No zone found with this name",
-    "clearMapAfterSearch": false
-  },
   "layers": [
     {
       "title": "Parking Zones",
       "geoserverLayerName": "parking:controlled_parking_zone",
       "highlightFeatureOnHover": true,
       "zoomToFeatureOnClick": true,
-      "searchable": true,
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,
@@ -30,13 +21,19 @@
         "weight": 1
       },
       "popup": {
+        "direction": "top",
         "title": "zone",
         "fields": [
           {
-            "label": "Restricted hours:",
+            "label": "Restricted hours",
             "name": "controlled_hours"
           }
         ]
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "zone"
       }
     }
   ]
