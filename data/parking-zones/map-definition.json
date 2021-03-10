@@ -1,6 +1,5 @@
 {
   "title": "Controlled Parking zones",
-  "summary": "Click on parking zone to browse details",
   "baseStyle": "OSoutdoor",
   "zoomToMasterMap": true,
   "showLegend": false,
@@ -20,8 +19,9 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "popup": {
+      "tooltip": {
         "direction": "top",
+        "offset": [0,0],
         "title": "zone",
         "fields": [
           {
@@ -29,11 +29,6 @@
             "name": "controlled_hours"
           }
         ]
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "zone"
       }
     }
   ]
