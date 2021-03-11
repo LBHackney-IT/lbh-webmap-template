@@ -2,6 +2,7 @@
   "title": "Controlled Parking zones",
   "baseStyle": "OSoutdoor",
   "zoomToMasterMap": true,
+  "showHackneyBoundary": true,
   "showLegend": false,
   "layers": [
     {
