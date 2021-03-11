@@ -25,7 +25,7 @@
         "title": "zone",
         "fields": [
           {
-            "label": "Hours",
+            "label": "",
             "name": "controlled_hours"
           }
         ]
