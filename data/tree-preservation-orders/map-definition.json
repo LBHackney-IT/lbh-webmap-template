@@ -22,6 +22,10 @@
           {
             "label": "Location",
             "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
           }
         ]
       }
@@ -45,6 +49,10 @@
           {
             "label": "Location",
             "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
           }
         ]
       }
