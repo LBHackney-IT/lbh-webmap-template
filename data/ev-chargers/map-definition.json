@@ -1,26 +1,72 @@
 {
-  "title": "Electrical vehicles chargers",
+  "title": "Electric vehicles chargers",
   "about": "This map shows the location of all the electric vehicle charging points in Hackney. It will be updated periodically, as new charge points go in.",
   "aboutTitle": "About the map",
+  "showLegend": true,
   "showLayersOnLoad": true,
-  "baseStyle": "streets",
+  "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "",
-      "geoserverLayerName": "transport:electrical_vehicle_charger",
+      "title": "Lamp columns",
+      "geoserverLayerName": "transport:ev_charger_lamp_column",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fa-battery-bolt",
+        "icon": "fas fa-battery-bolt",
         "markerColor": "darkblue"
       },
       "popup": {
-	    "title": "type",
         "fields": [
           {
-            "label": "Location",
-            "name": "location"
+            "label": "Power rating",
+            "name": "power_rating"
+          },
+          {
+            "label": "Organisation",
+            "name": "organisation"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Free standing Fast",
+      "geoserverLayerName": "transport:ev_free_standing_fast",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-battery-bolt",
+        "markerColor": "black"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Power rating",
+            "name": "power_rating"
+          },
+          {
+            "label": "Organisation",
+            "name": "organisation"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Free standing Rapid",
+      "geoserverLayerName": "transport:ev_free_standing_rapid",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-battery-bolt",
+        "markerColor": "darkpurple"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Power rating",
+            "name": "power_rating"
+          },
+          {
+            "label": "Organisation",
+            "name": "organisation"
           }
         ]
       }
