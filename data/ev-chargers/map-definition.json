@@ -35,7 +35,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-battery-bolt",
-        "markerColor": "black"
+        "markerColor": "darkgreen"
       },
       "popup": {
         "fields": [
