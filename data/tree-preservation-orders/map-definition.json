@@ -1,5 +1,7 @@
 {
-  "title": "Tree preservation orders",
+  "title": "Tree preservation orders and conservation areas",
+  "about": "This map shows tree preservation orders (green markers) and conservation areas (green shaded areas). Click on features on the map to show details.",
+  "aboutTitle": "About the map",
   "showHackneyBoundary": true,
   "baseStyle": "OSoutdoor",
   "layers": [
@@ -56,8 +58,32 @@
           }
         ]
       }
+    },
+    {
+      "title": "Conservation Areas",
+      "geoserverLayerName": "planning:conservation_area",
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkgreen",
+        "opacity": 0.1,
+        "fillColor": "darkgreen",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "ca_name",
+        "afterTitle": "Conservation area",
+        "afterFields": "<a href='https://hackney.gov.uk/conservation-areas' target='blank'>Read more about conservation areas in Hackney</a>",
+        "fields": []
+      }
     }
-    
-
   ]
 }
