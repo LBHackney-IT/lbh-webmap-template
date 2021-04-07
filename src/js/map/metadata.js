@@ -92,6 +92,7 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle) => 
   let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
   if (aboutTitle) {
     title += `${aboutTitle}:`;
+    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
   const metadataWindow = L.control.window(map, {
     title,
@@ -102,10 +103,6 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle) => 
     maxWidth: 280,
     className: "control-window metadata__window__fullscreen"
   });
-
-  if (aboutTitle) {
-    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
-  }
 
   if (mapTitle) {
     if (mapSummary) {
@@ -158,7 +155,7 @@ class Metadata {
     }
 
     if(this.isFullScreen){
-      const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText);
+      const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText,aboutTitle);
       control.addTo(this.map);
       if (!L.Browser.mobile){
         L.control.zoom({ position: "topright" }).addTo(this.map);
