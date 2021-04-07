@@ -44,6 +44,7 @@ const createTitle = (map, mapTitle, mapSummary, about, aboutTitle) => {
   let title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
   if (aboutTitle) {
     title += `${aboutTitle}:`;
+    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
   const metadataWindow = L.control.window(map, {
     title,
@@ -54,10 +55,6 @@ const createTitle = (map, mapTitle, mapSummary, about, aboutTitle) => {
     maxWidth: 280,
     className: "control-window metadata__window"
   });
-
-  if (aboutTitle) {
-    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
-  }
 
   if (mapTitle) {
     if (mapSummary) {
@@ -146,7 +143,7 @@ class Metadata {
     this.isFullScreen = map.isFullScreen;
   }
 
-  addMetadata(data, mapTitle, mapSummary) {
+  addMetadata(data, mapTitle, mapSummary, aboutTitle) {
     let metadataText = "";
     for (const feature of data.features) {
       metadataText += `<div class="metadata__feature"><h3 class="lbh-heading-h6">${feature.properties.title}</h3>`;
@@ -167,8 +164,15 @@ class Metadata {
         L.control.zoom({ position: "topright" }).addTo(this.map);
       }
     } else {
-      const control = createTitle(this.map, mapTitle, mapSummary, metadataText);
+      const control = createTitle(this.map, mapTitle, mapSummary, metadataText, aboutTitle);
       control.addTo(this.map);
+      // const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText, aboutTitle);
+      //   if (control) {
+      //     control.addTo(this.map);
+      //   }
+      //   if (!L.Browser.mobile){
+      //     L.control.zoom({ position: "topright" }).addTo(this.map);
+      //   }
     }
     
    
@@ -200,7 +204,7 @@ class Metadata {
         method: "get"
       })
         .then(response => response.json())
-        .then(data => this.addMetadata(data, mapTitle, mapSummary));
+        .then(data => this.addMetadata(data, mapTitle, mapSummary, aboutTitle));
       } else if (about) {
         about = `<div class="metadata__feature"><p class="lbh-body-xs">${about}</p></div>`;
         if(this.isFullScreen){
