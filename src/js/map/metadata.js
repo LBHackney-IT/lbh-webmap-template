@@ -6,36 +6,7 @@ import "leaflet-control-custom";
 import { isMobile } from "../helpers/isMobile";
 import "whatwg-fetch";
 
-const pointToLayer = (
-  latlng,
-  markerType,
-  markerIcon,
-  markerColor,
-  layerName
-) => {
-  if (markerType === "AwesomeMarker") {
-    return L.marker(latlng, {
-      icon: L.AwesomeMarkers.icon({
-        icon: markerIcon,
-        prefix: "fa",
-        markerColor: markerColor,
-        spin: false
-      }),
-      alt: layerName
-    });
-  } else if (markerType === "CircleMarker") {
-    return L.circleMarker(latlng, {
-      fillColor: markerColor,
-      radius: 6,
-      stroke: true,
-      weight: 1,
-      color: markerColor,
-      fillOpacity: 0.6
-    });
-  } else {
-    return L.marker(latlng);
-  }
-};
+
 
 const createTitle = (map, mapTitle, mapSummary, about, aboutTitle) => {
   let titleBoxContent = null;
@@ -239,4 +210,4 @@ class Metadata {
 }
 
 export default Metadata;
-export { pointToLayer, createTitle };
+export { createTitle };
