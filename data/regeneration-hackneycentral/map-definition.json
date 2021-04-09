@@ -1,6 +1,6 @@
 {
-  "title": "Hackney Central",
-  "about": "This map shows the location of all the electric vehicle charging points in Hackney. It will be updated periodically, as new charge points go in.",
+  "title": "What’s happening in Hackney Central",
+  "about": "This map shows the wide range of projects currently underway in Hackney Central. To find out more, click on each icon. It will be updated periodically, as new projects start.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
@@ -13,13 +13,13 @@
       "geoserverLayerName": "statmap:hackneycentral_sense_place",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
-        "markerColor": "darkred"
+        "icon": "far fa-map-marked-alt",
+        "markerColor": "blue"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -34,13 +34,13 @@
       "geoserverLayerName": "statmap:hackneycentral_local_economy",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
+        "icon": "fas fa-pound-sign",
         "markerColor": "orange"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -55,13 +55,13 @@
       "geoserverLayerName": "statmap:hackneycentral_greenspaces",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
+        "icon": "fas fa-tree",
         "markerColor": "green"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -76,13 +76,13 @@
       "geoserverLayerName": "statmap:hackneycentral_transport",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
-        "markerColor": "darkblue"
+        "icon": "fas fa-bus",
+        "markerColor": "red"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -93,17 +93,17 @@
       }
     },
     {
-      "title": "Streetscene & Public Realm",
+      "title": "Streets & Public Realm",
       "geoserverLayerName": "statmap:hackneycentral_streetscene",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
-        "markerColor": "gray"
+        "icon": "fas fa-road",
+        "markerColor": "darkblue"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -118,13 +118,13 @@
       "geoserverLayerName": "statmap:hackneycentral_community_safety",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
-        "markerColor": "thistle"
+        "icon": "far fa-comments",
+        "markerColor": "beige"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
@@ -139,13 +139,13 @@
       "geoserverLayerName": "statmap:hackneycentral_building",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "icon": "fas fa-battery-bolt",
+        "icon": "far fa-building",
         "markerColor": "darkpurple"
       },
       "popup": {
         "fields": [
           {
-            "label": "Project name",
+            "label": "",
             "name": "name"
           },
           {
