@@ -330,9 +330,11 @@ class Map {
   setZoom() {
     if (isMobileFn()) {
         if (this.isFullScreen){
-          this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
+          //this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
+          this.map.setView(this.centerMobile, this.zoom_mobile);
         } else {
-          this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+          //this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
+          this.map.setView(this.centerMobile, this.zoom_mobile);
         }  
       } else {
         //this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
@@ -349,10 +351,10 @@ class Map {
         if (isMobileFn()) {
           if (this.isFullScreen){
             //this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
-            this.map.setView(CENTER_MOBILE_FULLSCREEN, this.zoom_mobile);
+            this.map.setView(this.centerMobile, this.zoom_mobile);
           } else {
             //this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
-            this.map.setView(CENTER_MOBILE, this.zoom_mobile);
+            this.map.setView(this.centerMobile, this.zoom_mobile);
           } 
         } else {
           //this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
