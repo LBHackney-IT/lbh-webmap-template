@@ -1,5 +1,4 @@
 import L, { Point } from "leaflet";
-//import { pointToLayer } from "./metadata";
 import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
