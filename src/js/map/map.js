@@ -128,7 +128,7 @@ class Map {
       }
     });
 
-    this.setZoom();
+    //this.setZoom();
     if (this.hasPersonas) {
       const activePersonas = document.getElementsByClassName(
         PERSONA_ACTIVE_CLASS
