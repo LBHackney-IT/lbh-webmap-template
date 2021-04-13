@@ -6,7 +6,7 @@
   "aboutTitle":"About the data",
   "layers": [
     {
-      "title": "Conservation Areas",
+      "title": "Conservation Areas in Hackney",
       "geoserverLayerName": "planning:conservation_area",
       "highlightFeatureOnHover": true,
       "pointStyle": {
