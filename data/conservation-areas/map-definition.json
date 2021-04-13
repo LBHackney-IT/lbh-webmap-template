@@ -4,6 +4,7 @@
   "showHackneyBoundary": true,
   "showGeoServerMetadata":true,
   "aboutTitle":"About the data",
+  "showTitleOnMobile":false,
   "layers": [
     {
       "title": "Conservation Areas in Hackney",
