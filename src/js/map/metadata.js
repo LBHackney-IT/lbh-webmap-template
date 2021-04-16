@@ -7,14 +7,14 @@ import { isMobile } from "../helpers/isMobile";
 import "whatwg-fetch";
 
 
-const createTitle = (map, mapTitle, mapSummary, about, aboutTitle,showTitleOnMobile) => {
+const createTitle = (map, mapTitle, mapSummary, about, aboutTitle, showTitleInMetadataBoxOnMobile) => {
   let titleBoxContent = null;
   let tooltip = "";
   let dataTooltip = "";
   let title ="";
   //We want to decide if we show the title on the info icon on mobile. 
   if (isMobile()){
-      if (showTitleOnMobile){
+      if (showTitleInMetadataBoxOnMobile){
         //title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
         title = `<span class='metadata__name'>${mapTitle}</span>`;
       } 
@@ -65,7 +65,7 @@ const createTitle = (map, mapTitle, mapSummary, about, aboutTitle,showTitleOnMob
   } 
 };
 
-const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle,showTitleOnMobile) => {
+const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle, showTitleInMetadataBoxOnMobile) => {
   let titleBoxContent = null;
   let tooltip = "";
   let dataTooltip = "";
@@ -73,7 +73,7 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle,show
   
   //We want to decide if we show the title on the info icon on mobile. 
   if (isMobile()){
-      if (showTitleOnMobile){
+      if (showTitleInMetadataBoxOnMobile){
         //title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
         title = `<span class='metadata__name'>${mapTitle}</span>`;
       } 
@@ -130,7 +130,7 @@ class Metadata {
     this.isFullScreen = map.isFullScreen;
   }
 
-  addMetadata(data, mapTitle, mapSummary, aboutTitle,showTitleOnMobile) {
+  addMetadata(data, mapTitle, mapSummary, aboutTitle, showTitleInMetadataBoxOnMobile) {
     let metadataText = "";
     
     for (const feature of data.features) {
@@ -146,13 +146,13 @@ class Metadata {
     }
 
     if(this.isFullScreen){
-      const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText,aboutTitle,showTitleOnMobile);
+      const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText,aboutTitle, showTitleInMetadataBoxOnMobile);
       control.addTo(this.map);
       if (!L.Browser.mobile){
         L.control.zoom({ position: "topright" }).addTo(this.map);
       }
     } else {
-      const control = createTitle(this.map, mapTitle, mapSummary, metadataText, aboutTitle,showTitleOnMobile);
+      const control = createTitle(this.map, mapTitle, mapSummary, metadataText, aboutTitle, showTitleInMetadataBoxOnMobile);
       control.addTo(this.map);
       // const control = createTitleFullscreen(this.map, mapTitle, mapSummary, metadataText, aboutTitle);
       //   if (control) {
@@ -172,7 +172,7 @@ class Metadata {
     //let aboutTheData = this.mapConfig.aboutTheData;
     let about = this.mapConfig.about;
     let aboutTitle = this.mapConfig.aboutTitle;
-    let showTitleOnMobile = this.mapConfig.showTitleOnMobile;
+    let showTitleInMetadataBoxOnMobile = this.mapConfig.showTitleInMetadataBoxOnMobile;
     let control;
 
     //load metadata from geoserver
@@ -193,11 +193,11 @@ class Metadata {
         method: "get"
       })
         .then(response => response.json())
-        .then(data => this.addMetadata(data, mapTitle, mapSummary, aboutTitle,showTitleOnMobile));
+        .then(data => this.addMetadata(data, mapTitle, mapSummary, aboutTitle, showTitleInMetadataBoxOnMobile));
       } else if (about) {
         about = `<div class="metadata__feature"><p class="lbh-body-xs">${about}</p></div>`;
         if(this.isFullScreen){
-        control = createTitleFullscreen(this.map, mapTitle, mapSummary, about, aboutTitle,showTitleOnMobile);
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, about, aboutTitle, showTitleInMetadataBoxOnMobile);
         if (control) {
           control.addTo(this.map);
         }
@@ -205,14 +205,14 @@ class Metadata {
           L.control.zoom({ position: "topright" }).addTo(this.map);
         }
       } else {
-        control = createTitle(this.map, mapTitle, mapSummary, about, aboutTitle,showTitleOnMobile);
+        control = createTitle(this.map, mapTitle, mapSummary, about, aboutTitle, showTitleInMetadataBoxOnMobile);
         if (control) {
           control.addTo(this.map);
         }
       }
       } else if (mapTitle) {
       if(this.isFullScreen){
-        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null, null,showTitleOnMobile);
+        control = createTitleFullscreen(this.map, mapTitle, mapSummary, null, null, showTitleInMetadataBoxOnMobile);
         if (control) {
           control.addTo(this.map);
         }
@@ -220,7 +220,7 @@ class Metadata {
           L.control.zoom({ position: "topright" }).addTo(this.map);
         }
       } else{
-        control = createTitle(this.map, mapTitle, mapSummary, null, null,showTitleOnMobile);
+        control = createTitle(this.map, mapTitle, mapSummary, null, null, showTitleInMetadataBoxOnMobile);
         if (control) {
           control.addTo(this.map);
         }
