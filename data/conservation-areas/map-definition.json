@@ -2,9 +2,12 @@
   "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
+  "showGeoServerMetadata":true,
+  "aboutTitle":"About the data",
+  "showTitleInMetadataBoxOnMobile":false,
   "layers": [
     {
-      "title": "Conservation Areas",
+      "title": "Conservation Areas in Hackney",
       "geoserverLayerName": "planning:conservation_area",
       "highlightFeatureOnHover": true,
       "pointStyle": {

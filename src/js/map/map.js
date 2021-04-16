@@ -17,6 +17,7 @@ import {
   CENTER_DESKTOP_NO_LEGEND,
   CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,
   CENTER_MOBILE,
+  CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
@@ -53,11 +54,8 @@ class Map {
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
     this.controls = null;
     this.isEmbed = false;
-    this.centerDesktop = [];
-    this.centerMobile = [];
+    this.centerDesktop = null;
     this.isFullScreen = false;
-    this.zoom =null;
-    this.zoom_mobile=null;
   }
 
   init() {
@@ -77,29 +75,17 @@ class Map {
           this.mapConfig.errorOutsideHackney || this.errorOutsideHackney;
         this.errorNoLocation =
           this.mapConfig.errorNoLocation || this.errorNoLocation;
-
-        //Save the value of the parameters (if any) in the variables
-        let latlonString = new URL(location.href).searchParams.get("latlon");
-        let latlon= null;
-        if (latlonString){
-          latlon = latlonString.split(",");
-        }
-        let zoomParam = new URL(location.href).searchParams.get("zoom");
-        //Convert zoom parameter to Int
-        let zoomInt = parseInt(zoomParam);
-        //If there is a zoom parameter in url, this is taken and we create the zoom on mobile from the parameter (-2). If not, default zoom desktop value will be taken. 
-        zoomParam ? (this.zoom = zoomInt,this.zoom_mobile = zoomInt - 2) : (this.zoom = DEFAULT_ZOOM_DESKTOP,this.zoom_mobile = DEFAULT_ZOOM_MOBILE)
         if (this.mapConfig.showLegend) {
           if(this.isFullScreen){
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
+            this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN;
           } else{
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND,this.centerMobile=CENTER_MOBILE);
+            this.centerDesktop = CENTER_DESKTOP_LEGEND;
           }
         } else {
           if(this.isFullScreen){
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
+            this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN;
           }else{
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND,this.centerMobile=CENTER_MOBILE);
+            this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
           }
         }
         this.createMap();
@@ -113,6 +99,9 @@ class Map {
       .catch(error => {
         console.log(error);
       });
+      // if (document.getElementById("fullscreen_container")){
+      //   this.isFullScreen = true;
+      // }
   }
 
   clear() {
@@ -159,27 +148,21 @@ class Map {
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      zoom: this.zoom,
-      //zoom: DEFAULT_ZOOM_DESKTOP,
+      zoom: DEFAULT_ZOOM_DESKTOP,
       gestureHandling: L.Browser.mobile
     });
 
     this.map.setMaxBounds(MAP_BOUNDS);
 
-
     if (this.isFullScreen){
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE),
-        () => this.map.setView(this.centerMobile, this.zoom_mobile),
-        () => this.map.setView(this.centerDesktop, this.zoom)
-        // () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
+        () => this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE),
+        () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     } else{
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
-        () => this.map.setView(this.centerMobile, this.zoom_mobile),
-        () => this.map.setView(this.centerDesktop, this.zoom)
-        //() => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
+        () => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
+        () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     }
     
@@ -323,13 +306,12 @@ class Map {
   setZoom() {
     if (isMobileFn()) {
         if (this.isFullScreen){
-          //We are using the same center for fullscreen or index/embed 
-          this.map.setView(this.centerMobile, this.zoom_mobile);
+          this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
         } else {
-          this.map.setView(this.centerMobile, this.zoom_mobile);
+          this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
         }  
       } else {
-        this.map.setView(this.centerDesktop, this.zoom);
+        this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
       }
       } 
   
@@ -341,15 +323,12 @@ class Map {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
           if (this.isFullScreen){
-            //this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
-            this.map.setView(this.centerMobile, this.zoom_mobile);
+            this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
           } else {
-            //this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
-            this.map.setView(this.centerMobile, this.zoom_mobile);
+            this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
           } 
         } else {
-          //this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
-          this.map.setView(this.centerDesktop, this.zoom);
+          this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
         }
       },
       "Zoom to all Hackney",
