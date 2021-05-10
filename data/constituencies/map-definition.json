@@ -6,6 +6,7 @@
   "layers": [
     {
       "title": "Hackney constituencies",
+      "highlightFeatureOnHover": true,
       "geoserverLayerName": "boundaries:hackney_constituency",
       "linePolygonStyle": {
         "styleName": "default",
