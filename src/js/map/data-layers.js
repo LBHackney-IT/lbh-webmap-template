@@ -26,6 +26,31 @@ class DataLayers {
     this.list = null;
   }
 
+  pointToLayer (latlng, markerType, markerIcon, markerColor, layerName) {
+    if (markerType === "AwesomeMarker") {
+      return L.marker(latlng, {
+        icon: L.AwesomeMarkers.icon({
+          icon: markerIcon,
+          prefix: "fa",
+          markerColor: markerColor,
+          spin: false
+        }),
+        alt: layerName
+      });
+    } else if (markerType === "CircleMarker") {
+      return L.circleMarker(latlng, {
+        fillColor: markerColor,
+        radius: 6,
+        stroke: true,
+        weight: 1,
+        color: markerColor,
+        fillOpacity: 0.6
+      });
+    } else {
+      return L.marker(latlng);
+    }
+  };
+  
   createMarkerPopup(configLayer, feature, layerName) {
     const title = configLayer.popup.title;
     const afterTitle = configLayer.popup.afterTitle;
@@ -150,7 +175,7 @@ class DataLayers {
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
-        return pointToLayer(
+        return this.pointToLayer(
           latlng,
           markerType,
           markerIcon,
