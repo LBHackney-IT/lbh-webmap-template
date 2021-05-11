@@ -1,8 +1,8 @@
 {
-  "title": "Click on an area to see <br> energetic opportunities",
+  "title": "District heat map",
   "summary": "",
   "showGeoServerMetadata": true,
-  "baseStyle": "streets",
+  "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
   "showHackneyMask": true,
   "showLegend": false,
@@ -12,7 +12,6 @@
       "geoserverLayerName": "energy:heat_opportunity_area",
       "highlightFeatureOnHover": true,
       "zoomToFeatureOnClick": false,
-      "followLinkOnClick": "link1",
       "linePolygonStyle": {
         "styleName": "random polygons",
         "stroke": true,
