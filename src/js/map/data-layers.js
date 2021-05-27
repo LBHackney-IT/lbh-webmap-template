@@ -4,6 +4,7 @@ import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 import Search from "./search";
+import addressSearch from "./address-search";
 import List from "./list-view";
 
 class DataLayers {
@@ -23,6 +24,7 @@ class DataLayers {
     this.filters = null;
     this.layersData = [];
     this.search = null;
+    this.showAddressSearch = null;
     this.list = null;
   }
 
@@ -431,6 +433,11 @@ class DataLayers {
       //this.searchLayer = new L.LayerGroup([]);
       this.search = new Search(this.mapClass);
       this.search.init();
+    }if (this.mapConfig.showAddressSearch){
+      //this.searchLayer = new L.LayerGroup([]);
+      this.showAddressSearch = new addressSearch(this.mapClass);
+      this.showAddressSearch.init();
+      //this.showAddressSearch.createMarkup();
     }
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
