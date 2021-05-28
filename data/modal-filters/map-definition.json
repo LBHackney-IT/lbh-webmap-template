@@ -1,8 +1,7 @@
 {
   "title": "Modal filters",
-  "about": "This map shows the location of all the modal filters installed in Hackney.",
-  "aboutTitle": "About the map",
-  "downloadLink": "<b><a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter&propertyName=location,type,modes_that_can_pass,geom&outputformat=csv&srsname=epsg:4326'>Download data</a></b>",
+  "aboutTitle": "Get the data",
+  "about": "This map is updated when new modal filters are installed. You can <a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter&propertyName=location,type,modes_that_can_pass,geom&outputformat=json&srsname=epsg:4326'>download a snapshot of the data</a> in GeoJSON format",
   "showLayersOnLoad": true,
   "showLegend": true,
   "baseStyle": "OSoutdoor",
