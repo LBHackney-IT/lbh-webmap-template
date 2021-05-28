@@ -1,0 +1,31 @@
+{
+  "title": "Modal filters",
+  "about": "This map shows the location of all the modal filters installed in Hackney.",
+  "aboutTitle": "About the map",
+  "downloadLink": "<b><a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter&propertyName=location,type,modes_that_can_pass,geom&outputformat=csv&srsname=epsg:4326'>Download data</a></b>",
+  "showLayersOnLoad": true,
+  "showLegend": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyMask": false,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Modal filter",
+      "geoserverLayerName": "transport:modal_filter",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-ban",
+        "markerColor": "black"
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          }
+        ]
+      }
+    }
+  ]
+}
