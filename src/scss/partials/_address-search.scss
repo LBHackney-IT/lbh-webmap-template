@@ -1,15 +1,27 @@
 .lbh-button {
-		font-family: Montserrat;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-		margin-top: 0em;
-		margin-bottom: 0;
-	    padding: 0.33em;
-		border-radius: 4px;
-		background: #00664f;
-		font-size: 19px;
-		font-size: 1.1875rem;
-		font-weight: 400;
-		line-height: 23px;
-		line-height: 1.4375rem;
- }
+    font-family: Montserrat;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-top: 0em;
+    //margin-bottom: 0;
+    padding: 0.33em;
+    border-radius: 4px;
+    background: #00664f;
+    font-size: 22px;
+    font-size: 1.1875rem;
+    font-weight: 400;
+    padding: 10px 10px 10px 10px;
+	font-size: 19px;
+	line-height: 0.9rem;
+    margin: 0;
+}
+
+
+
+.govuk-input--width-10 {
+    width: 500px;
+    max-width: 500px;
+}
+
+
+  

@@ -25,15 +25,15 @@ class addressSearch {
         this.usage=null;
         this.ward = null;
         this.popUpText =null;
-        // this.selectedAddressValue = null;
-        // this.selectedInfo = null;
-        // this.selectedLat = null;
-        // this.selectedLong = null;
-        // this.selectedUprn = null;
-        // this.selectedWard = null;
-        // this.selectedUsage = null;
-        // this.selectedFullAddress = null;
-        // this.selectedIndex = null;
+        this.selectedAddressValue = null;
+        this.selectedInfo = null;
+        this.selectedLat = null;
+        this.selectedLong = null;
+        this.selectedUprn = null;
+        this.selectedWard = null;
+        this.selectedUsage = null;
+        this.selectedFullAddress = null;
+        this.selectedIndex = null;
     }
     
     init() {
@@ -84,7 +84,7 @@ class addressSearch {
       <input type="Search"
           class="govuk-input  lbh-input govuk-input--width-10"
         id="postcode" 
-        placeholder="Your postcode"
+        placeholder="Type your postcode"
       />
       <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
         Find address
@@ -103,8 +103,6 @@ class addressSearch {
 }
 
 GetAddressesViaProxy(){
-  
-  
   this.addresses = document.getElementById("addresses");
   this.addresses.innerHTML = 'Loading addresses...'; 
   this.code = document.getElementById("code");
@@ -138,14 +136,13 @@ GetAddressesViaProxy(){
         this.longitude=this.results[this.index].longitude;
         //this.popUpText = "Address: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "Primary Usage: " + this.usage +"<br>" + "Ward: " + this.ward +"<br>" ;
         //this.selectedAddress.innerHTML += "<option value='" + this.latitude + "," + this.longitude +"' id='selected'>" + this.full_address + "</option>"; 
-        this.selectedAddress.innerHTML += "<option value='" + this.latitude + "," + this.longitude +  "," + this.uprn + "," + this.ward + "," + this.usage + "," + this.index +"' id='selected'>" + this.full_address + "</option>";        
+        this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";   
       }
 
       if (this.pageCount > 1) {
         for (this.pgindex = 2 ; this.pgindex<=this.pageCount ; ++this.pgindex){
-          this.loadAddressAPIPageViaProxy();    
+          this.loadAddressAPIPageViaProxy(this.postcode, this.pgindex);    
         }
-        console.log('I need to fetch more!');
       }
       //close list
       document.getElementById("addresses").innerHTML += "</select></div>";
@@ -193,8 +190,66 @@ GetAddressesViaProxy(){
   
 };
    
-loadAddressAPIPageViaProxy(){
+loadAddressAPIPageViaProxy(postcode,page){
   console.log("inside page");
+  console.log(postcode);
+  console.log(page);
+  fetch(ADDRESSES_PROXY_PROD +"?format=detailed&postcode="+postcode+"&page="+page, {
+    method: "get"
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    this.results = data.data.data.address;
+    //console.log(this.results)
+    this.pageCount = data.data.data.page_count;
+    console.log(this.pageCount)
+    if (this.results.length === 0) {
+      this.error.innerHTML = "No address found at this postcode";
+      console.log('empty results');
+    } else {
+      this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
+      + "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
+      this.selectedAddress = document.getElementById("selectedAddress");
+      this.selectedAddress. innerHTML += "<option disabled selected value> Select your address from the list </option>";
+      for (this.index = 0; this.index < this.results.length; ++this.index) {
+        this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
+        this.uprn = this.results[this.index].UPRN;
+        this.ward = this.results[this.index].ward;
+        this.usage = this.results[this.index].usagePrimary;
+        this.latitude=this.results[this.index].latitude; 
+        this.longitude=this.results[this.index].longitude;
+        //this.popUpText = "Address: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "Primary Usage: " + this.usage +"<br>" + "Ward: " + this.ward +"<br>" ;
+        //this.selectedAddress.innerHTML += "<option value='" + this.latitude + "," + this.longitude +"' id='selected'>" + this.full_address + "</option>"; 
+        this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";   
+      }
+      //close list
+      document.getElementById("addresses").innerHTML += "</select></div>";
+
+      this.addresses.addEventListener('change', (event) => {
+        console.log("inside on change");
+        this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
+        this.map.setView([this.latitude, this.longitude], 18);
+        return L.marker([this.latitude, this.longitude], {
+          icon: L.AwesomeMarkers.icon({
+            icon: 'fa-building',
+            prefix: "fa",
+            markerColor: 'red',
+            spin: false
+          }),
+          alt: 'address'
+        })
+        .bindPopup(this.popUpText)
+        .addTo(this.map);
+      });
+    }
+  
+  }
+  )
+  .catch(error => {
+    console.log(error);
+          alert("Something went wrong, please reload the page");
+        });
 }
  
 
