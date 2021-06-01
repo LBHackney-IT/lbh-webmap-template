@@ -25,7 +25,15 @@ class addressSearch {
         this.usage=null;
         this.ward = null;
         this.popUpText =null;
-        this.markerBounds = null; 
+        // this.selectedAddressValue = null;
+        // this.selectedInfo = null;
+        // this.selectedLat = null;
+        // this.selectedLong = null;
+        // this.selectedUprn = null;
+        // this.selectedWard = null;
+        // this.selectedUsage = null;
+        // this.selectedFullAddress = null;
+        // this.selectedIndex = null;
     }
     
     init() {
@@ -35,18 +43,6 @@ class addressSearch {
       this.bindSearchButton();
       //this.bindKeyUp();
     }
-
-    // bindKeyUp(){
-    // //Call the GetAddressesViaProxy function when clicking on the enter key
-    // this.postcode = document.getElementById("postcode").value;
-    // this.postcode = this.postcode.replace(/ /g,'');
-    // //console.log(this.postcode);
-    // this.postcode.addEventListener('keyup', (e) => {
-    //     if (e.key == 'Enter'){
-    //       this.GetAddressesViaProxy();
-    //     }
-    //   });
-    // }
 
     bindSearchButton() {
       this.searchButton.addEventListener("click", () => {
@@ -140,19 +136,37 @@ GetAddressesViaProxy(){
         this.usage = this.results[this.index].usagePrimary;
         this.latitude=this.results[this.index].latitude; 
         this.longitude=this.results[this.index].longitude;
-        this.popUpText = "Address: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "Primary Usage: " + this.usage +"<br>" + "Ward: " + this.ward +"<br>" ;
-        this.selectedAddress.innerHTML += "<option value='" + this.latitude + this.longitude + "'>" + this.full_address + "</option>";        
+        //this.popUpText = "Address: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "Primary Usage: " + this.usage +"<br>" + "Ward: " + this.ward +"<br>" ;
+        //this.selectedAddress.innerHTML += "<option value='" + this.latitude + "," + this.longitude +"' id='selected'>" + this.full_address + "</option>"; 
+        this.selectedAddress.innerHTML += "<option value='" + this.latitude + "," + this.longitude +  "," + this.uprn + "," + this.ward + "," + this.usage + "," + this.index +"' id='selected'>" + this.full_address + "</option>";        
       }
 
       if (this.pageCount > 1) {
         for (this.pgindex = 2 ; this.pgindex<=this.pageCount ; ++this.pgindex){
-          //this.loadAddressAPIPageViaProxy(this.postcode, this.pgindex);    
+          this.loadAddressAPIPageViaProxy();    
         }
         console.log('I need to fetch more!');
       }
       //close list
       document.getElementById("addresses").innerHTML += "</select></div>";
-      this.map.setView([this.latitude, this.longitude], 18);
+
+      this.addresses.addEventListener('change', (event) => {
+        console.log("inside on change");
+        //this.selectedAddressValue = document.getElementById("selected").value;
+        //console.log(this.selectedAddressValue);
+        //this.selectedInfo = this.selectedAddressValue.split(',');
+        //console.log(this.selectedInfo);
+        //this.selectedLat = this.selectedInfo[0];
+        //this.selectedLong = this.selectedInfo[1];
+        //this.selectedUprn = this.selectedInfo[2];
+        //this.selectedWard = this.selectedInfo[3].toUpperCase();
+        //this.selectedUsage = this.selectedInfo[4].toUpperCase();
+        //this.selectedIndex = parseInt(this.selectedInfo[5]);
+        //this.selectedFullAddress = document.getElementById("selected").text;
+        //console.log(this.selectedFullAddress);
+        //console.log(this.uprn);
+        this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
+        this.map.setView([this.latitude, this.longitude], 18);
         return L.marker([this.latitude, this.longitude], {
           icon: L.AwesomeMarkers.icon({
             icon: 'fa-building',
@@ -164,25 +178,7 @@ GetAddressesViaProxy(){
         })
         .bindPopup(this.popUpText)
         .addTo(this.map);
-
-
-      
-      //TODO Add change listener - it is taking the last address at the moment
-      // this.selectedAddress.on("change", () => {
-      //   this.map.setView([this.latitude, this.longitude], 18);
-      //   return L.marker([this.latitude, this.longitude], {
-      //     icon: L.AwesomeMarkers.icon({
-      //       icon: 'fa-building',
-      //       prefix: "fa",
-      //       markerColor: 'red',
-      //       spin: false
-      //     }),
-      //     alt: 'address'
-      //   })
-      //   .bindPopup(this.popUpText)
-      //   .addTo(this.map);
-      // });
-      
+      });
     }
   
   }
@@ -191,9 +187,16 @@ GetAddressesViaProxy(){
     console.log(error);
           alert("Something went wrong, please reload the page");
         });
+
+ 
+          
+  
 };
    
-
+loadAddressAPIPageViaProxy(){
+  console.log("inside page");
+}
+ 
 
 }
 
