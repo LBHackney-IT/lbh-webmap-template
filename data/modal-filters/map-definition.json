@@ -1,7 +1,7 @@
 {
   "title": "Modal filters",
   "aboutTitle": "Get the data",
-  "about": "This map is updated when new modal filters are installed. You can <a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter&propertyName=location,type,modes_that_can_pass,geom&outputformat=json&srsname=epsg:4326'>download a snapshot of the data</a> in GeoJSON format",
+  "about": "This map is updated when new modal filters are installed. You can <a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter_point_generated&propertyName=location,type,modes_that_can_pass,easting,northing,longitude,latitude,geom&outputformat=json&srsname=epsg:4326'>download a snapshot of the data</a> in GeoJSON format",
   "showLayersOnLoad": true,
   "showLegend": false,
   "baseStyle": "OSoutdoor",
@@ -10,7 +10,7 @@
   "layers": [
     {
       "title": "Modal filter",
-      "geoserverLayerName": "transport:modal_filter",
+      "geoserverLayerName": "transport:modal_filter_point_generated",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-ban",
