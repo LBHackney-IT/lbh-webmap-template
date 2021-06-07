@@ -211,12 +211,9 @@ loadAddressAPIPageViaProxy(postcode,page){
     //console.log(this.results)
     this.pageCount = data.data.data.page_count;
     console.log(this.pageCount)
-    if (this.results.length === 0) {
-      this.error.innerHTML = "No address found at this postcode";
-      console.log('empty results');
-    } else {
-      this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
-      + "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
+   
+      //this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
+      //+ "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
       this.selectedAddress = document.getElementById("selectedAddress");
       this.selectedAddress. innerHTML += "<option disabled selected value> Select your address from the list </option>";
       for (this.index = 0; this.index < this.results.length; ++this.index) {
@@ -232,7 +229,6 @@ loadAddressAPIPageViaProxy(postcode,page){
       }
       //close list
       document.getElementById("addresses").innerHTML += "</select></div>";
-
       this.addresses.addEventListener('change', (event) => {
         console.log("inside on change");
         this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
@@ -249,8 +245,6 @@ loadAddressAPIPageViaProxy(postcode,page){
         .bindPopup(this.popUpText)
         .addTo(this.map);
       });
-    }
-  
   }
   )
   .catch(error => {
