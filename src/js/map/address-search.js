@@ -19,21 +19,21 @@ class addressSearch {
         this.pageCount = null;
         this.error - null;
         this.addresses = null;
-        this.code = null;
+        //this.code = null;
         this.response = null;
         this.uprn =null;
         this.usage=null;
         this.ward = null;
         this.popUpText =null;
-        this.selectedAddressValue = null;
-        this.selectedInfo = null;
-        this.selectedLat = null;
-        this.selectedLong = null;
-        this.selectedUprn = null;
-        this.selectedWard = null;
-        this.selectedUsage = null;
-        this.selectedFullAddress = null;
-        this.selectedIndex = null;
+        this.selectedAddressLayer = null;
+        // this.selectedInfo = null;
+        // this.selectedLat = null;
+        // this.selectedLong = null;
+        // this.selectedUprn = null;
+        // this.selectedWard = null;
+        // this.selectedUsage = null;
+        // this.selectedFullAddress = null;
+        // this.selectedIndex = null;
     }
     
     init() {
@@ -57,6 +57,9 @@ class addressSearch {
         } else{
           //clear the error messages if any
           document.getElementById("error_message").innerHTML = "";
+          if (!this.selectedAddressLayer == ''){
+            this.map.removeLayer(this.selectedAddressLayer);
+          }
           this.GetAddressesViaProxy();
           // this.postcode.addEventListener('keyup', (e) => {
           //   if (e.key == 'Enter'){
@@ -103,6 +106,8 @@ class addressSearch {
 }
 
 GetAddressesViaProxy(){
+  //Clear the map from the previous search if any
+  
   this.addresses = document.getElementById("addresses");
   this.addresses.innerHTML = 'Loading addresses...'; 
   this.code = document.getElementById("code");
@@ -164,16 +169,18 @@ GetAddressesViaProxy(){
         //console.log(this.uprn);
         this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
         this.map.setView([this.latitude, this.longitude], 18);
-        return L.marker([this.latitude, this.longitude], {
-          icon: L.AwesomeMarkers.icon({
-            icon: 'fa-building',
-            prefix: "fa",
-            markerColor: 'red',
-            spin: false
-          }),
-          alt: 'address'
-        })
-        .bindPopup(this.popUpText)
+        this.selectedAddressLayer =L.layerGroup([
+          L.marker([this.latitude, this.longitude], {
+            icon: L.AwesomeMarkers.icon({
+              icon: 'fa-building',
+              prefix: "fa",
+              markerColor: 'red',
+              spin: false
+            }),
+            alt: 'address'
+          })
+          .bindPopup(this.popUpText)
+        ])
         .addTo(this.map);
       });
     }
