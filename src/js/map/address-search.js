@@ -19,7 +19,6 @@ class addressSearch {
         this.pageCount = null;
         this.error - null;
         this.addresses = null;
-        //this.code = null;
         this.response = null;
         this.uprn =null;
         this.usage=null;
@@ -34,7 +33,6 @@ class addressSearch {
         this.selectedWard = null;
         this.selectedUsage = null;
         this.selectedFullAddress = null;
-        // this.selectedIndex = null;
     }
     
     init() {
@@ -58,15 +56,12 @@ class addressSearch {
         } else{
           //clear the error messages if any
           document.getElementById("error_message").innerHTML = "";
+          //remove the previous marker
           if (!this.selectedAddressLayer == ''){
             this.map.removeLayer(this.selectedAddressLayer);
           }
+          //Getaddresses
           this.GetAddressesViaProxy();
-          // this.postcode.addEventListener('keyup', (e) => {
-          //   if (e.key == 'Enter'){
-          //     this.GetAddressesViaProxy();
-          //   }
-          // });
         }
       });
     }
@@ -108,13 +103,11 @@ class addressSearch {
 
 GetAddressesViaProxy(){
   //Clear the map from the previous search if any
-  
   this.addresses = document.getElementById("addresses");
   this.addresses.innerHTML = 'Loading addresses...'; 
   this.code = document.getElementById("code");
-  //console.log(this.postcode);
-  console.log(ADDRESSES_PROXY_PROD);
-  //fetch(url, {
+  //console.log(ADDRESSES_PROXY_PROD);
+
   fetch(ADDRESSES_PROXY_PROD +"?format=detailed&postcode="+this.postcode, {
     method: "get"
   })
@@ -146,6 +139,7 @@ GetAddressesViaProxy(){
         document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + "," + this.longitude + "," + this.uprn + "," + this.ward + "," + this.usage + "," + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
       }
 
+      //If there is more than 1 page, we call the load Address API Page function to add the page to the proxy call
       if (this.pageCount > 1) {
         for (this.pgindex = 2 ; this.pgindex<=this.pageCount ; ++this.pgindex){
           this.loadAddressAPIPageViaProxy(this.postcode, this.pgindex);    
@@ -154,12 +148,13 @@ GetAddressesViaProxy(){
       //close list
       document.getElementById("addresses").innerHTML += "</select></div>";
 
+      //Event that runs when there is a change on the addresses select list. 
       this.addresses.addEventListener('change', (event) => {
         console.log("inside on change");
         this.selectedInfoValue = document.getElementById("selected").value;
-        console.log(this.selectedInfoValue);
+        //console.log(this.selectedInfoValue);
         this.selectedInfo = this.selectedInfoValue.split(',');
-        console.log(this.selectedInfo);
+        //console.log(this.selectedInfo);
         this.selectedLat = this.selectedInfo[0];
         this.selectedLong = this.selectedInfo[1];
         this.selectedUprn = this.selectedInfo[2];
@@ -170,9 +165,12 @@ GetAddressesViaProxy(){
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
          }
-        console.log("selected address: " + this.selectedFullAddress);
+        //console.log("selected address: " + this.selectedFullAddress);
+        //Create the popUpText for the selected address
         this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
-        this.map.setView([this.latitude, this.longitude], 18);
+        //Center the map in the new location
+        this.map.setView([this.selectedLat, this.selectedLong], 18);
+        //Create the marker, add the pop up and add the layer to the map
         this.selectedAddressLayer =L.layerGroup([
           L.marker([this.selectedLat, this.selectedLong], {
             icon: L.AwesomeMarkers.icon({
@@ -202,19 +200,19 @@ GetAddressesViaProxy(){
 };
    
 loadAddressAPIPageViaProxy(postcode,page){
-  console.log("inside page");
-  console.log(postcode);
-  console.log(page);
+  //console.log("inside page");
+  //console.log(postcode);
+  //console.log(page);
   fetch(ADDRESSES_PROXY_PROD +"?format=detailed&postcode="+postcode+"&page="+page, {
     method: "get"
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data)
+    //console.log(data)
     this.results = data.data.data.address;
     //console.log(this.results)
     this.pageCount = data.data.data.page_count;
-    console.log(this.pageCount)
+    //console.log(this.pageCount)
    
       //this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
       //+ "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
@@ -233,13 +231,14 @@ loadAddressAPIPageViaProxy(postcode,page){
       }
        //close list
        document.getElementById("addresses").innerHTML += "</select></div>";
-
+      
+       //Event that runs when there is a change on the addresses select list. 
        this.addresses.addEventListener('change', (event) => {
-         console.log("inside on change");
+         //console.log("inside on change");
          this.selectedInfoValue = document.getElementById("selected").value;
-         console.log(this.selectedInfoValue);
+         //console.log(this.selectedInfoValue);
          this.selectedInfo = this.selectedInfoValue.split(',');
-         console.log(this.selectedInfo);
+         //console.log(this.selectedInfo);
          this.selectedLat = this.selectedInfo[0];
          this.selectedLong = this.selectedInfo[1];
          this.selectedUprn = this.selectedInfo[2];
@@ -250,9 +249,9 @@ loadAddressAPIPageViaProxy(postcode,page){
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
          }
-         console.log("selected address: " + this.selectedFullAddress);
+         //console.log("selected address: " + this.selectedFullAddress);
          this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
-         this.map.setView([this.latitude, this.longitude], 18);
+         this.map.setView([this.selectedLat, this.selectedLong], 18);
          this.selectedAddressLayer =L.layerGroup([
            L.marker([this.selectedLat, this.selectedLong], {
              icon: L.AwesomeMarkers.icon({
