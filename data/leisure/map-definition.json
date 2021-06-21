@@ -1,0 +1,548 @@
+{
+  "title": "Leisure map",
+  "summary": "",
+  "showHackneyBoundary": true,
+  "zoomToMasterMapBW": true,
+  "about": "This map........",
+  "aboutTitle": "About the map",
+  "showFullScreenButton": true,
+  "showLegend": true,
+  "showGeoServerMetadata": false,
+  "baseStyle": "OSoutdoor",
+  "personas": [
+    {
+      "id": "chilling",
+      "icon": "../images/personas/persona-chilling.png",
+      "iconActive": "../images/personas/persona-chilling-active.png",
+      "text": "Chilling"
+    },
+    {
+      "id": "playing",
+      "icon": "../images/personas/persona-playing.png",
+      "iconActive": "../images/personas/persona-playing-active.png",
+      "text": "Playing"
+    },
+    {
+      "id": "wandering",
+      "icon": "../images/personas/persona-wandering.png",
+      "iconActive": "../images/personas/persona-wandering-active.png",
+      "text": "Wandering"
+    },
+    {
+      "id": "everything",
+      "icon": "../images/personas/persona-everything.png",
+      "iconActive": "../images/personas/persona-everything-active.png",
+      "text": "Everything"
+    }
+  ],
+  "layers": [
+    {
+      "title": "Adventure playgrounds",
+      "geoserverLayerName": "amenities:adventure_playground",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-child",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "description"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Play areas in Parks",
+      "geoserverLayerName": "greenspaces:park_playarea",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-child",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "park",
+        "fields": [
+          {
+            "label": "",
+            "name": "more_info"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
+
+      }
+    },
+    {
+      "title": "Basketball courts",
+      "geoserverLayerName": "amenities:basketball_court",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-basketball-ball",
+        "markerColor": "darkred"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+
+      }
+    },
+    {
+      "title": "Leisure centres",
+      "geoserverLayerName": "amenities:leisure_centre",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-warehouse",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://www.better.org.uk/leisure-centre/london/hackney' target='_blank'>Better website</a>."
+
+      }
+    },
+    {
+      "title": "BMX and skateparks",
+      "geoserverLayerName": "amenities:bmx_skatepark",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-skating",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Cafes in parks",
+      "geoserverLayerName": "amenities:park_cafe",
+      "personas": ["everything","chilling"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-coffee",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
+
+      }
+    },
+    {
+      "title": "Cricket",
+      "geoserverLayerName": "amenities:cricket_pitch",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-cricket",
+        "markerColor": "gray"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+
+      }
+    },
+    {
+      "title": "Cycle hire stations",
+      "geoserverLayerName": "transport:cycle_hire_station",
+      "personas": ["everything"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-biking",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "name",
+        "fields": []
+      },
+      "afterFields": "For more information, please visit <a href='https://tfl.gov.uk/modes/cycling/santander-cycles' target='_blank'>TFL website</a>."
+
+    },
+   {
+      "title": "Cycle pumps",
+      "geoserverLayerName": "transport:bike_pump",
+      "personas": ["wandering,everything"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-tire-flat",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "address"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/movebybike' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Drinking fountains <span class='tooltip'><i class='far fa-exclamation-circle'></i><div class='tooltiptextinlegend'>Closed under current Covid rules</div></span>",
+      "geoserverLayerName": "amenities:drinking_fountain_combined",
+      "personas": ["playing,chilling,everything"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-tint",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "",
+            "name": "location"
+          }
+        ],
+        "afterFields": "Water fountains in parks are currently closed. For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/movebybike' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Football",
+      "geoserverLayerName": "amenities:football_pitch",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-futbol",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+
+      }
+    },
+    {
+      "title": "Outdoor gyms",
+      "geoserverLayerName": "amenities:outdoor_gym",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-dumbbell",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Picnic benches",
+      "geoserverLayerName": "greenspaces:picnic_bench",
+      "personas": ["everything","chilling"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-shopping-basket",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "parkname",
+        "fields": [],
+        "afterFields": "For more information, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
+
+      }
+    },
+    {
+      "title": "Quietways",
+      "geoserverLayerName": "transport:quietway",
+      "personas": ["everything","chilling", "wandering"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "title": "name",
+        "fields": [],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/movebybike' target='_blank'>Hackney website</a>."
+
+      }
+    },
+    {
+      "title": "Rugby",
+      "geoserverLayerName": "amenities:rugby_pitch",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-football-ball",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Swimming pools",
+      "geoserverLayerName": "amenities:swimming_pool",
+      "personas": ["everything","chilling"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-swimming-pool",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "amenity_type"
+          }, 
+          {
+            "label": "Opening times",
+            "name": "opening_times"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },{
+      "title": "Table tennis",
+      "geoserverLayerName": "amenities:table_tennis",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-table-tennis",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Tennis",
+      "geoserverLayerName": "amenities:tennis",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-tennis-ball",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Toilets",
+      "geoserverLayerName": "amenities:public_toilet",
+      "personas": ["everything","chilling"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-restroom",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "description"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Volleyball",
+      "geoserverLayerName": "amenities:volleyball",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-volleyball-ball",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "facility_type",
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
+      "title": "Walking routes",
+      "geoserverLayerName": "transport:hackney_walking_route",
+      "personas": ["everything","wandering"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "description"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Waterway walks",
+      "geoserverLayerName": "transport:waterway_walk",
+      "personas": ["everything","wandering"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-ellipsis-h",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "darkblue",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": 8,
+        "weight": 3
+      },
+      "popup": {
+        "title": "name",
+        "fields": []
+      }
+    },
+    {
+      "title": "Wildflower meadows",
+      "geoserverLayerName": "greenspaces:meadow",
+      "personas": ["everything","chilling"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-flower-tulip",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "description"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ],
+        "afterFields": "For more information, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
+
+      }
+    }
+  ]
+}
