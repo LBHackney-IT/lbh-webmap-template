@@ -1,11 +1,8 @@
 {
-  "title": "Leisure map",
-  "summary": "",
+  "title": "",
+  "summary": "To show leisure equipments, select on an activity above the map, or click on individual items in the left panel.",
   "showHackneyBoundary": true,
-  "zoomToMasterMapBW": true,
-  "about": "This map........",
-  "aboutTitle": "About the map",
-  "showFullScreenButton": true,
+  "showFullScreenButton": false,
   "showLegend": true,
   "showGeoServerMetadata": false,
   "baseStyle": "OSoutdoor",
@@ -64,8 +61,8 @@
       }
     },
     {
-      "title": "Play areas in Parks",
-      "geoserverLayerName": "greenspaces:park_playarea",
+      "title": "Play areas",
+      "geoserverLayerName": "amenities:estate_park_playground",
       "personas": ["everything","playing"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -73,15 +70,17 @@
         "markerColor": "darkblue"
       },
       "popup": {
-        "title": "park",
+        "title": "loc",
         "fields": [
           {
             "label": "",
-            "name": "more_info"
+            "name": "playground_type"
+          },
+          {
+            "label": "",
+            "name": "webmap_comments"
           }
-        ],
-        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
-
+        ]
       }
     },
     {
@@ -112,11 +111,16 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-warehouse",
-        "markerColor": "blue"
+        "markerColor": "purple"
       },
       "popup": {
         "title": "name",
-        "fields": [],
+        "fields": [
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
         "afterFields": "For more information including COVID restrictions, please visit <a href='https://www.better.org.uk/leisure-centre/london/hackney' target='_blank'>Better website</a>."
 
       }
@@ -128,7 +132,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-skating",
-        "markerColor": "darkblue"
+        "markerColor": "black"
       },
       "popup": {
         "title": "facility_type",
@@ -148,7 +152,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-coffee",
-        "markerColor": "orange"
+        "markerColor": "darkpurple"
       },
       "popup": {
         "title": "location",
@@ -169,7 +173,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-cricket",
-        "markerColor": "gray"
+        "markerColor": "beige"
       },
       "popup": {
         "title": "facility_type",
@@ -184,17 +188,21 @@
       }
     },
     {
-      "title": "Cycle hire stations",
+      "title": "TFL Cycle hire stations",
       "geoserverLayerName": "transport:cycle_hire_station",
-      "personas": ["everything"],
+      "personas": ["everything","wandering"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-biking",
-        "markerColor": "orange"
+        "markerColor": "cadetblue"
       },
       "popup": {
-        "title": "name",
-        "fields": []
+        "fields": [
+          {
+            "label": "",
+            "name": "common_name"
+          }
+        ]
       },
       "afterFields": "For more information, please visit <a href='https://tfl.gov.uk/modes/cycling/santander-cycles' target='_blank'>TFL website</a>."
 
@@ -202,11 +210,11 @@
    {
       "title": "Cycle pumps",
       "geoserverLayerName": "transport:bike_pump",
-      "personas": ["wandering,everything"],
+      "personas": ["wandering","everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tire-flat",
-        "markerColor": "orange"
+        "markerColor": "red"
       },
       "popup": {
         "fields": [
@@ -221,7 +229,7 @@
     {
       "title": "Drinking fountains <span class='tooltip'><i class='far fa-exclamation-circle'></i><div class='tooltiptextinlegend'>Closed under current Covid rules</div></span>",
       "geoserverLayerName": "amenities:drinking_fountain_combined",
-      "personas": ["playing,chilling,everything"],
+      "personas": ["playing","chilling","everything"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tint",
@@ -234,8 +242,7 @@
             "label": "",
             "name": "location"
           }
-        ],
-        "afterFields": "Water fountains in parks are currently closed. For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/movebybike' target='_blank'>Hackney website</a>."
+        ]
       }
     },
     {
@@ -245,7 +252,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-futbol",
-        "markerColor": "darkblue"
+        "markerColor": "black"
       },
       "popup": {
         "title": "facility_type",
@@ -266,7 +273,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-dumbbell",
-        "markerColor": "orange"
+        "markerColor": "darkpurple"
       },
       "popup": {
         "title": "facility_type",
@@ -286,7 +293,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-shopping-basket",
-        "markerColor": "orange"
+        "markerColor": "purple"
       },
       "popup": {
         "title": "parkname",
@@ -298,7 +305,7 @@
     {
       "title": "Quietways",
       "geoserverLayerName": "transport:quietway",
-      "personas": ["everything","chilling", "wandering"],
+      "personas": ["everything", "wandering"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -317,8 +324,7 @@
       "popup": {
         "title": "name",
         "fields": [],
-        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/movebybike' target='_blank'>Hackney website</a>."
-
+        "afterFields": "Quietways are direct and easy to follow cycle routes in London on quiet roads, parks and waterways."
       }
     },
     {
@@ -328,7 +334,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-football-ball",
-        "markerColor": "orange"
+        "markerColor": "red"
       },
       "popup": {
         "title": "facility_type",
@@ -374,7 +380,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-table-tennis",
-        "markerColor": "orange"
+        "markerColor": "darkgreen"
       },
       "popup": {
         "title": "facility_type",
@@ -394,7 +400,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tennis-ball",
-        "markerColor": "darkblue"
+        "markerColor": "green"
       },
       "popup": {
         "title": "facility_type",
@@ -408,28 +414,23 @@
       }
     },
     {
-      "title": "Toilets",
+      "title": "Public toilets",
       "geoserverLayerName": "amenities:public_toilet",
       "personas": ["everything","chilling"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-restroom",
-        "markerColor": "orange"
+        "markerColor": "green"
       },
       "popup": {
-        "title": "name",
         "fields": [
           {
-            "label": "Location",
-            "name": "address"
+            "label": "",
+            "name": "location"
           },
           {
-            "label": "",
-            "name": "description"
-          },
-          {
-            "label": "",
-            "name": "link"
+            "label": "Opening times",
+            "name": "opening_times"
           }
         ]
       }
@@ -441,7 +442,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-volleyball-ball",
-        "markerColor": "darkblue"
+        "markerColor": "cadetblue"
       },
       "popup": {
         "title": "facility_type",
@@ -461,12 +462,12 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
-        "markerColor": "orange"
+        "markerColor": "purple"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": "false",
-        "strokeColor": "#F69730",
+        "strokeColor": "#D252BA",
         "opacity": 1,
         "fillColor": "",
         "fillOpacity": 0,
@@ -474,16 +475,8 @@
         "weight": 4
       },
       "popup": {
-        "title": "name",
+        "title": "route_name",
         "fields": [
-          {
-            "label": "Location",
-            "name": "address"
-          },
-          {
-            "label": "",
-            "name": "description"
-          },
           {
             "label": "",
             "name": "link"
@@ -498,17 +491,17 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-ellipsis-h",
-        "markerColor": "darkblue"
+        "markerColor": "darkpurple"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": "false",
-        "strokeColor": "darkblue",
+        "strokeColor": "#5b396b",
         "opacity": 1,
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": 8,
-        "weight": 3
+        "weight": 4
       },
       "popup": {
         "title": "name",
@@ -525,19 +518,14 @@
         "markerColor": "orange"
       },
       "popup": {
-        "title": "name",
         "fields": [
           {
-            "label": "Location",
-            "name": "address"
+            "label": "",
+            "name": "location"
           },
           {
             "label": "",
-            "name": "description"
-          },
-          {
-            "label": "",
-            "name": "link"
+            "name": "comment"
           }
         ],
         "afterFields": "For more information, please visit <a href='https://hackney.gov.uk/parks-faq' target='_blank'>the Parks FAQ page</a>."
