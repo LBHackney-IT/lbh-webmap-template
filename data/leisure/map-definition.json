@@ -236,13 +236,18 @@
         "markerColor": "blue"
       },
       "popup": {
-        "title": "name",
+        "title": "type",
         "fields": [
+          {
+            "label": "",
+            "name": "name"
+          },
           {
             "label": "",
             "name": "location"
           }
-        ]
+        ],
+        "afterFields": "Drinking fountains in parks are currently closed. To find free water refill points, please visit <a href='https://www.refill.org.uk/' target='_blank'>Refill.org</a>."
       }
     },
     {
