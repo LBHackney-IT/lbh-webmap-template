@@ -97,6 +97,10 @@
         "fields": [
           {
             "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
             "name": "comments"
           }
         ],
@@ -137,6 +141,10 @@
       "popup": {
         "title": "facility_type",
         "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
           {
             "label": "",
             "name": "comments"
@@ -180,6 +188,10 @@
         "fields": [
           {
             "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
             "name": "comments"
           }
         ],
@@ -217,6 +229,7 @@
         "markerColor": "red"
       },
       "popup": {
+        "title": "comment",
         "fields": [
           {
             "label": "",
@@ -264,6 +277,10 @@
         "fields": [
           {
             "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
             "name": "comments"
           }
         ],
@@ -283,6 +300,10 @@
       "popup": {
         "title": "facility_type",
         "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
           {
             "label": "",
             "name": "comments"
@@ -346,6 +367,10 @@
         "fields": [
           {
             "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
             "name": "comments"
           }
         ],
@@ -392,6 +417,10 @@
         "fields": [
           {
             "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
             "name": "comments"
           }
         ],
@@ -410,6 +439,10 @@
       "popup": {
         "title": "facility_type",
         "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
           {
             "label": "",
             "name": "comments"
@@ -452,6 +485,10 @@
       "popup": {
         "title": "facility_type",
         "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
           {
             "label": "",
             "name": "comments"
