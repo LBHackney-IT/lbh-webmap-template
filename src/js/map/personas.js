@@ -21,6 +21,9 @@ class Personas {
     const mapPersonas = document.createElement("div");
     mapPersonas.setAttribute("id", "personas");
     mapPersonas.classList.add("personas");
+    if (this.isEmbed){
+      mapPersonas.classList.add("embed");
+    }
     this.container.insertBefore(mapPersonas, this.container.firstChild);
     this.personasContainer = document.getElementById("personas");
     for (let i = 0; i < this.personas.length; i++) {
