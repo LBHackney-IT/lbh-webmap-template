@@ -1,5 +1,7 @@
 import { scrollTo } from "../helpers/scrollTo";
-import { PERSONA_ACTIVE_CLASS } from "./consts";
+import { GENERIC_GEOLOCATION_ERROR,GENERIC_OUTSIDE_HACKNEY_ERROR,PERSONA_ACTIVE_CLASS } from "./consts";
+import Geolocation from "./geolocation";
+
 import "classlist-polyfill";
 
 class Personas {
@@ -15,6 +17,8 @@ class Personas {
     this.isFullScreen = map.isFullScreen;
     this.personasContainer = null;
     this.filters = filters;
+    this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
+    this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
   }
 
   init() {
@@ -44,15 +48,28 @@ class Personas {
 
     const mapPersonas = document.getElementById("personas");
     mapPersonas.appendChild(buttonWrapper);
+    
+     
 
     const button = document.getElementById(`persona-button-${i}`);
     button.addEventListener("click", e => {
       e.stopPropagation();
+      //If there is a persona with id=everyting and the persona button is clicked, the geolocation.initNearMe function is called.
+     
       this.removeActiveClass();
       button.classList.add(PERSONA_ACTIVE_CLASS);
       this.controls.showClearButton();
+      
 
       this.switchGroup(persona, keepAllInLayerControl);
+      if (persona.text == 'Everything'){
+        console.log("Inside everything functionality");
+        new Geolocation(
+          this.map,
+          this.errorNoLocation,
+          this.errorOutsideHackney
+        ).initNearMe();
+      }
 
       //bit of code that switches the group
 

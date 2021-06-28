@@ -30,6 +30,22 @@ class Geolocation {
     });
   }
 
+  initNearMe() {
+        this.map.on("locationfound", this.onLocationFound.bind(this));
+
+        this.map.locate({
+          setView: false,
+          timeout: 5000,
+          maximumAge: 0,
+          maxZoom: 16
+        });
+
+
+    this.map.on("locationerror", () => {
+      alert(this.errorNoLocation);
+    });
+  }
+
   onLocationFound(e) {
     if (this.locateCircle != null) {
       this.map.removeLayer(this.locateCircle);
