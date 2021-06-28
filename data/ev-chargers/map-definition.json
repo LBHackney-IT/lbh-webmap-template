@@ -19,13 +19,17 @@
       "popup": {
         "fields": [
           {
-            "label": "Power rating",
-            "name": "power_rating"
-          },
-          {
             "label": "Organisation",
             "name": "organisation"
+          },
+          {
+            "label": "Power rating (Kwh)",
+            "name": "power_rating"
+          },{
+            "label": "Number of bays",
+            "name": "no_bays"
           }
+          
         ]
       }
     },
