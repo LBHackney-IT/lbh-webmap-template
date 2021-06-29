@@ -498,6 +498,31 @@
       }
     },
     {
+      "title": "Multi-use game areas",
+      "geoserverLayerName": "amenities:park_muga",
+      "personas": ["everything","playing"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-basketball-hoop",
+        "markerColor": "darkred"
+      },
+      "popup": {
+        "title": "facility_type",
+        "afterTitle": "A sports court suitable for netball, basketball, 5-a-side football, etc.",
+        "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
+          {
+            "label": "",
+            "name": "comments"
+          }
+        ],
+        "afterFields": "For more information including COVID restrictions, please visit <a href='https://hackney.gov.uk/sports-pitches-courts-clubs' target='_blank'>Hackney website</a>."
+      }
+    },
+    {
       "title": "Walking routes",
       "geoserverLayerName": "transport:hackney_walking_route",
       "personas": ["everything","wandering"],
