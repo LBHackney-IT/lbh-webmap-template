@@ -166,7 +166,7 @@ GetAddressesViaProxy(){
         //Create the popUpText for the selected address
         this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
         //Center the map in the new location
-        this.map.setView([this.selectedLat, this.selectedLong], 18);
+        this.map.setView([this.selectedLat, this.selectedLong], 17);
         //Create the marker, add the pop up and add the layer to the map
         this.selectedAddressLayer =L.layerGroup([
           L.marker([this.selectedLat, this.selectedLong], {
@@ -248,7 +248,7 @@ loadAddressAPIPageViaProxy(postcode,page){
          }
          //console.log("selected address: " + this.selectedFullAddress);
          this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
-         this.map.setView([this.selectedLat, this.selectedLong], 18);
+         this.map.setView([this.selectedLat, this.selectedLong], 17);
          this.selectedAddressLayer =L.layerGroup([
            L.marker([this.selectedLat, this.selectedLong], {
              icon: L.AwesomeMarkers.icon({
