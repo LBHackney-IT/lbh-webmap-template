@@ -69,12 +69,20 @@ class addressSearch {
     createMarkup(){
       let html = `<details class="govuk-details lbh-details" data-module="govuk-details" open>
   <summary class="govuk-details__summary">
+<<<<<<< HEAD
     <span class="govuk-details__summary-text">Go to address</span>
+=======
+    <span class="govuk-details__summary-text">Search by address</span>
+>>>>>>> 3776bcddf8d8b7656c33dfae7ead0abe8dc865f4
   </summary>
 <div class="govuk-details__text">
   <div class="govuk-form-group lbh-form-group">
       <label class="govuk-label  lbh-label" for="postcode">
+<<<<<<< HEAD
         Enter a postcode
+=======
+        Enter your postcode to search for your address
+>>>>>>> 3776bcddf8d8b7656c33dfae7ead0abe8dc865f4
       </label>
       <span id="error_message" class="govuk-error-message  lbh-error-message">
       <span class="govuk-visually-hidden">Error:</span>
@@ -83,7 +91,11 @@ class addressSearch {
       <input type="Search"
           class="govuk-input  lbh-input govuk-input--width-10"
         id="postcode" 
+<<<<<<< HEAD
         placeholder="Enter a postcode"
+=======
+        placeholder="Type your postcode"
+>>>>>>> 3776bcddf8d8b7656c33dfae7ead0abe8dc865f4
       />
       <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
         Find address
