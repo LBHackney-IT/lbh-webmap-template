@@ -69,12 +69,12 @@ class addressSearch {
     createMarkup(){
       let html = `<details class="govuk-details lbh-details" data-module="govuk-details" open>
   <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">Search by address</span>
+    <span class="govuk-details__summary-text">Go to address</span>
   </summary>
 <div class="govuk-details__text">
   <div class="govuk-form-group lbh-form-group">
       <label class="govuk-label  lbh-label" for="postcode">
-        Enter your postcode to search for your address
+        Enter a postcode
       </label>
       <span id="error_message" class="govuk-error-message  lbh-error-message">
       <span class="govuk-visually-hidden">Error:</span>
@@ -83,7 +83,7 @@ class addressSearch {
       <input type="Search"
           class="govuk-input  lbh-input govuk-input--width-10"
         id="postcode" 
-        placeholder="Type your postcode"
+        placeholder="Enter a postcode"
       />
       <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
         Find address
@@ -216,7 +216,7 @@ loadAddressAPIPageViaProxy(postcode,page){
    
       //this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
       //+ "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
-      this.selectedAddress = document.getElementById("selectedAddress").innerHTML += "<option disabled selected value> Select your address from the list </option>";
+      // this.selectedAddress = document.getElementById("selectedAddress").innerHTML += "<option disabled selected value> Select your address from the list </option>";
       
       for (this.index = 0; this.index < this.results.length; ++this.index) {
         this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
