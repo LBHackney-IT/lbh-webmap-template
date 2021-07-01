@@ -1,5 +1,6 @@
 import { scrollTo } from "../helpers/scrollTo";
-import { GENERIC_GEOLOCATION_ERROR,GENERIC_OUTSIDE_HACKNEY_ERROR,PERSONA_ACTIVE_CLASS } from "./consts";
+import L from "leaflet";
+import {GENERIC_GEOLOCATION_ERROR,GENERIC_OUTSIDE_HACKNEY_ERROR,PERSONA_ACTIVE_CLASS } from "./consts";
 import Geolocation from "./geolocation";
 
 import "classlist-polyfill";
@@ -59,16 +60,17 @@ class Personas {
       this.removeActiveClass();
       button.classList.add(PERSONA_ACTIVE_CLASS);
       this.controls.showClearButton();
-      
-
-      this.switchGroup(persona, keepAllInLayerControl);
       if (persona.text == 'Everything'){
-        console.log("Inside everything functionality");
+        //console.log("Inside everything functionality");
         new Geolocation(
           this.map,
           this.errorNoLocation,
-          this.errorOutsideHackney
+          this.errorOutsideHackney,
+          this.layers
         ).initNearMe();
+        
+      } else {
+        this.switchGroup(persona, keepAllInLayerControl);
       }
 
       //bit of code that switches the group
@@ -81,6 +83,7 @@ class Personas {
     });
   }
 
+  
   removeActiveClass() {
     for (const personaWrapper of this.personasContainer.childNodes) {
       const persona = personaWrapper.firstChild;
