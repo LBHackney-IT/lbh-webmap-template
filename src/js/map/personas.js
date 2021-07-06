@@ -1,5 +1,4 @@
 import { scrollTo } from "../helpers/scrollTo";
-import L from "leaflet";
 import {GENERIC_GEOLOCATION_ERROR,GENERIC_OUTSIDE_HACKNEY_ERROR,PERSONA_ACTIVE_CLASS } from "./consts";
 import Geolocation from "./geolocation";
 

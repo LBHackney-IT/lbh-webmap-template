@@ -20,10 +20,11 @@ const MAP_BOUNDS = [
   [51.281112, -0.5],
   [51.793054, 0.45]
 ];
-const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
-const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
-//const HACKNEY_BOUNDS_1 = [36.795801, -4.206685]; //Marta testing her current location
-//const HACKNEY_BOUNDS_2 = [51.580648, -0.00909]; //Marta testing her current location
+//const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
+//const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
+//TODO Comment out the testing bounds
+const HACKNEY_BOUNDS_1 = [36.795801, -4.206685]; //Marta testing her current location
+const HACKNEY_BOUNDS_2 = [51.580648, -0.00909]; //Marta testing her current location
 
 const HACKNEY_GEOSERVER_WFS = "https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=application/json&SrsName=EPSG:4326&typeName=";
 const HACKNEY_GEOSERVER_WMS = "https://map2.hackney.gov.uk/geoserver/wms";
