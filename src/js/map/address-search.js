@@ -185,7 +185,11 @@ GetAddressesViaProxy(){
         this.selectedWard = this.selectedInfo[3].toUpperCase();
         this.selectedUsage = this.selectedInfo[4].toUpperCase();
         if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
+          if (this.selectedInfo[7] === undefined || this.selectedInfo[7] == ''){
+          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6];
+          } else {
+            this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
+          }
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
          }
@@ -269,7 +273,11 @@ loadAddressAPIPageViaProxy(postcode,page){
          this.selectedWard = this.selectedInfo[3].toUpperCase();
          this.selectedUsage = this.selectedInfo[4].toUpperCase();
          if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
+          if (this.selectedInfo[7] === undefined || this.selectedInfo[7] == ''){
+          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6];
+          } else {
+            this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
+          }
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
          }
