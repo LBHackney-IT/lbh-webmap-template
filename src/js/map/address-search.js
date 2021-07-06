@@ -8,6 +8,7 @@ class addressSearch {
         this.mapConfig = mapClass.mapConfig;
         this.showAddressSearch = null;
         this.searchButton = null;
+        this.postcodeBox = null;
         this.postcode = null;
         this.results = null;
         this.selectedAddress = null;
@@ -40,8 +41,32 @@ class addressSearch {
 
       this.createMarkup();
       this.bindSearchButton();
-      //this.bindKeyUp();
+      this.bindKeyUp();
     }
+
+    bindKeyUp(){
+      this.postcodeBox.addEventListener('keyup', (e) => {
+      this.error = document.getElementById("error_message");
+      //Save the postcode and format it for the proxy call
+      this.postcode = document.getElementById("postcode").value;
+      this.postcode = this.postcode.replace(/ /g,'');
+        if (e.key == 'Enter'){
+          if(this.postcode == undefined || this.postcode == ''){
+            this.error.innerHTML = "Please enter a postcode";
+          } else{
+            //clear the error messages if any
+            document.getElementById("error_message").innerHTML = "";
+            //remove the previous marker
+            if (!this.selectedAddressLayer == ''){
+              this.map.removeLayer(this.selectedAddressLayer);
+            }
+            //Getaddresses
+            this.GetAddressesViaProxy();
+          }
+        }
+    });
+  }
+    
 
     bindSearchButton() {
       this.searchButton.addEventListener("click", () => {
@@ -96,6 +121,8 @@ class addressSearch {
 
   this.mapClass.addMarkupToMap(html, "addressSearch", "addresSsearch"); 
   this.searchButton = document.getElementById("search-button");
+  this.postcodeBox = document.getElementById("postcode");
+
 }
 
 GetAddressesViaProxy(){
@@ -157,7 +184,7 @@ GetAddressesViaProxy(){
         this.selectedUprn = this.selectedInfo[2];
         this.selectedWard = this.selectedInfo[3].toUpperCase();
         this.selectedUsage = this.selectedInfo[4].toUpperCase();
-        if (this.selectedInfo[8] == undefined || this.selectedInfo[8] == ''){
+        if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
@@ -241,7 +268,7 @@ loadAddressAPIPageViaProxy(postcode,page){
          this.selectedUprn = this.selectedInfo[2];
          this.selectedWard = this.selectedInfo[3].toUpperCase();
          this.selectedUsage = this.selectedInfo[4].toUpperCase();
-         if (this.selectedInfo[8] == undefined || this.selectedInfo[8] == ''){
+         if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
          } else {
           this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
