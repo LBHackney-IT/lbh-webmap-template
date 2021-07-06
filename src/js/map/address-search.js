@@ -214,9 +214,9 @@ GetAddressesViaProxy(){
   }
   )
   .catch(error => {
-    console.log(error);
-          alert("Something went wrong, please reload the page");
-        });
+      document.getElementById("error_message").innerHTML = 'Please enter a valid postcode';
+      //console.error(error);
+  });
 
  
           
