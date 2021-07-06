@@ -14,7 +14,8 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-vial",
-        "markerColor": "darkblue"
+        "markerColor": "darkblue",
+        "cluster": true
       },
       "popup": {
         "title": "",
