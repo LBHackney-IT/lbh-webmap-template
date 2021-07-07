@@ -153,7 +153,7 @@ GetAddressesViaProxy(){
         this.longitude=this.results[this.index].longitude;
         //this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
         //this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";  
-        document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + "," + this.longitude + "," + this.uprn + "," + this.ward + "," + this.usage + "," + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
+        document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
       }
 
       //If there is more than 1 page, we call the load Address API Page function to add the page to the proxy call
@@ -170,22 +170,14 @@ GetAddressesViaProxy(){
         //console.log("inside on change");
         this.selectedInfoValue = document.getElementById("selected").value;
         //console.log(this.selectedInfoValue);
-        this.selectedInfo = this.selectedInfoValue.split(',');
+        this.selectedInfo = this.selectedInfoValue.split(':');
         //console.log(this.selectedInfo);
         this.selectedLat = this.selectedInfo[0];
         this.selectedLong = this.selectedInfo[1];
         this.selectedUprn = this.selectedInfo[2];
         this.selectedWard = this.selectedInfo[3].toUpperCase();
         this.selectedUsage = this.selectedInfo[4].toUpperCase();
-        if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
-          if (this.selectedInfo[7] === undefined || this.selectedInfo[7] == ''){
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6];
-          } else {
-            this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
-          }
-         } else {
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
-         }
+        this.selectedFullAddress = this.selectedInfo[5].toUpperCase();
         //console.log("selected address: " + this.selectedFullAddress);
         //Create the popUpText for the selected address
         this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
@@ -251,7 +243,7 @@ loadAddressAPIPageViaProxy(postcode,page){
         this.longitude=this.results[this.index].longitude;
         //this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
         //this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";  
-        document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + "," + this.longitude + "," + this.uprn + "," + this.ward + "," + this.usage + "," + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
+        document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
       }
        //close list
        document.getElementById("addresses").innerHTML += "</select></div>";
@@ -261,22 +253,14 @@ loadAddressAPIPageViaProxy(postcode,page){
          //console.log("inside on change");
          this.selectedInfoValue = document.getElementById("selected").value;
          //console.log(this.selectedInfoValue);
-         this.selectedInfo = this.selectedInfoValue.split(',');
+         this.selectedInfo = this.selectedInfoValue.split(':');
          //console.log(this.selectedInfo);
          this.selectedLat = this.selectedInfo[0];
          this.selectedLong = this.selectedInfo[1];
          this.selectedUprn = this.selectedInfo[2];
          this.selectedWard = this.selectedInfo[3].toUpperCase();
          this.selectedUsage = this.selectedInfo[4].toUpperCase();
-         if (this.selectedInfo[8] === undefined || this.selectedInfo[8] == ''){
-          if (this.selectedInfo[7] === undefined || this.selectedInfo[7] == ''){
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6];
-          } else {
-            this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7];
-          }
-         } else {
-          this.selectedFullAddress = this.selectedInfo[5] + "," + this.selectedInfo[6] + "," + this.selectedInfo[7] + "," + this.selectedInfo[8];
-         }
+         this.selectedFullAddress = this.selectedInfo[5].toUpperCase();
          //console.log("selected address: " + this.selectedFullAddress);
          this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
          this.map.setView([this.selectedLat, this.selectedLong], 17);
