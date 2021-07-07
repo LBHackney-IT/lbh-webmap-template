@@ -3,5 +3,6 @@ node_modules
 .env
 src/js/helpers/mapbox.js
 src/js/helpers/osdata.js
+src/js/helpers/addressesProxy.js
 .npmrc
 web.config
