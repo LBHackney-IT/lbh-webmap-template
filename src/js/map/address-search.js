@@ -34,6 +34,7 @@ class addressSearch {
         this.selectedWard = null;
         this.selectedUsage = null;
         this.selectedFullAddress = null;
+        this.marker = null;
     }
     
     init() {
@@ -56,10 +57,6 @@ class addressSearch {
           } else{
             //clear the error messages if any
             document.getElementById("error_message").innerHTML = "";
-            //remove the previous marker
-            if (!this.selectedAddressLayer == ''){
-              this.map.removeLayer(this.selectedAddressLayer);
-            }
             //Getaddresses
             this.GetAddressesViaProxy();
           }
@@ -81,10 +78,6 @@ class addressSearch {
         } else{
           //clear the error messages if any
           document.getElementById("error_message").innerHTML = "";
-          //remove the previous marker
-          if (!this.selectedAddressLayer == ''){
-            this.map.removeLayer(this.selectedAddressLayer);
-          }
           //Getaddresses
           this.GetAddressesViaProxy();
         }
@@ -137,14 +130,14 @@ GetAddressesViaProxy(){
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data)
+    //console.log(data)
     this.results = data.data.data.address;
     //console.log(this.results)
     this.pageCount = data.data.data.page_count;
-    console.log(this.pageCount)
+    //console.log(this.pageCount)
     if (this.results.length === 0) {
       this.error.innerHTML = "No address found at this postcode";
-      console.log('empty results');
+      //console.log('empty results');
     } else {
       this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
       + "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
@@ -174,7 +167,7 @@ GetAddressesViaProxy(){
 
       //Event that runs when there is a change on the addresses select list. 
       this.addresses.addEventListener('change', (event) => {
-        console.log("inside on change");
+        //console.log("inside on change");
         this.selectedInfoValue = document.getElementById("selected").value;
         //console.log(this.selectedInfoValue);
         this.selectedInfo = this.selectedInfoValue.split(',');
@@ -198,21 +191,24 @@ GetAddressesViaProxy(){
         this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
         //Center the map in the new location
         this.map.setView([this.selectedLat, this.selectedLong], 17);
+        //Remove the marker
+        if (this.marker !== null) {
+          this.map.removeLayer(this.marker);
+          this.marker = null;
+        }
         //Create the marker, add the pop up and add the layer to the map
-        this.selectedAddressLayer =L.layerGroup([
-          L.marker([this.selectedLat, this.selectedLong], {
-            icon: L.AwesomeMarkers.icon({
-              icon: 'fa-building',
-              prefix: "fa",
-              markerColor: 'red',
-              spin: false
-            }),
-            alt: 'address'
-          })
-          .bindPopup(this.popUpText)
-        ])
-        .addTo(this.map);
-      });
+        this.marker = L.marker([this.selectedLat, this.selectedLong], {
+          icon: L.AwesomeMarkers.icon({
+            icon: 'fa-building',
+            prefix: "fa",
+            markerColor: 'red',
+            spin: false
+          }),
+          alt: 'address'
+        })
+        .bindPopup(this.popUpText)
+      .addTo(this.map);
+    });   
     }
   
   }
@@ -284,8 +280,13 @@ loadAddressAPIPageViaProxy(postcode,page){
          //console.log("selected address: " + this.selectedFullAddress);
          this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
          this.map.setView([this.selectedLat, this.selectedLong], 17);
-         this.selectedAddressLayer =L.layerGroup([
-           L.marker([this.selectedLat, this.selectedLong], {
+         //Remove the marker
+        if (this.marker !== null) {
+          this.map.removeLayer(this.marker);
+          this.marker = null;
+        }
+        //Create the marker, add the pop up and add the layer to the map
+           this.marker = L.marker([this.selectedLat, this.selectedLong], {
              icon: L.AwesomeMarkers.icon({
                icon: 'fa-building',
                prefix: "fa",
@@ -295,7 +296,6 @@ loadAddressAPIPageViaProxy(postcode,page){
              alt: 'address'
            })
            .bindPopup(this.popUpText)
-         ])
          .addTo(this.map);
        });   
    }
