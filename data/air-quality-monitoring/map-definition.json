@@ -3,7 +3,6 @@
   "about": " This map shows the location of all air quality monitoring sites in Hackney from 2020. As monitoring locations are added or removed the map will be updated.",
   "aboutTitle": "About the map",
   "showLegend": false,
-  "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
