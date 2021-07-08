@@ -1,0 +1,46 @@
+{
+  "title": "Cycle hangars",
+  "about": "This map shows the location of all the electric vehicle charging points in Hackney. It will be updated periodically, as new charge points go in.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Requested hangars",
+      "geoserverLayerName": "statmap:cycle_hangar_uprn_requested",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bicycle",
+        "markerColor": "green"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Number of requests",
+            "name": "number_of_requests"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Proposed hangars",
+      "geoserverLayerName": "statmap:cycle_hangar_uprn_proposed",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bicycle",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Number of requests",
+            "name": "number_of_requests"
+          }
+        ]
+      }
+    }
+  ]
+}
