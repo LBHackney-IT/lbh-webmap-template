@@ -1,0 +1,65 @@
+{
+  "title": "Air quality monitoring locations",
+  "about": " This map shows the location of all air quality monitoring sites in Hackney from 2020. As monitoring locations are added or removed the map will be updated.",
+  "aboutTitle": "About the map",
+  "showLegend": false,
+  "baseStyle": "OSoutdoor",
+  "showHackneyMask": true,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Diffusion tubes",
+      "geoserverLayerName": "pollution:diffusion_tube",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-vial",
+        "markerColor": "darkblue",
+        "cluster": true
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Site name",
+            "name": "site_name"
+          },
+          {
+            "label": "2020 NO2 annual concentration (ug/m3)",
+            "name": "2020_annual_mean"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Automatic monitors",
+      "geoserverLayerName": "pollution:air_quality_automatic monitor",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-vial",
+        "markerColor": "darkred",
+        "cluster": false
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Site name",
+            "name": "site_name"
+          },
+          {
+            "label": "2020 NO2 annual concentration (ug/m3)",
+            "name": "2020_annual_mean"
+          },
+          {
+            "label": "2020 PM2.5 (ug/m3)",
+            "name": "pm2_5"
+          },
+          {
+            "label": "2020 PM10 (ug/m3)",
+            "name": "pm10"
+          }
+        ]
+      }
+    }
+  ]
+}
