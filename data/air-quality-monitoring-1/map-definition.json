@@ -36,7 +36,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-vial",
-        "markerColor": "darkred",
+        "markerColor": "darkpurple",
         "cluster": false
       },
       "popup": {
