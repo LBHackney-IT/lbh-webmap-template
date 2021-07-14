@@ -168,7 +168,7 @@ GetAddressesViaProxy(){
       //Event that runs when there is a change on the addresses select list. 
       this.addresses.addEventListener('change', (event) => {
         //console.log("inside on change");
-        this.selectedInfoValue = document.getElementById("selected").value;
+        this.selectedInfoValue = document.getElementById("selectedAddress").value;
         //console.log(this.selectedInfoValue);
         this.selectedInfo = this.selectedInfoValue.split(':');
         //console.log(this.selectedInfo);
@@ -251,7 +251,7 @@ loadAddressAPIPageViaProxy(postcode,page){
        //Event that runs when there is a change on the addresses select list. 
        this.addresses.addEventListener('change', (event) => {
          //console.log("inside on change");
-         this.selectedInfoValue = document.getElementById("selected").value;
+         this.selectedInfoValue = document.getElementById("selectedAddress").value;
          //console.log(this.selectedInfoValue);
          this.selectedInfo = this.selectedInfoValue.split(':');
          //console.log(this.selectedInfo);
