@@ -130,15 +130,18 @@ GetAddressesViaProxy(){
   })
   .then(response => response.json())
   .then(data => {
-    //console.log(data)
+    if (data.data.error) {
+      //console.log(data.data.error.validationErrors[0].message);
+      this.error.innerHTML = data.data.error.validationErrors[0].message;;
+    } else {
     this.results = data.data.data.address;
-    //console.log(this.results)
     this.pageCount = data.data.data.page_count;
     //console.log(this.pageCount)
+    //console.log(this.results)
     if (this.results.length === 0) {
       this.error.innerHTML = "No address found at this postcode";
-      //console.log('empty results');
     } else {
+      
       this.addresses.innerHTML = "<div class='govuk-form-group lbh-form-group'>"
       + "<select class='govuk-select govuk-!-width-full lbh-select' id='selectedAddress' name='selectedAddress'>";
 
@@ -202,17 +205,17 @@ GetAddressesViaProxy(){
       .addTo(this.map);
     });   
     }
+
+    }
+    
+    
   
   }
   )
   .catch(error => {
-      document.getElementById("error_message").innerHTML = 'Please enter a valid postcode';
-      //console.error(error);
+    console.log(error);
+    this.error.innerHTML = "There was an error retrieving the addresses. Please try it again";
   });
-
- 
-          
-  
 };
    
 loadAddressAPIPageViaProxy(postcode,page){
@@ -284,10 +287,10 @@ loadAddressAPIPageViaProxy(postcode,page){
        });   
    }
    )
-  .catch(error => {
+   .catch(error => {
     console.log(error);
-          alert("Something went wrong, please reload the page");
-        });
+    this.error.innerHTML = "There was an error retrieving the addresses. Please try it again";
+    });
 }
  
 
