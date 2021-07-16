@@ -130,9 +130,10 @@ GetAddressesViaProxy(){
   })
   .then(response => response.json())
   .then(data => {
-    if (data.data.error) {
-      //console.log(data.data.error.validationErrors[0].message);
-      this.error.innerHTML = data.data.error.validationErrors[0].message;;
+    if (data.data.errors) {
+      //console.log(data.data.errors);
+      //console.log(data.data.errors[0].message);
+      this.error.innerHTML = data.data.errors[0].message;;
     } else {
     this.results = data.data.data.address;
     this.pageCount = data.data.data.page_count;
