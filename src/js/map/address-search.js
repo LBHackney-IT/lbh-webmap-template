@@ -125,7 +125,7 @@ GetAddressesViaProxy(){
   this.code = document.getElementById("code");
   //console.log(ADDRESSES_PROXY_PROD);
 
-  fetch(ADDRESSES_PROXY_PROD +"?format=detailed&postcode="+this.postcode, {
+  fetch(ADDRESSES_PROXY_PROD +"?format=detailed&query="+this.postcode, {
     method: "get"
   })
   .then(response => response.json())
@@ -223,7 +223,7 @@ loadAddressAPIPageViaProxy(postcode,page){
   //console.log("inside page");
   //console.log(postcode);
   //console.log(page);
-  fetch(ADDRESSES_PROXY_PROD +"?format=detailed&postcode="+postcode+"&page="+page, {
+  fetch(ADDRESSES_PROXY_PROD +"?format=detailed&query="+postcode+"&page="+page, {
     method: "get"
   })
   .then(response => response.json())
