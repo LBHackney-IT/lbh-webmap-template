@@ -98,7 +98,7 @@ class addressSearch {
       <input type="Search"
           class="govuk-input  lbh-input govuk-input--width-10"
         id="postcode" 
-        placeholder="Enter an address or a postcode"
+        placeholder="Enter a Hackney address or postcode"
       />
       <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
         Find address
