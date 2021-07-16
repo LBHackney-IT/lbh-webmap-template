@@ -50,7 +50,7 @@ class addressSearch {
       this.error = document.getElementById("error_message");
       //Save the postcode and format it for the proxy call
       this.postcode = document.getElementById("postcode").value;
-      this.postcode = this.postcode.replace(/ /g,'');
+      // this.postcode = this.postcode.replace(/ /g,'');
         if (e.key == 'Enter'){
           if(this.postcode == undefined || this.postcode == ''){
             this.error.innerHTML = "Please enter a postcode";
@@ -70,7 +70,7 @@ class addressSearch {
       this.error = document.getElementById("error_message");
       //Save the postcode and format it for the proxy call
       this.postcode = document.getElementById("postcode").value;
-      this.postcode = this.postcode.replace(/ /g,'');
+      // this.postcode = this.postcode.replace(/ /g,'');
       //console.log(this.postcode);
         //If the postcode is empty, there is an error message
         if(this.postcode == undefined || this.postcode == ''){
