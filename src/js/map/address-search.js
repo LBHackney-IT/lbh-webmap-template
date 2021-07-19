@@ -149,7 +149,8 @@ GetAddressesViaProxy(){
       this.selectedAddress = document.getElementById("selectedAddress").innerHTML += "<option disabled selected value> Select your address from the list </option>";
       
       for (this.index = 0; this.index < this.results.length; ++this.index) {
-        this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
+        // this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
+        this.full_address = this.results[this.index].singleLineAddress;
         this.uprn = this.results[this.index].UPRN;
         this.ward = this.results[this.index].ward;
         this.usage = this.results[this.index].usagePrimary;
@@ -215,7 +216,7 @@ GetAddressesViaProxy(){
   )
   .catch(error => {
     console.log(error);
-    this.error.innerHTML = "There was an error retrieving the addresses. Please try it again";
+    this.error.innerHTML = "There was a problem retrieving the addresses. Please try again.";
   });
 };
    
@@ -239,7 +240,8 @@ loadAddressAPIPageViaProxy(postcode,page){
       // this.selectedAddress = document.getElementById("selectedAddress").innerHTML += "<option disabled selected value> Select your address from the list </option>";
       
       for (this.index = 0; this.index < this.results.length; ++this.index) {
-        this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
+        // this.full_address = [this.results[this.index].line1, this.results[this.index].line2, this.results[this.index].line3, this.results[this.index].line4].filter(Boolean).join(", ");
+        this.full_address = this.results[this.index].singleLineAddress;
         this.uprn = this.results[this.index].UPRN;
         this.ward = this.results[this.index].ward;
         this.usage = this.results[this.index].usagePrimary;
