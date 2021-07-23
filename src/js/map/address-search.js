@@ -203,8 +203,9 @@ GetAddressesViaProxy(){
           }),
           alt: 'address'
         })
-        .bindPopup(this.popUpText)
-      .addTo(this.map);
+        .bindPopup(this.popUpText);
+        this.marker.addTo(this.map);
+        this.marker.openPopup();
     });   
     }
 
@@ -276,23 +277,24 @@ loadAddressAPIPageViaProxy(postcode,page){
           this.marker = null;
         }
         //Create the marker, add the pop up and add the layer to the map
-           this.marker = L.marker([this.selectedLat, this.selectedLong], {
-             icon: L.AwesomeMarkers.icon({
-               icon: 'fa-building',
-               prefix: "fa",
-               markerColor: 'red',
-               spin: false
-             }),
-             alt: 'address'
-           })
-           .bindPopup(this.popUpText)
-         .addTo(this.map);
-       });   
-   }
+        this.marker = L.marker([this.selectedLat, this.selectedLong], {
+          icon: L.AwesomeMarkers.icon({
+            icon: 'fa-building',
+            prefix: "fa",
+            markerColor: 'red',
+            spin: false
+          }),
+          alt: 'address'
+        })
+        .bindPopup(this.popUpText);
+        this.marker.addTo(this.map);
+        this.marker.openPopup();
+      });   
+    }
    )
    .catch(error => {
     console.log(error);
-    this.error.innerHTML = "There was an error retrieving the addresses. Please try it again";
+    this.error.innerHTML = "There was an error retrieving the addresses. Please try again.";
     });
 }
  
