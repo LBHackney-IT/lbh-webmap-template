@@ -3,7 +3,6 @@
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
-  "showAddressSearch": true,
   "layers": [
     {
       "title": "Wards",
