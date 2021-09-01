@@ -1,5 +1,6 @@
 
 import L from "leaflet";
+import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy"
 import {
   isMobile as isMobileFn,
   mobileDesktopSwitch
@@ -60,6 +61,8 @@ class Map {
     this.zoom =null;
     this.zoom_mobile=null;
     this.isFullScreen = false;
+    this.uprn = null;
+    this.marker = null;
   }
 
   init() {
@@ -81,11 +84,43 @@ class Map {
           this.mapConfig.errorNoLocation || this.errorNoLocation;
           
         //Save the value of the parameters (if any) in the variables
+        this.uprn = new URL(location.href).searchParams.get("uprn");
         let latlonString = new URL(location.href).searchParams.get("latlon");
         let latlon= null;
+        //If there is an uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
+        if (this.uprn){
+        fetch(ADDRESSES_PROXY_PROD+"?format=detailed&uprn="+this.uprn, {
+            method: "get"
+          })
+          .then(response => response.json())
+          .then(data => {
+            let latitudeUPRN = data.data.data.address[0].latitude;
+            let longitudeUPRN = data.data.data.address[0].longitude;
+            //TODO Change the setView for replacing the center of the map when creating the map 
+            this.map.setView([latitudeUPRN,longitudeUPRN], this.zoom);
+            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+              icon: L.AwesomeMarkers.icon({
+                icon: 'fa-building',
+                prefix: "fa",
+                markerColor: 'red',
+                spin: false
+              }),
+              alt: 'address'
+            })
+            this.marker.addTo(this.map);
+            
+          })
+          .catch(error => {
+            console.log(error);
+            this.error.innerHTML = "There was a problem retrieving the UPRN. Please try again.";
+          });
+        }
+        
         if (latlonString){
           latlon = latlonString.split(",");
         }
+
+        //Get the zoom from the url
         let zoomParam = new URL(location.href).searchParams.get("zoom");
         //Convert zoom parameter to Int
         let zoomInt = parseInt(zoomParam);
@@ -123,9 +158,6 @@ class Map {
       .catch(error => {
         console.log(error);
       });
-      // if (document.getElementById("fullscreen_container")){
-      //   this.isFullScreen = true;
-      // }
   }
 
   clear() {
@@ -141,7 +173,6 @@ class Map {
       }
     });
 
-    //this.setZoom();
     if (this.hasPersonas) {
       const activePersonas = document.getElementsByClassName(
         PERSONA_ACTIVE_CLASS
@@ -172,7 +203,6 @@ class Map {
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      //zoom: DEFAULT_ZOOM_DESKTOP,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
     });
@@ -181,17 +211,13 @@ class Map {
 
     if (this.isFullScreen){
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE),
         () => this.map.setView(this.centerMobile, this.zoom_mobile),
         () => this.map.setView(this.centerDesktop, this.zoom)
-        // () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     } else{
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
         () => this.map.setView(this.centerMobile, this.zoom_mobile),
         () => this.map.setView(this.centerDesktop, this.zoom)
-        //() => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     }
     
@@ -253,7 +279,6 @@ class Map {
     });
     this.map.addLayer(this.masterMapLayer);
   }
-
 
   addMasterMapLayerBW() {
     this.masterMapLayerBW = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
