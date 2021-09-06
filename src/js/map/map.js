@@ -94,9 +94,16 @@ class Map {
           })
           .then(response => response.json())
           .then(data => {
+            //console.log (data);
             let latitudeUPRN = data.data.data.address[0].latitude;
             let longitudeUPRN = data.data.data.address[0].longitude;
+            let singleLineAddress = data.data.data.address[0].singleLineAddress;
+            let usage = data.data.data.address[0].usagePrimary;
+            let ward = data.data.data.address[0].ward;
+
             //TODO Change the setView for replacing the center of the map when creating the map 
+
+            this.popUpText = "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
             this.map.setView([latitudeUPRN,longitudeUPRN], this.zoom);
             this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
               icon: L.AwesomeMarkers.icon({
@@ -107,7 +114,9 @@ class Map {
               }),
               alt: 'address'
             })
+            .bindPopup(this.popUpText);
             this.marker.addTo(this.map);
+            this.marker.openPopup();
             
           })
           .catch(error => {
