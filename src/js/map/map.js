@@ -18,7 +18,6 @@ import {
   CENTER_DESKTOP_NO_LEGEND,
   CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,
   CENTER_MOBILE,
-  //CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
@@ -55,7 +54,6 @@ class Map {
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
     this.controls = null;
     this.isEmbed = false;
-    //this.centerDesktop = null;
     this.centerDesktop = [];
     this.centerMobile = [];
     this.zoom =null;
@@ -94,7 +92,7 @@ class Map {
           })
           .then(response => response.json())
           .then(data => {
-            //console.log (data);
+            console.log (data);
             let latitudeUPRN = data.data.data.address[0].latitude;
             let longitudeUPRN = data.data.data.address[0].longitude;
             let singleLineAddress = data.data.data.address[0].singleLineAddress;
@@ -200,6 +198,7 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
+  
 
   
   createMap() {
@@ -387,14 +386,11 @@ class Map {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
           if (this.isFullScreen){
-            //this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
             this.map.setView(this.centerMobile, this.zoom_mobile);
           } else {
-            //this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
             this.map.setView(this.centerMobile, this.zoom_mobile);
           } 
         } else {
-           //this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
            this.map.setView(this.centerDesktop, this.zoom);
         }
       },
@@ -407,20 +403,18 @@ class Map {
     L.easyButton(
       "fa-expand",
       () => {
+        //Get the URL parameters and open a new fullscreen map including the parameters
+        const queryStringFromURL = window.location.search;
         // Open a new page
-        console.log(this.isFullScreen);
-        console.log(window.location.pathname);
         window.open(
-          'fullscreen',
-          //this.isFullScreen,
-          //window.location.pathname,
-          //'http://www.google.com',
+          'fullscreen' + queryStringFromURL,
           '_blank'
         );
       },
       "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
+
   }
 
   addMarkupToMap(markup, id, className) {
