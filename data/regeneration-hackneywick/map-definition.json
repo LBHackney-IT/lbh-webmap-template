@@ -1,6 +1,6 @@
 {
-  "title": "What’s happening in Hackney Central",
-  "about": "This map shows the wide range of projects currently underway in Hackney Central. To find out more, click on each icon. It will be updated periodically, as new projects start.",
+  "title": "What’s happening in Hackney Wick",
+  "about": "This map shows the wide range of projects currently underway in Hackney Wick. To find out more, click on each icon. It will be updated periodically, as new projects start.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
@@ -10,7 +10,7 @@
   "layers": [
     {
       "title": "Sense of place",
-      "geoserverLayerName": "housing:hackneycentral_sense_place",
+      "geoserverLayerName": "housing:hackneywick_sense_place",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "far fa-map-marked-alt",
@@ -31,7 +31,7 @@
     },
     {
       "title": "Local economy",
-      "geoserverLayerName": "housing:hackneycentral_local_economy",
+      "geoserverLayerName": "housing:hackneywick_local_economy",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-pound-sign",
@@ -52,7 +52,7 @@
     },
     {
       "title": "Greenspaces",
-      "geoserverLayerName": "housing:hackneycentral_greenspaces",
+      "geoserverLayerName": "housing:hackneywick_greenspaces",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tree",
@@ -73,7 +73,7 @@
     },
     {
       "title": "Transport",
-      "geoserverLayerName": "housing:hackneycentral_transport",
+      "geoserverLayerName": "housing:hackneywick_transport",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-bus",
@@ -94,7 +94,7 @@
     },
     {
       "title": "Streets & Public Realm",
-      "geoserverLayerName": "housing:hackneycentral_streetscene",
+      "geoserverLayerName": "housing:hackneywick_streetscene",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-road",
@@ -115,7 +115,7 @@
     },
     {
       "title": "Community Safety",
-      "geoserverLayerName": "housing:hackneycentral_community_safety",
+      "geoserverLayerName": "housing:hackneywick_community_safety",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "far fa-comments",
@@ -136,7 +136,7 @@
     },
     {
       "title": "Buildings & Development",
-      "geoserverLayerName": "housing:hackneycentral_building",
+      "geoserverLayerName": "housing:hackneywick_building",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "far fa-building",
