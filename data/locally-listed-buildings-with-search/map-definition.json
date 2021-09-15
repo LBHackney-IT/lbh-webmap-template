@@ -6,12 +6,11 @@
    "layers": [
     {
       "title": "Locally listed buildings",
-      "geoserverLayerName": "planning:locally_listed_building_point",
+      "geoserverLayerName": "planning:locally_listed_building",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fa-warehouse",
-        "markerColor": "cadetblue",
-        "cluster": true
+        "markerColor": "cadetblue"
       },
       "popup": {
         "fields": [
