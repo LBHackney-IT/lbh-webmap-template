@@ -2,16 +2,16 @@ import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
 import OS_RASTER_API_KEY from "../helpers/osdata";
 
 
-const MAX_ZOOM = 19;
-const MIN_ZOOM = 12;
+const MAX_ZOOM = 12;
+const MIN_ZOOM = 4;
 const CENTER_DESKTOP_LEGEND_FULLSCREEN = [51.534, -0.083];
 const CENTER_DESKTOP_LEGEND = [51.548, -0.083];
 const CENTER_DESKTOP_NO_LEGEND_FULLSCREEN = [51.534, -0.06];
 const CENTER_DESKTOP_NO_LEGEND = [51.548, -0.06];
 const CENTER_MOBILE_FULLSCREEN = [51.538, -0.059928];
 const CENTER_MOBILE = [51.549, -0.059928];
-const DEFAULT_ZOOM_DESKTOP = 13;
-const DEFAULT_ZOOM_MOBILE = 11;
+const DEFAULT_ZOOM_DESKTOP = 6;
+const DEFAULT_ZOOM_MOBILE = 5;
 // const MAP_BOUNDS = [
 //   [51.491112, -0.275464],
 //   [51.607351, 0.096129]
@@ -45,7 +45,7 @@ const TILE_LAYER_OPTIONS_OS = {
   opacity: 1,
   attribution:
     'Map data &copy; Crown copyright and database rights 2021 <a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey</a> 100019635.' ,
-  maxZoom: 19,
+  maxZoom: 12,
   accessToken: OS_RASTER_API_KEY
 };
 
