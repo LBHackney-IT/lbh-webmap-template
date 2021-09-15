@@ -161,14 +161,8 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
-      // Transform coordinates.
-  // transformCoords(arr) {
-  //   return proj4('EPSG:27700', 'EPSG:4326', arr).reverse();
-  // }
-
   
   createMap() {
-
     // Setup the EPSG:27700 (British National Grid) projection.
     var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
       resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
@@ -187,8 +181,6 @@ class Map {
       zoom: DEFAULT_ZOOM_DESKTOP,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
-      // center: this.transformCoords([ 337297, 503695 ]),
-      // zoom: 7
     });
 
     this.map.setMaxBounds(MAP_BOUNDS);
@@ -283,42 +275,43 @@ class Map {
   }
 
   addBaseLayer() {
-    if (this.mapConfig.baseStyle == "streets") {
-      this.OSMBase = L.tileLayer(
-        `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS_MAPBOX
-      );
-    } else if (this.mapConfig.baseStyle == "OSoutdoor") {
+    if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.OSMBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
       this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Light_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
       this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
-    } else if (this.mapConfig.baseStyle == "light") {
-      this.OSMBase = L.tileLayer(
-        `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS_MAPBOX
-      );
-    } else if (this.mapConfig.baseStyle == "dark") {
-      this.OSMBase = L.tileLayer(
-        MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.dark" })
-      );
-    } else {
-      this.OSMBase = L.tileLayer(
-        MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.streets" })
-      );
     }
+    // } else if (this.mapConfig.baseStyle == "light") {
+    //   this.OSMBase = L.tileLayer(
+    //     `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
+    //     TILE_LAYER_OPTIONS_MAPBOX
+    //   );
+    // } else if (this.mapConfig.baseStyle == "dark") {
+    //   this.OSMBase = L.tileLayer(
+    //     MAPBOX_TILES_URL,
+    //     Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.dark" })
+    //   );
+    // } else if (this.mapConfig.baseStyle == "streets") {
+    //   this.OSMBase = L.tileLayer(
+    //     `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
+    //     TILE_LAYER_OPTIONS_MAPBOX
+    //   );
+    // }else {
+    //   this.OSMBase = L.tileLayer(
+    //     MAPBOX_TILES_URL,
+    //     Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.streets" })
+    //   );
+    // }
     //limit zoom for OSM if mastermap is shown
     if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
       this.OSMBase.maxZoom = 17;
