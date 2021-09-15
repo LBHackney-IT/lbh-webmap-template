@@ -9,6 +9,7 @@
   "showFirstLayerOnLoad": true,
   "showLegend": true,
   "showFullScreenButton": true,
+  "zoomToMasterMap": true,
   "controlsText":{
     "showLegendText": "Show list of constraints",
     "hideLegendText": "Hide list of constraints"
@@ -20,43 +21,19 @@
       "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "green",
-        "icon": "fas fa-square"
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "darkgreen",
-        "opacity": 0.1,
-        "fillColor": "darkgreen",
-        "fillOpacity": 0.30,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "ca_name",
-        "afterTitle": "Conservation area",
-        "afterFields": "<a href='https://hackney.gov.uk/conservation-areas' target='blank'>Read more about conservation areas in Hackney</a>",
-        "fields": []
-      }
-    },
-    {
-      "title": "Conservation Areas",
-      "geoserverLayerName": "planning:conservation_area",
-      "highlightFeatureOnHover": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "red",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#d43e2a",
+        "strokeColor": "#a23336",
         "opacity": 1,
-        "fillColor": "#d43e2a",
-        "fillOpacity": 0.60,
-        "layerLineDash": "",
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
         "weight": 1
       },
       "popup": {
@@ -73,6 +50,150 @@
         ]
       }
     },
+    {
+      "title": "Locally listed buildings",
+      "geoserverLayerName": "planning:locally_listed_building",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkred",
+        "opacity": 1,
+        "fillColor": "darkred",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Description",
+            "name": "description"
+          },
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Statutory listed buildings",
+      "geoserverLayerName": "planning:statutory_listed_building",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "mediumslateblue",
+        "opacity": 1,
+        "fillColor": "mediumslateblue",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          },
+          {
+            "label": "Grade",
+            "name": "grade"
+          },
+          {
+            "label": "Typology",
+            "name": "typology"
+          },
+          {
+            "label": "Date first listed",
+            "name": "listed_date"
+          },
+          {
+            "label": "Date if most recent amendment",
+            "name": "amended_date"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tree preservation order",
+      "geoserverLayerName": "planning:tree_preservation_order_point",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-tree",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tree preservation order",
+      "geoserverLayerName": "planning:tree_preservation_order_area",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-square",
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.20,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
+          }
+        ]
+      }
+    },   
     {
       "title": "A4D-Light Ind. to Resid.",
       "geoserverLayerName": "planning:a4d_light_industrial_to_residential",

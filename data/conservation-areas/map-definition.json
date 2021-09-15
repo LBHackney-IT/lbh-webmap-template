@@ -12,18 +12,20 @@
       "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "icon": "rectangle-landscape"
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
-        "styleName": "random polygons",
+        "styleName": "default",
         "stroke": true,
-        "strokeColor": "grey",
-        "opacity": 0,
-        "fillColor": "",
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
         "fillOpacity": 0.50,
-        "layerLineDash": "",
-        "weight": 1.5
+        "layerLineDash":"",
+        "weight": 1
       },
       "popup": {
         "title": "ca_name",
