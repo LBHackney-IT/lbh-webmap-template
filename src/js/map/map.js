@@ -1,5 +1,6 @@
 
 import L from "leaflet";
+import "proj4leaflet";
 import {
   isMobile as isMobileFn,
   mobileDesktopSwitch
@@ -160,21 +161,34 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
+      // Transform coordinates.
+  // transformCoords(arr) {
+  //   return proj4('EPSG:27700', 'EPSG:4326', arr).reverse();
+  // }
 
   
   createMap() {
+
+    // Setup the EPSG:27700 (British National Grid) projection.
+    var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+      resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+      origin: [ -238375.0, 1376256.0 ]
+    });
 
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
     this.map = L.map("map", {
+      crs: crs,
       zoomControl: false,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      //zoom: DEFAULT_ZOOM_DESKTOP,
+      zoom: DEFAULT_ZOOM_DESKTOP,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
+      // center: this.transformCoords([ 337297, 503695 ]),
+      // zoom: 7
     });
 
     this.map.setMaxBounds(MAP_BOUNDS);
@@ -276,7 +290,7 @@ class Map {
       );
     } else if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
