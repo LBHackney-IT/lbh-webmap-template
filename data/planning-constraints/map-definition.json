@@ -134,32 +134,6 @@
     },
     {
       "title": "Tree preservation order",
-      "geoserverLayerName": "planning:tree_preservation_order_point",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fa-tree",
-        "markerColor": "green"
-      },
-      "popup": {
-        "title": "species",
-        "fields": [
-          {
-            "label": "TPO order number",
-            "name": "tpo_order_number"
-          },
-          {
-            "label": "Location",
-            "name": "full_address"
-          },
-          {
-            "label": "",
-            "name": "now_in_ca"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Tree preservation order",
       "geoserverLayerName": "planning:tree_preservation_order_area",
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -520,6 +494,32 @@
           }
         ],
         "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Tree preservation order",
+      "geoserverLayerName": "planning:tree_preservation_order_point",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
+          }
+        ]
       }
     }
   ]
