@@ -502,7 +502,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "green"
+        "markerColor": "darkgreen"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#728224",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "title": "species",
