@@ -8,7 +8,7 @@
   "showFullScreenButton": true,
   "showLegend": true,
   "showGeoServerMetadata": false,
-  "baseStyle": "light",
+  "baseStyle": "OSlight",
   "personas": [
     {
       "id": "employment",

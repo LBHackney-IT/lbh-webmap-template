@@ -358,7 +358,7 @@ class DataLayers {
         //create clusters
         const markers = L.markerClusterGroup({
           maxClusterRadius: 60,
-          disableClusteringAtZoom: 18,
+          disableClusteringAtZoom: 12,
           spiderfyOnMaxZoom: false,
           showCoverageOnHover: false
         });
