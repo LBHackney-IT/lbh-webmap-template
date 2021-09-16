@@ -48,8 +48,7 @@ class Map {
     this.mapConfig = null;
     this.hackneyMask = null;
     this.hackneyBoundary = null;
-    this.masterMapLayer = null;
-    this.OSMBase = null;
+    this.mapBase = null;
     this.hasPersonas = false;
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
@@ -132,11 +131,9 @@ class Map {
   clear() {
     this.map.eachLayer(layer => {
       if (
-        layer !== this.OSMBase &&
+        layer !== this.mapBase &&
         layer !== this.hackneyMask &&
-        layer !== this.hackneyBoundary &&
-        layer !== this.masterMapLayer &&
-        layer !== this.masterMapLayerBW
+        layer !== this.hackneyBoundary
       ) {
         this.map.removeLayer(layer);
       }
@@ -204,14 +201,6 @@ class Map {
 
     this.addBaseLayer();
 
-    if (this.mapConfig.zoomToMasterMap) {
-      this.addMasterMapLayer();
-    }
-
-    if (this.mapConfig.zoomToMasterMapBW) {
-      this.addMasterMapLayerBW();
-    }
-
     if (this.mapConfig.showHackneyMask) {
       this.addHackneyMaskLayer();
     }
@@ -247,76 +236,31 @@ class Map {
 
   }
 
-  addMasterMapLayer() {
-    this.masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
-      layers: "osmm:OSMM_outdoor_leaflet",
-      format: "image/png",
-      tiled: true,
-      transparent: true,
-      minZoom: 18,
-      maxZoom: 20,
-      opacity: 1
-    });
-    this.map.addLayer(this.masterMapLayer);
-  }
-
-
-  addMasterMapLayerBW() {
-    this.masterMapLayerBW = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
-      layers: "osmm:OSMM_blackwhite_leaflet",
-      format: "image/png",
-      tiled: true,
-      transparent: true,
-      minZoom: 18,
-      maxZoom: 20,
-      opacity: 1
-    });
-    this.map.addLayer(this.masterMapLayerBW);
-  }
 
   addBaseLayer() {
     if (this.mapConfig.baseStyle == "OSoutdoor") {
-      this.OSMBase = L.tileLayer(
+      this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
-      this.OSMBase = L.tileLayer(
+      this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Light_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
-      this.OSMBase = L.tileLayer(
+      this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     }
-    // } else if (this.mapConfig.baseStyle == "light") {
-    //   this.OSMBase = L.tileLayer(
-    //     `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-    //     TILE_LAYER_OPTIONS_MAPBOX
-    //   );
-    // } else if (this.mapConfig.baseStyle == "dark") {
-    //   this.OSMBase = L.tileLayer(
-    //     MAPBOX_TILES_URL,
-    //     Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.dark" })
-    //   );
-    // } else if (this.mapConfig.baseStyle == "streets") {
-    //   this.OSMBase = L.tileLayer(
-    //     `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-    //     TILE_LAYER_OPTIONS_MAPBOX
-    //   );
-    // }else {
-    //   this.OSMBase = L.tileLayer(
-    //     MAPBOX_TILES_URL,
-    //     Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.streets" })
-    //   );
+    
+    //limit zoom for OSM if mastermap is shown 
+    //TODO: set a max zoom in zoomToMasterMap is false
+    // if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
+    //   this.mapBase.maxZoom = 17;
     // }
-    //limit zoom for OSM if mastermap is shown
-    if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
-      this.OSMBase.maxZoom = 17;
-    }
-    this.map.addLayer(this.OSMBase);
+    this.map.addLayer(this.mapBase);
   }
 
   addHackneyMaskLayer() {
