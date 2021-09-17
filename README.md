@@ -54,8 +54,8 @@ The options for the data file are as follows:
 | `showGeoServerMetadata` | Boolean | optional | If `true` the code will try to read the metadata (from `metadata.public_metadata`) via geoserver and add it to the infoBox that appears when you click on "About the data of this map" on desktop or on the information icon on mobile. This is a view on Earthlight metadata. This includes the name of the layer, the abstract, source and last update date of each layer of the map. |
 | `about` | String | optional | If `showGeoServerMetadata` is set to false, `about` can be used to populate the text in the infoBox described above. |
 | `aboutTitle` | String | optional | `aboutTitle` can be used to populate the title of the infoBox described above (e.g: About the data/About the map) |
-| `baseStyle` | String | optional | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>`streets`: Mapbox street is the closest style to Google. Amended to remove commercial points of interest at small scale.<br>`light`: Mapbox light grey style.<br>`dark`: Mapbox black style<br>any other value, empty or omitted: the classical beige style we used for the initial leaflet maps |
-| `zoomToMasterMap` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap outdoor style. |
+| `baseStyle` | String | optional | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>We removed the MapBox option in Sept 2021 and are now only using British National Grid as the map CRS.|
+| `zoomToMasterMap` | Boolean | optional | This is currently not is use and will be reimplemeted soon.|
 | `zoomToMasterMapBW` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap black and white style. |
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |

@@ -20,10 +20,6 @@
           {
             "label": "Number of requests",
             "name": "number_of_requests"
-          },
-          {
-            "label": "Notes",
-            "name": "notes"
           }
         ]
       }

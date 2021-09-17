@@ -1,6 +1,7 @@
 
 import L from "leaflet";
 import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy"
+import "proj4leaflet";
 import {
   isMobile as isMobileFn,
   mobileDesktopSwitch
@@ -47,8 +48,7 @@ class Map {
     this.mapConfig = null;
     this.hackneyMask = null;
     this.hackneyBoundary = null;
-    this.masterMapLayer = null;
-    this.OSMBase = null;
+    this.mapBase = null;
     this.hasPersonas = false;
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
@@ -186,11 +186,9 @@ class Map {
   clear() {
     this.map.eachLayer(layer => {
       if (
-        layer !== this.OSMBase &&
+        layer !== this.mapBase &&
         layer !== this.hackneyMask &&
-        layer !== this.hackneyBoundary &&
-        layer !== this.masterMapLayer &&
-        layer !== this.masterMapLayerBW
+        layer !== this.hackneyBoundary
       ) {
         this.map.removeLayer(layer);
       }
@@ -215,18 +213,23 @@ class Map {
   }
 
   
-
-  
   createMap() {
+    // Setup the EPSG:27700 (British National Grid) projection.
+    var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+      resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+      origin: [ -238375.0, 1376256.0 ]
+    });
 
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
     this.map = L.map("map", {
+      crs: crs,
       zoomControl: false,
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
+      zoom: DEFAULT_ZOOM_DESKTOP,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
     });
@@ -245,14 +248,6 @@ class Map {
     
 
     this.addBaseLayer();
-
-    if (this.mapConfig.zoomToMasterMap) {
-      this.addMasterMapLayer();
-    }
-
-    if (this.mapConfig.zoomToMasterMapBW) {
-      this.addMasterMapLayerBW();
-    }
 
     if (this.mapConfig.showHackneyMask) {
       this.addHackneyMaskLayer();
@@ -298,74 +293,31 @@ class Map {
     new Metadata(this).loadMetadata();
   }
 
-  addMasterMapLayer() {
-    this.masterMapLayer = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
-      layers: "osmm:OSMM_outdoor_leaflet",
-      format: "image/png",
-      tiled: true,
-      transparent: true,
-      minZoom: 18,
-      maxZoom: 20,
-      opacity: 1
-    });
-    this.map.addLayer(this.masterMapLayer);
-  }
-
-  addMasterMapLayerBW() {
-    this.masterMapLayerBW = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
-      layers: "osmm:OSMM_blackwhite_leaflet",
-      format: "image/png",
-      tiled: true,
-      transparent: true,
-      minZoom: 18,
-      maxZoom: 20,
-      opacity: 1
-    });
-    this.map.addLayer(this.masterMapLayerBW);
-  }
 
   addBaseLayer() {
-    if (this.mapConfig.baseStyle == "streets") {
-      this.OSMBase = L.tileLayer(
-        `https://api.mapbox.com/styles/v1/hackneygis/ck7ounc2t0cg41imjb3j53dp8/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS_MAPBOX
-      );
-    } else if (this.mapConfig.baseStyle == "OSoutdoor") {
-      this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+    if (this.mapConfig.baseStyle == "OSoutdoor") {
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
-      this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Light_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
-      this.OSMBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
-    } else if (this.mapConfig.baseStyle == "light") {
-      this.OSMBase = L.tileLayer(
-        `https://api.mapbox.com/styles/v1/hackneygis/cj8vdhus57vpi2spshe68ho4m/tiles/256/{z}/{x}/{y}?access_token=${MAPBOX_ACCESS_KEY}`,
-        TILE_LAYER_OPTIONS_MAPBOX
-      );
-    } else if (this.mapConfig.baseStyle == "dark") {
-      this.OSMBase = L.tileLayer(
-        MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.dark" })
-      );
-    } else {
-      this.OSMBase = L.tileLayer(
-        MAPBOX_TILES_URL,
-        Object.assign(TILE_LAYER_OPTIONS_MAPBOX, { id: "mapbox.streets" })
-      );
     }
-    //limit zoom for OSM if mastermap is shown
-    if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
-      this.OSMBase.maxZoom = 17;
-    }
-    this.map.addLayer(this.OSMBase);
+    
+    //limit zoom for OSM if mastermap is shown 
+    //TODO: set a max zoom in zoomToMasterMap is false
+    // if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
+    //   this.mapBase.maxZoom = 17;
+    // }
+    this.map.addLayer(this.mapBase);
   }
 
   addHackneyMaskLayer() {
