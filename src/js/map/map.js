@@ -1,5 +1,6 @@
 
 import L from "leaflet";
+import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy"
 import "proj4leaflet";
 import {
   isMobile as isMobileFn,
@@ -18,7 +19,6 @@ import {
   CENTER_DESKTOP_NO_LEGEND,
   CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,
   CENTER_MOBILE,
-  //CENTER_MOBILE_FULLSCREEN,
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
@@ -54,12 +54,13 @@ class Map {
     this.errorNoLocation = GENERIC_GEOLOCATION_ERROR;
     this.controls = null;
     this.isEmbed = false;
-    //this.centerDesktop = null;
     this.centerDesktop = [];
     this.centerMobile = [];
     this.zoom =null;
     this.zoom_mobile=null;
     this.isFullScreen = false;
+    this.uprn = null;
+    this.marker = null;
   }
 
   init() {
@@ -81,51 +82,105 @@ class Map {
           this.mapConfig.errorNoLocation || this.errorNoLocation;
           
         //Save the value of the parameters (if any) in the variables
+        this.uprn = new URL(location.href).searchParams.get("uprn");
         let latlonString = new URL(location.href).searchParams.get("latlon");
         let latlon= null;
-        if (latlonString){
-          latlon = latlonString.split(",");
-        }
+        
+        //first get the zoom from the URL
         let zoomParam = new URL(location.href).searchParams.get("zoom");
         //Convert zoom parameter to Int
         let zoomInt = parseInt(zoomParam);
         //If there is a zoom parameter in url, this is taken and we create the zoom on mobile from the parameter (-2). If not, default zoom desktop value will be taken. 
         zoomParam ? (this.zoom = zoomInt,this.zoom_mobile = zoomInt - 2) : (this.zoom = DEFAULT_ZOOM_DESKTOP,this.zoom_mobile = DEFAULT_ZOOM_MOBILE)
-        
-        if (this.mapConfig.showLegend) {
-          if(this.isFullScreen){
-            //this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN;
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
-          } else{
-            //this.centerDesktop = CENTER_DESKTOP_LEGEND;
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND,this.centerMobile=CENTER_MOBILE);
 
-          }
-        } else {
-          if(this.isFullScreen){
-            //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN;
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
+        //If there is an uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
+        if (this.uprn){
+          fetch(ADDRESSES_PROXY_PROD+"?format=detailed&uprn="+this.uprn, {
+            method: "get"
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log (data);
+            let latitudeUPRN = data.data.data.address[0].latitude;
+            let longitudeUPRN = data.data.data.address[0].longitude;
+            let singleLineAddress = data.data.data.address[0].singleLineAddress;
+            let usage = data.data.data.address[0].usagePrimary;
+            let ward = data.data.data.address[0].ward;
 
-          }else{
-            //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
-            latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND,this.centerMobile=CENTER_MOBILE);
+            //TODO Change the setView for replacing the center of the map when creating the map 
+            let latlon = [latitudeUPRN,longitudeUPRN];
+            this.setViewFromLatlon(latlon);
+            this.createMap();
+            // if (this.mapConfig.showLegend) {
+            //   this.controls = new Controls(this);
+            //   this.controls.init();
+            // }
+            // new DataLayers(this).loadLayers();
+            // new Metadata(this).loadMetadata();
 
-          }
+            this.popUpText = "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+            // this.map.setView([latitudeUPRN,longitudeUPRN], this.zoom);
+            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+              icon: L.AwesomeMarkers.icon({
+                icon: 'fa-building',
+                prefix: "fa",
+                markerColor: 'red',
+                spin: false
+              }),
+              alt: 'address'
+            })
+            .bindPopup(this.popUpText);
+            this.marker.addTo(this.map);
+            this.marker.openPopup();
+            
+          })
+          .catch(error => {
+            console.log(error);
+            this.error.innerHTML = "There was a problem retrieving the UPRN. Please try again.";
+          });
         }
-        this.createMap();
-        if (this.mapConfig.showLegend) {
-          this.controls = new Controls(this);
-          this.controls.init();
+        //if no UPRN, get the lat/lon from the URL
+        else if (latlonString){
+          latlon = latlonString.split(",");
+          this.setViewFromLatlon(latlon);
+          this.createMap();
+          // if (this.mapConfig.showLegend) {
+          //   this.controls = new Controls(this);
+          //   this.controls.init();
+          // }
+          // new DataLayers(this).loadLayers();
+          // new Metadata(this).loadMetadata();
         }
-        new DataLayers(this).loadLayers();
-        new Metadata(this).loadMetadata();
+        else {
+          this.setViewFromLatlon(null);
+          this.createMap();
+        }
       })
       .catch(error => {
         console.log(error);
       });
-      // if (document.getElementById("fullscreen_container")){
-      //   this.isFullScreen = true;
-      // }
+  }
+
+  setViewFromLatlon(latlon) {
+    if (this.mapConfig.showLegend) {
+      if(this.isFullScreen){
+        //this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN;
+        latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
+      } else{
+        //this.centerDesktop = CENTER_DESKTOP_LEGEND;
+        latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND,this.centerMobile=CENTER_MOBILE);
+
+      }
+    } else {
+      if(this.isFullScreen){
+        //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN;
+        latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
+
+      }else{
+        //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
+        latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND,this.centerMobile=CENTER_MOBILE);
+      }
+    }
   }
 
   clear() {
@@ -139,7 +194,6 @@ class Map {
       }
     });
 
-    //this.setZoom();
     if (this.hasPersonas) {
       const activePersonas = document.getElementsByClassName(
         PERSONA_ACTIVE_CLASS
@@ -179,22 +233,16 @@ class Map {
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
     });
-
     this.map.setMaxBounds(MAP_BOUNDS);
-
     if (this.isFullScreen){
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE),
         () => this.map.setView(this.centerMobile, this.zoom_mobile),
         () => this.map.setView(this.centerDesktop, this.zoom)
-        // () => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     } else{
       mobileDesktopSwitch(
-        //() => this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE),
         () => this.map.setView(this.centerMobile, this.zoom_mobile),
         () => this.map.setView(this.centerDesktop, this.zoom)
-        //() => this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP)
       );
     }
     
@@ -234,6 +282,15 @@ class Map {
       this.addFullScreenButton();
     }
 
+    //Add show and hide legend controls
+    if (this.mapConfig.showLegend) {
+      this.controls = new Controls(this);
+      this.controls.init();
+    }
+    //Load the layers
+    new DataLayers(this).loadLayers();
+    //Load the info and metadata
+    new Metadata(this).loadMetadata();
   }
 
 
@@ -304,14 +361,11 @@ class Map {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
           if (this.isFullScreen){
-            //this.map.setView(CENTER_MOBILE_FULLSCREEN, DEFAULT_ZOOM_MOBILE);
             this.map.setView(this.centerMobile, this.zoom_mobile);
           } else {
-            //this.map.setView(CENTER_MOBILE, DEFAULT_ZOOM_MOBILE);
             this.map.setView(this.centerMobile, this.zoom_mobile);
           } 
         } else {
-           //this.map.setView(this.centerDesktop, DEFAULT_ZOOM_DESKTOP);
            this.map.setView(this.centerDesktop, this.zoom);
         }
       },
@@ -324,20 +378,18 @@ class Map {
     L.easyButton(
       "fa-expand",
       () => {
+        //Get the URL parameters and open a new fullscreen map including the parameters
+        const queryStringFromURL = window.location.search;
         // Open a new page
-        console.log(this.isFullScreen);
-        console.log(window.location.pathname);
         window.open(
-          'fullscreen',
-          //this.isFullScreen,
-          //window.location.pathname,
-          //'http://www.google.com',
+          'fullscreen' + queryStringFromURL,
           '_blank'
         );
       },
       "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
+
   }
 
   addMarkupToMap(markup, id, className) {

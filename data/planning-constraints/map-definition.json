@@ -1,0 +1,536 @@
+{
+  "title": "Planning Constraints",
+  "showGeoServerMetadata": false,
+  "baseStyle": "OSlight",
+  "about": "This map shows the planning constraints in Hackney.  Click on the legend to turn on/off the different constraints. Click on an constraint category on the map to see the details.",
+  "aboutTitle": "About the map",
+  "showHackneyBoundary": true,
+  "showLayersOnLoad": true,
+  "showFirstLayerOnLoad": true,
+  "showLegend": true,
+  "showFullScreenButton": true,
+  "zoomToMasterMap": true,
+  "controlsText":{
+    "showLegendText": "Show list of constraints",
+    "hideLegendText": "Hide list of constraints"
+  },
+  "layers": [
+    {
+      "title": "Conservation Areas",
+      "geoserverLayerName": "planning:conservation_area",
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "title": "ca_name",
+        "fields": [
+          {
+            "label": "Designation year",
+            "name": "designation"
+          },
+          {
+            "label": "",
+            "name": "notes"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Locally listed buildings",
+      "geoserverLayerName": "planning:locally_listed_building",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkred",
+        "opacity": 1,
+        "fillColor": "darkred",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Description",
+            "name": "description"
+          },
+          {
+            "label": "Location",
+            "name": "address"
+          },
+          {
+            "label": "",
+            "name": "link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Statutory listed buildings",
+      "geoserverLayerName": "planning:statutory_listed_building",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "mediumslateblue",
+        "opacity": 1,
+        "fillColor": "mediumslateblue",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          },
+          {
+            "label": "Grade",
+            "name": "grade"
+          },
+          {
+            "label": "Typology",
+            "name": "typology"
+          },
+          {
+            "label": "Date first listed",
+            "name": "listed_date"
+          },
+          {
+            "label": "Date if most recent amendment",
+            "name": "amended_date"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Tree preservation order",
+      "geoserverLayerName": "planning:tree_preservation_order_area",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-square",
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.20,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
+          }
+        ]
+      }
+    },   
+    {
+      "title": "A4D-Light Ind. to Resid.",
+      "geoserverLayerName": "planning:a4d_light_industrial_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "gray",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a3a3a3",
+        "opacity": 1,
+        "fillColor": "#a3a3a3",
+        "fillOpacity": 0.15,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Stor./Dis. to Resid.",
+      "geoserverLayerName": "planning:a4d_storage_dist_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "thistle",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#dbb7ff",
+        "opacity": 1,
+        "fillColor": "#dbb7ff",
+        "fillOpacity": 0.15,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "Made",
+            "name": "made"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Office to Resid.",
+      "geoserverLayerName": "planning:a4d_office_to_residential",
+      "sortOrder": 1,
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Flex. Town C. Use",
+      "geoserverLayerName": "planning:a4d_flexible_town_centres_uses",
+      "sortOrder": 4,
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "green",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#70ad26",
+        "opacity": 1,
+        "fillColor": "#70ad26",
+        "fillOpacity": 0.20,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Retail to Resid.",
+      "geoserverLayerName": "planning:a4d_retail_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "orange",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "site_name"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Laund. to Resid.",
+      "geoserverLayerName": "planning:a4d_laund_to_residential",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "Site",
+            "name": "address"
+          },
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-De Beauvoir C.Area",
+      "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "cadetblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "cadetblue",
+        "opacity": 1,
+        "fillColor": "cadetblue",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-Shacklewell Gr CA",
+      "geoserverLayerName": "planning:a4d_shacklewell_green_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#c7c704",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.50,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-St Marks C.Area",
+      "geoserverLayerName": "planning:a4d_st_marks_ca",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 9,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "purple",
+        "opacity": 1,
+        "fillColor": "purple",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "A4D-The Chesham Arms",
+      "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
+      "highlightFeatureOnHover": true,
+      "sortOrder": 10,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "black",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 0.30,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "popup": {
+        "title": "designation",
+        "fields": [
+          {
+            "label": "With effect from",
+            "name": "wef"
+          }
+        ],
+        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
+      }
+    },
+    {
+      "title": "Tree preservation order",
+      "geoserverLayerName": "planning:tree_preservation_order_point",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "darkgreen"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#728224",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "species",
+        "fields": [
+          {
+            "label": "TPO order number",
+            "name": "tpo_order_number"
+          },
+          {
+            "label": "Location",
+            "name": "full_address"
+          },
+          {
+            "label": "",
+            "name": "now_in_ca"
+          }
+        ]
+      }
+    }
+  ]
+}
