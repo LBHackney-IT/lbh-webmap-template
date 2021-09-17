@@ -100,7 +100,7 @@ class Map {
           })
           .then(response => response.json())
           .then(data => {
-            console.log (data);
+            //console.log (data);
             let latitudeUPRN = data.data.data.address[0].latitude;
             let longitudeUPRN = data.data.data.address[0].longitude;
             let singleLineAddress = data.data.data.address[0].singleLineAddress;
