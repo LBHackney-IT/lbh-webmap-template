@@ -3,7 +3,7 @@
   "baseStyle": "OSoutdoor",
   "showHackneyBoundary": true,
   "showAddressSearch": true,
-   "layers": [
+  "layers": [
     {
       "title": "Locally listed buildings",
       "geoserverLayerName": "planning:locally_listed_building",
