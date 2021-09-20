@@ -4,12 +4,14 @@
   "baseStyle": "OSlight",
   "about": "This map shows the planning constraints in Hackney.  Click on the legend to turn on/off the different constraints. Click on an constraint category on the map to see the details.",
   "aboutTitle": "About the map",
+  "showAddressSearch": {
+    "addressSearchExpanded": "closed",
+    "addressSearchLabel": "Stay on this map and navigate to another address"
+  },
   "showHackneyBoundary": true,
   "showLayersOnLoad": true,
-  "showFirstLayerOnLoad": true,
   "showLegend": true,
   "showFullScreenButton": true,
-  "zoomToMasterMap": true,
   "controlsText":{
     "showLegendText": "Show list of constraints",
     "hideLegendText": "Hide list of constraints"

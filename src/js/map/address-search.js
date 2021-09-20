@@ -39,6 +39,9 @@ class addressSearch {
     
   init() {
     this.showAddressSearch = this.mapConfig.showAddressSearch;
+    this.addressSearchLabel = this.showAddressSearch.addressSearchLabel || 'Go to an address';
+    this.addressSearchExpanded = this.showAddressSearch.addressSearchExpanded || 'open';
+    this.addressSearchClue = this.showAddressSearch.addressSearchClue || 'Enter a Hackney postcode or address';
     this.createMarkup();
     this.bindSearchButton();
     this.bindKeyUp();
@@ -84,9 +87,9 @@ class addressSearch {
   }
 
   createMarkup(){
-    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" open>
+    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.addressSearchExpanded}>
       <summary class="govuk-details__summary">
-        <span class="govuk-details__summary-text">Go to an address</span>
+        <span class="govuk-details__summary-text">${this.addressSearchLabel}</span>
       </summary>
     <div class="govuk-details__text">
       <div class="govuk-form-group lbh-form-group">
@@ -97,7 +100,7 @@ class addressSearch {
           <input type="Search"
               class="govuk-input  lbh-input govuk-input--width-10"
             id="postcode" 
-            placeholder="Enter a Hackney address or postcode"
+            placeholder="${this.addressSearchClue}"
           />
           <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
             Find address
