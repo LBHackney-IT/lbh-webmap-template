@@ -1,6 +1,8 @@
 import L, { Point } from "leaflet";
 import { pointToLayer } from "./metadata";
-import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
+import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS} from "./consts";
+import HACKNEY_GEOSERVER_EXTERNAL_WFS from "../helpers/geoserverExternalWFS.js";
+import HACKNEY_GEOSERVER_INTERNAL_WFS from "../helpers/geoserverInternalWFS.js";
 import Personas from "./personas";
 import Filters from "./filters";
 import Search from "./search";
@@ -442,7 +444,21 @@ class DataLayers {
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
       //Live
-      const url = HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName;
+      let hostname = window.location.hostname;
+      console.log("the hostname is: " + hostname);
+
+      let url =null;
+     //let url = HACKNEY_GEOSERVER_EXTERNAL_WFS + configLayer.geoserverLayerName;
+
+     if (hostname === "localhost"){
+      url = HACKNEY_GEOSERVER_INTERNAL_WFS + configLayer.geoserverLayerName;
+     } else {
+      url = HACKNEY_GEOSERVER_EXTERNAL_WFS + configLayer.geoserverLayerName;
+     }
+
+      //const url = HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName;
+      console.log("the url is: "+url);
+
 
       fetch(url, {
         method: "get"
