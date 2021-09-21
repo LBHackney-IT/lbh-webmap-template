@@ -4,9 +4,6 @@ node_modules
 src/js/helpers/mapbox.js
 src/js/helpers/osdata.js
 src/js/helpers/addressesProxy.js
-src/js/helpers/geoserverExternalWFS.js
-src/js/helpers/geoserverInternalWFS.js
-src/js/helpers/geoserverExternalWMS.js
-src/js/helpers/geoserverInternalWMS.js
+src/js/helpers/hackneyGeoserver.js
 .npmrc
 web.config
