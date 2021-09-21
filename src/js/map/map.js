@@ -1,10 +1,7 @@
 
 import L from "leaflet";
 import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
-import HACKNEY_GEOSERVER_EXTERNAL_WMS from "../helpers/geoserverExternalWMS";
-import HACKNEY_GEOSERVER_INTERNAL_WMS from "../helpers/geoserverInternalWMS";
-import HACKNEY_GEOSERVER_EXTERNAL_WFS from "../helpers/geoserverExternalWFS.js";
-import HACKNEY_GEOSERVER_INTERNAL_WFS from "../helpers/geoserverInternalWFS.js";
+import {HACKNEY_GEOSERVER_EXTERNAL_WMS, HACKNEY_GEOSERVER_INTERNAL_WMS, HACKNEY_GEOSERVER_EXTERNAL_WFS, HACKNEY_GEOSERVER_INTERNAL_WFS} from "../helpers/hackneyGeoserver";
 import "proj4leaflet";
 import {
   isMobile as isMobileFn,
@@ -62,8 +59,8 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
-    this.HACKNEY_GEOSERVER_WFS=null;
-    this.HACKNEY_GEOSERVER_WMS=null;
+    this.geoserver_wfs_url=null;
+    this.geoserver_wms_url=null;
   }
 
   init() {
@@ -280,7 +277,7 @@ class Map {
       this.controls.init();
     }
     //Load the layers
-    new DataLayers(this).loadLayers(this.HACKNEY_GEOSERVER_WFS);
+    new DataLayers(this).loadLayers(this.geoserver_wfs_url);
     //Load the info and metadata
     new Metadata(this).loadMetadata();
   }
@@ -313,7 +310,7 @@ class Map {
   }
   
   addHackneyMaskLayer() {
-    this.hackneyMask = L.tileLayer.wms(this.HACKNEY_GEOSERVER_WMS, {
+    this.hackneyMask = L.tileLayer.wms(this.geoserver_wms_url, {
       layers: "boundaries:hackney_mask",
       transparent: true,
       tiled: true,
@@ -323,7 +320,7 @@ class Map {
   }
 
   addHackneyBoundaryLayer() {
-    this.hackneyBoundary = L.tileLayer.wms(this.HACKNEY_GEOSERVER_WMS, {
+    this.hackneyBoundary = L.tileLayer.wms(this.geoserver_wms_url, {
       layers: "boundaries:hackney",
       transparent: true,
       tiled: true,
@@ -386,14 +383,15 @@ class Map {
 
   getGeoserverURLsFromHostname(){
     let hostname = window.location.hostname;
-    if (hostname === INTERNAL_HOSTNAME){
-      this.HACKNEY_GEOSERVER_WMS = HACKNEY_GEOSERVER_INTERNAL_WMS;
-      this.HACKNEY_GEOSERVER_WFS = HACKNEY_GEOSERVER_INTERNAL_WFS;
+    if (hostname == INTERNAL_HOSTNAME){
+      this.geoserver_wms_url = HACKNEY_GEOSERVER_INTERNAL_WMS;
+      this.geoserver_wfs_url = HACKNEY_GEOSERVER_INTERNAL_WFS;
+      // this.geoserver_wms_url = HACKNEY_GEOSERVER_EXTERNAL_WMS;
+      // this.geoserver_wfs_url = HACKNEY_GEOSERVER_EXTERNAL_WFS;
     } else {
-      this.HACKNEY_GEOSERVER_WMS = HACKNEY_GEOSERVER_EXTERNAL_WMS;
-      this.HACKNEY_GEOSERVER_WFS = HACKNEY_GEOSERVER_EXTERNAL_WFS;
+      this.geoserver_wms_url = HACKNEY_GEOSERVER_EXTERNAL_WMS;
+      this.geoserver_wfs_url = HACKNEY_GEOSERVER_EXTERNAL_WFS;
     }
-
   }
 
   addMarkupToMap(markup, id, className) {
