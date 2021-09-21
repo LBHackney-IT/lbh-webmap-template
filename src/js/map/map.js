@@ -1,6 +1,10 @@
 
 import L from "leaflet";
-import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy"
+import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
+import HACKNEY_GEOSERVER_EXTERNAL_WMS from "../helpers/geoserverExternalWMS";
+import HACKNEY_GEOSERVER_INTERNAL_WMS from "../helpers/geoserverInternalWMS";
+import HACKNEY_GEOSERVER_EXTERNAL_WFS from "../helpers/geoserverExternalWFS.js";
+import HACKNEY_GEOSERVER_INTERNAL_WFS from "../helpers/geoserverInternalWFS.js";
 import "proj4leaflet";
 import {
   isMobile as isMobileFn,
@@ -22,15 +26,12 @@ import {
   DEFAULT_ZOOM_DESKTOP,
   DEFAULT_ZOOM_MOBILE,
   MAP_BOUNDS,
-  HACKNEY_GEOSERVER_WMS,
-  MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
-  TILE_LAYER_OPTIONS_MAPBOX,
   TILE_LAYER_OPTIONS_OS,
-  PERSONA_ACTIVE_CLASS
+  PERSONA_ACTIVE_CLASS,
+  INTERNAL_HOSTNAME
 } from "./consts";
-import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
 import OS_RASTER_API_KEY  from "../helpers/osdata";
 import "@fortawesome/fontawesome-pro/js/all";
 import Geolocation from "./geolocation";
@@ -61,10 +62,13 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
+    this.HACKNEY_GEOSERVER_WFS=null;
+    this.HACKNEY_GEOSERVER_WMS=null;
   }
 
   init() {
     this.getDataName();
+    this.getGeoserverURLsFromHostname();
 
     // Tell leaflet where to look for our images
     L.Icon.Default.prototype.options.imagePath = "../images/";
@@ -144,12 +148,6 @@ class Map {
           latlon = latlonString.split(",");
           this.setViewFromLatlon(latlon);
           this.createMap();
-          // if (this.mapConfig.showLegend) {
-          //   this.controls = new Controls(this);
-          //   this.controls.init();
-          // }
-          // new DataLayers(this).loadLayers();
-          // new Metadata(this).loadMetadata();
         }
         else {
           this.setViewFromLatlon(null);
@@ -164,20 +162,15 @@ class Map {
   setViewFromLatlon(latlon) {
     if (this.mapConfig.showLegend) {
       if(this.isFullScreen){
-        //this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN;
         latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
       } else{
-        //this.centerDesktop = CENTER_DESKTOP_LEGEND;
         latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_LEGEND,this.centerMobile=CENTER_MOBILE);
-
       }
     } else {
       if(this.isFullScreen){
-        //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN;
         latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND_FULLSCREEN,this.centerMobile=CENTER_MOBILE);
 
       }else{
-        //this.centerDesktop = CENTER_DESKTOP_NO_LEGEND;
         latlon ? (this.centerDesktop = latlon, this.centerMobile =latlon) : (this.centerDesktop = CENTER_DESKTOP_NO_LEGEND,this.centerMobile=CENTER_MOBILE);
       }
     }
@@ -229,7 +222,6 @@ class Map {
       maxZoom: MAX_ZOOM,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
-      zoom: DEFAULT_ZOOM_DESKTOP,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
     });
@@ -288,7 +280,7 @@ class Map {
       this.controls.init();
     }
     //Load the layers
-    new DataLayers(this).loadLayers();
+    new DataLayers(this).loadLayers(this.HACKNEY_GEOSERVER_WFS);
     //Load the info and metadata
     new Metadata(this).loadMetadata();
   }
@@ -319,9 +311,9 @@ class Map {
     // }
     this.map.addLayer(this.mapBase);
   }
-
+  
   addHackneyMaskLayer() {
-    this.hackneyMask = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
+    this.hackneyMask = L.tileLayer.wms(this.HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney_mask",
       transparent: true,
       tiled: true,
@@ -331,7 +323,7 @@ class Map {
   }
 
   addHackneyBoundaryLayer() {
-    this.hackneyBoundary = L.tileLayer.wms(HACKNEY_GEOSERVER_WMS, {
+    this.hackneyBoundary = L.tileLayer.wms(this.HACKNEY_GEOSERVER_WMS, {
       layers: "boundaries:hackney",
       transparent: true,
       tiled: true,
@@ -389,6 +381,18 @@ class Map {
       "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
+
+  }
+
+  getGeoserverURLsFromHostname(){
+    let hostname = window.location.hostname;
+    if (hostname === INTERNAL_HOSTNAME){
+      this.HACKNEY_GEOSERVER_WMS = HACKNEY_GEOSERVER_INTERNAL_WMS;
+      this.HACKNEY_GEOSERVER_WFS = HACKNEY_GEOSERVER_INTERNAL_WFS;
+    } else {
+      this.HACKNEY_GEOSERVER_WMS = HACKNEY_GEOSERVER_EXTERNAL_WMS;
+      this.HACKNEY_GEOSERVER_WFS = HACKNEY_GEOSERVER_EXTERNAL_WFS;
+    }
 
   }
 

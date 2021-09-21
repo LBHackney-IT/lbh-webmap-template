@@ -23,8 +23,11 @@ const MAP_BOUNDS = [
 const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
 const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
 
-const HACKNEY_GEOSERVER_WFS = "https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0&request=GetFeature&outputFormat=application/json&SrsName=EPSG:4326&typeName=";
-const HACKNEY_GEOSERVER_WMS = "https://map2.hackney.gov.uk/geoserver/wms";
+//Internal hostname when map2 public ip is working
+//const INTERNAL_HOSTNAME = "map3.hackney.gov.uk";
+const INTERNAL_HOSTNAME = "localhost";
+//const EXTERNAL_HOSTNAME = "map2.hackney.gov.uk";
+
 const MAPBOX_TILES_URL =
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}";
 const GENERIC_GEOLOCATION_ERROR =
@@ -98,8 +101,6 @@ export {
   MAP_BOUNDS,
   HACKNEY_BOUNDS_1,
   HACKNEY_BOUNDS_2,
-  HACKNEY_GEOSERVER_WMS,
-  HACKNEY_GEOSERVER_WFS,
   MAPBOX_TILES_URL,
   GENERIC_GEOLOCATION_ERROR,
   GENERIC_OUTSIDE_HACKNEY_ERROR,
@@ -111,6 +112,7 @@ export {
   CONTROLS_SHOW_LEGEND_TEXT,
   CONTROLS_HIDE_LEGEND_TEXT,
   CONTROLS_CLEAR_MAP_TEXT,
-  FILTER_INPUT_CLASS
+  FILTER_INPUT_CLASS, 
+  INTERNAL_HOSTNAME
 };
 
