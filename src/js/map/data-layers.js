@@ -6,7 +6,7 @@ import Filters from "./filters";
 import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
-import HACKNEY_GEOSERVER_WFS from "./map";
+
 
 class DataLayers {
   constructor(map) {
@@ -407,7 +407,7 @@ class DataLayers {
 
 
 
-  loadLayers(HACKNEY_GEOSERVER_WFS) {
+  loadLayers() {
     if (this.mapConfig.personas) {
       for (const group of this.mapConfig.personas) {
         //crate layergroup object with this new empty list of layers
@@ -437,7 +437,7 @@ class DataLayers {
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
-      const url = HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName;
+      const url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
       //Live
       fetch(url, {
         method: "get"
