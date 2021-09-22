@@ -6,7 +6,7 @@
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
-  "showHackneyBoundary": true,
+  "showHackneyBoundary": false,
   "layers": [
     {
       "title": "Sense of place",
