@@ -1,8 +1,9 @@
 
 import L from "leaflet";
 import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
-import {HACKNEY_GEOSERVER_EXTERNAL_WMS, HACKNEY_GEOSERVER_INTERNAL_WMS, HACKNEY_GEOSERVER_EXTERNAL_WFS, HACKNEY_GEOSERVER_INTERNAL_WFS} from "../helpers/hackneyGeoserver";
+// import {HACKNEY_GEOSERVER_EXTERNAL_WMS, HACKNEY_GEOSERVER_INTERNAL_WMS, HACKNEY_GEOSERVER_EXTERNAL_WFS, HACKNEY_GEOSERVER_INTERNAL_WFS} from "../helpers/hackneyGeoserver";
 import "proj4leaflet";
+import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
 import {
   isMobile as isMobileFn,
   mobileDesktopSwitch
@@ -27,7 +28,7 @@ import {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS_OS,
   PERSONA_ACTIVE_CLASS,
-  INTERNAL_HOSTNAME
+  //INTERNAL_HOSTNAME
 } from "./consts";
 import OS_RASTER_API_KEY  from "../helpers/osdata";
 import "@fortawesome/fontawesome-pro/js/all";
@@ -59,13 +60,13 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
-    this.geoserver_wfs_url=null;
-    this.geoserver_wms_url=null;
+    this.geoserver_wfs_url = getWFSurl();
+    this.geoserver_wms_url = getWMSurl();
   }
 
   init() {
     this.getDataName();
-    this.getGeoserverURLsFromHostname();
+    //this.getGeoserverURLsFromHostname();
 
     // Tell leaflet where to look for our images
     L.Icon.Default.prototype.options.imagePath = "../images/";
@@ -379,19 +380,6 @@ class Map {
       { position: "topright" }
     ).addTo(this.map);
 
-  }
-
-  getGeoserverURLsFromHostname(){
-    let hostname = window.location.hostname;
-    if (hostname == INTERNAL_HOSTNAME){
-      this.geoserver_wms_url = HACKNEY_GEOSERVER_INTERNAL_WMS;
-      this.geoserver_wfs_url = HACKNEY_GEOSERVER_INTERNAL_WFS;
-      // this.geoserver_wms_url = HACKNEY_GEOSERVER_EXTERNAL_WMS;
-      // this.geoserver_wfs_url = HACKNEY_GEOSERVER_EXTERNAL_WFS;
-    } else {
-      this.geoserver_wms_url = HACKNEY_GEOSERVER_EXTERNAL_WMS;
-      this.geoserver_wfs_url = HACKNEY_GEOSERVER_EXTERNAL_WFS;
-    }
   }
 
   addMarkupToMap(markup, id, className) {
