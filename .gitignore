@@ -4,5 +4,6 @@ node_modules
 src/js/helpers/mapbox.js
 src/js/helpers/osdata.js
 src/js/helpers/addressesProxy.js
+src/js/helpers/hackneyGeoserver.js
 .npmrc
 web.config

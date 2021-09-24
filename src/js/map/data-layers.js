@@ -1,11 +1,12 @@
 import L, { Point } from "leaflet";
 import { pointToLayer } from "./metadata";
-import { MARKER_COLORS, HACKNEY_GEOSERVER_WFS } from "./consts";
+import { MARKER_COLORS} from "./consts";
 import Personas from "./personas";
 import Filters from "./filters";
 import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
+
 
 class DataLayers {
   constructor(map) {
@@ -317,15 +318,6 @@ class DataLayers {
 
       }
 
-      // const legendEntry = `<span aria-hidden="true" class="control__active-border" style="background:${
-      //   MARKER_COLORS[markerColor]
-      // }"></span><i class="fas fa-${markerIcon}" style="color:${
-      //   MARKER_COLORS[markerColor]
-      // }"></i><span class="control__text">${layerName}</span><span id="map-layer-count-${layer.getLayerId(
-      //   layer
-      // )}" class="control__count">${count} items shown</span>`;
-      // this.overlayMaps[legendEntry] = layer;
-
       const layerPersonas = configLayer.personas;
       for (const x in this.personas) {
         if (layerPersonas.includes(this.personas[x].id)) {
@@ -413,6 +405,8 @@ class DataLayers {
     return this.layerControl;
   }
 
+
+
   loadLayers() {
     if (this.mapConfig.personas) {
       for (const group of this.mapConfig.personas) {
@@ -439,11 +433,12 @@ class DataLayers {
       this.showAddressSearch.init();
       //this.showAddressSearch.createMarkup();
     }
+
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
+      //Get the right geoserver WFS link using the hostname
+      const url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
       //Live
-      const url = HACKNEY_GEOSERVER_WFS + configLayer.geoserverLayerName;
-
       fetch(url, {
         method: "get"
       })
