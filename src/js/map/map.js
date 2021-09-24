@@ -97,31 +97,23 @@ class Map {
 
         //If there is an uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
         if (this.uprn){
-          fetch(ADDRESSES_PROXY_PROD+"?format=detailed&uprn="+this.uprn, {
+          fetch(this.geoserver_wfs_url+"llpg:blpu_details_test&cql_filter=uprn="+this.uprn, {
             method: "get"
           })
           .then(response => response.json())
           .then(data => {
             //console.log (data);
-            let latitudeUPRN = data.data.data.address[0].latitude;
-            let longitudeUPRN = data.data.data.address[0].longitude;
-            let singleLineAddress = data.data.data.address[0].singleLineAddress;
-            let usage = data.data.data.address[0].usagePrimary;
-            let ward = data.data.data.address[0].ward;
+            let latitudeUPRN = data.features[0].properties.latitude;
+            let longitudeUPRN = data.features[0].properties.longitude;
+            let singleLineAddress = data.features[0].properties.full_address_line;
+            let usage = data.features[0].properties.usage_primary;
+            let ward = data.features[0].properties.ward;
 
-            //TODO Change the setView for replacing the center of the map when creating the map 
             let latlon = [latitudeUPRN,longitudeUPRN];
             this.setViewFromLatlon(latlon);
             this.createMap();
-            // if (this.mapConfig.showLegend) {
-            //   this.controls = new Controls(this);
-            //   this.controls.init();
-            // }
-            // new DataLayers(this).loadLayers();
-            // new Metadata(this).loadMetadata();
-
+        
             this.popUpText = "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
-            // this.map.setView([latitudeUPRN,longitudeUPRN], this.zoom);
             this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
               icon: L.AwesomeMarkers.icon({
                 icon: 'fa-building',
