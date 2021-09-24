@@ -1,7 +1,5 @@
 
 import L from "leaflet";
-import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
-// import {HACKNEY_GEOSERVER_EXTERNAL_WMS, HACKNEY_GEOSERVER_INTERNAL_WMS, HACKNEY_GEOSERVER_EXTERNAL_WFS, HACKNEY_GEOSERVER_INTERNAL_WFS} from "../helpers/hackneyGeoserver";
 import "proj4leaflet";
 import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
 import {
@@ -28,7 +26,6 @@ import {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS_OS,
   PERSONA_ACTIVE_CLASS,
-  //INTERNAL_HOSTNAME
 } from "./consts";
 import OS_RASTER_API_KEY  from "../helpers/osdata";
 import "@fortawesome/fontawesome-pro/js/all";
@@ -60,6 +57,7 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
+    this.blpuPolygon=null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
   }
@@ -108,25 +106,36 @@ class Map {
             let singleLineAddress = data.features[0].properties.full_address_line;
             let usage = data.features[0].properties.usage_primary;
             let ward = data.features[0].properties.ward;
+            let geometryType = data.features[0].geometry.type;
 
             let latlon = [latitudeUPRN,longitudeUPRN];
             this.setViewFromLatlon(latlon);
             this.createMap();
         
-            this.popUpText = "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
-            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
-              icon: L.AwesomeMarkers.icon({
-                icon: 'fa-building',
-                prefix: "fa",
-                markerColor: 'red',
-                spin: false
-              }),
-              alt: 'address'
-            })
-            .bindPopup(this.popUpText);
-            this.marker.addTo(this.map);
-            this.marker.openPopup();
-            
+            if (geometryType == "Polygon"){
+              this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+              this.blpuPolygon = new L.GeoJSON(data, {
+                color:"red",
+                weight: 3,
+                opacity: 0.65
+              });      
+              this.blpuPolygon.addTo(this.map);
+              //this.map.fitBounds(this.blpuPolygon.getBounds());
+              } else {
+                this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+              }
+              this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+                icon: L.AwesomeMarkers.icon({
+                  icon: 'fa-building',
+                  prefix: "fa",
+                  markerColor: 'red',
+                  spin: false
+                }),
+                alt: 'address'
+              })
+              .bindPopup(this.popUpText);
+              this.marker.addTo(this.map);
+              this.marker.openPopup();
           })
           .catch(error => {
             console.log(error);
