@@ -57,7 +57,7 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
-    this.blpuPolygon=null;
+    this.blpuPolygon = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
   }
@@ -110,32 +110,43 @@ class Map {
 
             let latlon = [latitudeUPRN,longitudeUPRN];
             this.setViewFromLatlon(latlon);
+            
             this.createMap();
+            this.createMapContent();
         
             if (geometryType == "Polygon"){
               this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
               this.blpuPolygon = new L.GeoJSON(data, {
-                color:"red",
+                color:"black",
                 weight: 3,
-                opacity: 0.65
+                opacity: 0.8,
+                fillOpacity: 0
               });      
               this.blpuPolygon.addTo(this.map);
+              this.blpuPolygon.bringToFront();
+              //always keep this layer on top 
+              this.map.on("overlayadd", (event) => {
+                console.log('overlayAdd');
+                this.blpuPolygon.bringToFront();
+              });
               //this.map.fitBounds(this.blpuPolygon.getBounds());
-              } else {
-                this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
-              }
-              this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
-                icon: L.AwesomeMarkers.icon({
-                  icon: 'fa-building',
-                  prefix: "fa",
-                  markerColor: 'red',
-                  spin: false
-                }),
-                alt: 'address'
-              })
-              .bindPopup(this.popUpText);
-              this.marker.addTo(this.map);
-              this.marker.openPopup();
+            } else {
+              this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+            }
+            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+              icon: L.AwesomeMarkers.icon({
+                icon: 'fa-home-alt',
+                prefix: "fa",
+                markerColor: 'black',
+                spin: false
+              }),
+              alt: 'address'
+            })
+            .bindPopup(this.popUpText);
+            this.marker.addTo(this.map);
+            this.marker.openPopup();
+            
+            
           })
           .catch(error => {
             console.log(error);
@@ -147,10 +158,12 @@ class Map {
           latlon = latlonString.split(",");
           this.setViewFromLatlon(latlon);
           this.createMap();
+          this.createMapContent();
         }
         else {
           this.setViewFromLatlon(null);
           this.createMap();
+          this.createMapContent();
         }
       })
       .catch(error => {
@@ -236,24 +249,11 @@ class Map {
         () => this.map.setView(this.centerDesktop, this.zoom)
       );
     }
-    
-
-    this.addBaseLayer();
-
-    if (this.mapConfig.showHackneyMask) {
-      this.addHackneyMaskLayer();
-    }
-
-    if (this.mapConfig.showHackneyBoundary) {
-      this.addHackneyBoundaryLayer();
-    }
 
     // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     } 
-
-  
 
     if (this.mapConfig.showLocateButton) {
       new Geolocation(
@@ -278,11 +278,29 @@ class Map {
       this.controls = new Controls(this);
       this.controls.init();
     }
+  }
+
+  createMapContent() {
+    
+    this.addBaseLayer();
+
+    if (this.mapConfig.showHackneyMask) {
+      this.addHackneyMaskLayer();
+    }
+
+    if (this.mapConfig.showHackneyBoundary) {
+      this.addHackneyBoundaryLayer();
+    }
+    
     //Load the layers
-    new DataLayers(this).loadLayers(this.geoserver_wfs_url);
+    new DataLayers(this).loadLayers();
+
     //Load the info and metadata
     new Metadata(this).loadMetadata();
   }
+  
+
+    
 
 
   addBaseLayer() {
@@ -330,6 +348,7 @@ class Map {
     });
     this.map.addLayer(this.hackneyBoundary);
   }
+
 
   setZoom() {
     if (isMobileFn()) {
