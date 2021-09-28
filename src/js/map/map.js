@@ -10,7 +10,6 @@ import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
 import "leaflet-search";
-import "leaflet-geometryutil";
 import { GestureHandling } from "leaflet-gesture-handling";
 import {
   MAX_ZOOM,
@@ -132,22 +131,12 @@ class Map {
                 console.log('overlayAdd');
                 this.blpuPolygon.bringToFront();
               });
-              //zoom to the bounds of the blpu polygon
-              this.map.fitBounds(this.blpuPolygon.getBounds(),true);
-              //get boundsZoom in order to calculate the shift required to center the map on the polygon when there is a legend. 
-              let boundsZoom = this.map.getZoom();
-              console.log(boundsZoom);
-              if (boundsZoom == 11){
-                let currentCenter = this.map.getCenter();
-                let angleInDegrees = -90;
-                //let radiusInKm = 1;
-                let radiusInMeters = 0.4375 * 135; //pixel resolution * width of the legend in pixels
-                //let legendPixels = 270;
-                let newCenter =  L.GeometryUtil.destination(currentCenter, angleInDegrees, radiusInMeters);
-                console.log(currentCenter);
-                console.log(newCenter);
-                this.map.setView(newCenter);
-              }
+              //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
+              this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                animate: false,
+                paddingTopLeft: [270, 0]
+              });
+
                
             } else {
               this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
