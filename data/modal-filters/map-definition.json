@@ -9,7 +9,7 @@
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "Modal filter - bollards",
+      "title": "Bollards",
       "geoserverLayerName": "transport:modal_filter_bollard",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -41,7 +41,7 @@
       }
     },
     {
-      "title": "Modal filter - Gate",
+      "title": "Gate",
       "geoserverLayerName": "transport:modal_filter_gate",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -73,7 +73,7 @@
       }
     },
     {
-      "title": "Modal filter - Paved area",
+      "title": "Paved area",
       "geoserverLayerName": "transport:modal_filter_paved_area",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -105,7 +105,7 @@
       }
     },
     {
-      "title": "Modal filter - Paved area & bollards",
+      "title": "Paved area & bollards",
       "geoserverLayerName": "transport:modal_filter_paved_area_bollard",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -137,40 +137,8 @@
       }
     },
     {
-      "title": "Modal filter - Paved area & planting",
+      "title": "Paved area & planting",
       "geoserverLayerName": "transport:modal_filter_paved_area_planting",
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "icon": "fas fa-circle",
-        "markerColor": "cadetblue"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#436977",
-        "opacity": 1,
-        "fillColor": "#436977",
-        "fillOpacity": 1,
-        "layerLineDash": "",
-        "weight": 3
-      },
-      "popup": {
-        "title": "location",
-        "fields": [
-          {
-            "label": "Type",
-            "name": "type"
-          },
-          {
-            "label": "Modes that can pass",
-            "name": "modes_that_can_pass"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Modal filter - Planters",
-      "geoserverLayerName": "transport:modal_filter_planter",
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
@@ -201,7 +169,39 @@
       }
     },
     {
-      "title": "Modal filter - Planting",
+      "title": "Planters",
+      "geoserverLayerName": "transport:modal_filter_planter",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "cadetblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436977",
+        "opacity": 1,
+        "fillColor": "#436977",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Planting",
       "geoserverLayerName": "transport:modal_filter_planting",
       "pointStyle": {
         "markerType": "CircleMarker",
