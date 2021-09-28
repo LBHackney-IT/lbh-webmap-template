@@ -133,12 +133,19 @@ class Map {
                 this.blpuPolygon.bringToFront();
               });
               //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
-              if (this.mapConfig.showLegend && (! isMobileFn())){
-                console.log('hi');
-                this.map.fitBounds(this.blpuPolygon.getBounds(), {
-                  animate: false,
-                  paddingTopLeft: [270, 0]
-                });
+              if (this.mapConfig.showLegend && (!isMobileFn())){
+                if (! this.isFullScreen){
+                  this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                    animate: false,
+                    paddingTopLeft: [270, 0]
+                  });
+                }
+                else{
+                  this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                    animate: false,
+                    paddingTopLeft: [400, 0]
+                  });
+                }
               }
               else{
                 this.map.fitBounds(this.blpuPolygon.getBounds(), {
