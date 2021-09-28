@@ -1,7 +1,7 @@
 {
   "title": "Modal filters",
   "aboutTitle": "Get the data",
-  "about": "This map is updated when new modal filters are installed. You can <a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter_point_generated&propertyName=location,type,type_group,modes_that_can_pass,easting,northing,longitude,latitude,geom&outputformat=json&srsname=epsg:4326'>download a snapshot of the data</a> in GeoJSON format",
+  "about": "This map is updated when new modal filters are installed. You can <a href='https://map2.hackney.gov.uk/geoserver/ows?service=WFS&version=2.0.0&request=GetFeature&typenames=transport:modal_filter&propertyName=location,type,modes_that_can_pass,geom&outputformat=json&srsname=epsg:4326'>download a snapshot of the data</a> in GeoJSON format",
   "showLayersOnLoad": true,
   "showLegend": true,
   "baseStyle": "OSoutdoor",
@@ -10,47 +10,85 @@
   "layers": [
     {
       "title": "Modal filter - bollards",
-      "geoserverLayerName": "transport:modal_filter_point_bollard",
+      "geoserverLayerName": "transport:modal_filter_bollard",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#f69730",
+        "opacity": 1,
+        "fillColor": "#f69730",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filter - Gate",
+      "geoserverLayerName": "transport:modal_filter_gate",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "black"
       },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
       "popup": {
         "title": "location",
         "fields": [
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - footway",
-      "geoserverLayerName": "transport:modal_filter_point_footway",
+      "title": "Modal filter - Paved area",
+      "geoserverLayerName": "transport:modal_filter_paved_area",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "darkgreen"
       },
-      "popup": {
-        "title": "location",
-        "fields": [
-          {
-            "label": "Type",
-            "name": "type"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Modal filter - bus filter",
-      "geoserverLayerName": "transport:modal_filter_point_bus_filter",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
-        "markerColor": "darkred"
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#728224",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -58,35 +96,159 @@
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - closure",
-      "geoserverLayerName": "transport:modal_filter_point_closure",
+      "title": "Modal filter - Paved area & bollards",
+      "geoserverLayerName": "transport:modal_filter_paved_area_bollard",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "purple"
       },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#d252b9",
+        "opacity": 1,
+        "fillColor": "#d252b9",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
       "popup": {
         "title": "location",
         "fields": [
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - other",
-      "geoserverLayerName": "transport:modal_filter_point_other",
+      "title": "Modal filter - Paved area & planting",
+      "geoserverLayerName": "transport:modal_filter_paved_area_planting",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "cadetblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436977",
+        "opacity": 1,
+        "fillColor": "#436977",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filter - Planters",
+      "geoserverLayerName": "transport:modal_filter_planter",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#71ac27",
+        "opacity": 1,
+        "fillColor": "#71ac27",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filter - Planting",
+      "geoserverLayerName": "transport:modal_filter_planting",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "blue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#38aadc",
+        "opacity": 1,
+        "fillColor": "#38aadc",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Restricted loading times",
+      "geoserverLayerName": "transport:modal_filter_restricted_loading_times",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "darkred"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
