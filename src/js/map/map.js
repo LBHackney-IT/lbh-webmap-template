@@ -157,7 +157,7 @@ class Map {
               }),
               alt: 'address'
             })
-            .bindPopup(this.popUpText);
+            .bindPopup(this.popUpText, {maxWidth: 210});
             this.marker.addTo(this.map);
             this.marker.openPopup();
             
