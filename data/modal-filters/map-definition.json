@@ -14,17 +14,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "black"
+        "markerColor": "orange"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#f69730",
         "opacity": 1,
-        "fillColor": "black",
+        "fillColor": "#f69730",
         "fillOpacity": 1,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -46,7 +46,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "darkgreen"
+        "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -68,7 +78,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "darkred"
+        "markerColor": "darkgreen"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#728224",
+        "opacity": 1,
+        "fillColor": "#728224",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -92,6 +112,16 @@
         "icon": "fas fa-circle",
         "markerColor": "purple"
       },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#d252b9",
+        "opacity": 1,
+        "fillColor": "#d252b9",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
       "popup": {
         "title": "location",
         "fields": [
@@ -112,7 +142,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "blue"
+        "markerColor": "cadetblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436977",
+        "opacity": 1,
+        "fillColor": "#436977",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -134,7 +174,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "blue"
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#71ac27",
+        "opacity": 1,
+        "fillColor": "#71ac27",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
@@ -158,6 +208,16 @@
         "icon": "fas fa-circle",
         "markerColor": "blue"
       },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#38aadc",
+        "opacity": 1,
+        "fillColor": "#38aadc",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
       "popup": {
         "title": "location",
         "fields": [
@@ -178,7 +238,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "blue"
+        "markerColor": "darkred"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
       },
       "popup": {
         "title": "location",
