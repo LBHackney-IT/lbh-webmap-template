@@ -10,11 +10,21 @@
   "layers": [
     {
       "title": "Modal filter - bollards",
-      "geoserverLayerName": "transport:modal_filter_point_bollard",
+      "geoserverLayerName": "transport:modal_filter_bollard",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "title": "location",
@@ -22,16 +32,20 @@
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - footway",
-      "geoserverLayerName": "transport:modal_filter_point_footway",
+      "title": "Modal filter - Gate",
+      "geoserverLayerName": "transport:modal_filter_gate",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "darkgreen"
       },
       "popup": {
@@ -40,16 +54,20 @@
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - bus filter",
-      "geoserverLayerName": "transport:modal_filter_point_bus_filter",
+      "title": "Modal filter - Paved area",
+      "geoserverLayerName": "transport:modal_filter_paved_area",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "darkred"
       },
       "popup": {
@@ -58,16 +76,20 @@
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - closure",
-      "geoserverLayerName": "transport:modal_filter_point_closure",
+      "title": "Modal filter - Paved area & bollards",
+      "geoserverLayerName": "transport:modal_filter_paved_area_bollard",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "purple"
       },
       "popup": {
@@ -76,16 +98,86 @@
           {
             "label": "Type",
             "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
           }
         ]
       }
     },
     {
-      "title": "Modal filter - other",
-      "geoserverLayerName": "transport:modal_filter_point_other",
+      "title": "Modal filter - Paved area & planting",
+      "geoserverLayerName": "transport:modal_filter_paved_area_planting",
       "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-ban",
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filter - Planters",
+      "geoserverLayerName": "transport:modal_filter_planter",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filter - Planting",
+      "geoserverLayerName": "transport:modal_filter_planting",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "title": "location",
+        "fields": [
+          {
+            "label": "Type",
+            "name": "type"
+          },
+          {
+            "label": "Modes that can pass",
+            "name": "modes_that_can_pass"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Restricted loading times",
+      "geoserverLayerName": "transport:modal_filter_restricted_loading_times",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
         "markerColor": "blue"
       },
       "popup": {
