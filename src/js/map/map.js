@@ -3,6 +3,7 @@ import L from "leaflet";
 import "proj4leaflet";
 import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
 import {
+  isMobile,
   isMobile as isMobileFn,
   mobileDesktopSwitch
 } from "../helpers/isMobile";
@@ -132,12 +133,18 @@ class Map {
                 this.blpuPolygon.bringToFront();
               });
               //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
-              this.map.fitBounds(this.blpuPolygon.getBounds(), {
-                animate: false,
-                paddingTopLeft: [270, 0]
-              });
-
-               
+              if (this.mapConfig.showLegend && (! isMobileFn())){
+                console.log('hi');
+                this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                  animate: false,
+                  paddingTopLeft: [270, 0]
+                });
+              }
+              else{
+                this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                  animate: false
+                });
+              } 
             } else {
               this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
             }
