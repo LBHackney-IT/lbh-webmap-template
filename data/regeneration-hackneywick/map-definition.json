@@ -5,7 +5,7 @@
   "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
+  "showHackneyMask": false,
   "showHackneyBoundary": false,
   "layers": [
     {
