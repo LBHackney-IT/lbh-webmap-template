@@ -1,10 +1,9 @@
 
 import L from "leaflet";
-import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
-// import {HACKNEY_GEOSERVER_EXTERNAL_WMS, HACKNEY_GEOSERVER_INTERNAL_WMS, HACKNEY_GEOSERVER_EXTERNAL_WFS, HACKNEY_GEOSERVER_INTERNAL_WFS} from "../helpers/hackneyGeoserver";
 import "proj4leaflet";
 import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
 import {
+  isMobile,
   isMobile as isMobileFn,
   mobileDesktopSwitch
 } from "../helpers/isMobile";
@@ -28,7 +27,6 @@ import {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS_OS,
   PERSONA_ACTIVE_CLASS,
-  //INTERNAL_HOSTNAME
 } from "./consts";
 import OS_RASTER_API_KEY  from "../helpers/osdata";
 import "@fortawesome/fontawesome-pro/js/all";
@@ -60,6 +58,7 @@ class Map {
     this.isFullScreen = false;
     this.uprn = null;
     this.marker = null;
+    this.blpuPolygon = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
   }
@@ -97,43 +96,78 @@ class Map {
 
         //If there is an uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
         if (this.uprn){
-          fetch(ADDRESSES_PROXY_PROD+"?format=detailed&uprn="+this.uprn, {
+          fetch(this.geoserver_wfs_url+"llpg:blpu_details_test&cql_filter=uprn="+this.uprn, {
             method: "get"
           })
           .then(response => response.json())
           .then(data => {
             //console.log (data);
-            let latitudeUPRN = data.data.data.address[0].latitude;
-            let longitudeUPRN = data.data.data.address[0].longitude;
-            let singleLineAddress = data.data.data.address[0].singleLineAddress;
-            let usage = data.data.data.address[0].usagePrimary;
-            let ward = data.data.data.address[0].ward;
+            let latitudeUPRN = data.features[0].properties.latitude;
+            let longitudeUPRN = data.features[0].properties.longitude;
+            let singleLineAddress = data.features[0].properties.full_address_line;
+            let usage = data.features[0].properties.usage_primary;
+            let ward = data.features[0].properties.ward;
+            let geometryType = data.features[0].geometry.type;
 
-            //TODO Change the setView for replacing the center of the map when creating the map 
             let latlon = [latitudeUPRN,longitudeUPRN];
             this.setViewFromLatlon(latlon);
+            
             this.createMap();
-            // if (this.mapConfig.showLegend) {
-            //   this.controls = new Controls(this);
-            //   this.controls.init();
-            // }
-            // new DataLayers(this).loadLayers();
-            // new Metadata(this).loadMetadata();
-
-            this.popUpText = "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
-            // this.map.setView([latitudeUPRN,longitudeUPRN], this.zoom);
+            this.createMapContent();
+        
+            if (geometryType == "Polygon"){
+              this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+              this.zoom = null;
+              console.log(this.zoom);
+              this.blpuPolygon = new L.GeoJSON(data, {
+                color:"black",
+                weight: 3,
+                opacity: 0.8,
+                fillOpacity: 0
+              });      
+              this.blpuPolygon.addTo(this.map);
+              this.blpuPolygon.bringToFront();
+              //always keep this layer on top 
+              this.map.on("overlayadd", (event) => {
+                console.log('overlayAdd');
+                this.blpuPolygon.bringToFront();
+              });
+              //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
+              if (this.mapConfig.showLegend && (!isMobileFn())){
+                if (! this.isFullScreen){
+                  this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                    animate: false,
+                    paddingTopLeft: [270, 0]
+                  });
+                }
+                else{
+                  this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                    animate: false,
+                    paddingTopLeft: [400, 0]
+                  });
+                }
+              }
+              else{
+                this.map.fitBounds(this.blpuPolygon.getBounds(), {
+                  animate: false
+                });
+              } 
+            } else {
+              this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+            }
             this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
               icon: L.AwesomeMarkers.icon({
-                icon: 'fa-building',
+                icon: 'fa-home-alt',
                 prefix: "fa",
-                markerColor: 'red',
+                markerColor: 'black',
                 spin: false
               }),
               alt: 'address'
             })
-            .bindPopup(this.popUpText);
+            .bindPopup(this.popUpText, {maxWidth: 210});
             this.marker.addTo(this.map);
             this.marker.openPopup();
+            
             
           })
           .catch(error => {
@@ -146,10 +180,12 @@ class Map {
           latlon = latlonString.split(",");
           this.setViewFromLatlon(latlon);
           this.createMap();
+          this.createMapContent();
         }
         else {
           this.setViewFromLatlon(null);
           this.createMap();
+          this.createMapContent();
         }
       })
       .catch(error => {
@@ -235,24 +271,11 @@ class Map {
         () => this.map.setView(this.centerDesktop, this.zoom)
       );
     }
-    
-
-    this.addBaseLayer();
-
-    if (this.mapConfig.showHackneyMask) {
-      this.addHackneyMaskLayer();
-    }
-
-    if (this.mapConfig.showHackneyBoundary) {
-      this.addHackneyBoundaryLayer();
-    }
 
     // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     } 
-
-  
 
     if (this.mapConfig.showLocateButton) {
       new Geolocation(
@@ -277,11 +300,29 @@ class Map {
       this.controls = new Controls(this);
       this.controls.init();
     }
+  }
+
+  createMapContent() {
+    
+    this.addBaseLayer();
+
+    if (this.mapConfig.showHackneyMask) {
+      this.addHackneyMaskLayer();
+    }
+
+    if (this.mapConfig.showHackneyBoundary) {
+      this.addHackneyBoundaryLayer();
+    }
+    
     //Load the layers
-    new DataLayers(this).loadLayers(this.geoserver_wfs_url);
+    new DataLayers(this).loadLayers();
+
     //Load the info and metadata
     new Metadata(this).loadMetadata();
   }
+  
+
+    
 
 
   addBaseLayer() {
@@ -329,6 +370,7 @@ class Map {
     });
     this.map.addLayer(this.hackneyBoundary);
   }
+
 
   setZoom() {
     if (isMobileFn()) {

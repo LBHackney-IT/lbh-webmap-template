@@ -283,6 +283,11 @@ class DataLayers {
 
     this.loadedLayerCount++;
 
+    //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
+    if (this.mapClass.blpuPolygon && this.loadedLayerCount == this.layerCount) {
+      this.mapClass.blpuPolygon.bringToFront();
+    }
+
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
