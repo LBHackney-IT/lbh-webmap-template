@@ -118,7 +118,7 @@ class Map {
             if (geometryType == "Polygon"){
               this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
               this.zoom = null;
-              console.log(this.zoom);
+              //console.log(this.zoom);
               this.blpuPolygon = new L.GeoJSON(data, {
                 color:"black",
                 weight: 3,
