@@ -243,14 +243,14 @@ class addressSearch {
     }
     //Create the marker, add the pop up and add the layer to the map
     this.marker = L.marker([this.selectedLat, this.selectedLong], {
-      icon: L.AwesomeMarkers.icon({
-        icon: 'fa-building',
-        prefix: "fa",
-        markerColor: 'red',
-        spin: false
-      }),
-      alt: 'address'
-    })
+        icon: L.AwesomeMarkers.icon({
+          icon: 'fa-home-alt',
+          prefix: "fa",
+          markerColor: 'black',
+          spin: false
+        }),
+        alt: 'address'
+      })
     .bindPopup(this.popUpText);
     this.marker.addTo(this.map);
     this.marker.openPopup();
