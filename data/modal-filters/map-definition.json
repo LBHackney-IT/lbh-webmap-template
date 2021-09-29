@@ -78,14 +78,14 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "darkgreen"
+        "markerColor": "cadetblue"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#728224",
+        "strokeColor": "#436977",
         "opacity": 1,
-        "fillColor": "#728224",
+        "fillColor": "#436977",
         "fillOpacity": 1,
         "layerLineDash": "",
         "weight": 3
@@ -174,14 +174,14 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "cadetblue"
+        "markerColor": "darkgreen"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#436977",
+        "strokeColor": "#728224",
         "opacity": 1,
-        "fillColor": "#436977",
+        "fillColor": "#728224",
         "fillOpacity": 1,
         "layerLineDash": "",
         "weight": 3
@@ -256,6 +256,33 @@
           {
             "label": "Type",
             "name": "type"
+          }
+        ]
+      }
+    },
+    {
+      "title": "School street",
+      "geoserverLayerName": "transport:school_street",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0f66a2",
+        "opacity": 1,
+        "fillColor": "#0f66a2",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "school_name"
           }
         ]
       }
