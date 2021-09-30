@@ -57,7 +57,7 @@ class Map {
     this.zoom_mobile=null;
     this.isFullScreen = false;
     this.uprn = null;
-    this.marker = null;
+    this.blpuMarker = null;
     this.blpuPolygon = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
@@ -155,7 +155,7 @@ class Map {
             } else {
               this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
             }
-            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+            this.blpuMarker = L.marker([latitudeUPRN,longitudeUPRN], {
               icon: L.AwesomeMarkers.icon({
                 icon: 'fa-home-alt',
                 prefix: "fa",
@@ -165,8 +165,8 @@ class Map {
               alt: 'address'
             })
             .bindPopup(this.popUpText, {maxWidth: 210});
-            this.marker.addTo(this.map);
-            this.marker.openPopup();
+            this.blpuMarker.addTo(this.map);
+            this.blpuMarker.openPopup();
             
             
           })
