@@ -1,5 +1,10 @@
 import L from "leaflet";
-import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy"
+import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
+import {
+  isMobile,
+  isMobile as isMobileFn,
+  mobileDesktopSwitch
+} from "../helpers/isMobile";
 
 
 class addressSearch {
@@ -238,18 +243,39 @@ class addressSearch {
     //Create the popUpText for the selected address
     this.popUpText = "ADDRESS: " + this.selectedFullAddress + "<br>" + "UPRN: " + this.selectedUprn +"<br>" + "PRIMARY USAGE: " + this.selectedUsage.toUpperCase() +"<br>" + "WARD: " + this.selectedWard.toUpperCase() +"<br>" ;
     //Center the map in the new location
-    this.map.setView([this.selectedLat, this.selectedLong], 17);
+    // this.map.setView([this.selectedLat, this.selectedLong], 17);
+    
+    if (this.mapClass.mapConfig.showLegend && (!isMobileFn())){
+      if (! this.mapClass.isFullScreen){
+        this.mapClass.map.fitBounds(L.latLng(this.selectedLat, this.selectedLong).toBounds(200), {
+          animate: false,
+          paddingTopLeft: [270, 0]
+        });
+      }
+      else{
+        this.mapClass.map.fitBounds(L.latLng(this.selectedLat, this.selectedLong).toBounds(400), {
+          animate: false,
+          paddingTopLeft: [400, 0]
+        });
+      }
+    }
+    else{
+      this.mapClass.map.fitBounds(L.latLng(this.selectedLat, this.selectedLong).toBounds(150), {
+        animate: false
+      });
+    } 
+
     //Remove the address search marker if there is one already
     if (this.marker !== null) {
       this.map.removeLayer(this.marker);
       this.marker = null;
     }
     //Remove the blpu marker and the polygon
-    if(this.mapClass.blpuMarker !== undefined){
+    if(this.mapClass.blpuMarker){
       this.map.removeLayer(this.mapClass.blpuMarker);
       this.mapClass.blpuMarker = null;
     }
-    if(this.mapClass.blpuPolygon!== undefined){
+    if(this.mapClass.blpuPolygon){
       this.map.removeLayer(this.mapClass.blpuPolygon);
       this.mapClass.blpuPolygon = null;
     }
