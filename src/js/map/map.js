@@ -37,6 +37,7 @@ import Metadata from "./metadata";
 import "classlist-polyfill";
 
 
+
 class Map {
   constructor(map) {
     this.map = map;
@@ -57,7 +58,7 @@ class Map {
     this.zoom_mobile=null;
     this.isFullScreen = false;
     this.uprn = null;
-    this.marker = null;
+    this.blpuMarker = null;
     this.blpuPolygon = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
@@ -152,10 +153,31 @@ class Map {
                   animate: false
                 });
               } 
+            //If there is no polygon...(only marker)
             } else {
               this.popUpText = "PROPERTY LOCATION "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
+              //zoom to the bounds of the blpu marker (different options depending on showLegend or not)
+              if (this.mapConfig.showLegend && (!isMobileFn())){
+                if (! this.map.isFullScreen){
+                  this.map.fitBounds(L.latLng(latitudeUPRN, longitudeUPRN).toBounds(200), {
+                    animate: false,
+                    paddingTopLeft: [270, 0]
+                  });
+                }
+                else{
+                  this.map.fitBounds(L.latLng(latitudeUPRN, longitudeUPRN).toBounds(400), {
+                    animate: false,
+                    paddingTopLeft: [400, 0]
+                  });
+                }
+              }
+              else{
+                this.map.fitBounds(L.latLng(latitudeUPRN, longitudeUPRN).toBounds(150), {
+                  animate: false
+                });
+              } 
             }
-            this.marker = L.marker([latitudeUPRN,longitudeUPRN], {
+            this.blpuMarker = L.marker([latitudeUPRN,longitudeUPRN], {
               icon: L.AwesomeMarkers.icon({
                 icon: 'fa-home-alt',
                 prefix: "fa",
@@ -165,10 +187,8 @@ class Map {
               alt: 'address'
             })
             .bindPopup(this.popUpText, {maxWidth: 210});
-            this.marker.addTo(this.map);
-            this.marker.openPopup();
-            
-            
+            this.blpuMarker.addTo(this.map);
+            this.blpuMarker.openPopup(); 
           })
           .catch(error => {
             console.log(error);
