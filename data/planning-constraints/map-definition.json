@@ -497,11 +497,10 @@
     {
       "title": "Major town centres",
       "geoserverLayerName": "planning:major_town_centre",
-      "personas": ["retail"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightred",
-        "icon": "far fa-square"
+        "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -525,7 +524,6 @@
     {
       "title": "Priority industrial areas",
       "geoserverLayerName": "planning:priority_industrial_area",
-      "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "goldenrod",
@@ -553,7 +551,6 @@
     {
       "title": "Priority office areas",
       "geoserverLayerName": "planning:priority_office_area",
-      "personas": ["employment"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "orange",
@@ -578,6 +575,82 @@
         ]
       }
     }, 
+    {
+      "title": "Industrial sites",
+      "geoserverLayerName": "planning:locally_strategic_industrial_site",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "mediumslateblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#7966fe",
+        "opacity": 1,
+        "fillColor": "#7966fe",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Primary shopping areas",
+      "geoserverLayerName": "planning:primary_shopping_area",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "yellow",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "yellow",
+        "opacity": 1,
+        "fillColor": "yellow",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "High Speed 1 Rail",
+      "geoserverLayerName": "planning:highspeed1_safeguarding_area",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "yellow",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "yellow",
+        "opacity": 1,
+        "fillColor": "yellow",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": []
+      }
+    },
     {
       "title": "Tree preservation order",
       "geoserverLayerName": "planning:tree_preservation_order_point",
