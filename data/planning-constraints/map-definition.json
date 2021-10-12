@@ -495,6 +495,90 @@
       }
     },
     {
+      "title": "Major town centres",
+      "geoserverLayerName": "planning:major_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Priority industrial areas",
+      "geoserverLayerName": "planning:priority_industrial_area",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "goldenrod",
+        "opacity": 1,
+        "fillColor": "#c7c704",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Priority office areas",
+      "geoserverLayerName": "planning:priority_office_area",
+      "personas": ["employment"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "orange",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 0
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    }, 
+    {
       "title": "Tree preservation order",
       "geoserverLayerName": "planning:tree_preservation_order_point",
       "pointStyle": {
