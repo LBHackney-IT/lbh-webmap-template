@@ -602,33 +602,7 @@
         ]
       }
     },
-    {
-      "title": "Primary shopping areas",
-      "geoserverLayerName": "planning:primary_shopping_area",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "yellow",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "yellow",
-        "opacity": 1,
-        "fillColor": "yellow",
-        "fillOpacity": 0.65,
-        "layerLineDash": "",
-        "weight": 0
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Name",
-            "name": "name"
-          }
-        ]
-      }
-    },
+    
     {
       "title": "High Speed 1 Rail",
       "geoserverLayerName": "planning:highspeed1_safeguarding_area",
@@ -649,6 +623,34 @@
       },
       "popup": {
         "fields": []
+      }
+    },
+    {
+      "title": "Shopping frontage",
+      "geoserverLayerName": "planning:primary_shopping_frontage",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "icon": "fas fa-horizontal-rule"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0.65,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
       }
     },
     {
