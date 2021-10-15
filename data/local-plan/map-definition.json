@@ -189,7 +189,7 @@
     },
     {
       "title": "Flood zone 2",
-      "geoserverLayerName": "flood:flood_zone_2",
+      "geoserverLayerName": "flood:flood_zone_2_clipped",
       "personas": ["flooding"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -216,7 +216,7 @@
     },
     {
       "title": "Flood zone 3",
-      "geoserverLayerName": "flood:flood_zone_3",
+      "geoserverLayerName": "flood:flood_zone_3_clipped",
       "personas": ["flooding"],
       "pointStyle": {
         "markerType": "AwesomeMarker",
