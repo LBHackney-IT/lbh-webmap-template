@@ -69,10 +69,20 @@ const MARKER_COLORS = {
   gray: "#575757",
   black: "#3b3b3b",
   khaki: "#ffda6f",
-  yellow: "#ffff01",
+  yellow: "#ffff00",
   mediumslateblue:"#7966fe",
   thistle: "#dbb7ff",
-  goldenrod: "#c7c704",
+  goldenrod: "#ffd966",
+  darksaturatedblue: "#0044ff",
+  dodgerblue: "#329fff",
+  puertorico: "#51c6b8",
+  caribbeangreen: "#10efca",
+  mediumspringgreen: "#53eb8d",
+  yellowgreen:"#96d642",
+  amber:"#ffbf00",
+  oldbrick: "#951a1c",
+  heath:"#551617",
+  jacarta:"#522b6c"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
