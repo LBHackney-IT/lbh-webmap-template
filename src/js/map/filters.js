@@ -11,10 +11,15 @@ class Filters {
     this.container = map.container;
     this.filters = null;
     this.clearButton = null;
+    this.filtersSectionTitle=null;
   }
 
   init() {
     this.filters = this.mapConfig.filters;
+    this.filtersSectionTitle = this.mapConfig.filtersSectionTitle;
+    if (!this.filtersSectionTitle){
+      this.filtersSectionTitle= "Filter";
+    }
     this.createMarkup();
     this.updateCheckboxStates();
     this.setFilterInputAction();
@@ -31,7 +36,7 @@ class Filters {
     let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
-      + this.filters.tags.filtersSectionTitle
+      + this.filtersSectionTitle
         +`</span>
     </summary>
     <div class="govuk-details__text"><div class="govuk-form-group lbh-form-group filters__form-group">`;
