@@ -207,6 +207,10 @@ class Map {
           this.createMap();
           this.createMapContent();
         }
+        //Capture point clicked from event passed to click handler
+        this.map.on('click', (e) => { 
+         this.inspectClickedLocation(e);
+        });
       })
       .catch(error => {
         console.log(error);
@@ -259,7 +263,6 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
-  
   createMap() {
     // Setup the EPSG:27700 (British National Grid) projection.
     var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
@@ -341,10 +344,6 @@ class Map {
     new Metadata(this).loadMetadata();
   }
   
-
-    
-
-
   addBaseLayer() {
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
@@ -391,7 +390,6 @@ class Map {
     this.map.addLayer(this.hackneyBoundary);
   }
 
-
   setZoom() {
     if (isMobileFn()) {
         if (this.isFullScreen){
@@ -405,7 +403,6 @@ class Map {
       }
       } 
   
-
   addResetButton() {
     L.easyButton(
       "fa-globe",
@@ -459,6 +456,54 @@ class Map {
     element.innerHTML = markup;
     this.container.insertAdjacentElement("beforeend", element);
   }
+
+  inspectClickedLocation(e){
+    //Create bounding box for the point (L.latLngBounds)
+    var clickBounds = L.latLngBounds(e.latlng, e.latlng);
+    var intersectingFeatures = [];
+    //Loop through each visible layer in map._layers
+    for (var l in this.map._layers) {
+       var overlay = this.map._layers[l];  
+      // Find feature layers: if layer is a feature layer it has a _layers property; one layer for each feature
+       if (overlay._layers) {
+          for (var f in overlay._layers) {
+            var feature = overlay._layers[f];
+            console.log(feature);
+            var bounds;
+            //Loop through each feature in each feature layer, and get or create bounding box for each feature
+            if (feature.getBounds) bounds = feature.getBounds();
+            else if (feature._latlng) {
+              bounds = L.latLngBounds(feature._latlng, feature._latlng);
+            }
+            //console.log(feature.getPopup());
+            //Test for intersection of feature bounding box with the click bounding box and add to array intersectingFeatures
+            if (bounds && clickBounds.intersects(bounds)) {
+              intersectingFeatures.push(feature);
+              console.log(intersectingFeatures);
+              console.log(intersectingFeatures[0].feature.properties.ca_name);
+              //Display array contents to user to show all features behind point clicked. 
+            } 
+
+            var popup = "Found features: " + intersectingFeatures.length + "<br/>";
+            for (const i in intersectingFeatures) {
+              popup += intersectingFeatures[i].feature.properties.ca_name + "<br/>";
+            }
+            
+            
+            // var popup = "Found features: " + intersectingFeatures.length + "<br/>" + intersectingFeatures.map(function(o) {
+            //   return o.properties.type
+            // }).join('<br/>');
+            //Open popup windows
+            this.map.openPopup(popup, e.latlng, {
+              offset: L.point(0, -24)
+            });
+            
+          }
+       }
+    }
+  }
+
+
 }
 
 export default Map;
