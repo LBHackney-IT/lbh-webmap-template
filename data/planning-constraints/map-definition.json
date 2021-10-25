@@ -49,6 +49,45 @@
       }
     },
     {
+      "title": "Active Planning Apps",
+      "geoserverLayerName": "planning:active_planning_application",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "markerColor": "puertorico",
+        "markerColorIcon2": "puertorico",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#51c6b8",
+        "opacity": 1,
+        "fillColor": "#51c6b8",
+        "fillOpacity": 0.80,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Reference number",
+            "name": "application_reference_number"
+          },
+          {
+            "label": "Received date",
+            "name": "received_date"
+          },
+          {
+            "label": "Proposal",
+            "name": "proposal"
+          }
+        ]
+      }
+      
+    },
+    {
       "title": "Locally listed buildings",
       "geoserverLayerName": "planning:locally_listed_building",
       "pointStyle": {
