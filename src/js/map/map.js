@@ -467,73 +467,24 @@ class Map {
     // var clickLocation = L.latLng(e.latlng);
     // console.log(clickLocation);
     var intersectingFeatures = [];
-    //Loop through each visible layer in map._layers
-    for (var l in this.map._layers) {
-      //console.log(this.map._layers);
-       var overlay = this.map._layers[l];
-      // Find feature layers: if layer is a feature layer it has a _layers property; one layer for each feature
-       if (overlay._layers) {
-          for (var f in overlay._layers) {
-            var feature = overlay._layers[f];
-            //console.log("Feature");
-            //console.log(feature);
-            //Loop through each feature in each feature layer, convert the feature in json and create the turf polygon
-            var jsonPolygon = feature.toGeoJSON();
-            var bounds;
-
-            bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
-            //console.log("Bounds in turf multipolygon");
-            //console.log(bounds);
-
-            
-            // //Loop through each feature in each feature layer, and get or create bounding box for each feature
-            // if (feature.getBounds) bounds = feature.getBounds();
-            // else if (feature._latlng) {
-            //   bounds = L.latLngBounds(feature._latlng, feature._latlng);
-            // }
-
-            //Create an intersect boolean variable. true if there is intersection or false if there isn't.
-            var intersects = turf.booleanPointInPolygon(turfClickPoint, bounds);
-
-            //If there is intersection, we add the feature to the array intersectingFeatures
-            if (intersects){
-              intersectingFeatures.push(feature);
-              //console.log("inside intersects");
-              //console.log(intersectingFeatures);
-              //console.log(intersectingFeatures[0].feature.properties.ca_name);
-
-            }
-
-            //Test for intersection of feature bounding box with the click bounding box and add to array intersectingFeatures
-            // if (bounds && clickBounds.intersects(bounds)) {
-            //   intersectingFeatures.push(feature);
-            //   console.log(intersectingFeatures);
-            //   console.log(intersectingFeatures[0].feature.properties.ca_name);
-            //   //Display array contents to user to show all features behind point clicked. 
-            // } 
-
-            //console.log(intersects);
-
-            var popup = "Found features: " + intersectingFeatures.length + "<br/>";
-            // for (const i in intersectingFeatures) {
-            //   popup += intersectingFeatures[i].feature.properties.ca_name + "<br/>";
-            // }
-            
-            //var popup = intersects;
-            // var popup = "Found features: " + intersectingFeatures.length + "<br/>" + intersectingFeatures.map(function(o) {
-            //   return o.properties.type
-            // }).join('<br/>');
-            //Open popup windows
-            this.map.openPopup(popup, e.latlng, {
-              offset: L.point(0, -24)
-            });
-            
-          }
-       }
-    }
+    var globalPopUp = '';
+   
+    this.map.eachLayer(layer => {
+      if (layer.feature){
+        console.log(layer.feature);  
+        var jsonPolygon = layer.toGeoJSON();
+        var bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
+        if (turf.booleanPointInPolygon(turfClickPoint, bounds)){
+          intersectingFeatures.push(layer);
+          // var popup = (layer.feature.getPopup());
+        }
+      }
+    });
+    var popup = "Found features: " + intersectingFeatures.length + "<br/>";
+    this.map.openPopup(popup, e.latlng, {
+      offset: L.point(0, -24)
+    }); 
   }
-
-
 }
 
 export default Map;
