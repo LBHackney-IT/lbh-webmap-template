@@ -112,49 +112,6 @@
           }
         ]
       }
-    },
-    {
-      "title": "Community Safety",
-      "geoserverLayerName": "housing:hackneywick_community_safety",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "far fa-comments",
-        "markerColor": "beige"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "",
-            "name": "name"
-          },
-          {
-            "label": "",
-            "name": "description"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Buildings & Development",
-      "geoserverLayerName": "housing:hackneywick_building",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "far fa-building",
-        "markerColor": "darkpurple"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "",
-            "name": "name"
-          },
-          {
-            "label": "",
-            "name": "description"
-          }
-        ]
-      }
     }
-
   ]
 }
