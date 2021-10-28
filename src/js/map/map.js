@@ -461,6 +461,9 @@ class Map {
   inspectClickedLocation(e){
     //Create bounding box for the point (L.latLngBounds)
     var turfClickPoint = turf.point([e.latlng.lng, e.latlng.lat]);
+    var clickLatLon = L.latLng(e.latlng.lat, e.latlng.lng);
+    console.log(clickLatLon);
+    var clickBounds = clickLatLon.toBounds(30);
     //console.log("turf click point");
     //console.log(turfClickPoint);
     //var clickBounds = L.latLngBounds(e.latlng, e.latlng);
@@ -472,17 +475,32 @@ class Map {
     this.map.eachLayer(layer => {
       if (layer.feature){
         console.log(layer.feature);  
-        var jsonPolygon = layer.toGeoJSON();
-        var bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
-        if (turf.booleanPointInPolygon(turfClickPoint, bounds)){
-          intersectingFeatures.push(layer);
-          // var popup = (layer.feature.getPopup());
+        if (layer.feature.geometry.type == 'Polygon'){
+          var jsonPolygon = layer.toGeoJSON();
+          var bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
+          if (turf.booleanPointInPolygon(turfClickPoint, bounds)){
+            intersectingFeatures.push(layer);
+            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+          }
         }
+        else if (layer.feature.geometry.type == 'Point'){
+          //create a bounds around the clicked point and check if the feature is inside
+          var pt = L.point(layer.feature.geometry.coordinates);
+          // if (clickBounds.contains(pt)){
+          //   intersectingFeatures.push(layer);
+          //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+          // }
+        }
+        
+        
       }
+        
     });
-    var popup = "Found features: " + intersectingFeatures.length + "<br/>";
-    this.map.openPopup(popup, e.latlng, {
-      offset: L.point(0, -24)
+    // var popup = "Found features: " + intersectingFeatures.length + "<br/>";
+
+    this.map.openPopup(globalPopUp, e.latlng, {
+      offset: L.point(0, -24),
+      maxHeight: 300
     }); 
   }
 }
