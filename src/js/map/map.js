@@ -483,25 +483,27 @@ class Map {
             globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
           }
         }
-        else if (layer.feature.geometry.type == 'Point'){
-          //create a bounds around the clicked point and check if the feature is inside
-          var pt = L.point(layer.feature.geometry.coordinates);
-          // if (clickBounds.contains(pt)){
-          //   intersectingFeatures.push(layer);
-          //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
-          // }
-        }
+        // else if (layer.feature.geometry.type == 'Point'){
+        //   //create a bounds around the clicked point and check if the feature is inside
+        //   var pt = L.point(layer.feature.geometry.coordinates);
+        //   // if (clickBounds.contains(pt)){
+        //   //   intersectingFeatures.push(layer);
+        //   //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+        //   // }
+        // }
         
         
       }
         
     });
     // var popup = "Found features: " + intersectingFeatures.length + "<br/>";
-
-    this.map.openPopup(globalPopUp, e.latlng, {
-      offset: L.point(0, -24),
-      maxHeight: 300
-    }); 
+    //We only open the popup window if there is at least one feature in the intersectingFeatures array. 
+    if (intersectingFeatures.length > 0){
+      this.map.openPopup(globalPopUp, e.latlng, {
+        offset: L.point(0, -24),
+        maxHeight: 300
+      }); 
+    }
   }
 }
 
