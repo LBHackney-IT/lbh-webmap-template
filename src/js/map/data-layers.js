@@ -194,8 +194,9 @@ class DataLayers {
             layerName
           );
           //Commented out temporary to test the combined popup feature
-          //const popup = L.popup({ closeButton: true }).setContent(popupString);
-          // layer.bindPopup(popup, { maxWidth: 210 });
+          const popup = L.popup({ closeButton: true }).setContent(popupString);
+          layer.bindPopup(popup, { maxWidth: 210 });
+          layer.off();
         }
 
         if (configLayer.tooltip){
