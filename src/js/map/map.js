@@ -485,16 +485,21 @@ class Map {
           }
         }
         //If the layer contains points or multipoints...
-        //TODO this else if is not working. 
         else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
-          //create a bounds around the clicked point and check if the feature is inside
-          //var pt = L.point(layer.feature.geometry.coordinates);
-          //var pt = L.latLng(layer.feature.geometry.coordinates[0],layer.feature.geometry.coordinates[1]);
-          //console.log(pt);
-          // if (clickBounds.contains(pt)){
-          //   intersectingFeatures.push(layer);
-          //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
-          // }
+          //create a turf point from the feature coordinates and create a buffer from the turf point. 
+          var featurePointTurf = turf.point(layer.feature.geometry.coordinates);
+          var featurePointTurfBuffer = turf.buffer(featurePointTurf, 0.05, {units: 'kilometers'});
+
+
+          //create a buffer from the turf point created in the clicked location
+          var turfClickPointBuffer = turf.buffer(turfClickPoint, 0.05, {units: 'kilometers'});
+          
+          //Check if both buffers intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
+          if (turf.booleanIntersects(featurePointTurfBuffer, turfClickPointBuffer)){
+            intersectingFeatures.push(layer);
+            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+          }
+        
         }
         //If the layer contains lines or multines...
         else if(layer.feature.geometry.type == 'LineString' || layer.feature.geometry.type == 'MultiLineString'){
@@ -503,7 +508,7 @@ class Map {
           var turfLineFeatureBB = turf.bbox(turfLineFeature);
           var turfLineFeatureBBPolygon = turf.bboxPolygon(turfLineFeatureBB);
           //Create a buffer around the clickLatLong point (the clicked location)
-          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.5, {units: 'meters'});
+          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
           //Check if both polygons intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
            if (turf.booleanIntersects(turfLineFeatureBBPolygon, clickLatLonBuffer)){
             intersectingFeatures.push(layer);
