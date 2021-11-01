@@ -461,43 +461,60 @@ class Map {
   inspectClickedLocation(e){
     //Create bounding box for the point (L.latLngBounds)
     var turfClickPoint = turf.point([e.latlng.lng, e.latlng.lat]);
-    var clickLatLon = L.latLng(e.latlng.lat, e.latlng.lng);
-    console.log(clickLatLon);
-    var clickBounds = clickLatLon.toBounds(30);
-    //console.log("turf click point");
-    //console.log(turfClickPoint);
-    //var clickBounds = L.latLngBounds(e.latlng, e.latlng);
-    // var clickLocation = L.latLng(e.latlng);
-    // console.log(clickLocation);
+    //var clickLatLon = L.latLng(e.latlng.lat, e.latlng.lng);
+    //var clickBounds = clickLatLon.toBounds(30);
+    //var clickLatLonBounds = L.latLngBounds(e.latlng.lat, e.latlng.lng);
+    //Empty intersectingFeatures array where we will push the features that intersect the clicked location
     var intersectingFeatures = [];
+    //Empty globalPopUp variable where we will be adding the popUp content of the intersecting features
     var globalPopUp = '';
    
     this.map.eachLayer(layer => {
       if (layer.feature){
-        console.log(layer.feature);  
-        if (layer.feature.geometry.type == 'Polygon'){
+        //console.log(layer.feature);  
+        //If the layer contains polygon or multipolygons...
+        if (layer.feature.geometry.type == 'Polygon'|| layer.feature.geometry.type == 'MultiPolygon'){
+          //Convert the layer into GeoJson
           var jsonPolygon = layer.toGeoJSON();
+          //Create a multipolygon turf
           var bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
+          //Check if the point is within the polygon. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
           if (turf.booleanPointInPolygon(turfClickPoint, bounds)){
             intersectingFeatures.push(layer);
             globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
           }
         }
-        // else if (layer.feature.geometry.type == 'Point'){
-        //   //create a bounds around the clicked point and check if the feature is inside
-        //   var pt = L.point(layer.feature.geometry.coordinates);
-        //   // if (clickBounds.contains(pt)){
-        //   //   intersectingFeatures.push(layer);
-        //   //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
-        //   // }
-        // }
+        //If the layer contains points or multipoints...
+        //TODO this else if is not working. 
+        else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
+          //create a bounds around the clicked point and check if the feature is inside
+          //var pt = L.point(layer.feature.geometry.coordinates);
+          //var pt = L.latLng(layer.feature.geometry.coordinates[0],layer.feature.geometry.coordinates[1]);
+          //console.log(pt);
+          // if (clickBounds.contains(pt)){
+          //   intersectingFeatures.push(layer);
+          //   globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+          // }
+        }
+        //If the layer contains lines or multines...
+        else if(layer.feature.geometry.type == 'LineString' || layer.feature.geometry.type == 'MultiLineString'){
+          //Create a turf line from the feature, create the bounding box and covert the bounding box into a turf polygon. 
+          var turfLineFeature = turf.lineString(layer.feature.geometry.coordinates);
+          var turfLineFeatureBB = turf.bbox(turfLineFeature);
+          var turfLineFeatureBBPolygon = turf.bboxPolygon(turfLineFeatureBB);
+          //Create a buffer around the clickLatLong point (the clicked location)
+          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.5, {units: 'meters'});
+          //Check if both polygons intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
+           if (turf.booleanIntersects(turfLineFeatureBBPolygon, clickLatLonBuffer)){
+            intersectingFeatures.push(layer);
+            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+          }
+        }
         
         
       }
         
     });
-    // var popup = "Found features: " + intersectingFeatures.length + "<br/>";
-    //We only open the popup window if there is at least one feature in the intersectingFeatures array. 
     if (intersectingFeatures.length > 0){
       this.map.openPopup(globalPopUp, e.latlng, {
         offset: L.point(0, -24),
