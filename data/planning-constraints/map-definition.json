@@ -16,7 +16,6 @@
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
-      "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkred",
@@ -35,8 +34,11 @@
         "weight": 1
       },
       "popup": {
-        "title": "ca_name",
         "fields": [
+          {
+            "label": "Name",
+            "name": "ca_name"
+          },
           {
             "label": "Designation year",
             "name": "designation"
@@ -149,62 +151,30 @@
         "weight": 1
       },
       "popup": {
-        "title": "species",
         "fields": [
+          {
+            "label": "Specie",
+            "name": "species"
+          },
           {
             "label": "TPO order number",
             "name": "tpo_order_number"
           },
           {
-            "label": "Location",
-            "name": "full_address"
+            "label": "Tree identifier",
+            "name": "tpo_id"
           },
           {
-            "label": "",
-            "name": "now_in_ca"
+            "label": "Location",
+            "name": "full_address"
           }
         ]
       }
     },   
-    {
-      "title": "A4D-Light Ind. to Resid.",
-      "geoserverLayerName": "planning:a4d_light_industrial_to_residential",
-      "highlightFeatureOnHover": true,
-      "sortOrder": 3,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "gray",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#a3a3a3",
-        "opacity": 1,
-        "fillColor": "#a3a3a3",
-        "fillOpacity": 0.15,
-        "layerLineDash": "",
-        "weight": 0
-      },
-      "popup": {
-        "title": "designation",
-        "fields": [
-          {
-            "label": "Site",
-            "name": "site_name"
-          },
-          {
-            "label": "With effect from",
-            "name": "wef"
-          }
-        ],
-        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
-      }
-    },
+    
     {
       "title": "A4D-Stor./Dis. to Resid.",
       "geoserverLayerName": "planning:a4d_storage_dist_to_residential",
-      "highlightFeatureOnHover": true,
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -244,7 +214,6 @@
       "title": "A4D-Office to Resid.",
       "geoserverLayerName": "planning:a4d_office_to_residential",
       "sortOrder": 1,
-      "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkblue",
@@ -276,79 +245,8 @@
       }
     },
     {
-      "title": "A4D-Flex. Town C. Use",
-      "geoserverLayerName": "planning:a4d_flexible_town_centres_uses",
-      "sortOrder": 4,
-      "highlightFeatureOnHover": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "green",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#70ad26",
-        "opacity": 1,
-        "fillColor": "#70ad26",
-        "fillOpacity": 0.20,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "designation",
-        "fields": [
-          {
-            "label": "Site",
-            "name": "site_name"
-          },
-          {
-            "label": "With effect from",
-            "name": "wef"
-          }
-        ],
-        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
-      }
-    },
-    {
-      "title": "A4D-Retail to Resid.",
-      "geoserverLayerName": "planning:a4d_retail_to_residential",
-      "highlightFeatureOnHover": true,
-      "sortOrder": 5,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "orange",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "orange",
-        "opacity": 1,
-        "fillColor": "orange",
-        "fillOpacity": 0.30,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "designation",
-        "fields": [
-          {
-            "label": "Site",
-            "name": "site_name"
-          },
-          {
-            "label": "With effect from",
-            "name": "wef"
-          }
-        ],
-        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
-      }
-    },
-    {
       "title": "A4D-Laund. to Resid.",
       "geoserverLayerName": "planning:a4d_laund_to_residential",
-      "highlightFeatureOnHover": true,
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -383,7 +281,6 @@
     {
       "title": "A4D-De Beauvoir C.Area",
       "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
-      "highlightFeatureOnHover": true,
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -409,7 +306,6 @@
     {
       "title": "A4D-Shacklewell Gr CA",
       "geoserverLayerName": "planning:a4d_shacklewell_green_ca",
-      "highlightFeatureOnHover": true,
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -440,7 +336,6 @@
     {
       "title": "A4D-St Marks C.Area",
       "geoserverLayerName": "planning:a4d_st_marks_ca",
-      "highlightFeatureOnHover": true,
       "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -466,7 +361,6 @@
     {
       "title": "A4D-The Chesham Arms",
       "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
-      "highlightFeatureOnHover": true,
       "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -513,19 +407,22 @@
         "weight": 1
       },
       "popup": {
-        "title": "species",
         "fields": [
+          {
+            "label": "Species",
+            "name": "species"
+          },
           {
             "label": "TPO order number",
             "name": "tpo_order_number"
           },
           {
-            "label": "Location",
-            "name": "full_address"
+            "label": "Tree identifier",
+            "name": "tpo_id"
           },
           {
-            "label": "",
-            "name": "now_in_ca"
+            "label": "Location",
+            "name": "full_address"
           }
         ]
       }
