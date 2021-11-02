@@ -486,16 +486,19 @@ class Map {
         }
         //If the layer contains points or multipoints...
         else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
-          //create a turf point from the feature coordinates and create a buffer from the turf point. 
+          //create a turf point from the feature coordinates
           var featurePointTurf = turf.point(layer.feature.geometry.coordinates);
-          var featurePointTurfBuffer = turf.buffer(featurePointTurf, 0.05, {units: 'kilometers'});
+          //Create a buffer from the turf point. 
+          //var featurePointTurfBuffer = turf.buffer(featurePointTurf, 0.015, {units: 'kilometers'});
 
 
           //create a buffer from the turf point created in the clicked location
-          var turfClickPointBuffer = turf.buffer(turfClickPoint, 0.05, {units: 'kilometers'});
+          var turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
           
           //Check if both buffers intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
-          if (turf.booleanIntersects(featurePointTurfBuffer, turfClickPointBuffer)){
+          //if (turf.booleanIntersects(featurePointTurfBuffer, turfClickPointBuffer)){
+          //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
+          if (turf.booleanPointInPolygon(featurePointTurf,turfClickPointBuffer)){
             intersectingFeatures.push(layer);
             globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
           }
@@ -519,13 +522,12 @@ class Map {
         else if (layer.feature.geometry.type == 'MultiLineString'){
           var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
           layer.feature.geometry.coordinates.forEach(part => {
-            console.log(part);
             if (turf.lineIntersect(clickLatLonBuffer, turf.lineString(part)).features.length > 0) {
               intersectingFeatures.push(layer);
               globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
             }
           })
-        }
+        }       
       }
     });
     if (intersectingFeatures.length > 0){
