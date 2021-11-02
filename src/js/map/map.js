@@ -471,60 +471,74 @@ class Map {
    
     this.map.eachLayer(layer => {
       if (layer.feature){
-        //console.log(layer.feature);  
-        //If the layer contains polygon or multipolygons...
-        if (layer.feature.geometry.type == 'Polygon'|| layer.feature.geometry.type == 'MultiPolygon'){
-          //Convert the layer into GeoJson
-          var jsonPolygon = layer.toGeoJSON();
-          //Create a multipolygon turf
-          var bounds =   turf.multiPolygon([[jsonPolygon.geometry.coordinates[0]]]);
+        // console.log('I am a: ' + layer.feature.geometry.type);  
+        //If the feature is a polygon...
+        if (layer.feature.geometry.type == 'Polygon'){
+          let turfPoly = turf.polygon(layer.feature.geometry.coordinates);
           //Check if the point is within the polygon. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
-          if (turf.booleanPointInPolygon(turfClickPoint, bounds)){
+          if (turf.booleanPointInPolygon(turfClickPoint, turfPoly)){
             intersectingFeatures.push(layer);
-            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+            if (globalPopUp != ''){
+              globalPopUp += '<br/><hr><br/>';
+            }
+            globalPopUp += layer.getPopup().getContent();
           }
         }
-        //If the layer contains points or multipoints...
+        //If the feature is a multipolygon...
+        else if (layer.feature.geometry.type == 'MultiPolygon'){
+          layer.feature.geometry.coordinates.forEach(part => {
+            let turfPoly = turf.polygon(part);
+            if (turf.booleanPointInPolygon(turfClickPoint, turfPoly)){
+              intersectingFeatures.push(layer);
+              if (globalPopUp != ''){
+                globalPopUp += '<br/><hr><br/>';
+              }
+              globalPopUp += layer.getPopup().getContent();
+            }
+          })         
+        }
+        //If the feature is a point or multipoints...
         else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
-          //create a turf point from the feature coordinates
-          var featurePointTurf = turf.point(layer.feature.geometry.coordinates);
-          //Create a buffer from the turf point. 
-          //var featurePointTurfBuffer = turf.buffer(featurePointTurf, 0.015, {units: 'kilometers'});
-
-
-          //create a buffer from the turf point created in the clicked location
-          var turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
+          let turfPoint = turf.point(layer.feature.geometry.coordinates);
+          let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
           
           //Check if both buffers intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
           //if (turf.booleanIntersects(featurePointTurfBuffer, turfClickPointBuffer)){
           //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
-          if (turf.booleanPointInPolygon(featurePointTurf,turfClickPointBuffer)){
+          if (turf.booleanPointInPolygon(turfPoint,turfClickPointBuffer)){
             intersectingFeatures.push(layer);
-            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
-          }
-        
+            if (globalPopUp != ''){
+              globalPopUp += '<br/><hr><br/>';
+            }
+            globalPopUp += layer.getPopup().getContent();
+          }       
         }
-        //If the layer contains lines or multines...
+        //If the feature is a line...
         else if(layer.feature.geometry.type == 'LineString'){
           //Create a turf line from the feature, create the bounding box and covert the bounding box into a turf polygon. 
-          var turfLineFeature = turf.lineString(layer.feature.geometry.coordinates);
-          // var turfLineFeatureBB = turf.bbox(turfLineFeature);
-          // var turfLineFeatureBBPolygon = turf.bboxPolygon(turfLineFeatureBB);
+          let turfLine = turf.lineString(layer.feature.geometry.coordinates);
           //Create a buffer around the clickLatLong point (the clicked location)
-          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
+          let clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
           //Check if both polygons intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
-          console.log (turf.lineIntersect(clickLatLonBuffer, turfLineFeature)); 
-          if (turf.lineIntersect(clickLatLonBuffer, turfLineFeature).features.length > 0) {
+          if (turf.lineIntersect(clickLatLonBuffer, turfLine).features.length > 0) {
             intersectingFeatures.push(layer);
-            globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+            if (globalPopUp != ''){
+              globalPopUp += '<br/><hr><br/>';
+            }
+            globalPopUp += layer.getPopup().getContent();
           }
         }
+        //If the feature is a multiline...
         else if (layer.feature.geometry.type == 'MultiLineString'){
-          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
+          let clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
           layer.feature.geometry.coordinates.forEach(part => {
-            if (turf.lineIntersect(clickLatLonBuffer, turf.lineString(part)).features.length > 0) {
+            let turfLine = turf.lineString(part);
+            if (turf.lineIntersect(clickLatLonBuffer, turfLine).features.length > 0) {
               intersectingFeatures.push(layer);
-              globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+              if (globalPopUp != ''){
+                globalPopUp += '<br/><hr><br/>';
+              }
+              globalPopUp += layer.getPopup().getContent();
             }
           })
         }       
