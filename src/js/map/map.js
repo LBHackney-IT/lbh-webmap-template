@@ -502,23 +502,31 @@ class Map {
         
         }
         //If the layer contains lines or multines...
-        else if(layer.feature.geometry.type == 'LineString' || layer.feature.geometry.type == 'MultiLineString'){
+        else if(layer.feature.geometry.type == 'LineString'){
           //Create a turf line from the feature, create the bounding box and covert the bounding box into a turf polygon. 
           var turfLineFeature = turf.lineString(layer.feature.geometry.coordinates);
-          var turfLineFeatureBB = turf.bbox(turfLineFeature);
-          var turfLineFeatureBBPolygon = turf.bboxPolygon(turfLineFeatureBB);
+          // var turfLineFeatureBB = turf.bbox(turfLineFeature);
+          // var turfLineFeatureBBPolygon = turf.bboxPolygon(turfLineFeatureBB);
           //Create a buffer around the clickLatLong point (the clicked location)
-          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
+          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
           //Check if both polygons intersect. If they do, we push the feature into the intersectingFeatures array and create get the popUp content
-           if (turf.booleanIntersects(turfLineFeatureBBPolygon, clickLatLonBuffer)){
+          console.log (turf.lineIntersect(clickLatLonBuffer, turfLineFeature)); 
+          if (turf.lineIntersect(clickLatLonBuffer, turfLineFeature).features.length > 0) {
             intersectingFeatures.push(layer);
             globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
           }
         }
-        
-        
+        else if (layer.feature.geometry.type == 'MultiLineString'){
+          var clickLatLonBuffer = turf.buffer(turfClickPoint, 0.02, {units: 'kilometers'});
+          layer.feature.geometry.coordinates.forEach(part => {
+            console.log(part);
+            if (turf.lineIntersect(clickLatLonBuffer, turf.lineString(part)).features.length > 0) {
+              intersectingFeatures.push(layer);
+              globalPopUp = globalPopUp +  (layer.getPopup().getContent()) + '<br/><hr><br/>' ;
+            }
+          })
+        }
       }
-        
     });
     if (intersectingFeatures.length > 0){
       this.map.openPopup(globalPopUp, e.latlng, {
