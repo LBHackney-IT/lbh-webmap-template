@@ -8,6 +8,7 @@
   "showLayersOnLoad": true,
   "showLegend": true,
   "showFullScreenButton": true,
+  "performDrillDown": true,
   "controlsText":{
     "showLegendText": "Show list of constraints",
     "hideLegendText": "Hide list of constraints"
