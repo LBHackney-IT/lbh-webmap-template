@@ -1,7 +1,7 @@
 import L from "leaflet";
 import * as turf from '@turf/turf';
 
-class drillDown {
+class DrillDown {
   constructor(map) {
     this.mapClass = map;
     this.map = map.map;
@@ -53,8 +53,7 @@ class drillDown {
         //If the feature is a point or multipoints...
         else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
           let turfPoint = turf.point(layer.feature.geometry.coordinates);
-          let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});
-          
+          let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});         
           //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
           if (turf.booleanPointInPolygon(turfPoint,turfClickPointBuffer)){
             intersectingFeatures.push(layer);
@@ -105,4 +104,4 @@ class drillDown {
   }
 }
 
-export default drillDown;
+export default DrillDown;
