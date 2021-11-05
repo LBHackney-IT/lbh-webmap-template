@@ -6,6 +6,7 @@ import Filters from "./filters";
 import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
+import DrillDown from "./drill-down";
 
 
 class DataLayers {
@@ -195,6 +196,9 @@ class DataLayers {
           );
           const popup = L.popup({ closeButton: true }).setContent(popupString);
           layer.bindPopup(popup, { maxWidth: 210 });
+          if (this.mapConfig.performDrillDown) {
+            layer.off();
+          } 
         }
 
         if (configLayer.tooltip){
@@ -300,7 +304,12 @@ class DataLayers {
       this.list.init();
     }
 
-
+    //only happens once, after the last layer has loaded - add the drill down listener if true
+    if (this.mapConfig.performDrillDown && this.loadedLayerCount == this.layerCount) {
+        this.drilldown = new DrillDown(this.map);
+        this.drilldown.init();
+    }
+      
     if (this.mapConfig.showLegend) {
       this.layers.push(layer);
       const count = layer.getLayers().length;
@@ -365,6 +374,8 @@ class DataLayers {
         layer.addTo(this.map);
       }
     }
+
+     
 
     if (this.mapConfig.search && searchable){
       // this.search = new Search(this.mapClass, layer);

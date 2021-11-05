@@ -207,6 +207,7 @@ class Map {
           this.createMap();
           this.createMapContent();
         }
+       
       })
       .catch(error => {
         console.log(error);
@@ -259,7 +260,6 @@ class Map {
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
 
-  
   createMap() {
     // Setup the EPSG:27700 (British National Grid) projection.
     var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
@@ -341,10 +341,6 @@ class Map {
     new Metadata(this).loadMetadata();
   }
   
-
-    
-
-
   addBaseLayer() {
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
@@ -391,7 +387,6 @@ class Map {
     this.map.addLayer(this.hackneyBoundary);
   }
 
-
   setZoom() {
     if (isMobileFn()) {
         if (this.isFullScreen){
@@ -405,7 +400,6 @@ class Map {
       }
       } 
   
-
   addResetButton() {
     L.easyButton(
       "fa-globe",
