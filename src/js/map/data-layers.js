@@ -6,7 +6,7 @@ import Filters from "./filters";
 import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
-import drillDown from "./drill-down";
+import DrillDown from "./drill-down";
 
 
 class DataLayers {
@@ -306,7 +306,7 @@ class DataLayers {
 
     //only happens once, after the last layer has loaded - add the drill down listener if true
     if (this.mapConfig.performDrillDown && this.loadedLayerCount == this.layerCount) {
-        this.drilldown = new drillDown(this);
+        this.drilldown = new DrillDown(this.map);
         this.drilldown.init();
     }
       

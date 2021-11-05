@@ -3,8 +3,7 @@ import * as turf from '@turf/turf';
 
 class DrillDown {
   constructor(map) {
-    this.mapClass = map;
-    this.map = map.map;
+    this.map = map;
   }
 
   init(){
