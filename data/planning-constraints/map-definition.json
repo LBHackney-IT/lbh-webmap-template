@@ -8,7 +8,7 @@
   "showLayersOnLoad": true,
   "showLegend": true,
   "showFullScreenButton": true,
-  "performDrillDown": true,
+  "performDrillDown": false,
   "controlsText":{
     "showLegendText": "Show list of constraints",
     "hideLegendText": "Hide list of constraints"
@@ -17,6 +17,7 @@
     {
       "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkred",
@@ -55,6 +56,7 @@
       "title": "Active Planning Apps",
       "geoserverLayerName": "planning:active_planning_application",
       "personas": [],
+      "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "puertorico",
@@ -93,18 +95,21 @@
     {
       "title": "Locally listed buildings",
       "geoserverLayerName": "planning:locally_listed_building",
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "darkred",
-        "icon": "fas fa-square"
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "cadetblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "darkred",
+        "strokeColor": "#436978",
         "opacity": 1,
-        "fillColor": "darkred",
-        "fillOpacity": 0.65,
+        "fillColor": "#436978",
+        "fillOpacity": 0.3,
         "layerLineDash": "",
         "weight": 2
       },
@@ -132,6 +137,7 @@
     {
       "title": "Statutory listed buildings",
       "geoserverLayerName": "planning:statutory_listed_building",
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "mediumslateblue",
@@ -175,6 +181,7 @@
     {
       "title": "Tree preservation order",
       "geoserverLayerName": "planning:tree_preservation_order_area",
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-square",
@@ -186,9 +193,9 @@
         "strokeColor": "#70ad26",
         "opacity": 1,
         "fillColor": "#70ad26",
-        "fillOpacity": 0.20,
+        "fillOpacity": 0.50,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 2
       },
       "popup": {
         "fields": [
@@ -215,7 +222,7 @@
     {
       "title": "A4D-Stor./Dis. to Resid.",
       "geoserverLayerName": "planning:a4d_storage_dist_to_residential",
-      "sortOrder": 2,
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "thistle",
@@ -253,19 +260,21 @@
     {
       "title": "A4D-Office to Resid.",
       "geoserverLayerName": "planning:a4d_office_to_residential",
-      "sortOrder": 1,
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "darkblue",
-        "icon": "fas fa-square"
+        "markerColorIcon2": "lightblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
         "strokeColor": "#0e67a3",
         "opacity": 1,
-        "fillColor": "#0e67a3",
-        "fillOpacity": 0.30,
+        "fillColor": "#8adaff",
+        "fillOpacity": 0.6,
         "layerLineDash": "",
         "weight": 1
       },
@@ -287,21 +296,21 @@
     {
       "title": "A4D-Laund. to Resid.",
       "geoserverLayerName": "planning:a4d_laund_to_residential",
-      "sortOrder": 6,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "mediumslateblue",
+        "markerColor": "orange",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#7966fe",
+        "strokeColor": "#F69730",
         "opacity": 1,
-        "fillColor": "#7966fe",
-        "fillOpacity": 0.50,
+        "fillColor": "#F69730",
+        "fillOpacity": 0.65,
         "layerLineDash": "",
-        "weight": 5
+        "weight": 0
       },
       "popup": {
         "title": "designation",
@@ -321,7 +330,7 @@
     {
       "title": "A4D-De Beauvoir C.Area",
       "geoserverLayerName": "planning:a4d_de_beauvoir_ca",
-      "sortOrder": 7,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "cadetblue",
@@ -346,7 +355,7 @@
     {
       "title": "A4D-Shacklewell Gr CA",
       "geoserverLayerName": "planning:a4d_shacklewell_green_ca",
-      "sortOrder": 8,
+      "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "goldenrod",
@@ -376,7 +385,7 @@
     {
       "title": "A4D-St Marks C.Area",
       "geoserverLayerName": "planning:a4d_st_marks_ca",
-      "sortOrder": 9,
+      "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "purple",
@@ -401,7 +410,7 @@
     {
       "title": "A4D-The Chesham Arms",
       "geoserverLayerName": "planning:a4d_chesham_arms_public_house",
-      "sortOrder": 10,
+      "sortOrder": 13,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "black",
@@ -431,6 +440,7 @@
     {
       "title": "Tree preservation order",
       "geoserverLayerName": "planning:tree_preservation_order_point",
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
