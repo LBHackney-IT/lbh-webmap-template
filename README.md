@@ -8,14 +8,14 @@ This is our Webmap template, which should be used to create webmaps for Hackney.
 
 ## Prerequisites
 
-* Have GIT installed
+* Have 
 [GIT installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-* Have Node and NPM installed [Node and NPM installed](https://nodejs.org/en/download/).
+* Have [Node and NPM installed](https://nodejs.org/en/download/).
 
-* Have a Web Feature Service setup [Web Feature Service setup](https://www.ogc.org/standards/wfs) that can send data as GeoJson [GeoJson](https://www.ogc.org/standards/eo-geojson)
+* Have a [Web Feature Service setup](https://www.ogc.org/standards/wfs) that can send data as GeoJson [GeoJson](https://www.ogc.org/standards/eo-geojson)
 
-* Have a Web Map Service setup [Web Map Service setup](https://www.ogc.org/standards/wms) is not required but recommended. With the current webmap template, some layers such as the borough boundary and the mask are served via WMS. If you prefer not to serve these as WMS, you would need to change the existing functions. 
+* Have a [Web Map Service setup](https://www.ogc.org/standards/wms) is not required but recommended. With the current webmap template, some layers such as the borough boundary and the mask are served via WMS. If you prefer not to serve these as WMS, you would need to change the existing functions. 
  
 ## Setting Up
 
@@ -25,13 +25,13 @@ Open terminal / bash and run the following:
 git clone `https://github.com/LBHackney-IT/lbh-webmap-template.git`
 ```
 
-You will need a few helpers: 
+You need a few helpers: 
 
-* A file called `osdata.js` in `src/js/helpers`. This file contains the Ordnance Survey API key for the  OS basemaps. For more information, visit the Ordnance Survey Data Hub [Ordnance Survey Data Hub](https://osdatahub.os.uk/).
-* A file called `mapbox.js` in `src/js/helpers`. This file contains the Mapbox key for the Mapbox basemaps. For more information, visit the Mapbox site [Mapbox site](https://www.mapbox.com/maps).
+* A file called `osdata.js` in `src/js/helpers`. This file contains the Ordnance Survey API key for the  OS basemaps. For more information, visit the [Ordnance Survey Data Hub](https://osdatahub.os.uk/).
+* A file called `mapbox.js` in `src/js/helpers`. This file contains the Mapbox key for the Mapbox basemaps. For more information, visit the [Mapbox website](https://www.mapbox.com/maps).
 * A file called `addressesProxy.js` in `src/js/helpers`. This file contains the proxy URL for the Hackney addresses API. 
 * A file called `hackneyGeoserver.js` in `src/js/helpers`. This file contains the WFS/WMS URLs for the internal/external services. For more information, please see the prerequisites and the `hackneyGeoserver_template.js` file. 
-* A file called `.npmrc` in the root of the project. This will give you access to the Font Awesome Pro packages. For more information, see the Installing the Pro version of Font Awesome instructions [the Installing the Pro version of Font Awesome instructions](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers).
+* A file called `.npmrc` in the root of the project. This will give you access to the Font Awesome Pro packages. For more information, see [the Installing the Pro version of Font Awesome instructions](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers).
 
 
 
