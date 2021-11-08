@@ -2,14 +2,21 @@
 
 ## About
 
-This is our Webmap template, which should be used to create webmaps for Hackney.
+This is our Webmap template, which should be used to create webmaps for Hackney. Please contact Sandrine Balley
+(sandrine.balley@hackney.gov.uk) or Marta Villalobos
+(marta.villalobos@hackney.gov.uk) if you have any questions or suggestions. 
 
 ## Prerequisites
 
-You will need to have
-[git installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-You will also need [node and npm installed](https://nodejs.org/en/download/).
+* Have GIT installed
+[GIT installed](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
+* Have Node and NPM installed [Node and NPM installed](https://nodejs.org/en/download/).
+
+* Have a Web Feature Service setup [Web Feature Service setup](https://www.ogc.org/standards/wfs) that can send data as GeoJson [GeoJson](https://www.ogc.org/standards/eo-geojson)
+
+* Have a Web Map Service setup [Web Map Service setup](https://www.ogc.org/standards/wms) is not required but recommended. With the current webmap template, some layers such as the borough boundary and the mask are served via WMS. If you prefer not to serve these as WMS, you would need to change the existing functions. 
+ 
 ## Setting Up
 
 Open terminal / bash and run the following:
@@ -18,10 +25,17 @@ Open terminal / bash and run the following:
 git clone `https://github.com/LBHackney-IT/lbh-webmap-template.git`
 ```
 
-You will need to create a file called `mapbox.js` in `src/js/helpers`, and a
-file called `.npmrc` in the root of the project. Sandrine Balley
-(sandrine.balley@hackney.gov.uk) or Marta Villalobos
-(marta.villalobos@hackney.gov.uk) can give you the file contents for both files.
+You will need a few helpers: 
+
+* A file called `osdata.js` in `src/js/helpers`. This file contains the Ordnance Survey API key for the  OS basemaps. For more information, visit the Ordnance Survey Data Hub [Ordnance Survey Data Hub](https://osdatahub.os.uk/).
+* A file called `mapbox.js` in `src/js/helpers`. This file contains the Mapbox key for the Mapbox basemaps. For more information, visit the Mapbox site [Mapbox site](https://www.mapbox.com/maps).
+* A file called `addressesProxy.js` in `src/js/helpers`. This file contains the proxy URL for the Hackney addresses API. 
+* A file called `hackneyGeoserver.js` in `src/js/helpers`. This file contains the WFS/WMS URLs for the internal/external services. For more information, please see the prerequisites and the `hackneyGeoserver_template.js` file. 
+* A file called `.npmrc` in the root of the project. This will give you access to the Font Awesome Pro packages. For more information, see the Installing the Pro version of Font Awesome instructions [the Installing the Pro version of Font Awesome instructions](https://fontawesome.com/v5.15/how-to-use/on-the-web/setup/using-package-managers).
+
+
+
+You can find the templates in the helpers folder. Do not forget to remove the "_template" from the file names after updating them. After renaming the files, these will be ignored by git. You can change this by updating the `.gitignore` file. 
 
 [Create your data file](#data-files), name it `map-definition.json` and add it
 to `data/YOUR_MAP_NAME_GOES_HERE/`.

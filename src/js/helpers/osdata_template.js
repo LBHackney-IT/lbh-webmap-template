@@ -1,0 +1,3 @@
+const OS_RASTER_API_KEY =
+  "YOUR-OS-API-KEY-GOES-HERE";
+export default OS_RASTER_API_KEY;
