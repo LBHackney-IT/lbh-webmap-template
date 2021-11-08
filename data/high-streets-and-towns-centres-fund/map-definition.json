@@ -4,7 +4,7 @@
   "aboutTitle": "About the map",
   "showLegend": false,
   "showLayersOnLoad": true,
-  "baseStyle": "OSoutdoor",
+  "baseStyle": "OSlight",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
