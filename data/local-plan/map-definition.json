@@ -5,6 +5,7 @@
   "zoomToMasterMapBW": true,
   "about": "This map represents the geographical areas considered in the new borough-wide local plan 2033, known as LP33, which will be the key strategic planning document used to direct and guide development in the borough up to 2033. <br> <br> Find out more about the <a href='https://hackney.gov.uk/lp33' target='_blank'>local plan 2033</a>. <br> <br> This map should only be used as a complement to the local plan document. To view general planning information, or check planning constraints on a specific property, please visit <a href='https://map.hackney.gov.uk/lbhackneymap/' target='_blank'>Map.Hackney",
   "aboutTitle": "About the map",
+  "performDrillDown": true,
   "showAddressSearch": {
     "addressSearchExpanded": "closed"
   },
@@ -291,7 +292,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "sitename"
           }
         ]
       }
@@ -319,7 +320,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "site_name"
           }
         ]
       }
@@ -374,7 +375,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "site_name"
           }
         ]
       }
@@ -694,7 +695,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "sitename"
           }
         ]
       }
@@ -722,7 +723,7 @@
         "fields": [
           {
             "label": "Name",
-            "name": "name"
+            "name": "sitename"
           }
         ]
       }
