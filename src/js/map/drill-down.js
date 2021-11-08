@@ -49,8 +49,8 @@ class DrillDown {
             }
           })         
         }
-        //If the feature is a point or multipoints...
-        else if (layer.feature.geometry.type == 'Point'|| layer.feature.geometry.type == 'MultiPoint'){
+        //If the feature is a point...
+        else if (layer.feature.geometry.type == 'Point'){
           let turfPoint = turf.point(layer.feature.geometry.coordinates);
           let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});         
           //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
@@ -61,6 +61,21 @@ class DrillDown {
             }
             globalPopUp += layer.getPopup().getContent();
           }       
+        }
+         //If the feature is a multipoint
+         else if (layer.feature.geometry.type == 'MultiPoint'){
+          let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'}); 
+          layer.feature.geometry.coordinates.forEach(point => {
+            let turfPoint = turf.point(point);
+           //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array and create get the popUp content
+          if (turf.booleanPointInPolygon(turfPoint,turfClickPointBuffer)){
+            intersectingFeatures.push(layer);
+            if (globalPopUp != ''){
+              globalPopUp += '<br/><hr><br/>';
+            }
+            globalPopUp += layer.getPopup().getContent();
+          }   
+          })               
         }
         //If the feature is a line...
         else if(layer.feature.geometry.type == 'LineString'){
