@@ -85,8 +85,8 @@
             "name": "received_date"
           },
           {
-            "label": "Proposal",
-            "name": "proposal"
+            "label": "",
+            "name": "register_link"
           }
         ]
       }
