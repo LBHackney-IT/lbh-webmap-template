@@ -5,7 +5,7 @@
   "showLegend": false,
   "showLayersOnLoad": true,
   "baseStyle": "OSlight",
-  "showHackneyMask": true,
+  "showHackneyMask": false,
   "showHackneyBoundary": true,
   "layers": [
     {
@@ -47,7 +47,7 @@
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#a23336",
+        "strokeColor": "#fc8e7f",
         "opacity": 1,
         "fillColor": "#fc8e7f",
         "fillOpacity": 0.50,
@@ -74,7 +74,7 @@
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#a23336",
+        "strokeColor": "#fc8e7f",
         "opacity": 1,
         "fillColor": "#fc8e7f",
         "fillOpacity": 0.50,
@@ -85,6 +85,33 @@
         "direction": "top",
         "offset": [0,0],
         "title": "site_name"
+      }
+    },
+    {
+      "title": "Hackney Wick Neighbourhood Centre",
+      "geoserverLayerName": "planning:lldc_hackney_wick_neighbourhood_centre",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "description"
       }
     }
   ]
