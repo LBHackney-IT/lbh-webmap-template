@@ -60,9 +60,7 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "puertorico",
-        "markerColorIcon2": "puertorico",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
+        "icon": "far fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -70,7 +68,7 @@
         "strokeColor": "#51c6b8",
         "opacity": 1,
         "fillColor": "#51c6b8",
-        "fillOpacity": 0.80,
+        "fillOpacity": 0,
         "layerLineDash": "",
         "weight": 3
       },
