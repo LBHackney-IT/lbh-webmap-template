@@ -79,6 +79,10 @@
             "name": "application_reference_number"
           },
           {
+            "label": "Application type",
+            "name": "application_type"
+          },
+          {
             "label": "Received date",
             "name": "received_date"
           },
