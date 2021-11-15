@@ -100,10 +100,12 @@ class DrillDown {
         if (!uniqueIntersectingFeatures.includes(layer)){
           uniqueIntersectingFeatures.push(layer)
           //We get the global pop up content of the unique intersecting features
-          if (globalPopUp != ''){
-            globalPopUp += '<br/><hr><br/>';
+          if (layer.getPopup()){
+            if (globalPopUp != ''){
+              globalPopUp += '<br/><hr><br/>';
+            }
+            globalPopUp += layer.getPopup().getContent();
           }
-          globalPopUp += layer.getPopup().getContent();
         }
       }); 
       //Open pop up window using the glocal pop up content of the unique intersecting features array
