@@ -269,7 +269,7 @@ class Map {
 
     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
-      this.maxZoom= 9;
+      this.maxZoom = 9;
     } else {
       this.maxZoom = 12;
     }
