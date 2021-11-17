@@ -1,321 +1,295 @@
 {
-  "title": "2018 NO2 annual concentration (ug/m3)",
+  "title": "2018 PM2.5 annual concentration (ug/m3)",
   "about": " This map shows XXXXXX.",
   "aboutTitle": "About the map",
-  "showLegend": true,
+  "showLegend": false,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
     {
-      "title": "22-25 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_22_to_25",
+      "title": "12 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_12",
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "markerColor": "greenblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#2166ac",
+        "opacity": 1,
+        "fillColor": "#2166ac",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "",
+        "fields": []
+      }
+    },
+    {
+      "title": "13 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_13",
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "dodgerblue",
+        "markerColor": "bluecrayola",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#329fff",
+        "strokeColor": "#3784bb",
         "opacity": 1,
-        "fillColor": "#329fff",
+        "fillColor": "#3784bb",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "25-28 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_25_to_28",
+      "title": "14 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_14",
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "puertorico",
+        "markerColor": "carolinablue",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#51c6b8",
+        "strokeColor": "#59a1ca",
         "opacity": 1,
-        "fillColor": "#51c6b8",
+        "fillColor": "#59a1ca",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "28-31 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_28_to_31",
+      "title": "15 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_15",
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "caribbeangreen",
+        "markerColor": "darkskyblue",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#10efca",
+        "strokeColor": "#8bc0dc",
         "opacity": 1,
-        "fillColor": "#10efca",
+        "fillColor": "#8bc0dc",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "31-34 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_31_to_34",
+      "title": "16 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_16",
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "mediumspringgreen",
+        "markerColor": "columbiablue",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#53eb8d",
+        "strokeColor": "#b4d6e8",
         "opacity": 1,
-        "fillColor": "#53eb8d",
+        "fillColor": "#b4d6e8",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "34-37 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_34_to_37",
+      "title": "17 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_17",
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "yellowgreen",
+        "markerColor": "aliceblue",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#96d642",
+        "strokeColor": "#d9e3e9",
         "opacity": 1,
-        "fillColor": "#96d642",
+        "fillColor": "#d9e3e9",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "37-40 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_37_to_40",
+      "title": "18 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_18",
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "yellow",
+        "markerColor": "champagnepink",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#ffff00",
+        "strokeColor": "#f5ddce",
         "opacity": 1,
-        "fillColor": "#ffff00",
+        "fillColor": "#f5ddce",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "40-43 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_40_to_43",
+      "title": "19 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_19",
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "goldenrod",
+        "markerColor": "apricot",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#ffd966",
+        "strokeColor": "#f9c2a8",
         "opacity": 1,
-        "fillColor": "#ffd966",
+        "fillColor": "#f9c2a8",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "43-46 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_43_to_46",
+      "title": "20 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_20",
       "sortOrder": 9,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "amber",
+        "markerColor": "lightsalmon",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#ffbf00",
+        "strokeColor": "#f1a07d",
         "opacity": 1,
-        "fillColor": "#ffbf00",
+        "fillColor": "#f1a07d",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "46-49 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_46_to_49",
+      "title": "21 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_21",
       "sortOrder": 10,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "orange",
+        "markerColor": "terracota",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#F69730",
+        "strokeColor": "#de735b",
         "opacity": 1,
-        "fillColor": "#F69730",
+        "fillColor": "#de735b",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
     },
     {
-      "title": "49-52 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_49_to_52",
+      "title": "≥ 22 (ug/m3)",
+      "geoserverLayerName": "pollution:pm25_more_than_22",
       "sortOrder": 11,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "red",
+        "markerColor": "upsdellred",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#d43e2a",
+        "strokeColor": "#b2182b",
         "opacity": 1,
-        "fillColor": "#d43e2a",
+        "fillColor": "#b2182b",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "52-55 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_52_to_55",
-      "sortOrder": 12,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "oldbrick",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#951a1c",
-        "opacity": 1,
-        "fillColor": "#951a1c",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "55-58 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_55_to_58",
-      "sortOrder": 13,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "heath",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#551617",
-        "opacity": 1,
-        "fillColor": "#551617",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": ">58 (ug/m3)",
-      "geoserverLayerName": "pollution:no2_more_than_58",
-      "sortOrder": 14,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "jacarta",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#522b6c",
-        "opacity": 1,
-        "fillColor": "#522b6c",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": []
       }
