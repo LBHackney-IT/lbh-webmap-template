@@ -69,8 +69,7 @@ The options for the data file are as follows:
 | `about` | String | optional | If `showGeoServerMetadata` is set to false, `about` can be used to populate the text in the infoBox described above. |
 | `aboutTitle` | String | optional | `aboutTitle` can be used to populate the title of the infoBox described above (e.g: About the data/About the map) |
 | `baseStyle` | String | optional | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>We removed the MapBox option in Sept 2021 and are now only using British National Grid as the map CRS.|
-| `zoomToMasterMap` | Boolean | optional | This is currently not is use and will be reimplemeted soon.|
-| `zoomToMasterMapBW` | Boolean | optional | If `true` the top 3 levels of zoom show Ordnance Survey masterMap black and white style. |
+| `blockZoomToMasterMap` | Boolean | optional | If `true` the map will block the zoom to the detailed view (OS MasterMap).|
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 

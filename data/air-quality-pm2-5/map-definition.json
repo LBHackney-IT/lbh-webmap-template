@@ -7,6 +7,7 @@
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
+  "blockZoomToMasterMap": true,
   "layers": [
     {
       "title": "12 (ug/m3)",
