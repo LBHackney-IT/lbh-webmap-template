@@ -25,7 +25,7 @@
         "fillColor": "#2166ac",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -51,7 +51,7 @@
         "fillColor": "#3784bb",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -77,7 +77,7 @@
         "fillColor": "#59a1ca",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -103,7 +103,7 @@
         "fillColor": "#8bc0dc",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -129,7 +129,7 @@
         "fillColor": "#b4d6e8",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -155,7 +155,7 @@
         "fillColor": "#d9e3e9",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -181,7 +181,7 @@
         "fillColor": "#f5ddce",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -207,7 +207,7 @@
         "fillColor": "#f9c2a8",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -233,7 +233,7 @@
         "fillColor": "#f1a07d",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -259,7 +259,7 @@
         "fillColor": "#de735b",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
@@ -285,7 +285,7 @@
         "fillColor": "#b2182b",
         "fillOpacity": 0.8,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 1
       },
       "tooltip": {
         "direction": "top",
