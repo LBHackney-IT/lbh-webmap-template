@@ -13,7 +13,6 @@ import "leaflet-control-window";
 import "leaflet-search";
 import { GestureHandling } from "leaflet-gesture-handling";
 import {
-  MAX_ZOOM,
   MIN_ZOOM,
   CENTER_DESKTOP_LEGEND,
   CENTER_DESKTOP_LEGEND_FULLSCREEN,
@@ -56,6 +55,7 @@ class Map {
     this.centerMobile = [];
     this.zoom =null;
     this.zoom_mobile=null;
+    this.maxZoom = null;
     this.isFullScreen = false;
     this.uprn = null;
     this.blpuMarker = null;
@@ -267,13 +267,20 @@ class Map {
       origin: [ -238375.0, 1376256.0 ]
     });
 
+    //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+     if (this.mapConfig.blockZoomToMasterMap){
+      this.maxZoom= 9;
+    } else {
+      this.maxZoom = 12;
+    }
+
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
     this.map = L.map("map", {
       crs: crs,
       zoomControl: false,
-      maxZoom: MAX_ZOOM,
+      maxZoom: this.maxZoom,
       minZoom: MIN_ZOOM,
       center: this.centerDesktop,
       zoom: this.zoom,
