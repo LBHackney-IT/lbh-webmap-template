@@ -19,7 +19,11 @@ const createTitle = (map, mapTitle, mapSummary, about, aboutTitle, showTitleInMe
         title = `<span class='metadata__name'>${mapTitle}</span>`;
       } 
   } else {
-    title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+    if (mapTitle){
+      title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+    } else {
+      title = "";
+    }
   }
 
   if (aboutTitle) {
@@ -78,7 +82,9 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle, sho
         title = `<span class='metadata__name'>${mapTitle}</span>`;
       } 
   } else {
-    title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+    if (mapTitle){
+      title = mapTitle && `<span class='metadata__name'>${mapTitle}</span>`;
+    } 
   }
   if (aboutTitle) {
     title += `${aboutTitle}:`;
