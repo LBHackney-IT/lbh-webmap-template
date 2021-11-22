@@ -9,7 +9,7 @@
   "blockZoomToMasterMap": true,
   "layers": [
     {
-      "title": "22-25 (ug/m3)",
+      "title": "22-25 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_22_to_25",
       "sortOrder": 2,
       "pointStyle": {
@@ -33,7 +33,7 @@
       }
     },
     {
-      "title": "25-28 (ug/m3)",
+      "title": "25-28 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_25_to_28",
       "sortOrder": 3,
       "pointStyle": {
@@ -57,7 +57,7 @@
       }
     },
     {
-      "title": "28-31 (ug/m3)",
+      "title": "28-31 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_28_to_31",
       "sortOrder": 4,
       "pointStyle": {
@@ -81,7 +81,7 @@
       }
     },
     {
-      "title": "31-34 (ug/m3)",
+      "title": "31-34 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_31_to_34",
       "sortOrder": 5,
       "pointStyle": {
@@ -105,7 +105,7 @@
       }
     },
     {
-      "title": "34-37 (ug/m3)",
+      "title": "34-37 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_34_to_37",
       "sortOrder": 6,
       "pointStyle": {
@@ -129,7 +129,7 @@
       }
     },
     {
-      "title": "37-40 (ug/m3)",
+      "title": "37-40 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_37_to_40",
       "sortOrder": 7,
       "pointStyle": {
@@ -153,7 +153,7 @@
       }
     },
     {
-      "title": "40-43 (ug/m3)",
+      "title": "40-43 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_40_to_43",
       "sortOrder": 8,
       "pointStyle": {
@@ -177,7 +177,7 @@
       }
     },
     {
-      "title": "43-46 (ug/m3)",
+      "title": "43-46 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_43_to_46",
       "sortOrder": 9,
       "pointStyle": {
@@ -201,7 +201,7 @@
       }
     },
     {
-      "title": "46-49 (ug/m3)",
+      "title": "46-49 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_46_to_49",
       "sortOrder": 10,
       "pointStyle": {
@@ -225,7 +225,7 @@
       }
     },
     {
-      "title": "49-52 (ug/m3)",
+      "title": "49-52 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_49_to_52",
       "sortOrder": 11,
       "pointStyle": {
@@ -249,7 +249,7 @@
       }
     },
     {
-      "title": "52-55 (ug/m3)",
+      "title": "52-55 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_52_to_55",
       "sortOrder": 12,
       "pointStyle": {
@@ -273,7 +273,7 @@
       }
     },
     {
-      "title": "55-58 (ug/m3)",
+      "title": "55-58 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_55_to_58",
       "sortOrder": 13,
       "pointStyle": {
@@ -297,7 +297,7 @@
       }
     },
     {
-      "title": ">58 (ug/m3)",
+      "title": ">58 (ug/m3) NO2",
       "geoserverLayerName": "pollution:no2_more_than_58",
       "sortOrder": 14,
       "pointStyle": {
