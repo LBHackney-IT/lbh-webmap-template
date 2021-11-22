@@ -1,8 +1,7 @@
 {
-  "title": "2018 PM2.5 annual concentration (ug/m3)",
-  "about": " This map shows XXXXXX.",
+  "about": "The map shows PM2.5 2018 annual mean concentrations (ug/m3) predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
   "aboutTitle": "About the map",
-  "showLegend": false,
+  "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
@@ -28,9 +27,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -54,9 +51,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -80,9 +75,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -132,9 +125,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -210,9 +201,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -236,9 +225,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -262,9 +249,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }
@@ -288,9 +273,7 @@
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": []
       }

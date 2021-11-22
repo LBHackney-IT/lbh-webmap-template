@@ -1,13 +1,12 @@
 {
-  "title": "2018 PM10 annual concentration (ug/m3)",
-  "about": " This map shows XXXXXX.",
-  "aboutTitle": "About the map",
-  "showLegend": false,
-  "showLayersOnLoad": true,
-  "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
-  "blockZoomToMasterMap": true,
+    "about": "The map shows PM10 2018 annual mean concentrations (ug/m3) predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
+    "aboutTitle": "About the map",
+    "showLegend": true,
+    "showLayersOnLoad": true,
+    "baseStyle": "OSoutdoor",
+    "showHackneyMask": true,
+    "showHackneyBoundary": true,
+    "blockZoomToMasterMap": true,
   "layers": [
     {
       "title": "18 (ug/m3)",
