@@ -1,5 +1,5 @@
 {
-  "about": "The map shows PM2.5 2018 annual mean concentrations (ug/m3) predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
+  "about": "The map shows  PM₂.₅ 2018 annual mean concentrations (&mu;g/m&sup3;) predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
@@ -7,9 +7,13 @@
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "blockZoomToMasterMap": true,
+  "controlsText":{
+    "showLegendText": "Show legend",
+    "hideLegendText": "Hide legend"
+  },
   "layers": [
     {
-      "title": "12 (ug/m3) PM2.5",
+      "title": "12 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_12",
       "sortOrder": 1,
       "pointStyle": {
@@ -33,7 +37,7 @@
       }
     },
     {
-      "title": "13 (ug/m3) PM2.5",
+      "title": "13 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_13",
       "sortOrder": 2,
       "pointStyle": {
@@ -57,7 +61,7 @@
       }
     },
     {
-      "title": "14 (ug/m3) PM2.5",
+      "title": "14 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_14",
       "sortOrder": 3,
       "pointStyle": {
@@ -81,7 +85,7 @@
       }
     },
     {
-      "title": "15 (ug/m3) PM2.5",
+      "title": "15 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_15",
       "sortOrder": 4,
       "pointStyle": {
@@ -107,7 +111,7 @@
       }
     },
     {
-      "title": "16 (ug/m3) PM2.5",
+      "title": "16 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_16",
       "sortOrder": 5,
       "pointStyle": {
@@ -131,7 +135,7 @@
       }
     },
     {
-      "title": "17 (ug/m3) PM2.5",
+      "title": "17 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_17",
       "sortOrder": 6,
       "pointStyle": {
@@ -157,7 +161,7 @@
       }
     },
     {
-      "title": "18 (ug/m3) PM2.5",
+      "title": "18 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_18",
       "sortOrder": 7,
       "pointStyle": {
@@ -183,7 +187,7 @@
       }
     },
     {
-      "title": "19 (ug/m3) PM2.5",
+      "title": "19 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_19",
       "sortOrder": 8,
       "pointStyle": {
@@ -207,7 +211,7 @@
       }
     },
     {
-      "title": "20 (ug/m3) PM2.5",
+      "title": "20 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_20",
       "sortOrder": 9,
       "pointStyle": {
@@ -231,7 +235,7 @@
       }
     },
     {
-      "title": "21 (ug/m3) PM2.5",
+      "title": "21 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_21",
       "sortOrder": 10,
       "pointStyle": {
@@ -255,7 +259,7 @@
       }
     },
     {
-      "title": "≥ 22 (ug/m3) PM2.5",
+      "title": "≥22 (&mu;g/m&sup3;)  PM₂.₅",
       "geoserverLayerName": "pollution:pm25_more_than_22",
       "sortOrder": 11,
       "pointStyle": {
