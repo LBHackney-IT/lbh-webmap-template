@@ -1,5 +1,5 @@
 {
-  "about": "The map shows NO&#8322; 2018 annual mean concentrations (&mu;g/m&sup3;)  predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>.",
+  "about": "The map shows NO&#8322; 2018 annual mean concentrations &mu;g/m&sup3; predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
@@ -13,7 +13,7 @@
   },
   "layers": [
     {
-      "title": "22.0 - 24.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "22.0 - 24.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_22_to_25",
       "sortOrder": 2,
       "pointStyle": {
@@ -37,7 +37,7 @@
       }
     },
     {
-      "title": "25.0 - 27.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "25.0 - 27.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_25_to_28",
       "sortOrder": 3,
       "pointStyle": {
@@ -61,7 +61,7 @@
       }
     },
     {
-      "title": "28.0 - 29.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "28.0 - 29.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_28_to_31",
       "sortOrder": 4,
       "pointStyle": {
@@ -85,7 +85,7 @@
       }
     },
     {
-      "title": "30.0 - 33.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "30.0 - 33.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_31_to_34",
       "sortOrder": 5,
       "pointStyle": {
@@ -109,7 +109,7 @@
       }
     },
     {
-      "title": "34.0 - 36.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "34.0 - 36.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_34_to_37",
       "sortOrder": 6,
       "pointStyle": {
@@ -133,7 +133,7 @@
       }
     },
     {
-      "title": "37.0 - 39.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "37.0 - 39.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_37_to_40",
       "sortOrder": 7,
       "pointStyle": {
@@ -157,7 +157,7 @@
       }
     },
     {
-      "title": "40.0 - 42.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "40.0 - 42.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_40_to_43",
       "sortOrder": 8,
       "pointStyle": {
@@ -181,7 +181,7 @@
       }
     },
     {
-      "title": "43.0 - 45.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "43.0 - 45.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_43_to_46",
       "sortOrder": 9,
       "pointStyle": {
@@ -205,7 +205,7 @@
       }
     },
     {
-      "title": "46.0 - 48.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "46.0 - 48.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_46_to_49",
       "sortOrder": 10,
       "pointStyle": {
@@ -229,7 +229,7 @@
       }
     },
     {
-      "title": "49.0 - 51.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "49.0 - 51.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_49_to_52",
       "sortOrder": 11,
       "pointStyle": {
@@ -253,7 +253,7 @@
       }
     },
     {
-      "title": "52.0 - 54.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "52.0 - 54.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_52_to_55",
       "sortOrder": 12,
       "pointStyle": {
@@ -277,7 +277,7 @@
       }
     },
     {
-      "title": "55.0 - 57.9 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "55.0 - 57.9 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_55_to_58",
       "sortOrder": 13,
       "pointStyle": {
@@ -301,7 +301,7 @@
       }
     },
     {
-      "title": "≥58.0 (&mu;g/m&sup3;)  NO&#8322;",
+      "title": "≥58.0 &mu;g/m&sup3; NO&#8322;",
       "geoserverLayerName": "pollution:no2_more_than_58",
       "sortOrder": 14,
       "pointStyle": {
