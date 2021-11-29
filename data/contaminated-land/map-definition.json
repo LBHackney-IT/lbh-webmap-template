@@ -39,7 +39,7 @@
       }
     },
     {
-      "title": "Site of potential concern",
+      "title": "Sites of potential concern",
       "geoserverLayerName": "pollution:part2a_site_potential_concern",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -64,7 +64,7 @@
       }
     },
     {
-      "title": "Investigated Site",
+      "title": "Investigated Sites",
       "geoserverLayerName": "pollution:part2a_site_investigated",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -89,7 +89,7 @@
       }
     },
     {
-      "title": "Prescribed processe",
+      "title": "Prescribed processes",
       "geoserverLayerName": "pollution:prescribed_processes",
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -118,7 +118,7 @@
       }
     },
     {
-      "title": "Private water supply",
+      "title": "Private water supplies",
       "geoserverLayerName": "pollution:private_water_supply",
       "pointStyle": {
         "markerType": "CircleMarker",
