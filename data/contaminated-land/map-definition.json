@@ -1,10 +1,11 @@
 {
   "title": "Land and water pollution",
   "about": " This map shows .....",
-  "aboutTitle": "About the map",
+  "aboutTitle": "About the data on this map",
   "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
+  "showGeoServerMetadata": true,
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "layers": [
