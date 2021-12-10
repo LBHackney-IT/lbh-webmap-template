@@ -206,6 +206,17 @@ class Map {
           this.setViewFromLatlon(null);
           this.createMap();
           this.createMapContent();
+          if (this.isFullScreen){
+            mobileDesktopSwitch(
+              () => this.map.setView(this.centerMobile, this.zoom_mobile),
+              () => this.map.setView(this.centerDesktop, this.zoom)
+            );
+          } else{
+            mobileDesktopSwitch(
+              () => this.map.setView(this.centerMobile, this.zoom_mobile),
+              () => this.map.setView(this.centerDesktop, this.zoom)
+            );
+          }
         }
        
       })
@@ -287,17 +298,7 @@ class Map {
       gestureHandling: L.Browser.mobile
     });
     this.map.setMaxBounds(MAP_BOUNDS);
-    if (this.isFullScreen){
-      mobileDesktopSwitch(
-        () => this.map.setView(this.centerMobile, this.zoom_mobile),
-        () => this.map.setView(this.centerDesktop, this.zoom)
-      );
-    } else{
-      mobileDesktopSwitch(
-        () => this.map.setView(this.centerMobile, this.zoom_mobile),
-        () => this.map.setView(this.centerDesktop, this.zoom)
-      );
-    }
+   
 
     // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile && !this.isFullScreen) {
@@ -405,7 +406,7 @@ class Map {
       } else {
         this.map.setView(this.centerDesktop, this.zoom);
       }
-      } 
+  } 
   
   addResetButton() {
     L.easyButton(
