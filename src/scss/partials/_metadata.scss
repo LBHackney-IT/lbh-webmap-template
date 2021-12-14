@@ -35,7 +35,8 @@
 .metadata__title {
   //display: inline-block;
   float: right;
-  line-height: 1.3rem
+  line-height: 1.3rem;
+  max-width: 300px;
 }
 
 .metadata__link {
