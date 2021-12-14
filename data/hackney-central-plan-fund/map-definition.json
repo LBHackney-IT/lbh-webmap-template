@@ -1,0 +1,33 @@
+{
+  "title": "Hackney Central Plan: Impact, Ideas and Recovery Fund - Eligibility area",
+  "about": "This map shows the  Impact, Ideas and Recovery Fund eligibility area. Eligible projects will either be from businesses directly located in this area, or for projects which indirectly benefit businesses based in is area. The Hackney Central area has been defined by the Hackney Central Town Centre Strategy.",
+  "aboutTitle": "About the map",
+  "showLegend": false,
+  "showLayersOnLoad": true,
+  "blockZoomToMasterMap": true,
+  "baseStyle": "OSlight",
+  "showHackneyMask": false,
+  "showHackneyBoundary": true,
+  "layers": [
+    {
+      "title": "Eligibility area",
+      "geoserverLayerName": "housing:regeneration_hackney_central_plan",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      }
+    }
+  ]
+}
