@@ -55,8 +55,8 @@
       }
     },
     {
-      "title": "<40 &mu;g/m&sup3; NO&#8322; in 2020",
-      "sortOrder":1,
+      "title": "40 - 59 &mu;g/m&sup3; NO&#8322; in 2020",
+      "sortOrder":2,
       "geoserverLayerName": "pollution:monitoring_site_between_40_59ugm3",
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -91,9 +91,9 @@
       }
     },
     {
-      "title": "40 - 59 &mu;g/m&sup3; NO&#8322; in 2020",
+      "title": "<40 &mu;g/m&sup3; NO&#8322; in 2020",
       "geoserverLayerName": "pollution:monitoring_site_under_40ugm3",
-      "sortOrder":2,
+      "sortOrder":1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-vial",
