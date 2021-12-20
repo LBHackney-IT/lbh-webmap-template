@@ -81,6 +81,7 @@ const MARKER_COLORS = {
   oldbrick: "#951a1c",
   heath:"#551617",
   jacarta:"#522b6c",
+  violet:"#a36ec5",
   lemonyellow:"#f1f9a9",
   apple:"#bfe5a0",
   greenblue:"#2166ac",
