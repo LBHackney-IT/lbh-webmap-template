@@ -8,7 +8,7 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Bench",
+      "title": "Wooden Bench",
       "geoserverLayerName": "greenspaces:park_subtype_bench",
       "pointStyle": {
         "markerType": "CircleMarker",
