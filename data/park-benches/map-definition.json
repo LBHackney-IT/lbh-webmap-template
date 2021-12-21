@@ -1,4 +1,7 @@
 {
+  "title": "Park benches",
+  "about": "This map shows the location of different types of park benches.",
+  "aboutTitle": "About the map",
   "showHackneyBoundary": true,
   "baseStyle": "OSoutdoor",
   "showLegend": true, 
