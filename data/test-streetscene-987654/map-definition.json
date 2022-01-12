@@ -1,0 +1,118 @@
+{
+  "title": "Low Traffic Neighbourhoods",
+  "baseStyle": "OSoutdoor",
+  "zoomToMasterMap": true,
+  "showHackneyBoundary": true,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "layers": [
+    {
+      "title": "Legacy LTN",
+      "geoserverLayerName": "transport:ltn_overview_legacy",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightgreen",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#8cfea9",
+        "fillOpacity": 0.7,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic change inside the area",
+            "name": "traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic change on boundary roads",
+            "name": "traffic_trend_boundary_roads"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Permanent LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#e740ff",
+        "fillOpacity": 0.7,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic change inside the area",
+            "name": "traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic change on boundary roads",
+            "name": "traffic_trend_boundary_roads"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LTN under approval",
+      "geoserverLayerName": "transport:ltn_overview_emergency_pending",
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#40feff",
+        "fillOpacity": 0.7,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic change inside the area",
+            "name": "traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic change on boundary roads",
+            "name": "traffic_trend_boundary_roads"
+          }
+        ]
+      }
+    }
+  ]
+}
