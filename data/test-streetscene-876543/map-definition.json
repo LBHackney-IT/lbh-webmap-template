@@ -1,0 +1,132 @@
+{
+  "title": "LTN Boundary Roads",
+  "baseStyle": "OSoutdoor",
+  "zoomToMasterMap": true,
+  "showHackneyBoundary": true,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "layers": [
+    {
+      "title": "Permanent LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
+      "sortOrder": 2,
+      "highlightFeatureOnHover": true,
+      "zoomToFeatureOnClick": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#e740ff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+        ]
+      }
+    },
+    {
+      "title": "Boundary roads with increased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_increase",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic trends",
+            "name": "traffic_evolution"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Boundary roads with stable traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_stable",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#000000",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic trends",
+            "name": "traffic_evolution"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Boundary roads with decreased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_decrease",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "green",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic trends",
+            "name": "traffic_evolution"
+          }
+        ]
+      }
+    }
+  ]
+}
