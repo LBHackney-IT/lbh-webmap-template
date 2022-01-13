@@ -9,7 +9,7 @@
     {
       "title": "Permanent LTN",
       "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
-      "sortOrder": 2,
+      "sortOrder": 1,
       "highlightFeatureOnHover": true,
       "zoomToFeatureOnClick": true,
       "pointStyle": {
@@ -38,7 +38,7 @@
     {
       "title": "Boundary roads with increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_increase",
-      "sortOrder": 3,
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -69,7 +69,7 @@
     {
       "title": "Boundary roads with stable traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_stable",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -80,10 +80,10 @@
         "stroke": "false",
         "strokeColor": "#000000",
         "opacity": 1,
-        "fillColor": "",
-        "fillOpacity": 0,
+        "fillColor": "#000000",
+        "fillOpacity": 1,
         "layerLineDash": "",
-        "weight": 4
+        "weight": 2
       },
       "tooltip": {
         "direction": "top",
@@ -124,6 +124,39 @@
           {
             "label": "Traffic trends",
             "name": "traffic_evolution"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modal filters",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 3
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
+          {
+            "label": "Type",
+            "name": "type"
           }
         ]
       }
