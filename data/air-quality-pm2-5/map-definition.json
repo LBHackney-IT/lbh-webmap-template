@@ -1,7 +1,7 @@
 {
-  "about": "The map shows  PM₂.₅ 2018 annual mean concentrations &mu;g/m&sup3;predicted by air quality modelling Hackney Council undertook in 2021. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
+  "about": "The map shows  PM₂.₅ 2018 annual mean concentrations &mu;g/m&sup3;predicted by air quality modelling Hackney Council undertook in 2021. The World Health Organisation (WHO) annual mean guideline for PM₂.₅ is 5 &mu;g/m&sup3;. Anything above this concentration is therefore failing the annual mean WHO guideline. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
   "aboutTitle": "About the map",
-  "showLegend": true,
+  "showLegend": true, 
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
