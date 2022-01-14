@@ -44,7 +44,7 @@
       }
     },
     {
-      "title": "Permanent LTN",
+      "title": "Rebuilding a greener Hackey permanent LTN",
       "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
       "sortOrder": 2,
       "highlightFeatureOnHover": true,
@@ -81,7 +81,7 @@
       }
     },
     {
-      "title": "LTN under approval",
+      "title": "Rebuilding a greener Hackney experimental LTN",
       "geoserverLayerName": "transport:ltn_overview_emergency_pending",
       "sortOrder": 3,
       "highlightFeatureOnHover": true,
