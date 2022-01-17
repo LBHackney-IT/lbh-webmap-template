@@ -97,7 +97,10 @@ class DataLayers {
       stringPopup += `<p class="popup__text">${afterFields}</p>`;
     }
 
-    return stringPopup;
+    if (stringPopup === '<h3 class="lbh-heading-h6 popup__title"></h3>')
+      return ''
+    else
+      return stringPopup;
   }
 
   createTooltip(configLayer, feature, layerName) {
@@ -140,7 +143,10 @@ class DataLayers {
       stringTooltip += `<p class="popup__text">${afterFields}</p>`;
     }
 
-    return stringTooltip;
+    if (stringTooltip === '<h3 class="lbh-heading-h6 popup__title"></h3>')
+      return ''
+    else
+      return stringTooltip;
   }
 
   addWFSLayer(data, configLayer) {
@@ -194,8 +200,10 @@ class DataLayers {
             feature,
             layerName
           );
-          const popup = L.popup({ closeButton: true }).setContent(popupString);
-          layer.bindPopup(popup, { maxWidth: 210 });
+          if (popupString){
+            const popup = L.popup({ closeButton: true }).setContent(popupString);
+            layer.bindPopup(popup, { maxWidth: 210 });
+          }         
           if (this.mapConfig.performDrillDown) {
             layer.off();
           } 
@@ -207,11 +215,13 @@ class DataLayers {
             feature,
             layerName
           );
-          const tooltip = L.tooltip().setContent(tooltipString);
-          layer.bindTooltip(tooltip, { 
-            direction: configLayer.tooltip.direction || 'auto',
-            offset: configLayer.tooltip.offset || [0,0]
-          });
+          if (tooltipString){
+            const tooltip = L.tooltip().setContent(tooltipString);
+            layer.bindTooltip(tooltip, { 
+              direction: configLayer.tooltip.direction || 'auto',
+              offset: configLayer.tooltip.offset || [0,0]
+            });
+          }          
         }
 
         if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
