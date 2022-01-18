@@ -18,15 +18,15 @@
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "greenblue",
+        "markerColor": "riverrouge",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#2166ac",
+        "strokeColor": "#EB9E98",
         "opacity": 1,
-        "fillColor": "#2166ac",
+        "fillColor": "#EB9E98",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -42,15 +42,15 @@
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "bluecrayola",
+        "markerColor": "salmonsalt",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#3784bb",
+        "strokeColor": "#E79088",
         "opacity": 1,
-        "fillColor": "#3784bb",
+        "fillColor": "#E79088",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -66,15 +66,15 @@
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "carolinablue",
+        "markerColor": "tangopink",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#59a1ca",
+        "strokeColor": "#E48077",
         "opacity": 1,
-        "fillColor": "#59a1ca",
+        "fillColor": "#E48077",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -90,15 +90,15 @@
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "darkskyblue",
+        "markerColor": "childhoodcrush",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#8bc0dc",
+        "strokeColor": "#E17066",
         "opacity": 1,
-        "fillColor": "#8bc0dc",
+        "fillColor": "#E17066",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -116,15 +116,15 @@
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "columbiablue",
+        "markerColor": "barelybrown",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#b4d6e8",
+        "strokeColor": "#DD6055",
         "opacity": 1,
-        "fillColor": "#b4d6e8",
+        "fillColor": "#DD6055",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -140,15 +140,15 @@
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "aliceblue",
+        "markerColor": "redwire",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#d9e3e9",
+        "strokeColor": "#DA5044",
         "opacity": 1,
-        "fillColor": "#d9e3e9",
+        "fillColor": "#DA5044",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -166,15 +166,15 @@
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "champagnepink",
+        "markerColor": "dangerred",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#f5ddce",
+        "strokeColor": "#D74033",
         "opacity": 1,
-        "fillColor": "#f5ddce",
+        "fillColor": "#D74033",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -192,15 +192,15 @@
       "sortOrder": 8,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "apricot",
+        "markerColor": "redlips",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#f9c2a8",
+        "strokeColor": "#CC3628",
         "opacity": 1,
-        "fillColor": "#f9c2a8",
+        "fillColor": "#CC3628",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -216,15 +216,15 @@
       "sortOrder": 9,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "lightsalmon",
+        "markerColor": "bloodrush",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#f1a07d",
+        "strokeColor": "#AA2D22",
         "opacity": 1,
-        "fillColor": "#f1a07d",
+        "fillColor": "#AA2D22",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -240,15 +240,15 @@
       "sortOrder": 10,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "terracota",
+        "markerColor": "oldbrick",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#de735b",
+        "strokeColor": "#951a1c",
         "opacity": 1,
-        "fillColor": "#de735b",
+        "fillColor": "#951a1c",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -264,15 +264,15 @@
       "sortOrder": 11,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "upsdellred",
+        "markerColor": "darkhumor",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#b2182b",
+        "strokeColor": "#641220",
         "opacity": 1,
-        "fillColor": "#b2182b",
+        "fillColor": "#641220",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1

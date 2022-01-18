@@ -78,7 +78,6 @@ const MARKER_COLORS = {
   mediumspringgreen: "#53eb8d",
   yellowgreen:"#96d642",
   amber:"#ffbf00",
-  oldbrick: "#951a1c",
   heath:"#551617",
   jacarta:"#522b6c",
   violet:"#a36ec5",
@@ -94,7 +93,18 @@ const MARKER_COLORS = {
   apricot:"#f9c2a8",
   lightsalmon:"#f1a07d",
   terracota:"#de735b",
-  upsdellred:"#b2182b"
+  upsdellred:"#b2182b",
+  riverrouge: "#EB9E98",
+  salmonsalt:"#E79088",
+  tangopink:"#E48077",
+  childhoodcrush:"#E17066",
+  barelybrown:"#DD6055",
+  redwire:"#DA5044",
+  dangerred: "#D74033",
+  redlips:"#CC3628",
+  bloodrush:"#AA2D22",
+  oldbrick: "#951a1c",
+  darkhumor:"#641220"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
