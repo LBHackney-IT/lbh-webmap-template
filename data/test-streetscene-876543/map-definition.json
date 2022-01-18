@@ -25,9 +25,7 @@
         "layerLineDash": "",
         "weight": 2
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "",
         "fields": [
           {
