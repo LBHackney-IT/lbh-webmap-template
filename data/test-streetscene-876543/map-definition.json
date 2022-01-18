@@ -170,12 +170,12 @@
       }
     },
     {
-      "title": "Low traffic neighbourhoods",
-      "geoserverLayerName": "transport:ltn_overview",
+      "title": "Legacy LTN",
+      "geoserverLayerName": "transport:ltn_overview_legacy",
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "lightgray",
+        "markerColor": "lightgreen",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
@@ -183,8 +183,8 @@
         "stroke": true,
         "strokeColor": "grey",
         "opacity": 0.5,
-        "fillColor": "grey",
-        "fillOpacity": 0.3,
+        "fillColor": "#8cfea9",
+        "fillOpacity": 0.5,
         "layerLineDash": "",
         "weight": 1
       },
@@ -193,6 +193,84 @@
         "offset": [0,0],
         "title": "name",
         "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackey permanent LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#e740ff",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackney experimental LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_pending",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#40feff",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
         ]
       }
     }
