@@ -1,6 +1,6 @@
 {
   "title": "LTN Boundary Roads",
-  "baseStyle": "OSoutdoor",
+  "baseStyle": "OSlight",
   "zoomToMasterMap": true,
   "showHackneyBoundary": true,
   "showLegend": true,
@@ -36,8 +36,39 @@
       }
     },
     {
-      "title": "Boundary roads with increased traffic",
-      "geoserverLayerName": "transport:ltn_boundary_road_increase",
+      "title": "Boundary roads with highly increased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "red"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 5
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Boundary roads with moderately increased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -52,7 +83,7 @@
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 4
+        "weight": 5
       },
       "tooltip": {
         "direction": "top",
@@ -60,8 +91,8 @@
         "title": "os_roadname",
         "fields": [
           {
-            "label": "Traffic trends",
-            "name": "traffic_evolution"
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
           }
         ]
       }
@@ -83,7 +114,7 @@
         "fillColor": "#000000",
         "fillOpacity": 1,
         "layerLineDash": "",
-        "weight": 2
+        "weight": 5
       },
       "tooltip": {
         "direction": "top",
@@ -91,8 +122,8 @@
         "title": "os_roadname",
         "fields": [
           {
-            "label": "Traffic trends",
-            "name": "traffic_evolution"
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
           }
         ]
       }
@@ -114,7 +145,7 @@
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 4
+        "weight": 5
       },
       "tooltip": {
         "direction": "top",
@@ -122,8 +153,8 @@
         "title": "os_roadname",
         "fields": [
           {
-            "label": "Traffic trends",
-            "name": "traffic_evolution"
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
           }
         ]
       }

@@ -1,6 +1,6 @@
 {
   "title": "Low Traffic Neighbourhoods",
-  "baseStyle": "OSoutdoor",
+  "baseStyle": "OSlight",
   "zoomToMasterMap": true,
   "showHackneyBoundary": true,
   "showLegend": true,
@@ -11,7 +11,6 @@
       "geoserverLayerName": "transport:ltn_overview_legacy",
       "sortOrder": 1,
       "highlightFeatureOnHover": true,
-      "zoomToFeatureOnClick": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightgreen",
@@ -39,6 +38,10 @@
           {
             "label": "Traffic trend on boundary roads",
             "name": "label_traffic_trend_boundary"
+          },
+          {
+            "label": "Detailed view",
+            "name": "detailed_map"
           }
         ]
       }
@@ -48,7 +51,7 @@
       "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
       "sortOrder": 2,
       "highlightFeatureOnHover": true,
-      "zoomToFeatureOnClick": true,
+      "followLinkOnClick": "detailed_map",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "purple",
@@ -77,7 +80,8 @@
             "label": "Traffic trend on boundary roads",
             "name": "label_traffic_trend_boundary"
           }
-        ]
+        ],
+        "afterFields": "Click on the LTN area for a detailed traffic view"
       }
     },
     {
@@ -85,7 +89,6 @@
       "geoserverLayerName": "transport:ltn_overview_emergency_pending",
       "sortOrder": 3,
       "highlightFeatureOnHover": true,
-      "zoomToFeatureOnClick": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightblue",
@@ -113,37 +116,10 @@
           {
             "label": "Traffic trend on boundary roads",
             "name": "label_traffic_trend_boundary"
-          }
-        ]
-      }
-    }, 
-    {
-      "title": "Main road network",
-      "geoserverLayerName": "transport:ltn_road_network_main",
-      "sortOrder": 3,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-horizontal-rule",
-        "markerColor": "black"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": "false",
-        "strokeColor": "#000000",
-        "opacity": 1,
-        "fillColor": "",
-        "fillOpacity": 0,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "os_roadname",
-        "fields": [
+          },
           {
-            "label": "Traffic trends",
-            "name": "traffic_evolution"
+            "label": "Detailed view",
+            "name": "detailed_map"
           }
         ]
       }
