@@ -36,9 +36,9 @@
       }
     },
     {
-      "title": "Boundary roads with highly increased traffic",
+      "title": "Road sections with highly increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -47,12 +47,12 @@
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": "false",
-        "strokeColor": "red",
+        "strokeColor": "#d43e29",
         "opacity": 1,
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 5
+        "weight": 4
       },
       "tooltip": {
         "direction": "top",
@@ -63,11 +63,12 @@
             "label": "Traffic evolution compared to baseline",
             "name": "label_traffic_evolution"
           }
-        ]
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
       }
     },
     {
-      "title": "Boundary roads with moderately increased traffic",
+      "title": "Road sections with moderately increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
       "sortOrder": 5,
       "pointStyle": {
@@ -83,7 +84,7 @@
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 5
+        "weight": 4
       },
       "tooltip": {
         "direction": "top",
@@ -94,11 +95,12 @@
             "label": "Traffic evolution compared to baseline",
             "name": "label_traffic_evolution"
           }
-        ]
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
       }
     },
     {
-      "title": "Boundary roads with stable traffic",
+      "title": "Road sections with stable traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_stable",
       "sortOrder": 4,
       "pointStyle": {
@@ -114,7 +116,7 @@
         "fillColor": "#000000",
         "fillOpacity": 1,
         "layerLineDash": "",
-        "weight": 5
+        "weight": 4
       },
       "tooltip": {
         "direction": "top",
@@ -125,11 +127,12 @@
             "label": "Traffic evolution compared to baseline",
             "name": "label_traffic_evolution"
           }
-        ]
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
       }
     },
     {
-      "title": "Boundary roads with decreased traffic",
+      "title": "Road sections with decreased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_decrease",
       "sortOrder": 3,
       "pointStyle": {
@@ -145,7 +148,7 @@
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
-        "weight": 5
+        "weight": 4
       },
       "tooltip": {
         "direction": "top",
@@ -156,7 +159,8 @@
             "label": "Traffic evolution compared to baseline",
             "name": "label_traffic_evolution"
           }
-        ]
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
       }
     },
     {
@@ -166,17 +170,17 @@
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
-        "markerColor": "black"
+        "markerColor": "darkblue"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "black",
+        "strokeColor": "#0266a2",
         "opacity": 1,
-        "fillColor": "black",
+        "fillColor": "#0266a2",
         "fillOpacity": 1,
         "layerLineDash": "",
-        "weight": 3
+        "weight": 2
       },
       "popup": {
         "title": "",
