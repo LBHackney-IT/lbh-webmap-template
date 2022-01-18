@@ -38,10 +38,6 @@
           {
             "label": "Traffic trend on boundary roads",
             "name": "label_traffic_trend_boundary"
-          },
-          {
-            "label": "Detailed view",
-            "name": "detailed_map"
           }
         ]
       }
@@ -89,6 +85,7 @@
       "geoserverLayerName": "transport:ltn_overview_emergency_pending",
       "sortOrder": 3,
       "highlightFeatureOnHover": true,
+      "followLinkOnClick": "detailed_map",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightblue",
@@ -116,12 +113,9 @@
           {
             "label": "Traffic trend on boundary roads",
             "name": "label_traffic_trend_boundary"
-          },
-          {
-            "label": "Detailed view",
-            "name": "detailed_map"
           }
-        ]
+        ],
+        "afterFields": "Click on the LTN area for a detailed traffic view"
       }
     }
   ]

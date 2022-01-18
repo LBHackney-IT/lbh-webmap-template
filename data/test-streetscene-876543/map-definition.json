@@ -7,38 +7,9 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Low Traffic Neighbourhood",
-      "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 1,
-      "highlightFeatureOnHover": true,
-      "zoomToFeatureOnClick": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "purple",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "grey",
-        "opacity": 0.5,
-        "fillColor": "#e740ff",
-        "fillOpacity": 0.3,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "name",
-        "fields": [
-        ]
-      }
-    },
-    {
       "title": "Road sections with highly increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
-      "sortOrder": 6,
+      "sortOrder": 1,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -70,7 +41,7 @@
     {
       "title": "Road sections with moderately increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
-      "sortOrder": 5,
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -102,7 +73,7 @@
     {
       "title": "Road sections with stable traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_stable",
-      "sortOrder": 4,
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -134,7 +105,7 @@
     {
       "title": "Road sections with decreased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_decrease",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -166,7 +137,7 @@
     {
       "title": "Modal filters",
       "geoserverLayerName": "transport:modal_filter_bollard",
-      "sortOrder": 2,
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
@@ -182,7 +153,9 @@
         "layerLineDash": "",
         "weight": 2
       },
-      "popup": {
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
         "title": "",
         "fields": [
           {
@@ -194,6 +167,85 @@
             "name": "type"
           }
         ]
+      }
+    },
+    {
+      "title": "Legacy LTN",
+      "geoserverLayerName": "transport:ltn_overview_legacy",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightgreen",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#8cfea9",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+        ]
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackey permanent LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#e740ff",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": []
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackney experimental LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_pending",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#40feff",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": []
       }
     }
   ]
