@@ -197,7 +197,7 @@
 
 .control__text {
   @include lbh-rem(font-size, 14);
-  @include lbh-rem(padding-left, 10);
+  // @include lbh-rem(padding-left, 10);
   box-sizing: border-box;
   max-width: calc(100% - 32px);
   max-width: calc(100% - 2rem);
@@ -301,4 +301,13 @@ input:not(:checked) + span span.control__active-border {
 .fa-fw {
   text-align: center;
   width: 2.25em;
+}
+
+.legend-entry {
+  width: 100%;
+  display: flex;
+}
+
+.legend-entry-text {
+  @include lbh-rem(padding-left, 10);
 }
