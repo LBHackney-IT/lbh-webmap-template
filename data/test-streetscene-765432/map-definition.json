@@ -7,7 +7,7 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Air Pollution Receptor with negligible impact on NO&#8322; concentration",
+      "title": "Air pollution receptor - negligible impact on NO&#8322; concentration",
       "geoserverLayerName": "pollution:ltn_receptor_no2_negligible",
       "sortOrder": 2,
       "pointStyle": {
@@ -31,7 +31,7 @@
       }
     },
     {
-      "title": "Air Pollution Receptor with slight adverse impact on NO&#8322; concentration",
+      "title": "Air pollution receptor - slight adverse impact on NO&#8322; concentration",
       "geoserverLayerName": "pollution:ltn_receptor_no2_slight_adverse",
       "sortOrder": 1,
       "pointStyle": {
@@ -54,7 +54,7 @@
       }
     }, 
     {
-      "title": "Air Pollution Receptor with slight beneficial impact on NO&#8322; concentration",
+      "title": "Air pollution receptor - slight beneficial impact on NO&#8322; concentration",
       "geoserverLayerName": "pollution:ltn_receptor_no2_slight_beneficial",
       "sortOrder": 3,
       "pointStyle": {
@@ -77,7 +77,7 @@
       }
     },
     {
-      "title": "Air Pollution Receptor with substantial beneficial impact on NO&#8322; concentration",
+      "title": "Air pollution receptor - substantial beneficial impact on NO&#8322; concentration",
       "geoserverLayerName": "pollution:ltn_receptor_no2_substantial_beneficial",
       "sortOrder": 4,
       "pointStyle": {
@@ -100,7 +100,7 @@
       }
     },
     {
-      "title": "Air Pollution Receptor with moderate beneficial impact on NO&#8322; concentration",
+      "title": "Air pollution receptor - moderate beneficial impact on NO&#8322; concentration",
       "geoserverLayerName": "pollution:ltn_receptor_no2_moderate_beneficial",
       "sortOrder": 5,
       "pointStyle": {
@@ -123,7 +123,7 @@
       }
     },
     {
-      "title": "LTN counters",
+      "title": "LTN counter",
       "geoserverLayerName": "transport:low_traffic_neighbourhood_counter",
       "sortOrder": 6,
       "pointStyle": {
@@ -150,7 +150,7 @@
       }
     },
     {
-      "title": "Road sections with highly increased traffic",
+      "title": "Road section with highly increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
       "sortOrder": 6,
       "pointStyle": {
@@ -182,7 +182,7 @@
       }
     },
     {
-      "title": "Road sections with moderately increased traffic",
+      "title": "Road section with moderately increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
       "sortOrder": 8,
       "pointStyle": {
@@ -214,7 +214,7 @@
       }
     },
     {
-      "title": "Road sections with stable traffic",
+      "title": "Road section with stable traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_stable",
       "sortOrder": 9,
       "pointStyle": {
@@ -246,7 +246,7 @@
       }
     },
     {
-      "title": "Road sections with decreased traffic",
+      "title": "Road section with decreased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_decrease",
       "sortOrder": 10,
       "pointStyle": {
