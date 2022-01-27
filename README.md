@@ -131,7 +131,8 @@ Object properties:
 
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
-| `markerType` | String | optional |  Possible values: <br>`"AwesomeMarker"`: uses font awesome and the icon element below,<br>`"CircleMarker"`: 6m circle with semi-transparent fill,<br>Empty or anything else: the default Leaflet blue marker.| 	
+| `markerType` | String | optional |  Possible values: <br>`"AwesomeMarker"`: uses font awesome and the icon element below,<br>`"CircleMarker"`: 6m circle with semi-transparent fill,<br>Empty or anything else: the default Leaflet blue marker.|
+| `circleMarkerRadius` | Integer | optional |  This is only used if the markerType is `"CircleMarker"`. If not defined in this parameter, the radius is automatically set to 6.| 	
 | `icon` | String | optional | FontAwesome icon name of the marker when `markerType` is set to `"AwesomeMarker"`. |
 | `icon2` | String | optional | A second FontAwesome icon can be used when an advanced style is required (e.g: an outline and a filled colour with different colours). Both icons will be stacked using the FontAwesome data-fa transformations.|
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
