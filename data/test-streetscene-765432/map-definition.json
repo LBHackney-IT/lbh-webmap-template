@@ -7,17 +7,22 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Air Pollution Receptors",
-      "geoserverLayerName": "pollution:ltn_receptor",
-      "sortOrder": 1,
+      "title": "Air Pollution Receptor with negligible impact on NO&#8322; concentration",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_negligible",
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "far fa-sun-dust",
-        "markerColor": "darkblue"
+        "markerColor": "beige"
       },
+
       "popup": {
         "title": "",
         "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
           {
             "label": "Impact on NO2 concentration",
             "name": "no2_impact"
@@ -26,9 +31,128 @@
       }
     },
     {
+      "title": "Air Pollution Receptor with slight adverse impact on NO&#8322; concentration",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_slight_adverse",
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-sun-dust",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    }, 
+    {
+      "title": "Air Pollution Receptor with slight beneficial impact on NO&#8322; concentration",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_slight_beneficial",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-sun-dust",
+        "markerColor": "lightgreen"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Air Pollution Receptor with substantial beneficial impact on NO&#8322; concentration",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_substantial_beneficial",
+      "sortOrder": 4,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-sun-dust",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Air Pollution Receptor with moderate beneficial impact on NO&#8322; concentration",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_moderate_beneficial",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-sun-dust",
+        "markerColor": "darkgreen"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "LTN counters",
+      "geoserverLayerName": "transport:low_traffic_neighbourhood_counter",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-cars",
+        "markerColor": "black"
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "5 days average",
+            "name": "5_days_average"
+          }, 
+          {
+            "label": "7 days average",
+            "name": "7_days_average"
+          },
+          {
+            "label": "Total vehicles",
+            "name": "total_vehicles"
+          }
+        ]
+      }
+    },
+    {
       "title": "Road sections with highly increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
-      "sortOrder": 1,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -38,7 +162,7 @@
         "styleName": "default",
         "stroke": "false",
         "strokeColor": "#d43e29",
-        "opacity": 1,
+        "opacity": 7,
         "fillColor": "",
         "fillOpacity": 0,
         "layerLineDash": "",
@@ -60,7 +184,7 @@
     {
       "title": "Road sections with moderately increased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
-      "sortOrder": 2,
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -92,7 +216,7 @@
     {
       "title": "Road sections with stable traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_stable",
-      "sortOrder": 3,
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -124,7 +248,7 @@
     {
       "title": "Road sections with decreased traffic",
       "geoserverLayerName": "transport:ltn_boundary_road_decrease",
-      "sortOrder": 4,
+      "sortOrder": 10,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-horizontal-rule",
@@ -156,7 +280,7 @@
     {
       "title": "Legacy LTN",
       "geoserverLayerName": "transport:ltn_overview_legacy",
-      "sortOrder": 6,
+      "sortOrder": 11,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightgreen",
@@ -191,7 +315,7 @@
     {
       "title": "Rebuilding a greener Hackey permanent LTN",
       "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
-      "sortOrder": 7,
+      "sortOrder": 12,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "purple",
@@ -226,7 +350,7 @@
     {
       "title": "Rebuilding a greener Hackney experimental LTN",
       "geoserverLayerName": "transport:ltn_overview_emergency_pending",
-      "sortOrder": 8,
+      "sortOrder": 13,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightblue",
