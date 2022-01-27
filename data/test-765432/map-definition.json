@@ -1,6 +1,7 @@
 {
   "title": "Air quality modelling at LTNs",
   "about": "Some text about the map",
+  "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "zoomToMasterMap": false,
   "showHackneyBoundary": true,
@@ -8,7 +9,7 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Modelled NO&#8322; change from -8.0 to -6.0",
+      "title": "Modelled NO&#8322; change from -8.0 to -6.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1",
       "sortOrder": 1,
       "pointStyle": {
@@ -44,7 +45,7 @@
       }
     },
     {
-      "title": "Modelled NO&#8322; change from -6.0 to -4.0",
+      "title": "Modelled NO&#8322; change from -6.0 to -4.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range2",
       "sortOrder": 2,
       "pointStyle": {
@@ -80,7 +81,7 @@
       }
     },
     {
-      "title": "Modelled NO&#8322; change from -4.0 to -2.0",
+      "title": "Modelled NO&#8322; change from -4.0 to -2.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range3",
       "sortOrder": 3,
       "pointStyle": {
@@ -116,7 +117,7 @@
       }
     },
     {
-      "title": "Modelled NO&#8322; change from -2.0 to 0.0",
+      "title": "Modelled NO&#8322; change from -2.0 to 0.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range4",
       "sortOrder": 4,
       "pointStyle": {
@@ -152,7 +153,7 @@
       }
     },
     {
-      "title": "Modelled NO&#8322; change from 0.0 to +2.0",
+      "title": "Modelled NO&#8322; change from 0.0 to +2.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range5",
       "sortOrder": 5,
       "pointStyle": {
