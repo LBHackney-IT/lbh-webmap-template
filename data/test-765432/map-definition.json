@@ -12,6 +12,7 @@
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "circleMarkerRadius": 4,
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
@@ -47,6 +48,7 @@
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "circleMarkerRadius": 4,
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
@@ -82,6 +84,7 @@
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "circleMarkerRadius": 4,        
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
@@ -117,6 +120,7 @@
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "circleMarkerRadius": 4,    
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
@@ -152,6 +156,7 @@
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "circleMarkerRadius": 4, 
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",

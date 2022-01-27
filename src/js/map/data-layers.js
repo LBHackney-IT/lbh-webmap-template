@@ -30,24 +30,24 @@ class DataLayers {
     this.list = null;
   }
 
-  pointToLayer (latlng, markerType, markerIcon, markerColor, layerName) {
-    if (markerType === "AwesomeMarker") {
+  pointToLayer (latlng, configLayer) {
+    if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
-          icon: markerIcon,
+          icon: configLayer.pointStyle.markerIcon,
           prefix: "fa",
-          markerColor: markerColor,
+          markerColor: configLayer.pointStyle.markerColor,
           spin: false
         }),
-        alt: layerName
+        alt: configLayer.layerName
       });
-    } else if (markerType === "CircleMarker") {
+    } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
-        fillColor: markerColor,
-        radius: 6,
+        fillColor: configLayer.pointStyle.markerColor,
+        radius: configLayer.pointStyle.circleMarkerRadius || 6,
         stroke: true,
         weight: 1,
-        color: markerColor,
+        color: configLayer.pointStyle.markerColor,
         fillOpacity: 0.6
       });
     } else {
@@ -187,10 +187,7 @@ class DataLayers {
       pointToLayer: (feature, latlng) => {
         return this.pointToLayer(
           latlng,
-          markerType,
-          markerIcon,
-          markerColor,
-          layerName
+          configLayer
         );
       },
       onEachFeature: (feature, layer) => {
