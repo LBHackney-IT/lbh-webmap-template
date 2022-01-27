@@ -190,6 +190,7 @@
       "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_overview",
       "sortOrder": 6,
+      "loadToBack": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightblue",
@@ -199,26 +200,15 @@
         "styleName": "default",
         "stroke": true,
         "strokeColor": "grey",
-        "opacity": 0.5,
+        "opacity": 0.6,
         "fillColor": "#d7eaf6",
         "fillOpacity": 0.5,
         "layerLineDash": "",
         "weight": 1
       },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
+      "popup": {
         "title": "name",
-        "fields": [
-          {
-            "label": "Traffic trend inside the area",
-            "name": "label_traffic_trend_inside_ltn"
-          },
-          {
-            "label": "Traffic trend on boundary roads",
-            "name": "label_traffic_trend_boundary"
-          }
-        ]
+        "fields": []
       }
     }
   ]
