@@ -9,13 +9,13 @@
     {
       "title": "Modelled NO2 variation 1",
       "geoserverLayerName": "pollution:ltn_receptor_no2_substantial_beneficial",
-      "sortOrder": 5,
+      "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
-        "markerColorIcon2": "darkgreen"
+        "markerColorIcon2": "greenrange1"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -44,13 +44,13 @@
     {
       "title": "Modelled NO2 variation 2",
       "geoserverLayerName": "transport:modal_filter_bollard",
-      "sortOrder": 5,
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
-        "markerColorIcon2": "green"
+        "markerColorIcon2": "greenrange2"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -79,13 +79,13 @@
     {
       "title": "Modelled NO2 variation 3",
       "geoserverLayerName": "transport:modal_filter_bollard",
-      "sortOrder": 5,
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
-        "markerColorIcon2": "lightgreen"
+        "markerColorIcon2": "greenrange3"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -114,13 +114,13 @@
     {
       "title": "Modelled NO2 variation 4",
       "geoserverLayerName": "transport:modal_filter_bollard",
-      "sortOrder": 5,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
-        "markerColorIcon2": "beige"
+        "markerColorIcon2": "greenrange4"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -155,7 +155,7 @@
         "icon": "fas fa-circle",
         "icon2": "fas fa-circle",
         "markerColor": "black",
-        "markerColorIcon2": "orange"
+        "markerColorIcon2": "yellow"
       },
       "linePolygonStyle": {
         "styleName": "default",
@@ -184,7 +184,7 @@
     {
       "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 8,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "markerColor": "lightblue",
@@ -196,7 +196,7 @@
         "strokeColor": "grey",
         "opacity": 0.5,
         "fillColor": "#d7eaf6",
-        "fillOpacity": 0.4,
+        "fillOpacity": 0.5,
         "layerLineDash": "",
         "weight": 1
       },
