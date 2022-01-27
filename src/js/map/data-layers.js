@@ -290,9 +290,21 @@ class DataLayers {
 
     if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
+      if (configLayer.loadToBack){
+        layer.bringToBack();
+      }
+      if (configLayer.loadToFront){
+        layer.bringToFront();
+      }     
     }
     else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
       layer.addTo(this.map);
+      if (configLayer.loadToBack){
+        layer.bringToBack();
+      }
+      if (configLayer.loadToFront){
+        layer.bringToFront();
+      } 
     }
 
     this.loadedLayerCount++;
