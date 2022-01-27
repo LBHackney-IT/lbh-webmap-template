@@ -1,0 +1,305 @@
+{
+  "title": "Traffic surrounding LTNs",
+  "baseStyle": "OSlight",
+  "zoomToMasterMap": true,
+  "showHackneyBoundary": true,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "layers": [
+    {
+      "title": "Modal filters",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0266a2",
+        "opacity": 1,
+        "fillColor": "#0266a2",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "",
+            "name": "location"
+          },
+          {
+            "label": "Type",
+            "name": "type"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Air Pollution Receptors",
+      "geoserverLayerName": "pollution:ltn_receptor",
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0266a2",
+        "opacity": 1,
+        "fillColor": "#0266a2",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Road sections with highly increased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_high_increase",
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "red"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#d43e29",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
+          }
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
+      }
+    },
+    {
+      "title": "Road sections with moderately increased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_moderate_increase",
+      "sortOrder": 2,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
+          }
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
+      }
+    },
+    {
+      "title": "Road sections with stable traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_stable",
+      "sortOrder": 3,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#000000",
+        "opacity": 1,
+        "fillColor": "#000000",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
+          }
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
+      }
+    },
+    {
+      "title": "Road sections with decreased traffic",
+      "geoserverLayerName": "transport:ltn_boundary_road_decrease",
+      "sortOrder": 4,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "green",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "os_roadname",
+        "fields": [
+          {
+            "label": "Traffic evolution compared to baseline",
+            "name": "label_traffic_evolution"
+          }
+        ],
+        "afterFields": "<i>Number obtained by comparing traffic <br>counts captured by a counter close to this <br>road section pre-LTN (2019 or 2020) <br> and post-LTN (2021).</i>"
+      }
+    },
+    {
+      "title": "Legacy LTN",
+      "geoserverLayerName": "transport:ltn_overview_legacy",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightgreen",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#8cfea9",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackey permanent LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_permanent",
+      "sortOrder": 7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "purple",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#e740ff",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Rebuilding a greener Hackney experimental LTN",
+      "geoserverLayerName": "transport:ltn_overview_emergency_pending",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#40feff",
+        "fillOpacity": 0.5,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    }
+  ]
+}
