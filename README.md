@@ -118,7 +118,6 @@ Object properties:
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
 | `loadToBack` | Boolean | optional | If true and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
-| `loadToFront` | Boolean | optional | If true and the layer is added on load, it is sent to the top of the map. If more than one layer has this option, you cannot control which one will be at the top. This only affects the initial load.|
 | `highlightFeatureOnHover` | Boolean | optional | If true, polygon features will be highlighted on mouse hover. |
 | `zoomToFeatureOnClick` | Boolean | optional | If true, clicking on a polygon features will zoom to its extent. |
 | `followLinkOnClick` | String | optional | Set to the name of the field containing a hyperlink. If set, clicking on a feature will follow the link. Links starting with http open in a blank tab, others are just moving to different sections of the page.|
