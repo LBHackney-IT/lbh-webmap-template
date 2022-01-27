@@ -104,7 +104,12 @@ const MARKER_COLORS = {
   redlips:"#CC3628",
   bloodrush:"#AA2D22",
   oldbrick: "#951a1c",
-  darkhumor:"#641220"
+  darkhumor:"#641220",
+  greenrange1: "#267302",
+  greenrange2: "#70a701", 
+  greenrange3: "#97e600" , 
+  greenrange4: "#d1ff73",
+  yellow: "#ffff00"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
