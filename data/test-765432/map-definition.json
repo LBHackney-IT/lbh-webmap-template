@@ -1,5 +1,6 @@
 {
   "title": "Air quality modelling at LTNs",
+  "about": "Some text about the map",
   "baseStyle": "OSlight",
   "zoomToMasterMap": false,
   "showHackneyBoundary": true,
