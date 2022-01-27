@@ -7,56 +7,13 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Modal filters",
-      "geoserverLayerName": "transport:modal_filter_bollard",
-      "sortOrder": 5,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "icon": "fas fa-circle",
-        "markerColor": "darkblue"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#0266a2",
-        "opacity": 1,
-        "fillColor": "#0266a2",
-        "fillOpacity": 1,
-        "layerLineDash": "",
-        "weight": 2
-      },
-      "popup": {
-        "title": "",
-        "fields": [
-          {
-            "label": "",
-            "name": "location"
-          },
-          {
-            "label": "Type",
-            "name": "type"
-          }
-        ]
-      }
-    },
-    {
       "title": "Air Pollution Receptors",
       "geoserverLayerName": "pollution:ltn_receptor",
       "sortOrder": 1,
       "pointStyle": {
-        "markerType": "CircleMarker",
-        "icon": "fas fa-circle",
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-sun-dust",
         "markerColor": "darkblue"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#0266a2",
-        "opacity": 1,
-        "fillColor": "#0266a2",
-        "fillOpacity": 1,
-        "layerLineDash": "",
-        "weight": 2
       },
       "popup": {
         "title": "",
