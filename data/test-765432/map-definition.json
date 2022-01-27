@@ -3,7 +3,7 @@
   "about": "Some text about the map",
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
-  "zoomToMasterMap": false,
+  "blockZoomToMasterMap": true,
   "showHackneyBoundary": true,
   "showLegend": true,
   "showLayersOnLoad": true,
