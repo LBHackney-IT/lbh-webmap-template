@@ -1,0 +1,220 @@
+{
+  "title": "Air quality modelling at LTNs",
+  "baseStyle": "OSlight",
+  "zoomToMasterMap": false,
+  "showHackneyBoundary": true,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "layers": [
+    {
+      "title": "Modelled NO2 variation 1",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_substantial_beneficial",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "darkgreen"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#267302",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modelled NO2 variation 2",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "green"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#70a701",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modelled NO2 variation 3",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "lightgreen"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#97e600",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modelled NO2 variation 4",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "beige"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#d1ff73",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Modelled NO2 variation 5",
+      "geoserverLayerName": "transport:modal_filter_bollard",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#ffff00",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Low Traffic Neighbourhood",
+      "geoserverLayerName": "transport:ltn_overview",
+      "sortOrder": 8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightblue",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "grey",
+        "opacity": 0.5,
+        "fillColor": "#d7eaf6",
+        "fillOpacity": 0.4,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": [
+          {
+            "label": "Traffic trend inside the area",
+            "name": "label_traffic_trend_inside_ltn"
+          },
+          {
+            "label": "Traffic trend on boundary roads",
+            "name": "label_traffic_trend_boundary"
+          }
+        ]
+      }
+    }
+  ]
+}
