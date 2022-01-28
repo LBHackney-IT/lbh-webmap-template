@@ -9,6 +9,42 @@
   "showLayersOnLoad": true,
   "layers": [
     {
+      "title": "Modelled NO&#8322; change from -10.0 to -8.0 &mu;g/m&sup3;",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range0",
+      "sortOrder": 0,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 4,
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "greenrange0"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#00524c",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
       "title": "Modelled NO&#8322; change from -8.0 to -6.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1",
       "sortOrder": 1,

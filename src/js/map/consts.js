@@ -105,6 +105,7 @@ const MARKER_COLORS = {
   bloodrush:"#AA2D22",
   oldbrick: "#951a1c",
   darkhumor:"#641220",
+  greenrange0: "#00524c",
   greenrange1: "#267302",
   greenrange2: "#70a701", 
   greenrange3: "#97e600" , 
