@@ -189,6 +189,42 @@
       }
     },
     {
+      "title": "Modelled NO&#8322; change from +2.0 to +4.0 &mu;g/m&sup3;",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 4, 
+        "icon": "fas fa-circle",
+        "icon2": "fas fa-circle",
+        "markerColor": "black",
+        "markerColorIcon2": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "#F69730",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Change",
+            "name": "change_no2"
+          }, 
+          {
+            "label": "Impact on NO2 concentration",
+            "name": "no2_impact"
+          }
+        ]
+      }
+    },
+    {
       "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_overview",
       "sortOrder": 6,
@@ -204,7 +240,7 @@
         "strokeColor": "grey",
         "opacity": 0.6,
         "fillColor": "#d7eaf6",
-        "fillOpacity": 0.5,
+        "fillOpacity": 0.4,
         "layerLineDash": "",
         "weight": 1
       },
