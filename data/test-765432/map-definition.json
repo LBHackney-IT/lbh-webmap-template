@@ -11,7 +11,7 @@
     {
       "title": "Modelled NO&#8322; change from -10.0 to -8.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range0",
-      "sortOrder": 0,
+      "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4,
@@ -47,7 +47,7 @@
     {
       "title": "Modelled NO&#8322; change from -8.0 to -6.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4,
@@ -83,7 +83,7 @@
     {
       "title": "Modelled NO&#8322; change from -6.0 to -4.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range2",
-      "sortOrder": 2,
+      "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4,
@@ -119,7 +119,7 @@
     {
       "title": "Modelled NO&#8322; change from -4.0 to -2.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range3",
-      "sortOrder": 3,
+      "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4,        
@@ -155,7 +155,7 @@
     {
       "title": "Modelled NO&#8322; change from -2.0 to 0.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range4",
-      "sortOrder": 4,
+      "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4,    
@@ -191,7 +191,7 @@
     {
       "title": "Modelled NO&#8322; change from 0.0 to +2.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range5",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4, 
@@ -227,7 +227,7 @@
     {
       "title": "Modelled NO&#8322; change from +2.0 to +4.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4, 
@@ -263,7 +263,7 @@
     {
       "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 7,
+      "sortOrder": 8,
       "loadToBack": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
