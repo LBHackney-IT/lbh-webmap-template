@@ -191,7 +191,7 @@
     {
       "title": "Modelled NO&#8322; change from +2.0 to +4.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6",
-      "sortOrder": 5,
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
         "circleMarkerRadius": 4, 
@@ -227,7 +227,7 @@
     {
       "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 6,
+      "sortOrder": 7,
       "loadToBack": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
