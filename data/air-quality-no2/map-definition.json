@@ -90,30 +90,6 @@
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "mediumspringgreen",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#53eb8d",
-        "opacity": 1,
-        "fillColor": "#53eb8d",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "34.0 - 36.9 &mu;g/m&sup3; NO&#8322;",
-      "geoserverLayerName": "pollution:no2_34_to_37",
-      "sortOrder": 6,
-      "pointStyle": {
-        "markerType": "CircleMarker",
         "markerColor": "yellowgreen",
         "icon": "fas fa-square"
       },
@@ -133,9 +109,9 @@
       }
     },
     {
-      "title": "37.0 - 39.9 &mu;g/m&sup3; NO&#8322;",
-      "geoserverLayerName": "pollution:no2_37_to_40",
-      "sortOrder": 7,
+      "title": "34.0 - 36.9 &mu;g/m&sup3; NO&#8322;",
+      "geoserverLayerName": "pollution:no2_34_to_37",
+      "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "yellow",
@@ -157,33 +133,9 @@
       }
     },
     {
-      "title": "40.0 - 42.9 &mu;g/m&sup3; NO&#8322;",
-      "geoserverLayerName": "pollution:no2_40_to_43",
-      "sortOrder": 8,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "goldenrod",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#ffd966",
-        "opacity": 1,
-        "fillColor": "#ffd966",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "43.0 - 45.9 &mu;g/m&sup3; NO&#8322;",
-      "geoserverLayerName": "pollution:no2_43_to_46",
-      "sortOrder": 9,
+      "title": "37.0 - 39.9 &mu;g/m&sup3; NO&#8322;",
+      "geoserverLayerName": "pollution:no2_37_to_40",
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "amber",
@@ -205,20 +157,68 @@
       }
     },
     {
-      "title": "46.0 - 48.9 &mu;g/m&sup3; NO&#8322;",
-      "geoserverLayerName": "pollution:no2_46_to_49",
-      "sortOrder": 10,
+      "title": "40.0 - 42.9 &mu;g/m&sup3; NO&#8322;",
+      "geoserverLayerName": "pollution:no2_40_to_43",
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "orange",
+        "markerColor": "tangopink",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#F69730",
+        "strokeColor": "#E48077",
         "opacity": 1,
-        "fillColor": "#F69730",
+        "fillColor": "#E48077",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": []
+      }
+    },
+    {
+      "title": "43.0 - 45.9 &mu;g/m&sup3; NO&#8322;",
+      "geoserverLayerName": "pollution:no2_43_to_46",
+      "sortOrder": 9,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "markerColor": "barelybrown",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#DD6055",
+        "opacity": 1,
+        "fillColor": "#DD6055",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": []
+      }
+    },
+    {
+      "title": "46.0 - 48.9 &mu;g/m&sup3; NO&#8322;",
+      "geoserverLayerName": "pollution:no2_46_to_49",
+      "sortOrder": 10,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "markerColor": "red",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
@@ -234,15 +234,15 @@
       "sortOrder": 11,
       "pointStyle": {
         "markerType": "CircleMarker",
-        "markerColor": "red",
+        "markerColor": "redlips",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "#d43e2a",
+        "strokeColor": "#CC3628",
         "opacity": 1,
-        "fillColor": "#d43e2a",
+        "fillColor": "#CC3628",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1

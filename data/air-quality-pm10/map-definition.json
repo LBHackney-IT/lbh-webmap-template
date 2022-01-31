@@ -90,6 +90,30 @@
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
+        "markerColor": "yellowgreen",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#96d642",
+        "opacity": 1,
+        "fillColor": "#96d642",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": []
+      }
+    },
+    {
+      "title": "26 &mu;g/m&sup3; PM₁₀",
+      "geoserverLayerName": "pollution:pm10_26",
+      "sortOrder": 5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
         "markerColor": "lemonyellow",
         "icon": "fas fa-square"
       },
@@ -109,9 +133,33 @@
       }
     },
     {
-      "title": "26 &mu;g/m&sup3; PM₁₀",
-      "geoserverLayerName": "pollution:pm10_26",
-      "sortOrder": 5,
+      "title": "28 &mu;g/m&sup3; PM₁₀",
+      "geoserverLayerName": "pollution:pm10_28",
+      "sortOrder": 6,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "markerColor": "yellow",
+        "icon": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#ffff00",
+        "opacity": 1,
+        "fillColor": "#ffff00",
+        "fillOpacity": 0.8,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "",
+        "fields": []
+      }
+    },
+    {
+      "title": "30 &mu;g/m&sup3; PM₁₀",
+      "geoserverLayerName": "pollution:pm10_30",
+      "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "beige",
@@ -133,9 +181,9 @@
       }
     },
     {
-      "title": "28 &mu;g/m&sup3; PM₁₀",
-      "geoserverLayerName": "pollution:pm10_28",
-      "sortOrder": 6,
+      "title": "32 &mu;g/m&sup3; PM₁₀",
+      "geoserverLayerName": "pollution:pm10_32",
+      "sortOrder": 8,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "amber",
@@ -157,9 +205,9 @@
       }
     },
     {
-      "title": "30 &mu;g/m&sup3; PM₁₀",
-      "geoserverLayerName": "pollution:pm10_30",
-      "sortOrder": 7,
+      "title": "≥34 &mu;g/m&sup3; PM₁₀",
+      "geoserverLayerName": "pollution:pm10_more_than_34",
+      "sortOrder": 9,
       "pointStyle": {
         "markerType": "CircleMarker",
         "markerColor": "orange",
@@ -171,54 +219,6 @@
         "strokeColor": "#F69730",
         "opacity": 1,
         "fillColor": "#F69730",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "32 &mu;g/m&sup3; PM₁₀",
-      "geoserverLayerName": "pollution:pm10_32",
-      "sortOrder": 8,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "red",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#d43e2a",
-        "opacity": 1,
-        "fillColor": "#d43e2a",
-        "fillOpacity": 0.8,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": []
-      }
-    },
-    {
-      "title": "≥34 &mu;g/m&sup3; PM₁₀",
-      "geoserverLayerName": "pollution:pm10_more_than_34",
-      "sortOrder": 9,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "markerColor": "oldbrick",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#951a1c",
-        "opacity": 1,
-        "fillColor": "#951a1c",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
