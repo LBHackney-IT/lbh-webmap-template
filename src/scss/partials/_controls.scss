@@ -308,6 +308,17 @@ input:not(:checked) + span span.control__active-border {
   display: flex;
 }
 
+.legend-entry-hidden-items {
+  width: 100%;
+  display: flex;
+  @include lbh-rem(padding-bottom, 10);
+}
+
 .legend-entry-text {
   @include lbh-rem(padding-left, 10);
+}
+
+.legend-entry-text-hidden-items {
+  @include lbh-rem(padding-left, 10);
+  @include lbh-rem(padding-top, 2);
 }
