@@ -34,7 +34,7 @@ class DataLayers {
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
-          icon: configLayer.pointStyle.markerIcon,
+          icon: configLayer.pointStyle.icon,
           prefix: "fa",
           markerColor: configLayer.pointStyle.markerColor,
           spin: false
