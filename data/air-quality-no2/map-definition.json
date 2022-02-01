@@ -217,9 +217,9 @@
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "red",
+        "strokeColor": "#d43e2a",
         "opacity": 1,
-        "fillColor": "red",
+        "fillColor": "#d43e2a",
         "fillOpacity": 0.8,
         "layerLineDash": "",
         "weight": 1
