@@ -6,6 +6,7 @@
   "baseStyle": "OSoutdoor",
   "showHackneyMask": true,
   "showHackneyBoundary": true,
+  "hideNumberOfItems":true,
   "blockZoomToMasterMap": true,
   "controlsText":{
     "showLegendText": "Show legend",

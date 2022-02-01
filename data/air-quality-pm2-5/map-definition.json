@@ -7,6 +7,7 @@
   "showHackneyMask": true,
   "showHackneyBoundary": true,
   "blockZoomToMasterMap": true,
+  "hideNumberOfItems":true,
   "controlsText":{
     "showLegendText": "Show legend",
     "hideLegendText": "Hide legend"
