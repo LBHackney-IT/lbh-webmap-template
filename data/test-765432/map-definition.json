@@ -1,6 +1,6 @@
 {
   "title": "Air quality modelling at LTNs",
-  "about": "Some text about the map",
+  "about": "Location of receptors where the potential impact LTNs (Hackney Downs, London Fields and Hoxton West) had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'baseline' without the LTN in place.",
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "blockZoomToMasterMap": true,
