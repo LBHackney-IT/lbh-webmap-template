@@ -1,6 +1,6 @@
 {
   "title": "Air quality modelling at LTNs",
-  "about": "Location of receptors where the potential impact LTNs (Hackney Downs, London Fields and Hoxton West) had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'baseline' without the LTN in place.",
+  "about": "Location of receptors where the potential impact LTNs (Hackney Downs, London Fields and Hoxton West) had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'Baseline' without the LTN in place.",
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "blockZoomToMasterMap": true,
@@ -34,7 +34,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -78,7 +78,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -122,7 +122,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -166,7 +166,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -210,7 +210,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -254,7 +254,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
@@ -298,7 +298,7 @@
         "title": "",
         "fields": [
           {
-            "label": "baseline NO&#8322; concentration (&mu;g/m&sup3;)",
+            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
             "name": "dm_no2"
           },
           {
