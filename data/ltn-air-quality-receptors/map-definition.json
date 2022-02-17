@@ -317,34 +317,6 @@
       }
     },
     {
-      "title": "Low Traffic Neighbourhood",
-      "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 9,
-      "loadToBack": true,
-      "highlightFeatureOnHover": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "lightblue",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "grey",
-        "opacity": 0.6,
-        "fillColor": "#d7eaf6",
-        "fillOpacity": 0.4,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "name",
-        "fields": []
-      }
-    },
-    {
       "title": "Modelled Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_hd_lf_hw",
       "sortOrder": 8,

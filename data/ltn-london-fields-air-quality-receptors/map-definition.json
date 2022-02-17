@@ -9,50 +9,6 @@
   "showLayersOnLoad": true,
   "layers": [
     {
-      "title": "Modelled NO&#8322; change from -10.00 to -8.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range0_lf",
-      "sortOrder": 1,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "circleMarkerRadius": 4,
-        "icon": "fas fa-circle",
-        "icon2": "fas fa-circle",
-        "markerColor": "black",
-        "markerColorIcon2": "greenrange0"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "black",
-        "opacity": 1,
-        "fillColor": "#00524c",
-        "fillOpacity": 1,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": [
-          {
-            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
-            "name": "dm_no2"
-          },
-          {
-            "label": "NO&#8322; concentration (&mu;g/m&sup3;) with scheme",
-            "name": "ds_no2"
-          },
-          {
-            "label": "Change",
-            "name": "change_no2"
-          }, 
-          {
-            "label": "Impact on NO&#8322; concentration",
-            "name": "no2_impact"
-          }
-        ]
-      }
-    },
-    {
       "title": "Modelled NO&#8322; change from -7.99 to -6.0 &mu;g/m&sup3;",
       "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1_lf",
       "sortOrder": 2,
@@ -246,50 +202,6 @@
         "strokeColor": "black",
         "opacity": 1,
         "fillColor": "#ffff00",
-        "fillOpacity": 1,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "",
-        "fields": [
-          {
-            "label": "Baseline NO&#8322; concentration (&mu;g/m&sup3;)",
-            "name": "dm_no2"
-          },
-          {
-            "label": "NO&#8322; concentration (&mu;g/m&sup3;) with scheme",
-            "name": "ds_no2"
-          },
-          {
-            "label": "Change",
-            "name": "change_no2"
-          }, 
-          {
-            "label": "Impact on NO&#8322; concentration",
-            "name": "no2_impact"
-          }
-        ]
-      }
-    },
-    {
-      "title": "Modelled NO&#8322; change from +1.99 to +4.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6_lf",
-      "sortOrder": 7,
-      "pointStyle": {
-        "markerType": "CircleMarker",
-        "circleMarkerRadius": 4, 
-        "icon": "fas fa-circle",
-        "icon2": "fas fa-circle",
-        "markerColor": "black",
-        "markerColorIcon2": "orange"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "black",
-        "opacity": 1,
-        "fillColor": "#F69730",
         "fillOpacity": 1,
         "layerLineDash": "",
         "weight": 1
