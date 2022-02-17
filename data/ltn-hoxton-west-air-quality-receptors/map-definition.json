@@ -1,6 +1,6 @@
 {
-  "title": "Air quality modelling at LTNs",
-  "about": "Location of receptors where the potential impact LTNs (Hackney Downs, London Fields and Hoxton West) had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'Baseline' without the LTN in place. Click on the highlighted LTN area for a detailed map.",
+  "title": "Air quality modelling at Hoxton West low traffic neighbourhood",
+  "about": "Location of receptors where the potential impact Hoxton West LTN had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'Baseline' without the LTN in place.",
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "blockZoomToMasterMap": true,
@@ -10,7 +10,7 @@
   "layers": [
     {
       "title": "Modelled NO&#8322; change from -10.00 to -8.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range0",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range0_hw",
       "sortOrder": 1,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -54,7 +54,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from -7.99 to -6.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range1_hw",
       "sortOrder": 2,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -98,7 +98,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from -5.99 to -4.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range2",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range2_hw",
       "sortOrder": 3,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -142,7 +142,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from -3.99 to -2.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range3",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range3_hw",
       "sortOrder": 4,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -186,7 +186,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from -1.99 to 0.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range4",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range4_hw",
       "sortOrder": 5,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -230,7 +230,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from 0.01 to +2.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range5",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range5_hw",
       "sortOrder": 6,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -274,7 +274,7 @@
     },
     {
       "title": "Modelled NO&#8322; change from +1.99 to +4.0 &mu;g/m&sup3;",
-      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6",
+      "geoserverLayerName": "pollution:ltn_receptor_no2_change_range6_hw",
       "sortOrder": 7,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -314,64 +314,6 @@
             "name": "no2_impact"
           }
         ]
-      }
-    },
-    {
-      "title": "Low Traffic Neighbourhood",
-      "geoserverLayerName": "transport:ltn_overview",
-      "sortOrder": 9,
-      "loadToBack": true,
-      "highlightFeatureOnHover": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "lightblue",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "grey",
-        "opacity": 0.6,
-        "fillColor": "#d7eaf6",
-        "fillOpacity": 0.4,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "name",
-        "fields": []
-      }
-    },
-    {
-      "title": "Modelled Low Traffic Neighbourhood",
-      "geoserverLayerName": "transport:ltn_hd_lf_hw",
-      "sortOrder": 8,
-      "loadToBack": true,
-      "highlightFeatureOnHover": true,
-      "followLinkOnClick": "air_quality_receptor_detailed_map",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "terracota",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "red",
-        "opacity": 0.6,
-        "fillColor": "#de735b",
-        "fillOpacity": 0.4,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "tooltip": {
-        "direction": "top",
-        "offset": [0,0],
-        "title": "name",
-        "fields": [],
-        "afterFields": "Click on the highlighted LTN area for a detailed map"
       }
     }
   ]
