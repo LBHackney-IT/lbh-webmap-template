@@ -104,7 +104,6 @@ class Map {
           })
           .then(response => response.json())
           .then(data => {
-            //console.log (data);
             let latitudeUPRN = data.features[0].properties.latitude;
             let longitudeUPRN = data.features[0].properties.longitude;
             let singleLineAddress = data.features[0].properties.full_address_line;
@@ -121,7 +120,6 @@ class Map {
             if (geometryType == "Polygon"){
               this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
               this.zoom = null;
-              //console.log(this.zoom);
               this.blpuPolygon = new L.GeoJSON(data, {
                 color:"black",
                 weight: 3,
@@ -132,7 +130,6 @@ class Map {
               this.blpuPolygon.bringToFront();
               //always keep this layer on top 
               this.map.on("overlayadd", (event) => {
-                console.log('overlayAdd');
                 this.blpuPolygon.bringToFront();
               });
               //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
@@ -193,7 +190,6 @@ class Map {
             this.blpuMarker.openPopup(); 
           })
           .catch(error => {
-            console.log(error);
             this.error.innerHTML = "There was a problem retrieving the UPRN. Please try again.";
           });
         }
@@ -223,7 +219,6 @@ class Map {
        
       })
       .catch(error => {
-        console.log(error);
       });
   }
 
@@ -350,9 +345,7 @@ class Map {
         this.boundaryGeoserverName = this.mapConfig.boundaryGeoserverName;
       } else {
         this.boundaryGeoserverName = "boundaries:hackney";
-        console.log("inside show boundary - else scenario" + this.boundaryGeoserverName);
       }
-    console.log(this.boundaryGeoserverName);
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
