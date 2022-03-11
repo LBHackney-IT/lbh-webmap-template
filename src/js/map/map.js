@@ -45,7 +45,8 @@ class Map {
     this.mapConfig = null;
     this.mask = null;
     this.maskGeoserverName = null;
-    this.hackneyBoundary = null;
+    this.boundary = null;
+    this.boundaryGeoserverName = null;
     this.mapBase = null;
     this.hasPersonas = false;
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
@@ -336,19 +337,23 @@ class Map {
     this.addBaseLayer();
 
     if (this.mapConfig.showMask) {
-      console.log("inside show mask");
       if (this.mapConfig.maskGeoserverName){
         this.maskGeoserverName = this.mapConfig.maskGeoserverName;
       } else {
         this.maskGeoserverName = "boundaries:hackney_mask";
-        console.log("inside show mask - else scenario" + this.maskGeoserverName);
       }
-    console.log(this.maskGeoserverName);
     this.addMaskLayer(this.maskGeoserverName);
     }
 
-    if (this.mapConfig.showHackneyBoundary) {
-      this.addHackneyBoundaryLayer();
+    if (this.mapConfig.showBoundary) {
+      if (this.mapConfig.boundaryGeoserverName){
+        this.boundaryGeoserverName = this.mapConfig.boundaryGeoserverName;
+      } else {
+        this.boundaryGeoserverName = "boundaries:hackney";
+        console.log("inside show boundary - else scenario" + this.boundaryGeoserverName);
+      }
+    console.log(this.boundaryGeoserverName);
+      this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
     //Load the layers
@@ -394,14 +399,14 @@ class Map {
     this.map.addLayer(this.mask);
   }
 
-  addHackneyBoundaryLayer() {
-    this.hackneyBoundary = L.tileLayer.wms(this.geoserver_wms_url, {
-      layers: "boundaries:hackney",
+  addBoundaryLayer(boundaryLayerName) {
+    this.boundary = L.tileLayer.wms(this.geoserver_wms_url, {
+      layers: boundaryLayerName,
       transparent: true,
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.hackneyBoundary);
+    this.map.addLayer(this.boundary);
   }
 
   setZoom() {
