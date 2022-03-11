@@ -73,8 +73,8 @@ The options for the data file are as follows:
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 
-| `showMask` | Boolean | optional | If `true` a semi-opaque Hackney white mask will be added to all areas that fall outside of Hackney. Hackney mask is the default mask. | If `true` and a [maskGeoserverName](#maskGeoserverName)is added, the mask displayed will be the custom one instead.|
-| `maskGeoserverName` | String | optional | If the maskGeoserverName is not empty and [showMask](#showMask) is `true`, the semi-opaque white mask will be the custom one instead of Hakcney mask.|
+| `showMask` | Boolean | optional | If `true` a semi-opaque Hackney white mask will be added to all areas that fall outside of Hackney. Hackney mask is the default mask. If `true` and a maskGeoserverName is added, the mask displayed will be the custom one instead.|
+| `maskGeoserverName` | String | optional | If the maskGeoserverName is not empty and showMask is `true`, the semi-opaque white mask will be the custom one instead of Hakcney mask.|
 | `showHackneyBoundary` | Boolean | optional | If `true` the Hackney boundary will be added to the map |
 | `showLegend` | Boolean | optional | If `true` a legend will show on the map. |
 | `performDrillDown` | Boolean | optional | If `true` a combined/drill down popUp window will be switched on. If `false`, the single default popUp window will be used instead. The default value is `false`. |
