@@ -383,6 +383,7 @@ class Map {
   }
   
   addMaskLayer(maskLayerName) {
+    //The mask style is defined in Geoserver
     this.mask = L.tileLayer.wms(this.geoserver_wms_url, {
       layers: maskLayerName,
       transparent: true,
@@ -393,6 +394,7 @@ class Map {
   }
 
   addBoundaryLayer(boundaryLayerName) {
+    //The boundary style is defined in Geoserver
     this.boundary = L.tileLayer.wms(this.geoserver_wms_url, {
       layers: boundaryLayerName,
       transparent: true,
