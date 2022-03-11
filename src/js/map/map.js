@@ -43,7 +43,8 @@ class Map {
     this.container = map.parentElement.parentElement;
     this.dataFolder = null;
     this.mapConfig = null;
-    this.hackneyMask = null;
+    this.mask = null;
+    this.maskGeoserverName = null;
     this.hackneyBoundary = null;
     this.mapBase = null;
     this.hasPersonas = false;
@@ -334,8 +335,16 @@ class Map {
     
     this.addBaseLayer();
 
-    if (this.mapConfig.showHackneyMask) {
-      this.addHackneyMaskLayer();
+    if (this.mapConfig.showMask) {
+      console.log("inside show mask");
+      if (this.mapConfig.maskGeoserverName){
+        this.maskGeoserverName = this.mapConfig.maskGeoserverName;
+      } else {
+        this.maskGeoserverName = "boundaries:hackney_mask";
+        console.log("inside show mask - else scenario" + this.maskGeoserverName);
+      }
+    console.log(this.maskGeoserverName);
+    this.addMaskLayer(this.maskGeoserverName);
     }
 
     if (this.mapConfig.showHackneyBoundary) {
@@ -375,14 +384,14 @@ class Map {
     this.map.addLayer(this.mapBase);
   }
   
-  addHackneyMaskLayer() {
-    this.hackneyMask = L.tileLayer.wms(this.geoserver_wms_url, {
-      layers: "boundaries:hackney_mask",
+  addMaskLayer(maskLayerName) {
+    this.mask = L.tileLayer.wms(this.geoserver_wms_url, {
+      layers: maskLayerName,
       transparent: true,
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.hackneyMask);
+    this.map.addLayer(this.mask);
   }
 
   addHackneyBoundaryLayer() {
