@@ -332,20 +332,20 @@ class Map {
     this.addBaseLayer();
 
     if (this.mapConfig.showMask) {
-      if (this.mapConfig.maskGeoserverName){
-        this.maskGeoserverName = this.mapConfig.maskGeoserverName;
-      } else {
-        this.maskGeoserverName = "boundaries:hackney_mask";
-      }
-    this.addMaskLayer(this.maskGeoserverName);
+        if (this.mapConfig.maskGeoserverName){
+          this.maskGeoserverName = this.mapConfig.maskGeoserverName;
+        } else {
+          this.maskGeoserverName = "boundaries:hackney_mask";
+        }
+      this.addMaskLayer(this.maskGeoserverName);
     }
 
     if (this.mapConfig.showBoundary) {
-      if (this.mapConfig.boundaryGeoserverName){
-        this.boundaryGeoserverName = this.mapConfig.boundaryGeoserverName;
-      } else {
-        this.boundaryGeoserverName = "boundaries:hackney";
-      }
+        if (this.mapConfig.boundaryGeoserverName){
+          this.boundaryGeoserverName = this.mapConfig.boundaryGeoserverName;
+        } else {
+          this.boundaryGeoserverName = "boundaries:hackney";
+        }
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
