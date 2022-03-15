@@ -113,7 +113,7 @@
         }
       }, 
       {
-        "title": "Children Centres",
+        "title": "Children's Centres",
         "sortOrder": 5,
         "geoserverLayerName": "education:children_centre",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -186,7 +186,7 @@
         }
       },
       {
-        "title": "Find support services - anxiety and mental health",
+        "title": "Mental health support",
         "sortOrder": 8,
         "geoserverLayerName": "amenities:fss_anxiety_or_mental_health",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -214,7 +214,7 @@
         }
       },
       {
-        "title": "Find support services - loneliness or isolation",
+        "title": "Connect with others",
         "sortOrder": 9,
         "geoserverLayerName": "amenities:fss_loneliness_or_isolation",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -242,7 +242,7 @@
         }
       },
       {
-        "title": "Find support services - safe and healthy body",
+        "title": "Staying healthy & safe",
         "sortOrder": 10,
         "geoserverLayerName": "amenities:fss_safe_healthy_body",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -270,7 +270,7 @@
         }
       },
       {
-        "title": "Find support services - exercise and wellbeing",
+        "title": "Exercise & wellbeing",
         "sortOrder": 11,
         "geoserverLayerName": "amenities:fss_exercise_wellbeing",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -298,7 +298,7 @@
         }
       },
       {
-        "title": "Find support services - arts and creativity",
+        "title": "Arts and creativity",
         "sortOrder": 12,
         "geoserverLayerName": "amenities:fss_arts_creativity",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -326,7 +326,7 @@
         }
       },
       {
-        "title": "Find support services - food and shopping",
+        "title": "Food and shops",
         "sortOrder": 13,
         "geoserverLayerName": "amenities:fss_food_shopping",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -354,7 +354,7 @@
         }
       },
       {
-        "title": "Find support services - faith-led activities",
+        "title": "Faith activities",
         "sortOrder": 14,
         "geoserverLayerName": "amenities:fss_faith_led_activities",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -382,7 +382,7 @@
         }
       },
       {
-        "title": "Find support services - money advice",
+        "title": "Money advice",
         "sortOrder": 15,
         "geoserverLayerName": "amenities:fss_money_advice",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -410,7 +410,7 @@
         }
       },
       {
-        "title": "Find support services - employment advice",
+        "title": "Employment advice",
         "sortOrder": 16,
         "geoserverLayerName": "amenities:fss_employment_advice",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -438,7 +438,7 @@
         }
       },
       {
-        "title": "Find support services - housing advice",
+        "title": "Housing advice",
         "sortOrder": 17,
         "geoserverLayerName": "amenities:fss_housing_advice",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -466,7 +466,7 @@
         }
       },
       {
-        "title": "Find support services - inmigration advice",
+        "title": "Inmigration advice",
         "sortOrder": 18,
         "geoserverLayerName": "amenities:fss_inmigration_advice",
         "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
@@ -491,46 +491,6 @@
               "name": "service_email"
             }
           ]
-        }
-      },
-      {
-        "title": "London Field Health Neighbourhood",
-        "sortOrder": 20,
-        "geoserverLayerName": "health:health_care_neighbourhood_lf",
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "darkblue",
-          "icon": "far fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "darkblue",
-          "opacity": 1,
-          "fillColor": "grey",
-          "fillOpacity": 0,
-          "layerLineDash": "",
-          "weight": 2
-        }
-      },
-      {
-        "title": "Mask",
-        "geoserverLayerName": "boundaries:city_hackney_mask",
-        "sortOrder": 21,
-        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "markerColor": "black",
-          "icon": "far fa-square"
-        },
-        "linePolygonStyle": {
-          "styleName": "default",
-          "stroke": true,
-          "strokeColor": "",
-          "opacity": 0,
-          "fillColor": "white",
-          "fillOpacity": 1,
-          "layerLineDash": "",
-          "weight": 2
         }
       },
       {
