@@ -1,0 +1,564 @@
+{
+    "title": "London Field Health Neighbourhood",
+    "summary": "",
+    "showFullScreenButton": false,
+    "showLegend": true,
+    "showLayersOnLoad": true,
+    "baseStyle": "OSlight",
+    "layers": [
+      {
+        "title": "GP surgeries",
+        "loadToBack": true,
+        "sortOrder": 1,
+        "geoserverLayerName": "health:health_service_gp",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "darkblue"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "name"
+            },
+            {
+              "label": "Address:",
+              "name": "postal_address_line_1"
+            },
+            {
+              "label": "Type",
+              "name": "type"
+            },
+            {
+              "label": "",
+              "name": "website"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Pharmacies",
+        "sortOrder": 2,
+        "loadToBack": true,
+        "geoserverLayerName": "health:pharmacy",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "orange"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "trading_name"
+            },
+            {
+              "label": "Address:",
+              "name": "address1"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Libraries",
+        "geoserverLayerName": "amenities:public_library",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "sortOrder": 3,
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "darkred"
+        },
+        "popup": {
+            "fields": [
+              {
+                "label": "Name",
+                "name": "name"
+              },
+              {
+                "label": "Address:",
+                "name": "address1"
+              }
+            ]
+          }
+      },
+      {
+        "title": "Faith Centres",
+        "geoserverLayerName": "amenities:worship_place",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "sortOrder": 4,
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "purple"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "name"
+            },
+            {
+              "label": "Address",
+              "name": "address_line2"
+            },
+            {
+              "label": "Religion",
+              "name": "religion"
+            }
+          ]
+        }
+      }, 
+      {
+        "title": "Children Centres",
+        "sortOrder": 5,
+        "geoserverLayerName": "education:children_centre",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "beige"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "name"
+            },
+            {
+              "label": "Address",
+              "name": "address"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Primary Schools",
+        "sortOrder": 6,
+        "geoserverLayerName": "education:primary_school",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "red"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "name"
+            },
+            {
+              "label": "Address",
+              "name": "address"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Secondary Schools",
+        "sortOrder": 7,
+        "geoserverLayerName": "education:secondary_school",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "fields": [
+            {
+              "label": "Name",
+              "name": "name"
+            },
+            {
+              "label": "Address",
+              "name": "address"
+            },
+            {
+              "label": "Type",
+              "name": "type"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - anxiety and mental health",
+        "sortOrder": 8,
+        "geoserverLayerName": "amenities:fss_anxiety_or_mental_health",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - loneliness or isolation",
+        "sortOrder": 9,
+        "geoserverLayerName": "amenities:fss_loneliness_or_isolation",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - safe and healthy body",
+        "sortOrder": 10,
+        "geoserverLayerName": "amenities:fss_safe_healthy_body",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - exercise and wellbeing",
+        "sortOrder": 11,
+        "geoserverLayerName": "amenities:fss_exercise_wellbeing",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - arts and creativity",
+        "sortOrder": 12,
+        "geoserverLayerName": "amenities:fss_arts_creativity",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - food and shopping",
+        "sortOrder": 13,
+        "geoserverLayerName": "amenities:fss_food_shopping",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - faith-led activities",
+        "sortOrder": 14,
+        "geoserverLayerName": "amenities:fss_faith_led_activities",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - money advice",
+        "sortOrder": 15,
+        "geoserverLayerName": "amenities:fss_money_advice",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - employment advice",
+        "sortOrder": 16,
+        "geoserverLayerName": "amenities:fss_employment_advice",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - housing advice",
+        "sortOrder": 17,
+        "geoserverLayerName": "amenities:fss_housing_advice",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "Find support services - inmigration advice",
+        "sortOrder": 18,
+        "geoserverLayerName": "amenities:fss_inmigration_advice",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "icon": "fas fa-child",
+          "markerColor": "blue"
+        },
+        "popup": {
+          "title": "service_name",
+          "fields": [
+            {
+              "label": "",
+              "name": "service_description"
+            },
+            {
+              "label": "",
+              "name": "service_website"
+            }, 
+            {
+              "label": "",
+              "name": "service_email"
+            }
+          ]
+        }
+      },
+      {
+        "title": "London Field Health Neighbourhood",
+        "sortOrder": 20,
+        "geoserverLayerName": "health:health_care_neighbourhood_lf",
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "markerColor": "darkblue",
+          "icon": "far fa-square"
+        },
+        "linePolygonStyle": {
+          "styleName": "default",
+          "stroke": true,
+          "strokeColor": "darkblue",
+          "opacity": 1,
+          "fillColor": "grey",
+          "fillOpacity": 0,
+          "layerLineDash": "",
+          "weight": 2
+        }
+      },
+      {
+        "title": "Mask",
+        "geoserverLayerName": "boundaries:city_hackney_mask",
+        "sortOrder": 21,
+        "pointStyle": {
+          "markerType": "AwesomeMarker",
+          "markerColor": "black",
+          "icon": "far fa-square"
+        },
+        "linePolygonStyle": {
+          "styleName": "default",
+          "stroke": true,
+          "strokeColor": "",
+          "opacity": 0,
+          "fillColor": "white",
+          "fillOpacity": 1,
+          "layerLineDash": "",
+          "weight": 2
+        }
+      },
+      {
+        "title": "Parks",
+        "sortOrder": 19,
+        "geoserverLayerName": "greenspaces:hackney_park",
+        "cqlFilter":"INTERSECTS%28geom,%20collectGeometries%28queryCollection%28%27health:health_care_neighbourhood_lf%27,%27geom%27,%27INCLUDE%27%29%29%29",
+        "pointStyle": {
+          "markerColor": "darkgreen",
+          "markerColorIcon2": "lightgreen",
+          "icon": "far fa-square",
+          "icon2": "fas fa-square"
+        },
+        "linePolygonStyle": {
+          "styleName": "default",
+          "stroke": true,
+          "strokeColor": "green",
+          "opacity": 1,
+          "fillColor": "lightgreen",
+          "fillOpacity": 0.2,
+          "layerLineDash": "",
+          "weight": 2
+        },
+        "popup": {
+          "title": "name",
+          "fields": []
+        }
+      }
+    
+    ]
+  }
