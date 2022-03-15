@@ -482,12 +482,12 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-      //If there is cql and it is not undefined, we add the cql filter to the wfs call
-      if (configLayer.cqlFilter && configLayer.cqlFilter !== 'undefined'){
+      //If there is cql, we add the cql filter to the wfs call
+      if (configLayer.cqlFilter){
           url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
       //If not, we use the default wfs call
       } else{
-        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+         url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
       }
       //Live
       fetch(url, {
