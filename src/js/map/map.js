@@ -43,8 +43,10 @@ class Map {
     this.container = map.parentElement.parentElement;
     this.dataFolder = null;
     this.mapConfig = null;
-    this.hackneyMask = null;
-    this.hackneyBoundary = null;
+    this.mask = null;
+    this.maskGeoserverName = null;
+    this.boundary = null;
+    this.boundaryGeoserverName = null;
     this.mapBase = null;
     this.hasPersonas = false;
     this.errorOutsideHackney = GENERIC_OUTSIDE_HACKNEY_ERROR;
@@ -102,7 +104,6 @@ class Map {
           })
           .then(response => response.json())
           .then(data => {
-            //console.log (data);
             let latitudeUPRN = data.features[0].properties.latitude;
             let longitudeUPRN = data.features[0].properties.longitude;
             let singleLineAddress = data.features[0].properties.full_address_line;
@@ -119,7 +120,6 @@ class Map {
             if (geometryType == "Polygon"){
               this.popUpText = "PROPERTY BOUNDARY "+"<br>" + "ADDRESS: " + singleLineAddress + "<br>" + "UPRN: " + this.uprn+"<br>" + "PRIMARY USAGE: " + usage.toUpperCase() +"<br>" + "WARD: " + ward.toUpperCase() +"<br>" ;
               this.zoom = null;
-              //console.log(this.zoom);
               this.blpuPolygon = new L.GeoJSON(data, {
                 color:"black",
                 weight: 3,
@@ -130,7 +130,6 @@ class Map {
               this.blpuPolygon.bringToFront();
               //always keep this layer on top 
               this.map.on("overlayadd", (event) => {
-                console.log('overlayAdd');
                 this.blpuPolygon.bringToFront();
               });
               //zoom to the bounds of the blpu polygon (different options depending on showLegend or not)
@@ -191,7 +190,6 @@ class Map {
             this.blpuMarker.openPopup(); 
           })
           .catch(error => {
-            console.log(error);
             this.error.innerHTML = "There was a problem retrieving the UPRN. Please try again.";
           });
         }
@@ -221,7 +219,6 @@ class Map {
        
       })
       .catch(error => {
-        console.log(error);
       });
   }
 
@@ -334,12 +331,22 @@ class Map {
     
     this.addBaseLayer();
 
-    if (this.mapConfig.showHackneyMask) {
-      this.addHackneyMaskLayer();
+    if (this.mapConfig.showMask) {
+        if (this.mapConfig.maskGeoserverName){
+          this.maskGeoserverName = this.mapConfig.maskGeoserverName;
+        } else {
+          this.maskGeoserverName = "boundaries:hackney_mask";
+        }
+      this.addMaskLayer(this.maskGeoserverName);
     }
 
-    if (this.mapConfig.showHackneyBoundary) {
-      this.addHackneyBoundaryLayer();
+    if (this.mapConfig.showBoundary) {
+        if (this.mapConfig.boundaryGeoserverName){
+          this.boundaryGeoserverName = this.mapConfig.boundaryGeoserverName;
+        } else {
+          this.boundaryGeoserverName = "boundaries:hackney";
+        }
+      this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
     //Load the layers
@@ -375,24 +382,26 @@ class Map {
     this.map.addLayer(this.mapBase);
   }
   
-  addHackneyMaskLayer() {
-    this.hackneyMask = L.tileLayer.wms(this.geoserver_wms_url, {
-      layers: "boundaries:hackney_mask",
+  addMaskLayer(maskLayerName) {
+    //The mask style is defined in Geoserver
+    this.mask = L.tileLayer.wms(this.geoserver_wms_url, {
+      layers: maskLayerName,
       transparent: true,
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.hackneyMask);
+    this.map.addLayer(this.mask);
   }
 
-  addHackneyBoundaryLayer() {
-    this.hackneyBoundary = L.tileLayer.wms(this.geoserver_wms_url, {
-      layers: "boundaries:hackney",
+  addBoundaryLayer(boundaryLayerName) {
+    //The boundary style is defined in Geoserver
+    this.boundary = L.tileLayer.wms(this.geoserver_wms_url, {
+      layers: boundaryLayerName,
       transparent: true,
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.hackneyBoundary);
+    this.map.addLayer(this.boundary);
   }
 
   setZoom() {
