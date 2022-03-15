@@ -110,7 +110,24 @@ const MARKER_COLORS = {
   greenrange2: "#70a701", 
   greenrange3: "#97e600" , 
   greenrange4: "#d1ff73",
-  yellow: "#ffff00"
+  yellow: "#ffff00",
+  portage: "#94A3F2",
+  jordyblue: "#94BDF2",
+  tangerine: "#F28705",
+  hippiegreen: "#5C8C57",
+  poloblue: "#7DA0CD",
+  purpleportage:"#7d89cd",
+  texasrose:"#f1a447",
+  fern:"#69a95d",
+  honey:"#e2f17c",
+  danube:"#5284c5",
+  keylimepie:"#C7D93B",
+  trinidad:"#f25517",
+  balticsea:"#20222c",
+  desertstorm:"#f7f7f5",
+  corn:"#f1c205",
+  mountainmist:"#929291",
+  buff:"#f5e08c"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
