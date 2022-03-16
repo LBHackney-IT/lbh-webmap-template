@@ -154,7 +154,8 @@
         "title": "Schools",
         "sortOrder": 6,
         "geoserverLayerName": "education:school",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=5'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-graduation-cap",
           "markerColor": "purpleportage"
