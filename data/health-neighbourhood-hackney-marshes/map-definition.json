@@ -152,31 +152,9 @@
         }
       },
       {
-        "title": "Primary Schools",
+        "title": "Schools",
         "sortOrder": 6,
-        "geoserverLayerName": "education:primary_school",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=5'))",        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "icon": "fas fa-graduation-cap",
-          "markerColor": "purpleportage"
-        },
-        "popup": {
-          "fields": [
-            {
-              "label": "Name",
-              "name": "name"
-            },
-            {
-              "label": "Address",
-              "name": "address"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Secondary Schools",
-        "sortOrder": 6,
-        "geoserverLayerName": "education:secondary_school",
+        "geoserverLayerName": "education:school",
         "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=5'))",        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-graduation-cap",
@@ -193,8 +171,8 @@
               "name": "address"
             },
             {
-              "label": "Type",
-              "name": "type"
+              "label": "Education phase",
+              "name": "education_phase"
             }
           ]
         }
