@@ -111,6 +111,7 @@ const MARKER_COLORS = {
   greenrange3: "#97e600" , 
   greenrange4: "#d1ff73",
   yellow: "#ffff00",
+  //colours added for the neighbourhood map
   portage: "#94A3F2",
   jordyblue: "#94BDF2",
   tangerine: "#F28705",
