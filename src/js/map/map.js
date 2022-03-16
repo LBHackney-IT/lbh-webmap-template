@@ -243,8 +243,8 @@ class Map {
     this.map.eachLayer(layer => {
       if (
         layer !== this.mapBase &&
-        layer !== this.hackneyMask &&
-        layer !== this.hackneyBoundary
+        layer !== this.mask &&
+        layer !== this.boundary
       ) {
         this.map.removeLayer(layer);
       }
