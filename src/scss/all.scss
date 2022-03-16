@@ -1,7 +1,6 @@
 //$lbh-global-styles: true;
 @import "node_modules/leaflet/dist/leaflet";
-@import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
-@import "node_modules/leaflet.awesome-markers/dist/leaflet.awesome-markers";
+@import "./partials/markers-new-colours";
 @import "node_modules/leaflet-easybutton/src/easy-button";
 @import "node_modules/leaflet-control-window/src/L.Control.Window";
 @import "node_modules/leaflet.markercluster/dist/MarkerCluster";
@@ -18,7 +17,7 @@
 @import "./partials/search";
 @import "./partials/listview";
 @import "./partials/address-search";
-@import "./partials/markers-new-colours";
+
 
 
 :root {
