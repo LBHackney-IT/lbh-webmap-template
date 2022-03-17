@@ -59,31 +59,3 @@
 .marker-cluster span {
   line-height: 30px;
 }
-
-.awesome-marker {
-  background-image: url("../images/markers-soft.png");
-}
-
-.awesome-marker-shadow {
-  background-image: url("../images/markers-shadow.png");
-}
-
-// This is required at the moment as awesome markers are targeting i elements, rather than the newer svg
-.awesome-marker svg {
-  color: #333;
-  margin-top: 10px;
-  display: inline-block;
-  font-size: 14px;
-}
-
-/* Retina displays */
-@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx) {
-  .awesome-marker {
-    background-image: url("../images/markers-soft@2x.png");
-    background-size: 720px 45px;
-  }
-  .awesome-marker-shadow {
-    background-image: url("../images/markers-shadow@2x.png");
-    background-size: 720px 45px;
-  }
-}
