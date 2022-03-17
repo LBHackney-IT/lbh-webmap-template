@@ -46,6 +46,7 @@ const TILE_LAYER_OPTIONS_OS = {
 };
 
 const MARKER_COLORS = {
+  //the colours below have a marker
   red: "#d43e2a",
   orange: "#F69730",
   green: "#70ad26",
@@ -58,14 +59,17 @@ const MARKER_COLORS = {
   darkolivegreen: "#566e4b",
   darkpurple: "#5b396b",
   cadetblue: "#436978",
-  lightred: "#fc8e7f",
+  congopink: "#ff8e7f",
   beige: "#ffcb92",
   lightgreen: "#bbf970",
   lightblue: "#8adaff",
   pink: "#ff91ea",
+  lightred: "#eb7d7f",
   lightgray: "#a3a3a3",
   gray: "#575757",
   black: "#3b3b3b",
+  newyellow:"#d4ff2a",
+  //the colours below don't have a marker
   khaki: "#ffda6f",
   yellow: "#ffff00",
   mediumslateblue:"#7966fe",
