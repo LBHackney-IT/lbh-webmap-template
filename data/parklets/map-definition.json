@@ -1,0 +1,31 @@
+{
+  "title": "Parklets",
+  "about": "This map shows all of the publically available parklets in Hackney including what type of scheme they are.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
+  "layers": [
+    {
+      "title": "Hackney owned parklets",
+      "geoserverLayerName": "transport:hackney_owned_parklet",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bench-tree",
+        "markerColor": "darkpurple"
+      }
+    },
+    {
+      "title": "Residential parklets",
+      "geoserverLayerName": "transport:residential_parklet",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bench-tree",
+        "markerColor": "orange"
+      }
+    }
+
+  ]
+}
