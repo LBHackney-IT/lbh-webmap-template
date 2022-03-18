@@ -103,8 +103,8 @@
         }
       },
       {
-        "title": "Faith Centres",
-        "geoserverLayerName": "amenities:worship_place",
+        "title": "Faith Centres & activities ",
+        "geoserverLayerName": "amenities:faith_centre_and_activity",
         "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=5'))",        
         "sortOrder": 5,
         "pointStyle": {
@@ -115,6 +115,10 @@
         "popup": {
           "fields": [
             {
+              "label": "",
+              "name": "description"
+            },
+            {
               "label": "Name",
               "name": "name"
             },
@@ -123,8 +127,12 @@
               "name": "address_line2"
             },
             {
-              "label": "Religion",
-              "name": "religion"
+              "label": "Website",
+              "name": "website"
+            },
+            {
+              "label": "Phone",
+              "name": "phone"
             }
           ]
         }
@@ -320,33 +328,6 @@
           "markerType": "AwesomeMarker",
           "icon": "fas fa-carrot",
           "markerColor": "balticsea"
-        },
-        "popup": {
-          "title": "service_name",
-          "fields": [
-            {
-              "label": "",
-              "name": "service_description"
-            },
-            {
-              "label": "",
-              "name": "service_website"
-            }, 
-            {
-              "label": "",
-              "name": "service_email"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Faith activities",
-        "sortOrder": 14,
-        "geoserverLayerName": "amenities:fss_faith_led_activities",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=5'))",        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "icon": "fas fa-place-of-worship",
-          "markerColor": "blue"
         },
         "popup": {
           "title": "service_name",
