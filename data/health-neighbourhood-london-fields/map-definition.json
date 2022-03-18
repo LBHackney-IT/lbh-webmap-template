@@ -35,8 +35,12 @@
               "name": "type"
             },
             {
-              "label": "",
+              "label": "website",
               "name": "website"
+            },
+            {
+              "label": "phone",
+              "name": "telephone_number"
             }
           ]
         }
@@ -83,6 +87,10 @@
               {
                 "label": "Address:",
                 "name": "address1"
+              },
+              {
+                "label": "",
+                "name": "details_link"
               }
             ]
           }
@@ -98,8 +106,9 @@
         },
         "popup": {
           "title": "name",
-          "fields": []
-        }
+          "fields": [],
+          "afterFields":"For more information about our parks, visit the <a target='_blank' href='https://hackney.gov.uk/parks'>Hackney website.</a>"
+        }      
       },
       {
         "title": "Faith Centres & activities ",
@@ -154,29 +163,11 @@
             {
               "label": "Address",
               "name": "address"
-            }
-          ]
-        }
-      },
-      {
-        "title": "Children's Centres",
-        "sortOrder": 7,
-        "geoserverLayerName": "education:children_centre",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
-          "markerType": "AwesomeMarker",
-          "icon": "fas fa-child",
-          "markerColor": "texasrose"
-        },
-        "popup": {
-          "fields": [
-            {
-              "label": "Name",
-              "name": "name"
             },
             {
-              "label": "Address",
-              "name": "address"
-            }
+              "label": "",
+              "name": "details_link"
+            } 
           ]
         }
       },
@@ -203,7 +194,11 @@
             {
               "label": "Education phase",
               "name": "education_phase"
-            }
+            },
+            {
+              "label": "",
+              "name": "school_details_link"
+            } 
           ]
         }
       },

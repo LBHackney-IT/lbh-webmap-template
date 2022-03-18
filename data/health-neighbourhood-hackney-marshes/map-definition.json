@@ -36,8 +36,16 @@
               "name": "type"
             },
             {
-              "label": "",
+              "label": "phone",
               "name": "website"
+            },
+            {
+              "label": "website",
+              "name": "website"
+            },
+            {
+              "label": "phone",
+              "name": "telephone_number"
             }
           ]
         }
@@ -84,6 +92,10 @@
               {
                 "label": "Address:",
                 "name": "address1"
+              },
+              {
+                "label": "",
+                "name": "details_link"
               }
             ]
           }
@@ -99,7 +111,8 @@
         },
         "popup": {
           "title": "name",
-          "fields": []
+          "fields": [],
+          "afterFields":"For more information about our parks, visit the <a target='_blank' href='https://hackney.gov.uk/parks'>Hackney website.</a>"
         }
       },
       {
@@ -155,7 +168,11 @@
             {
               "label": "Address",
               "name": "address"
-            }
+            },
+            {
+              "label": "",
+              "name": "details_link"
+            } 
           ]
         }
       },
@@ -181,7 +198,11 @@
             {
               "label": "Education phase",
               "name": "education_phase"
-            }
+            },
+            {
+              "label": "",
+              "name": "school_details_link"
+            } 
           ]
         }
       },
