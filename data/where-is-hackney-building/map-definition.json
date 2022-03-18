@@ -3,7 +3,7 @@
   "baseStyle": "OSlight",
   "showLegend": true,
   "showLayersOnLoad": true,
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "search": {
     "searchField": "name",
     "searchSectionTitle": "Search",

@@ -1,8 +1,8 @@
 {
   "title": "Public toilets in Hackney",
   "summary": "",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "baseStyle": "OSoutdoor",
   "layers": [
     {

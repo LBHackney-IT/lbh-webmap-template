@@ -4,7 +4,7 @@
   "baseStyle": "OSlight",
   "about": "This map shows the Article 4 exemption areas in Hackney where certain permitted development rights cannot be utilised.  Click on the legend to turn on/off the different Article 4 Directions. Click on an Article 4 Direction on the map to see the details of the exemption.",
   "aboutTitle": "About the map",
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "showFirstLayerOnLoad": true,
   "showLegend": true,
   "controlsText":{

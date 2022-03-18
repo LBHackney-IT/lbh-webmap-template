@@ -6,8 +6,8 @@
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
   "showGeoServerMetadata": true,
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Contaminated land",

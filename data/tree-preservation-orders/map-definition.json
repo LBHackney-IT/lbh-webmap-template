@@ -2,7 +2,7 @@
   "title": "Tree preservation orders and conservation areas",
   "about": "This map shows tree preservation orders (green markers) and conservation areas (green shaded areas). Click on features on the map to show details.",
   "aboutTitle": "About the map",
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "baseStyle": "OSoutdoor",
   "layers": [
     {

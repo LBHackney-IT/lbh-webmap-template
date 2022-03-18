@@ -3,8 +3,8 @@
   "about": "This map shows the number of requests for a place in a cycle hangar by UPRN. The data is originally from the third party system that manages cycle hangar membership and requests.",
   "aboutTitle": "About the map",
   "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Requested hangars",

@@ -5,7 +5,7 @@
   "baseStyle": "OSoutdoor",
   "showLegend": true,
   "showLayersOnLoad": true,
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Active chargers",

@@ -4,8 +4,8 @@
   "showLegend": true, 
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "blockZoomToMasterMap": true,
   "hideNumberOfItems":true,
   "controlsText":{

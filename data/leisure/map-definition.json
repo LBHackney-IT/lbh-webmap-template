@@ -1,7 +1,7 @@
 {
   "title": "",
   "summary": "To show leisure equipments, select on an activity above the map, or click on individual items in the left panel.",
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "showFullScreenButton": false,
   "showLegend": true,
   "showGeoServerMetadata": false,

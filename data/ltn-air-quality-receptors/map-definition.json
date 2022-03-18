@@ -4,7 +4,7 @@
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "blockZoomToMasterMap": true,
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "showLegend": true,
   "showLayersOnLoad": true,
   "layers": [

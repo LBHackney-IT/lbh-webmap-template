@@ -1,8 +1,8 @@
 {
   "title": "Hackney constituencies",
   "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Hackney constituencies",

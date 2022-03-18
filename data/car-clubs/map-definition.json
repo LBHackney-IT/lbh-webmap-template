@@ -3,8 +3,8 @@
   "summary": "This map shows car club bays in Hackney by operator.",
   "showGeoServerMetadata": false,
   "zoomToMasterMap": true,
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Car clubs",

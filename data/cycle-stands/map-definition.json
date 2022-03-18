@@ -5,8 +5,8 @@
   "zoomToMasterMap": true,
   "showLocateButton": false,
   "showResetZoomButton": false,
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "layers": [
     {
       "title": "Cycle stands",

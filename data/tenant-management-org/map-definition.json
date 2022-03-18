@@ -3,8 +3,8 @@
   "summary": "",
   "showGeoServerMetadata": false,
   "zoomToMasterMap": true,
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "baseStyle": "streets",
   "layers": [
     {

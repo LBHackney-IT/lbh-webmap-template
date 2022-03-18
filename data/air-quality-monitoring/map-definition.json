@@ -5,8 +5,8 @@
   "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
-  "showHackneyMask": true,
-  "showHackneyBoundary": true,
+   "showMask": true,
+   "showBoundary": true,
   "filtersSectionTitle":"Filter by monitoring site type",
   "filters": {
     "category":{

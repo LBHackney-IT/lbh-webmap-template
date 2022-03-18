@@ -1,5 +1,5 @@
 {
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "baseStyle": "OSoutdoor",
   "showLegend": true, 
   "showLayersOnLoad": true,

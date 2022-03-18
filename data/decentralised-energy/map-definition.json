@@ -3,8 +3,8 @@
   "summary": "",
   "showGeoServerMetadata": true,
   "baseStyle": "OSoutdoor",
-  "showHackneyBoundary": true,
-  "showHackneyMask": true,
+   "showBoundary": true,
+   "showMask": true,
   "showLegend": false,
   "layers": [
     {

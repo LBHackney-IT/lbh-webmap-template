@@ -2,7 +2,7 @@
   "title": "Low Traffic Neighbourhoods",
   "baseStyle": "OSlight",
   "zoomToMasterMap": true,
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "showLegend": true,
   "showLayersOnLoad": true,
   "layers": [

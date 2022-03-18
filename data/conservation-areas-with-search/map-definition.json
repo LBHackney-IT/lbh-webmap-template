@@ -1,7 +1,7 @@
 {
   "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
-  "showHackneyBoundary": true,
+   "showBoundary": true,
   "showGeoServerMetadata":true,
   "aboutTitle":"About the data",
   "showAddressSearch": true,

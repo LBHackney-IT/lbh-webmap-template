@@ -31,7 +31,7 @@
       "text": "Everything"
     }
   ],
-  "showHackneyMask": true,
+   "showMask": true,
   "showLegend": true,
   "controlsText": {
     "showLegendText": "Show legend",
