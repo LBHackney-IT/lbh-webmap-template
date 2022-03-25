@@ -1,0 +1,51 @@
+{
+  "title": "Estates managed by Hackney Environmental Services",
+  "aboutTheData": "",
+  "showBoundary": true,
+  "showMask": true,
+  "showLegend": false,
+  "showLocateButton": true,
+  "showFullScreenButton": true,
+  "showFirstLayerOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showAddressSearch": {
+    "addressSearchLabel": "Search for a street or address",
+    "addressSearchClue": "Street/postcode/address",
+    "addressSearchExpanded": "closed"
+  },
+  "search": {
+    "searchSectionTitle": "Search for an estate",
+    "searchField": "estate_name",
+    "searchPlaceholderText": "Type estate name",
+    "notFoundText": "No estate found with this name",
+    "clearMapAfterSearch": false
+  },
+  "layers": [
+    {
+      "title": "Estates",
+      "geoserverLayerName": "recycling:recycling_estate_boundary",
+      "searchable": true,
+      "sortOrder": 1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-walking",
+        "markerColor": "darkred"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0.1,
+        "layerLineDash": "",
+        "weight": 1
+      },
+      "popup": {
+        "title": "estate_name",
+        "fields": [
+        ]
+      }
+    }
+  ]
+}
