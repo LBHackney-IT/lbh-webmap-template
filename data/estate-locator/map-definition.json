@@ -1,5 +1,5 @@
 {
-  "title": "Estates managed by Hackney Environmental Services",
+  "title": "Recycling Estates serviced by Hackney Environmental Services",
   "aboutTheData": "",
   "showBoundary": true,
   "showMask": true,
@@ -23,7 +23,7 @@
   "layers": [
     {
       "title": "Estates",
-      "geoserverLayerName": "recycling:recycling_estate_boundary",
+      "geoserverLayerName": "recycling:recycling_estate_boundary_view",
       "searchable": true,
       "sortOrder": 1,
       "pointStyle": {
