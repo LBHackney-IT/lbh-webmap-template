@@ -15,10 +15,11 @@
         "loadToBack": true,
         "sortOrder": 1,
         "geoserverLayerName": "health:health_service_gp",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-user-doctor-hair-long",
-          "markerColor": "portage"
+          "markerColor": "lightcobaltblue"
         },
         "popup": {
           "fields": [
@@ -50,10 +51,11 @@
         "sortOrder": 2,
         "loadToBack": true,
         "geoserverLayerName": "health:pharmacy",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-prescription-bottle-medical",
-          "markerColor": "jordyblue"
+          "markerColor": "lemonyellow"
         },
         "popup": {
           "fields": [
@@ -99,10 +101,11 @@
         "title": "Parks",
         "sortOrder": 4,
         "geoserverLayerName": "greenspaces:hackney_park_point",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-tree-deciduous",
-          "markerColor": "hippiegreen"
+          "markerColor": "middlegreen"
         },
         "popup": {
           "title": "name",
@@ -118,7 +121,7 @@
         "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-place-of-worship",
-          "markerColor": "poloblue"
+          "markerColor": "crayola"
         },
         "popup": {
           "fields": [
@@ -149,10 +152,11 @@
         "title": "Children's Centres",
         "sortOrder": 7,
         "geoserverLayerName": "education:children_centre",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-child",
-          "markerColor": "texasrose"
+          "markerColor": "electricviolet"
         },
         "popup": {
           "fields": [
@@ -179,7 +183,7 @@
         "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-graduation-cap",
-          "markerColor": "purpleportage"
+          "markerColor": "operamauve"
         },
         "popup": {
           "fields": [
@@ -206,10 +210,11 @@
         "title": "Mental health support",
         "sortOrder": 9,
         "geoserverLayerName": "amenities:fss_anxiety_or_mental_health",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-head-side-brain",
-          "markerColor": "honey"
+          "markerColor": "frenchlime"
         },
         "popup": {
           "title": "service_name",
@@ -233,10 +238,11 @@
         "title": "Connect with others",
         "sortOrder": 8,
         "geoserverLayerName": "amenities:fss_loneliness_or_isolation",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-hand-wave",
-          "markerColor": "fern"
+          "markerColor": "bronzeyellow"
         },
         "popup": {
           "title": "service_name",
@@ -260,10 +266,11 @@
         "title": "Staying healthy & safe",
         "sortOrder": 10,
         "geoserverLayerName": "amenities:fss_safe_healthy_body",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-shield-plus",
-          "markerColor": "danube"
+          "markerColor": "darkfern"
         },
         "popup": {
           "title": "service_name",
@@ -287,10 +294,11 @@
         "title": "Exercise & wellbeing",
         "sortOrder": 11,
         "geoserverLayerName": "amenities:fss_exercise_wellbeing",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-person-running",
-          "markerColor": "keylimepie"
+          "markerColor": "maximumbluegreen"
         },
         "popup": {
           "title": "service_name",
@@ -314,10 +322,11 @@
         "title": "Arts and creativity",
         "sortOrder": 12,
         "geoserverLayerName": "amenities:fss_arts_creativity",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-paintbrush-fine",
-          "markerColor": "trinidad"
+          "markerColor": "purplepizzazz"
         },
         "popup": {
           "title": "service_name",
@@ -341,10 +350,11 @@
         "title": "Food and shops",
         "sortOrder": 13,
         "geoserverLayerName": "amenities:fss_food_shopping",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-carrot",
-          "markerColor": "balticsea"
+          "markerColor": "apple"
         },
         "popup": {
           "title": "service_name",
@@ -368,10 +378,11 @@
         "title": "Money advice",
         "sortOrder": 15,
         "geoserverLayerName": "amenities:fss_money_advice",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-coins",
-          "markerColor": "desertstorm"
+          "markerColor": "mellowapricot"
         },
         "popup": {
           "title": "service_name",
@@ -395,10 +406,11 @@
         "title": "Employment advice",
         "sortOrder": 16,
         "geoserverLayerName": "amenities:fss_employment_advice",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-briefcase-blank",
-          "markerColor": "corn"
+          "markerColor": "firebrick"
         },
         "popup": {
           "title": "service_name",
@@ -422,10 +434,11 @@
         "title": "Housing advice",
         "sortOrder": 17,
         "geoserverLayerName": "amenities:fss_housing_advice",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-house-building",
-          "markerColor": "mountainmist"
+          "markerColor": "philippinegray"
         },
         "popup": {
           "title": "service_name",
@@ -449,10 +462,11 @@
         "title": "Inmigration advice",
         "sortOrder": 18,
         "geoserverLayerName": "amenities:fss_inmigration_advice",
-        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        "pointStyle": {
+        "cqlFilter":"INTERSECTS(geom,querySingle('health:health_care_neighbourhood','geom','prinx=7'))",        
+        "pointStyle": {
           "markerType": "AwesomeMarker",
           "icon": "fas fa-earth-americas",
-          "markerColor": "buff"
+          "markerColor": "mediumchampagne"
         },
         "popup": {
           "title": "service_name",

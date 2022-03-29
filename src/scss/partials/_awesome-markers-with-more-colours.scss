@@ -7,7 +7,7 @@ Version: 1.0
 /* Marker setup */
 .awesome-marker {
     background: url('../images/markers-soft.png') no-repeat 0 0;
-    width: 35px;
+    width: 36px;
     height: 46px;
     position:absolute;
     left:0;
@@ -27,7 +27,7 @@ Version: 1.0
   (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx) {
    .awesome-marker {
     background-image: url('../images/markers-soft@2x.png');
-    background-size: 756px 46px;
+    background-size: 1332px 46px;
    }
    .awesome-marker-shadow {
     background-image: url('../images/markers-shadow@2x.png');
@@ -135,8 +135,72 @@ Version: 1.0
     background-position: -682px 0;
   }
     
-  .awesome-marker-icon-newyellow {
+  .awesome-marker-icon-lightcobaltblue {
     background-position: -718px 0;
+  }
+
+  .awesome-marker-icon-lemonyellow {
+    background-position: -754px 0;
+  }
+
+  .awesome-marker-icon-tangerine {
+    background-position: -790px 0;
+  }
+
+  .awesome-marker-icon-middlegreen {
+    background-position: -826px 0;
+  }
+
+  .awesome-marker-icon-crayola {
+    background-position: -862px 0;
+  }
+
+  .awesome-marker-icon-operamauve {
+    background-position: -898px 0;
+  }
+
+  .awesome-marker-icon-electricviolet {
+    background-position: -934px 0;
+  }
+
+  .awesome-marker-icon-bronzeyellow {
+    background-position: -970px 0;
+  } 
+
+  .awesome-marker-icon-darkfern {
+    background-position: -1006px 0;
+  } 
+
+  .awesome-marker-icon-frenchlime {
+    background-position: -1042px 0;
+  } 
+
+  .awesome-marker-icon-maximumbluegreen {
+    background-position: -1078px 0;
+  } 
+
+  .awesome-marker-icon-purplepizzazz {
+    background-position: -1114px 0;
+  } 
+
+  .awesome-marker-icon-apple {
+    background-position: -1150px 0;
+  } 
+
+  .awesome-marker-icon-mellowapricot {
+    background-position: -1186px 0;
+  }
+
+  .awesome-marker-icon-firebrick {
+    background-position: -1222px 0;
+  }
+
+  .awesome-marker-icon-philippinegray {
+    background-position: -1258px 0;
+  }
+
+  .awesome-marker-icon-mediumchampagne {
+    background-position: -1294px 0;
   }
 
   .awesome-marker-square {
