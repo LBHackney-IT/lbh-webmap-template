@@ -118,7 +118,7 @@ const MARKER_COLORS = {
   //colours added for the neighbourhood map
   lightcobaltblue: "#94A3F2", //gp 
   lincolngreen: '#0F5513',//stayig healthey and safe
-  lemonyellow: "#FFFF50",//pharmacie
+  lemonyellow: "#FFFF50",
   tangerine: "#F28705",//libraries
   middlegreen: "#5C8C57",//parks
   crayola: "#FF5151",
@@ -133,7 +133,8 @@ const MARKER_COLORS = {
   mellowapricot: "#F4B46F",//money advice
   firebrick: "#B52020", //employement advice
   philippinegray: "#929291", //housing advice
-  mediumchampagne: "#FEECA5"  
+  mediumchampagne: "#FEECA5",
+  royalblue: "#383ce4" //pharmacies  
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";

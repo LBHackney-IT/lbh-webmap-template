@@ -55,7 +55,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-prescription-bottle-medical",
-        "markerColor": "lemonyellow"
+        "markerColor": "royalblue"
       },
       "popup": {
         "fields": [
