@@ -3,6 +3,7 @@
     "summary": "",
     "showFullScreenButton": false,
     "showLegend": true,
+    "showFirstLayerOnLoad": true,
     "showBoundary": true,
     "boundaryGeoserverName":"health:health_care_neighbourhood_lf",
     "showMask": true,
