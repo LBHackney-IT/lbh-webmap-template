@@ -7,7 +7,7 @@
   "boundaryGeoserverName":"health:health_care_neighbourhood_hm",
   "showMask": true,
   "maskGeoserverName": "health:health_care_neighbourhood_hm_mask",
-  "showLayersOnLoad": true,
+  "showFirstLayerOnLoad": true,
   "baseStyle": "OSlight",
   "layers": [
     {
