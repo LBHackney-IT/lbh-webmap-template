@@ -276,7 +276,7 @@
         "strokeColor": "#0e67a3",
         "opacity": 1,
         "fillColor": "#8adaff",
-        "fillOpacity": 0.6,
+        "fillOpacity": 0.15,
         "layerLineDash": "",
         "weight": 1
       },
@@ -310,7 +310,7 @@
         "strokeColor": "#F69730",
         "opacity": 1,
         "fillColor": "#F69730",
-        "fillOpacity": 0.65,
+        "fillOpacity": 0.15,
         "layerLineDash": "",
         "weight": 0
       },
