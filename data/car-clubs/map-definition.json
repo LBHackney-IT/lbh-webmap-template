@@ -1,18 +1,20 @@
 {
   "title": "Car clubs in Hackney",
-  "summary": "This map shows car club bays in Hackney by operator.",
-  "showGeoServerMetadata": false,
-  "zoomToMasterMap": true,
-   "showMask": true,
-   "showBoundary": true,
+  "about": "This map shows car club bays in Hackney by operator.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
   "layers": [
     {
-      "title": "Car clubs",
-      "geoserverLayerName": "parking:parking_order_car_club_zipcar",
+      "title": "Zipcar car clubs",
+      "geoserverLayerName": "parking:car_club_zipcar",
       "pointStyle": {
-        "markerType": "CircleMarker",
+        "markerType": "AwesomeMarker",
         "icon": "fas fa-car",
-        "markerColor": "green"
+        "markerColor": "darkblue"
       },
       "popup": {
         "fields": [
@@ -24,12 +26,12 @@
       }
     },
     {
-      "title": "Car clubs",
-      "geoserverLayerName": "parking:parking_order_car_club_hackney_transport",
+      "title": "Hackney transport car clubs",
+      "geoserverLayerName": "parking:car_club_hackney_transport",
       "pointStyle": {
-        "markerType": "CircleMarker",
-        "icon": "fa-car",
-        "markerColor": "blue"
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "darkgreen"
       },
       "popup": {
         "fields": [
@@ -41,12 +43,12 @@
       }
     },
     {
-      "title": "Car clubs",
-      "geoserverLayerName": "parking:parking_order_car_club_enterprise",
+      "title": "Enterprise car clubs",
+      "geoserverLayerName": "parking:car_club_enterprise",
       "pointStyle": {
-        "markerType": "CircleMarker",
-        "icon": "fa-car",
-        "markerColor": "purple"
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "darkpurple"
       },
       "popup": {
         "fields": [
