@@ -242,7 +242,7 @@ class DataLayers {
         }
       },
       sortOrder: sortOrder,
-      style: () => {
+      style: (feature) => {
         if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
             opacity: opacity,
@@ -257,6 +257,17 @@ class DataLayers {
           return Object.assign(baseLayerStyles, {
             fillColor: colorHex
           });
+        } else if (layerStyle === "categories") {
+          const colourMap = configLayer.linePolygonStyle.colourMap;
+          for (const valueCategorie of colourMap.values) {
+            if (feature.properties[colourMap.categoryAttribute] == valueCategorie.value){
+              return Object.assign(baseLayerStyles, {
+                opacity: configLayer.linePolygonStyle.opacity,
+                fillColor: valueCategorie.fillColor,
+                dashArray: layerLineDash
+              });
+            }
+          }         
         }
       }
     });

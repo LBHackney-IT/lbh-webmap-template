@@ -1,29 +1,43 @@
 {
   "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
-   "showBoundary": true,
+  "showBoundary": true,
+  "showLegend": true,
   "showGeoServerMetadata":true,
   "aboutTitle":"About the data",
   "showTitleInMetadataBoxOnMobile":false,
   "layers": [
     {
-      "title": "Conservation Areas in Hackney",
+      "title": "Conservation Areas",
       "geoserverLayerName": "planning:conservation_area",
       "highlightFeatureOnHover": true,
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "black",
-        "icon": "rectangle-landscape"
+        "markerColor": "goldenrod",
+        "icon": "fas fa-square"
       },
       "linePolygonStyle": {
-        "styleName": "random polygons",
+        "styleName": "categories",
         "stroke": true,
         "strokeColor": "grey",
-        "opacity": 0,
-        "fillColor": "",
+        "opacity": 1,
+        "fillColor": "red",
         "fillOpacity": 0.50,
         "layerLineDash": "",
-        "weight": 1.5
+        "weight": 1.5,
+        "colourMap":{
+          "categoryAttribute": "designation",
+          "values":[
+            {
+              "value": 1991,
+              "fillColor": "blue"
+            },
+            {
+              "value": 1971,
+              "fillColor": "red"
+            }
+          ]
+        }
       },
       "popup": {
         "title": "ca_name",
