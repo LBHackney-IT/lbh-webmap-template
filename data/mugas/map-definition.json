@@ -1,0 +1,58 @@
+{
+  "title": "Mugas",
+  "about": "This map shows public multi-use games areas in Hackney parks and estates",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
+  "layers": [
+    {
+      "title": "Park mugas",
+      "geoserverLayerName": "amenities:young_hackney_muga_park",
+      "cqlFilter":"park_or_estate like 'Park%'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-solid fa-basketball-hoop",
+        "markerColor": "darkpurple"
+      },
+      "popup": {
+        "title": "muga_name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "location"
+          },
+          {
+            "label": "Equipment",
+            "name": "equipment"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Estate mugas",
+      "geoserverLayerName": "amenities:young_hackney_muga_estate",
+      "cqlFilter":"park_or_estate like 'Estate%'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fa-solid fa-basketball-hoop",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "muga_name",
+        "fields": [
+          {
+            "label": "Location",
+            "name": "location"
+          },
+          {
+            "label": "Equipment",
+            "name": "equipment"
+          }
+        ]
+      }
+    }
+  ]
+}
