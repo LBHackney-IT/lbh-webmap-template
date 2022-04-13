@@ -58,6 +58,7 @@ class Map {
     this.zoom =null;
     this.zoom_mobile=null;
     this.maxZoom = null;
+    this.minZoom = null;
     this.isFullScreen = false;
     this.uprn = null;
     this.blpuMarker = null;
@@ -282,6 +283,13 @@ class Map {
       this.maxZoom = 12;
     }
 
+     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+     if (this.mapConfig.minMapZoom){
+      this.minZoom = this.mapConfig.minMapZoom;
+    } else {
+      this.minZoom = MIN_ZOOM;
+    }
+
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
@@ -289,7 +297,7 @@ class Map {
       crs: crs,
       zoomControl: false,
       maxZoom: this.maxZoom,
-      minZoom: MIN_ZOOM,
+      minZoom: this.minZoom,
       center: this.centerDesktop,
       zoom: this.zoom,
       gestureHandling: L.Browser.mobile
