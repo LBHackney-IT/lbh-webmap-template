@@ -13,6 +13,7 @@ import "leaflet-control-window";
 import "leaflet-search";
 import { GestureHandling } from "leaflet-gesture-handling";
 import {
+  MIN_ZOOM,
   CENTER_DESKTOP_LEGEND,
   CENTER_DESKTOP_LEGEND_FULLSCREEN,
   CENTER_DESKTOP_NO_LEGEND,
@@ -286,7 +287,7 @@ class Map {
      if (this.mapConfig.minMapZoom){
       this.minZoom = this.mapConfig.minMapZoom;
     } else {
-      this.minZoom = 4;
+      this.minZoom = MIN_ZOOM;
     }
 
     //gesture handler
