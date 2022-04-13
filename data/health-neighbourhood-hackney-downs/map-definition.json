@@ -9,6 +9,7 @@
   "maskGeoserverName": "health:health_care_neighbourhood_hd_mask",
   "showFirstLayerOnLoad": true,
   "baseStyle": "OSlight",
+  "minMapZoom":7,
   "layers": [
     {
       "title": "GP surgeries",
