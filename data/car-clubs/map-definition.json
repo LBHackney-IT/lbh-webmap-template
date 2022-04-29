@@ -58,6 +58,23 @@
           }
         ]
       }
+    },
+    {
+      "title": "Hiya Car",
+      "geoserverLayerName": "parking:club_car_hiya_car",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "darkpurple"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Operator",
+            "name": "operator"
+          }
+        ]
+      }
     }
   ]
 }
