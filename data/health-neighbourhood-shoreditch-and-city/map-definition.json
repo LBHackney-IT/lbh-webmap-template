@@ -135,12 +135,8 @@
             "name": "address_line2"
           },
           {
-            "label": "Website",
-            "name": "website"
-          },
-          {
-            "label": "Phone",
-            "name": "phone"
+            "label": "",
+            "name": "service_contact_details_link"
           }
         ]
       }
