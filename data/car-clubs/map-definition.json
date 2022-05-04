@@ -26,23 +26,6 @@
       }
     },
     {
-      "title": "Hackney transport",
-      "geoserverLayerName": "parking:car_club_hackney_transport",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-car",
-        "markerColor": "darkgreen"
-      },
-      "popup": {
-        "fields": [
-          {
-            "label": "Operator",
-            "name": "operator"
-          }
-        ]
-      }
-    },
-    {
       "title": "Enterprise",
       "geoserverLayerName": "parking:car_club_enterprise",
       "pointStyle": {
