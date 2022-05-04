@@ -29,7 +29,7 @@
             "name": "name"
           },
           {
-            "label": "Address:",
+            "label": "Address",
             "name": "postal_address_line_1"
           },
           {
@@ -37,12 +37,8 @@
             "name": "type"
           },
           {
-            "label": "website",
-            "name": "website"
-          },
-          {
-            "label": "phone",
-            "name": "telephone_number"
+            "label": "",
+            "name": "contact_details_link"
           }
         ]
       }
@@ -65,7 +61,7 @@
             "name": "trading_name"
           },
           {
-            "label": "Address:",
+            "label": "Address",
             "name": "address1"
           }
         ]
@@ -88,7 +84,7 @@
               "name": "name"
             },
             {
-              "label": "Address:",
+              "label": "Address",
               "name": "address1"
             },
             {
@@ -215,7 +211,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-head-side-brain",
-        "markerColor": "frenchlime"
+        "markerColor": "congopink"
       },
       "popup": {
         "title": "service_name",
