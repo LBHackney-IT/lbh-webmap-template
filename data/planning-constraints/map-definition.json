@@ -1,5 +1,14 @@
 {
-  "title": "Planning Constraints",
+  "gallery": {
+    "galleryTitle": "Check local planning information.",
+    "gallerySummary": "This app allows you to find local planning information relevant to a place or property.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
+    "link": "https://map2.hackney.gov.uk/check-local-planning-information/",
+    "linkText": "Open the look up",
+    "tag": "Look up",
+    "theme": "Planning"
+  },
+  "title": "Planning information",
   "showGeoServerMetadata": false,
   "baseStyle": "OSlight",
   "about": "This map shows the planning constraints in Hackney.  Click on the legend to turn on/off the different constraints. Click on an constraint category on the map to see the details.",

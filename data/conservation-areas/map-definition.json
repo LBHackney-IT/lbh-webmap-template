@@ -1,6 +1,16 @@
 {
+  "gallery": {
+    "galleryTitle": "Conservation areas",
+    "gallerySummary": "This map shows the Conservation areas in Hackney in Hackney.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
+    "link": "https://hackney.gov.uk/conservation-areas",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Planning"
+  },
   "title": "Conservation areas",
   "baseStyle": "OSoutdoor",
+  "published": true,
    "showBoundary": true,
   "showGeoServerMetadata":true,
   "aboutTitle":"About the data",

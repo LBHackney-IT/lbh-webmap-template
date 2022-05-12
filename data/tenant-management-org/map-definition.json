@@ -1,11 +1,20 @@
 {
+  "gallery": {
+    "galleryTitle": "Tenant management organisations",
+    "gallerySummary": "This map shows Tenant management organisations in Hackney.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
+    "link": "https://hackney.gov.uk/tenant-management-organisations",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Transport"
+  },
   "title": "Tenant management organisations",
   "summary": "",
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showBoundary": true,
   "showGeoServerMetadata": false,
   "zoomToMasterMap": true,
-   "showMask": true,
-   "showBoundary": true,
-  "baseStyle": "streets",
   "layers": [
     {
       "title": "Tenant management organisations",
