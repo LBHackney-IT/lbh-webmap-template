@@ -1,6 +1,9 @@
 {
-   "showMask": true,
-   "showBoundary": true,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
   "layers": [
     {
       "title": "Public bike pumps",

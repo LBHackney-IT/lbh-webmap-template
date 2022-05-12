@@ -1,9 +1,0 @@
-{
-  "title": "Hackney wards",
-  "baseStyle": "OSoutdoor",
-  "showMask": true, 
-  "maskGeoserverName":"boundaries:city_hackney_mask",
-  "showBoundary": true,
-  "boundaryGeoserverName":"health:health_care_neighbourhood",
-  "layers": []
-}
