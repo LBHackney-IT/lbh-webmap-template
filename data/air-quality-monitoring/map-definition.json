@@ -1,6 +1,15 @@
 {
+  "gallery": {
+    "galleryTitle": "Air quality monitoring locations",
+    "gallerySummary": "This map shows the location of all air quality monitoring sites in Hackney from 2020.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
+    "link": "https://hackney.gov.uk/air-quality/",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Pollution"
+  },
   "title": "Air quality monitoring locations",
-  "about": " This map shows the location of all air quality monitoring sites in Hackney from 2020. They are coloured coded based on the annual mean air quality objective (AQO) of 40&mu;g/m&sup3;. Any monitor below 40&mu;g/m&sup3; is green and any monitor above the 40&mu;g/m&sup3; is orange. As monitoring locations are added or removed the map will be updated.",
+  "about": "This map shows the location of all air quality monitoring sites in Hackney from 2020. They are coloured coded based on the annual mean air quality objective (AQO) of 40&mu;g/m&sup3;. Any monitor below 40&mu;g/m&sup3; is green and any monitor above the 40&mu;g/m&sup3; is orange. As monitoring locations are added or removed the map will be updated.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,

@@ -1,4 +1,13 @@
 {
+  "gallery": {
+    "galleryTitle": "Parliamentary  constituencies",
+    "gallerySummary": "This map show the Hackney parliamentary constituencies.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
+    "link": "https://hackney.gov.uk/constituencies-wards",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Boundaries"
+  },
   "title": "Hackney constituencies",
   "baseStyle": "OSoutdoor",
    "showMask": true,
