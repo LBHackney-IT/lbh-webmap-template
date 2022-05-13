@@ -1,12 +1,12 @@
 {
   "gallery": {
     "galleryTitle": "Playgrounds",
-    "gallerySummary": "This map shows the controlled parking zones in Hackney.",
+    "gallerySummary": "This map shows the playgrounds in Hackney.",
     "imageLink": "https://drive.google.com/uc?export=view&id=1oJJDJ214J8s_-y3deQAah4XZ8bQ24IAP",
     "link": "https://hackney.gov.uk/playgrounds",
     "linkText": "Open the interactive map",
     "tag": "Interactive Map",
-    "theme": "Parks and Open Spaces"
+    "theme": "Misc"
   },
   "showBoundary": true,
   "baseStyle": "OSoutdoor",
