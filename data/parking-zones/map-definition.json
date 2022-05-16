@@ -6,7 +6,7 @@
     "link": "https://hackney.gov.uk/parking-zones",
     "linkText": "Open the interactive map",
     "tag": "Interactive Map",
-    "theme": "Planning"
+    "theme": "Parking"
   },
   "title": "Parking zones",
   "baseStyle": "OSoutdoor",
