@@ -1,0 +1,143 @@
+{
+  "title": "High streets and Town Centres Fund - Eligibility Area",
+  "about": "This map shows the high streets and town centre areas that businesses should be located within to be eligible for funding. For more information, please visit our webpage.",
+  "aboutTitle": "About the map",
+  "showLegend": false,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSlight",
+  "showMask": false,
+   "showBoundary": true,
+  "layers": [
+    {
+      "title": "Major town centres",
+      "geoserverLayerName": "planning:major_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "sitename"
+      }
+    },
+    {
+      "title": "Major town centres",
+      "geoserverLayerName": "planning:local_shopping_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "lightred",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name"
+      }
+    },
+    {
+      "title": "District town centres",
+      "geoserverLayerName": "planning:district_town_centre",
+      "personas": ["retail"],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "site_name"
+      }
+    },
+    {
+      "title": "Central activities zone",
+      "geoserverLayerName": "planning:central_activity_zone",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "site_name"
+      }
+    },
+    {
+      "title": "Hackney Wick Neighbourhood Centre",
+      "geoserverLayerName": "planning:lldc_hackney_wick_neighbourhood_centre",
+      "personas": [],
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkred",
+        "markerColorIcon2": "lightred",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#fc8e7f",
+        "opacity": 1,
+        "fillColor": "#fc8e7f",
+        "fillOpacity": 0.50,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "description"
+      }
+    }
+  ]
+}
