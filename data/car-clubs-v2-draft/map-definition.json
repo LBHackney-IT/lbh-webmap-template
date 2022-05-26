@@ -1,0 +1,120 @@
+{
+  "gallery": {
+    "galleryTitle": "Car clubs in Hackney",
+    "gallerySummary": "This map shows car club bays in Hackney by operator.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1fseCJnkCfOQToFTh9hq3chJTwmLXPwtH",
+    "link": "https://hackney.gov.uk/carclub",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Transport"
+  },
+  "title": "Car clubs in Hackney",
+  "about": "This map shows car club bays in Hackney by operator.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
+  "showLocateButton":true,
+  "showAddressSearch": {
+    "addressSearchExpanded": "closed"
+  },
+  "filtersSectionTitle":"Filters",
+  "filters": {
+    "vehicle_type":{
+      "heading": "Vehicle type",
+      "options": [
+        "Car",
+        "Van"
+      ]
+    },
+    "electric_vehicle":{
+      "heading": "Is an electric vehicle?",
+      "options": [
+        "Yes",
+        "No"
+      ]
+    }
+  },
+  "layers": [
+    {
+      "title": "Zipcar",
+      "geoserverLayerName": "parking:car_club_zipcar",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "location_description",
+        "fields": [
+          {
+            "label": "Operator",
+            "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Is an electric vehicle?",
+            "name": "electric_vehicle"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Enterprise",
+      "geoserverLayerName": "parking:car_club_enterprise",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "congopink"
+      },
+      "popup": {
+        "title": "location_description",
+        "fields": [
+          {
+            "label": "Operator",
+            "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Is an electric vehicle?",
+            "name": "electric_vehicle"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Hiya Car",
+      "geoserverLayerName": "parking:club_car_hiya_car",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-car",
+        "markerColor": "darkpurple"
+      },
+      "popup": {
+        "title": "location_description",
+        "fields": [
+          {
+            "label": "Operator",
+            "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Is an electric vehicle?",
+            "name": "electric_vehicle"
+          }
+        ]
+      }
+    }
+  ]
+}
