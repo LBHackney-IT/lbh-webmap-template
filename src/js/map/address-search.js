@@ -293,7 +293,9 @@ class addressSearch {
       })
     .bindPopup(this.popUpText, {maxWidth: 210});
     this.marker.addTo(this.map);
-    this.marker.openPopup();   
+    if (!this.mapConfig.showAddressSearch.closePopUpWindow){
+      this.marker.openPopup();  
+    }
   }
 }
 export default addressSearch;

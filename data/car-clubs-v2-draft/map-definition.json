@@ -18,7 +18,8 @@
   "showBoundary": true,
   "showLocateButton":true,
   "showAddressSearch": {
-    "addressSearchExpanded": "closed"
+    "addressSearchExpanded": "closed",
+    "closePopUpWindow": true
   },
   "filtersSectionTitle":"Filters",
   "filters": {
