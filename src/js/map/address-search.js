@@ -12,6 +12,7 @@ class addressSearch {
     this.mapClass = mapClass;
     this.map = mapClass.map;
     this.mapConfig = mapClass.mapConfig;
+    this.addressSearchIcon = null;
     this.showAddressSearch = null;
     this.searchButton = null;
     this.postcodeBox = null;
@@ -49,6 +50,7 @@ class addressSearch {
     this.addressSearchLabel = this.showAddressSearch.addressSearchLabel || 'Go to an address';
     this.addressSearchExpanded = this.showAddressSearch.addressSearchExpanded || 'open';
     this.addressSearchClue = this.showAddressSearch.addressSearchClue || 'Enter a Hackney postcode or address';
+    this.addressSearchIcon = this.showAddressSearch.addressSearchIcon || 'fa-home-alt';
     
     this.createMarkup();
     this.bindSearchButton();
@@ -280,11 +282,10 @@ class addressSearch {
       this.mapClass.blpuPolygon = null;
     }
     
-
     //Create the marker, add the pop up and add the layer to the map
     this.marker = L.marker([this.selectedLat, this.selectedLong], {
         icon: L.AwesomeMarkers.icon({
-          icon: 'fa-home-alt',
+          icon: this.addressSearchIcon,
           prefix: "fa",
           markerColor: 'black',
           spin: false
