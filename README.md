@@ -112,7 +112,7 @@ Object properties:
 | `notFoundText` | String | required | Message appearing under the search box if no result is found. |
 | `clearMapAfterSearch` | Boolean | required | If true, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
 | `closePopUpWindow` | Boolean | optional |  If true, the popUp window of the selected address is closed by default.|
-| `addressSearchIcon` | String | optional | FontAwesome icon name of the address search marker | If it is not specified, the default icon is displayed.|
+| `addressSearchIcon` | String | optional | FontAwesome icon name of the address search marker. If it is not specified, the default icon is displayed.|
 
 
 ### Layer Options
