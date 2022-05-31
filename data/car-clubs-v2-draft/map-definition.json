@@ -29,11 +29,11 @@
         "Van"
       ]
     },
-    "electric_vehicle":{
-      "heading": "Is an electric vehicle?",
+    "engine_type":{
+      "heading": "Engine type",
       "options": [
-        "Yes",
-        "No"
+        "Electric",
+        "Fuel"
       ]
     }
   },
@@ -58,10 +58,11 @@
             "name": "vehicle_type"
           },
           {
-            "label": "Is an electric vehicle?",
-            "name": "electric_vehicle"
+            "label": "Engine type",
+            "name": "engine_type"
           }
-        ]
+        ],
+        "afterFields": "For more information about the 70 ZipCar flex locations, visit the <a href='https://www.zipcar.com'>Zipcar website</a>."
       }
     },
     {
@@ -84,10 +85,11 @@
             "name": "vehicle_type"
           },
           {
-            "label": "Is an electric vehicle?",
-            "name": "electric_vehicle"
+            "label": "Engine type",
+            "name": "engine_type"
           }
-        ]
+        ],
+        "afterFields": "For more information, visit the <a href='https://www.enterprisecarclub.co.uk/'>Enterprise website</a>."
       }
     },
     {
@@ -110,10 +112,11 @@
             "name": "vehicle_type"
           },
           {
-            "label": "Is an electric vehicle?",
-            "name": "electric_vehicle"
+            "label": "Engine type",
+            "name": "engine_type"
           }
-        ]
+        ],
+        "afterFields": "For more information, visit the <a href='https://www.hiyacar.co.uk/rent-a-car-in-hackney'>Hiya Car website</a>."
       }
     }
   ]
