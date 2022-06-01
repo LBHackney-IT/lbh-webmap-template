@@ -20,7 +20,7 @@
   "showAddressSearch": {
     "addressSearchExpanded": "closed",
     "addressSearchIcon": "fa-map-pin",
-    "closePopUpWindow": true
+    "openPopUpWindow": true
   },
   "filtersSectionTitle":"Filters",
   "filters": {
