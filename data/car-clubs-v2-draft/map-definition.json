@@ -18,7 +18,8 @@
   "showBoundary": true,
   "showLocateButton":true,
   "showAddressSearch": {
-    "addressSearchExpanded": "closed"
+    "addressSearchExpanded": "closed",
+    "addressSearchIcon": "fa-map-pin"
   },
   "filtersSectionTitle":"Filters",
   "filters": {

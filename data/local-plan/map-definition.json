@@ -16,7 +16,8 @@
   "aboutTitle": "About the map",
   "performDrillDown": true,
   "showAddressSearch": {
-    "addressSearchExpanded": "closed"
+    "addressSearchExpanded": "closed",
+    "openPopUpWindow": true
   },
   "showFullScreenButton": true,
   "showLegend": true,

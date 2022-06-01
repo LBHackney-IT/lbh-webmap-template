@@ -111,6 +111,8 @@ Object properties:
 | `searchPlaceholderText` | String | required | Hint text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
 | `notFoundText` | String | required | Message appearing under the search box if no result is found. |
 | `clearMapAfterSearch` | Boolean | required | If true, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
+| `openPopUpWindow` | Boolean | optional |  If true, the popUp window of the selected address is open by default.| 
+| `addressSearchIcon` | String | optional | FontAwesome icon name of the address search marker. If it is not specified, the default icon is displayed.|
 
 
 ### Layer Options
