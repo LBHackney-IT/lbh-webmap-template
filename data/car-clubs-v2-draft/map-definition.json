@@ -48,7 +48,7 @@
         "markerColor": "darkblue"
       },
       "popup": {
-        "title": "location_description",
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
@@ -61,6 +61,10 @@
           {
             "label": "Engine type",
             "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
         ],
         "afterFields": "For more information about the 70 ZipCar flex locations, visit the <a href='https://www.zipcar.com'>Zipcar website</a>."
@@ -75,7 +79,7 @@
         "markerColor": "congopink"
       },
       "popup": {
-        "title": "location_description",
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
@@ -88,6 +92,10 @@
           {
             "label": "Engine type",
             "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
         ],
         "afterFields": "For more information, visit the <a href='https://www.enterprisecarclub.co.uk/'>Enterprise website</a>."
@@ -102,7 +110,7 @@
         "markerColor": "darkpurple"
       },
       "popup": {
-        "title": "location_description",
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
@@ -115,6 +123,10 @@
           {
             "label": "Engine type",
             "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
         ],
         "afterFields": "For more information, visit the <a href='https://www.hiyacar.co.uk/rent-a-car-in-hackney'>Hiya Car website</a>."
