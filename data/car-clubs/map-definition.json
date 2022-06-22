@@ -16,6 +16,28 @@
   "baseStyle": "OSoutdoor",
   "showMask": true,
   "showBoundary": true,
+  "showLocateButton":true,
+  "showAddressSearch": {
+    "addressSearchExpanded": "closed",
+    "addressSearchIcon": "fa-map-pin"
+  },
+  "filtersSectionTitle":"Filters",
+  "filters": {
+    "vehicle_type":{
+      "heading": "Vehicle type",
+      "options": [
+        "Car",
+        "Van"
+      ]
+    },
+    "engine_type":{
+      "heading": "Engine type",
+      "options": [
+        "Electric",
+        "Fuel"
+      ]
+    }
+  },
   "layers": [
     {
       "title": "Zipcar",
@@ -26,12 +48,26 @@
         "markerColor": "darkblue"
       },
       "popup": {
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
             "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Engine type",
+            "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
-        ]
+        ],
+        "afterFields": "For more information about the 70 ZipCar flex locations, visit the <a href='https://www.zipcar.com'>Zipcar website</a>."
       }
     },
     {
@@ -43,12 +79,26 @@
         "markerColor": "congopink"
       },
       "popup": {
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
             "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Engine type",
+            "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
-        ]
+        ],
+        "afterFields": "For more information, visit the <a href='https://www.enterprisecarclub.co.uk/'>Enterprise website</a>."
       }
     },
     {
@@ -60,12 +110,26 @@
         "markerColor": "darkpurple"
       },
       "popup": {
+        "title": "road_name",
         "fields": [
           {
             "label": "Operator",
             "name": "operator"
+          },
+          {
+            "label": "Vehicle type",
+            "name": "vehicle_type"
+          },
+          {
+            "label": "Engine type",
+            "name": "engine_type"
+          },
+          {
+            "label": "Location",
+            "name": "location_description"
           }
-        ]
+        ],
+        "afterFields": "For more information, visit the <a href='https://www.hiyacar.co.uk/rent-a-car-in-hackney'>Hiya Car website</a>."
       }
     }
   ]
