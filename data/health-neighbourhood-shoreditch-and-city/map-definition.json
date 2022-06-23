@@ -10,6 +10,7 @@
   "showFirstLayerOnLoad": true,
   "baseStyle": "OSlight",
   "minMapZoom":7,
+  "performDrillDown": true,
   "layers": [
     {
       "title": "GP surgeries",
