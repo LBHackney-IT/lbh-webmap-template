@@ -48,7 +48,7 @@ class DrillDown {
         //If the feature is a point...
         else if (layer.feature.geometry.type == 'Point'){
             let turfPoint = turf.point(layer.feature.geometry.coordinates);
-            let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.01, {units: 'kilometers'});         
+            let turfClickPointBuffer = turf.buffer(turfClickPoint, 0.1, {units: 'kilometers'});         
             //Check if the feature point is whithin the clicked location buffer. If it is, we push the feature into the intersectingFeatures array
               if (turf.booleanPointInPolygon(turfPoint,turfClickPointBuffer)){
                 intersectingFeatures.push(layer);
