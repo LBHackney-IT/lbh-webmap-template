@@ -1,0 +1,38 @@
+{
+  "gallery": {
+    "galleryTitle": "Dockless bays in Hackney",
+    "gallerySummary": "This map shows the dockless bay locations.",
+    "imageLink": "https://drive.google.com/file/d/130FFVrb2xFaj2CRdsuba0jVfMBF7CeNs",
+    "link": "https://hackney.gov.uk",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Transport"
+  },
+  "title": "Dockless cycle bays",
+  "about": "This map shows the location of the dockless cycle bays. Lime bikes in Hackney must be picked up or dropped off from these bays. To sign up to ‘Lime Access’, visit the <a href='https://www.fountain.com/limebike/apply/united-kingdom-uk-lime-access?preview=true' target='_blank'>LimeAccess web page</a>.",
+  "aboutTitle": "About the map",
+  "showLayersOnLoad": true,
+  "baseStyle": "OSlight",
+  "showBoundary": true,
+  "showLocateButton":true,
+  "layers": [
+    {
+      "title": "Dockless cycle bays",
+      "geoserverLayerName": "transport:lime_dockless_location",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bicycle",
+        "markerColor": "apple"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "address"
+          }
+        ],
+        "afterFields": "To sign up to ‘Lime Access’, visit the <a href='https://www.fountain.com/limebike/apply/united-kingdom-uk-lime-access?preview=true' target='_blank'>LimeAccess web page</a>."
+      }
+    }
+  ]
+}
