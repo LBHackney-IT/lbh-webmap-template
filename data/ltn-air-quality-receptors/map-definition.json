@@ -325,18 +325,18 @@
       "followLinkOnClick": "air_quality_receptor_detailed_map",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "terracota",
+        "markerColor": "jakarta",
         "icon": "fas fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "red",
-        "opacity": 0.6,
-        "fillColor": "#de735b",
-        "fillOpacity": 0.4,
+        "strokeColor": "#522b6c",
+        "opacity": 1,
+        "fillColor": "#522b6c",
+        "fillOpacity": 0.2,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 2
       },
       "tooltip": {
         "direction": "top",

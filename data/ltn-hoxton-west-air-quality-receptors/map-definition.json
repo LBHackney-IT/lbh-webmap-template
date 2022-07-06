@@ -227,6 +227,34 @@
           }
         ]
       }
+    },
+    {
+      "title": "Hoxton West Low Traffic Neighbourhood",
+      "geoserverLayerName": "transport:ltn_overview",
+      "sortOrder": 8,
+      "loadToBack": true,
+      "cqlFilter": "name LIKE 'Hoxton West LTN'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "jacarta",
+        "icon": "far fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#522b6c",
+        "opacity": 1,
+        "fillColor": "#522b6c",
+        "fillOpacity": 0.1,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "name",
+        "fields": []
+      }
     }
   ]
 }
