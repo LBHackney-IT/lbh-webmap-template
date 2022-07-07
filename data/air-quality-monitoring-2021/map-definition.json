@@ -1,0 +1,142 @@
+{
+  "gallery": {
+    "galleryTitle": "Air quality monitoring locations",
+    "gallerySummary": "This map shows the location of all air quality monitoring sites in Hackney from 2021.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=11e5wUVV5rSnTIPNhfyeXLKCi1QMp45-N",
+    "link": "https://hackney.gov.uk/air-quality/",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Pollution"
+  },
+  "title": "Air quality monitoring locations",
+  "about": "This map shows the location of all air quality monitoring sites in Hackney from 2021. They are coloured coded based on the annual mean air quality objective (AQO) of 40&mu;g/m&sup3;. Any monitor below 40&mu;g/m&sup3; is green and any monitor above the 40&mu;g/m&sup3; is orange. As monitoring locations are added or removed the map will be updated.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+   "showMask": true,
+   "showBoundary": true,
+  "filtersSectionTitle":"Filter by monitoring site type",
+  "filters": {
+    "category":{
+      "heading": "Monitoring site type",
+      "options": [
+        "Diffusion tubes",
+        "Automatic monitors"
+      ]
+    }
+  },
+  "layers": [
+    {
+      "title": "No NO&#8322; measures yet",
+      "sortOrder":3,
+      "geoserverLayerName": "pollution:diffusion_tube",
+      "cqlFilter": "range_2021 LIKE 'N/A' AND site_active LIKE 'Yes'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-vial",
+        "markerColor": "darkblue",
+        "cluster": false
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Site name",
+            "name": "site_name"
+          },
+          {
+            "label": "Site type",
+            "name": "category"
+          },
+          {
+            "label": "2021 NO&#8322; annual concentration (&mu;g/m&sup3;)",
+            "name": "2021_annual_mean"
+          },
+          {
+            "label": "2021 PM₂.₅ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm2_5"
+          },
+          {
+            "label": "2021 PM₁₀ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm10"
+          }
+        ]
+      }
+    },
+    {
+      "title": "40 - 59 &mu;g/m&sup3; NO&#8322; in 2021",
+      "sortOrder":2,
+      "geoserverLayerName": "pollution:diffusion_tube",
+      "cqlFilter": "range_2021 LIKE '40 - 59ug/m3' AND site_active LIKE 'Yes'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-vial",
+        "markerColor": "orange",
+        "cluster": false
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Site name",
+            "name": "site_name"
+          },
+          {
+            "label": "Site type",
+            "name": "category"
+          },
+          {
+            "label": "2021 NO&#8322; annual concentration (&mu;g/m&sup3;)",
+            "name": "2021_annual_mean"
+          },
+          {
+            "label": "2021 PM₂.₅ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm2_5"
+          },
+          {
+            "label": "2021 PM₁₀ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm10"
+          }
+        ]
+      }
+    },
+    {
+      "title": "<40 &mu;g/m&sup3; NO&#8322; in 2021",
+      "geoserverLayerName": "pollution:diffusion_tube",
+      "sortOrder": 1,
+      "cqlFilter": "range_2021 like '<40ug/m3' AND site_active LIKE 'Yes'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-vial",
+        "markerColor": "green",
+        "cluster": false
+      },
+      "popup": {
+        "title": "",
+        "fields": [
+          {
+            "label": "Site name",
+            "name": "site_name"
+          },
+          {
+            "label": "Site type",
+            "name": "category"
+          },
+          {
+            "label": "2021 NO&#8322; annual concentration (&mu;g/m&sup3;)",
+            "name": "2021_annual_mean"
+          },
+          {
+            "label": "2021 PM₂.₅ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm2_5"
+          },
+          {
+            "label": "2021 PM₁₀ annual concentration (&mu;g/m&sup3;)",
+            "name": "pm10"
+          }
+        ]
+      }
+    }
+  ]
+}

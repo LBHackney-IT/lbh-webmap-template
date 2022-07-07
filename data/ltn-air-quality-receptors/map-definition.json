@@ -317,7 +317,7 @@
       }
     },
     {
-      "title": "Modelled Low Traffic Neighbourhood",
+      "title": "Low Traffic Neighbourhood",
       "geoserverLayerName": "transport:ltn_hd_lf_hw",
       "sortOrder": 8,
       "loadToBack": true,
@@ -325,18 +325,18 @@
       "followLinkOnClick": "air_quality_receptor_detailed_map",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "terracota",
-        "icon": "fas fa-square"
+        "markerColor": "jacarta",
+        "icon": "far fa-square"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "red",
-        "opacity": 0.6,
-        "fillColor": "#de735b",
-        "fillOpacity": 0.4,
+        "strokeColor": "#522b6c",
+        "opacity": 1,
+        "fillColor": "#522b6c",
+        "fillOpacity": 0.2,
         "layerLineDash": "",
-        "weight": 1
+        "weight": 2
       },
       "tooltip": {
         "direction": "top",
