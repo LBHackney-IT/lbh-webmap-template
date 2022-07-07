@@ -236,7 +236,7 @@
       "cqlFilter": "name LIKE 'London Fields East LTN' OR name LIKE 'London Fields West LTN'",
       "pointStyle": {
         "markerType": "AwesomeMarker",
-        "markerColor": "jakarta",
+        "markerColor": "jacarta",
         "icon": "far fa-square"
       },
       "linePolygonStyle": {
