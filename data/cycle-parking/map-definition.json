@@ -14,7 +14,7 @@
   },
   "layers": [
     {
-      "title": "Cargo docking station",
+      "title": "Cargo docking stations",
       "sortOrder":2,
       "geoserverLayerName": "parking:cargo_docking_station_point",
       "pointStyle": {
@@ -34,7 +34,7 @@
       }
     },
     {
-      "title": "Hackney cycle stand",
+      "title": "Hackney cycle stands",
       "geoserverLayerName": "parking:hackney_cycle_stand_point",
       "sortOrder":6,
       "pointStyle": {
@@ -54,7 +54,7 @@
       }
     },
     {
-      "title": "TFL cycle stand",
+      "title": "TFL cycle stands",
       "geoserverLayerName": "parking:tfl_cycle_stand_point",
       "sortOrder":7,
       "pointStyle": {
@@ -74,7 +74,7 @@
       }
     },
     {
-      "title": "Cycle hire",
+      "title": "Cycle hire locations",
       "geoserverLayerName": "parking:cycle_hire_point",
       "sortOrder":5,
       "pointStyle": {
