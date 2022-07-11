@@ -1,0 +1,156 @@
+{
+  "title": "Cycle parking in Hackney",
+  "about": "This map shows the on-street cycle parking in Hackney by type.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
+  "showLocateButton":true,
+  "showFirstLayerOnLoad": true,
+  "showAddressSearch": {
+    "addressSearchExpanded": "closed",
+    "addressSearchIcon": "fa-map-pin"
+  },
+  "layers": [
+    {
+      "title": "Cargo docking station",
+      "sortOrder":2,
+      "geoserverLayerName": "parking:cargo_docking_station_point",
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "purple"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "street_name"
+          }
+        ],
+        "afterFields": "For more information about the cargo docking stations, visit the <a href='https://hackney.gov.uk/bike-sharing'>bike sharing site.</a>."
+      }
+    },
+    {
+      "title": "Hackney cycle stand",
+      "geoserverLayerName": "parking:hackney_cycle_stand_point",
+      "sortOrder":6,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "green"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "street_name"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    },
+    {
+      "title": "TFL cycle stand",
+      "geoserverLayerName": "parking:tfl_cycle_stand_point",
+      "sortOrder":7,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "street_name"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    },
+    {
+      "title": "Cycle hire",
+      "geoserverLayerName": "parking:cycle_hire_point",
+      "sortOrder":5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "street_name"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    },
+    {
+      "title": "Cycle dockless bays",
+      "geoserverLayerName": "transport:lime_dockless_location",
+      "sortOrder":3,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "black"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "address"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    },
+    {
+      "title": "Cycle hangars",
+      "geoserverLayerName": "transport:bike_hangar",
+      "sortOrder":4,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 6,
+        "icon": "fas fa-circle",
+        "markerColor": "darkred"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Street name",
+            "name": "hangar_location"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    },
+    {
+      "title": "Hackney Central Cycle Hub",
+      "geoserverLayerName": "transport:hackney_central_cycle_hub",
+      "sortOrder":1,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bicycle",
+        "markerColor": "blue"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "notes"
+          }
+        ],
+        "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security'>Hackney website.</a>."
+      }
+    }
+  ]
+}
