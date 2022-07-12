@@ -35,7 +35,7 @@
     },
     {
       "title": "Cycle hangars",
-      "geoserverLayerName": "transport:bike_hangar",
+      "geoserverLayerName": "transport:cycle_hangar",
       "sortOrder":3,
       "pointStyle": {
         "markerType": "CircleMarker",
@@ -47,7 +47,7 @@
         "fields": [
           {
             "label": "Street name",
-            "name": "hangar_location"
+            "name": "road"
           }
         ],
         "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security' target='_blank'>Hackney website.</a>."
