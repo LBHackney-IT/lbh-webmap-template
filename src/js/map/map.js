@@ -28,7 +28,9 @@ import {
   PERSONA_ACTIVE_CLASS,
 } from "./consts";
 import OS_RASTER_API_KEY  from "../helpers/osdata";
-import "@fortawesome/fontawesome-pro/js/all";
+import "@fortawesome/fontawesome-pro/js/solid";
+import "@fortawesome/fontawesome-pro/js/regular";
+import "@fortawesome/fontawesome-pro/js/fontawesome";
 import Geolocation from "./geolocation";
 import Controls from "./controls";
 import DataLayers from "./data-layers";
