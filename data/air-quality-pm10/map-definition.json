@@ -1,4 +1,13 @@
 {
+  "gallery": {
+    "galleryTitle": "PM₁₀ 2018 annual mean concentrations",
+    "gallerySummary": "This map shows PM₁₀ 2018 annual mean concentrations &mu;g/m&sup3; predicted by air quality modelling Hackney Council undertook in 2021.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1Ex7za5CjE48MhDbtY3AGu8MHXVZDlxNp",
+    "link": "https://hackney.gov.uk/air-quality/",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Pollution"
+  },
     "about": "The map shows PM₁₀ 2018 annual mean concentrations (&mu;g/m&sup3;) predicted by air quality modelling Hackney Council undertook in 2021.  The annual mean objective for PM₁₀ is 40 &mu;g/m&sup3;. Anything above this concentration is therefore failing the annual mean objective. For more information, visit <a href='https://hackney.gov.uk/air-quality/' target='_blank'>Air Quality in Hackney</a>",
     "aboutTitle": "About the map",
     "showLegend": true,
