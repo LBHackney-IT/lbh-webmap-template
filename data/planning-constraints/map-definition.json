@@ -269,42 +269,6 @@
       }
     },
     {
-      "title": "A4D-Office to Resid.",
-      "geoserverLayerName": "planning:a4d_office_to_residential",
-      "sortOrder": 8,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "darkblue",
-        "markerColorIcon2": "lightblue",
-        "icon": "far fa-square",
-        "icon2": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#0e67a3",
-        "opacity": 1,
-        "fillColor": "#8adaff",
-        "fillOpacity": 0.15,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "designation",
-        "fields": [
-          {
-            "label": "Site",
-            "name": "site_name"
-          },
-          {
-            "label": "With effect from",
-            "name": "wef"
-          }
-        ],
-        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
-      }
-    },
-    {
       "title": "A4D-Laund. to Resid.",
       "geoserverLayerName": "planning:a4d_laund_to_residential",
       "sortOrder": 9,
