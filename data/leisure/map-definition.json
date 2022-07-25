@@ -249,7 +249,7 @@
       }
     },
     {
-      "title": "Drinking fountains <span class='tooltip'><i class='far fa-exclamation-circle'></i><div class='tooltiptextinlegend'>Closed under current Covid rules</div></span>",
+      "title": "Drinking fountains",
       "geoserverLayerName": "amenities:drinking_fountain_combined",
       "personas": ["playing","chilling","everything"],
       "pointStyle": {
