@@ -7,7 +7,7 @@
   "showMask": true,
   "showBoundary": true,
   "showLocateButton":true,
-  "showFirstLayerOnLoad": true,
+  "showLayersOnLoad": true,
   "showAddressSearch": {
     "addressSearchExpanded": "closed",
     "addressSearchIcon": "fa-map-pin"
