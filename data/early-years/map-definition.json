@@ -1,0 +1,148 @@
+{
+  "title": "Early Years in Hackney",
+  "about": "This map shows the Early Years settings in Hackney: Nurseries, Playgroups, Childrens's Centres and Primary Schools.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "showMask": true,
+  "showBoundary": true,
+  "showLocateButton":true,
+  "showAddressSearch": {
+    "addressSearchExpanded": "closed",
+    "addressSearchIcon": "fa-map-pin"
+  },
+  "layers": [
+    {
+      "title": "Primary Schools",
+      "sortOrder":4,
+      "geoserverLayerName": "education:primary_school",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-school",
+        "markerColor": "red"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Address",
+            "name": "single_line_address"
+          },
+          {
+            "label": "Area",
+            "name": "cc_area"
+          },
+          {
+            "label": "",
+            "name": "school_details_link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Nurseries",
+      "sortOrder":3,
+      "geoserverLayerName": "education:nursery",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-school",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "title": "title",
+        "fields": [
+          {
+            "label": "Address",
+            "name": "single_line_address"
+          },
+          {
+            "label": "Area",
+            "name": "cc_area"
+          }
+        ],
+        "afterFields": "For more information, visit the <a href='https://education.hackney.gov.uk/content/nurseries-and-playgroups' target='_blank'>Nurseries and playgroups web page</a>."
+      }
+    },
+    {
+      "title": "Playgroups",
+      "sortOrder":2,
+      "geoserverLayerName": "education:playgroup",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-school",
+        "markerColor": "green"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Address",
+            "name": "single_line_address"
+          },
+          {
+            "label": "Area",
+            "name": "cc_area"
+          }
+        ],
+        "afterFields": "For more information, visit the <a href='https://education.hackney.gov.uk/content/nurseries-and-playgroups' target='_blank'>Nurseries and playgroups web page</a>."
+      }
+    },
+    {
+      "title": "Children's Centres",
+      "sortOrder":1,
+      "geoserverLayerName": "education:children_centre",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-school",
+        "markerColor": "darkblue"
+      },
+      "popup": {
+        "title": "name",
+        "fields": [
+          {
+            "label": "Address",
+            "name": "single_line_address"
+          },
+          {
+            "label": "Area",
+            "name": "area"
+          },
+          {
+            "label": "",
+            "name": "details_link"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Children's Centres Areas",
+      "sortOrder":5,
+      "loadToBack":true,
+      "geoserverLayerName": "education:children_centre_area",
+      "highlightFeatureOnHover": true,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "far fa-square",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "darkblue",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "zone_id",
+        "fields": []
+      }
+    }
+    
+  ]
+}
