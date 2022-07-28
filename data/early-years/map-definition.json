@@ -1,6 +1,15 @@
 {
+  "gallery": {
+    "galleryTitle": "Early Years settings",
+    "gallerySummary": " the Early Years settings: primary schools, nurseries, pre-schools and children's centres.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1TAkjMS2ISI8N561nZw967cn0HZKhY-K4/",
+    "link": "https://map2.hackney.gov.uk/maps/early-years/index.html",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Culture and leisure"
+  },
   "title": "Early Years in Hackney",
-  "about": "This map shows the Early Years settings in Hackney: Nurseries, Playgroups, Childrens's Centres and Primary Schools.",
+  "about": "The map shows the Early Years settings in Hackney: primary schools, nurseries, pre-schools and children's centres.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
