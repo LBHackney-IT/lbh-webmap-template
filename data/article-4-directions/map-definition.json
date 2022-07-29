@@ -61,41 +61,6 @@
       }
     },
     {
-      "title": "Office to Residential",
-      "geoserverLayerName": "planning:a4d_office_to_residential",
-      "sortOrder": 1,
-      "highlightFeatureOnHover": true,
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "markerColor": "darkblue",
-        "icon": "fas fa-square"
-      },
-      "linePolygonStyle": {
-        "styleName": "default",
-        "stroke": true,
-        "strokeColor": "#0e67a3",
-        "opacity": 1,
-        "fillColor": "#0e67a3",
-        "fillOpacity": 0.30,
-        "layerLineDash": "",
-        "weight": 1
-      },
-      "popup": {
-        "title": "designation",
-        "fields": [
-          {
-            "label": "Site",
-            "name": "site_name"
-          },
-          {
-            "label": "With effect from",
-            "name": "wef"
-          }
-        ],
-        "afterFields": "Please read the <a href='https://hackney.gov.uk/article-4-directions'>Hackney Article 4 Directions page</a> for full details, including the official boundaries of any Direction."
-      }
-    },
-    {
       "title": "Launderette to Resid.",
       "geoserverLayerName": "planning:a4d_laund_to_residential",
       "highlightFeatureOnHover": true,
