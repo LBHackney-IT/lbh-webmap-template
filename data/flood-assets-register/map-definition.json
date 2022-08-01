@@ -14,9 +14,8 @@
       "geoserverLayerName": "transport:hackney_bridge",
       "sortOrder":1,
       "pointStyle": {
-        "markerType": "CircleMarker",
-        "circleMarkerRadius": 5,
-        "icon": "fas fa-circle",
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-bridge",
         "markerColor": "green"
       },
       "popup": {
@@ -37,6 +36,16 @@
         "circleMarkerRadius": 5,
         "icon": "fas fa-circle",
         "markerColor": "black"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "black",
+        "opacity": 1,
+        "fillColor": "black",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -115,7 +124,17 @@
         "markerType": "CircleMarker",
         "circleMarkerRadius": 5,
         "icon": "fas fa-circle",
-        "markerColor": "darkgreen"
+        "markerColor": "pink"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "pink",
+        "opacity": 1,
+        "fillColor": "pink",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -134,7 +153,17 @@
         "markerType": "CircleMarker",
         "circleMarkerRadius": 5,
         "icon": "fas fa-circle",
-        "markerColor": "orange"
+        "markerColor": "red"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "red",
+        "opacity": 1,
+        "fillColor": "red",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "fields": [
@@ -153,7 +182,17 @@
         "markerType": "CircleMarker",
         "circleMarkerRadius": 5,
         "icon": "fas fa-circle",
-        "markerColor": "red"
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "orange",
+        "opacity": 1,
+        "fillColor": "orange",
+        "fillOpacity": 1,
+        "layerLineDash": "",
+        "weight": 1
       },
       "popup": {
         "fields": [
