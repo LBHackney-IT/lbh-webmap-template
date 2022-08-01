@@ -1,6 +1,6 @@
 {
   "title": "Flood Assets Register",
-  "about": "This map shows structures and features that are considered to have significant effects on flood risk in the borough. The information includes the type of structures or features and ownership where the information is available.Please note that this map is a live document and new data are added if and when they become available to the LLFA.Every effort has been made to ensure the completeness and accuracy of the data but it is possible that not all assets are shown as they may not have been disclosed to us.",
+  "about": "This map shows structures and features that are considered to have significant effects on flood risk in the borough. The information includes the type of structures or features and ownership where the information is available. Please note that this map is a live document and new data are added if and when they become available to the LLFA.Every effort has been made to ensure the completeness and accuracy of the data but it is possible that not all assets are shown as they may not have been disclosed to us.",
   "aboutTitle": "About the map",
   "showLegend": true,
   "showLayersOnLoad": true,
@@ -54,6 +54,7 @@
     {
       "title": "Flood defences",
       "geoserverLayerName": "flood:flood_defence",
+      "loadToBack": true,
       "sortOrder":7,
       "pointStyle": {
         "markerType": "AwesomeMarker",
@@ -86,6 +87,7 @@
     {
       "title": "Water Regions",
       "geoserverLayerName": "physicalgeo:hackney_water_region",
+      "loadToBack": true,
       "sortOrder":8,
       "pointStyle": {
         "markerType": "AwesomeMarker",
