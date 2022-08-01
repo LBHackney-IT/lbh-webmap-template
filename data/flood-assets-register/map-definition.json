@@ -1,0 +1,166 @@
+{
+  "title": "Flood Assets Register",
+  "about": "This map shows structures and features that are considered to have significant effects on flood risk in the borough. The information includes the type of structures or features and ownership where the information is available.Please note that this map is a live document and new data are added if and when they become available to the LLFA.Every effort has been made to ensure the completeness and accuracy of the data but it is possible that not all assets are shown as they may not have been disclosed to us.",
+  "aboutTitle": "About the map",
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "baseStyle": "OSoutdoor",
+  "blockZoomToMasterMap": true,
+  "showMask": true,
+  "showBoundary": true,
+  "layers": [
+    {
+      "title": "Bridges",
+      "geoserverLayerName": "transport:hackney_bridge",
+      "sortOrder":1,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 5,
+        "icon": "fas fa-circle",
+        "markerColor": "green"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Flood structures",
+      "geoserverLayerName": "flood:flood_structure",
+      "sortOrder":6,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 5,
+        "icon": "fas fa-circle",
+        "markerColor": "black"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Protection",
+            "name": "protection"
+          },
+          {
+            "label": "",
+            "name": "descriptio"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Flood defences",
+      "geoserverLayerName": "flood:flood_defence",
+      "sortOrder":7,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-horizontal-rule",
+        "markerColor": "orange"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": "false",
+        "strokeColor": "#F69730",
+        "opacity": 1,
+        "fillColor": "",
+        "fillOpacity": 0,
+        "layerLineDash": "",
+        "weight": 4
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Protection",
+            "name": "protection"
+          },
+          {
+            "label": "",
+            "name": "descriptio"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Water Regions",
+      "geoserverLayerName": "physicalgeo:hackney_water_region",
+      "sortOrder":8,
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "darkblue",
+        "markerColorIcon2": "lightblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 1,
+        "fillColor": "#8adaff",
+        "fillOpacity": 0.6,
+        "layerLineDash": "",
+        "weight": 1
+      }
+    },
+    {
+      "title": "Weired Locks",
+      "geoserverLayerName": "flood:weired_lock",
+      "sortOrder":5,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 5,
+        "icon": "fas fa-circle",
+        "markerColor": "darkgreen"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "descriptio"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Locks",
+      "geoserverLayerName": "flood:lock",
+      "sortOrder":3,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 5,
+        "icon": "fas fa-circle",
+        "markerColor": "orange"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "descriptio"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Sluices",
+      "geoserverLayerName": "flood:sluice",
+      "sortOrder":4,
+      "pointStyle": {
+        "markerType": "CircleMarker",
+        "circleMarkerRadius": 5,
+        "icon": "fas fa-circle",
+        "markerColor": "red"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "",
+            "name": "descriptio"
+          }
+        ]
+      }
+    }
+  ]
+}
