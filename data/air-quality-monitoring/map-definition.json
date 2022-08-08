@@ -66,7 +66,7 @@
     },
     {
       "title": "40 - 59 &mu;g/m&sup3; NO&#8322; in 2021",
-      "sortOrder":2,
+      "sortOrder":1,
       "geoserverLayerName": "pollution:diffusion_tube",
       "cqlFilter": "range_2021 LIKE '40 - 59ug/m3' AND site_active LIKE 'Yes'",
       "pointStyle": {
@@ -104,7 +104,7 @@
     {
       "title": "<40 &mu;g/m&sup3; NO&#8322; in 2021",
       "geoserverLayerName": "pollution:diffusion_tube",
-      "sortOrder": 1,
+      "sortOrder": 2,
       "cqlFilter": "range_2021 like '<40ug/m3' AND site_active LIKE 'Yes'",
       "pointStyle": {
         "markerType": "AwesomeMarker",
