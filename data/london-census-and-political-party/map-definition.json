@@ -1,0 +1,124 @@
+{
+  "title": "Population changes and political parties in London",
+  "summary": "",
+  "showFullScreenButton": false,
+  "showLegend": true,
+  "showBoundary": false,
+  "showMask": false,
+  "baseStyle": "OSlight",
+  "minMapZoom":3,
+  "showLayersOnLoad": true,
+  "layers": [
+    {
+      "title": "Conservative-led borough",
+      "loadToBack": true,
+      "sortOrder": 1,
+      "geoserverLayerName": "boundaries:usr_sbly_borough_census_by_lon",
+      "cqlFilter":"join_party LIKE 'Conservative'",        
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-square",
+        "markerColor": "darkblue"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#0e67a3",
+        "opacity": 2,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.9,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "distname",
+        "fields": [
+          {
+            "label": "Party",
+            "name": "join_party"
+          },
+          {
+            "label": "Population change between 2001 and 2011",
+            "name": "join_change"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Other party-led borough",
+      "loadToBack": true,
+      "sortOrder": 3,
+      "geoserverLayerName": "boundaries:usr_sbly_borough_census_by_lon",
+      "cqlFilter":"join_party not LIKE 'Conservative' and join_party not LIKE 'Labour'",        
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-square",
+        "markerColor": "goldenrod"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#ffd966",
+        "opacity": 1,
+        "fillColor": "#ffd966",
+        "fillOpacity": 0.9,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "distname",
+        "fields": [
+          {
+            "label": "Party",
+            "name": "join_party"
+          },
+          {
+            "label": "Population change between 2001 and 2011",
+            "name": "join_change"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Labour-led borough",
+      "loadToBack": true,
+      "sortOrder": 1,
+      "geoserverLayerName": "boundaries:usr_sbly_borough_census_by_lon",
+      "cqlFilter":"join_party LIKE 'Labour'",        
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "icon": "fas fa-square",
+        "markerColor": "darkred"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#a23336",
+        "opacity": 1,
+        "fillColor": "#a23336",
+        "fillOpacity": 0.9,
+        "layerLineDash": "",
+        "weight": 2
+      },
+      "tooltip": {
+        "direction": "top",
+        "offset": [0,0],
+        "title": "distname",
+        "fields": [
+          {
+            "label": "Party",
+            "name": "join_party"
+          },
+          {
+            "label": "Population change between 2001 and 2011",
+            "name": "join_change"
+          }
+        ]
+      }
+    }
+  ]
+}
