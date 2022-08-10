@@ -15,8 +15,8 @@ const DEFAULT_ZOOM_MOBILE = 5;
 //   [51.607351, 0.096129]
 // ];
 const MAP_BOUNDS = [
-  [51.281112, -0.5],
-  [51.793054, 0.45]
+  [51, -1],
+  [52, 1]
 ];
 const HACKNEY_BOUNDS_1 = [51.517787, -0.097059];
 const HACKNEY_BOUNDS_2 = [51.580648, -0.00909];
