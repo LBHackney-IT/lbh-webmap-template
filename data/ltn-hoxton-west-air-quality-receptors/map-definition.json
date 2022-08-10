@@ -1,6 +1,6 @@
 {
   "title": "Air quality modelling at Hoxton West low traffic neighbourhood",
-  "about": "Location of receptors where the potential impact Hoxton West LTN had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'Baseline' without the LTN in place.",
+  "about": "Location of receptors monitoring the potential impact Hoxton West LTN had on air quality. The colour of the receptor defines the change in NO&#8322; concentration with the LTN in place compared to a 'Baseline' without the LTN in place.",
   "aboutTitle": "About the map",
   "baseStyle": "OSlight",
   "blockZoomToMasterMap": true,
