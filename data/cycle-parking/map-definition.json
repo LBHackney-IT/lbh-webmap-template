@@ -46,8 +46,8 @@
       "popup": {
         "fields": [
           {
-            "label": "Street name",
-            "name": "road"
+            "label": "Location",
+            "name": "location_description"
           }
         ],
         "afterFields": "For more information, visit <a href='https://hackney.gov.uk/cycle-safety-and-security' target='_blank'>Hackney website.</a>."
