@@ -256,8 +256,7 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tint",
-        "markerColor": "blue",
-        "cluster": true
+        "markerColor": "blue"
       },
       "popup": {
         "title": "type",
