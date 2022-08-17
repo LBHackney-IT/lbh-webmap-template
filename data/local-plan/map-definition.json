@@ -21,6 +21,7 @@
   },
   "showFullScreenButton": true,
   "showLegend": true,
+  "showLayersOnLoad": false,
   "showGeoServerMetadata": false,
   "baseStyle": "OSlight",
   "personas": [

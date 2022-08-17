@@ -13,6 +13,7 @@
   "showBoundary": true,
   "showFullScreenButton": false,
   "showLegend": true,
+  "showLayersOnLoad": false,
   "showGeoServerMetadata": false,
   "baseStyle": "OSoutdoor",
   "personas": [
@@ -255,7 +256,8 @@
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-tint",
-        "markerColor": "blue"
+        "markerColor": "blue",
+        "cluster": true
       },
       "popup": {
         "title": "type",

@@ -6,7 +6,7 @@
   "showLegend": true,
   "baseStyle": "OSoutdoor",
   "showMask": false,
-   "showBoundary": true,
+  "showBoundary": true,
   "layers": [
     {
       "title": "Bollards",

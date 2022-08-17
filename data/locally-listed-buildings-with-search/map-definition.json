@@ -2,6 +2,7 @@
   "title": "Locally listed buildings",
   "baseStyle": "OSoutdoor",
   "showBoundary": true,
+  "showLayersOnLoad": true,
   "showAddressSearch": true,
   "layers": [
     {

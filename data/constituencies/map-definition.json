@@ -10,8 +10,9 @@
   },
   "title": "Hackney constituencies",
   "baseStyle": "OSoutdoor",
-   "showMask": true,
-   "showBoundary": true,
+  "showMask": true,
+  "showBoundary": true,
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Hackney constituencies",
