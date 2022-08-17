@@ -13,6 +13,7 @@
   "aboutTitle": "About the map",
   "showBoundary": true,
   "showLayersOnLoad": true,
+  "showLegend": false,
   "baseStyle": "OSoutdoor",
   "layers": [
     {
