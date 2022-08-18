@@ -299,9 +299,12 @@ class DataLayers {
       clusterLayer.addLayer(layer);
       //add the sortorder as an option to the clusterLayer (needed for the legend)
       clusterLayer.options.sortOrder = layer.options.sortOrder;
+      this.layersData.push({configLayer, layer, data, clusterLayer});
     }
-
-    this.layersData.push({configLayer, layer, data });
+    else{
+      this.layersData.push({configLayer, layer, data});
+    }
+    
     
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
