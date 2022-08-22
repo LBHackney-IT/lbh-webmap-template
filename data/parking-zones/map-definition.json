@@ -11,8 +11,9 @@
   "title": "Parking zones",
   "baseStyle": "OSoutdoor",
   "zoomToMasterMap": true,
-   "showBoundary": true,
+  "showBoundary": true,
   "showLegend": false,
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Parking Zones",

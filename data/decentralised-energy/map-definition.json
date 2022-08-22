@@ -12,8 +12,9 @@
   "summary": "",
   "showGeoServerMetadata": true,
   "baseStyle": "OSoutdoor",
-   "showBoundary": true,
-   "showMask": true,
+  "showBoundary": true,
+  "showMask": true,
+  "showLayersOnLoad": true,
   "showLegend": false,
   "layers": [
     {

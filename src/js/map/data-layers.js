@@ -167,6 +167,7 @@ class DataLayers {
     const markerColor = pointStyle && pointStyle.markerColor;
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
+    var clusterLayer = null;
 
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
@@ -283,19 +284,50 @@ class DataLayers {
       });
     }
 
-    this.layersData.push({configLayer, layer, data });
-
+    if (cluster) {
+      //set the clusters color
+      document.documentElement.style.setProperty(
+        '--cluster-color', MARKER_COLORS[markerColor]
+      );
+      //create clusters layer
+      clusterLayer = L.markerClusterGroup({
+        maxClusterRadius: 60,
+        disableClusteringAtZoom: 12,
+        spiderfyOnMaxZoom: false,
+        showCoverageOnHover: false
+      });
+      clusterLayer.addLayer(layer);
+      //add the sortorder as an option to the clusterLayer (needed for the legend)
+      clusterLayer.options.sortOrder = layer.options.sortOrder;
+      this.layersData.push({configLayer, layer, data, clusterLayer});
+    }
+    else{
+      this.layersData.push({configLayer, layer, data});
+    }
+    
+    
+    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
-      layer.addTo(this.map);
-      if (configLayer.loadToBack){
-        layer.bringToBack();
-      }    
+      if (cluster) {     
+        this.map.addLayer(clusterLayer);
+      }
+      else {
+        layer.addTo(this.map);
+        if (configLayer.loadToBack){
+          layer.bringToBack();
+        }  
+      } 
     }
     else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-      layer.addTo(this.map);
-      if (configLayer.loadToBack){
-        layer.bringToBack();
+      if (cluster) {     
+        this.map.addLayer(clusterLayer);
       }
+      else {
+        layer.addTo(this.map);
+        if (configLayer.loadToBack){
+          layer.bringToBack();
+       }
+      }    
     }
 
     this.loadedLayerCount++;
@@ -324,46 +356,56 @@ class DataLayers {
     }
       
     if (this.mapConfig.showLegend) {
-      this.layers.push(layer);
+      let legendEntry = '';
       const count = layer.getLayers().length;
-
+      
+      if (cluster) {
+        this.layers.push(clusterLayer);
+      }
+      else {
+        this.layers.push(layer);
+      }
       if (markerIcon2){
         if (this.mapConfig.hideNumberOfItems){
-            const legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColorIcon2]
-            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;
-            this.overlayMaps[legendEntry] = layer;
-            } else{
-              const legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-                MARKER_COLORS[markerColorIcon2]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-                layer
-              )}" class="control__count">${count} items shown</span></div></div>`;
-              this.overlayMaps[legendEntry] = layer;
-            }
-       
+          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            MARKER_COLORS[markerColorIcon2]
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
+        } else{
+          legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            MARKER_COLORS[markerColorIcon2]
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+            layer
+            )}" class="control__count">${count} items shown</span></div></div>`;          
+        }
+         
       } else {
         if (this.mapConfig.hideNumberOfItems){
-          const legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
             MARKER_COLORS[markerColor]
-          }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;
-          this.overlayMaps[legendEntry] = layer;
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
         } else {
-          const legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
+          legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
             MARKER_COLORS[markerColor]
-          }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
             layer
-          )}" class="control__count">${count} items shown</span></div></div>`;
-          this.overlayMaps[legendEntry] = layer;
+            )}" class="control__count">${count} items shown</span></div></div>`;         
         }
-        
-
       }
-
+      if (cluster){
+        this.overlayMaps[legendEntry] = clusterLayer;
+      }
+      else{
+        this.overlayMaps[legendEntry] = layer;
+      }
       const layerPersonas = configLayer.personas;
       for (const x in this.personas) {
         if (layerPersonas.includes(this.personas[x].id)) {
-          this.personas[x].layers.push(layer);
+          if (cluster) {
+            this.personas[x].layers.push(clusterLayer);
+          }
+          else {
+            this.personas[x].layers.push(layer);
+          }
         }
       }
       
@@ -383,27 +425,7 @@ class DataLayers {
           this.personasClass.init();
         }
       }
-    } else {
-      if (cluster) {
-        //set the clusters color
-        document.documentElement.style.setProperty(
-          '--cluster-color', MARKER_COLORS[markerColor]
-        );
-        //create clusters
-        const markers = L.markerClusterGroup({
-          maxClusterRadius: 60,
-          disableClusteringAtZoom: 12,
-          spiderfyOnMaxZoom: false,
-          showCoverageOnHover: false
-        });
-        markers.addLayer(layer);
-        this.map.addLayer(markers);
-      } else {
-        layer.addTo(this.map);
-      }
-    }
-
-     
+    } 
 
     if (this.mapConfig.search && searchable){
       // this.search = new Search(this.mapClass, layer);
@@ -415,9 +437,6 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
-
-
-
   }
 
   createControl() {

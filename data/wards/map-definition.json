@@ -10,8 +10,9 @@
   },
   "title": "Hackney wards",
   "baseStyle": "OSoutdoor",
-   "showMask": true,
-   "showBoundary": true,
+  "showMask": true,
+  "showBoundary": true,
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Wards",

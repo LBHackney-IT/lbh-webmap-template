@@ -10,8 +10,9 @@
   },
   "title": "Statutory listed buildings",
   "baseStyle": "OSoutdoor",
-   "showBoundary": true,
-   "layers": [
+  "showBoundary": true,
+  "showLayersOnLoad": true,
+  "layers": [
     {
       "title": "Statutory listed buildings",
       "geoserverLayerName": "planning:statutory_listed_building_point",

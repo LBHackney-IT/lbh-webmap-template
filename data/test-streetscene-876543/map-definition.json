@@ -2,7 +2,7 @@
   "title": "Traffic surrounding LTNs",
   "baseStyle": "OSlight",
   "zoomToMasterMap": true,
-   "showBoundary": true,
+  "showBoundary": true,
   "showLegend": true,
   "showLayersOnLoad": true,
   "layers": [

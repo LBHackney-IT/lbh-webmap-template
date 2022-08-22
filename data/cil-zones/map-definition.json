@@ -11,7 +11,8 @@
   "title": "Community infrastructure levy zones (CIL zones)",
   "baseStyle": "OSoutdoor",
   "published": true,
-   "showBoundary": true,
+  "showLayersOnLoad": true,
+  "showBoundary": true,
   "layers": [
     {
       "title": "CIL Zones",
