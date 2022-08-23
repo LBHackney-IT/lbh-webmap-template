@@ -49,7 +49,7 @@
             "name": "name"
           }
         ],
-        "afterFields": "For more information about site allocations, visit <a href='https://hackney.gov.uk/site-allocations-dpd'>Hackney web page</a>."
+        "afterFields": "For more information about site allocations, visit <a href='https://hackney.gov.uk/site-allocations-dpd' target='_blank'>Hackney web page</a>."
       }
     }
   ]
