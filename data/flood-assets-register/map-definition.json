@@ -28,6 +28,29 @@
       }
     },  
     {
+      "title": "Gullies",
+        "sortOrder":2,
+        "geoserverLayerName": "pollution:gully",
+        "pointStyle": {
+          "markerType": "CircleMarker",
+          "circleMarkerRadius": 5,
+          "icon": "fas fa-circle",
+          "markerColor": "jacarta",
+          "cluster": true, 
+          "disableClusteringAtZoom": 9
+        },
+        "linePolygonStyle": {
+          "styleName": "default",
+          "stroke": true,
+          "strokeColor": "#522b6c",
+          "opacity": 1,
+          "fillColor": "#522b6c",
+          "fillOpacity": 1,
+          "layerLineDash": "",
+          "weight": 1
+        }
+      },
+    {
       "title": "Flood structures",
       "geoserverLayerName": "flood:hackney_flood_structure",
       "sortOrder":6,
