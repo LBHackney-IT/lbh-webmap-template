@@ -1,0 +1,56 @@
+{
+  "gallery": {
+    "galleryTitle": "Opportunity sites in Dalston",
+    "gallerySummary": "This map shows the Opportunity sites in the Dalston area.",
+    "imageLink": "",
+    "link": "https://hackney.gov.uk/conservation-areas",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Planning"
+  },
+  "title": "Opportunity sites in Dalston",
+  "baseStyle": "OSoutdoor",
+  "published": false,
+  "showBoundary": false,
+  "showLegend": true,
+  "showLayersOnLoad": true,
+  "showGeoServerMetadata":false,
+  "about": "This map shows site allocations in the Dalston area as defined in the LP33 local plan etc. etc.",
+  "aboutTitle":"About the map",
+  "showTitleInMetadataBoxOnMobile":false,
+  "minMapZoom": 10,
+  "layers": [
+    {
+      "title": "Opportunity sites",
+      "geoserverLayerName": "planning:site_allocation",
+      "highlightFeatureOnHover": true,
+      "cqlFilter":"ward='Dalston'",
+      "pointStyle": {
+        "markerType": "AwesomeMarker",
+        "markerColor": "cadetblue",
+        "markerColorIcon2": "darkblue",
+        "icon": "far fa-square",
+        "icon2": "fas fa-square"
+      },
+      "linePolygonStyle": {
+        "styleName": "default",
+        "stroke": true,
+        "strokeColor": "#436978",
+        "opacity": 1,
+        "fillColor": "#0e67a3",
+        "fillOpacity": 0.65,
+        "layerLineDash":"",
+        "weight": 1
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Name",
+            "name": "name"
+          }
+        ],
+        "afterFields": "For more information about site allocations, visit <a href='https://hackney.gov.uk/site-allocations-dpd'>Hackney web page</a>."
+      }
+    }
+  ]
+}
