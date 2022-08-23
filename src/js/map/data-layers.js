@@ -167,6 +167,8 @@ class DataLayers {
     const markerColor = pointStyle && pointStyle.markerColor;
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
+    const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+
     var clusterLayer = null;
 
     const linePolygonStyle = configLayer.linePolygonStyle;
@@ -292,7 +294,7 @@ class DataLayers {
       //create clusters layer
       clusterLayer = L.markerClusterGroup({
         maxClusterRadius: 60,
-        disableClusteringAtZoom: 12,
+        disableClusteringAtZoom: disableClusteringAtZoom,
         spiderfyOnMaxZoom: false,
         showCoverageOnHover: false
       });
