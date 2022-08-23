@@ -147,7 +147,7 @@ Object properties:
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 17. Beyond zoom 17 the individual markers will be used as defined above. We use a purple cluster style with a level of transparency depending on the size of the cluster. |
-| `disableClusteringAtZoom` | Number | optional | This value is the zoom level at what the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
+| `disableClusteringAtZoom` | Number | optional | This value is the zoom level at which the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
 
 ### Line Polygon Options
 
