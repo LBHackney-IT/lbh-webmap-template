@@ -79,6 +79,8 @@ The options for the data file are as follows:
 | `showBoundary` | Boolean | optional | If `true` the Hackney boundary will be added to the map. The Hackney boundary is the default boundary. If `true` and a boundaryGeoserverName is added, the boundary displayed will be the custom one instead.| 
 | `boundaryGeoserverName` | String | optional | If the boundaryGeoserverName is not empty and showBoundary is `true`, the custom boundary will be added instead.|
 | `showLegend` | Boolean | optional | If `true` a legend will show on the map. |
+| `showLayersOnLoad` | Boolean | optional | If `true` all the layers will appear on the map. If  `false` or omitted, no layer will appear. Default is `false`|
+| `showFirstLayerOnLoad` | Boolean | optional | If `true` the layer with `sortOrder = 1` will appear on the map, and only this one. If `false` or omitted, the behaviour reverts to `showLayersOnLoad`. Default is `false`|
 | `performDrillDown` | Boolean | optional | If `true` a combined/drill down popUp window will be switched on. If `false`, the single default popUp window will be used instead. The default value is `false`. |
 | `hideNumberOfItems` | Boolean | optional | If `true` The number of items is hidden on the legend. If `false`, the number of items is shown on the layer. The default value is `false`. |
 | `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. Options:<br>`showLegendText`: Default is "Show list"<br>`hideLegendText`: Default is "Hide list"<br>`clearMapText`: Default is "Clear map" |
@@ -145,6 +147,7 @@ Object properties:
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 17. Beyond zoom 17 the individual markers will be used as defined above. We use a purple cluster style with a level of transparency depending on the size of the cluster. |
+| `disableClusteringAtZoom` | Number | optional | This value is the zoom level at which the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
 
 ### Line Polygon Options
 

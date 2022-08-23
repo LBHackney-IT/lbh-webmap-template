@@ -12,6 +12,7 @@
   "baseStyle": "OSoutdoor",
   "published": true,
   "showBoundary": true,
+  "showLayersOnLoad": true,
   "layers": [
     {
       "title": "Red routes",
