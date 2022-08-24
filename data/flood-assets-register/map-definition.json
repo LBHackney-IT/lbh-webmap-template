@@ -203,14 +203,14 @@
         "markerType": "CircleMarker",
         "circleMarkerRadius": 5,
         "icon": "fas fa-circle",
-        "markerColor": "orange"
+        "markerColor": "darksaturatedblue"
       },
       "linePolygonStyle": {
         "styleName": "default",
         "stroke": true,
-        "strokeColor": "orange",
+        "strokeColor": "#0044ff",
         "opacity": 1,
-        "fillColor": "orange",
+        "fillColor": "#0044ff",
         "fillOpacity": 1,
         "layerLineDash": "",
         "weight": 1
