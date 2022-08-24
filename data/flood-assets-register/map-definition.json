@@ -35,8 +35,7 @@
           "circleMarkerRadius": 5,
           "icon": "fas fa-circle",
           "markerColor": "jacarta",
-          "cluster": true, 
-          "disableClusteringAtZoom": 9
+          "cluster": true
         },
         "linePolygonStyle": {
           "styleName": "default",
