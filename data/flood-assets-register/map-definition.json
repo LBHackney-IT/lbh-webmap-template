@@ -5,7 +5,6 @@
   "showLegend": true,
   "showLayersOnLoad": true,
   "baseStyle": "OSoutdoor",
-  "blockZoomToMasterMap": true,
   "showMask": true,
   "showBoundary": true,
   "layers": [
