@@ -43,13 +43,13 @@
         "weight": 1
       },
       "popup": {
+        "title": "name",
         "fields": [
           {
-            "label": "Name",
-            "name": "name"
+            "label": "",
+            "name": "web_link"
           }
-        ],
-        "afterFields": "For more information about site allocations, visit <a href='https://hackney.gov.uk/site-allocations-dpd' target='_blank'>Hackney web page</a>."
+        ]
       }
     }
   ]
