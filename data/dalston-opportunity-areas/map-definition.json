@@ -15,7 +15,7 @@
   "showLegend": true,
   "showLayersOnLoad": true,
   "showGeoServerMetadata":false,
-  "about": "This map shows site allocations in the Dalston area as defined in the LP33 local plan etc. etc.",
+  "about": "This map shows Opportunity Sites in the Dalston area as allocated in the Local Plan 2033. <a href='https://hackney.gov.uk/lp33' target='_blank'>Click for more information about the Local Plan</a>.",
   "aboutTitle":"About the map",
   "showTitleInMetadataBoxOnMobile":false,
   "minMapZoom": 10,
