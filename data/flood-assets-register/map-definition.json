@@ -46,6 +46,9 @@
           "fillOpacity": 1,
           "layerLineDash": "",
           "weight": 1
+        },
+        "popup": {
+          "fields": []
         }
       },
     {
