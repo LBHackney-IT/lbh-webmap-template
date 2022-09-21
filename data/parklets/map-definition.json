@@ -9,23 +9,25 @@
   "showBoundary": true,
   "layers": [
     {
-      "title": "Hackney owned parklets",
-      "geoserverLayerName": "transport:hackney_owned_parklet",
+      "title": "Parklets",
+      "geoserverLayerName": "transport:parklet",
       "pointStyle": {
         "markerType": "AwesomeMarker",
         "icon": "fas fa-bench-tree",
         "markerColor": "darkpurple"
-      }
-    },
-    {
-      "title": "Residential parklets",
-      "geoserverLayerName": "transport:residential_parklet",
-      "pointStyle": {
-        "markerType": "AwesomeMarker",
-        "icon": "fas fa-bench-tree",
-        "markerColor": "orange"
+      },
+      "popup": {
+        "fields": [
+          {
+            "label": "Location",
+            "name": "location"
+          },
+          {
+            "label": "Scheme",
+            "name": "scheme"
+          }
+        ]
       }
     }
-
   ]
 }
