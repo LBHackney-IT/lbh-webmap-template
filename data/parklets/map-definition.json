@@ -21,10 +21,6 @@
           {
             "label": "Location",
             "name": "location"
-          },
-          {
-            "label": "Scheme",
-            "name": "scheme"
           }
         ]
       }
