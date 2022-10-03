@@ -1,4 +1,13 @@
 {
+  "gallery": {
+    "galleryTitle": "Flood Assets Register",
+    "gallerySummary": "This map shows all the assets that have a significant impact on the risk of flooding.",
+    "imageLink": "https://drive.google.com/uc?export=view&id=1CdJau3B-iqf3kuaoW7FvDlnEoRMLhUOj",
+    "link": "https://hackney.gov.uk/floods#asset",
+    "linkText": "Open the interactive map",
+    "tag": "Interactive Map",
+    "theme": "Flood Risk"
+  },
   "title": "Flood Assets Register",
   "showGeoServerMetadata":true,
   "aboutTitle": "About the data",
