@@ -10,8 +10,9 @@
   },
   "title": "Locally listed buildings",
   "baseStyle": "OSoutdoor",
-   "showBoundary": true,
-   "layers": [
+  "showBoundary": true,
+  "showLayersOnLoad": true,
+  "layers": [
     {
       "title": "Locally listed buildings",
       "geoserverLayerName": "planning:locally_listed_building_point",
