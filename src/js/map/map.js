@@ -45,6 +45,7 @@ class Map {
     this.container = map.parentElement.parentElement;
     this.dataFolder = null;
     this.mapConfig = null;
+    this.configUrl = null;
     this.mask = null;
     this.maskGeoserverName = null;
     this.boundary = null;
@@ -70,18 +71,23 @@ class Map {
   }
 
   init() {
-    this.getDataName();
+    // this.getDataName();
+    this.getConfigUrl();
     //this.getGeoserverURLsFromHostname();
 
     // Tell leaflet where to look for our images
     L.Icon.Default.prototype.options.imagePath = "../images/";
 
-    fetch(this.dataFolder + "/map-definition.json", {
+    // fetch(this.dataFolder + "/map-definition.json", {
+    //   method: "get"
+    // })
+    fetch(this.configUrl, {
       method: "get"
     })
       .then(response => response.json())
       .then(data => {
-        this.mapConfig = data;
+        this.mapConfig = JSON.parse(data.features[0].properties.json);
+        //this.mapConfig = data;
         this.hasPersonas = this.mapConfig.hasPersonas || this.hasPersonas;
         this.errorOutsideHackney =
           this.mapConfig.errorOutsideHackney || this.errorOutsideHackney;
@@ -270,6 +276,16 @@ class Map {
     this.isEmbed = paths[paths.length - 1] === "embed.html";
     this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
   }
+  
+  getConfigUrl() {
+    const pathname = window.location.pathname;
+    const paths = pathname.split("/");
+    const cqlFilter = `config_title='${paths[paths.length - 2]}'`;
+    this.configUrl = `${this.geoserver_wfs_url}webmap_backend:data_repository&propertyname=json&cql_filter=${cqlFilter}`;
+    this.isEmbed = paths[paths.length - 1] === "embed.html";
+    this.isFullScreen = paths[paths.length - 1] === "fullscreen" || paths[paths.length - 1] === "fullscreen.html";
+  }
+
 
   createMap() {
     // Setup the EPSG:27700 (British National Grid) projection.
