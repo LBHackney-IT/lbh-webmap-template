@@ -49,7 +49,7 @@ class Controls {
     //check if we are in fullscreen mode. Different mark up is used
     const html = `
       <button id="controls-toggle" class="controls__sidebar-toggle">
-        <i class="fal fa-sliders-h controls__sidebar-toggle-icon"></i>
+        <i class="fa-regular fa-sliders controls__sidebar-toggle-icon"></i>
         <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--hide">${(this
           .mapConfig.controlsText &&
           this.mapConfig.controlsText.hideLegendText) ||
@@ -60,7 +60,7 @@ class Controls {
           CONTROLS_SHOW_LEGEND_TEXT}</span>
       </button>
       <button id="map-clear" class="controls__clear" style="display:none">
-        <i class="fal fa-times controls__clear-icon"></i>
+        <i class="fa-regular fa-xmark controls__clear-icon"></i>
         <span class="controls__clear-text">${(this.mapConfig.controlsText &&
           this.mapConfig.controlsText.clearMapText) ||
           CONTROLS_CLEAR_MAP_TEXT}</span>
