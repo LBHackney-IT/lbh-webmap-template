@@ -1,5 +1,6 @@
 
 import L from "leaflet";
+import proj4 from "proj4";
 import "proj4leaflet";
 import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
 import {
@@ -68,6 +69,10 @@ class Map {
     this.blpuPolygon = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
+    this.crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+      resolutions: [ 896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75 ],
+      origin: [ -238375.0, 1376256.0 ]
+  });
   }
 
   init() {
@@ -98,6 +103,8 @@ class Map {
         this.uprn = new URL(location.href).searchParams.get("uprn");
         let latlonString = new URL(location.href).searchParams.get("latlon");
         let latlon= null;
+        let eastnorthString = new URL(location.href).searchParams.get("eastnorth");
+        let eastnorth= null;
         
         //first get the zoom from the URL
         let zoomParam = new URL(location.href).searchParams.get("zoom");
@@ -209,6 +216,13 @@ class Map {
           this.createMap();
           this.createMapContent();
         }
+        else if (eastnorthString){
+          eastnorth = eastnorthString.split(",");
+          latlon = proj4('EPSG:27700', 'EPSG:4326', eastnorth);
+          this.setViewFromLatlon(latlon);
+          this.createMap();
+          this.createMapContent();
+        }
         else {
           this.setViewFromLatlon(null);
           this.createMap();
@@ -288,12 +302,6 @@ class Map {
 
 
   createMap() {
-    // Setup the EPSG:27700 (British National Grid) projection.
-    var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
-      resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
-      origin: [ -238375.0, 1376256.0 ]
-    });
-
     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
       this.maxZoom = 9;
@@ -312,7 +320,7 @@ class Map {
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
 
     this.map = L.map("map", {
-      crs: crs,
+      crs: this.crs,
       zoomControl: false,
       maxZoom: this.maxZoom,
       minZoom: this.minZoom,
