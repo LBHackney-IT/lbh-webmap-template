@@ -331,6 +331,11 @@ class DataLayers {
        }
       }    
     }
+    //open popup closest to the map centre
+    if (configLayer.openPopupClosestToMapCentre){
+      let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
+      closestMarker.layer.openPopup();
+    }
 
     this.loadedLayerCount++;
 

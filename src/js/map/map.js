@@ -11,6 +11,7 @@ import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
 import "leaflet-search";
+import "leaflet-geometryutil";
 import { GestureHandling } from "leaflet-gesture-handling";
 import {
   MIN_ZOOM,
