@@ -1,4 +1,5 @@
 import L, { Point } from "leaflet";
+import "leaflet.vectorgrid";
 import { pointToLayer } from "./metadata";
 import { MARKER_COLORS} from "./consts";
 import Personas from "./personas";
@@ -475,8 +476,6 @@ class DataLayers {
     return this.layerControl;
   }
 
-
-
   loadLayers() {
     if (this.mapConfig.personas) {
       for (const group of this.mapConfig.personas) {
@@ -508,23 +507,66 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-      //If there is cql, we add the cql filter to the wfs call
-      if (configLayer.cqlFilter){
-          url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-      //If not, we use the default wfs call
-      } else{
-         url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      
+      
+      //If the layer is a vector Tile layer...
+      if(configLayer.vectorTilesLayer){
+        console.log("inside vectorTilesLayer")
+          // Set vectorTileOptions
+          var vectorTileOptions = {
+            vectorTileLayerStyles: {
+            'single_tree_area_vw': function() {
+            return {
+              color: 'green',
+              weight: 0.5,
+              opacity: 1,
+              fillColor: 'green',
+              fill: true,
+              fillOpacity: 0.6
+            }
+            },
+            },
+            interactive: true,	// Make sure that this VectorGrid fires mouse/pointer events
+            }
+            
+            console.log(vectorTileOptions);
+
+            // Creating the full vectorTile url
+            var treesURL = 'https://map2.hackney.gov.uk/geoserver/gwc/service/tms/1.0.0/greenspaces:single_tree_area_vw@3857_leaflet@pbf/{z}/{x}/{-y}.pbf';
+            console.log(treesURL);
+
+            // Creating the Leaflet vectorGrid object
+            
+
+            var trees_vectorgrid = L.vectorGrid.protobuf(treesURL, vectorTileOptions);
+            console.log(L.vectorGrid);
+            console.log(trees_vectorgrid);
+            
+            // Add the vectorGrid to the map
+            trees_vectorgrid.addTo(this.map);
+
+      //Else... (the layer is a WFS layer)
+      } else {
+        console.log("inside WFS layer")
+            //If there is cql, we add the cql filter to the wfs call
+            if (configLayer.cqlFilter){
+              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+            //If not, we use the default wfs call
+            } else{
+              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+            }
+          //Fetch the url
+          fetch(url, {
+            method: "get"
+          })
+            .then(response => response.json())
+            .then(data => this.addWFSLayer(data, configLayer))
+            .catch(error => {
+              console.log(error);
+              alert("Something went wrong, please reload the page");
+            });
       }
-      //Live
-      fetch(url, {
-        method: "get"
-      })
-        .then(response => response.json())
-        .then(data => this.addWFSLayer(data, configLayer))
-        .catch(error => {
-          console.log(error);
-          alert("Something went wrong, please reload the page");
-        });
+     
     }
   }
 }
