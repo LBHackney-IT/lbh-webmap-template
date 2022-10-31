@@ -292,23 +292,21 @@ class Map {
     console.log(this.mapConfig);
     console.log(this.mapConfig.layers);
     console.log(this.mapConfig.layers[0].vectorTilesLayer);
-    //var crs = L.CRS.EPSG3857;
-    console.log(crs);
 
     //TODO Set up the EPSG based on the type of layers: Vector tiles or WFS
-    // Setup the EPSG:27700 (British National Grid) projection only if it is not a vector tile layer
-    // if(!this.mapConfig.layers[0].vectorTilesLayer){
-    //   var crs = L.CRS.EPSG3857;
-    //   console.log(crs);
-    // } else {
-    //   var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
-    //     resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
-    //     origin: [ -238375.0, 1376256.0 ]
-    //   });
-    //   console.log(crs);
-    // }
+    //Setup the EPSG:27700 (British National Grid) projection only if it is not a vector tile layer
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      var crs = L.CRS.EPSG3857;
+      console.log(crs);
+    } else {
+      var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+        resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+        origin: [ -238375.0, 1376256.0 ]
+      });
+      console.log(crs);
+    }
 
-    //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+    //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max zoom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
       this.maxZoom = 9;
     } else {
@@ -368,9 +366,13 @@ class Map {
   }
 
   createMapContent() {
-    
-    this.addBaseLayer();
 
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      this.addVectorTileBaseLayer();
+    } else {
+      this.addWFSBaseLayer();
+    }
+    
     if (this.mapConfig.showMask) {
         if (this.mapConfig.maskGeoserverName){
           this.maskGeoserverName = this.mapConfig.maskGeoserverName;
@@ -399,9 +401,7 @@ class Map {
   addWFSBaseLayer() {
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
-        //`https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
@@ -412,6 +412,33 @@ class Map {
     } else if (this.mapConfig.baseStyle == "OSroad") {
       this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        TILE_LAYER_OPTIONS_OS
+      );
+    }
+    
+    //limit zoom for OSM if mastermap is shown 
+    //TODO: set a max zoom in zoomToMasterMap is false
+    // if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
+    //   this.mapBase.maxZoom = 17;
+    // }
+    this.map.addLayer(this.mapBase);
+  }
+
+  addVectorTileBaseLayer() {
+    if (this.mapConfig.baseStyle == "OSoutdoor") {
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+
+        TILE_LAYER_OPTIONS_OS
+      );
+    } else if (this.mapConfig.baseStyle == "OSlight") {
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        TILE_LAYER_OPTIONS_OS
+      );
+    } else if (this.mapConfig.baseStyle == "OSroad") {
+      this.mapBase = L.tileLayer(
+        `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     }
