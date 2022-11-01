@@ -35,10 +35,9 @@ import "@fortawesome/fontawesome-pro/js/fontawesome";
 import Geolocation from "./geolocation";
 import Controls from "./controls";
 import DataLayers from "./data-layers";
+import VectorTileDataLayers from "./vector-tile-data-layers";
 import Metadata from "./metadata";
 import "classlist-polyfill";
-
-
 
 class Map {
   constructor(map) {
@@ -289,23 +288,7 @@ class Map {
 
 
   createMap() {
-    console.log(this.mapConfig);
-    console.log(this.mapConfig.layers);
-    console.log(this.mapConfig.layers[0].vectorTilesLayer);
-
-    //TODO Set up the EPSG based on the type of layers: Vector tiles or WFS
-    //Setup the EPSG:27700 (British National Grid) projection only if it is not a vector tile layer
-    if(this.mapConfig.layers[0].vectorTilesLayer){
-      var crs = L.CRS.EPSG3857;
-      console.log(crs);
-    } else {
-      var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
-        resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
-        origin: [ -238375.0, 1376256.0 ]
-      });
-      console.log(crs);
-    }
-
+   
     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max zoom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
       this.maxZoom = 9;
@@ -322,17 +305,44 @@ class Map {
 
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+    //Set up the EPSG3857 if it is a vectorTile Layer
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      //Adjust the zoom levels to EPSG3857
+      this.zoom = this.zoom +7;
+      this.maxZoom = this.maxZoom +7;
+      this.minZoom = this.minZoom +7;
+      this.zoom_mobile = this.zoom_mobile +7;
 
-    this.map = L.map("map", {
-      //crs: crs,
-      zoomControl: false,
-      maxZoom: this.maxZoom,
-      minZoom: this.minZoom,
-      center: this.centerDesktop,
-      zoom: this.zoom,
-      gestureHandling: L.Browser.mobile
-    });
-    this.map.setMaxBounds(MAP_BOUNDS);
+      this.map = L.map("map", {
+        crs: L.CRS.EPSG3857,
+        zoomControl: false,
+        maxZoom: this.maxZoom,
+        minZoom: this.minZoom,
+        center: this.centerDesktop,
+        zoom: this.zoom,
+        gestureHandling: L.Browser.mobile
+      });
+      this.map.setMaxBounds(MAP_BOUNDS);
+    } else {
+      //Setup the EPSG:27700 (British National Grid) projection only if it is not a vector tile layer
+      var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+        resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+        origin: [ -238375.0, 1376256.0 ]
+      });
+      this.map = L.map("map", {
+        crs: crs,
+        zoomControl: false,
+        maxZoom: this.maxZoom,
+        minZoom: this.minZoom,
+        center: this.centerDesktop,
+        zoom: this.zoom,
+        gestureHandling: L.Browser.mobile
+      });
+      this.map.setMaxBounds(MAP_BOUNDS);
+    }
+
+
+    
    
 
     // Disable zoom specifically on mobile devices, not based on screensize.
@@ -366,13 +376,6 @@ class Map {
   }
 
   createMapContent() {
-
-    if(this.mapConfig.layers[0].vectorTilesLayer){
-      this.addVectorTileBaseLayer();
-    } else {
-      this.addWFSBaseLayer();
-    }
-    
     if (this.mapConfig.showMask) {
         if (this.mapConfig.maskGeoserverName){
           this.maskGeoserverName = this.mapConfig.maskGeoserverName;
@@ -391,8 +394,16 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
-    //Load the layers
-    new DataLayers(this).loadLayers();
+    //Add the right OS Raster base map based on the coordinate system (if we use WFS or Vector Tiles)
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      this.addVectorTileBaseLayer();
+      new VectorTileDataLayers(this).loadLayers();
+
+    } else {
+      this.addWFSBaseLayer();
+      new DataLayers(this).loadLayers();
+
+    }
 
     //Load the info and metadata
     new Metadata(this).loadMetadata();
