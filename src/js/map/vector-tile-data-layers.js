@@ -16,21 +16,23 @@ class VectorTileDataLayers {
     this.map = map.map;
     this.container = map.container;
     this.mapConfig = map.mapConfig;
-    this.controls = map.controls;
-    this.layers = [];
-    this.layerCount = map.mapConfig.layers.length;
-    this.loadedLayerCount = 0;
-    this.overlayMaps = {};
-    this.personas = [];
-    this.layerControl = null;
-    this.personasClass = null;
-    this.filters = null;
-    this.layersData = [];
-    this.search = null;
-    this.showAddressSearch = null;
-    this.list = null;
     this.vectorTileOptions = null;
     this.vectorTileUrl = null;
+    this.layers = [];
+    this.interactive=false;
+
+    // this.controls = map.controls;
+    // this.layerCount = map.mapConfig.layers.length;
+    // this.loadedLayerCount = 0;
+    // this.overlayMaps = {};
+    // this.personas = [];
+    // this.layerControl = null;
+    // this.personasClass = null;
+    // this.filters = null;
+    // this.layersData = [];
+    // this.search = null;
+    // this.showAddressSearch = null;
+    // this.list = null;
   }
 
   // pointToLayer (latlng, configLayer) {
@@ -48,53 +50,7 @@ class VectorTileDataLayers {
   //   }
   // };
   
-  // createMarkerPopup(configLayer, feature, layerName) {
-  //   const title = configLayer.popup.title;
-  //   const afterTitle = configLayer.popup.afterTitle;
-  //   const fields = configLayer.popup.fields;
-  //   const afterFields = configLayer.popup.afterFields;
-
-  //   let stringPopup = "";
-  //   if (title !== "notitle") {
-  //     if (title) {
-  //       stringPopup = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[title]}</h3>`;
-  //     } else {
-  //       stringPopup = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
-  //     }
-  //   }
-
-  //   if (afterTitle) {
-  //     stringPopup += `<p class="popup__text">${afterTitle}</p>`;
-  //   }
-
-  //   if (fields) {
-  //     for (const field of fields) {
-  //       if (
-  //         feature.properties[field.name] !== "" &&
-  //         feature.properties[field.name] !== null
-  //       ) {
-  //         if (field.label != "") {
-  //           stringPopup += `<p class="popup__text"><span class="popup__label">${
-  //             field.label
-  //           }</span>: ${feature.properties[field.name]}</p>`;
-  //         } else {
-  //           stringPopup += `<p class="popup__text">${
-  //             feature.properties[field.name]
-  //           }</p>`;
-  //         }
-  //       }
-  //     }
-  //   }
-
-  //   if (afterFields) {
-  //     stringPopup += `<p class="popup__text">${afterFields}</p>`;
-  //   }
-
-  //   if (stringPopup === '<h3 class="lbh-heading-h6 popup__title"></h3>')
-  //     return ''
-  //   else
-  //     return stringPopup;
-  // }
+ 
 
   // createTooltip(configLayer, feature, layerName) {
   //   const title = configLayer.tooltip.title;
@@ -142,41 +98,64 @@ class VectorTileDataLayers {
   //     return stringTooltip;
   // }
 
-  addLayer(data, configLayer) {
+  addVectorTilePopUp(e,configLayer) {
+    console.log(configLayer);
+    console.log(e.layer.properties)
+    const fields = configLayer.popup.fields;
+    //Add the PopUp title
+    let popUpTitle = '';
+    //If the popupTitle is NOT 'notitle'...
+    if (configLayer.popup.title !== "notitle") {
+      //If there is a popup title, we use it
+      if (configLayer.popup.title) {
+        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">`+configLayer.popup.title+`</h3>`;
+      } else {
+        //If not, we use the name of the layer, unless no title is specified
+        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">`+configLayer.title+`</b></h3>`;
+      }
+    }
+
+    //Create the popUpString
+    let popUpString = '<p class="popup__title">'+popUpTitle+'</p>';
+
+    for (const field of fields) {
+      //console.log(e.layer.properties[field.name])
+      //console.log(field.label)
+      popUpString += '<p class="popup__text"><span class="popup__label">'+field.label+'</span>: ' + e.layer.properties[field.name]+'</p>';
+      //console.log(popUpString);
+    }
+
+    if (configLayer.popup) {
+      L.popup()
+        .setContent(popUpString)
+        .setLatLng(e.latlng)
+        .openOn(this.map);
+    }
+
+  }
+
+
+  customiseLayer(data, configLayer) {
     const layerName = configLayer.title;
-    const sortOrder =
-      configLayer.sortOrder && !isNaN(configLayer.sortOrder)
-        ? configLayer.sortOrder
-        : configLayer.title;
+    // const sortOrder =
+    //   configLayer.sortOrder && !isNaN(configLayer.sortOrder)
+    //     ? configLayer.sortOrder
+    //     : configLayer.title;
 
-    const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
-    const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
-    const searchable = configLayer.searchable;
+    // const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
+    // const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
+    // const searchable = configLayer.searchable;
 
-    const pointStyle = configLayer.pointStyle;
-    const markerType = pointStyle && pointStyle.markerType;
-    const markerIcon = pointStyle && pointStyle.icon;
-    const markerIcon2 = pointStyle && pointStyle.icon2;
-    const markerColor = pointStyle && pointStyle.markerColor;
-    const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
-    const cluster = pointStyle && pointStyle.cluster;
-    const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    // const pointStyle = configLayer.pointStyle;
+    // const markerType = pointStyle && pointStyle.markerType;
+    // const markerIcon = pointStyle && pointStyle.icon;
+    // const markerIcon2 = pointStyle && pointStyle.icon2;
+    // const markerColor = pointStyle && pointStyle.markerColor;
+    // const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
+    // const cluster = pointStyle && pointStyle.cluster;
+    // const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
 
-    var clusterLayer = null;
-
-    const linePolygonStyle = configLayer.linePolygonStyle;
-    const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
-    const opacity = linePolygonStyle && linePolygonStyle.opacity;
-    const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
-    const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
-
-    const baseLayerStyles = {
-      stroke: linePolygonStyle && linePolygonStyle.stroke,
-      color: linePolygonStyle && linePolygonStyle.strokeColor,
-      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
-      weight: linePolygonStyle && linePolygonStyle.weight
-    };
-
+    //var clusterLayer = null;
 
     // const layer = new L.GeoJSON(data, {
     //   color: MARKER_COLORS[markerColor],
@@ -497,48 +476,55 @@ class VectorTileDataLayers {
 
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
+      const linePolygonStyle = configLayer.linePolygonStyle;
+      const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
+      const opacity = linePolygonStyle && linePolygonStyle.opacity;
+      const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
+      const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
+      const stroke = linePolygonStyle && linePolygonStyle.stroke;
+      const color =  linePolygonStyle && linePolygonStyle.strokeColor;
+      const fillOpacity = linePolygonStyle && linePolygonStyle.fillOpacity
+      const weight = linePolygonStyle && linePolygonStyle.weight;
+
         console.log("inside vectorTilesLayer")
+        //If there is popups, we make the vector tile layer interactive
+        if(configLayer.popup){
+          this.interactive= true;
+        } 
+        //TODO: change the table name to use the json geoserserTileLayerName
+        const geoserverTileLayerName = configLayer.geoserverLayerName;
+        console.log(geoserverTileLayerName)
           // Set vectorTileOptions
           this.vectorTileOptions = {
-            vectorTileLayerStyles: {
-            'single_tree_area_vw': function() {
-            return {
-              color: 'green',
-              weight: 0.5,
-              opacity: 1,
-              fillColor: 'green',
-              fill: true,
-              fillOpacity: 0.6
-            }
-            },
-            },
-            interactive: true,	// Make sure that this VectorGrid fires mouse/pointer events
+              vectorTileLayerStyles: {
+                single_tree_area_vw : function() {
+                //TODO: add the style properties
+                //single_tree_area_vw  : function(fillColor, fillOpacity) {
+                  return {
+                    color: 'green',
+                    weight: 0.5,
+                    opacity: 1,
+                    fillColor: 'green',
+                    fill: true,
+                    fillOpacity: 0.6
+                  }
+                },
+              },
+              interactive: this.interactive, // Make sure that this VectorGrid fires mouse/pointer events
             }
             
             // Creating the full vectorTile url
-            //this.vectorTileUrl = 'https://map2.hackney.gov.uk/geoserver/gwc/service/tms/1.0.0/greenspaces:single_tree_area_vw@3857_leaflet@pbf/{z}/{x}/{-y}.pbf';
-            this.vectorTileUrl = configLayer.geoserverLayerName;
+            
+            this.vectorTileUrl = configLayer.vectorTileUrl;
             // Creating the vectorGrid layer
             const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
             layer.on('click', (e) => {
-              console.log(e.layer.properties.common_name);
-                if (! e.layer.properties.common_name) {
-                  L.popup()
-                    .setContent('<p class="popup__title">Tree</p><p class="popup__text"><span class="popup__label">Species</span>: ' + e.layer.properties.species + '</p><p class="popup__text"><span class="popup__label">Age</span>: ' + e.layer.properties.age + '</p>')
-                    .setLatLng(e.latlng)
-                    .openOn(this.map);
-                }
-                else {
-                  L.popup()
-                    .setContent('<p class="popup__title">'+ e.layer.properties.common_name + '</p><p class="popup__text"><span class="popup__label">Species</span>: ' + e.layer.properties.species + '</p><p class="popup__text"><span class="popup__label">Age</span>: ' + e.layer.properties.age + '</p>')
-                    .setLatLng(e.latlng)
-                    .openOn(this.map);
-                }
-              }); 
+              this.addVectorTilePopUp(e,configLayer);
+            }); 
             
             // Add the vectorGrid layer to the map
             layer.addTo(this.map);
-          //this.addLayer(data, configLayer)
+          //this.customiseLayer(data, configLayer)
      
     }
   }
