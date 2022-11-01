@@ -288,15 +288,14 @@ class Map {
 
 
   createMap() {
-   
-    //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max zoom is 12 and zoom to MasterMap.
+    //set the max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max zoom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
       this.maxZoom = 9;
     } else {
       this.maxZoom = 12;
     }
 
-     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+     //set the minZoom level.
      if (this.mapConfig.minMapZoom){
       this.minZoom = this.mapConfig.minMapZoom;
     } else {
@@ -376,6 +375,7 @@ class Map {
   }
 
   createMapContent() {
+     
     if (this.mapConfig.showMask) {
         if (this.mapConfig.maskGeoserverName){
           this.maskGeoserverName = this.mapConfig.maskGeoserverName;
@@ -394,17 +394,14 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
-    //Add the right OS Raster base map based on the coordinate system (if we use WFS or Vector Tiles)
-    if(this.mapConfig.layers[0].vectorTilesLayer){
-      this.addVectorTileBaseLayer();
-      new VectorTileDataLayers(this).loadLayers();
-
-    } else {
-      this.addWFSBaseLayer();
-      new DataLayers(this).loadLayers();
-
-    }
-
+   //Add the right OS Raster base map based on the coordinate system (if we use WFS or Vector Tiles)
+   if(this.mapConfig.layers[0].vectorTilesLayer){
+    this.addVectorTileBaseLayer();
+    new VectorTileDataLayers(this).loadLayers();
+  } else {
+    this.addWFSBaseLayer();
+    new DataLayers(this).loadLayers();
+  }
     //Load the info and metadata
     new Metadata(this).loadMetadata();
   }
@@ -426,16 +423,12 @@ class Map {
         TILE_LAYER_OPTIONS_OS
       );
     }
-    
-    //limit zoom for OSM if mastermap is shown 
-    //TODO: set a max zoom in zoomToMasterMap is false
-    // if (this.mapConfig.zoomToMasterMap || this.mapConfig.zoomToMasterMapBW){
-    //   this.mapBase.maxZoom = 17;
-    // }
     this.map.addLayer(this.mapBase);
   }
 
   addVectorTileBaseLayer() {
+    //TODO:fix the OS Basemap in TilteBase
+    console.log(this.zoom);
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
@@ -481,7 +474,7 @@ class Map {
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.boundary);
+   this.map.addLayer(this.boundary);
   }
 
   setZoom() {
