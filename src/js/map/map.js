@@ -428,7 +428,7 @@ class Map {
 
   addVectorTileBaseLayer() {
     //TODO:fix the OS Basemap in TilteBase
-    console.log(this.zoom);
+    //console.log(this.zoom);
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
