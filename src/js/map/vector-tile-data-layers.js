@@ -82,6 +82,7 @@ class VectorTileDataLayers {
     console.log(configLayer);
     console.log(e.layer.properties)
     const fields = configLayer.popup.fields;
+    //const afterFields = configLayer.popup.afterFields;
     //Add the PopUp title
     let popUpTitle = '';
     //If the popupTitle is NOT 'notitle'...
@@ -101,6 +102,10 @@ class VectorTileDataLayers {
     for (const field of fields) {
       popUpString += `<p class="popup__text"><span class="popup__label">${field.label}</span>: ${e.layer.properties[field.name]}</p>`;
     }
+
+    // if (afterFields){
+    //   console.log("inside After FIelds");
+    // }
 
     //TODO: ADD the AfterFields line
 
@@ -446,12 +451,14 @@ class VectorTileDataLayers {
     //   //this.searchLayer = new L.LayerGroup([]);
     //   this.search = new Search(this.mapClass);
     //   this.search.init();
-    // }if (this.mapConfig.showAddressSearch){
-    //   //this.searchLayer = new L.LayerGroup([]);
-    //   this.showAddressSearch = new addressSearch(this.mapClass);
-    //   this.showAddressSearch.init();
-    //   //this.showAddressSearch.createMarkup();
     // }
+    
+    if (this.mapConfig.showAddressSearch){
+      //this.searchLayer = new L.LayerGroup([]);
+      this.showAddressSearch = new addressSearch(this.mapClass);
+      this.showAddressSearch.init();
+      //this.showAddressSearch.createMarkup();
+    }
 
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
