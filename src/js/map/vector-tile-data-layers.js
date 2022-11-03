@@ -466,36 +466,45 @@ class VectorTileDataLayers {
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
       const linePolygonStyle = configLayer.linePolygonStyle;
-      const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
       const opacity = linePolygonStyle && linePolygonStyle.opacity;
       const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
-      const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
-      const stroke = linePolygonStyle && linePolygonStyle.stroke;
       const color =  linePolygonStyle && linePolygonStyle.strokeColor;
       const fillOpacity = linePolygonStyle && linePolygonStyle.fillOpacity
       const weight = linePolygonStyle && linePolygonStyle.weight;
 
-        console.log("inside vectorTilesLayer")
+        //console.log("inside vectorTilesLayer")
         //If there is popups, we make the vector tile layer interactive
         if(configLayer.popup){
           this.interactive= true;
         } 
-        //TODO: change the table name to use the json geoserserTileLayerName
+
+        // if(configLayer.tooltip){
+        //   this.interactive= true;
+        // } 
         const geoserverTileLayerName = configLayer.geoserverLayerName;
         console.log(geoserverTileLayerName)
+        
+        // console.log("color " + color);
+        // console.log("weight " + weight);
+        // console.log("opacity " + opacity);
+        // console.log("fillColor " + fillColor);
+        // console.log("fillOpacity " + fillOpacity);
+
+  
           // Set vectorTileOptions
+          //https://leaflet.github.io/Leaflet.VectorGrid/vectorgrid-api-docs.html
           this.vectorTileOptions = {
               vectorTileLayerStyles: {
-                single_tree_area_vw : function() {
-                //TODO: add the style properties
-                //single_tree_area_vw  : function(fillColor, fillOpacity) {
+                //TODO: change the table name to use the json geoserserTileLayerName
+                single_tree_area_vw : function(color,weight,opacity,fillColor,fillOpacity) {
                   return {
-                    color: 'green',
-                    weight: 0.5,
-                    opacity: 1,
+                    color: color, 
+                    weight: weight,
+                    opacity: opacity,
+                    //TODO:Replace the fillColor with a variable
                     fillColor: 'green',
-                    fill: true,
-                    fillOpacity: 0.6
+                    fillOpacity: fillOpacity,
+                    fill: true
                   }
                 },
               },
@@ -507,12 +516,20 @@ class VectorTileDataLayers {
             this.vectorTileUrl = configLayer.vectorTileUrl;
             // Creating the vectorGrid layer
             const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
-            layer.on('click', (e) => {
-              this.addVectorTilePopUp(e,configLayer);
-            }); 
             
             // Add the vectorGrid layer to the map
             layer.addTo(this.map);
+
+            //Create the popuos if you click on the layer.
+            layer.on('click', (e) => {
+              this.addVectorTilePopUp(e,configLayer);
+            }); 
+
+            // layer.on('mouseover', (e) => {
+            //   //this.addVectorTilePopUp(e,configLayer);
+            //   console.log("mouseover")
+            // }); 
+
           //this.customiseLayer(data, configLayer)
      
     }
