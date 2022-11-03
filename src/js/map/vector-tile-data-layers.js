@@ -35,23 +35,6 @@ class VectorTileDataLayers {
     // this.list = null;
   }
 
-  // pointToLayer (latlng, configLayer) {
-  //   if (configLayer.pointStyle.markerType === "CircleMarker") {
-  //     return L.circleMarker(latlng, {
-  //       fillColor: configLayer.pointStyle.markerColor,
-  //       radius: configLayer.pointStyle.circleMarkerRadius || 6,
-  //       stroke: true,
-  //       weight: 1,
-  //       color: configLayer.pointStyle.markerColor,
-  //       fillOpacity: 0.6
-  //     });
-  //   } else {
-  //     return L.marker(latlng);
-  //   }
-  // };
-  
- 
-
   // createTooltip(configLayer, feature, layerName) {
   //   const title = configLayer.tooltip.title;
   //   const afterTitle = configLayer.tooltip.afterTitle;
@@ -88,9 +71,6 @@ class VectorTileDataLayers {
   //     }
   //   }
 
-  //   if (afterFields) {
-  //     stringTooltip += `<p class="popup__text">${afterFields}</p>`;
-  //   }
 
   //   if (stringTooltip === '<h3 class="lbh-heading-h6 popup__title"></h3>')
   //     return ''
@@ -108,22 +88,21 @@ class VectorTileDataLayers {
     if (configLayer.popup.title !== "notitle") {
       //If there is a popup title, we use it
       if (configLayer.popup.title) {
-        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">`+configLayer.popup.title+`</h3>`;
+        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${configLayer.popup.title}</h3>`;
       } else {
         //If not, we use the name of the layer, unless no title is specified
-        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">`+configLayer.title+`</b></h3>`;
+        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
       }
     }
 
     //Create the popUpString
-    let popUpString = '<p class="popup__title">'+popUpTitle+'</p>';
+    let popUpString = `<p class="popup__title">${popUpTitle}</p>`;
 
     for (const field of fields) {
-      //console.log(e.layer.properties[field.name])
-      //console.log(field.label)
-      popUpString += '<p class="popup__text"><span class="popup__label">'+field.label+'</span>: ' + e.layer.properties[field.name]+'</p>';
-      //console.log(popUpString);
+      popUpString += `<p class="popup__text"><span class="popup__label">${field.label}</span>: ${e.layer.properties[field.name]}</p>`;
     }
+
+    //TODO: ADD the AfterFields line
 
     if (configLayer.popup) {
       L.popup()
