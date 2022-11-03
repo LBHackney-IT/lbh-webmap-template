@@ -35,52 +35,36 @@ class VectorTileDataLayers {
     // this.list = null;
   }
 
-  // createTooltip(configLayer, feature, layerName) {
-  //   const title = configLayer.tooltip.title;
-  //   const afterTitle = configLayer.tooltip.afterTitle;
-  //   const fields = configLayer.tooltip.fields;
-  //   const afterFields = configLayer.tooltip.afterFields;
+  addVectorTileToolTip(e,configLayer,layer) {
+    const toolTipTitle = configLayer.tooltip.title;
 
+    let toolTipString = '';
 
-  //   let stringTooltip = "";
-  //   if (title !== "notitle") {
-  //     if (title) {
-  //       stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[title]}</h3>`;
-  //     } else {
-  //       stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
-  //     }
-  //   }
+      if (toolTipTitle) {
+        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${e.sourceTarget.options.color[toolTipTitle]}</h3>`;
+      } else {
+        //If not, we use the name of the layer, unless no title is specified
+        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
+      }
+    
 
-  //   if (afterTitle) {
-  //     stringTooltip += `<p class="popup__text">${afterTitle}</p>`;
-  //   }
+    //TODO:Review the location of the tooltip. And there is an error in the console. 
+    const tooltip = L.tooltip()
+      .setContent(toolTipString)
+      .setLatLng(e.latlng)
+      .addTo(this.map);
 
-  //   if (fields) {
-  //     for (const field of fields) {
-  //       if (feature.properties[field.name]) {
-  //         if (field.label) {
-  //           stringTooltip += `<p class="popup__text"><span class="popup__label">${
-  //             field.label
-  //           }</span>: ${feature.properties[field.name]}</p>`;
-  //         } else {
-  //           stringTooltip += `<p class="popup__text">${
-  //             feature.properties[field.name]
-  //           }</p>`;
-  //         }
-  //       }
-  //     }
-  //   }
-
-
-  //   if (stringTooltip === '<h3 class="lbh-heading-h6 popup__title"></h3>')
-  //     return ''
-  //   else
-  //     return stringTooltip;
-  // }
+      layer.bindTooltip(tooltip, { 
+        direction: configLayer.tooltip.direction || 'auto',
+        offset: configLayer.tooltip.offset || [0,0]
+    }); 
+  
+  }
+    
 
   addVectorTilePopUp(e,configLayer) {
-    console.log(configLayer);
-    console.log(e.layer.properties)
+    // console.log(configLayer);
+    // console.log(e.layer.properties)
     const fields = configLayer.popup.fields;
     const afterFields = configLayer.popup.afterFields;
 
@@ -90,7 +74,7 @@ class VectorTileDataLayers {
     if (configLayer.popup.title !== "notitle") {
       //If there is a popup title, we use it
       if (configLayer.popup.title) {
-        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${configLayer.popup.title}</h3>`;
+        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${e.layer.properties[field.name]}</h3>`;
       } else {
         //If not, we use the name of the layer, unless no title is specified
         popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
@@ -478,11 +462,12 @@ class VectorTileDataLayers {
           this.interactive= true;
         } 
 
-        // if(configLayer.tooltip){
-        //   this.interactive= true;
-        // } 
+        if(configLayer.tooltip){
+          this.interactive= true;
+        } 
+
         const geoserverTileLayerName = configLayer.geoserverLayerName;
-        console.log(geoserverTileLayerName)
+        //console.log(geoserverTileLayerName)
         
         // console.log("color " + color);
         // console.log("weight " + weight);
@@ -520,15 +505,21 @@ class VectorTileDataLayers {
             // Add the vectorGrid layer to the map
             layer.addTo(this.map);
 
-            //Create the popuos if you click on the layer.
+            //Create the popups if you click on the layer and there are popup fields
+            if(configLayer.popup){
             layer.on('click', (e) => {
               this.addVectorTilePopUp(e,configLayer);
             }); 
-
-            // layer.on('mouseover', (e) => {
-            //   //this.addVectorTilePopUp(e,configLayer);
-            //   console.log("mouseover")
-            // }); 
+          }
+            
+            //Create the tooltips when hovering if there are tooltips fields
+            if(configLayer.tooltip){
+              layer.on('mouseover', (e) => {
+                this.addVectorTileToolTip(e,configLayer,layer);
+                //console.log("mouseover")
+              }); 
+            }
+            
 
           //this.customiseLayer(data, configLayer)
      
