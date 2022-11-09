@@ -449,80 +449,47 @@ class VectorTileDataLayers {
 
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {
-      const linePolygonStyle = configLayer.linePolygonStyle;
-      const opacity = linePolygonStyle && linePolygonStyle.opacity;
-      const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
-      const color =  linePolygonStyle && linePolygonStyle.strokeColor;
-      const fillOpacity = linePolygonStyle && linePolygonStyle.fillOpacity
-      const weight = linePolygonStyle && linePolygonStyle.weight;
 
-        //console.log("inside vectorTilesLayer")
-        //If there is popups, we make the vector tile layer interactive
-        if(configLayer.popup){
-          this.interactive= true;
-        } 
+      //console.log("inside vectorTilesLayer")
+      //If there is popups, we make the vector tile layer interactive
+      if(configLayer.popup){
+        this.interactive= true;
+      } 
 
-        if(configLayer.tooltip){
-          this.interactive= true;
-        } 
+      if(configLayer.tooltip){
+        this.interactive= true;
+      } 
 
-        const geoserverTileLayerName = configLayer.geoserverLayerName;
-        //console.log(geoserverTileLayerName)
-        
-        // console.log("color " + color);
-        // console.log("weight " + weight);
-        // console.log("opacity " + opacity);
-        // console.log("fillColor " + fillColor);
-        // console.log("fillOpacity " + fillOpacity);
+      // Set vectorTileOptions
+      //https://leaflet.github.io/Leaflet.VectorGrid/vectorgrid-api-docs.html
+      this.vectorTileOptions = {
+        vectorTileLayerStyles: configLayer.vectorTileLayerStyles,
+        interactive: this.interactive, // Make sure that this VectorGrid fires mouse/pointer events
+      }
+          
+      // Creating the full vectorTile url
+          
+      this.vectorTileUrl = configLayer.vectorTileUrl;
+      // Creating the vectorGrid layer
+      const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
+          
+      // Add the vectorGrid layer to the map
+      layer.addTo(this.map);
 
-  
-          // Set vectorTileOptions
-          //https://leaflet.github.io/Leaflet.VectorGrid/vectorgrid-api-docs.html
-          this.vectorTileOptions = {
-              vectorTileLayerStyles: {
-                //TODO: change the table name to use the json geoserserTileLayerName
-                single_tree_area_vw : function(color,weight,opacity,fillColor,fillOpacity) {
-                  return {
-                    color: color, 
-                    weight: weight,
-                    opacity: opacity,
-                    //TODO:Replace the fillColor with a variable
-                    fillColor: 'green',
-                    fillOpacity: fillOpacity,
-                    fill: true
-                  }
-                },
-              },
-              interactive: this.interactive, // Make sure that this VectorGrid fires mouse/pointer events
-            }
-            
-            // Creating the full vectorTile url
-            
-            this.vectorTileUrl = configLayer.vectorTileUrl;
-            // Creating the vectorGrid layer
-            const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
-            
-            // Add the vectorGrid layer to the map
-            layer.addTo(this.map);
-
-            //Create the popups if you click on the layer and there are popup fields
-            if(configLayer.popup){
-            layer.on('click', (e) => {
-              this.addVectorTilePopUp(e,configLayer);
-            }); 
-          }
-            
-            //Create the tooltips when hovering if there are tooltips fields
-            if(configLayer.tooltip){
-              layer.on('mouseover', (e) => {
-                this.addVectorTileToolTip(e,configLayer,layer);
-                //console.log("mouseover")
-              }); 
-            }
-            
-
-          //this.customiseLayer(data, configLayer)
-     
+      //Create the popups if you click on the layer and there are popup fields
+      if(configLayer.popup){
+        layer.on('click', (e) => {
+          this.addVectorTilePopUp(e,configLayer);
+        }); 
+      }
+          
+      //Create the tooltips when hovering if there are tooltips fields
+      if(configLayer.tooltip){
+        layer.on('mouseover', (e) => {
+          this.addVectorTileToolTip(e,configLayer,layer);
+          //console.log("mouseover")
+        }); 
+      }     
     }
   }
 }
