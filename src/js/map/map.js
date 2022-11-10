@@ -304,6 +304,7 @@ class Map {
 
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+    
     //Set up the EPSG3857 if it is a vectorTile Layer
     if(this.mapConfig.layers[0].vectorTilesLayer){
       //Adjust the zoom levels to EPSG3857
@@ -313,7 +314,7 @@ class Map {
       this.zoom_mobile = this.zoom_mobile +7;
 
       this.map = L.map("map", {
-        crs: L.CRS.EPSG3857,
+        //crs: L.CRS.EPSG3857,
         zoomControl: false,
         maxZoom: this.maxZoom,
         minZoom: this.minZoom,
@@ -339,11 +340,6 @@ class Map {
       });
       this.map.setMaxBounds(MAP_BOUNDS);
     }
-
-
-    
-   
-
     // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
@@ -372,10 +368,14 @@ class Map {
       this.controls = new Controls(this);
       this.controls.init();
     }
+    console.log(this.map);
   }
 
   createMapContent() {
-     
+    //first, load base map 
+    this.addBaseLayer();
+
+    //then, add mask and boundary
     if (this.mapConfig.showMask) {
         if (this.mapConfig.maskGeoserverName){
           this.maskGeoserverName = this.mapConfig.maskGeoserverName;
@@ -394,55 +394,37 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
-   //Add the right OS Raster base map based on the coordinate system (if we use WFS or Vector Tiles)
-   if(this.mapConfig.layers[0].vectorTilesLayer){
-    this.addVectorTileBaseLayer();
-    new VectorTileDataLayers(this).loadLayers();
-  } else {
-    this.addWFSBaseLayer();
-    new DataLayers(this).loadLayers();
-  }
-    //Load the info and metadata
+    //Add the layers from cofig
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      new VectorTileDataLayers(this).loadLayers();
+    } 
+    else {
+      new DataLayers(this).loadLayers();
+    }
+    //Last, load the info and metadata
     new Metadata(this).loadMetadata();
   }
-  
-  addWFSBaseLayer() {
+
+  addBaseLayer() {
+    var epsg_code = '27700'
+    if (this.mapConfig.layers[0].vectorTilesLayer){
+      console.log('vector tiles');
+      epsg_code = '3857';
+    } 
+    console.log(epsg_code);
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Light_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Light_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        TILE_LAYER_OPTIONS_OS
-      );
-    }
-    this.map.addLayer(this.mapBase);
-  }
-
-  addVectorTileBaseLayer() {
-    //TODO:fix the OS Basemap in TilteBase
-    //console.log(this.zoom);
-    if (this.mapConfig.baseStyle == "OSoutdoor") {
-      this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-
-        TILE_LAYER_OPTIONS_OS
-      );
-    } else if (this.mapConfig.baseStyle == "OSlight") {
-      this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Light_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
-        TILE_LAYER_OPTIONS_OS
-      );
-    } else if (this.mapConfig.baseStyle == "OSroad") {
-      this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Road_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     }
