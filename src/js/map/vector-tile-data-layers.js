@@ -1,14 +1,7 @@
 import L, { Point } from "leaflet";
 import "leaflet.vectorgrid";
-import { pointToLayer } from "./metadata";
 import { MARKER_COLORS} from "./consts";
-import Personas from "./personas";
-import Filters from "./filters";
-import Search from "./search";
 import addressSearch from "./address-search";
-import List from "./list-view";
-import DrillDown from "./drill-down";
-
 
 class VectorTileDataLayers {
   constructor(map) {
@@ -20,19 +13,13 @@ class VectorTileDataLayers {
     this.vectorTileUrl = null;
     this.layers = [];
     this.interactive=false;
-
-    // this.controls = map.controls;
-    // this.layerCount = map.mapConfig.layers.length;
-    // this.loadedLayerCount = 0;
-    // this.overlayMaps = {};
-    // this.personas = [];
-    // this.layerControl = null;
-    // this.personasClass = null;
-    // this.filters = null;
-    // this.layersData = [];
-    // this.search = null;
-    // this.showAddressSearch = null;
-    // this.list = null;
+    this.controls = map.controls;
+    this.layerCount = map.mapConfig.layers.length;
+    this.loadedLayerCount = 0;
+    this.overlayMaps = {};
+    this.layersData = [];
+    this.showAddressSearch = null;
+    this.layerControl = null;
   }
 
   addVectorTileToolTip(e,configLayer,layer) {
@@ -106,129 +93,16 @@ class VectorTileDataLayers {
   }
 
 
-  customiseLayer(data, configLayer) {
+  customiseVectorTile(layer, configLayer) {
     const layerName = configLayer.title;
-    // const sortOrder =
-    //   configLayer.sortOrder && !isNaN(configLayer.sortOrder)
-    //     ? configLayer.sortOrder
-    //     : configLayer.title;
 
-    // const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
-    // const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
-    // const searchable = configLayer.searchable;
+    const pointStyle = configLayer.pointStyle;
+    const markerIcon = pointStyle && pointStyle.icon;
+    const markerIcon2 = pointStyle && pointStyle.icon2;
+    const markerColor = pointStyle && pointStyle.markerColor;
+    const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
 
-    // const pointStyle = configLayer.pointStyle;
-    // const markerType = pointStyle && pointStyle.markerType;
-    // const markerIcon = pointStyle && pointStyle.icon;
-    // const markerIcon2 = pointStyle && pointStyle.icon2;
-    // const markerColor = pointStyle && pointStyle.markerColor;
-    // const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
-    // const cluster = pointStyle && pointStyle.cluster;
-    // const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
-
-    //var clusterLayer = null;
-
-    // const layer = new L.GeoJSON(data, {
-    //   color: MARKER_COLORS[markerColor],
-    //   pointToLayer: (feature, latlng) => {
-    //     return this.pointToLayer(
-    //       latlng,
-    //       configLayer
-    //     );
-    //   },
-    //   onEachFeature: (feature, layer) => {
-    //     if (configLayer.popup) {
-    //       const popupString = this.createMarkerPopup(
-    //         configLayer,
-    //         feature,
-    //         layerName
-    //       );
-    //       if (popupString){
-    //         const popup = L.popup({ closeButton: true }).setContent(popupString);
-    //         layer.bindPopup(popup, { maxWidth: 210 });
-    //       }         
-    //       if (this.mapConfig.performDrillDown) {
-    //         layer.off();
-    //       } 
-    //     }
-
-    //     if (configLayer.tooltip){
-    //       const tooltipString = this.createTooltip(
-    //         configLayer,
-    //         feature,
-    //         layerName
-    //       );
-    //       if (tooltipString){
-    //         const tooltip = L.tooltip().setContent(tooltipString);
-    //         layer.bindTooltip(tooltip, { 
-    //           direction: configLayer.tooltip.direction || 'auto',
-    //           offset: configLayer.tooltip.offset || [0,0]
-    //         });
-    //       }          
-    //     }
-
-    //     if (configLayer.followLinkOnClick && feature.properties[configLayer.followLinkOnClick]){
-    //       layer.on("click", (event) => {
-    //         //external link opens in a new tab
-    //         if (feature.properties[configLayer.followLinkOnClick].startsWith('http')){
-    //           window.open(feature.properties[configLayer.followLinkOnClick], '_blank');
-    //         }
-    //         //internal link changes page location
-    //         else{ 
-    //           //from an iframe
-    //           if (window.location != window.parent.location){
-    //             window.parent.location = feature.properties[configLayer.followLinkOnClick];
-    //           }
-    //           //from the main window
-    //           else {
-    //             window.location = feature.properties[configLayer.followLinkOnClick];
-    //           }      
-    //         }     
-    //       });
-    //     }
-    //   },
-    //   sortOrder: sortOrder,
-    //   style: () => {
-    //     if (layerStyle === "default") {
-    //       return Object.assign(baseLayerStyles, {
-    //         opacity: opacity,
-    //         fillColor: fillColor,
-    //         dashArray: layerLineDash
-    //       });
-    //     } else if (layerStyle === "random polygons") {
-    //       //Create a random style and uses it as fillColor.
-    //       const colorHex = `#${Math.round(Math.random() * 0xffffff).toString(
-    //         16
-    //       )}`;
-    //       return Object.assign(baseLayerStyles, {
-    //         fillColor: colorHex
-    //       });
-    //     }
-    //   }
-    // });
-
-    // if (zoomToFeatureOnClick) {
-    //   layer.on("click", event => {
-    //     if (event.layer instanceof L.Polygon) {
-    //       this.map.fitBounds(event.layer.getBounds());
-    //     }
-    //   });
-    // }
-
-    // if (highlightFeatureOnHover) {
-    //   layer.on("mouseover", event => {
-    //     event.layer.setStyle({
-    //       weight: 3
-    //     });
-    //   });
-
-    //   layer.on("mouseout", event => {
-    //     event.layer.setStyle({
-    //       weight: baseLayerStyles.weight
-    //     });
-    //   });
-    // }
-
+    
     // if (cluster) {
     //   //set the clusters color
     //   document.documentElement.style.setProperty(
@@ -251,29 +125,10 @@ class VectorTileDataLayers {
     // }
     
     
-    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
-    // if (this.mapConfig.showLayersOnLoad) {
-    //   if (cluster) {     
-    //     this.map.addLayer(clusterLayer);
-    //   }
-    //   else {
-    //     layer.addTo(this.map);
-    //     if (configLayer.loadToBack){
-    //       layer.bringToBack();
-    //     }  
-    //   } 
-    // }
-    // else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-    //   if (cluster) {     
-    //     this.map.addLayer(clusterLayer);
-    //   }
-    //   else {
-    //     layer.addTo(this.map);
-    //     if (configLayer.loadToBack){
-    //       layer.bringToBack();
-    //    }
-    //   }    
-    // }
+    //TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
+    
+   
+
     //open popup closest to the map centre
     // if (configLayer.openPopupClosestToMapCentre){
     //   let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
@@ -305,48 +160,37 @@ class VectorTileDataLayers {
     //     this.drilldown.init();
     // }
       
-    // if (this.mapConfig.showLegend) {
-    //   let legendEntry = '';
-    //   const count = layer.getLayers().length;
+    if (this.mapConfig.showLegend) {
+      console.log("inside the showLegend code");
+      let legendEntry = '';
+      console.log("layer: ");
+      console.log(layer);
+      //TODO:The layer is not in the this.layers array
+      //const count = layer.getLayers().length;
+      this.layers.push(layer);
+      console.log("Layers array: ");
+      console.log(this.layers);
       
-    //   if (cluster) {
-    //     this.layers.push(clusterLayer);
-    //   }
-    //   else {
-    //     this.layers.push(layer);
-    //   }
-    //   if (markerIcon2){
-    //     if (this.mapConfig.hideNumberOfItems){
-    //       legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-    //         MARKER_COLORS[markerColorIcon2]
-    //         }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-    //     } else{
-    //       legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-    //         MARKER_COLORS[markerColorIcon2]
-    //         }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-    //         layer
-    //         )}" class="control__count">${count} items shown</span></div></div>`;          
-    //     }
-         
-    //   } else {
-    //     if (this.mapConfig.hideNumberOfItems){
-    //       legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-    //         MARKER_COLORS[markerColor]
-    //         }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-    //     } else {
-    //       legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-    //         MARKER_COLORS[markerColor]
-    //         }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-    //         layer
-    //         )}" class="control__count">${count} items shown</span></div></div>`;         
-    //     }
-    //   }
-    //   if (cluster){
-    //     this.overlayMaps[legendEntry] = clusterLayer;
-    //   }
-    //   else{
-    //     this.overlayMaps[legendEntry] = layer;
-    //   }
+   
+
+      if (markerIcon2){
+          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            MARKER_COLORS[markerColorIcon2]
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;  
+      } else {
+          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            MARKER_COLORS[markerColor]
+            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
+      }
+
+    this.overlayMaps[legendEntry] = layer;
+    console.log(this.overlayMaps);
+    
+    //only happens once, after the last layer has loaded
+    if (this.loadedLayerCount == this.layerCount) {
+      this.createVectorTileControl();
+      }
+
     //   // const layerPersonas = configLayer.personas;
     //   // for (const x in this.personas) {
     //   //   if (layerPersonas.includes(this.personas[x].id)) {
@@ -361,7 +205,7 @@ class VectorTileDataLayers {
       
     //   //only happens once, after the last layer has loaded
     //   // if (this.loadedLayerCount == this.layerCount) {
-    //   //   this.createControl();
+    //   //   this.createVectorTileControl();
 
     //   //   if (this.mapConfig.personas && this.mapConfig.personas.length > 0) {
     //   //     this.personasClass = new Personas(
@@ -375,7 +219,7 @@ class VectorTileDataLayers {
     //   //     this.personasClass.init();
     //   //   }
     //   // }
-    // } 
+    } 
 
     // if (this.mapConfig.search && searchable){
     //   // this.search = new Search(this.mapClass, layer);
@@ -389,34 +233,36 @@ class VectorTileDataLayers {
     // }
   }
 
-  // createControl() {
-  //   this.layerControl = new L.control.layers(null, this.overlayMaps, {
-  //     collapsed: false,
-  //     sortLayers: true,
-  //     sortFunction: (a, b) => {
-  //       const x = a.options.sortOrder;
-  //       const y = b.options.sortOrder;
-  //       if (isNaN(x) && isNaN(y)) {
-  //         return x.localeCompare(y);
-  //       } else {
-  //         return x >= y ? 1 : -1;
-  //       }
-  //     }
-  //   });
-  //   this.map.addControl(this.layerControl, {
-  //     collapsed: false,
-  //     position: "topleft"
-  //   });
-  //   const mapLegend = document.getElementById("legend");
-  //   mapLegend.appendChild(this.layerControl.getContainer());
-  //   L.DomEvent.on(this.layerControl.getContainer(), "click", () => {
-  //     L.DomEvent.stopPropagation;
-  //     if (this.personasClass) {
-  //       this.personasClass.removeActiveClass();
-  //     }
-  //   });
-  //   return this.layerControl;
-  // }
+  createVectorTileControl() {
+    console.log("inside the create control in the vector tile code");
+    this.layerControl = new L.control.layers(null, this.overlayMaps, {
+      collapsed: false,
+      sortLayers: false,
+      sortFunction: (a, b) => {
+        const x = a.options.sortOrder;
+        const y = b.options.sortOrder;
+        if (isNaN(x) && isNaN(y)) {
+          return x.localeCompare(y);
+        } else {
+          return x >= y ? 1 : -1;
+        }
+      }
+    });
+    console.log(this.layerControl);
+    this.map.addControl(this.layerControl, {
+      collapsed: false,
+      position: "topleft"
+    });
+    const mapLegend = document.getElementById("legend");
+    mapLegend.appendChild(this.layerControl.getContainer());
+    L.DomEvent.on(this.layerControl.getContainer(), "click", () => {
+      L.DomEvent.stopPropagation;
+      if (this.personasClass) {
+        this.personasClass.removeActiveClass();
+      }
+    });
+    return this.layerControl;
+  }
 
   loadLayers() {
     // if (this.mapConfig.personas) {
@@ -472,9 +318,19 @@ class VectorTileDataLayers {
       this.vectorTileUrl = configLayer.vectorTileUrl;
       // Creating the vectorGrid layer
       const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
-          
+      
+      console.log(this.mapConfig.showLayersOnLoad);
       // Add the vectorGrid layer to the map
+      if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
+      this.loadedLayerCount++;
+      this.customiseVectorTile(layer, configLayer) 
+    }
+      
+
+
+      
+
 
       //Create the popups if you click on the layer and there are popup fields
       if(configLayer.popup){
@@ -491,6 +347,7 @@ class VectorTileDataLayers {
         }); 
       }     
     }
+    
   }
 }
 
