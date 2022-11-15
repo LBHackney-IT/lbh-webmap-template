@@ -34,10 +34,16 @@ class VectorTileDataLayers {
         toolTipString = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
       }
     
-    const tooltip = L.tooltip()
+    if (e.sourceTarget.properties[toolTipTitle] != undefined){
+
+      const tooltip = L.tooltip()
       .setContent(toolTipString)
       .setLatLng(e.latlng)
       .addTo(this.map);
+
+      layer.bindTooltip(tooltip); 
+    }
+    
   }
     
 
