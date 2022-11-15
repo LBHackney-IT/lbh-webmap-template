@@ -104,7 +104,7 @@ class VectorTileDataLayers {
 
 
     if (this.mapConfig.showLegend) {
-      console.log("inside the showLegend code");
+      //console.log("inside the showLegend code");
       let legendEntry = '';
       this.layers.push(layer);
      
@@ -115,7 +115,7 @@ class VectorTileDataLayers {
       }
 
     this.overlayMaps[legendEntry] = layer;
-    console.log(this.overlayMaps);
+    //console.log(this.overlayMaps);
     
     //only happens once, after the last layer has loaded
     if (this.loadedLayerCount == this.layerCount) {
@@ -125,7 +125,7 @@ class VectorTileDataLayers {
   }
 
   createVectorTileControl() {
-    console.log("inside the create control in the vector tile code");
+    //console.log("inside the create control in the vector tile code");
     this.layerControl = new L.control.layers(null, this.overlayMaps, {
       collapsed: false,
       sortLayers: false,
@@ -139,7 +139,7 @@ class VectorTileDataLayers {
         }
       }
     });
-    console.log(this.layerControl);
+    //console.log(this.layerControl);
     this.map.addControl(this.layerControl, {
       collapsed: false,
       position: "topleft"
@@ -190,7 +190,7 @@ class VectorTileDataLayers {
       // Creating the vectorGrid layer
       const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
       
-      console.log(this.mapConfig.showLayersOnLoad);
+      //console.log(this.mapConfig.showLayersOnLoad);
       // Add the vectorGrid layer to the map
       if (this.mapConfig.showLayersOnLoad) {
       layer.addTo(this.map);
