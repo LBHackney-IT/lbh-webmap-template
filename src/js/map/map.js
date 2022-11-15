@@ -368,7 +368,7 @@ class Map {
       this.controls = new Controls(this);
       this.controls.init();
     }
-    console.log(this.map);
+    //.log(this.map);
   }
 
   createMapContent() {
@@ -408,10 +408,10 @@ class Map {
   addBaseLayer() {
     var epsg_code = '27700'
     if (this.mapConfig.layers[0].vectorTilesLayer){
-      console.log('vector tiles');
+      //console.log('vector tiles');
       epsg_code = '3857';
     } 
-    console.log(epsg_code);
+    //console.log(epsg_code);
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
         `https://api.os.uk/maps/raster/v1/zxy/Outdoor_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
