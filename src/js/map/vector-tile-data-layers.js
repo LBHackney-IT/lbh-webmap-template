@@ -26,26 +26,18 @@ class VectorTileDataLayers {
     const toolTipTitle = configLayer.tooltip.title;
 
     let toolTipString = '';
-
+    //console.log(e.sourceTarget.properties)
       if (toolTipTitle) {
-        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${e.sourceTarget.options.color[toolTipTitle]}</h3>`;
+        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${e.sourceTarget.properties[toolTipTitle]}</h3>`;
       } else {
         //If not, we use the name of the layer, unless no title is specified
         toolTipString = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
       }
     
-
-    //TODO:Review the location of the tooltip. And there is an error in the console. 
     const tooltip = L.tooltip()
       .setContent(toolTipString)
       .setLatLng(e.latlng)
       .addTo(this.map);
-
-      layer.bindTooltip(tooltip, { 
-        direction: configLayer.tooltip.direction || 'auto',
-        offset: configLayer.tooltip.offset || [0,0]
-    }); 
-  
   }
     
 
@@ -209,7 +201,7 @@ class VectorTileDataLayers {
       if(configLayer.tooltip){
         layer.on('mouseover', (e) => {
           this.addVectorTileToolTip(e,configLayer,layer);
-          //console.log("mouseover")
+          console.log("mouseover")
         }); 
       }     
     }
