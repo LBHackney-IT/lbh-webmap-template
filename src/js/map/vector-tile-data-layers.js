@@ -102,77 +102,12 @@ class VectorTileDataLayers {
     const markerColor = pointStyle && pointStyle.markerColor;
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
 
-    
-    // if (cluster) {
-    //   //set the clusters color
-    //   document.documentElement.style.setProperty(
-    //     '--cluster-color', MARKER_COLORS[markerColor]
-    //   );
-    //   //create clusters layer
-    //   clusterLayer = L.markerClusterGroup({
-    //     maxClusterRadius: 60,
-    //     disableClusteringAtZoom: disableClusteringAtZoom,
-    //     spiderfyOnMaxZoom: false,
-    //     showCoverageOnHover: false
-    //   });
-    //   clusterLayer.addLayer(layer);
-    //   //add the sortorder as an option to the clusterLayer (needed for the legend)
-    //   clusterLayer.options.sortOrder = layer.options.sortOrder;
-    //   this.layersData.push({configLayer, layer, data, clusterLayer});
-    // }
-    // else{
-    //   this.layersData.push({configLayer, layer, data});
-    // }
-    
-    
-    //TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
-    
-   
 
-    //open popup closest to the map centre
-    // if (configLayer.openPopupClosestToMapCentre){
-    //   let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
-    //   closestMarker.layer.openPopup();
-    // }
-
-    // this.loadedLayerCount++;
-
-    //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
-    // if (this.mapClass.blpuPolygon && this.loadedLayerCount == this.layerCount) {
-    //   this.mapClass.blpuPolygon.bringToFront();
-    // }
-
-    //only happens once, after the last layer has loaded - create filters above the map
-    // if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
-    //   this.filters = new Filters(this.mapClass, this.layersData);
-    //   this.filters.init();
-    // }
-
-    //only happens once, after the last layer has loaded - create list view after the map
-    // if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-    //   this.list = new List(this.mapClass,this.layersData);
-    //   this.list.init();
-    // }
-
-    //only happens once, after the last layer has loaded - add the drill down listener if true
-    // if (this.mapConfig.performDrillDown && this.loadedLayerCount == this.layerCount) {
-    //     this.drilldown = new DrillDown(this.map);
-    //     this.drilldown.init();
-    // }
-      
     if (this.mapConfig.showLegend) {
       console.log("inside the showLegend code");
       let legendEntry = '';
-      console.log("layer: ");
-      console.log(layer);
-      //TODO:The layer is not in the this.layers array
-      //const count = layer.getLayers().length;
       this.layers.push(layer);
-      console.log("Layers array: ");
-      console.log(this.layers);
-      
-   
-
+     
       if (markerIcon2){
           legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
             MARKER_COLORS[markerColorIcon2]
@@ -190,47 +125,7 @@ class VectorTileDataLayers {
     if (this.loadedLayerCount == this.layerCount) {
       this.createVectorTileControl();
       }
-
-    //   // const layerPersonas = configLayer.personas;
-    //   // for (const x in this.personas) {
-    //   //   if (layerPersonas.includes(this.personas[x].id)) {
-    //   //     if (cluster) {
-    //   //       this.personas[x].layers.push(clusterLayer);
-    //   //     }
-    //   //     else {
-    //   //       this.personas[x].layers.push(layer);
-    //   //     }
-    //   //   }
-    //   // }
-      
-    //   //only happens once, after the last layer has loaded
-    //   // if (this.loadedLayerCount == this.layerCount) {
-    //   //   this.createVectorTileControl();
-
-    //   //   if (this.mapConfig.personas && this.mapConfig.personas.length > 0) {
-    //   //     this.personasClass = new Personas(
-    //   //       this.mapClass,
-    //   //       this.layers,
-    //   //       this.personas,
-    //   //       this.layerControl,
-    //   //       this.overlayMaps,
-    //   //       this.filters
-    //   //     );
-    //   //     this.personasClass.init();
-    //   //   }
-    //   // }
     } 
-
-    // if (this.mapConfig.search && searchable){
-    //   // this.search = new Search(this.mapClass, layer);
-    //   // this.search.init();
-    //   this.search.searchLayer.addLayer(layer);
-      
-    //   //only happens once, after the last layer has loaded
-    //   if (this.loadedLayerCount == this.layerCount){
-    //     this.search.createMarkup();
-    //   }     
-    // }
   }
 
   createVectorTileControl() {
@@ -265,26 +160,6 @@ class VectorTileDataLayers {
   }
 
   loadLayers() {
-    // if (this.mapConfig.personas) {
-    //   for (const group of this.mapConfig.personas) {
-    //     //crate layergroup object with this new empty list of layers
-    //     const persona = {
-    //       id: group.id,
-    //       icon: group.icon,
-    //       iconActive: group.iconActive,
-    //       text: group.text,
-    //       collapsed: false,
-    //       layers: [],
-    //       easyButton: null
-    //     };
-    //     this.personas.push(persona);
-    //   }
-    // }
-    // if (this.mapConfig.search){
-    //   //this.searchLayer = new L.LayerGroup([]);
-    //   this.search = new Search(this.mapClass);
-    //   this.search.init();
-    // }
     
     if (this.mapConfig.showAddressSearch){
       //this.searchLayer = new L.LayerGroup([]);
@@ -327,11 +202,6 @@ class VectorTileDataLayers {
       this.customiseVectorTile(layer, configLayer) 
     }
       
-
-
-      
-
-
       //Create the popups if you click on the layer and there are popup fields
       if(configLayer.popup){
         layer.on('click', (e) => {
