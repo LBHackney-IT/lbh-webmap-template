@@ -308,7 +308,13 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    
+    // add a listener for the map to add/remove the layer based on zoom
+    this.map.on('zoomend ', (e) => {
+      console.log('zoom = '+ this.map.getZoom());
+      if ( this.map.getZoom() > 7 ){ this.map.addLayer(layer)}
+      else if ( this.map.getZoom() <= 7 ){ this.map.removeLayer(layer)}
+    });
+
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
       if (cluster) {     
