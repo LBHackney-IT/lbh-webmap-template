@@ -188,13 +188,21 @@ class VectorTileDataLayers {
       // Creating the vectorGrid layer
       const layer = L.vectorGrid.protobuf(this.vectorTileUrl, this.vectorTileOptions);
       
-      //console.log(this.mapConfig.showLayersOnLoad);
+      // add a listener for the map to add/remove the layer based on zoom
+      // this.map.on('zoomend ', (e) => {
+      //   console.log('zoom = '+ this.map.getZoom());
+      //   if ( this.map.getZoom() > 14 ){ this.map.addLayer(layer)}
+      //   else if ( this.map.getZoom() <= 14 ){ this.map.removeLayer(layer)}
+      // });
+
       // Add the vectorGrid layer to the map
       if (this.mapConfig.showLayersOnLoad) {
-      layer.addTo(this.map);
-      this.loadedLayerCount++;
-      this.customiseVectorTile(layer, configLayer) 
-    }
+        //if (this.map.getZoom()>14){
+          layer.addTo(this.map);
+        //}       
+        this.loadedLayerCount++;
+        this.customiseVectorTile(layer, configLayer) 
+      }
       
       //Create the popups if you click on the layer and there are popup fields
       if(configLayer.popup){

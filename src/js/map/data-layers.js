@@ -321,7 +321,9 @@ class DataLayers {
         this.map.addLayer(clusterLayer);
       }
       else {
-        layer.addTo(this.map);
+        if (this.map.getZoom() > 7){
+          layer.addTo(this.map);
+        }
         if (configLayer.loadToBack){
           layer.bringToBack();
         }  
