@@ -22,72 +22,49 @@ class VectorTileDataLayers {
     this.layerControl = null;
   }
 
-  addVectorTileToolTip(e,configLayer,layer) {
-    const toolTipTitle = configLayer.tooltip.title;
-
-    let toolTipString = '';
-    //console.log(e.sourceTarget.properties)
-      if (toolTipTitle) {
-        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${e.sourceTarget.properties[toolTipTitle]}</h3>`;
-      } else {
-        //If not, we use the name of the layer, unless no title is specified
-        toolTipString = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
-      }
-    
-    if (e.sourceTarget.properties[toolTipTitle] != undefined){
-
-      const tooltip = L.tooltip()
-      .setContent(toolTipString)
-      .setLatLng(e.latlng)
-      .addTo(this.map);
-
-      layer.bindTooltip(tooltip); 
-    }
-    
-  }
-    
-
   addVectorTilePopUp(e,configLayer) {
     // console.log(configLayer);
-    // console.log(e.layer.properties)
+    console.log(e.layer.properties)
+    console.log(e.latlng);
+    const title = configLayer.popup.title;
     const fields = configLayer.popup.fields;
+    const afterTitle = configLayer.popup.afterTitle;
     const afterFields = configLayer.popup.afterFields;
 
-    //Add the PopUp title
-    let popUpTitle = '';
+    let stringPopup = "";
     //If the popupTitle is NOT 'notitle'...
-    if (configLayer.popup.title !== "notitle") {
+    if (title !== "notitle") {
       //If there is a popup title, we use it
       if (configLayer.popup.title) {
-        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${e.layer.properties[field.name]}</h3>`;
+        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${e.layer.properties[title]}</h3>`;
       } else {
         //If not, we use the name of the layer, unless no title is specified
-        popUpTitle = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
+        stringPopup = `<h3 class="lbh-heading-h6 popup__title">${configLayer.title}</b></h3>`;
       }
     }
-
-    //Create the popUpString
-    let popUpString = `<p class="popup__title">${popUpTitle}</p>`;
+    
+    if (afterTitle) {
+      stringPopup += `<p class="popup__text">${afterTitle}</p>`;
+    }
+    
 
     for (const field of fields) {
       if (field.label){
-        popUpString += `<p class="popup__text"><span class="popup__label">${field.label}</span>: ${e.layer.properties[field.name]}</p>`;
+        stringPopup += `<p class="popup__text"><span class="popup__label">${field.label}</span>: ${e.layer.properties[field.name]}</p>`;
       } else {
-        popUpString += `<p class="popup__text">${e.layer.properties[field.name]}</p>`;
+        stringPopup += `<p class="popup__text">${e.layer.properties[field.name]}</p>`;
       }
     }
 
     if (afterFields){
-      popUpString += `<p class="popup__text">${afterFields}</p>`;
+      stringPopup += `<p class="popup__text">${afterFields}</p>`;
     }
 
     if (configLayer.popup) {
-      L.popup()
-        .setContent(popUpString)
-        .setLatLng(e.latlng)
-        .openOn(this.map);
+      L.popup({maxWidth: 210}).setContent(stringPopup)
+      .setLatLng(e.latlng)
+      .openOn(this.map);
     }
-
   }
 
 
@@ -211,13 +188,13 @@ class VectorTileDataLayers {
         }); 
       }
           
-      //Create the tooltips when hovering if there are tooltips fields
-      if(configLayer.tooltip){
-        layer.on('mouseover', (e) => {
-          this.addVectorTileToolTip(e,configLayer,layer);
-          console.log("mouseover")
-        }); 
-      }     
+      // //Create the tooltips when hovering if there are tooltips fields
+      // if(configLayer.tooltip){
+      //   layer.on('mouseover', (e) => {
+      //     this.addVectorTileToolTip(e,configLayer,layer);
+      //     console.log("mouseover")
+      //   }); 
+      // }     
     }
     
   }
