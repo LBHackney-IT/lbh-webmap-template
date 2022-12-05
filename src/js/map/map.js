@@ -35,10 +35,9 @@ import "@fortawesome/fontawesome-pro/js/fontawesome";
 import Geolocation from "./geolocation";
 import Controls from "./controls";
 import DataLayers from "./data-layers";
+import VectorTileDataLayers from "./vector-tile-data-layers";
 import Metadata from "./metadata";
 import "classlist-polyfill";
-
-
 
 class Map {
   constructor(map) {
@@ -289,20 +288,14 @@ class Map {
 
 
   createMap() {
-    // Setup the EPSG:27700 (British National Grid) projection.
-    var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
-      resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
-      origin: [ -238375.0, 1376256.0 ]
-    });
-
-    //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+    //set the max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max zoom is 12 and zoom to MasterMap.
      if (this.mapConfig.blockZoomToMasterMap){
       this.maxZoom = 9;
     } else {
       this.maxZoom = 12;
     }
 
-     //set a max zoom if blockZoomToMasterMap is true to block the detailed view. By default, the max soom is 12 and zoom to MasterMap.
+     //set the minZoom level.
      if (this.mapConfig.minMapZoom){
       this.minZoom = this.mapConfig.minMapZoom;
     } else {
@@ -311,19 +304,42 @@ class Map {
 
     //gesture handler
     L.Map.addInitHook("addHandler", "gestureHandling", GestureHandling);
+    
+    //Set up the EPSG3857 if it is a vectorTile Layer
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      //Adjust the zoom levels to EPSG3857
+      this.zoom = this.zoom +7;
+      this.maxZoom = this.maxZoom +7;
+      this.minZoom = this.minZoom +7;
+      this.zoom_mobile = this.zoom_mobile +7;
 
-    this.map = L.map("map", {
-      crs: crs,
-      zoomControl: false,
-      maxZoom: this.maxZoom,
-      minZoom: this.minZoom,
-      center: this.centerDesktop,
-      zoom: this.zoom,
-      gestureHandling: L.Browser.mobile
-    });
-    this.map.setMaxBounds(MAP_BOUNDS);
-   
-
+      this.map = L.map("map", {
+        //crs: L.CRS.EPSG3857,
+        zoomControl: false,
+        maxZoom: this.maxZoom,
+        minZoom: this.minZoom,
+        center: this.centerDesktop,
+        zoom: this.zoom,
+        gestureHandling: L.Browser.mobile
+      });
+      this.map.setMaxBounds(MAP_BOUNDS);
+    } else {
+      //Setup the EPSG:27700 (British National Grid) projection only if it is not a vector tile layer
+      var crs = new L.Proj.CRS('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs', {
+        resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75, 0.875, 0.4375, 0.21875, 0.109375],
+        origin: [ -238375.0, 1376256.0 ]
+      });
+      this.map = L.map("map", {
+        crs: crs,
+        zoomControl: false,
+        maxZoom: this.maxZoom,
+        minZoom: this.minZoom,
+        center: this.centerDesktop,
+        zoom: this.zoom,
+        gestureHandling: L.Browser.mobile
+      });
+      this.map.setMaxBounds(MAP_BOUNDS);
+    }
     // Disable zoom specifically on mobile devices, not based on screensize.
     if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
@@ -352,12 +368,14 @@ class Map {
       this.controls = new Controls(this);
       this.controls.init();
     }
+    //.log(this.map);
   }
 
   createMapContent() {
-    
+    //first, load base map 
     this.addBaseLayer();
 
+    //then, add mask and boundary
     if (this.mapConfig.showMask) {
         if (this.mapConfig.maskGeoserverName){
           this.maskGeoserverName = this.mapConfig.maskGeoserverName;
@@ -376,27 +394,37 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
-    //Load the layers
-    new DataLayers(this).loadLayers();
-
-    //Load the info and metadata
+    //Add the layers from cofig
+    if(this.mapConfig.layers[0].vectorTilesLayer){
+      new VectorTileDataLayers(this).loadLayers();
+    } 
+    else {
+      new DataLayers(this).loadLayers();
+    }
+    //Last, load the info and metadata
     new Metadata(this).loadMetadata();
   }
-  
+
   addBaseLayer() {
+    var epsg_code = '27700'
+    if (this.mapConfig.layers[0].vectorTilesLayer){
+      //console.log('vector tiles');
+      epsg_code = '3857';
+    } 
+    //console.log(epsg_code);
     if (this.mapConfig.baseStyle == "OSoutdoor") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Outdoor_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSlight") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Light_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Light_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     } else if (this.mapConfig.baseStyle == "OSroad") {
       this.mapBase = L.tileLayer(
-        `https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
+        `https://api.os.uk/maps/raster/v1/zxy/Road_${epsg_code}/{z}/{x}/{y}.png?key=${OS_RASTER_API_KEY}`,
         TILE_LAYER_OPTIONS_OS
       );
     }
@@ -428,7 +456,7 @@ class Map {
       tiled: true,
       format: "image/png"
     });
-    this.map.addLayer(this.boundary);
+   this.map.addLayer(this.boundary);
   }
 
   setZoom() {

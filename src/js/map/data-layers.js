@@ -1,4 +1,5 @@
 import L, { Point } from "leaflet";
+import "leaflet.vectorgrid";
 import { pointToLayer } from "./metadata";
 import { MARKER_COLORS} from "./consts";
 import Personas from "./personas";
@@ -307,7 +308,13 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    
+    // TODO: add a listener for the map to add/remove the layer based on zoom
+    // this.map.on('zoomend ', (e) => {
+    //   console.log('zoom = '+ this.map.getZoom());
+    //   if ( this.map.getZoom() > 7 ){ this.map.addLayer(layer)}
+    //   else if ( this.map.getZoom() <= 7 ){ this.map.removeLayer(layer)}
+    // });
+
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
       if (cluster) {     
@@ -315,6 +322,7 @@ class DataLayers {
       }
       else {
         layer.addTo(this.map);
+ 
         if (configLayer.loadToBack){
           layer.bringToBack();
         }  
@@ -475,8 +483,6 @@ class DataLayers {
     return this.layerControl;
   }
 
-
-
   loadLayers() {
     if (this.mapConfig.personas) {
       for (const group of this.mapConfig.personas) {
@@ -508,23 +514,23 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-      //If there is cql, we add the cql filter to the wfs call
-      if (configLayer.cqlFilter){
-          url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-      //If not, we use the default wfs call
-      } else{
-         url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-      }
-      //Live
-      fetch(url, {
-        method: "get"
-      })
-        .then(response => response.json())
-        .then(data => this.addWFSLayer(data, configLayer))
-        .catch(error => {
-          console.log(error);
-          alert("Something went wrong, please reload the page");
-        });
+            //If there is cql, we add the cql filter to the wfs call
+            if (configLayer.cqlFilter){
+              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+            //If not, we use the default wfs call
+            } else{
+              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+            }
+          //Fetch the url
+          fetch(url, {
+            method: "get"
+          })
+            .then(response => response.json())
+            .then(data => this.addWFSLayer(data, configLayer))
+            .catch(error => {
+              console.log(error);
+              alert("Something went wrong, please reload the page");
+            });     
     }
   }
 }

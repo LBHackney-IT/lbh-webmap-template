@@ -41,7 +41,7 @@ const TILE_LAYER_OPTIONS_OS = {
   opacity: 1,
   attribution:
     'Map data &copy; Crown copyright and database rights 2021 <a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey</a> 100019635.' ,
-  maxZoom: 12,
+  maxZoom: 19,
   accessToken: OS_RASTER_API_KEY
 };
 
