@@ -130,7 +130,7 @@ Object properties:
 | `zoomToFeatureOnClick` | Boolean | optional | If true, clicking on a polygon features will zoom to its extent. |
 | `followLinkOnClick` | String | optional | Set to the name of the field containing a hyperlink. If set, clicking on a feature will follow the link. Links starting with http open in a blank tab, others are just moving to different sections of the page.|
 | `openPopupClosestToMapCentre` | Boolean | optional | If true, the feature closest to the map center will have its popup open on load. Use if you're planning to use coordinates in the URL. If the closest feature is in a markerCluster, its popup won't open.|
-| `pointStyle` | Object | optional | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
+| `pointStyle` | Object | required | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
 | `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
