@@ -169,7 +169,6 @@ Object properties:
 | `title` | String | optional | The name of the field to use as the title of the popup window for each record on the map. If omitted the name of the layer will be added (e.g. Parking zones). To remove all titles enter "notitle". |
 | `afterTitle` | String | optional | An optional string to appear beneath the title in the popup. |
 | `fields` | Array | optional | A list of field objects to show in the popup with the following properties:<br>`label` (String): a label shown in bold before the field value<br>`name` (String): geoserver field name (matches the table column name) |
-| `afterFields` | String | optional | Text to display after the final field. |
 
 ### Tooltip Options
 
