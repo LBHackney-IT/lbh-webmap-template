@@ -77,7 +77,7 @@ The options for the data file are as follows:
 | `showLegend` | Boolean | optional | If `true` a legend will show on the map. |
 | `showLayersOnLoad` | Boolean | optional | If `true` all the layers will appear on the map. If  `false` or omitted, no layer will appear. Default is `false`|
 | `showFirstLayerOnLoad` | Boolean | optional | If `true` the layer with `sortOrder = 1` will appear on the map, and only this one. If `false` or omitted, the behaviour reverts to `showLayersOnLoad`. Default is `false`|
-| `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. Options:<br>`showLegendText`: Default is "Show list"<br>`hideLegendText`: Default is "Hide list"<br>`clearMapText`: Default is "Clear map" |
+| `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. [Control options defined below](#controls-options)||
 | `hideNumberOfItems` | Boolean | optional | If `true` The number of items is hidden on the legend. If `false`, the number of items is shown on the layer. The default value is `false`. |
 | `blockZoomToMasterMap` | Boolean | optional | If `true` the map will block the zoom to the detailed view (OS MasterMap).|
 | `minMapZoom` | Number | optional | It allows you to specify what is the min map zoom level.The map will block the zoom when zooming out beyond that level.|
@@ -101,6 +101,17 @@ Object properties:
 | `icon` | String | required | Relative url of the default icon for the persona button. |
 | `iconActive` | String | required | Relative url of the active state icon for the persona button. |
 | `text` | String | required | (User-friendly) text for the persona button. |
+
+### Controls Options
+
+Object properties:
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `showLegendText` | String | optional | Text shown on the legend control. Default is "Show list" |
+| `hideLegendText` | String | optional | Text shown on the legend control. Default is "Hide list" |
+| `clearMapText` | String | optional | Text shown on the clear map control. Default is "Clear map" |
+
 
 ### Search Options
 
