@@ -62,13 +62,14 @@ The options for the data file are as follows:
 
 | Option    | Type   | Required | Description                                                                                                                                                                                                |
 | --------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `layers` | Array | required | An array of layers to be added to the map. [Layer options defined below](#layer-options). |
+| `baseStyle` | String | required | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>We removed the MapBox option in Sept 2021.<br> CRS: EPSG:27700 - British National Grid by default. EPSG3857 - WGS 84 when we use vector tile layers|
 | `title` | String | optional | Title of the map that displays in the title box and the metadata box |
 | `showTitleInMetadataBoxOnMobile` | Boolean | optional | If `true, the title will be added on the info box on mobile. |
 | `summary` | String | optional | Summary of the map. If title and summary are present, an information icon will appear next to the title and the text added in `summary` will appear as a tooltip when you hover on the icon (desktop only) |
 | `showGeoServerMetadata` | Boolean | optional | If `true` the code will try to read the metadata (from `metadata.public_metadata`) via geoserver and add it to the infoBox that appears when you click on "About the data of this map" on desktop or on the information icon on mobile. This is a view on Earthlight metadata. This includes the name of the layer, the abstract, source and last update date of each layer of the map. |
 | `about` | String | optional | If `showGeoServerMetadata` is set to false, `about` can be used to populate the text in the infoBox described above. |
 | `aboutTitle` | String | optional | `aboutTitle` can be used to populate the title of the infoBox described above (e.g: About the data/About the map) |
-| `baseStyle` | String | Required | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>We removed the MapBox option in Sept 2021 and are now only using British National Grid as the map CRS.|
 | `blockZoomToMasterMap` | Boolean | optional | If `true` the map will block the zoom to the detailed view (OS MasterMap).|
 | `minMapZoom` | Number | optional | It allows you to specify what is the min map zoom level.The map will block the zoom when zooming out beyond that level.|
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
@@ -89,7 +90,6 @@ The options for the data file are as follows:
 | `filters` | Object | optional | An object with one or more keys, where the key is the name of the property in the GeoServer database, and the value is an object with a `heading` (the heading text that will appear at the top of the filter), and `options` (an array of possible values for that filter). |
 | `search` | Object | optional | A collapsible search bar to be displayed at the top of the map. The search bar will search every layer that is set as 'searchable' and has a specific attribute. For instance, you can search within differents layers showing different types of touristic places. These layers can have different structures, but all must have an attribute called 'place_name' that will be used for the search. If several places have exactly the same name, they are all highlighted (not just the first one). [Search options defined below](#search-options)|
 | `list` | Object | optional | An accordion panel dispalyed under the map. Each accordion section lists all features of one layer. To be in the panel, ths layer must have a 'listView' configured (see layer options). Options: `sectionHeader` is the label shown on top of the accordion (e.g. 'List of all organisations'). If `showIcons` is set to true, every accordion section will display the legend icon of the layer after the layer title. |
-| `layers` | Array | required | An array of layers to be added to the map. [Layer options defined below](#layer-options). |
 
 ### Persona Options
 
