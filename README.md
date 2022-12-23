@@ -89,7 +89,7 @@ The options for the data file are as follows:
 | `showAddressSearch` | Object | optional | A collapsible search bar to be displayed at the top of the map to navigate to an address. Uses Hackney addresses API though a proxy. Can search for postcodes and free-text address elements (e.g. Maurice bishop, 210 Mare Street, E8 1HH.) You can set this to `true` to use the defaults. [Address search options defined below](#address-search-options)|
 | `filters` | Object | optional | An object with one or more keys, where the key is the name of the property in the GeoServer database, and the value is an object with a `heading` (the heading text that will appear at the top of the filter), and `options` (an array of possible values for that filter). |
 | `search` | Object | optional | A collapsible search bar to be displayed at the top of the map. The search bar will search every layer that is set as 'searchable' and has a specific attribute. For instance, you can search within differents layers showing different types of touristic places. These layers can have different structures, but all must have an attribute called 'place_name' that will be used for the search. If several places have exactly the same name, they are all highlighted (not just the first one). [Search options defined below](#search-options)|
-| `list` | Object | optional | An accordion panel dispalyed under the map. Each accordion section lists all features of one layer. To be in the panel, ths layer must have a 'listView' configured (see layer options). Options: `sectionHeader` is the label shown on top of the accordion (e.g. 'List of all organisations'). If `showIcons` is set to true, every accordion section will display the legend icon of the layer after the layer title. [List view options defined below](#listview-options)|
+| `list` | Object | optional | An accordion panel dispalyed under the map. Each accordion section lists all features of one layer. To be in the panel, ths layer must have a 'listView' configured (see layer options). Options: `sectionHeader` is the label shown on top of the accordion (e.g. 'List of all organisations'). If `showIcons` is set to `true`, every accordion section will display the legend icon of the layer after the layer title. [List view options defined below](#listview-options)|
 
 ### Persona Options
 
@@ -112,8 +112,8 @@ Object properties:
 | `searchField` | String | required | Name of the data attribute that will be searched against. All searchable layers must have this comon attribute. |
 | `searchPlaceholderText` | String | required | Hint text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
 | `notFoundText` | String | required | Message appearing under the search box if no result is found. |
-| `clearMapAfterSearch` | Boolean | required | If true, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
-| `openPopUpWindow` | Boolean | optional |  If true, the popUp window of the selected address is open by default.| 
+| `clearMapAfterSearch` | Boolean | required | If `true`, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
+| `openPopUpWindow` | Boolean | optional |  If `true`, the popUp window of the selected address is open by default.| 
 | `addressSearchIcon` | String | optional | FontAwesome icon name of the address search marker. If it is not specified, the default icon is displayed.|
 
 ### Address search Options
@@ -134,16 +134,16 @@ Object properties:
 | `geoserverLayerName` | String | required | Name (not title) of the layer in geoserver which usually follows the following structure `[Schema_name]:[table_name]` (e.g. `planning:conversation_area`). The geoserver name does not need to be the same as the table name in the database, but will be by default. |
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
-| `loadToBack` | Boolean | optional | If true and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
-| `highlightFeatureOnHover` | Boolean | optional | If true, polygon features will be highlighted on mouse hover. |
-| `zoomToFeatureOnClick` | Boolean | optional | If true, clicking on a polygon features will zoom to its extent. |
+| `loadToBack` | Boolean | optional | If `true` and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
+| `highlightFeatureOnHover` | Boolean | optional | If `true`, polygon features will be highlighted on mouse hover. |
+| `zoomToFeatureOnClick` | Boolean | optional | If `true`, clicking on a polygon features will zoom to its extent. |
 | `followLinkOnClick` | String | optional | Set to the name of the field containing a hyperlink. If set, clicking on a feature will follow the link. Links starting with http open in a blank tab, others are just moving to different sections of the page.|
-| `openPopupClosestToMapCentre` | Boolean | optional | If true, the feature closest to the map center will have its popup open on load. Use if you're planning to use coordinates in the URL. If the closest feature is in a markerCluster, its popup won't open.|
+| `openPopupClosestToMapCentre` | Boolean | optional | If `true`, the feature closest to the map center will have its popup open on load. Use if you're planning to use coordinates in the URL. If the closest feature is in a markerCluster, its popup won't open.|
 | `pointStyle` | Object | required | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
 | `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
-| `searchable` | Boolean | optional | If true, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
+| `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
 
 ### Point Style Options
