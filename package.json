@@ -91,7 +91,7 @@
     "shuffle-seed": "^1.1.6",
     "vinyl-named-with-path": "^1.0.0",
     "vinyl-paths": "^2.1.0",
-    "webpack-stream": "^5.2.1",
+    "webpack-stream": "^7.0.0",
     "yargs": "^13.2.2"
   },
   "browserslist": [
