@@ -183,6 +183,7 @@ Object properties:
 | `opacity` | Number | Required | A number between 0 and 1 defining the layer opacity. | 
 | `fillColor` | String | Required | Fill color for polygons. `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `fillOpacity` | Number | Required | Opacity of the fill between 0 and 1. |
+| `layerLineDash` | Number | Optional | The line dash style.|
 | `weight` | Number | Required | Weight of the stroke in pixels. |
 
 ### Popup Options
