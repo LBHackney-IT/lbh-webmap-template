@@ -353,7 +353,7 @@ class DataLayers {
     }
 
     //only happens once, after the last layer has loaded - create filters above the map
-    if (this.mapConfig.filters && this.loadedLayerCount == this.layerCount) {
+    if (this.mapConfig.filtersSection.filters && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);
       this.filters.init();
     }
