@@ -15,8 +15,8 @@ class Filters {
   }
 
   init() {
-    this.filters = this.mapConfig.filters;
-    this.filtersSectionTitle = this.mapConfig.filtersSectionTitle;
+    this.filters = this.mapConfig.filtersSection.filters;
+    this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle;
     if (!this.filtersSectionTitle){
       this.filtersSectionTitle= "Filter";
     }
