@@ -115,6 +115,7 @@ const MARKER_COLORS = {
   greenrange3: "#97e600" , 
   greenrange4: "#d1ff73",
   yellow: "#ffff00",
+  marineblue: '#01386a',
   //colours added for the neighbourhood map
   lightcobaltblue: "#94A3F2", //gp 
   lincolngreen: '#0F5513',//stayig healthey and safe
