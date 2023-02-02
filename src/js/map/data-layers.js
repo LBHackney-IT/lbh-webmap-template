@@ -308,12 +308,16 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    // TODO: add a listener for the map to add/remove the layer based on zoom
-    // this.map.on('zoomend ', (e) => {
-    //   console.log('zoom = '+ this.map.getZoom());
-    //   if ( this.map.getZoom() > 7 ){ this.map.addLayer(layer)}
-    //   else if ( this.map.getZoom() <= 7 ){ this.map.removeLayer(layer)}
-    // });
+    //TODO: add a listener for the map to add/remove the layer based on zoom
+    this.map.on('zoomend ', (e) => {
+      if(configLayer.displayedAtZoomLevel){
+        console.log('displayedAtZoomLevel = '+ configLayer.displayedAtZoomLevel);
+        console.log('zoom = '+ this.map.getZoom());
+        if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
+        else if ( this.map.getZoom() <= configLayer.displayedAtZoomLevel ){ this.map.removeLayer(layer)}
+      }
+      
+    });
 
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
