@@ -319,7 +319,6 @@ class DataLayers {
           } else {
             this.map.removeLayer(clusterLayer);
           }
-
         } else{
           if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
             this.map.addLayer(layer);
