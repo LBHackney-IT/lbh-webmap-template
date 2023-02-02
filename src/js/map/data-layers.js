@@ -316,7 +316,7 @@ class DataLayers {
         if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
         else if ( this.map.getZoom() <= configLayer.displayedAtZoomLevel ){ this.map.removeLayer(layer)}
       }
-      
+
     });
 
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
@@ -325,8 +325,11 @@ class DataLayers {
         this.map.addLayer(clusterLayer);
       }
       else {
-        layer.addTo(this.map);
- 
+        if(configLayer.displayedAtZoomLevel){
+          if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
+        }else {
+          layer.addTo(this.map);
+        }
         if (configLayer.loadToBack){
           layer.bringToBack();
         }  
@@ -337,7 +340,11 @@ class DataLayers {
         this.map.addLayer(clusterLayer);
       }
       else {
-        layer.addTo(this.map);
+        if(configLayer.displayedAtZoomLevel){
+          if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
+        }else {
+          layer.addTo(this.map);
+        }
         if (configLayer.loadToBack){
           layer.bringToBack();
        }
