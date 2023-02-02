@@ -308,25 +308,44 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    //TODO: add a listener for the map to add/remove the layer based on zoom
+    //TODO: Add the cluster layer in the listener. 
     this.map.on('zoomend ', (e) => {
       if(configLayer.displayedFromZoomLevel){
         console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
         console.log('zoom = '+ this.map.getZoom());
-        if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
-        else if ( this.map.getZoom() <= configLayer.displayedUpToZoomLevel ){ this.map.removeLayer(layer)}
-      }
+        if (cluster) {  
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
+            this.map.addLayer(clusterLayer);
+          } else {
+            this.map.removeLayer(clusterLayer);
+          }
 
+        } else{
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
+            this.map.addLayer(layer);
+          } else {
+            this.map.removeLayer(layer);
+          }
+        }
+        
+        
+      }
     });
 
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
-      if (cluster) {     
-        this.map.addLayer(clusterLayer);
+      if (cluster) {    
+        if(configLayer.displayedFromZoomLevel){
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){this.map.addLayer(clusterLayer);
+          }
+        }else {
+          this.map.addLayer(clusterLayer);
+        } 
+        
       }
       else {
         if(configLayer.displayedFromZoomLevel){
-          if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ this.map.addLayer(layer)}
         }else {
           layer.addTo(this.map);
         }
@@ -336,12 +355,18 @@ class DataLayers {
       } 
     }
     else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-      if (cluster) {     
-        this.map.addLayer(clusterLayer);
+      if (cluster) {    
+        if(configLayer.displayedFromZoomLevel){
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){this.map.addLayer(clusterLayer);
+          }
+        }else {
+          this.map.addLayer(clusterLayer);
+        } 
+        
       }
       else {
         if(configLayer.displayedFromZoomLevel){
-          if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
+          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ this.map.addLayer(layer)}
         }else {
           layer.addTo(this.map);
         }
