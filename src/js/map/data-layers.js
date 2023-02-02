@@ -310,11 +310,11 @@ class DataLayers {
     
     //TODO: add a listener for the map to add/remove the layer based on zoom
     this.map.on('zoomend ', (e) => {
-      if(configLayer.displayedAtZoomLevel){
-        console.log('displayedAtZoomLevel = '+ configLayer.displayedAtZoomLevel);
+      if(configLayer.displayedFromZoomLevel){
+        console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
         console.log('zoom = '+ this.map.getZoom());
-        if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
-        else if ( this.map.getZoom() <= configLayer.displayedAtZoomLevel ){ this.map.removeLayer(layer)}
+        if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
+        else if ( this.map.getZoom() <= configLayer.displayedUpToZoomLevel ){ this.map.removeLayer(layer)}
       }
 
     });
@@ -325,8 +325,8 @@ class DataLayers {
         this.map.addLayer(clusterLayer);
       }
       else {
-        if(configLayer.displayedAtZoomLevel){
-          if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
+        if(configLayer.displayedFromZoomLevel){
+          if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
         }else {
           layer.addTo(this.map);
         }
@@ -340,8 +340,8 @@ class DataLayers {
         this.map.addLayer(clusterLayer);
       }
       else {
-        if(configLayer.displayedAtZoomLevel){
-          if ( this.map.getZoom() > configLayer.displayedAtZoomLevel ){ this.map.addLayer(layer)}
+        if(configLayer.displayedFromZoomLevel){
+          if ( this.map.getZoom() > configLayer.displayedFromZoomLevel ){ this.map.addLayer(layer)}
         }else {
           layer.addTo(this.map);
         }
