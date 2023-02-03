@@ -148,6 +148,8 @@ Object properties:
 | `geoserverLayerName` | String | required | Name (not title) of the layer in geoserver which usually follows the following structure `[Schema_name]:[table_name]` (e.g. `planning:conversation_area`). The geoserver name does not need to be the same as the table name in the database, but will be by default. |
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
+| `displayedFromZoomLevel` | Number | optional | This value is used to control the visibility of the layers. The layer will be displayed from the `displayedFromZoomLevel` (up to the `displayedUpToZoomLevel`). If empty, the layer will be displayed at all the zoom levels.|
+| `displayedUpToZoomLevel` | Number | optional | This value is used to control the visibility of the layers. The layer will be displayed up to the `displayedUpToZoomLevel` (from the `displayedFromZoomLevel`). If empty, the layer will be displayed at all the zoom levels.|
 | `loadToBack` | Boolean | optional | If `true` and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
 | `highlightFeatureOnHover` | Boolean | optional | If `true`, polygon features will be highlighted on mouse hover. |
 | `zoomToFeatureOnClick` | Boolean | optional | If `true`, clicking on a polygon features will zoom to its extent. |
