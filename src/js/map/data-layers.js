@@ -169,6 +169,8 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
+
 
     var clusterLayer = null;
 
@@ -294,7 +296,7 @@ class DataLayers {
       );
       //create clusters layer
       clusterLayer = L.markerClusterGroup({
-        maxClusterRadius: 60,
+        maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
         spiderfyOnMaxZoom: false,
         showCoverageOnHover: false
@@ -311,8 +313,8 @@ class DataLayers {
     //Listener to control the visibility zoom when zooming
     this.map.on('zoomend ', (e) => {
       if(configLayer.displayedFromZoomLevel){
-        console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
-        console.log('zoom = '+ this.map.getZoom());
+        //console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
+        //console.log('zoom = '+ this.map.getZoom());
         if (cluster) {  
           if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
             this.map.addLayer(clusterLayer);
