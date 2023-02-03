@@ -308,7 +308,7 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    //TODO: Add the cluster layer in the listener. 
+    //Listener to control the visibility zoom when zooming
     this.map.on('zoomend ', (e) => {
       if(configLayer.displayedFromZoomLevel){
         console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
@@ -406,7 +406,11 @@ class DataLayers {
     }
       
     if (this.mapConfig.showLegend) {
-      let legendEntry = '';
+      if (configLayer.excludeFromLegend){
+        console.log('this layer will be excluded from the legend');
+
+      } else {
+        let legendEntry = '';
       const count = layer.getLayers().length;
       
       if (cluster) {
@@ -447,6 +451,9 @@ class DataLayers {
       else{
         this.overlayMaps[legendEntry] = layer;
       }
+
+      }
+      
       const layerPersonas = configLayer.personas;
       for (const x in this.personas) {
         if (layerPersonas.includes(this.personas[x].id)) {
