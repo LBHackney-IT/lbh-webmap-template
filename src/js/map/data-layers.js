@@ -316,65 +316,47 @@ class DataLayers {
     
     //Listener to control the visibility zoom when zooming
     this.map.on('zoomend ', (e) => {
-      if(configLayer.displayedFromZoomLevel){
-        //console.log('displayedFromZoomLevel = '+ configLayer.displayedFromZoomLevel);
-        //console.log('zoom = '+ this.map.getZoom());
+        console.log('zoom = '+ this.map.getZoom());
         if (cluster) {  
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
+          if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
             this.map.addLayer(clusterLayer);
           } else {
             this.map.removeLayer(clusterLayer);
           }
         } else{
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ 
+          if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
             this.map.addLayer(layer);
           } else {
             this.map.removeLayer(layer);
           }
         }
-        
-        
-      }
     });
 
     // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
     if (this.mapConfig.showLayersOnLoad) {
       if (cluster) {    
-        if(configLayer.displayedFromZoomLevel){
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){this.map.addLayer(clusterLayer);
-          }
-        }else {
+        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){
           this.map.addLayer(clusterLayer);
-        } 
+          } 
+       } else {
+        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
+          this.map.addLayer(layer)
+          }
         
-      }
-      else {
-        if(configLayer.displayedFromZoomLevel){
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ this.map.addLayer(layer)}
-        }else {
-          layer.addTo(this.map);
-        }
         if (configLayer.loadToBack){
           layer.bringToBack();
-        }  
-      } 
-    }
-    else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-      if (cluster) {    
-        if(configLayer.displayedFromZoomLevel){
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){this.map.addLayer(clusterLayer);
-          }
-        }else {
+       }
+      }  
+    } else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+       if (cluster) {    
+        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){
           this.map.addLayer(clusterLayer);
-        } 
+          } 
+       } else {
+        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
+          this.map.addLayer(layer)
+          }
         
-      }
-      else {
-        if(configLayer.displayedFromZoomLevel){
-          if (this.map.getZoom() >= configLayer.displayedFromZoomLevel && this.map.getZoom() < configLayer.displayedUpToZoomLevel){ this.map.addLayer(layer)}
-        }else {
-          layer.addTo(this.map);
-        }
         if (configLayer.loadToBack){
           layer.bringToBack();
        }
@@ -414,7 +396,6 @@ class DataLayers {
     if (this.mapConfig.showLegend) {
       if (configLayer.excludeFromLegend){
         console.log('this layer will be excluded from the legend');
-
       } else {
         let legendEntry = '';
       const count = layer.getLayers().length;
