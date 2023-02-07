@@ -187,6 +187,10 @@ class DataLayers {
       weight: linePolygonStyle && linePolygonStyle.weight
     };
 
+    const displayedFromZoomLevel = configLayer.displayedFromZoomLevel ? configLayer.displayedFromZoomLevel  : this.map.options.minZoom; 
+    const displayedUpToZoomLevel = configLayer.displayedUpToZoomLevel ? configLayer.displayedUpToZoomLevel  : this.map.options.maxZoom; 
+
+
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
