@@ -187,11 +187,6 @@ class DataLayers {
       weight: linePolygonStyle && linePolygonStyle.weight
     };
 
-    const displayedFromZoomLevel = configLayer.displayedFromZoomLevel ? configLayer.displayedFromZoomLevel  : this.map.options.minZoom; 
-    const displayedUpToZoomLevel = configLayer.displayedUpToZoomLevel ? configLayer.displayedUpToZoomLevel  : this.map.options.maxZoom; 
-
-
-
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
@@ -316,52 +311,89 @@ class DataLayers {
     
     //Listener to control the visibility zoom when zooming
     this.map.on('zoomend ', (e) => {
-        console.log('zoom = '+ this.map.getZoom());
+      //console.log('zoom = '+ this.map.getZoom());
+      //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
+      if (configLayer.displayScaleRange){
+        const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
+        const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
         if (cluster) {  
-          if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
             this.map.addLayer(clusterLayer);
           } else {
             this.map.removeLayer(clusterLayer);
           }
         } else{
-          if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
             this.map.addLayer(layer);
           } else {
             this.map.removeLayer(layer);
           }
         }
-    });
-
-    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
-    if (this.mapConfig.showLayersOnLoad) {
-      if (cluster) {    
-        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){
-          this.map.addLayer(clusterLayer);
-          } 
-       } else {
-        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
-          this.map.addLayer(layer)
-          }
-        
-        if (configLayer.loadToBack){
-          layer.bringToBack();
-       }
       }  
-    } else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-       if (cluster) {    
-        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){
-          this.map.addLayer(clusterLayer);
-          } 
-       } else {
-        if (this.map.getZoom() >= displayedFromZoomLevel && this.map.getZoom() <= displayedUpToZoomLevel){ 
-          this.map.addLayer(layer)
+    });
+    //If the displayScaleRange exists
+   //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
+   if (configLayer.displayScaleRange){
+    const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
+    const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
+    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
+      if (this.mapConfig.showLayersOnLoad) {
+        if (cluster) {   
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
+              this.map.addLayer(clusterLayer);
+              } 
+          } else {
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(layer)
+              }
+            
+            if (configLayer.loadToBack){
+              layer.bringToBack();
           }
-        
-        if (configLayer.loadToBack){
-          layer.bringToBack();
-       }
-      }    
+        }  
+      } else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+        if (cluster) {    
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
+            this.map.addLayer(clusterLayer);
+            } 
+        } else {
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(layer)
+              }
+            
+            if (configLayer.loadToBack){
+              layer.bringToBack();
+            }
+        }    
+      }
+    }else{
+      // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
+      if (this.mapConfig.showLayersOnLoad) {
+        if (cluster) {     
+          this.map.addLayer(clusterLayer);
+        }
+        else {
+          layer.addTo(this.map);
+  
+          if (configLayer.loadToBack){
+            layer.bringToBack();
+          }  
+        } 
+      }
+      else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+        if (cluster) {     
+          this.map.addLayer(clusterLayer);
+        }
+        else {
+          layer.addTo(this.map);
+          if (configLayer.loadToBack){
+            layer.bringToBack();
+          }
+        }    
+      }
+
     }
+    
     //open popup closest to the map centre
     if (configLayer.openPopupClosestToMapCentre){
       let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
