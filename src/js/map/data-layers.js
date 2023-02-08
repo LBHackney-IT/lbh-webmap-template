@@ -309,28 +309,32 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    //Listener to control the visibility zoom when zooming
-    this.map.on('zoomend ', (e) => {
-      //console.log('zoom = '+ this.map.getZoom());
+    
+      
       //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
       if (configLayer.displayScaleRange){
         const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
         const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
-        if (cluster) {  
-          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
-            this.map.addLayer(clusterLayer);
-          } else {
-            this.map.removeLayer(clusterLayer);
+        //Listener to control the visibility zoom when zooming
+        
+        this.map.on('zoomend ', (e) => {
+          //console.log('zoom = '+ this.map.getZoom());
+          if (cluster) {  
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(clusterLayer);
+            } else {
+              this.map.removeLayer(clusterLayer);
+            }
+          } else{
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(layer);
+            } else {
+              this.map.removeLayer(layer);
+            }
           }
-        } else{
-          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
-            this.map.addLayer(layer);
-          } else {
-            this.map.removeLayer(layer);
-          }
-        }
+        });
       }  
-    });
+    
     //If the displayScaleRange exists
    //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
    if (configLayer.displayScaleRange){
