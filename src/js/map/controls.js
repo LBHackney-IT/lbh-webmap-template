@@ -36,6 +36,7 @@ class Controls {
     }
 
     this.map.addEventListener("click", this.closeIfMobile.bind(this));
+    
     if (this.clear){
       this.clear.addEventListener("click", () => {
         this.closeIfMobile();
@@ -45,6 +46,7 @@ class Controls {
     }
   }
 
+ 
   createMarkup() {
     //check if we are in fullscreen mode. Different mark up is used
     const html = `
@@ -110,18 +112,30 @@ class Controls {
 
 
   toggleClearButton() {
-    this.map.on("layeradd", () => this.showClearButton());
+    this.map.on("layeradd", () => {
+      if (this.mapConfig.blockInteractiveLegend){
+        this.hideClearButton()
+      } else {
+        this.showClearButton()
+      }
+      }
+    );
+    
     this.map.on("layerremove", () => {
       let count = 0;
       this.map.eachLayer(() => (count += 1));
       if (count == 2) {
-        this.clear.style.display = "none";
+        this.hideClearButton()
       }
     });
   }
 
   showClearButton() {
     this.clear.style.display = "block";
+  }
+
+  hideClearButton() {
+    this.clear.style.display = "none";
   }
 
   toggleControls() {
