@@ -545,7 +545,7 @@ class DataLayers {
     });
     //Make the legend not clickeable if there is blockInteractiveLegend
     if (this.mapConfig.blockInteractiveLegend){
-      this.layerControl.getContainer().classList.add("not-clickable-legend");
+      this.layerControl.getContainer().classList.add("non-clickable-legend");
     }
     return this.layerControl;
   }
