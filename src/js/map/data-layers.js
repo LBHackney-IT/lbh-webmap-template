@@ -309,38 +309,31 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    
+    //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
+    if (configLayer.displayScaleRange){
+      const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
+      const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
       
-      //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
-      if (configLayer.displayScaleRange){
-        const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
-        const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
-        //Listener to control the visibility zoom when zooming
-        
-        this.map.on('zoomend ', (e) => {
-          //console.log('zoom = '+ this.map.getZoom());
-          if (cluster) {  
-            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
-              this.map.addLayer(clusterLayer);
-            } else {
-              this.map.removeLayer(clusterLayer);
-            }
-          } else{
-            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
-              this.map.addLayer(layer);
-            } else {
-              this.map.removeLayer(layer);
-            }
+      //Add a listener to control the visibility zoom when zooming
+      this.map.on('zoomend ', (e) => {
+        //console.log('zoom = '+ this.map.getZoom());
+        if (cluster) {  
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+            this.map.addLayer(clusterLayer);
+          } else {
+            this.map.removeLayer(clusterLayer);
           }
-        });
-      }  
-    
-    //If the displayScaleRange exists
-   //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
-   if (configLayer.displayScaleRange){
-    const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
-    const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
-    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
+        } 
+        else{
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+            this.map.addLayer(layer);
+          } else {
+            this.map.removeLayer(layer);
+          }
+        }
+      });
+      
+      //Add or not the layer on load
       if (this.mapConfig.showLayersOnLoad) {
         if (cluster) {   
             if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
@@ -355,7 +348,8 @@ class DataLayers {
               layer.bringToBack();
           }
         }  
-      } else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+      } 
+      else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
         if (cluster) {    
           if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
             this.map.addLayer(clusterLayer);
@@ -370,8 +364,9 @@ class DataLayers {
             }
         }    
       }
-    }else{
-      // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
+    }
+    //If there is no displayScaleRange in the map config (general case))
+    else {
       if (this.mapConfig.showLayersOnLoad) {
         if (cluster) {     
           this.map.addLayer(clusterLayer);
@@ -395,7 +390,6 @@ class DataLayers {
           }
         }    
       }
-
     }
     
     //open popup closest to the map centre
@@ -545,7 +539,7 @@ class DataLayers {
     });
     //Make the legend not clickeable if there is blockInteractiveLegend
     if (this.mapConfig.blockInteractiveLegend){
-      this.layerControl.getContainer().classList.add("not-clickable-legend");
+      this.layerControl.getContainer().classList.add("non-clickable-legend");
     }
     return this.layerControl;
   }
