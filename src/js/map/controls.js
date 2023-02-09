@@ -113,11 +113,9 @@ class Controls {
 
   toggleClearButton() {
     this.map.on("layeradd", () => {
-      if (this.mapConfig.blockInteractiveLegend){
-        this.hideClearButton()
-      } else {
+      if (! this.mapConfig.blockInteractiveLegend){
         this.showClearButton()
-      }
+        }
       }
     );
     
