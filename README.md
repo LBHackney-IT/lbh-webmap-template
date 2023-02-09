@@ -149,8 +149,7 @@ Object properties:
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
 | `excludeFromLegend` | Boolean | optional | If `true`, the layer will be excluded from the legend. |
-| `displayedFromZoomLevel` | Number | optional | This value is used to control the visibility of the layers. The layer will be displayed from the `displayedFromZoomLevel` (up to the `displayedUpToZoomLevel`). If empty, the layer will be displayed at all the zoom levels.|
-| `displayedUpToZoomLevel` | Number | optional | This value is used to control the visibility of the layers. The layer will be displayed up to the `displayedUpToZoomLevel` (from the `displayedFromZoomLevel`). If empty, the layer will be displayed at all the zoom levels.|
+| `displayScaleRange` | Object | optional | This range is used to control the visibility of the layers. By default, the layers are displayed at all the zoom levels. If the range is added, the layers will be displayed from `minScale` to `maxScale`. If one of the values is not specified, the min map scale or the max map scale will be used instead|
 | `loadToBack` | Boolean | optional | If `true` and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
 | `highlightFeatureOnHover` | Boolean | optional | If `true`, polygon features will be highlighted on mouse hover. |
 | `zoomToFeatureOnClick` | Boolean | optional | If `true`, clicking on a polygon features will zoom to its extent. |
