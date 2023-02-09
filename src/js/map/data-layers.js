@@ -543,6 +543,10 @@ class DataLayers {
         this.personasClass.removeActiveClass();
       }
     });
+    //Make the legend not clickeable if there is blockInteractiveLegend
+    if (this.mapConfig.blockInteractiveLegend){
+      this.layerControl.getContainer().classList.add("not-clickable-legend");
+    }
     return this.layerControl;
   }
 
