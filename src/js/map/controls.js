@@ -19,12 +19,9 @@ class Controls {
   }
 
   init() {
-    if (this.mapClass.isFullScreen){
-      this.createMarkup();
-    }
-    else{
-      this.createMarkup();
-    }
+    this.createMarkup();
+    
+    //TODO: test if fullscreen mode and use the different markup createMarkupFullScreen()
 
     this.controls = document.getElementById("controls");
     this.toggle = document.getElementById("controls-toggle");
@@ -48,7 +45,6 @@ class Controls {
 
  
   createMarkup() {
-    //check if we are in fullscreen mode. Different mark up is used
     const html = `
       <button id="controls-toggle" class="controls__sidebar-toggle">
         <i class="fa-regular fa-sliders controls__sidebar-toggle-icon"></i>
@@ -77,7 +73,7 @@ class Controls {
   }
 
   createMarkupFullScreen() {
-    //check if we are in fullscreen mode. Different mark up is used
+    //TODO: adapt this markup for full screen mode. For the moment, only the default markup is used.
     const html = `
     <button id="controls-toggle" class="controls__sidebar-toggle">
     <i class="fal fa-sliders-h controls__sidebar-toggle-icon"></i>

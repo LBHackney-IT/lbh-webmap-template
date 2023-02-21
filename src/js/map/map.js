@@ -474,7 +474,7 @@ class Map {
   
   addResetButton() {
     L.easyButton(
-      "fa-magnifying-glass-location",
+      "far fa-magnifying-glass-location",
       () => {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
@@ -494,8 +494,9 @@ class Map {
 
   addFullScreenButton() {
     L.easyButton(
-      //"fa-expand",
-      "fa-maximize",
+      "far fa-arrows-maximize",
+      // "fa-expand",
+      // "fa-maximize",
       () => {
         //Get the URL parameters and open a new fullscreen map including the parameters
         const queryStringFromURL = window.location.search;
