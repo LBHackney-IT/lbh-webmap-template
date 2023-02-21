@@ -474,7 +474,7 @@ class Map {
   
   addResetButton() {
     L.easyButton(
-      "fa-globe",
+      "fa-magnifying-glass-location",
       () => {
         // Still check this as someone may be on a desktop device at around 760px
         if (isMobileFn()) {
@@ -487,7 +487,7 @@ class Map {
            this.map.setView(this.centerDesktop, this.zoom);
         }
       },
-      "Zoom to all Hackney",
+      "Zoom to Hackney extent",
       { position: "topright" }
     ).addTo(this.map);
   }
