@@ -169,6 +169,8 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
+
 
     var clusterLayer = null;
 
@@ -184,7 +186,6 @@ class DataLayers {
       fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
       weight: linePolygonStyle && linePolygonStyle.weight
     };
-
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
@@ -294,7 +295,7 @@ class DataLayers {
       );
       //create clusters layer
       clusterLayer = L.markerClusterGroup({
-        maxClusterRadius: 60,
+        maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
         spiderfyOnMaxZoom: false,
         showCoverageOnHover: false
@@ -308,37 +309,89 @@ class DataLayers {
       this.layersData.push({configLayer, layer, data});
     }
     
-    // TODO: add a listener for the map to add/remove the layer based on zoom
-    // this.map.on('zoomend ', (e) => {
-    //   console.log('zoom = '+ this.map.getZoom());
-    //   if ( this.map.getZoom() > 7 ){ this.map.addLayer(layer)}
-    //   else if ( this.map.getZoom() <= 7 ){ this.map.removeLayer(layer)}
-    // });
-
-    // TODO: refactor showLayersOnLoad to showAllLayersOnLoad, it will be clearer
-    if (this.mapConfig.showLayersOnLoad) {
-      if (cluster) {     
-        this.map.addLayer(clusterLayer);
-      }
-      else {
-        layer.addTo(this.map);
- 
-        if (configLayer.loadToBack){
-          layer.bringToBack();
+    //If displayScaleRange exists, the displayMinScale/displayMaxScale are created using those and the default min/max mapzoom levels. 
+    if (configLayer.displayScaleRange){
+      const displayMinScale = configLayer.displayScaleRange.minScale  ? configLayer.displayScaleRange.minScale : this.map.options.minZoom; 
+      const displayMaxScale = configLayer.displayScaleRange.maxScale ? configLayer.displayScaleRange.maxScale  : this.map.options.maxZoom; 
+      
+      //Add a listener to control the visibility zoom when zooming
+      this.map.on('zoomend ', (e) => {
+        //console.log('zoom = '+ this.map.getZoom());
+        if (cluster) {  
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+            this.map.addLayer(clusterLayer);
+          } else {
+            this.map.removeLayer(clusterLayer);
+          }
+        } 
+        else{
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+            this.map.addLayer(layer);
+          } else {
+            this.map.removeLayer(layer);
+          }
+        }
+      });
+      
+      //Add or not the layer on load
+      if (this.mapConfig.showLayersOnLoad) {
+        if (cluster) {   
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
+              this.map.addLayer(clusterLayer);
+              } 
+          } else {
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(layer)
+              }
+            
+            if (configLayer.loadToBack){
+              layer.bringToBack();
+          }
         }  
       } 
-    }
-    else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
-      if (cluster) {     
-        this.map.addLayer(clusterLayer);
+      else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+        if (cluster) {    
+          if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){
+            this.map.addLayer(clusterLayer);
+            } 
+        } else {
+            if (this.map.getZoom() >= displayMinScale && this.map.getZoom() <= displayMaxScale){ 
+              this.map.addLayer(layer)
+              }
+            
+            if (configLayer.loadToBack){
+              layer.bringToBack();
+            }
+        }    
       }
-      else {
-        layer.addTo(this.map);
-        if (configLayer.loadToBack){
-          layer.bringToBack();
-       }
-      }    
     }
+    //If there is no displayScaleRange in the map config (general case))
+    else {
+      if (this.mapConfig.showLayersOnLoad) {
+        if (cluster) {     
+          this.map.addLayer(clusterLayer);
+        }
+        else {
+          layer.addTo(this.map);
+  
+          if (configLayer.loadToBack){
+            layer.bringToBack();
+          }  
+        } 
+      }
+      else if (this.mapConfig.showFirstLayerOnLoad && sortOrder == 1){
+        if (cluster) {     
+          this.map.addLayer(clusterLayer);
+        }
+        else {
+          layer.addTo(this.map);
+          if (configLayer.loadToBack){
+            layer.bringToBack();
+          }
+        }    
+      }
+    }
+    
     //open popup closest to the map centre
     if (configLayer.openPopupClosestToMapCentre){
       let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
@@ -371,47 +424,51 @@ class DataLayers {
     }
       
     if (this.mapConfig.showLegend) {
-      let legendEntry = '';
-      const count = layer.getLayers().length;
-      
-      if (cluster) {
-        this.layers.push(clusterLayer);
-      }
-      else {
-        this.layers.push(layer);
-      }
-      if (markerIcon2){
-        if (this.mapConfig.hideNumberOfItems){
-          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-            MARKER_COLORS[markerColorIcon2]
-            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-        } else{
-          legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-            MARKER_COLORS[markerColorIcon2]
-            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-            layer
-            )}" class="control__count">${count} items shown</span></div></div>`;          
+      if (!configLayer.excludeFromLegend){
+        let legendEntry = '';
+        const count = layer.getLayers().length;
+        
+        if (cluster) {
+          this.layers.push(clusterLayer);
         }
-         
-      } else {
-        if (this.mapConfig.hideNumberOfItems){
-          legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-            MARKER_COLORS[markerColor]
-            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
+        else {
+          this.layers.push(layer);
+        }
+        if (markerIcon2){
+          if (this.mapConfig.hideNumberOfItems){
+            legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+              MARKER_COLORS[markerColorIcon2]
+              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
+          } else{
+            legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
+              MARKER_COLORS[markerColorIcon2]
+              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+              layer
+              )}" class="control__count">${count} items shown</span></div></div>`;          
+          }
+           
         } else {
-          legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-            MARKER_COLORS[markerColor]
-            }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-            layer
-            )}" class="control__count">${count} items shown</span></div></div>`;         
+          if (this.mapConfig.hideNumberOfItems){
+            legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+              MARKER_COLORS[markerColor]
+              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
+          } else {
+            legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
+              MARKER_COLORS[markerColor]
+              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
+              layer
+              )}" class="control__count">${count} items shown</span></div></div>`;         
+          }
         }
+        if (cluster){
+          this.overlayMaps[legendEntry] = clusterLayer;
+        }
+        else{
+          this.overlayMaps[legendEntry] = layer;
+        }  
+       
       }
-      if (cluster){
-        this.overlayMaps[legendEntry] = clusterLayer;
-      }
-      else{
-        this.overlayMaps[legendEntry] = layer;
-      }
+      
       const layerPersonas = configLayer.personas;
       for (const x in this.personas) {
         if (layerPersonas.includes(this.personas[x].id)) {
@@ -480,6 +537,10 @@ class DataLayers {
         this.personasClass.removeActiveClass();
       }
     });
+    //Make the legend not clickeable if there is blockInteractiveLegend
+    if (this.mapConfig.blockInteractiveLegend){
+      this.layerControl.getContainer().classList.add("non-clickable-legend");
+    }
     return this.layerControl;
   }
 

@@ -83,6 +83,7 @@ The options for the data file are as follows:
 | `zoomToMasterMapBW` | Boolean | optional | If `true` the map will allow to zoom to the black and white detailed view (OS MasterMap BW).|
 | `blockZoomToMasterMap` | Boolean | optional | If `true` the map will block the zoom to the detailed view (OS MasterMap).|
 | `minMapZoom` | Number | optional | It allows you to specify what is the min map zoom level.The map will block the zoom when zooming out beyond that level.|
+| `blockInteractiveLegend` | Boolean | optional | If `true` the legend of the map won't be clickeable|
 | `showLocateButton` | Boolean | optional | If `true` a button with geolocation function will be added to the map. |
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 
@@ -148,6 +149,8 @@ Object properties:
 | `geoserverLayerName` | String | required | Name (not title) of the layer in geoserver which usually follows the following structure `[Schema_name]:[table_name]` (e.g. `planning:conversation_area`). The geoserver name does not need to be the same as the table name in the database, but will be by default. |
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
+| `excludeFromLegend` | Boolean | optional | If `true`, the layer will be excluded from the legend. |
+| `displayScaleRange` | Object | optional | This range is used to control the visibility of the layers. By default, the layers are displayed at all the zoom levels. If the range is added, the layers will be displayed from `minScale` to `maxScale`. If one of the values is not specified, the min map scale or the max map scale will be used instead|
 | `loadToBack` | Boolean | optional | If `true` and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
 | `highlightFeatureOnHover` | Boolean | optional | If `true`, polygon features will be highlighted on mouse hover. |
 | `zoomToFeatureOnClick` | Boolean | optional | If `true`, clicking on a polygon features will zoom to its extent. |
