@@ -494,7 +494,8 @@ class Map {
 
   addFullScreenButton() {
     L.easyButton(
-      "fa-expand",
+      //"fa-expand",
+      "fa-maximize",
       () => {
         //Get the URL parameters and open a new fullscreen map including the parameters
         const queryStringFromURL = window.location.search;
