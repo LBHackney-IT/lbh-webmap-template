@@ -340,8 +340,9 @@ class Map {
       });
       this.map.setMaxBounds(MAP_BOUNDS);
     }
+    
     // Disable zoom specifically on mobile devices, not based on screensize.
-    if (!L.Browser.mobile && !this.isFullScreen) {
+    if (!L.Browser.mobile) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     } 
 
@@ -353,6 +354,8 @@ class Map {
       ).init();
     }
 
+   
+
     // Add reset button specifically on non-mobile devices, not based on screensize.
     if (this.mapConfig.showResetZoomButton && !L.Browser.mobile) {
       this.addResetButton();
@@ -362,6 +365,8 @@ class Map {
      if (this.mapConfig.showFullScreenButton && !this.isFullScreen) {
       this.addFullScreenButton();
     }
+
+ 
 
     //Add show and hide legend controls
     if (this.mapConfig.showLegend) {
