@@ -341,29 +341,29 @@ class Map {
       this.map.setMaxBounds(MAP_BOUNDS);
     }
     
-    // Disable zoom specifically on mobile devices, not based on screensize.
-    if (!L.Browser.mobile) {
+   
+    
+    // Do not add the zoom and the other buttons yet if it is fullscreen so we can have the right elements order. 
+    // Disable zoom and other buttons specifically on mobile devices, not based on screensize.
+     if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
     } 
+    // Add reset button specifically on non-mobile devices, not based on screensize.
+    if (this.mapConfig.showResetZoomButton && !L.Browser.mobile && !this.isFullScreen) {
+      this.addResetButton();
+    }
+     //Add fullscreen button specifically on non-mobile devices, not based on screensize.
+     if (this.mapConfig.showFullScreenButton && !this.isFullScreen) {
+      this.addFullScreenButton();
+    }
 
-    if (this.mapConfig.showLocateButton) {
+    //Add geolocation button specifically on non-mobile devices, not based on screensize.
+    if (this.mapConfig.showLocateButton && !L.Browser.mobile && !this.isFullScreen) {
       new Geolocation(
         this.map,
         this.errorNoLocation,
         this.errorOutsideHackney
       ).init();
-    }
-
-   
-
-    // Add reset button specifically on non-mobile devices, not based on screensize.
-    if (this.mapConfig.showResetZoomButton && !L.Browser.mobile) {
-      this.addResetButton();
-    }
-
-     //Add fullscreen button
-     if (this.mapConfig.showFullScreenButton && !this.isFullScreen) {
-      this.addFullScreenButton();
     }
 
  
@@ -408,6 +408,20 @@ class Map {
     }
     //Last, load the info and metadata
     new Metadata(this).loadMetadata();
+    //Add the zoom and other buttons in fullscreen to have the right order. 
+    if (!L.Browser.mobile && this.isFullScreen){
+      L.control.zoom({ position: "topright" }).addTo(this.map);
+    }
+    if (this.mapConfig.showResetZoomButton && !L.Browser.mobile && this.isFullScreen) {
+      this.addResetButton();
+    }
+    if (this.mapConfig.showLocateButton && !L.Browser.mobile && this.isFullScreen) {
+      new Geolocation(
+        this.map,
+        this.errorNoLocation,
+        this.errorOutsideHackney
+      ).init();
+    }
   }
 
   addBaseLayer() {
