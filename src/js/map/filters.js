@@ -75,9 +75,10 @@ class Filters {
         let isShown = true;
         for (let [key, values] of Object.entries(this.checkboxStates)) {
           if (values.length > 0) {
-            if (
-              !feature.properties[key] ||
-              !feature.properties[key].split(",").some(i => values.includes(i))
+            if ((key in feature.properties) &&
+              (!feature.properties[key] ||
+                !feature.properties[key].split(",").some(i => values.includes(i))
+              )
             ) {
               isShown = false;
             }
