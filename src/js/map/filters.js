@@ -11,15 +11,15 @@ class Filters {
     this.container = map.container;
     this.filters = null;
     this.clearButton = null;
-    this.filtersSectionTitle=null;
+    this.filtersSectionTitle = null;
+    this.filtersSectionExpanded = null;
   }
 
   init() {
     this.filters = this.mapConfig.filtersSection.filters;
-    this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle;
-    if (!this.filtersSectionTitle){
-      this.filtersSectionTitle= "Filter";
-    }
+    this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle || 'Filter';
+    this.filtersSectionExpanded = this.mapConfig.filtersSection.filtersSectionExpanded || 'closed';
+    
     this.createMarkup();
     this.updateCheckboxStates();
     this.setFilterInputAction();
@@ -33,7 +33,7 @@ class Filters {
   }
 
   createMarkup() {
-    let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
+    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.filtersSectionExpanded}>
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
       + this.filtersSectionTitle
