@@ -11,15 +11,15 @@ class Filters {
     this.container = map.container;
     this.filters = null;
     this.clearButton = null;
-    this.filtersSectionTitle=null;
+    this.filtersSectionTitle = null;
+    this.filtersSectionState = null;
   }
 
   init() {
     this.filters = this.mapConfig.filtersSection.filters;
-    this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle;
-    if (!this.filtersSectionTitle){
-      this.filtersSectionTitle= "Filter";
-    }
+    this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle || 'Filter';
+    this.filtersSectionState = this.mapConfig.filtersSection.filtersSectionState || 'closed';
+    
     this.createMarkup();
     this.updateCheckboxStates();
     this.setFilterInputAction();
@@ -33,7 +33,7 @@ class Filters {
   }
 
   createMarkup() {
-    let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
+    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.filtersSectionState}>
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
       + this.filtersSectionTitle
@@ -75,9 +75,10 @@ class Filters {
         let isShown = true;
         for (let [key, values] of Object.entries(this.checkboxStates)) {
           if (values.length > 0) {
-            if (
-              !feature.properties[key] ||
-              !feature.properties[key].split(",").some(i => values.includes(i))
+            if ((key in feature.properties) &&
+              (!feature.properties[key] ||
+                !feature.properties[key].split(",").some(i => values.includes(i))
+              )
             ) {
               isShown = false;
             }
