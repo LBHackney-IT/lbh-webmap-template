@@ -12,13 +12,13 @@ class Filters {
     this.filters = null;
     this.clearButton = null;
     this.filtersSectionTitle = null;
-    this.filtersSectionExpanded = null;
+    this.filtersSectionState = null;
   }
 
   init() {
     this.filters = this.mapConfig.filtersSection.filters;
     this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle || 'Filter';
-    this.filtersSectionExpanded = this.mapConfig.filtersSection.filtersSectionExpanded || 'closed';
+    this.filtersSectionState = this.mapConfig.filtersSection.filtersSectionState || 'closed';
     
     this.createMarkup();
     this.updateCheckboxStates();
@@ -33,7 +33,7 @@ class Filters {
   }
 
   createMarkup() {
-    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.filtersSectionExpanded}>
+    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.filtersSectionState}>
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
       + this.filtersSectionTitle
