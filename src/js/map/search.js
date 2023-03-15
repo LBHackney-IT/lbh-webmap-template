@@ -52,7 +52,10 @@ class Search {
             autoCollapseTime: 4000
         });
 
-        controlSearch.on('search:locationfound', (e) => {           
+        controlSearch.on('search:locationfound', (e) => {        
+             
+          //Zoom to the record
+          this.map.fitBounds(e.layer.getBounds());     
           
           if(this.search.clearMapAfterSearch){
             this.mapClass.clear();  
@@ -65,6 +68,7 @@ class Search {
               });             
             });
           }
+          
           if(e.layer._popup){
             e.layer.openPopup();    
           }           
