@@ -54,10 +54,21 @@ class Search {
             autoCollapseTime: 4000
         });
 
-        controlSearch.on('search:locationfound', (e) => {        
+        controlSearch.on('search:locationfound', (e) => {  
+          console.log(e);      
              
           //Zoom to the record
-          this.map.fitBounds(e.layer.getBounds());     
+          //If it is a polygon or line...
+          if (e.layer instanceof L.Polygon || e.layer instanceof L.Polyline) {
+            this.map.fitBounds(e.layer.getBounds());    
+          } else {
+            //If it is a point
+            this.mapClass.map.fitBounds(L.latLng(e.latlng).toBounds(200), {
+                animate: false,
+                paddingTopLeft: [270, 0]
+            });
+          }
+
           
           if(this.search.clearMapAfterSearch){
             this.mapClass.clear();  
