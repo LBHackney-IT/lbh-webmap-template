@@ -9,12 +9,14 @@ class Search {
     
     init() {
       this.search = this.mapConfig.search;
+      this.searchSectionState = this.search.searchSectionState || 'closed';
+
       //this.createMarkup();
       this.searchLayer = new L.LayerGroup([]); 
     }
 
     createMarkup(){
-        let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
+        let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.searchSectionState}>
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
       +this.search.searchSectionTitle

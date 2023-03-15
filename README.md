@@ -127,6 +127,9 @@ Object properties:
 | `searchPlaceholderText` | String | required | Hint text displayed in grey inside the search bar. Example: 'type postcode or block name'. |
 | `notFoundText` | String | required | Message appearing under the search box if no result is found. |
 | `clearMapAfterSearch` | Boolean | required | If `true`, the map is cleared before displaying the retrieved object(s), so only the result is shown. If false, the result is highlighted but all other objects will remain on the map. |
+| `searchSectionState`| The search can be set to be expanded or collapsed by default. The values are open or closed. The default is 'closed'|
+
+
 
 
 ### Address search Options
