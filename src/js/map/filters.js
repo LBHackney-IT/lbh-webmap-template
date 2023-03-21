@@ -16,6 +16,7 @@ class Filters {
   }
 
   init() {
+    console.log ('init filters');
     this.filters = this.mapConfig.filtersSection.filters;
     this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle || 'Filter';
     this.filtersSectionState = this.mapConfig.filtersSection.filtersSectionState || 'closed';
@@ -63,7 +64,8 @@ class Filters {
       </fieldset>`;
     }
     html += `</div></div></details><button id="filters-clear" class="govuk-button lbh-button filters__clear">Clear filters</button></section>`;
-    this.mapClass.addMarkupToMap(html, "filters", "filters");
+    console.log('adding filter markup to map');
+    this.mapClass.addMarkupJustAboveMap(html, "filters", "filters");
     this.clearButton = document.getElementById("filters-clear");
   }
 

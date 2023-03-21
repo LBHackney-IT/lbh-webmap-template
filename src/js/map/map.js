@@ -399,7 +399,7 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     
-    //Add the layers from cofig
+    //Add the layers from config
     if(this.mapConfig.layers[0].vectorTilesLayer){
       new VectorTileDataLayers(this).loadLayers();
     } 
@@ -531,12 +531,21 @@ class Map {
 
   }
 
-  addMarkupToMap(markup, id, className) {
+  addMarkupToTop(markup, id, className) {
     const element = document.createElement("section");
     element.setAttribute("id", id);
     element.classList.add(className);
     element.innerHTML = markup;
+    console.log(this.container);
     this.container.insertBefore(element, this.container.firstChild);
+  }
+
+  addMarkupJustAboveMap(markup, id, className) {
+    const element = document.createElement("section");
+    element.setAttribute("id", id);
+    element.classList.add(className);
+    element.innerHTML = markup;
+    this.container.insertBefore(element, document.getElementById("controls"));
   }
 
   addMarkupToMapAfter(markup, id, className) {
