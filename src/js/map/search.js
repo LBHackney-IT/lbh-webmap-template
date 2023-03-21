@@ -8,6 +8,7 @@ class Search {
     }
     
     init() {
+      console.log('init layer search');
       this.search = this.mapConfig.search;
       //this.createMarkup();
       this.searchLayer = new L.LayerGroup([]); 
@@ -25,8 +26,9 @@ class Search {
   </div>
   </details>
     </section>`;
-
-    this.mapClass.addMarkupToMap(html, "search", "search");
+    
+    console.log('adding search markup to map');
+    this.mapClass.addMarkupToTop(html, "search", "search");
         
       //extension of search plugin that does NOT add the searched layer to the map
       const HackneyLeafletSearch = L.Control.Search.extend({

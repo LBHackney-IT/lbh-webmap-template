@@ -69,7 +69,7 @@ class Controls {
         </sidebar>
       </div>
     `;
-    this.mapClass.addMarkupToMap(html, "controls", "controls");
+    this.mapClass.addMarkupToTop(html, "controls", "controls");
   }
 
   createMarkupFullScreen() {
@@ -103,7 +103,7 @@ class Controls {
         </sidebar>
       </div>    
     `;
-    this.mapClass.addMarkupToMap(html, "controls", "controls");
+    this.mapClass.addMarkupToTop(html, "controls", "controls");
   }
 
 

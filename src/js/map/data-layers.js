@@ -506,8 +506,14 @@ class DataLayers {
       
       //only happens once, after the last layer has loaded
       if (this.loadedLayerCount == this.layerCount){
+        console.log('after last layer: create markup for layer search')
         this.search.createMarkup();
       }     
+    }
+    //only happens once, after the last layer has loaded: address search
+    if (this.loadedLayerCount == this.layerCount && this.mapConfig.showAddressSearch){
+      this.showAddressSearch = new addressSearch(this.mapClass);
+      this.showAddressSearch.init();
     }
   }
 
@@ -561,15 +567,13 @@ class DataLayers {
       }
     }
     if (this.mapConfig.search){
-      //this.searchLayer = new L.LayerGroup([]);
       this.search = new Search(this.mapClass);
       this.search.init();
-    }if (this.mapConfig.showAddressSearch){
-      //this.searchLayer = new L.LayerGroup([]);
-      this.showAddressSearch = new addressSearch(this.mapClass);
-      this.showAddressSearch.init();
-      //this.showAddressSearch.createMarkup();
     }
+    // if (this.mapConfig.showAddressSearch){
+    //   this.showAddressSearch = new addressSearch(this.mapClass);
+    //   this.showAddressSearch.init();
+    // }
 
     //for each layer in the config file
     for (const configLayer of this.mapConfig.layers) {

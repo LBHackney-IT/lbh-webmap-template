@@ -46,6 +46,7 @@ class addressSearch {
   }
     
   init() {
+    console.log ('init address search');
     this.showAddressSearch = this.mapConfig.showAddressSearch;
     this.addressSearchLabel = this.showAddressSearch.addressSearchLabel || 'Go to an address';
     this.addressSearchExpanded = this.showAddressSearch.addressSearchExpanded || 'open';
@@ -123,8 +124,8 @@ class addressSearch {
     </div>
     </details>
       </section>`;
-
-    this.mapClass.addMarkupToMap(html, "addressSearch", "addresSsearch"); 
+    console.log('adding address search markup to map');
+    this.mapClass.addMarkupToTop(html, "addressSearch", "addresSsearch"); 
     this.searchButton = document.getElementById("search-button");
     this.postcodeBox = document.getElementById("postcode");
   }
