@@ -145,8 +145,8 @@ class Metadata {
         metadataText += `<p class="lbh-body-xs">${feature.properties.abstract}</p>`;
       }
       metadataText += `<p class="lbh-body-xs"><b>Source:</b> ${feature.properties.source}<br></p>`;
-      if (feature.properties.lastupdatedate) {
-        metadataText += `<p class="lbh-body-xs"><b>Last updated:</b> ${feature.properties.lastupdatedate}</p>`;
+      if (feature.properties.lastupdatedate_textual) {
+        metadataText += `<p class="lbh-body-xs"><b>Last updated:</b> ${feature.properties.lastupdatedate_textual}</p>`;
       }
       metadataText += "</div>";
     }
