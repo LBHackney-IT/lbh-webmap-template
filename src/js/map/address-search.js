@@ -49,7 +49,7 @@ class addressSearch {
     console.log ('init address search');
     this.showAddressSearch = this.mapConfig.showAddressSearch;
     this.addressSearchLabel = this.showAddressSearch.addressSearchLabel || 'Go to an address';
-    this.addressSearchExpanded = this.showAddressSearch.addressSearchExpanded || 'open';
+    this.addressSearchState = this.showAddressSearch.addressSearchState || 'closed';
     this.addressSearchClue = this.showAddressSearch.addressSearchClue || 'Enter a Hackney postcode or address';
     this.addressSearchIcon = this.showAddressSearch.addressSearchIcon || 'fa-home-alt';
     
@@ -98,7 +98,7 @@ class addressSearch {
   }
 
   createMarkup(){
-    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.addressSearchExpanded}>
+    let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.addressSearchState}>
       <summary class="govuk-details__summary">
         <span class="govuk-details__summary-text">${this.addressSearchLabel}</span>
       </summary>

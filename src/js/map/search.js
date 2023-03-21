@@ -10,12 +10,14 @@ class Search {
     init() {
       console.log('init layer search');
       this.search = this.mapConfig.search;
+      this.searchSectionState = this.search.searchSectionState || 'closed';
+
       //this.createMarkup();
       this.searchLayer = new L.LayerGroup([]); 
     }
 
     createMarkup(){
-        let html = `<details class="govuk-details lbh-details" data-module="govuk-details">
+        let html = `<details class="govuk-details lbh-details" data-module="govuk-details" ${this.searchSectionState}>
     <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">`
       +this.search.searchSectionTitle
@@ -54,7 +56,21 @@ class Search {
             autoCollapseTime: 4000
         });
 
-        controlSearch.on('search:locationfound', (e) => {           
+        controlSearch.on('search:locationfound', (e) => {  
+          console.log(e);      
+             
+          //Zoom to the record
+          //If it is a polygon or line...
+          if (e.layer instanceof L.Polygon || e.layer instanceof L.Polyline) {
+            this.map.fitBounds(e.layer.getBounds());    
+          } else {
+            //If it is a point
+            this.mapClass.map.fitBounds(L.latLng(e.latlng).toBounds(200), {
+                animate: false,
+                paddingTopLeft: [270, 0]
+            });
+          }
+
           
           if(this.search.clearMapAfterSearch){
             this.mapClass.clear();  
@@ -67,6 +83,7 @@ class Search {
               });             
             });
           }
+          
           if(e.layer._popup){
             e.layer.openPopup();    
           }           
