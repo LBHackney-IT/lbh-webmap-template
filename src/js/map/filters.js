@@ -16,7 +16,6 @@ class Filters {
   }
 
   init() {
-    console.log ('init filters');
     this.filters = this.mapConfig.filtersSection.filters;
     this.filtersSectionTitle = this.mapConfig.filtersSection.filtersSectionTitle || 'Filter';
     this.filtersSectionState = this.mapConfig.filtersSection.filtersSectionState || 'closed';
@@ -64,7 +63,6 @@ class Filters {
       </fieldset>`;
     }
     html += `</div></div></details><button id="filters-clear" class="govuk-button lbh-button filters__clear">Clear filters</button></section>`;
-    console.log('adding filter markup to map');
     this.mapClass.addMarkupJustAboveMap(html, "filters", "filters");
     this.clearButton = document.getElementById("filters-clear");
   }
@@ -73,31 +71,33 @@ class Filters {
   reload() {
     this.updateCheckboxStates();
     for (const layerData of this.layersData) {
-      layerData.layer.options.filter = feature => {
-        let isShown = true;
-        for (let [key, values] of Object.entries(this.checkboxStates)) {
-          if (values.length > 0) {
-            if ((key in feature.properties) &&
-              (!feature.properties[key] ||
-                !feature.properties[key].split(",").some(i => values.includes(i))
-              )
-            ) {
-              isShown = false;
+      if (! layerData.configLayer.excludeFromFilter){
+        layerData.layer.options.filter = feature => {
+          let isShown = true;
+          for (let [key, values] of Object.entries(this.checkboxStates)) {
+            if (values.length > 0) {
+              if ((key in feature.properties) &&
+                (!feature.properties[key] ||
+                  !feature.properties[key].split(",").some(i => values.includes(i))
+                )
+              ) {
+                isShown = false;
+              }
             }
           }
+          return isShown;
+        };
+        layerData.layer.clearLayers();
+        layerData.layer.addData(layerData.data);
+        if (layerData.clusterLayer) {
+          layerData.clusterLayer.clearLayers();
+          layerData.clusterLayer.addLayer(layerData.layer);
         }
-        return isShown;
-      };
-      layerData.layer.clearLayers();
-      layerData.layer.addData(layerData.data);
-      if (layerData.clusterLayer) {
-        layerData.clusterLayer.clearLayers();
-        layerData.clusterLayer.addLayer(layerData.layer);
+        const layerName = layerData.layer.getLayerId(layerData.layer);
+        document.getElementById(`map-layer-count-${layerName}`).innerText = `${
+          layerData.layer.getLayers().length
+        } items shown`;
       }
-      const layerName = layerData.layer.getLayerId(layerData.layer);
-      document.getElementById(`map-layer-count-${layerName}`).innerText = `${
-        layerData.layer.getLayers().length
-      } items shown`;
     }
   }
 
