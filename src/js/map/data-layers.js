@@ -579,23 +579,35 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-            //If there is cql, we add the cql filter to the wfs call
-            if (configLayer.cqlFilter){
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-            //If not, we use the default wfs call
-            } else{
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-            }
-          //Fetch the url
-          fetch(url, {
-            method: "get"
-          })
-            .then(response => response.json())
-            .then(data => this.addWFSLayer(data, configLayer))
-            .catch(error => {
-              console.log(error);
-              alert("Something went wrong, please reload the page");
-            });     
+      
+      //build a potential cql_filter based on the global filter from URL and layer-specific filter in mapConfig
+      let cqlFilter = '';
+      if (this.mapClass.globalCqlFilter && configLayer.cqlFilter && !configLayer.excludeFromFilter){
+        cqlFilter = [this.mapClass.globalCqlFilter, configLayer.cqlFilter].join(' AND ');
+      }
+      else if (this.mapClass.globalCqlFilter && !configLayer.excludeFromFilter){
+        cqlFilter = this.mapClass.globalCqlFilter;
+      }
+      else if (configLayer.cqlFilter){
+        cqlFilter = configLayer.cqlFilter;
+      }
+      //If there is cql, we add the cql filter to the wfs call
+      if (cqlFilter){
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + cqlFilter;
+      //If not, we use the default wfs call
+      } else{
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      }
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+      .then(response => response.json())
+      .then(data => this.addWFSLayer(data, configLayer))
+      .catch(error => {
+        console.log(error);
+        alert("Something went wrong, please reload the page");
+      });     
     }
   }
 }

@@ -66,6 +66,7 @@ class Map {
     this.uprn = null;
     this.blpuMarker = null;
     this.blpuPolygon = null;
+    this.globalCqlFilter = null;
     this.geoserver_wfs_url = getWFSurl();
     this.geoserver_wms_url = getWMSurl();
   }
@@ -98,7 +99,7 @@ class Map {
         this.uprn = new URL(location.href).searchParams.get("uprn");
         let latlonString = new URL(location.href).searchParams.get("latlon");
         let latlon= null;
-        
+        this.globalCqlFilter = new URL(location.href).searchParams.get("globalcqlfilter");
         //first get the zoom from the URL
         let zoomParam = new URL(location.href).searchParams.get("zoom");
         //Convert zoom parameter to Int
@@ -106,7 +107,7 @@ class Map {
         //If there is a zoom parameter in url, this is taken and we create the zoom on mobile from the parameter (-2). If not, default zoom desktop value will be taken. 
         zoomParam ? (this.zoom = zoomInt,this.zoom_mobile = zoomInt - 2) : (this.zoom = DEFAULT_ZOOM_DESKTOP,this.zoom_mobile = DEFAULT_ZOOM_MOBILE)
 
-        //If there is an uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
+        //If there is a uprn, we get the lat/long from the addresses API, add a marker and zoom to the area of interest
         if (this.uprn){
           fetch(this.geoserver_wfs_url+"llpg:blpu_details_test&cql_filter=uprn="+this.uprn, {
             method: "get"

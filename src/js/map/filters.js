@@ -94,6 +94,7 @@ class Filters {
           layerData.clusterLayer.addLayer(layerData.layer);
         }
         const layerName = layerData.layer.getLayerId(layerData.layer);
+        //TODO: disable this when the layer is filtered BUT it is excluded from the legend or its count is disabled
         document.getElementById(`map-layer-count-${layerName}`).innerText = `${
           layerData.layer.getLayers().length
         } items shown`;
