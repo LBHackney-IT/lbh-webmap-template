@@ -366,6 +366,8 @@ class Map {
       ).init();
     }
 
+    //Add pickCoordinatesbutton
+    this.addPickCoordinatesButton();
  
 
     //Add show and hide legend controls
@@ -528,7 +530,50 @@ class Map {
       "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
+  }
 
+  addPickCoordinatesButton() {
+    const pickCoordinates = (e) => {     
+      //alert("Copied Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " to clipboard");
+      var coordtext = e.latlng.lat + ", " + e.latlng.lng;
+      var popup = L.popup();
+      popup.setLatLng(e.latlng);
+      popup.setContent("<p>Coordinates</p><p><em>" + coordtext + " </em></p><p>have been copied to clipboard.</p><p>To pick another location, close  this window and click again on the 'pick and copy coordinates' tool.</p>");
+      popup.addTo(this.map);
+      
+      // Create a dummy input to copy the string array inside it
+      var dummy = document.createElement("input");
+      // Add it to the document
+      document.body.appendChild(dummy);
+      // Set its value
+      dummy.value = (coordtext);
+      // Select it
+      dummy.select();
+      // Copy its contents
+      document.execCommand("copy");
+      // Remove it as its not needed anymore
+      document.body.removeChild(dummy);
+      
+      this.map.off('click', pickCoordinates);
+      L.DomUtil.removeClass(this.map._container,'crosshair-cursor-enabled');
+      //set interactions back
+      this.map.eachLayer(function(layer) {
+        layer.options.interactive = true;
+      });
+    };
+    L.easyButton(
+      "fa-regular fa-bullseye-pointer",
+      () => {
+        L.DomUtil.addClass(this.map._container,'crosshair-cursor-enabled');
+        //stop all other interactions
+        this.map.eachLayer(function(layer) {
+          layer.options.interactive = false;
+        });
+        this.map.on('click', pickCoordinates);
+      },
+      "Pick and copy coordinates",
+      { position: "topright" }
+    ).addTo(this.map);
   }
 
   addMarkupToTop(markup, id, className) {
