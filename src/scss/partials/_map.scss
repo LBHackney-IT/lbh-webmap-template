@@ -185,3 +185,7 @@ body,
   box-shadow: 0 0 3px rgba(lbh-colour("lbh-black"), 0.3);
   border-radius: 5px;
 }
+
+.leaflet-container.crosshair-cursor-enabled {
+  cursor:crosshair;
+}
