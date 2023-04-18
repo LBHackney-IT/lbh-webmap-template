@@ -367,8 +367,9 @@ class Map {
     }
 
     //Add pickCoordinatesbutton
-    this.addPickCoordinatesButton();
- 
+    if (this.mapConfig.showPickCoordinatesButton) {
+      this.addPickCoordinatesButton();
+    }
 
     //Add show and hide legend controls
     if (this.mapConfig.showLegend) {
