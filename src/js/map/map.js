@@ -536,30 +536,23 @@ class Map {
   addPickCoordinatesButton() {
     const pickCoordinates = (e) => {     
       console.log('pick from map');
-      //alert("Copied Lat, Lon : " + e.latlng.lat + ", " + e.latlng.lng + " to clipboard");
-      //e.preventDefault();
-      var coordtext = e.latlng.lat + ", " + e.latlng.lng;
+      var coordtext = e.latlng.lat.toFixed(10) + ", " + e.latlng.lng.toFixed(10);
       var popup = L.popup({maxWidth: 210});
       popup.setLatLng(e.latlng);
-      popup.setContent("The coordinates</br>[" + coordtext + "]</br>have been copied to clipboard.<p>To pick another location, close this popup and click again on the 'pick and copy coordinates' tool.</p>");
+      popup.setContent("The coordinates</br>[" + coordtext + "]</br>have been copied to clipboard.<p>To pick another location, close this popup and click again on the 'Pick and copy coordinates' tool.</p>");
       popup.addTo(this.map);
       
-      // Create a dummy input to copy the string array inside it
+      // Copy to clipboard by creating a dummy text field
       var dummy = document.createElement("input");
-      // Add it to the document
       document.body.appendChild(dummy);
-      // Set its value
       dummy.value = (coordtext);
-      // Select it
       dummy.select();
-      // Copy its contents
       document.execCommand("copy");
-      // Remove it as its not needed anymore
       document.body.removeChild(dummy);
       
       this.map.off('click', pickCoordinates);
       L.DomUtil.removeClass(this.map._container,'leaflet-crosshair');
-      //set interactions back
+      //set normal interactions back
       this.map.eachLayer(function(layer) {
         layer.closePopup();
         layer.off('click', pickCoordinates);
@@ -570,13 +563,13 @@ class Map {
     const pickCoordinatesButton = L.easyButton({
       position: "topright",
       states: [{
-        stateName: 'inactive',        // name the state
-        icon:      'fa-regular fa-bullseye-pointer',               // and define its properties
-        title:     'Pick coordinates from map',      // like its title
+        stateName: 'inactive', 
+        icon:      'fa-regular fa-bullseye-pointer',
+        title:     'Pick coordinates from map',
         onClick: (btn) => {       
-          btn.state('active');    // change state on click!
+          btn.state('active');
           L.DomUtil.addClass(this.map._container,'leaflet-crosshair');
-          //Add a listener to all he layers
+          //Add a listener to all the layers
           this.map.eachLayer(function(layer) {
             layer.on('click', pickCoordinates);
           });
