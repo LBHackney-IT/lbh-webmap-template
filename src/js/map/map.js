@@ -358,7 +358,7 @@ class Map {
     }
 
     //Add geolocation button specifically on non-mobile devices, not based on screensize.
-    if (this.mapConfig.showLocateButton && !L.Browser.mobile && !this.isFullScreen) {
+    if (this.mapConfig.showLocateButton) {
       new Geolocation(
         this.map,
         this.errorNoLocation,
@@ -541,7 +541,7 @@ class Map {
       var coordtext = e.latlng.lat + ", " + e.latlng.lng;
       var popup = L.popup({maxWidth: 210});
       popup.setLatLng(e.latlng);
-      popup.setContent("<p>The coordinates</br>[" + coordtext + "]</br>have been copied to clipboard.</p><p>To pick another location, close this popup and click again on the 'pick and copy coordinates' tool.</p>");
+      popup.setContent("The coordinates</br>[" + coordtext + "]</br>have been copied to clipboard.<p>To pick another location, close this popup and click again on the 'pick and copy coordinates' tool.</p>");
       popup.addTo(this.map);
       
       // Create a dummy input to copy the string array inside it
