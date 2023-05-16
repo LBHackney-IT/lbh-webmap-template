@@ -358,7 +358,7 @@ class Map {
     }
 
     //Add geolocation button specifically on non-mobile devices, not based on screensize.
-    if (this.mapConfig.showLocateButton && !L.Browser.mobile && !this.isFullScreen) {
+    if (this.mapConfig.showLocateButton) {
       new Geolocation(
         this.map,
         this.errorNoLocation,
@@ -366,7 +366,10 @@ class Map {
       ).init();
     }
 
- 
+    //Add pickCoordinatesbutton
+    if (this.mapConfig.showPickCoordinatesButton) {
+      this.addPickCoordinatesButton();
+    }
 
     //Add show and hide legend controls
     if (this.mapConfig.showLegend) {
@@ -528,7 +531,57 @@ class Map {
       "Open full screen mode",
       { position: "topright" }
     ).addTo(this.map);
+  }
 
+  addPickCoordinatesButton() {
+    const pickCoordinates = (e) => {     
+      console.log('pick from map');
+      var coordtext = e.latlng.lat.toFixed(10) + ", " + e.latlng.lng.toFixed(10);
+      var popup = L.popup({maxWidth: 210});
+      popup.setLatLng(e.latlng);
+      popup.setContent("The coordinates</br>[" + coordtext + "]</br>have been copied to clipboard.<p>To pick another location, close this popup and click again on the 'Pick and copy coordinates' tool.</p>");
+      popup.addTo(this.map);
+      
+      // Copy to clipboard by creating a dummy text field
+      var dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.value = (coordtext);
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
+      
+      this.map.off('click', pickCoordinates);
+      L.DomUtil.removeClass(this.map._container,'leaflet-crosshair');
+      //set normal interactions back
+      this.map.eachLayer(function(layer) {
+        layer.closePopup();
+        layer.off('click', pickCoordinates);
+      });
+      pickCoordinatesButton.state('inactive');
+    };
+    
+    const pickCoordinatesButton = L.easyButton({
+      position: "topright",
+      states: [{
+        stateName: 'inactive', 
+        icon:      'fa-regular fa-bullseye-pointer',
+        title:     'Pick coordinates from map',
+        onClick: (btn) => {       
+          btn.state('active');
+          L.DomUtil.addClass(this.map._container,'leaflet-crosshair');
+          //Add a listener to all the layers
+          this.map.eachLayer(function(layer) {
+            layer.on('click', pickCoordinates);
+          });
+          //Add a listener to the map
+          this.map.on('click', pickCoordinates);
+        }
+      },{
+        stateName: 'active',
+        icon:      'fa-solid fa-bullseye-pointer',
+        title:     'Pick coordinates from map'
+      }]
+    }).addTo(this.map);
   }
 
   addMarkupToTop(markup, id, className) {
