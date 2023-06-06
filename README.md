@@ -78,7 +78,7 @@ The options for the data file are as follows:
 | `showLayersOnLoad` | Boolean | optional | If `true` all the layers will appear on the map. If  `false` or omitted, no layer will appear. Default is `false`|
 | `showFirstLayerOnLoad` | Boolean | optional | If `true` the layer with `sortOrder = 1` will appear on the map, and only this one. If `false` or omitted, the behaviour reverts to `showLayersOnLoad`. Default is `false`|
 | `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. [Control options defined below](#controls-options)||
-| `hideNumberOfItems` | Boolean | optional | If `true` The number of items is hidden on the legend. If `false`, the number of items is shown on the layer. The default value is `false`. |
+| `hideNumberOfItems` | Boolean | optional | If `true` The number of items is hidden on the legend. If `false`, the number of items is shown on the layer. This is valid for all layers of the map. A similar property can be set a layer level. The default value is `false`. |
 | `zoomToMasterMap` | Boolean | optional | If `true` the map will allow to zoom to the detailed view (OS MasterMap).|
 | `zoomToMasterMapBW` | Boolean | optional | If `true` the map will allow to zoom to the black and white detailed view (OS MasterMap BW).|
 | `blockZoomToMasterMap` | Boolean | optional | If `true` the map will block the zoom to the detailed view (OS MasterMap).|
@@ -154,6 +154,8 @@ Object properties:
 | `personas` | Array | optional | An array of persona `id`s for the personas that should turn this layer on. |
 | `sortOrder` | Number | optional | This value is used to order layers in the legend (if there is a legend).  If empty, the legend will be sorted alphabetically. |
 | `excludeFromLegend` | Boolean | optional | If `true`, the layer will be excluded from the legend. |
+| `hideNumberOfItems` | Boolean | optional | If `true` The number of items is hidden on the legend, even if the layer is on. If `false`, the number of items is shown. This is valid for this layer only. The default value is `false`. |
+| `countLabel` | String | optional | By default, a count line is shown under the layer name in the legend when the layer is on (e.g. "45 items shown"). Use this property to replace the default term "items" with another custom term, for instance "locations". |
 | `excludeFromFilter` | Boolean | optional | If `true`, the layer will be ignored from the filter, if there are filters configured for this map. |
 | `displayScaleRange` | Object | optional | This range is used to control the visibility of the layers. By default, the layers are displayed at all the zoom levels. If the range is added, the layers will be displayed from `minScale` to `maxScale`. If one of the values is not specified, the min map scale or the max map scale will be used instead|
 | `loadToBack` | Boolean | optional | If `true` and the layer is added on load, it is sent to the background. If more than one layer has this option, you cannot control which one will be at the back. This only affects the initial load.|
