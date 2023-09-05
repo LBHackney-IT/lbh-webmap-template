@@ -44,11 +44,11 @@ class DataLayers {
       });
     } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
-        fillColor: configLayer.pointStyle.markerColor,
+        fillColor: MARKER_COLORS[configLayer.pointStyle.markerColor],
         radius: configLayer.pointStyle.circleMarkerRadius || 6,
         stroke: true,
         weight: 1,
-        color: configLayer.pointStyle.markerColor,
+        color: MARKER_COLORS[configLayer.pointStyle.markerColor],
         fillOpacity: 0.6
       });
     } else {
