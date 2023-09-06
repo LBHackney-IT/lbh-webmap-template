@@ -8,22 +8,29 @@ class List {
     this.layersData = layersData;
     this.container = map.container;
     this.list = null;
+    this.accordionExpandedClass = null;
   }
 
   init() {
     this.list = this.mapConfig.list;
     this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
+    if (this.list.accordionStatus == 'allExpanded'){
+      this.accordionExpandedClass = 'govuk-accordion__section--expanded';
+    }
+    //@TODO add 'firstExpanded' option
+    else{
+      this.accordionExpandedClass = '';
+    }
     this.createMarkup();
   }
 
   createMarkup() {
-    
     let html = `<div class="listview-container"><h3>${this.list.sectionHeader}</h3>`;
     html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">`;
     for (var layerData of this.layersData){
       if (layerData.configLayer.listView){
         if (this.list.showIcons){
-          html += `<div class="govuk-accordion__section ">
+          html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
             <div class="govuk-accordion__section-header">
             <h5 class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button">
@@ -33,7 +40,7 @@ class List {
           </div>`;
         }
         else{
-          html += `<div class="govuk-accordion__section ">
+          html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
             <div class="govuk-accordion__section-header">
             <h5 class="govuk-accordion__section-heading">
             <span class="govuk-accordion__section-button">
