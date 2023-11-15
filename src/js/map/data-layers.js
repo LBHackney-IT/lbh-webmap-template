@@ -283,9 +283,12 @@ class DataLayers {
       });
 
       layer.on("mouseout", event => {
-        event.propagatedFrom.setStyle({
-          weight: weight
-        });
+        if (!(event.propagatedFrom.getPopup() && event.propagatedFrom.getPopup().isOpen())){
+          //go back to normal weight only if there is no open popup
+          event.propagatedFrom.setStyle({
+            weight: weight
+          });
+        }   
       });
 
       layer.on("popupopen", event => {
