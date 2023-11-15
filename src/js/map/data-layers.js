@@ -179,12 +179,12 @@ class DataLayers {
     const opacity = linePolygonStyle && linePolygonStyle.opacity;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
     const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
+    const weight = linePolygonStyle && linePolygonStyle.weight;
 
     const baseLayerStyles = {
       stroke: linePolygonStyle && linePolygonStyle.stroke,
       color: linePolygonStyle && linePolygonStyle.strokeColor,
-      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
-      weight: linePolygonStyle && linePolygonStyle.weight
+      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity
     };
 
     const layer = new L.GeoJSON(data, {
@@ -252,7 +252,8 @@ class DataLayers {
           return Object.assign(baseLayerStyles, {
             opacity: opacity,
             fillColor: fillColor,
-            dashArray: layerLineDash
+            dashArray: layerLineDash,
+            weight: weight
           });
         } else if (layerStyle === "random polygons") {
           //Create a random style and uses it as fillColor.
@@ -268,22 +269,34 @@ class DataLayers {
 
     if (zoomToFeatureOnClick) {
       layer.on("click", event => {
-        if (event.layer instanceof L.Polygon) {
-          this.map.fitBounds(event.layer.getBounds());
+        if (event.propagatedFrom instanceof L.Polygon) {
+          this.map.fitBounds(event.propagatedFrom.getBounds());
         }
       });
     }
 
     if (highlightFeatureOnHover) {
       layer.on("mouseover", event => {
-        event.layer.setStyle({
-          weight: 3
+        event.propagatedFrom.setStyle({
+          weight: weight + 2
         });
       });
 
       layer.on("mouseout", event => {
-        event.layer.setStyle({
-          weight: baseLayerStyles.weight
+        event.propagatedFrom.setStyle({
+          weight: weight
+        });
+      });
+
+      layer.on("popupopen", event => {
+        event.propagatedFrom.setStyle({
+          weight: weight + 2
+        });
+      });
+      
+      layer.on("popupclose", event => {
+        event.propagatedFrom.setStyle({
+          weight: weight
         });
       });
     }
