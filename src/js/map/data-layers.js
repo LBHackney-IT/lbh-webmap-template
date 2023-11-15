@@ -157,7 +157,7 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
-    const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
+    const highlightFeatureOnHover = configLayer.highlightFeatureOnHoverOrSelect;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
     const searchable = configLayer.searchable;
 
@@ -275,7 +275,7 @@ class DataLayers {
       });
     }
 
-    if (highlightFeatureOnHover) {
+    if (highlightFeatureOnHoverOrSelect) {
       layer.on("mouseover", event => {
         event.propagatedFrom.setStyle({
           weight: weight + 2
