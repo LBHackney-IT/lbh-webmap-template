@@ -30,13 +30,13 @@
   }) }}
 
     {% block map %}
-    <div id="fullscreen_container" class="map__container_fullscreen fullscreen">
+    <div id="fullscreen_container" class="map__container_fullscreen fullscreen js-enabled">
         <div class="map__wrapper">
             <div class="map" id="map"></div>
         </div>         
     </div>
     {% endblock %}
-
+    <script src="../lbhfrontend/all.js"></script>  
     <script src="../dist/lbh-webmap.min.js"></script>
 </body>
 </html>
