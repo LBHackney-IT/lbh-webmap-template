@@ -157,7 +157,7 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
-    const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
+    const highlightFeatureOnHoverOrSelect = configLayer.highlightFeatureOnHoverOrSelect;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
     const searchable = configLayer.searchable;
 
@@ -179,6 +179,7 @@ class DataLayers {
     const opacity = linePolygonStyle && linePolygonStyle.opacity;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
     const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
+    const weight = linePolygonStyle && linePolygonStyle.weight;
 
     const baseLayerStyles = {
       stroke: linePolygonStyle && linePolygonStyle.stroke,
@@ -268,22 +269,37 @@ class DataLayers {
 
     if (zoomToFeatureOnClick) {
       layer.on("click", event => {
-        if (event.layer instanceof L.Polygon) {
-          this.map.fitBounds(event.layer.getBounds());
+        if (event.propagatedFrom instanceof L.Polygon) {
+          this.map.fitBounds(event.propagatedFrom.getBounds());
         }
       });
     }
 
-    if (highlightFeatureOnHover) {
+    if (highlightFeatureOnHoverOrSelect) {
       layer.on("mouseover", event => {
-        event.layer.setStyle({
-          weight: 3
+        event.propagatedFrom.setStyle({
+          weight: weight + 2
         });
       });
 
       layer.on("mouseout", event => {
-        event.layer.setStyle({
-          weight: baseLayerStyles.weight
+        if (!(event.propagatedFrom.getPopup() && event.propagatedFrom.getPopup().isOpen())){
+          //go back to normal weight only if there is no open popup
+          event.propagatedFrom.setStyle({
+            weight: weight
+          });
+        }   
+      });
+
+      layer.on("popupopen", event => {
+        event.propagatedFrom.setStyle({
+          weight: weight + 2
+        });
+      });
+      
+      layer.on("popupclose", event => {
+        event.propagatedFrom.setStyle({
+          weight: weight
         });
       });
     }

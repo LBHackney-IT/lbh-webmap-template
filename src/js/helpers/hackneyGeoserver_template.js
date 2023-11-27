@@ -6,8 +6,10 @@ const getWFSurl = () => {
     else {
         return "YOUR-EXTERNAL-WFS-URL-GOES-HERE";
 
+
     }
 }
+
 
 const getWMSurl = () => {
     //We have two Geoserver instances - for internal and external use so we have two WMS URLs. This can be simplified to only one URL if needed
@@ -18,5 +20,6 @@ const getWMSurl = () => {
         return "YOUR-EXTERNAL-WMS-URL-GOES-HERE";
     }
 }
+
 
 export {getWFSurl, getWMSurl};
