@@ -157,7 +157,7 @@ class DataLayers {
         ? configLayer.sortOrder
         : configLayer.title;
 
-    const highlightFeatureOnHover = configLayer.highlightFeatureOnHover;
+    const highlightFeatureOnHoverOrSelect = configLayer.highlightFeatureOnHoverOrSelect;
     const zoomToFeatureOnClick = configLayer.zoomToFeatureOnClick;
     const searchable = configLayer.searchable;
 
@@ -184,7 +184,8 @@ class DataLayers {
     const baseLayerStyles = {
       stroke: linePolygonStyle && linePolygonStyle.stroke,
       color: linePolygonStyle && linePolygonStyle.strokeColor,
-      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity
+      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
+      weight: linePolygonStyle && linePolygonStyle.weight
     };
 
     const layer = new L.GeoJSON(data, {
@@ -252,8 +253,7 @@ class DataLayers {
           return Object.assign(baseLayerStyles, {
             opacity: opacity,
             fillColor: fillColor,
-            dashArray: layerLineDash,
-            weight: weight
+            dashArray: layerLineDash
           });
         } else if (layerStyle === "random polygons") {
           //Create a random style and uses it as fillColor.
@@ -275,7 +275,7 @@ class DataLayers {
       });
     }
 
-    if (highlightFeatureOnHover) {
+    if (highlightFeatureOnHoverOrSelect) {
       layer.on("mouseover", event => {
         event.propagatedFrom.setStyle({
           weight: weight + 2
