@@ -138,7 +138,13 @@ const MARKER_COLORS = {
   mediumchampagne: "#FEECA5",
   royalblue: "#383ce4", //pharmacies  
   //colours from Hackney design system
-  hackneygreen: "#00664f"
+  hackneygreen: "#00664f",
+  hackneya02:	"#00b341",
+  hackneya03:	"#84bd00",
+  hackneya04: "a4d65e",
+  hackneye01: "#672146",
+  hackneye02: "#aa0061",
+  hackneye03: "#df1995"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
