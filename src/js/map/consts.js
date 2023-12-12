@@ -136,7 +136,9 @@ const MARKER_COLORS = {
   firebrick: "#B52020", //employement advice
   philippinegray: "#929291", //housing advice
   mediumchampagne: "#FEECA5",
-  royalblue: "#383ce4" //pharmacies  
+  royalblue: "#383ce4", //pharmacies  
+  //colours from Hackney design system
+  hackneygreen: "#00664f"
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
