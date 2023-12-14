@@ -275,11 +275,13 @@ class DataLayers {
       });
     }
 
-    if (highlightFeatureOnHoverOrSelect) {
+    if (highlightFeatureOnHoverOrSelect && linePolygonStyle) {
       layer.on("mouseover", event => {
-        event.propagatedFrom.setStyle({
-          weight: weight + 2
-        });
+        if (event.propagatedFrom instanceof L.Polygon || event.propagatedFrom instanceof L.Polyline) {
+          event.propagatedFrom.setStyle({
+            weight: weight + 2
+          });
+        }
       });
 
       layer.on("mouseout", event => {
