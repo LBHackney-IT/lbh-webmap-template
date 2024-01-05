@@ -18,3 +18,74 @@ p.lbh-body-s{
 		padding-right: 1px;
 	  }
 }
+
+.table-conatiner{
+	width: 100%;
+}
+.table-wrapper{
+	width: 100%;
+	height: 65vh;
+	overflow-y: auto;
+	overflow-x: auto;
+
+	table {
+		// font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+
+
+		th{
+			font-weight: bold;
+			border-bottom: 1px solid #363434;
+			position: sticky;
+			top: 0;
+			background-color: black;
+			color: white;
+		}
+
+		td, th {
+			border-bottom: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		// tr:nth-child(even) {
+		// 	background-color: #dddddd;
+		// }
+		/* width */
+	
+	}
+	
+}
+.table-footer{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.download-btn{
+				color: white;
+				font-weight: bold;
+				width: fit-content;
+				place-self: end;
+				cursor: pointer;
+
+			}
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
