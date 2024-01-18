@@ -8,6 +8,7 @@ import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
+import Table from "./table-view";
 
 
 class DataLayers {
@@ -29,6 +30,7 @@ class DataLayers {
     this.search = null;
     this.showAddressSearch = null;
     this.list = null;
+    this.statistics = null;
   }
 
   pointToLayer (latlng, configLayer) {
@@ -433,6 +435,11 @@ class DataLayers {
     if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
       this.list = new List(this.mapClass,this.layersData);
       this.list.init();
+    }
+    //only happens once, after the last layer has loaded - create list view after the map
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.statistics = new Table(this.mapClass,this.layersData);
+      this.statistics.init();
     }
 
     //only happens once, after the last layer has loaded - add the drill down listener if true
