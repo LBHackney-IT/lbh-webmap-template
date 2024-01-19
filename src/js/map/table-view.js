@@ -374,7 +374,7 @@ class Table {
             }
           },
           {
-            "tableTitle": "Number of charving locations by provider and by ward",
+            "tableTitle": "Number of charging locations by provider and by ward",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
             "groupByLayer": false,
@@ -569,14 +569,57 @@ class Table {
     })
     const df = new dfd.DataFrame(combinedData)
     // df.print()
-    const grp = df.groupby(['status']) 
+    // console.log(df.columns)
+    // const grp = df.groupby(['status']) 
     // grp.agg({id:['count']}).print()
-    grp.col(["id"]).count().print()
+    // grp.col(["id"]).count().print();
+
+    let stats = {
+        "tableTitle": "Number of charging locations by type in the borough with their average number of sockets",
+        "downloadable":false,
+        "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
+        "groupBy": "type",
+        "dtypes":{int32:["number_of_sockets"]},
+        "aggregations": {
+        "number_of_sockets":{
+            functions:["count","mean","median"],
+            labels:['Number of Charges','Average Number of Sockets','Median number of Sockets'],
+            round:0
+        },
+        }
+      }
+
+    df.asType('no_charging_points',"int32",{inplace:true})
+
+    df.groupby(['type']).agg({no_charging_points:["count","mean","median"]}).print()
+    df.groupby(['type']).agg({no_charging_points:["sum"]}).print()
+    df.groupby(['ward_name','type']).agg({no_charging_points:["count"]}).print()
+    df.groupby(['ward_name','organisation']).agg({no_charging_points:["count"]}).print()
+    
+    
+
+
+     
+
+
+
+    
+      
     window.LBHFrontend.initAll();
   }
 
-  
- 
+  createTables(){
+
+  }
+//   createCountTable(){
+//     // given a list of layers
+//     // if layer is visible
+//     // calculate the count for the given layers and the given paramter
+
+//   }
+  createGroupedTable(){
+
+  }
 
  
 }
@@ -586,10 +629,19 @@ export default Table;
 
 //________________Functions_______________
 // createTables      || Main 
-// createCountTable || MarkUp
+// createCountTable  || MarkUp
 // createGroupedTables || MarkUp
-
+ 
 // groupLayersBy    || function to invoke the groupby methods
-// formart grouped  || dataframe
+// formatGroupedDf  || dataframe
 
 // groupByGeography || function to use turf.js to group by geometries / wards
+
+
+
+// lambda geo_api_merger_and_filter ? instead of turf, if dataset to complex ?
+//_________________turf______________________
+// var points = turf.featureCollection([pt1, pt2]);
+// var polygons = turf.featureCollection([poly1, poly2]);
+// var tagged = turf.tag(points, polygons, 'pop', 'population');
+// https://turfjs.org/docs/#tag
