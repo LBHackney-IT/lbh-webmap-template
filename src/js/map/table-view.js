@@ -1,6 +1,6 @@
 // import DataLayers from "./data-layers";
 // import { MARKER_COLORS } from "./consts";
-// import { header } from "express-validator/check";
+
 
 class Table {
   constructor(map, layersData) {
@@ -345,62 +345,76 @@ class Table {
             "tableTitle": "Number of charging locations by type in the borough with their average number of sockets",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-            "groupByLayer": true,
-            "functions": {
-              "count": "",
-              "average": ["number_of_sockets"],
-              "median": ["number_of_sockets"]
-            }
+            "groupBy": ["type"],
+            "dtypes":{int32:["no_charging_points"]},
+            "aggregations": {
+              "no_charging_points":{
+                functions:["count","mean","median"],
+                
+                round:0
+            }},
+            "labels":{
+                  "no_charging_points_count":'Number of Charge Locations',
+                  "no_charging_points_mean":'Average Number of Sockets',
+                  "no_charging_points_median":'Median number of Sockets'
+                },
           },
-          {
-            "tableTitle": "Total number of charging points in the borough",
-            "downloadable":false,
-            "scope":  ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-            "groupByLayer": false,
-            "functions": {
-              "sum": ["number_of_sockets"]
-            }
-          },
+          // {
+          //   "tableTitle": "Total number of charging points in the borough",
+          //   "downloadable":false,
+          //   "scope":  ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
+          //   "groupBy": false,
+          //   "dtypes":{int32:["no_charging_points"]},
+          //   "functions": {
+          //     "sum": ["no_charging_points"]
+          //   }
+          // },
           {
             "tableTitle": "Number of charging locations by type and by ward",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers 
-            "groupByLayer": true,
-            "groupByGeography": {
-              "geographyLayer": "boundaries:hackney_ward"
-            },
-            "functions": {
-              "count": ""
-            }
+            "groupBy":["wards_name","type"],
+            "dtypes":{int32:["no_charging_points"]},
+            "aggregations": {
+              "no_charging_points":{
+                  functions:["count"],
+                  
+                  round:0
+              },
+              },
+            "labels":{
+                    "no_charging_points_count":'Number of Charge Locations'
+                  },
           },
           {
             "tableTitle": "Number of charging locations by provider and by ward",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-            "groupByLayer": false,
-            "groupByGeography": {
-              "geographyLayer": "boundaries:hackney_ward"
+            "groupBy":["wards_name","organisation"],
+            "dtypes":{int32:["no_charging_points"]},
+            "aggregations": {
+              "no_charging_points":{
+                  functions:["count"],
+                  
+                  round:0
+              }
             },
-            "groupByAttribute": {
-              "attribute": "provider",
-              "values": ["Zest", "Vivacity", "Providr 3"]
-            },
-            "functions": {
-              "count": ""
-            }
+            "labels":{
+                    "no_charging_points_count":'Number of Charge Locations'
+                  },
           },
-          {
-            "tableTitle": "Number of rapid bays by estate",
-            "downloadable":false,
-            "scope": ["Free standing Rapid"],//only 1 layer on map
-            "groupByLayer": false,
-            "groupByGeography": {
-              "geographyLayer": "housing:lbh_estate"
-            },
-            "functions": {
-              "sum": ["no_bays"]
-            }
-          }
+          // {
+          //   "tableTitle": "Number of rapid bays by estate",
+          //   "downloadable":false,
+          //   "scope": ["Free standing Rapid"],//only 1 layer on map
+          //   "groupByLayer": false,
+          //   "groupByGeography": {
+          //     "geographyLayer": "housing:lbh_estate"
+          //   },
+          //   "functions": {
+          //     "sum": ["no_bays"]
+          //   }
+          // }
         ]
       }
     }
@@ -426,8 +440,8 @@ class Table {
       this.accordionExpandedClass = '';
     }
 
-    this.addlayerEventListeners(this.layersData,this.createTable.bind(this))
-    this.createTable()
+    this.addlayerEventListeners(this.layersData,this.createTables.bind(this))
+    this.createTables()
     // this.createMarkup();
   }
   
@@ -457,7 +471,7 @@ class Table {
 
   }
 
-  createTable(){
+  createTables(){
     console.log('Creating table...')
 
     const tableDiv =  document.getElementById('tableview')
@@ -465,48 +479,78 @@ class Table {
 
     //Prep table content 
 
-    let tableHeaders =""
-    let tableRows = ""
     let totalRows = 0
     let combinedData = []
-    
-    // get headers
-    for (const layerObj of this.layersData){
-      if(this.tableLayers.includes(layerObj.configLayer.title)){
-        for (const header of Object.keys(layerObj.data.features[0].properties)){
-          tableHeaders += `<th>${header}</th>`
-        }
-        break
-      }
-    }
+     
     // get rows
     for (const layerObj of this.layersData){
       if(this.tableLayers.includes(layerObj.configLayer.title)&&layerObj.layer.isVisible){
         console.log(layerObj.configLayer.title)
         totalRows += layerObj.data.features.length
         for (const feature of layerObj.data.features){
-          let row = "<tr>"
           combinedData = [...combinedData,...[feature.properties]]
-          Object.values(feature.properties).map((propertyValue) =>{
-              row += `<td>${propertyValue}</td>`
-              return null
-            })
-            row +="</tr>"
-            tableRows += row
         }
         
       }
     }
 
-    let tableMarkup = `
-    <div class="listview-container">
-      <h3>TABLES</h3>
-      <div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">
-        <div class="govuk-accordion__section ${this.accordionExpandedClass}">
+    const df = new dfd.DataFrame(combinedData)
+    console.log(df.columns)
+    
+
+    const createTable =(df,config)=>{
+      
+      console.log(config.tableTitle)
+      // confugure data types for aggregation functions to run correctly
+      if(config.dtypes){
+        for (const [dtype,columns] of Object.entries(config.dtypes)){
+          columns.map(col => {
+            df.asType(col,dtype,{inplace:true})
+            return null
+          })
+        }
+
+        }
+      const new_df = df.groupby(config.groupBy).agg(
+        Object.fromEntries(
+          Object.entries(config.aggregations).map(([key,value])=> [key,value.functions])
+        )
+      )
+      // console.log(dfd.toJSON(new_df, {format: "row"}))
+      const tableData = dfd.toJSON(new_df, {format: "column"})
+      // console.log(tableData)
+      const tableHeaders =Object.keys(tableData[0])
+      const tableHeaderString = tableHeaders.map((header,index)=>{
+        if(index>0){
+          return `<th><h6>${header}</h6></th>`
+        }else{
+          return `<th><h6></h6></th>`
+        }
+      }).join('')
+      
+      const tableRows = tableData.map((rowData)=>{
+      return `<tr>  
+              ${
+                tableHeaders.map((header,index) => {
+                if(index==0){
+                  return `<td>${rowData[header]}</td>`
+                }
+                else{
+                  return `<td class="table-row-data">${rowData[header]}</td>`
+                }
+              })
+            } 
+          </tr>
+        `
+        }
+      ).join('')
+    
+
+      return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
           <div class="govuk-accordion__section-header">
             <h5 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button">
-                Summary Table
+              ${config.tableTitle}
               </span>
             </h5>
           </div>
@@ -515,110 +559,83 @@ class Table {
               <div class="table-wrapper">
                 <table>
                   <tr>
-                    ${tableHeaders}
+                    ${tableHeaderString}
                   </tr>
                   ${tableRows}
                 </table>
               </div>
-              <div class="table-footer">
-                <span class="table-row-count">Showing&nbsp;${totalRows}&nbsp;row(s)</span>
-                <button id="table-download-btn" class="lbh-button download-btn">Download</button>
-              </div>
+              
             </div>
           </div>
-        </div>
+        </div>`
+
+
+
+    }
+   
+
+    
+
+    // const df2 = df.groupby(['type']).agg({no_charging_points:["count","mean","median"]})
+    // df.groupby(['type']).agg({no_charging_points:["sum"]}).print()
+    // df.groupby(['ward_name','type']).agg({no_charging_points:["count"]}).print()
+    // df.groupby(['ward_name','organisation']).agg({no_charging_points:["count"]}).print()
+
+    const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => createTable(df,tableConfig)).join("")
+    
+    let tableMarkup2 = `
+    <div class="listview-container">
+      <h3>TABLES</h3>
+      <div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">
+        ${tables}
       </div>
     </div>
     `
-
+    // <div class="table-footer">
+    //             <span class="table-row-count">Showing&nbsp;${totalRows}&nbsp;row(s)</span>
+    //             <button id="table-download-btn" class="lbh-button download-btn">Download</button>
+    //           </div>
    
     
   
     
-    this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
+    // this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
+    this.mapClass.addMarkupToMapAfter(tableMarkup2, "tableview", "listview");
     //activate component from lbh-frontend
     
-    let downloadBtn = document.getElementById("table-download-btn")
-    downloadBtn&&downloadBtn.addEventListener('click',()=>{
+    // let downloadBtn = document.getElementById("table-download-btn")
+    // downloadBtn&&downloadBtn.addEventListener('click',()=>{
       
-      const downloadCSV=(csvString)=>{
-        const dataBlob = new Blob([csvString],{type:'text/csv'});
-        const a =document.createElement('a');
-        a.href = URL.createObjectURL(dataBlob);
-        a.download='data.csv'
+    //   const downloadCSV=(csvString)=>{
+    //     const dataBlob = new Blob([csvString],{type:'text/csv'});
+    //     const a =document.createElement('a');
+    //     a.href = URL.createObjectURL(dataBlob);
+    //     a.download='data.csv'
 
-        document.body.appendChild(a)
-        a.click()
-        setTimeout(()=>{
-          document.body.removeChild(a)
-        },100)
+    //     document.body.appendChild(a)
+    //     a.click()
+    //     setTimeout(()=>{
+    //       document.body.removeChild(a)
+    //     },100)
       
-      }
-      const convertToCSV=(data)=>{
-        const headers= Object.keys(data[0]);
-        const csvData = data.map(object => headers.map(header => object[header]).join(','));
-        csvData.unshift(headers.join(','));
-        const csvString = csvData.join('\n');
-        // console.log(csvString)
-        // return csvString;
+    //   }
+    //   const convertToCSV=(data)=>{
+    //     const headers= Object.keys(data[0]);
+    //     const csvData = data.map(object => headers.map(header => object[header]).join(','));
+    //     csvData.unshift(headers.join(','));
+    //     const csvString = csvData.join('\n');
+    //     // console.log(csvString)
+    //     // return csvString;
 
-        downloadCSV(csvString)
-      }
+    //     downloadCSV(csvString)
+    //   }
       
-      convertToCSV(combinedData)
-    })
-    const df = new dfd.DataFrame(combinedData)
-    // df.print()
-    // console.log(df.columns)
-    // const grp = df.groupby(['status']) 
-    // grp.agg({id:['count']}).print()
-    // grp.col(["id"]).count().print();
-
-    let stats = {
-        "tableTitle": "Number of charging locations by type in the borough with their average number of sockets",
-        "downloadable":false,
-        "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-        "groupBy": "type",
-        "dtypes":{int32:["number_of_sockets"]},
-        "aggregations": {
-        "number_of_sockets":{
-            functions:["count","mean","median"],
-            labels:['Number of Charges','Average Number of Sockets','Median number of Sockets'],
-            round:0
-        },
-        }
-      }
-
-    df.asType('no_charging_points',"int32",{inplace:true})
-
-    df.groupby(['type']).agg({no_charging_points:["count","mean","median"]}).print()
-    df.groupby(['type']).agg({no_charging_points:["sum"]}).print()
-    df.groupby(['ward_name','type']).agg({no_charging_points:["count"]}).print()
-    df.groupby(['ward_name','organisation']).agg({no_charging_points:["count"]}).print()
+    //   convertToCSV(combinedData)
+    // })
     
     
-
-
-     
-
-
-
     
-      
     window.LBHFrontend.initAll();
-  }
-
-  createTables(){
-
-  }
-//   createCountTable(){
-//     // given a list of layers
-//     // if layer is visible
-//     // calculate the count for the given layers and the given paramter
-
-//   }
-  createGroupedTable(){
-
   }
 
  

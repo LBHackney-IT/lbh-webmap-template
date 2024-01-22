@@ -35,23 +35,30 @@ p.lbh-body-s{
 
 
 		th{
-			font-weight: bold;
+			// font-weight: 14;
 			border-bottom: 1px solid #363434;
 			position: sticky;
 			top: 0;
-			background-color: black;
 			color: white;
 		}
-
+		
 		td, th {
 			border-bottom: 1px solid #dddddd;
 			text-align: left;
 			padding: 8px;
 		}
 		// tr:nth-child(even) {
-		// 	background-color: #dddddd;
-		// }
-		/* width */
+			// 	background-color: #dddddd;
+			// }
+			/* width */
+		tr{
+				.table-row-data{
+					text-align: center;
+					// width: 100%;
+					// background-color: black;
+				}
+			
+		}
 	
 	}
 	
