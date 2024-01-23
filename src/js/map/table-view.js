@@ -1,7 +1,6 @@
 // import DataLayers from "./data-layers";
 // import { MARKER_COLORS } from "./consts";
 
-
 class Table {
   constructor(map, layersData) {
     this.mapClass = map;
@@ -346,25 +345,27 @@ class Table {
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
             "groupBy": ["type"],
-            "dtypes":{int32:["no_charging_points"]},
+            "dtypes":{"int32":["no_charging_points"]},
             "aggregations": {
               "no_charging_points":{
-                functions:["count","mean","median"],
-                
-                round:0
+                "functions":["count","mean","median"],
             }},
             "labels":{
                   "no_charging_points_count":'Number of Charge Locations',
                   "no_charging_points_mean":'Average Number of Sockets',
                   "no_charging_points_median":'Median number of Sockets'
                 },
+            "sortBy":{
+              "Number of Charge Locations":"descending"
+            },
+            "round":{"Average Number of Sockets":2}
           },
           // {
           //   "tableTitle": "Total number of charging points in the borough",
           //   "downloadable":false,
           //   "scope":  ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
           //   "groupBy": false,
-          //   "dtypes":{int32:["no_charging_points"]},
+          //   "dtypes":{"int32":["no_charging_points"]},
           //   "functions": {
           //     "sum": ["no_charging_points"]
           //   }
@@ -373,35 +374,42 @@ class Table {
             "tableTitle": "Number of charging locations by type and by ward",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers 
-            "groupBy":["wards_name","type"],
-            "dtypes":{int32:["no_charging_points"]},
+            "groupBy":["ward_name","type"],
+            "dtypes":{"int32":["no_charging_points"]},
             "aggregations": {
               "no_charging_points":{
-                  functions:["count"],
-                  
-                  round:0
-              },
+                  "functions":["count"],
+                  },
               },
             "labels":{
-                    "no_charging_points_count":'Number of Charge Locations'
+                    "no_charging_points_count":'Number of Charge Locations',
+                    "type":'Charger Type'
                   },
+            "sortBy":{
+              "ward_name":"ascending",
+              "Number of Charge Locations":"descending",
+            },
+            "round":null
           },
           {
             "tableTitle": "Number of charging locations by provider and by ward",
             "downloadable":false,
             "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-            "groupBy":["wards_name","organisation"],
-            "dtypes":{int32:["no_charging_points"]},
+            "groupBy":["ward_name","organisation"],
+            "dtypes":{"int32":["no_charging_points"]},
             "aggregations": {
               "no_charging_points":{
-                  functions:["count"],
+                  "functions":["count"],
                   
-                  round:0
+                  
               }
             },
             "labels":{
-                    "no_charging_points_count":'Number of Charge Locations'
+                    "no_charging_points_count":'Number of Charge Locations',
+                    "organisation":'Provider',
                   },
+            "sortBy":{"ward_name":'ascending',"Number of Charge Locations":'descending'},
+            "round":null
           },
           // {
           //   "tableTitle": "Number of rapid bays by estate",
@@ -517,14 +525,71 @@ class Table {
         )
       )
       // console.log(dfd.toJSON(new_df, {format: "row"}))
-      const tableData = dfd.toJSON(new_df, {format: "column"})
-      // console.log(tableData)
+
+      // ________Rename columns using config labels_____________
+      new_df.rename(config.labels, { inplace: true })
+      //_______Rounding Specific Columns________
+      const roundNumber=(x,decimalPlaces)=>{
+        const factoor = 10 ** decimalPlaces;
+        if(parseFloat(x)){
+          return Math.round(parseFloat(x)*factoor)/factoor
+        }else{
+          return(x)
+        }
+      }
+      let tableData = dfd.toJSON(new_df, {format: "column"})
+      tableData.map((tr)=>{
+        Object.entries(tr).map(([col,data])=>{
+          //"round":{columName:0,columName2:0}
+          if(config.round&&Object.keys(config.round).includes(col)){
+            tr[col] = roundNumber(data,config.round[col])
+          }
+
+        })
+      })
+      // ______________SORT_DATA_BY_Columns______
+      const handleSort = ()=>{
+        let sortConfig = config.sortBy
+        return  tableData.sort((a,b) => {
+          for(const key of Object.keys(sortConfig)){
+            const sortOrder = sortConfig[key] === 'descending'? -1 : 1;;
+            const comparison = (a[key] > b[key]) ? 1 : ((a[key] < b[key]) ? -1 : 0);
+            if (comparison !== 0) {
+              return comparison * sortOrder;
+            }
+          }
+          
+          return 0;
+        });
+        
+        // return sortedData
+        // if (column !== null && sortOrder != null){
+        //   const direction = sortOrder === 'ascending' ? 1 : -1;
+        //   let newData = [...data].map((e) => e).sort((a,b)=>{
+        //     if(a[column] < b[column]) return -direction;
+        //     if(a[column] > b[column]) return direction;
+        //     return 0;
+        //   })
+        //   tableData = newData
+        //   console.log('Data Sorted')
+        //   console.log('SORTED DATA: ',newData)
+        // }else{
+        //   console.log('Unable to sort data')
+        // }
+      }
+
+      if(config.sortBy){
+        tableData = handleSort()
+        console.log('SORTED DATA: ',tableData)
+      }
+
+      console.log('TABLE DATA: ',tableData)
       const tableHeaders =Object.keys(tableData[0])
       const tableHeaderString = tableHeaders.map((header,index)=>{
         if(index>0){
           return `<th><h6>${header}</h6></th>`
         }else{
-          return `<th><h6></h6></th>`
+          return `<th><h6>${' '}</h6></th>`
         }
       }).join('')
       
@@ -533,12 +598,12 @@ class Table {
               ${
                 tableHeaders.map((header,index) => {
                 if(index==0){
-                  return `<td>${rowData[header]}</td>`
+                  return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
                 }
                 else{
                   return `<td class="table-row-data">${rowData[header]}</td>`
                 }
-              })
+              }).join('')
             } 
           </tr>
         `
@@ -568,23 +633,14 @@ class Table {
             </div>
           </div>
         </div>`
-
-
-
     }
    
-
     
-
-    // const df2 = df.groupby(['type']).agg({no_charging_points:["count","mean","median"]})
-    // df.groupby(['type']).agg({no_charging_points:["sum"]}).print()
-    // df.groupby(['ward_name','type']).agg({no_charging_points:["count"]}).print()
-    // df.groupby(['ward_name','organisation']).agg({no_charging_points:["count"]}).print()
 
     const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => createTable(df,tableConfig)).join("")
     
-    let tableMarkup2 = `
-    <div class="listview-container">
+    let tableMarkup = `
+    <div class="tableview-container">
       <h3>TABLES</h3>
       <div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">
         ${tables}
@@ -592,15 +648,15 @@ class Table {
     </div>
     `
     // <div class="table-footer">
-    //             <span class="table-row-count">Showing&nbsp;${totalRows}&nbsp;row(s)</span>
-    //             <button id="table-download-btn" class="lbh-button download-btn">Download</button>
-    //           </div>
+    //   <span class="table-row-count">Showing&nbsp;${totalRows}&nbsp;row(s)</span>
+    //   <button id="table-download-btn" class="lbh-button download-btn">Download</button>
+    // </div>
    
     
   
     
     // this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
-    this.mapClass.addMarkupToMapAfter(tableMarkup2, "tableview", "listview");
+    this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
     //activate component from lbh-frontend
     
     // let downloadBtn = document.getElementById("table-download-btn")

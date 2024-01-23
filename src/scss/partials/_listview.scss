@@ -36,10 +36,15 @@ p.lbh-body-s{
 
 		th{
 			// font-weight: 14;
+			background-color: white;
 			border-bottom: 1px solid #363434;
 			position: sticky;
 			top: 0;
 			color: white;
+			margin-bottom: 5px;
+		}
+		th:nth-child(n+2){
+			text-align: center;
 		}
 		
 		td, th {
@@ -56,6 +61,9 @@ p.lbh-body-s{
 					text-align: center;
 					// width: 100%;
 					// background-color: black;
+				}
+				.table-row-header{
+					margin: 2px 0px 2px 0px;
 				}
 			
 		}
