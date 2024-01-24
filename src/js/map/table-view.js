@@ -47,6 +47,13 @@ class Table {
           "geoserverLayerName": "transport:electrical_vehicle_charger_all",
           "cqlFilter":"type LIKE 'Lamp column' AND status IN ('Active', 'Potential')",
           "countLabel": "locations",
+          "spatialEnrichments": [
+            {
+              "geographyLayer": "housing:lbh_estate&cql_filter=estate_name NOT LIKE 'BROADWAY ESTATE'",
+              "sourceAttribute": "estate_name",
+              "targetAttribute": "estate_name"
+            }
+          ],
           "pointStyle": {
             "markerType": "CircleMarker",
             "circleMarkerRadius": 1,
@@ -94,6 +101,13 @@ class Table {
           "geoserverLayerName": "transport:electrical_vehicle_charger_all",
           "cqlFilter":"type LIKE 'Free standing Fast' AND status IN ('Active', 'Potential')",
           "countLabel": "locations",
+          "spatialEnrichments": [
+            {
+              "geographyLayer": "housing:lbh_estate&cql_filter=estate_name NOT LIKE 'BROADWAY ESTATE'",
+              "sourceAttribute": "estate_name",
+              "targetAttribute": "estate_name"
+            }
+          ],
           "pointStyle": {
             "markerType": "CircleMarker",
             "circleMarkerRadius": 1,
@@ -140,6 +154,13 @@ class Table {
           "geoserverLayerName": "transport:electrical_vehicle_charger_all",
           "cqlFilter":"type LIKE 'Free standing Rapid' AND status IN ('Active', 'Potential')",
           "countLabel": "locations",
+          "spatialEnrichments": [
+            {
+              "geographyLayer": "housing:lbh_estate&cql_filter=estate_name NOT LIKE 'BROADWAY ESTATE'",
+              "sourceAttribute": "estate_name",
+              "targetAttribute": "estate_name"
+            }
+          ],
           "pointStyle": {
             "markerType": "CircleMarker",
             "circleMarkerRadius": 1,
@@ -186,6 +207,13 @@ class Table {
           "geoserverLayerName": "transport:electrical_vehicle_charger_all",
           "cqlFilter":"type LIKE 'Free standing smart fast' AND status IN ('Active', 'Potential')",
           "countLabel": "locations",
+          "spatialEnrichments": [
+            {
+              "geographyLayer": "housing:lbh_estate&cql_filter=estate_name NOT LIKE 'BROADWAY ESTATE'",
+              "sourceAttribute": "estate_name",
+              "targetAttribute": "estate_name"
+            }
+          ],
           "pointStyle": {
             "markerType": "CircleMarker",
             "circleMarkerRadius": 1,
