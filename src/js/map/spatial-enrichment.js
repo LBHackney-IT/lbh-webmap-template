@@ -2,21 +2,22 @@ import L from "leaflet";
 import * as turf from '@turf/turf';
 
 class SpatialEnrichment {
-  constructor(mapClass, layersData) {
+  constructor(mapClass) {
     this.mapClass = mapClass;
-    this.layersData = layersData;
+    this.mapConfig = mapClass.mapConfig;
+    this.geographyLayerDict = {};
   }
 
   init(){
-    this.loadGeographies(this.layersData);
+    
   }
 
-  loadGeographies(layersData){
+  loadGeographyLayers(){
     //list all geography layers to load
     let listGeographyLayerNames = [];
-    for (const layerData of layersData){
-      if (layerData.configLayer.spatialEnrichments){
-        for (const spatialEnrichment of layerData.configLayer.spatialEnrichments){
+    for (const configLayer of this.mapConfig.layers){
+      if (configLayer.spatialEnrichments){
+        for (const spatialEnrichment of configLayer.spatialEnrichments){
           if (! listGeographyLayerNames.includes(spatialEnrichment.geographyLayer)){
             listGeographyLayerNames.push(spatialEnrichment.geographyLayer);
           }
@@ -25,7 +26,6 @@ class SpatialEnrichment {
     }
     
     //load each layer and keep count
-    let geographyLayerDict = {};
     let url = '';
     for (const geographyLayerName of listGeographyLayerNames){
       url = this.mapClass.geoserver_wfs_url + geographyLayerName;
@@ -36,33 +36,30 @@ class SpatialEnrichment {
         .then(response => response.json())
         .then(data => {
           // console.log(layersData);
-          geographyLayerDict[geographyLayerName] = data;
-          if (Object.keys(geographyLayerDict).length == listGeographyLayerNames.length){
+          this.geographyLayerDict[geographyLayerName] = data;
+          if (Object.keys(this.geographyLayerDict).length == listGeographyLayerNames.length){
             // console.log('Load completed for ' +listGeographyLayerNames.length+ ' geography layers');
-            this.enrichLayers(layersData, geographyLayerDict);
           }
         })
       .catch(error => {
         console.log(error);
         alert("Something went wrong while loading geography layers for spatial enrichment");
       });     
-
     }
-
   }
   
   //Use TURF to do spatial joins between map layers and geography layers 
-  enrichLayers(layersData, geographyLayerDict){ 
+  enrichLayers(layersData){ 
     var enriched_data;
     for (const layerData of layersData){
       if (layerData.configLayer.spatialEnrichments){
         for (const spatialEnrichment of layerData.configLayer.spatialEnrichments){
           console.log('Enriching, assuming the layer to enrich is a point layer');
-          enriched_data = turf.tag(layerData.data, geographyLayerDict[spatialEnrichment.geographyLayer], spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute);  
+          enriched_data = turf.tag(layerData.data, this.geographyLayerDict[spatialEnrichment.geographyLayer], spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute);  
           layerData.data = enriched_data;
         }
-        // console.log('after enrichment: ');
-        // console.log(layersData);
+        console.log('after enrichment: ');
+        console.log(layersData);
       }
     }     
   }
