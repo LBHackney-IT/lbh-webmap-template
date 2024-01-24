@@ -9,6 +9,7 @@ import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
 import Table from "./table-view";
+import SpatialEnrichment from "./spatial-enrichment";
 
 
 class DataLayers {
@@ -31,6 +32,7 @@ class DataLayers {
     this.showAddressSearch = null;
     this.list = null;
     this.statistics = null;
+    this.spatialEnrichmentFlag = false;
   }
 
   pointToLayer (latlng, configLayer) {
@@ -417,7 +419,10 @@ class DataLayers {
       let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
       closestMarker.layer.openPopup();
     }
-
+    //if there are some spatial enrichments for this layer, set the flag to true
+    if (configLayer.spatialEnrichments){
+      this.spatialEnrichmentFlag = true;
+    }
     this.loadedLayerCount++;
 
     //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
@@ -446,6 +451,12 @@ class DataLayers {
     if (this.mapConfig.performDrillDown && this.loadedLayerCount == this.layerCount) {
         this.drilldown = new DrillDown(this.map);
         this.drilldown.init();
+    }
+
+    //Spatial enrichment and replace 'data' with the enriched feature collection.
+    if (this.spatialEnrichmentFlag && this.loadedLayerCount == this.layerCount) {
+      this.spatialenrichment = new SpatialEnrichment(this.mapClass, this.layersData);
+      this.spatialenrichment.init();
     }
       
     if (this.mapConfig.showLegend) {
