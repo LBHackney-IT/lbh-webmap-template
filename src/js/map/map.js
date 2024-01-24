@@ -38,6 +38,7 @@ import DataLayers from "./data-layers";
 import VectorTileDataLayers from "./vector-tile-data-layers";
 import Metadata from "./metadata";
 import "classlist-polyfill";
+import SpatialEnrichment from "./spatial-enrichment";
 
 class Map {
   constructor(map) {
@@ -401,9 +402,13 @@ class Map {
         }
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
-    
+    //prepare layers for spatial enrichment if necessary
+    if (this.mapConfig.spatialEnrichments) {
+      this.spatialEnrichments = new SpatialEnrichment(this);
+      this.spatialEnrichments.loadGeographyLayers();
+    }
     //Add the layers from config
-    if(this.mapConfig.layers[0].vectorTilesLayer){
+    if (this.mapConfig.layers[0].vectorTilesLayer){
       new VectorTileDataLayers(this).loadLayers();
     } 
     else {
