@@ -1,6 +1,8 @@
 // import DataLayers from "./data-layers";
 // import { MARKER_COLORS } from "./consts";
 
+import { feature } from "@turf/turf";
+
 class Table {
   constructor(map, layersData) {
     this.mapClass = map;
@@ -427,30 +429,45 @@ class Table {
             "dtypes":{"int32":["no_charging_points"]},
             "aggregations": {
               "no_charging_points":{
-                  "functions":["count"],
-                  
-                  
+                "functions":["count"],
+                
+                
               }
             },
             "labels":{
-                    "no_charging_points_count":'Number of Charge Locations',
-                    "organisation":'Provider',
-                  },
+              "no_charging_points_count":'Number of Charge Locations',
+              "organisation":'Provider',
+            },
             "sortBy":{"ward_name":'ascending',"Number of Charge Locations":'descending'},
             "round":null
           },
-          // {
-          //   "tableTitle": "Number of rapid bays by estate",
-          //   "downloadable":false,
-          //   "scope": ["Free standing Rapid"],//only 1 layer on map
-          //   "groupByLayer": false,
-          //   "groupByGeography": {
-          //     "geographyLayer": "housing:lbh_estate"
-          //   },
-          //   "functions": {
-          //     "sum": ["no_bays"]
-          //   }
-          // }
+          {
+            "tableTitle": "Number of rapid bays by estate",
+            "downloadable":false,
+            "scope": ["Free standing Rapid"],//only 1 layer on map
+            "filters":[
+              { "attribute": "type", "operator": "!==", "value": "Free standing Rapid"},
+
+            ],
+            "groupBy": ["estate_name"],
+            "dtypes":{"int32":["no_bays"]},
+            "aggregations": {
+              "no_bays":{
+                "functions":["sum"],
+              }
+            },
+            "labels":{
+              "no_bays_sum":'Number of Rapid Bays',
+            },
+            "sortBy":{"Number of Rapid Bays":'descending'},
+            "round":null,
+            "replacers":[
+              // { "attribute": "Number of Rapid Bays", "value":new NaN,"replacerValue":0},
+              { "attribute": "estate_name", "value":"Unspecified","replacerValue":"UNKNOWN ESTATE"},
+            ],
+            "fillNa":{"Number of Rapid Bays":0}
+            
+          }
         ]
       }
     }
@@ -530,14 +547,71 @@ class Table {
       }
     }
 
-    const df = new dfd.DataFrame(combinedData)
-    console.log(df.columns)
+    const ensureSameAttributes = (data)=>{
+      //Step 1 Identify all unique attributes
+      const allAttributes = new Set();
+      data.forEach(feature => {
+        Object.keys(feature).forEach(attribute =>{
+          allAttributes.add(attribute)
+        })
+        
+      });
+
+      //step 2
+      data.forEach(feature =>{
+        Array.from(allAttributes).forEach(attribute =>{
+          if(!(attribute in feature)){
+            feature[attribute] = 'Unspecified'
+          }
+        })
+      })
+
+    }
+
+    ensureSameAttributes(combinedData)
     
 
-    const createTable =(df,config)=>{
-      
+    
+    
+    const createTable =(combinedData,config)=>{
+
+      let filteredData = combinedData
+
+      //______________FILTER_DF______________
+      if(config.filters){
+        filteredData = filteredData.filter(feature => {
+          return config.filters.every(filter =>{
+            const {attribute,operator,value} = filter;
+            switch (operator){
+              case '>':
+                return feature[attribute] > value;
+              case '<':
+                return feature[attribute] < value;
+              case '>=':
+                return feature[attribute] >= value;
+              case '<=':
+                return feature[attribute] <= value;
+              case '===':
+                return feature[attribute] === value;
+              case '!==':
+                return feature[attribute] !== value;
+              default:
+                return false
+            }
+
+          });
+        });
+        
+      }
+
+      const df = new dfd.DataFrame(filteredData)
+
+      console.log(df.columns)
       console.log(config.tableTitle)
-      // confugure data types for aggregation functions to run correctly
+
+      
+      
+      // configure data types for aggregation functions to run correctly
       if(config.dtypes){
         for (const [dtype,columns] of Object.entries(config.dtypes)){
           columns.map(col => {
@@ -545,8 +619,10 @@ class Table {
             return null
           })
         }
-
-        }
+        
+      }
+      
+      
       const new_df = df.groupby(config.groupBy).agg(
         Object.fromEntries(
           Object.entries(config.aggregations).map(([key,value])=> [key,value.functions])
@@ -565,6 +641,18 @@ class Table {
           return(x)
         }
       }
+
+      //_____-FILLNA_________
+      if(config.fillNa){
+        let values = Object.values(config.fillNa)
+        let columns = Object.keys(config.fillNa)
+
+        new_df.fillNa(values, {
+          columns:columns,
+          inplace: true
+        })
+      }
+
       let tableData = dfd.toJSON(new_df, {format: "column"})
       tableData.map((tr)=>{
         Object.entries(tr).map(([col,data])=>{
@@ -590,26 +678,33 @@ class Table {
           return 0;
         });
         
-        // return sortedData
-        // if (column !== null && sortOrder != null){
-        //   const direction = sortOrder === 'ascending' ? 1 : -1;
-        //   let newData = [...data].map((e) => e).sort((a,b)=>{
-        //     if(a[column] < b[column]) return -direction;
-        //     if(a[column] > b[column]) return direction;
-        //     return 0;
-        //   })
-        //   tableData = newData
-        //   console.log('Data Sorted')
-        //   console.log('SORTED DATA: ',newData)
-        // }else{
-        //   console.log('Unable to sort data')
-        // }
       }
 
       if(config.sortBy){
         tableData = handleSort()
         console.log('SORTED DATA: ',tableData)
       }
+
+      if(config.replacers){
+       
+        tableData = tableData.map(feature => {
+          
+        Object.entries(feature).forEach(([attribute,value])=>{
+          config.replacers.forEach(replacer =>{
+            
+            if(attribute === replacer.attribute && value==replacer.value){
+              feature[attribute] = replacer.replacerValue
+            }
+          })
+
+
+        })
+        return feature
+      })
+
+      }
+
+    
 
       console.log('TABLE DATA: ',tableData)
       const tableHeaders =Object.keys(tableData[0])
@@ -665,7 +760,7 @@ class Table {
    
     
 
-    const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => createTable(df,tableConfig)).join("")
+    const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => createTable(combinedData,tableConfig)).join("")
     
     let tableMarkup = `
     <div class="tableview-container">
@@ -728,21 +823,3 @@ class Table {
 export default Table;
 
 
-//________________Functions_______________
-// createTables      || Main 
-// createCountTable  || MarkUp
-// createGroupedTables || MarkUp
- 
-// groupLayersBy    || function to invoke the groupby methods
-// formatGroupedDf  || dataframe
-
-// groupByGeography || function to use turf.js to group by geometries / wards
-
-
-
-// lambda geo_api_merger_and_filter ? instead of turf, if dataset to complex ?
-//_________________turf______________________
-// var points = turf.featureCollection([pt1, pt2]);
-// var polygons = turf.featureCollection([poly1, poly2]);
-// var tagged = turf.tag(points, polygons, 'pop', 'population');
-// https://turfjs.org/docs/#tag
