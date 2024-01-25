@@ -1,7 +1,6 @@
 // import DataLayers from "./data-layers";
 // import { MARKER_COLORS } from "./consts";
-
-import { feature } from "@turf/turf";
+;
 
 class Table {
   constructor(map, layersData) {
@@ -368,8 +367,27 @@ class Table {
       ],
       "statistics":{
         "sectionHeader": "A few statistics...",
-        "accordionStatus": "allExpanded",
+        "accordionStatus": false,
         "statisticsTables": [
+          {
+            "tableTitle": "Total number of charging points in the borough",
+            "downloadable":false,
+            "scope":  ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
+            "groupBy": false,
+            "dtypes":{"int32":["no_charging_points"]},
+            "functions": {
+              "sum": ["no_charging_points"],
+              "count": ["id"]
+            },
+            "labels":{
+              "value":' '
+            },
+            "replacers":[
+              // { "attribute": "Number of Rapid Bays", "value":new NaN,"replacerValue":0},
+              { "attribute": "column", "value":"no_charging_points_sum","replacerValue":"Number of Charging points"},
+              { "attribute": "column", "value":"id_count","replacerValue":"Number of Charging Locations"},
+            ],
+          },
           {
             "tableTitle": "Number of charging locations by type in the borough with their average number of sockets",
             "downloadable":false,
@@ -389,37 +407,6 @@ class Table {
               "Number of Charge Locations":"descending"
             },
             "round":{"Average Number of Sockets":2}
-          },
-          // {
-          //   "tableTitle": "Total number of charging points in the borough",
-          //   "downloadable":false,
-          //   "scope":  ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers
-          //   "groupBy": false,
-          //   "dtypes":{"int32":["no_charging_points"]},
-          //   "functions": {
-          //     "sum": ["no_charging_points"]
-          //   }
-          // },
-          {
-            "tableTitle": "Number of charging locations by type and by ward",
-            "downloadable":false,
-            "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers 
-            "groupBy":["ward_name","type"],
-            "dtypes":{"int32":["no_charging_points"]},
-            "aggregations": {
-              "no_charging_points":{
-                  "functions":["count"],
-                  },
-              },
-            "labels":{
-                    "no_charging_points_count":'Number of Charge Locations',
-                    "type":'Charger Type'
-                  },
-            "sortBy":{
-              "ward_name":"ascending",
-              "Number of Charge Locations":"descending",
-            },
-            "round":null
           },
           {
             "tableTitle": "Number of charging locations by provider and by ward",
@@ -442,8 +429,30 @@ class Table {
             "round":null
           },
           {
+            "tableTitle": "Number of charging locations by type and by ward",
+            "downloadable":false,
+            "scope": ["Lamp columns / Slow chargers","Free standing Fast","Free standing Rapid","Free standing Smart Fast"],//all EV layers 
+            "groupBy":["ward_name","type"],
+            "dtypes":{"int32":["no_charging_points"]},
+            "aggregations": {
+              "no_charging_points":{
+                  "functions":["count"],
+                  },
+              },
+            "labels":{
+                    "no_charging_points_count":'Number of Charge Locations',
+                    "type":'Charger Type'
+                  },
+            "sortBy":{
+              "ward_name":"ascending",
+              "Number of Charge Locations":"descending",
+            },
+            "round":null
+          },
+          {
             "tableTitle": "Number of rapid bays by estate",
             "downloadable":false,
+            "expanded":true,
             "scope": ["Free standing Rapid"],//only 1 layer on map
             "filters":[
               { "attribute": "type", "operator": "!==", "value": "Free standing Rapid"},
@@ -475,16 +484,20 @@ class Table {
     this.layersData = layersData;
     this.container = map.container;
     this.table = null;
+    this.list = null;
     this.accordionExpandedClass = null;
     this.tableLayers = ['Free standing Fast','Free standing Rapid','Free standing Smart Fast ','Lamp columns / Slow chargers']//@TRACK  put this into a config
   }
 
   init() {
+    this.list = this.mapConfig.list;
     this.table = this.mapConfig.statistics;
     this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
     this.layersData.map((layerObj) =>{layerObj.layer.isVisible =true;return null})
 
-    
+    if (this.list.accordionStatus == 'allExpanded'){
+      this.accordionExpandedClass = 'govuk-accordion__section--expanded';
+    }
     if (this.table.accordionStatus == 'allExpanded'){
       this.accordionExpandedClass = 'govuk-accordion__section--expanded';
     }
@@ -493,12 +506,12 @@ class Table {
       this.accordionExpandedClass = '';
     }
 
-    this.addlayerEventListeners(this.layersData,this.createTables.bind(this))
-    this.createTables()
-    // this.createMarkup();
+    this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this))
+    this.createMarkup();
+    this.createTables();
   }
   
-  addlayerEventListeners(dataLayers,createTable){
+  addlayerEventListeners(dataLayers,createTables,createListViews){
 
     console.log(dataLayers)
     dataLayers.map((layerObj) => {
@@ -511,12 +524,14 @@ class Table {
         // assign event listeners to layers
         layer.on('add',()=>{
           layer.isVisible = true
-          createTable()
+          createListViews()
+          createTables()
         })
         
         layer.on('remove',()=>{
           layer.isVisible = false
-          createTable()
+          createListViews()
+          createTables()
         })
       }
       return null
@@ -524,6 +539,253 @@ class Table {
 
   }
 
+  createTable(combinedData,config){
+
+    let filteredData = combinedData
+
+    //______________FILTER_DF______________
+    if(config.filters){
+      filteredData = filteredData.filter(feature => {
+        return config.filters.every(filter =>{
+          const {attribute,operator,value} = filter;
+          switch (operator){
+            case '>':
+              return feature[attribute] > value;
+            case '<':
+              return feature[attribute] < value;
+            case '>=':
+              return feature[attribute] >= value;
+            case '<=':
+              return feature[attribute] <= value;
+            case '===':
+              return feature[attribute] === value;
+            case '!==':
+              return feature[attribute] !== value;
+            default:
+              return false
+          }
+
+        });
+      });
+      
+    }
+    //__________________________________________________________________________________________
+
+    const df = new dfd.DataFrame(filteredData)
+
+    console.log(df.columns)
+    console.log(config.tableTitle)
+
+    
+    
+    // configure data types for aggregation functions to run correctly
+    if(config.dtypes){
+      for (const [dtype,columns] of Object.entries(config.dtypes)){
+        columns.map(col => {
+          df.asType(col,dtype,{inplace:true})
+          return null
+        })
+      }
+      
+    }
+    
+    let new_df =  df
+    //_____________________GROUP DATAFRAME and AGGREGATE________________
+    if(config.groupBy){
+
+      new_df = df.groupby(config.groupBy).agg(
+        Object.fromEntries(
+          Object.entries(config.aggregations).map(([key,value])=> [key,value.functions])
+          )
+          )
+    }
+    // console.log(dfd.toJSON(new_df, {format: "row"}))
+
+    if(config.functions){
+      
+      let functions = config.functions
+      let results = []
+      for (const key in functions){
+        
+        functions[key].map(col =>{ 
+          switch(key){
+
+            case('sum'):
+              results.push({column:`${col}_${key}`,value:new_df[col].sum()})
+              break
+            case('count'):
+              results.push({column:`${col}_${key}`,value:new_df[col].count()})
+              break
+            case('median'):
+              results.push({column:`${col}_${key}`,value:new_df[col].median()})
+              break
+            case('mean'):
+              results.push({column:`${col}_${key}`,value:new_df[col].mean()})
+              break
+            case('mode'):
+              results.push({column:`${col}_${key}`,value:new_df[col].mode()})
+              break
+            case('max'):
+              results.push({column:`${col}_${key}`,value:new_df[col].maximum()})
+              break
+            case('min'):
+              results.push({column:`${col}_${key}`,value:new_df[col].minimum()})
+              break
+            case('var'):
+              results.push({column:`${col}_${key}`,value:new_df[col].var()})
+              break
+            case('std'):
+              results.push({column:`${col}_${key}`,value:new_df[col].std()})
+              break
+            default:
+              console.log('No aggregation provided')
+
+          }
+          return null}
+          )
+      }
+      if(results.length >0){
+        new_df = new dfd.DataFrame(results)
+        console.log(results)
+
+      }else{
+        return ''
+      }
+      
+    }
+
+    // ________Rename columns using config labels_____________
+    if(config.labels){ // &&config.groupBy ??
+      new_df.rename(config.labels, { inplace: true })
+    }
+
+    
+    //__________________________FILLNA_________
+    if(config.fillNa){
+      let values = Object.values(config.fillNa)
+      let columns = Object.keys(config.fillNa)
+      
+      new_df.fillNa(values, {
+        columns:columns,
+        inplace: true
+      })
+    }
+    
+    
+    let tableData = dfd.toJSON(new_df, {format: "column"})
+    
+    
+    //_______Rounding Specific Columns________________________
+    if(config.round){
+      
+      const roundNumber = (x,decimalPlaces) => {
+        const factor = 10 ** decimalPlaces;
+        if(parseFloat(x)){
+          return Math.round(parseFloat(x)*factor)/factor
+        }else{
+          return(x)
+        }
+      }
+      tableData.map((tr)=>{
+        Object.entries(tr).map(([col,data])=>{
+          if(config.round&&Object.keys(config.round).includes(col)){
+            tr[col] = roundNumber(data,config.round[col])
+          }
+          
+        })
+      })
+    }
+    // ______________SORT_DATA_BY_Columns______
+    if(config.sortBy){
+
+      const handleSort = ()=>{
+        let sortConfig = config.sortBy
+        return  tableData.sort((a,b) => {
+          for(const key of Object.keys(sortConfig)){
+            const sortOrder = sortConfig[key] === 'descending'? -1 : 1;;
+            const comparison = (a[key] > b[key]) ? 1 : ((a[key] < b[key]) ? -1 : 0);
+            if (comparison !== 0) {
+              return comparison * sortOrder;
+            }
+          }
+          
+          return 0;
+        });
+        
+      }
+      tableData = handleSort()
+      console.log('SORTED DATA: ',tableData)
+    }
+    //_______________Replace specific values for specific attributes
+    if(config.replacers){
+     
+      tableData = tableData.map(feature => {
+        Object.entries(feature).forEach(([attribute,value])=>{
+          config.replacers.forEach(replacer =>{
+            
+            if(attribute === replacer.attribute && value==replacer.value){
+              feature[attribute] = replacer.replacerValue
+            }
+          })
+      })
+      return feature
+    })
+
+    }
+
+  
+
+    console.log('TABLE DATA: ',tableData)
+    const tableHeaders =Object.keys(tableData[0])
+    const tableHeaderString = tableHeaders.map((header,index)=>{
+      if(index>0){
+        return `<th><h6>${header}</h6></th>`
+      }else{
+        return `<th><h6>${' '}</h6></th>`
+      }
+    }).join('')
+    
+    const tableRows = tableData.map((rowData)=>{
+    return `<tr>  
+            ${
+              tableHeaders.map((header,index) => {
+              if(index==0){
+                return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
+              }
+              else{
+                return `<td class="table-row-data">${rowData[header]}</td>`
+              }
+            }).join('')
+          } 
+        </tr>
+      `
+      }
+    ).join('')
+  
+
+    return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
+        <div class="govuk-accordion__section-header">
+          <h5 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button">
+            ${config.tableTitle}
+            </span>
+          </h5>
+        </div>
+        <div id="default-example-content-1" class="govuk-accordion__section-content">
+          <div class="table-container">
+            <div class="table-wrapper">
+              <table>
+                <tr>
+                  ${tableHeaderString}
+                </tr>
+                ${tableRows}
+              </table>
+            </div>
+            
+          </div>
+        </div>
+      </div>`
+  }
   createTables(){
     console.log('Creating table...')
 
@@ -535,7 +797,7 @@ class Table {
     let totalRows = 0
     let combinedData = []
      
-    // get rows
+    // get rows where layer is visible on map
     for (const layerObj of this.layersData){
       if(this.tableLayers.includes(layerObj.configLayer.title)&&layerObj.layer.isVisible){
         console.log(layerObj.configLayer.title)
@@ -572,217 +834,104 @@ class Table {
     
 
     
+    const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => this.createTable(combinedData,tableConfig)).join("")
     
-    const createTable =(combinedData,config)=>{
-
-      let filteredData = combinedData
-
-      //______________FILTER_DF______________
-      if(config.filters){
-        filteredData = filteredData.filter(feature => {
-          return config.filters.every(filter =>{
-            const {attribute,operator,value} = filter;
-            switch (operator){
-              case '>':
-                return feature[attribute] > value;
-              case '<':
-                return feature[attribute] < value;
-              case '>=':
-                return feature[attribute] >= value;
-              case '<=':
-                return feature[attribute] <= value;
-              case '===':
-                return feature[attribute] === value;
-              case '!==':
-                return feature[attribute] !== value;
-              default:
-                return false
-            }
-
-          });
-        });
-        
-      }
-
-      const df = new dfd.DataFrame(filteredData)
-
-      console.log(df.columns)
-      console.log(config.tableTitle)
-
-      
-      
-      // configure data types for aggregation functions to run correctly
-      if(config.dtypes){
-        for (const [dtype,columns] of Object.entries(config.dtypes)){
-          columns.map(col => {
-            df.asType(col,dtype,{inplace:true})
-            return null
-          })
-        }
-        
-      }
-      
-      
-      const new_df = df.groupby(config.groupBy).agg(
-        Object.fromEntries(
-          Object.entries(config.aggregations).map(([key,value])=> [key,value.functions])
-        )
-      )
-      // console.log(dfd.toJSON(new_df, {format: "row"}))
-
-      // ________Rename columns using config labels_____________
-      new_df.rename(config.labels, { inplace: true })
-      //_______Rounding Specific Columns________
-      const roundNumber=(x,decimalPlaces)=>{
-        const factoor = 10 ** decimalPlaces;
-        if(parseFloat(x)){
-          return Math.round(parseFloat(x)*factoor)/factoor
-        }else{
-          return(x)
-        }
-      }
-
-      //_____-FILLNA_________
-      if(config.fillNa){
-        let values = Object.values(config.fillNa)
-        let columns = Object.keys(config.fillNa)
-
-        new_df.fillNa(values, {
-          columns:columns,
-          inplace: true
-        })
-      }
-
-      let tableData = dfd.toJSON(new_df, {format: "column"})
-      tableData.map((tr)=>{
-        Object.entries(tr).map(([col,data])=>{
-          //"round":{columName:0,columName2:0}
-          if(config.round&&Object.keys(config.round).includes(col)){
-            tr[col] = roundNumber(data,config.round[col])
-          }
-
-        })
-      })
-      // ______________SORT_DATA_BY_Columns______
-      const handleSort = ()=>{
-        let sortConfig = config.sortBy
-        return  tableData.sort((a,b) => {
-          for(const key of Object.keys(sortConfig)){
-            const sortOrder = sortConfig[key] === 'descending'? -1 : 1;;
-            const comparison = (a[key] > b[key]) ? 1 : ((a[key] < b[key]) ? -1 : 0);
-            if (comparison !== 0) {
-              return comparison * sortOrder;
-            }
-          }
-          
-          return 0;
-        });
-        
-      }
-
-      if(config.sortBy){
-        tableData = handleSort()
-        console.log('SORTED DATA: ',tableData)
-      }
-
-      if(config.replacers){
-       
-        tableData = tableData.map(feature => {
-          
-        Object.entries(feature).forEach(([attribute,value])=>{
-          config.replacers.forEach(replacer =>{
-            
-            if(attribute === replacer.attribute && value==replacer.value){
-              feature[attribute] = replacer.replacerValue
-            }
-          })
-
-
-        })
-        return feature
-      })
-
-      }
-
-    
-
-      console.log('TABLE DATA: ',tableData)
-      const tableHeaders =Object.keys(tableData[0])
-      const tableHeaderString = tableHeaders.map((header,index)=>{
-        if(index>0){
-          return `<th><h6>${header}</h6></th>`
-        }else{
-          return `<th><h6>${' '}</h6></th>`
-        }
-      }).join('')
-      
-      const tableRows = tableData.map((rowData)=>{
-      return `<tr>  
-              ${
-                tableHeaders.map((header,index) => {
-                if(index==0){
-                  return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
-                }
-                else{
-                  return `<td class="table-row-data">${rowData[header]}</td>`
-                }
-              }).join('')
-            } 
-          </tr>
-        `
-        }
-      ).join('')
-    
-
-      return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
-          <div class="govuk-accordion__section-header">
-            <h5 class="govuk-accordion__section-heading">
-              <span class="govuk-accordion__section-button">
-              ${config.tableTitle}
-              </span>
-            </h5>
-          </div>
-          <div id="default-example-content-1" class="govuk-accordion__section-content">
-            <div class="table-container">
-              <div class="table-wrapper">
-                <table>
-                  <tr>
-                    ${tableHeaderString}
-                  </tr>
-                  ${tableRows}
-                </table>
-              </div>
-              
-            </div>
-          </div>
-        </div>`
-    }
-   
-    
-
-    const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => createTable(combinedData,tableConfig)).join("")
-    
+    // <div class="tableview-container">
     let tableMarkup = `
-    <div class="tableview-container">
-      <h3>TABLES</h3>
+      <h4>TABLES</h4>
       <div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">
         ${tables}
       </div>
-    </div>
-    `
+      `
+    // </div>
+
     // <div class="table-footer">
     //   <span class="table-row-count">Showing&nbsp;${totalRows}&nbsp;row(s)</span>
     //   <button id="table-download-btn" class="lbh-button download-btn">Download</button>
     // </div>
    
-    
-  
-    
-    // this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
-    this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "listview");
     //activate component from lbh-frontend
+    this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "tableview");
     
-    // let downloadBtn = document.getElementById("table-download-btn")
+    
+    
+    window.LBHFrontend.initAll();
+  }
+  createMarkup() {
+    const tableDiv =  document.getElementById('listview')
+    tableDiv&&tableDiv.remove()
+
+
+    let html = `<div class="listview-container"><h3>${this.list.sectionHeader}</h3>`;
+    html += `<div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">`;
+    for (var layerData of this.layersData){
+      if (layerData.configLayer.listView){
+        if (this.list.showIcons){
+          html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
+            <div class="govuk-accordion__section-header">
+            <h5 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button">
+            ${layerData.configLayer.title} &nbsp <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>
+            </span>
+            </h5>
+          </div>`;
+        }
+        else{
+          html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
+            <div class="govuk-accordion__section-header">
+            <h5 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button">
+            ${layerData.configLayer.title}
+            </span>
+            </h5>
+          </div>`;
+        }
+        
+        for (var feat of layerData.layer.getLayers()){
+          //for (var feature of layerData.data.features){
+          // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
+          // <ul class="lbh-list lbh-list--bullet">
+          // <li>${feature.properties.organisation_name}</li>
+          // </ul></div>`;
+          html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
+          <h6>${feat.feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          if (layerData.configLayer.listView.fields) {
+            html += `<p class="lbh-body-s">`;
+            for (const field of layerData.configLayer.listView.fields) {
+              if (feat.feature.properties[field] !== "") {
+                if (
+                  feat.feature.properties[field.name] !== "" &&
+                  feat.feature.properties[field.name] !== null
+                ) {
+                  if (field.label != "") {
+                    html += `${field.label}</span>: ${feat.feature.properties[field.name]}<br>`;
+                  } else {
+                    html += `${feat.feature.properties[field.name]}<br>`;
+                  }
+                }     
+              }
+            }
+            html += `</p>`
+          }          
+          html += `</div>`;
+        }
+        html += `</div>`;
+      }
+    }
+    html += `</div></div>`;
+    
+    this.mapClass.addMarkupToMapAfter(html, "listview", "listview");
+    //activate component from lbh-frontend
+    // window.LBHFrontend.initAll();
+
+  }
+ 
+}
+
+export default Table;
+
+
+// let downloadBtn = document.getElementById("table-download-btn")
     // downloadBtn&&downloadBtn.addEventListener('click',()=>{
       
     //   const downloadCSV=(csvString)=>{
@@ -811,15 +960,3 @@ class Table {
       
     //   convertToCSV(combinedData)
     // })
-    
-    
-    
-    window.LBHFrontend.initAll();
-  }
-
- 
-}
-
-export default Table;
-
-

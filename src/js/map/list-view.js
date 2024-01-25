@@ -21,7 +21,7 @@ class List {
     else{
       this.accordionExpandedClass = '';
     }
-    this.createMarkup();
+    // this.createMarkup();
   }
 
   createMarkup() {

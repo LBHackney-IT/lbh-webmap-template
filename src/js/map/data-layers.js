@@ -429,23 +429,6 @@ class DataLayers {
       this.mapClass.blpuPolygon.bringToFront();
     }
 
-    //only happens once, after the last layer has loaded - create filters above the map
-    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
-      this.filters = new Filters(this.mapClass, this.layersData);
-      this.filters.init();
-    }
-
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.list = new List(this.mapClass,this.layersData);
-      this.list.init();
-    }
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.statistics = new Table(this.mapClass,this.layersData);
-      this.statistics.init();
-    }
-
     //only happens once, after the last layer has loaded - add the drill down listener if true
     if (this.mapConfig.performDrillDown && this.loadedLayerCount == this.layerCount) {
         this.drilldown = new DrillDown(this.map);
@@ -559,6 +542,11 @@ class DataLayers {
     if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
       this.list = new List(this.mapClass,this.layersData);
       this.list.init();
+    }
+    //only happens once, after the last layer has loaded - create list view after the map
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.statistics = new Table(this.mapClass,this.layersData);
+      this.statistics.init();
     }
 
     //only happens once, after the last layer has loaded: address search

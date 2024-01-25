@@ -1,8 +1,8 @@
-.listview-container{
+.tableview-container{
 	margin-top: 70px;
 }
 
-.listview-container a {
+.tableview-container a {
 	@include lbh-link;
 }
 
@@ -28,7 +28,6 @@ p.lbh-body-s{
 	max-height: 65vh;
 	overflow-y: auto;
 	overflow-x: auto;
-	margin-bottom: 30px;
 
 	table {
 		// font-family: arial, sans-serif;
