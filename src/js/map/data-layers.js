@@ -8,11 +8,8 @@ import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
-<<<<<<< HEAD
 import Table from "./table-view";
 import SpatialEnrichment from "./spatial-enrichment";
-=======
->>>>>>> feat/spatial-enrichment
 
 
 class DataLayers {
