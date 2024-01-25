@@ -402,10 +402,10 @@ class Map {
         }
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
-    //prepare layers for spatial enrichment if necessary
+    //prepare flag for spatial enrichments if necessary
     if (this.mapConfig.spatialEnrichments) {
       this.spatialEnrichments = new SpatialEnrichment(this);
-      this.spatialEnrichments.loadGeographyLayers();
+      //this.spatialEnrichments.loadGeographyLayers();
     }
     //Add the layers from config
     if (this.mapConfig.layers[0].vectorTilesLayer){

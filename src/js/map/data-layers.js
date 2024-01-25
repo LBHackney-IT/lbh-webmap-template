@@ -8,7 +8,6 @@ import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
-import SpatialEnrichment from "./spatial-enrichment";
 
 
 class DataLayers {
@@ -419,26 +418,11 @@ class DataLayers {
     
     this.loadedLayerCount++;
 
-    //only happens once, after the last layer has loadedSpatial enrichment and replace 'data' with the enriched feature collection.
-    if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
-      this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
-    }
+
 
     //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
     if (this.mapClass.blpuPolygon && this.loadedLayerCount == this.layerCount) {
       this.mapClass.blpuPolygon.bringToFront();
-    }
-
-    //only happens once, after the last layer has loaded - create filters above the map
-    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
-      this.filters = new Filters(this.mapClass, this.layersData);
-      this.filters.init();
-    }
-
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.list = new List(this.mapClass,this.layersData);
-      this.list.init();
     }
 
     //only happens once, after the last layer has loaded - add the drill down listener if true
@@ -537,6 +521,25 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
+
+    
+    //only happens once, after the last layer has loaded: spatial enrichment
+    if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
+      this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
+    }
+    
+    //only happens once, after the last layer has loaded - create filters above the map
+    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
+      this.filters = new Filters(this.mapClass, this.layersData);
+      this.filters.init();
+    }
+
+    //only happens once, after the last layer has loaded - create list view after the map
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.list = new List(this.mapClass,this.layersData);
+      this.list.init();
+    }
+
     //only happens once, after the last layer has loaded: address search
     if (this.loadedLayerCount == this.layerCount && this.mapConfig.showAddressSearch){
       this.showAddressSearch = new addressSearch(this.mapClass);
