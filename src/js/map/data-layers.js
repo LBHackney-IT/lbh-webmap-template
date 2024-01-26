@@ -8,6 +8,7 @@ import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
+import * as turf from '@turf/turf';
 
 
 class DataLayers {
@@ -29,6 +30,7 @@ class DataLayers {
     this.search = null;
     this.showAddressSearch = null;
     this.list = null;
+    this.geographyLayerDict = {};
   }
 
   pointToLayer (latlng, configLayer) {
@@ -521,12 +523,6 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
-
-    
-    //only happens once, after the last layer has loaded: spatial enrichment
-    if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
-      this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
-    }
     
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
@@ -546,6 +542,94 @@ class DataLayers {
       this.showAddressSearch.init();
     }
   }
+
+  enrichLayer(dataToEnrich, configLayer) {
+    console.log('enriching: ');
+    console.log(configLayer);
+    for (const spatialEnrichment of configLayer.spatialEnrichments){
+      // //if geography layer already loaded, enrich straight away
+    // if (this.geographyLayerDict.hasOwnProperty(spatialEnrichment.geographyLayer)){
+    //   dataToEnrich = turf.tag(dataToEnrich, this.geographyLayerDict[spatialEnrichment.geographyLayer], spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute); 
+    // }
+    // else{
+    console.log('enrich with: '+spatialEnrichment.geographyLayer);
+    let url = this.mapClass.geoserver_wfs_url + spatialEnrichment.geographyLayer;
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+        .then(response => response.json())
+        .then(data => {
+          //this.geographyLayerDict[spatialEnrichment.geographyLayer] = data;
+          dataToEnrich = turf.tag(dataToEnrich, data, spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute); 
+          return dataToEnrich; 
+        });
+    }      
+         
+  }
+
+  async enrichPromises(configLayer, data) {
+    if (! configLayer.spatialEnrichments) {
+      console.log('No enrichement for this layer');
+      return data
+    }
+    else{
+      console.log('data to enrich: ');
+      console.log(data);
+      console.log('current stae of geographyLayerDict: ');
+      console.log(this.geographyLayerDict);
+      let listGeographyLayerNames = [];
+      if (configLayer.spatialEnrichments){
+        for (const spatialEnrichment of configLayer.spatialEnrichments){
+          if (! this.geographyLayerDict[spatialEnrichment.geographyLayer]){
+            console.log('I am not there');
+            listGeographyLayerNames.push(spatialEnrichment.geographyLayer);
+          }
+        }
+      }
+      
+      const promises = [];
+      
+      // for (let i = 0; i < listGeographyLayerNames.length; i++) {
+      //   var url = this.mapClass.geoserver_wfs_url + listGeographyLayerNames[i];
+      //   // make an HTTP request for each URL
+      //   const promise = fetch(url)
+      //     // transform the HTTP response into JSON
+      //     .then(response => response.json())
+      //     .then(datus => this.geographyLayerDict[listGeographyLayerNames[i]] = datus);
+      //   // add the promise to the promises array
+      //   promises.push(promise);
+      // }
+      
+      var geojsonReturned = await listGeographyLayerNames.map(geoLayerName => this.loadGeographyLayers(geoLayerName));
+      return data;
+
+      // wait for all the promises in the promises array to resolve
+      // await Promise.all(promises)
+      // .then(results => {
+      //   console.log('all the fetch requests have completed, and the results are in the "results" array');
+      //   console.log(promises);
+      //   console.log(this.geographyLayerDict);
+      //   for (const spatialEnrichment of configLayer.spatialEnrichments){
+      //     data = turf.tag(data, this.geographyLayerDict[spatialEnrichment.geographyLayer], spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute); 
+      //   }
+      //   console.log('enriched data after promises: ');
+      //   console.log(data);
+      //   // return data;
+      // });
+      
+      
+    }
+  }
+
+  async loadGeographyLayers(geoLayerName) {
+    var url = this.mapClass.geoserver_wfs_url + geoLayerName;          
+    const response = await fetch(url);
+    const geojsonData = await response.json();  
+    console.log('here is the json: ');
+    console.log(geojsonData);  
+    return geojsonData;    
+}
 
   createControl() {
     this.layerControl = new L.control.layers(null, this.overlayMaps, {
@@ -609,23 +693,28 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-            //If there is cql, we add the cql filter to the wfs call
-            if (configLayer.cqlFilter){
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-            //If not, we use the default wfs call
-            } else{
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-            }
-          //Fetch the url
-          fetch(url, {
-            method: "get"
-          })
-            .then(response => response.json())
-            .then(data => this.addWFSLayer(data, configLayer))
-            .catch(error => {
-              console.log(error);
-              alert("Something went wrong, please reload the page");
-            });     
+      //If there is cql, we add the cql filter to the wfs call
+      if (configLayer.cqlFilter){
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+      //If not, we use the default wfs call
+      } else{
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      }
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+        .then(response => response.json())
+        .then(data => this.enrichPromises(configLayer, data))
+        .then(data => {
+          console.log('data to be added to WFSLayer: ');
+          console.log(data);
+          this.addWFSLayer(data, configLayer)
+        })
+        .catch(error => {
+          console.log(error);
+          alert("Something went wrong, please reload the page");
+        });     
     }
   }
 }
