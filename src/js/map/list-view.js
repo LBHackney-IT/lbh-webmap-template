@@ -49,14 +49,7 @@ class List {
             </h5>
           </div>`;
         }
-        console.log('layerData.data.features');
-        console.log(layerData.data.features)
         for (const feature of layerData.data.features){
-          //for (var feature of layerData.data.features){
-          // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
-          // <ul class="lbh-list lbh-list--bullet">
-          // <li>${feature.properties.organisation_name}</li>
-          // </ul></div>`;
           html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
           <h6>${feature.properties[layerData.configLayer.listView.title]}</h6>`;
           if (layerData.configLayer.listView.fields) {

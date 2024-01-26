@@ -525,12 +525,8 @@ class DataLayers {
     //only happens once, after the last layer has loaded: spatial enrichment
     if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
       this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
-      console.log('this is the new layersData post enrich: ');
-      console.log(this.layersData);
     }
     
-    
-
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
       this.filters = new Filters(this.mapClass, this.layersData);

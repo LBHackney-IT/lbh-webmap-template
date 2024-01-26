@@ -14,7 +14,7 @@ class SpatialEnrichment {
       if (enrichedLayer.configLayer.spatialEnrichments){
         console.log('Enriching '+enrichedLayer.configLayer.title+', assuming it is a point layer');
         for (const spatialEnrichment of enrichedLayer.configLayer.spatialEnrichments){
-          //look for the corresponding geography layer (already loaded)
+          //look for the corresponding enriching layer (already loaded)
           for (const enrichingLayer of layersData){
             if (enrichingLayer.configLayer.title == spatialEnrichment.geographyLayer) {
               console.log('Enriching with '+enrichingLayer.configLayer.title+', assuming it is an area layer');
@@ -24,8 +24,6 @@ class SpatialEnrichment {
         }
       }
     }     
-    console.log('after all enrichments: ');
-    console.log(layersData);
   }
 }
 
