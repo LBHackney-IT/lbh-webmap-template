@@ -403,7 +403,7 @@ class Map {
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
     //prepare flag for spatial enrichments if necessary
-    if (this.mapConfig.spatialEnrichments) {
+    if (this.mapConfig.spatialEnrichmentRequired) {
       this.spatialEnrichments = new SpatialEnrichment(this);
       //this.spatialEnrichments.loadGeographyLayers();
     }

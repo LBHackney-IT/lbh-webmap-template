@@ -525,8 +525,7 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
-
-    
+   
     //only happens once, after the last layer has loaded: spatial enrichment
     if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
       this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
@@ -618,23 +617,23 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-            //If there is cql, we add the cql filter to the wfs call
-            if (configLayer.cqlFilter){
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-            //If not, we use the default wfs call
-            } else{
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-            }
-          //Fetch the url
-          fetch(url, {
-            method: "get"
-          })
-            .then(response => response.json())
-            .then(data => this.addWFSLayer(data, configLayer))
-            .catch(error => {
-              console.log(error);
-              alert("Something went wrong, please reload the page");
-            });     
+      //If there is cql, we add the cql filter to the wfs call
+      if (configLayer.cqlFilter){
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+      //If not, we use the default wfs call
+      } else{
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      }
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+      .then(response => response.json())
+      .then(data => this.addWFSLayer(data, configLayer))
+      .catch(error => {
+        console.log(error);
+        alert("Something went wrong, please reload the page");
+      });     
     }
   }
 }
