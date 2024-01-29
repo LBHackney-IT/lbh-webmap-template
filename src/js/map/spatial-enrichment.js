@@ -21,6 +21,34 @@ class SpatialEnrichment {
               enrichedLayer.data = turf.tag(enrichedLayer.data, enrichingLayer.data, spatialEnrichment.sourceAttribute, spatialEnrichment.targetAttribute);  
             }
           }
+
+          // console.log('Enriched Data: ',combinedData)
+          const ensureSameAttributes = (data)=>{
+                //Step 1 Identify all unique attributes
+                const allAttributes = new Set();
+                console.log('break point 1')
+                data.forEach(feature => {
+                  Object.keys(feature.properties).forEach(attribute =>{
+                    allAttributes.add(attribute)
+                  })
+                  
+                });
+                console.log('Break point 2')
+                //step 2
+                return data.map(feature =>{
+                  Array.from(allAttributes).forEach(attribute =>{
+                    if(!(attribute in feature.properties)){
+                      feature.properties[attribute] = spatialEnrichment.placeholder ? spatialEnrichment.placeholder: 'Unspecified'
+                    }
+                  })
+                  return feature
+                })
+                
+          
+              }
+          
+                
+          enrichedLayer.data.features = ensureSameAttributes(enrichedLayer.data.features)
         }
       }
     }     
