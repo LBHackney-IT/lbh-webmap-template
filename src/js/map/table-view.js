@@ -1,6 +1,6 @@
 // import DataLayers from "./data-layers";
 // import { MARKER_COLORS } from "./consts";
-;
+import SpatialEnrichment from "./spatial-enrichment"
 
 class Table {
   constructor(map, layersData) {
@@ -455,7 +455,7 @@ class Table {
             "expanded":true,
             "scope": ["Free standing Rapid"],//only 1 layer on map
             "filters":[
-              { "attribute": "type", "operator": "!==", "value": "Free standing Rapid"},
+              { "attribute": "type", "operator": "===", "value": "Free standing Rapid"},
 
             ],
             "groupBy": ["estate_name"],
@@ -494,6 +494,10 @@ class Table {
     this.table = this.mapConfig.statistics;
     this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
     this.layersData.map((layerObj) =>{layerObj.layer.isVisible =true;return null})
+    // enrich layers
+    this.spatialEnrichment = new SpatialEnrichment(this.mapClass);
+    this.spatialEnrichment.enrichLayers(this.layersData)
+
 
     if (this.list.accordionStatus == 'allExpanded'){
       this.accordionExpandedClass = 'govuk-accordion__section--expanded';
@@ -542,6 +546,7 @@ class Table {
   createTable(combinedData,config){
 
     let filteredData = combinedData
+    
 
     //______________FILTER_DF______________
     if(config.filters){
@@ -561,6 +566,8 @@ class Table {
               return feature[attribute] === value;
             case '!==':
               return feature[attribute] !== value;
+            case 'contains':
+              return feature[attribute].includes(value);
             default:
               return false
           }
@@ -569,29 +576,33 @@ class Table {
       });
       
     }
+
+    const dataPresent  = filteredData.length > 0
+    console.log('FILTERED DATA 1: ',filteredData)
+    console.log('DATA PRESENT ? ',dataPresent)
     //__________________________________________________________________________________________
 
-    const df = new dfd.DataFrame(filteredData)
+    const df = dataPresent ? new dfd.DataFrame(filteredData):null
 
-    console.log(df.columns)
+    // console.log(df.columns)
     console.log(config.tableTitle)
+    console.log('FILTERED DATA 2: ',filteredData)
 
     
     
     // configure data types for aggregation functions to run correctly
-    if(config.dtypes){
+    if(dataPresent&&config.dtypes){
       for (const [dtype,columns] of Object.entries(config.dtypes)){
         columns.map(col => {
           df.asType(col,dtype,{inplace:true})
           return null
         })
       }
-      
     }
     
     let new_df =  df
     //_____________________GROUP DATAFRAME and AGGREGATE________________
-    if(config.groupBy){
+    if(dataPresent&&config.groupBy){
 
       new_df = df.groupby(config.groupBy).agg(
         Object.fromEntries(
@@ -601,7 +612,7 @@ class Table {
     }
     // console.log(dfd.toJSON(new_df, {format: "row"}))
 
-    if(config.functions){
+    if(dataPresent&&config.functions){
       
       let functions = config.functions
       let results = []
@@ -655,13 +666,13 @@ class Table {
     }
 
     // ________Rename columns using config labels_____________
-    if(config.labels){ // &&config.groupBy ??
+    if(dataPresent&&config.labels){ // &&config.groupBy ??
       new_df.rename(config.labels, { inplace: true })
     }
 
     
     //__________________________FILLNA_________
-    if(config.fillNa){
+    if(dataPresent&&config.fillNa){
       let values = Object.values(config.fillNa)
       let columns = Object.keys(config.fillNa)
       
@@ -672,11 +683,11 @@ class Table {
     }
     
     
-    let tableData = dfd.toJSON(new_df, {format: "column"})
+    let tableData = dataPresent ? dfd.toJSON(new_df, {format: "column"}) :[]
     
     
     //_______Rounding Specific Columns________________________
-    if(config.round){
+    if(dataPresent&&config.round){
       
       const roundNumber = (x,decimalPlaces) => {
         const factor = 10 ** decimalPlaces;
@@ -696,7 +707,7 @@ class Table {
       })
     }
     // ______________SORT_DATA_BY_Columns______
-    if(config.sortBy){
+    if(dataPresent&&config.sortBy){
 
       const handleSort = ()=>{
         let sortConfig = config.sortBy
@@ -717,7 +728,7 @@ class Table {
       console.log('SORTED DATA: ',tableData)
     }
     //_______________Replace specific values for specific attributes
-    if(config.replacers){
+    if(dataPresent&&config.replacers){
      
       tableData = tableData.map(feature => {
         Object.entries(feature).forEach(([attribute,value])=>{
@@ -736,16 +747,16 @@ class Table {
   
 
     console.log('TABLE DATA: ',tableData)
-    const tableHeaders =Object.keys(tableData[0])
-    const tableHeaderString = tableHeaders.map((header,index)=>{
+    const tableHeaders = dataPresent ? Object.keys(tableData[0]) :[]
+    const tableHeaderString = dataPresent ? tableHeaders.map((header,index)=>{
       if(index>0){
         return `<th><h6>${header}</h6></th>`
       }else{
         return `<th><h6>${' '}</h6></th>`
       }
-    }).join('')
+    }).join('') : "No Data Present"
     
-    const tableRows = tableData.map((rowData)=>{
+    const tableRows = dataPresent ? tableData.map((rowData)=>{
     return `<tr>  
             ${
               tableHeaders.map((header,index) => {
@@ -760,7 +771,7 @@ class Table {
         </tr>
       `
       }
-    ).join('')
+    ).join('') : ""
   
 
     return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
@@ -852,10 +863,8 @@ class Table {
    
     //activate component from lbh-frontend
     this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "tableview");
-    
-    
-    
     window.LBHFrontend.initAll();
+
   }
   createMarkup() {
     const tableDiv =  document.getElementById('listview')
@@ -886,27 +895,21 @@ class Table {
             </h5>
           </div>`;
         }
-        
-        for (var feat of layerData.layer.getLayers()){
-          //for (var feature of layerData.data.features){
-          // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
-          // <ul class="lbh-list lbh-list--bullet">
-          // <li>${feature.properties.organisation_name}</li>
-          // </ul></div>`;
+        for (const feature of layerData.data.features){
           html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
-          <h6>${feat.feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          <h6>${feature.properties[layerData.configLayer.listView.title]}</h6>`;
           if (layerData.configLayer.listView.fields) {
             html += `<p class="lbh-body-s">`;
             for (const field of layerData.configLayer.listView.fields) {
-              if (feat.feature.properties[field] !== "") {
+              if (feature.properties[field] !== "") {
                 if (
-                  feat.feature.properties[field.name] !== "" &&
-                  feat.feature.properties[field.name] !== null
+                  feature.properties[field.name] !== "" &&
+                  feature.properties[field.name] !== null
                 ) {
                   if (field.label != "") {
-                    html += `${field.label}</span>: ${feat.feature.properties[field.name]}<br>`;
+                    html += `${field.label}</span>: ${feature.properties[field.name]}<br>`;
                   } else {
-                    html += `${feat.feature.properties[field.name]}<br>`;
+                    html += `${feature.properties[field.name]}<br>`;
                   }
                 }     
               }
