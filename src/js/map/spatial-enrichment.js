@@ -1,4 +1,3 @@
-import L from "leaflet";
 import * as turf from '@turf/turf';
 
 class SpatialEnrichment {
@@ -22,18 +21,15 @@ class SpatialEnrichment {
             }
           }
 
-          // console.log('Enriched Data: ',combinedData)
           const ensureSameAttributes = (data)=>{
                 //Step 1 Identify all unique attributes
                 const allAttributes = new Set();
-                console.log('break point 1')
                 data.forEach(feature => {
                   Object.keys(feature.properties).forEach(attribute =>{
                     allAttributes.add(attribute)
                   })
                   
                 });
-                console.log('Break point 2')
                 //step 2
                 return data.map(feature =>{
                   Array.from(allAttributes).forEach(attribute =>{
