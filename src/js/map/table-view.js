@@ -486,11 +486,22 @@ class Table {
     this.table = null;
     this.list = null;
     this.accordionExpandedClass = null;
-    this.tableLayers = ['Free standing Fast','Free standing Rapid','Free standing Smart Fast ','Lamp columns / Slow chargers']//@TRACK  put this into a config
+    // this.tableLayers = ['Free standing Fast','Free standing Rapid','Free standing Smart Fast ','Lamp columns / Slow chargers']//@TRACK  put this into a config
+    this.tableLayers = map.mapConfig.statistics.statisticsTables.reduce(
+      (accumulator, currentValue) => {
+        const scope = currentValue.scope
+        scope.map(layerName => accumulator.add(layerName))
+        return accumulator
+        
+      },
+      new Set(),
+    );
+
   }
 
   init() {
-    console.log(this.mapConfig)
+    console.log("Map Config: ",this.mapConfig)
+    console.log("TABLE LAYERS : ",this.tableLayers)
     this.list = this.mapConfig.list;
     this.table = this.mapConfig.statistics;
     this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
@@ -520,7 +531,7 @@ class Table {
 
     console.log(dataLayers)
     dataLayers.map((layerObj) => {
-      if(this.tableLayers.includes(layerObj.configLayer.title)){
+      if(Array.from(this.tableLayers).includes(layerObj.configLayer.title)){
 
         // get layer
         let layer = layerObj.layer
