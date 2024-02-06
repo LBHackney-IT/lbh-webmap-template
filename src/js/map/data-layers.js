@@ -525,11 +525,6 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
-   
-    //only happens once, after the last layer has loaded: spatial enrichment
-    if (this.mapClass.spatialEnrichments && this.loadedLayerCount == this.layerCount) {
-      this.mapClass.spatialEnrichments.enrichLayers(this.layersData);
-    }
     
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
@@ -542,8 +537,8 @@ class DataLayers {
       this.list = new List(this.mapClass,this.layersData);
       this.list.init();
     }
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+    //only happens once, after the last layer has loaded - create statistics tables after the map
+    if (this.mapConfig.statistics && this.loadedLayerCount == this.layerCount) {
       this.statistics = new Table(this.mapClass,this.layersData);
       this.statistics.init();
     }
