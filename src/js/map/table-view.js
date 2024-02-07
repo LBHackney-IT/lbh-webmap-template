@@ -35,10 +35,10 @@ class Table {
     this.spatialEnrichment.enrichLayers(this.layersData)
 
 
-    if (this.list.accordionStatus == 'allExpanded'){
+    if (this.list && this.list.accordionStatus == 'allExpanded'){
       this.accordionExpandedClass = 'govuk-accordion__section--expanded';
     }
-    if (this.table.accordionStatus == 'allExpanded'){
+    if (this.table && this.table.accordionStatus == 'allExpanded'){
       this.accordionExpandedClass = 'govuk-accordion__section--expanded';
     }
     //@TODO add 'firstExpanded' option
@@ -47,8 +47,8 @@ class Table {
     }
 
     this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this))
-    this.createMarkup();
-    this.createTables();
+    this.list && this.createMarkup();
+    this.table && this.createTables();
   }
   
   addlayerEventListeners(dataLayers,createTables,createListViews){
@@ -63,14 +63,14 @@ class Table {
         layer.on('add',()=>{
           // add visibility state
           layer.isVisible = true
-          createListViews()
-          createTables()
+          this.list && createListViews()
+          this.table && createTables();
         })
         
         layer.on('remove',()=>{
           layer.isVisible = false
-          createListViews()
-          createTables()
+          this.list && createListViews()
+          this.table && createTables();
         })
       }
       return null
@@ -365,7 +365,10 @@ class Table {
       this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "tableview");
     }
     //Activate ALL components from lbh-frontend
-    window.LBHFrontend.initAll();
+
+    if(this.mapConfig.statistics.statisticsTables || this.mapConfig.list){
+      window.LBHFrontend.initAll();
+    }
 
   }
   createMarkup() {
