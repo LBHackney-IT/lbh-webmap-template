@@ -1,31 +1,37 @@
 "use strict";
 
-const gulp = require("gulp");
-const configPaths = require("../../config/paths.json");
-const sass = require("gulp-sass")(require('sass'));
-const plumber = require("gulp-plumber");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const gulpif = require("gulp-if");
-const terser = require("gulp-terser");
-const babel = require('gulp-babel');
-const eol = require("gulp-eol");
-const rename = require("gulp-rename");
-const cssnano = require("cssnano");
-const webpack = require("webpack-stream");
-const named = require("vinyl-named-with-path");
-const postcsspseudoclasses = require("postcss-pseudo-classes")({
-  // Work around a bug in pseudo classes plugin that badly transforms
-  // :not(:whatever) pseudo selectors
-  blacklist: [
-    ":not(",
-    ":disabled)",
-    ":last-child)",
-    ":focus)",
-    ":active)",
-    ":hover)"
-  ]
-});
+import  gulp from 'gulp';
+import configPaths  from "../../config/paths.js";
+import  plumber from "gulp-plumber";
+import sass from 'gulp-sass'
+import * as sassPackage from 'sass'
+const sassCompiler = sass(sassPackage)
+console.log("SAAS: ",sass)
+console.log("SAAS: Package",sassPackage)
+console.log("SAAS: Compiler",sassCompiler)
+import  postcss from "gulp-postcss";
+import  autoprefixer from "autoprefixer";
+import  gulpif from "gulp-if";
+import  terser from "gulp-terser";
+import  babel from 'gulp-babel';
+import  eol from "gulp-eol";
+import  rename from "gulp-rename";
+import  cssnano from "cssnano";
+import  webpack from "webpack-stream";
+import  named from "vinyl-named-with-path";
+// import  plugin from "postcss-pseudo-classes"
+// plugin({
+//   // Work around a bug in pseudo classes plugin that badly transforms
+//   // :not(:whatever) pseudo selectors
+//   blacklist: [
+//     ":not(",
+//     ":disabled)",
+//     ":last-child)",
+//     ":focus)",
+//     ":active)",
+//     ":hover)"
+//   ]
+// });
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -44,11 +50,16 @@ const errorHandler = function(error) {
 // different entry points for both streams below and depending on destination flag
 const compileStylesheet = configPaths.src + "scss/all.scss";
 
-gulp.task("scss:compile", () => {
+
+
+
+
+
+export const scssComplile  = gulp.task("scss:compile", () => {
   const compile = gulp
     .src(compileStylesheet)
     .pipe(plumber(errorHandler))
-    .pipe(sass())
+    .pipe(sass) //@FIXME
     // minify css add vendor prefixes and normalize to compiled css
     .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
     .pipe(
@@ -64,7 +75,7 @@ gulp.task("scss:compile", () => {
 
 // Compile js task for preview ----------
 // --------------------------------------
-gulp.task("js:compile", () => {
+export const jsCompile = gulp.task("js:compile", () => {
   // for dist/ folder we only want compiled 'all.js' file
   // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
   const srcFiles = configPaths.src + "/js/main.js";
@@ -98,3 +109,4 @@ gulp.task("js:compile", () => {
     .pipe(eol())
     .pipe(gulp.dest("dist/"));
 });
+
