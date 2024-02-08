@@ -1,8 +1,7 @@
 "use strict";
-
-import paths from './config/paths.js';
 import  gulp from 'gulp'
 import taskListing from "gulp-task-listing";
+import paths from './config/paths.js';
 
 // Gulp sub-tasks
 import clean from "./tasks/gulp/clean.js";
