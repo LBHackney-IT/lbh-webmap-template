@@ -53,22 +53,22 @@ const compileStylesheet = configPaths.src + "scss/all.scss";
 
 
 export const scssComplile  = gulp.task("scss:compile", () => {
-  // const compile = gulp
-  //   .src(compileStylesheet)
-  //   .pipe(plumber(errorHandler))
-  //   .pipe(sassCompiler()) //@FIXME
-  //   // minify css add vendor prefixes and normalize to compiled css
-  //   .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
-  //   .pipe(
-  //     rename({
-  //       basename: "lbh-webmap",
-  //       extname: ".min.css"
-  //     })
-  //   )
-  //   .pipe(gulp.dest("dist/"));
+  const compile = gulp
+    .src(compileStylesheet)
+    .pipe(plumber(errorHandler))
+    .pipe(sassCompiler()) //@FIXME
+    // minify css add vendor prefixes and normalize to compiled css
+    .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
+    .pipe(
+      rename({
+        basename: "lbh-webmap",
+        extname: ".min.css"
+      })
+    )
+    .pipe(gulp.dest("dist/"));
 
-  // return compile;
-  console.log('scss compile skipped')
+    console.log('scss compile skipped')
+  return compile;
 });
 
 // Compile js task for preview ----------
@@ -76,7 +76,8 @@ export const scssComplile  = gulp.task("scss:compile", () => {
 export const jsCompile = gulp.task("js:compile", () => {
   // for dist/ folder we only want compiled 'all.js' file
   // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
-  const srcFiles = configPaths.src + "/js/main.js";
+  const srcFiles = configPaths.src + "js/main.js";
+  console.log("SRC FILE",srcFiles)
   return gulp
     .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
     .pipe(named())
