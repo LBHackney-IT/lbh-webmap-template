@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { HACKNEY_BOUNDS_1, HACKNEY_BOUNDS_2 } from "./consts";
+import { HACKNEY_BOUNDS_1, HACKNEY_BOUNDS_2 } from "./consts.js";
 
 class Geolocation {
   constructor(map, errorNoLocation, errorOutsideHackney) {

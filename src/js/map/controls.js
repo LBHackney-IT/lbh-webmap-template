@@ -3,8 +3,8 @@ import {
   CONTROLS_SHOW_LEGEND_TEXT,
   CONTROLS_HIDE_LEGEND_TEXT,
   CONTROLS_CLEAR_MAP_TEXT
-} from "./consts";
-import { isMobile } from "../helpers/isMobile";
+} from "./consts.js";
+import { isMobile } from "../helpers/isMobile.js";
 import "classlist-polyfill";
 
 class Controls {

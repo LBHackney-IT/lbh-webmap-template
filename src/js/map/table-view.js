@@ -1,5 +1,5 @@
 // import { MARKER_COLORS } from "./consts";
-import SpatialEnrichment from "./spatial-enrichment"
+import SpatialEnrichment from "./spatial-enrichment.js"
 
 class Table {
   constructor(map, layersData) {

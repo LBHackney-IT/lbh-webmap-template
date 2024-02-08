@@ -1,12 +1,8 @@
 
 import L from "leaflet";
 import "proj4leaflet";
-import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver";
-import {
-  isMobile,
-  isMobile as isMobileFn,
-  mobileDesktopSwitch
-} from "../helpers/isMobile";
+import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver.js";
+import {isMobile,isMobile as isMobileFn,mobileDesktopSwitch} from "../helpers/isMobile.js";
 import "leaflet-easybutton";
 import "leaflet-control-custom";
 import "leaflet-control-window";
@@ -27,18 +23,18 @@ import {
   GENERIC_OUTSIDE_HACKNEY_ERROR,
   TILE_LAYER_OPTIONS_OS,
   PERSONA_ACTIVE_CLASS,
-} from "./consts";
-import OS_RASTER_API_KEY  from "../helpers/osdata";
-import "@fortawesome/fontawesome-pro/js/solid";
-import "@fortawesome/fontawesome-pro/js/regular";
-import "@fortawesome/fontawesome-pro/js/fontawesome";
-import Geolocation from "./geolocation";
-import Controls from "./controls";
-import DataLayers from "./data-layers";
-import VectorTileDataLayers from "./vector-tile-data-layers";
-import Metadata from "./metadata";
+} from "./consts.js";
+import OS_RASTER_API_KEY  from "../helpers/osdata.js";
+import "@fortawesome/fontawesome-pro/js/solid.js";
+import "@fortawesome/fontawesome-pro/js/regular.js";
+import "@fortawesome/fontawesome-pro/js/fontawesome.js";
+import Geolocation from "./geolocation.js";
+import Controls from "./controls.js";
+import DataLayers from "./data-layers.js";
+import VectorTileDataLayers from "./vector-tile-data-layers.js";
+import Metadata from "./metadata.js";
 import "classlist-polyfill";
-import SpatialEnrichment from "./spatial-enrichment";
+import SpatialEnrichment from "./spatial-enrichment.js";
 
 class Map {
   constructor(map) {

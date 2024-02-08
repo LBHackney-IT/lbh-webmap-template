@@ -1,7 +1,7 @@
 import L, { Point } from "leaflet";
 import "leaflet.vectorgrid";
-import { MARKER_COLORS} from "./consts";
-import addressSearch from "./address-search";
+import { MARKER_COLORS} from "./consts.js";
+import addressSearch from "./address-search.js";
 
 class VectorTileDataLayers {
   constructor(map) {

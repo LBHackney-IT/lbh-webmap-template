@@ -1,5 +1,5 @@
-import DataLayers from "./data-layers";
-import { MARKER_COLORS } from "./consts";
+import DataLayers from "./data-layers.js";
+import { MARKER_COLORS } from "./consts.js";
 
 class List {
   constructor(map, layersData) {

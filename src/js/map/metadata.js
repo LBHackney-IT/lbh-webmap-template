@@ -3,7 +3,7 @@ import "leaflet.awesome-markers";
 import "leaflet.markercluster";
 import "leaflet-control-window";
 import "leaflet-control-custom";
-import { isMobile } from "../helpers/isMobile";
+import { isMobile } from "../helpers/isMobile.js";
 import "whatwg-fetch";
 
 

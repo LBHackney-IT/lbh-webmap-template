@@ -6,9 +6,6 @@ import  plumber from "gulp-plumber";
 import sass from 'gulp-sass'
 import * as sassPackage from 'sass'
 const sassCompiler = sass(sassPackage)
-console.log("SAAS: ",sass)
-console.log("SAAS: Package",sassPackage)
-console.log("SAAS: Compiler",sassCompiler)
 import  postcss from "gulp-postcss";
 import  autoprefixer from "autoprefixer";
 import  gulpif from "gulp-if";
@@ -19,19 +16,19 @@ import  rename from "gulp-rename";
 import  cssnano from "cssnano";
 import  webpack from "webpack-stream";
 import  named from "vinyl-named-with-path";
-// import  plugin from "postcss-pseudo-classes"
-// plugin({
-//   // Work around a bug in pseudo classes plugin that badly transforms
-//   // :not(:whatever) pseudo selectors
-//   blacklist: [
-//     ":not(",
-//     ":disabled)",
-//     ":last-child)",
-//     ":focus)",
-//     ":active)",
-//     ":hover)"
-//   ]
-// });
+import  plugin from "postcss-pseudo-classes"
+plugin({
+  // Work around a bug in pseudo classes plugin that badly transforms
+  // :not(:whatever) pseudo selectors
+  blacklist: [
+    ":not(",
+    ":disabled)",
+    ":last-child)",
+    ":focus)",
+    ":active)",
+    ":hover)"
+  ]
+});
 
 // Compile CSS and JS task --------------
 // --------------------------------------
@@ -56,21 +53,22 @@ const compileStylesheet = configPaths.src + "scss/all.scss";
 
 
 export const scssComplile  = gulp.task("scss:compile", () => {
-  const compile = gulp
-    .src(compileStylesheet)
-    .pipe(plumber(errorHandler))
-    .pipe(sass) //@FIXME
-    // minify css add vendor prefixes and normalize to compiled css
-    .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
-    .pipe(
-      rename({
-        basename: "lbh-webmap",
-        extname: ".min.css"
-      })
-    )
-    .pipe(gulp.dest("dist/"));
+  // const compile = gulp
+  //   .src(compileStylesheet)
+  //   .pipe(plumber(errorHandler))
+  //   .pipe(sassCompiler()) //@FIXME
+  //   // minify css add vendor prefixes and normalize to compiled css
+  //   .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
+  //   .pipe(
+  //     rename({
+  //       basename: "lbh-webmap",
+  //       extname: ".min.css"
+  //     })
+  //   )
+  //   .pipe(gulp.dest("dist/"));
 
-  return compile;
+  // return compile;
+  console.log('scss compile skipped')
 });
 
 // Compile js task for preview ----------

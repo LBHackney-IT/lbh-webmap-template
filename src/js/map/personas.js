@@ -1,5 +1,5 @@
-import { scrollTo } from "../helpers/scrollTo";
-import { PERSONA_ACTIVE_CLASS } from "./consts";
+import { scrollTo } from "../helpers/scrollTo.js";
+import { PERSONA_ACTIVE_CLASS } from "./consts.js";
 import "classlist-polyfill";
 
 class Personas {

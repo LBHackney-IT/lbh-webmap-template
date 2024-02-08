@@ -1,5 +1,5 @@
-import { FILTER_INPUT_CLASS } from "./consts";
-import "../helpers/forEachPolyfill";
+import { FILTER_INPUT_CLASS } from "./consts.js";
+import "../helpers/forEachPolyfill.js";
 import "classlist-polyfill";
 
 class Filters {

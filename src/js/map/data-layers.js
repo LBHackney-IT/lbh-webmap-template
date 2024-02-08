@@ -1,15 +1,15 @@
 import L, { Point } from "leaflet";
 import "leaflet.vectorgrid";
-import { pointToLayer } from "./metadata";
-import { MARKER_COLORS} from "./consts";
-import Personas from "./personas";
-import Filters from "./filters";
-import Search from "./search";
-import addressSearch from "./address-search";
-import List from "./list-view";
-import DrillDown from "./drill-down";
-import Table from "./table-view";
-import SpatialEnrichment from "./spatial-enrichment";
+import { pointToLayer } from "./metadata.js";
+import { MARKER_COLORS} from "./consts.js";
+import Personas from "./personas.js";
+import Filters from "./filters.js";
+import Search from "./search.js";
+import addressSearch from "./address-search.js";
+import List from "./list-view.js";
+import DrillDown from "./drill-down.js";
+import Table from "./table-view.js";
+
 
 
 class DataLayers {

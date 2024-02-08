@@ -1,10 +1,9 @@
 import L from "leaflet";
-import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy";
+import ADDRESSES_PROXY_PROD from "../helpers/addressesProxy.js";
 import {
-  isMobile,
   isMobile as isMobileFn,
   mobileDesktopSwitch
-} from "../helpers/isMobile";
+} from "../helpers/isMobile.js";
 
 
 class addressSearch {

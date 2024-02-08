@@ -1,7 +1,7 @@
-var express = require("express");
+import express from 'express';
 var app = express();
-var nunjucks = require("nunjucks");
-var path = require("path");
+import  path from "path";
+import  nunjucks from "nunjucks";
 
 // Define port to run server on
 var port = process.env.PORT || 9000;
