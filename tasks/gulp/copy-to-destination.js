@@ -10,8 +10,6 @@ const scssFiles = filter([configPaths.src + "**/*.scss"], { restore: true });
 
 
 
-
-
 export const copyFiles = gulp.task("copy-files", () => {
   return gulp
     .src([

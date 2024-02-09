@@ -13,15 +13,16 @@ import {copy3rdParties, copyFiles} from "./tasks/gulp/copy-to-destination.js";//
 import updateAssetVersion from "./tasks/gulp/asset-version.js";
 import sassdocTask from "./tasks/gulp/sassdoc.js";
 
-// Umbrella scripts tasks for preview ---
-// Runs js compilation
-// --------------------------------------
-gulp.task("scripts", gulp.series("js:compile"));
 
 // Umbrella styles tasks for preview ----
 // Runs scss compilation
 // --------------------------------------
 gulp.task("styles", gulp.series("scss:compile"));
+
+// Umbrella scripts tasks for preview ---
+// Runs js compilation
+// --------------------------------------
+gulp.task("scripts", gulp.series("js:compile"));
 
 // Copy assets task ----------------------
 // Copies assets to dist

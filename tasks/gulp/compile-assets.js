@@ -1,6 +1,6 @@
 "use strict";
 
-import  gulp from 'gulp';
+import gulp from 'gulp';
 import configPaths  from "../../config/paths.js";
 import  plumber from "gulp-plumber";
 import sass from 'gulp-sass'
@@ -11,12 +11,16 @@ import  autoprefixer from "autoprefixer";
 import  gulpif from "gulp-if";
 import  terser from "gulp-terser";
 import  babel from 'gulp-babel';
+import GulpUglify from 'gulp-uglify';
 import  eol from "gulp-eol";
 import  rename from "gulp-rename";
 import  cssnano from "cssnano";
 import  webpack from "webpack-stream";
 import  named from "vinyl-named-with-path";
 import  plugin from "postcss-pseudo-classes"
+import {pipeline} from 'readable-stream'
+import concat from 'gulp-concat'
+
 plugin({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
@@ -53,12 +57,12 @@ const compileStylesheet = configPaths.src + "scss/all.scss";
 
 
 export const scssComplile  = gulp.task("scss:compile", () => {
-  const compile = gulp
-    .src(compileStylesheet)
+  
+    return gulp.src("src/scss/all.scss")
     .pipe(plumber(errorHandler))
     .pipe(sassCompiler()) //@FIXME
     // minify css add vendor prefixes and normalize to compiled css
-    .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
+    .pipe( postcss([autoprefixer, cssnano]))
     .pipe(
       rename({
         basename: "lbh-webmap",
@@ -67,8 +71,7 @@ export const scssComplile  = gulp.task("scss:compile", () => {
     )
     .pipe(gulp.dest("dist/"));
 
-    console.log('scss compile skipped')
-  return compile;
+    
 });
 
 // Compile js task for preview ----------
@@ -77,35 +80,58 @@ export const jsCompile = gulp.task("js:compile", () => {
   // for dist/ folder we only want compiled 'all.js' file
   // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
   const srcFiles = configPaths.src + "js/main.js";
-  console.log("SRC FILE",srcFiles)
-  return gulp
-    .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
-    .pipe(named())
-    .pipe(
-      webpack({
-        mode: isDist ? "production" : "development",
-        output: {
-          library: "LBHWebmap",
-          libraryTarget: "umd"
-        }
-      })
-    )
-    .pipe(babel({
-      presets: ["@babel/preset-env"]
-    }))
-    .pipe(
-      gulpif(
-        isDist,
-        terser()
-      )
-    )
-    .pipe(
-      rename({
-        basename: "lbh-webmap",
-        extname: ".min.js"
-      })
-    )
-    .pipe(eol())
-    .pipe(gulp.dest("dist/"));
+  // console.log("SRC FILE",srcFiles)
+  // return gulp
+  //   .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
+  //   .pipe(named())
+  //   .pipe(
+  //     webpack({
+  //       mode: isDist ? "production" : "development",
+  //       output: {
+  //         library: "LBHWebmap",
+  //         libraryTarget: "umd"
+  //       }
+  //     })
+  //   )
+  //   .pipe(babel({
+  //     presets: ["@babel/preset-env"]
+  //   }))
+  //   .pipe(
+  //     gulpif(
+  //       isDist,
+  //       terser()
+  //     )
+  //   )
+  //   .pipe(
+  //     rename({
+  //       basename: "lbh-webmap",
+  //       extname: ".min.js"
+  //     })
+  //   )
+  //   .pipe(eol())
+  //   .pipe(gulp.dest("dist/"));
+  return gulp.src("src/js/map/*js")
+        .pipe(named())
+        .pipe(
+              webpack({
+                mode: isDist ? "production" : "development",
+                output: {
+                  library: "LBHWebmap",
+                  libraryTarget: "umd"
+                }
+              })
+            )
+        .pipe(babel({
+              presets: ["@babel/preset-env"]
+            }))
+        .pipe(concat("lbh-webmap.min.js"))
+        .pipe(terser())
+        //  .pipe(
+        //       rename({
+        //         basename: "lbh-webmap",
+        //         extname: ".min.js"
+        //       })
+        //     )
+        .pipe(gulp.dest('dist/'));
 });
 
