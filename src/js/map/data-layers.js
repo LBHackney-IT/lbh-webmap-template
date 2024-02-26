@@ -173,6 +173,7 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
     const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
 
 
@@ -319,7 +320,7 @@ class DataLayers {
       clusterLayer = L.markerClusterGroup({
         maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
-        spiderfyOnMaxZoom: false,
+        spiderfyOnMaxZoom: enableSpiderfy,
         showCoverageOnHover: false
       });
       clusterLayer.addLayer(layer);
