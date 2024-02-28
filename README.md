@@ -315,14 +315,14 @@ Object properties:
 ```
 |||||
 | --- | --- | --- | --- |
-| `labels` | Object | required<br>&<br>conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**  |
+| `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**  |
 ```javascript
 
     // If using groupBy and aggregations
         {
                   "field_name_1_count":"Number of A",
                   "field_name_1_mean":"Average Number of A",
-                  "field_name_2_count":"Median number of B"
+                  "field_name_2_count":"Number of B"
                
         }
         // The field/column title + _operation become column titles (keys)
@@ -330,7 +330,9 @@ Object properties:
 
     // If using functions 
         // The table columns default the two labels: column & value
-        { "value":" " } 
+
+                            { "value":" " }
+                            
         // Since the first table column is always hidden by Default
         // the empty string will replace the "value" column title.
         // however this could be replaced with any String
