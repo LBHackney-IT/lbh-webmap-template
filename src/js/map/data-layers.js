@@ -31,7 +31,7 @@ class DataLayers {
     this.list = null;
   }
 
-  pointToLayer (latlng, configLayer) {
+  pointToLayer (feature, latlng, configLayer) {
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
@@ -50,6 +50,14 @@ class DataLayers {
         weight: 1,
         color: MARKER_COLORS[configLayer.pointStyle.markerColor],
         fillOpacity: 0.6
+      });
+    } else if (configLayer.pointStyle.markerType === "DivIcon") {
+      return L.marker(latlng, {
+        icon: L.divIcon({
+          className: `custom-div-icon ${configLayer.pointStyle.markerColor}`,
+          iconSize: "auto",
+          html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`
+        }) 
       });
     } else {
       return L.marker(latlng);
@@ -192,6 +200,7 @@ class DataLayers {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         return this.pointToLayer(
+          feature,
           latlng,
           configLayer
         );
