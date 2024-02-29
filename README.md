@@ -254,7 +254,7 @@ Object properties:
 | `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table. | |
 | `scope` | Array | required | A list of map layers' titles from the layers for whose data should be referenced in **this** table creation. **Note** These layers must all have the same data schema for the fields beings referenced |
 | `filters` | Array | optional | A list of object data filters to be applied to all the data in the **scope** for this table.| `false` |
-```json
+```javascript
     [
         { 
             "attribute": "field_name_1", // Name of field/column
@@ -275,11 +275,11 @@ Object properties:
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **fields** to be cast into each corresponding data type key as **values**. Any column/field that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
-```javascript
+```json
     {
      "int32":["field_name_1"],
      "float32":["field_name_2","field_name_3"]
-    };
+    }
 ```
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
@@ -299,7 +299,7 @@ Object properties:
 | --- | -- | --- | ---- | -- |
 | `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
 
-```json
+```javascript
     {
         "sum": ["A"],
         "count": ["B"]
@@ -310,7 +310,7 @@ Object properties:
 
     // functions will always Result into a table like below:
 ```
-<div style="display:flex; width:100%; justify-items:center;align-items:center;background-colour:orange"><table>
+<div style="display:flex; width:100%; justify-content:center;align-items:center;background-color:orange"><table>
 <tr><th>A</th><th>B</th></tr>
 <tr> <td>1</td><td>2</td></tr>
 <tr> <td>5</td><td>9</td></tr>
@@ -327,7 +327,7 @@ Object properties:
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
-```json
+```javascript
 
     // If using groupBy and aggregations
         {
@@ -375,10 +375,10 @@ Object properties:
         "column_A":"ascending",
         "column_B":"descending"
     }
-    
-    ["// The final Table will result in data sorted by first
-    // column_A ascending, then by column_B descending.
-    // **Note** If any columns have been renamed/replaced, please use the new names"]
+
+    ["// The final Table will result in data sorted by first "]
+    ["// column_A ascending, then by column_B descending."]
+    ["// **Note** If any columns have been renamed/replaced, please use the new names"]
     
 ```
 | Option | Type | Required | Description | Default |
