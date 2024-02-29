@@ -3,9 +3,13 @@
   "type": "module",
   "version": "2.0.0",
   "description": "Our basic webmap",
-  "main": "index.js",
+  "main": "./app/app.js",
   "scripts": {
-    "start": "gulp dev"
+    "start-gulp": "gulp dev",
+    "start": "nodemon --exec babel-node app/app.js",
+    "build": "npx webpack --config webpack.config.js",
+    "build-run": "node dist/lbh-webmap.min.js",
+    "main": "nodemon app/app.js"
   },
   "repository": {
     "type": "git",
@@ -18,8 +22,9 @@
     "@fortawesome/fontawesome-pro": "^6.5.1",
     "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/turf": "^6.5.0",
+    "babel-loader": "^9.1.3",
     "classlist-polyfill": "^1.2.0",
-    "govuk-frontend": "^5.1.0",
+    "govuk-frontend": "^5.2.0",
     "iframe-resizer": "^4.3.9",
     "lbh-frontend": "^3.6.1",
     "leaflet": "^1.9.4",
@@ -35,7 +40,6 @@
     "leaflet.vectorgrid": "^1.3.0",
     "proj4leaflet": "^1.0.2",
     "pubsub-js": "^1.9.4",
-    "sass": "^1.70.0",
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
@@ -48,6 +52,7 @@
     "body-parser": "^1.20.2",
     "cheerio": "^1.0.0-rc.12",
     "cookie-parser": "^1.4.6",
+    "css-loader": "^6.10.0",
     "cssnano": "^6.0.3",
     "del": "^7.1.0",
     "eslint": "^8.56.0",
@@ -84,6 +89,9 @@
     "nodemon": "^3.0.3",
     "oldie": "^1.3.0",
     "outdent": "^0.8.0",
+    "postcss": "^8.4.35",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^9.4.0",
     "postcss-pseudo-classes": "^0.4.0",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.2.5",
@@ -91,16 +99,17 @@
     "readable-stream": "^4.5.2",
     "recursive-readdir": "^2.2.3",
     "request": "^2.88.2",
+    "sass": "^1.70.0",
     "sass-color-helpers": "^2.1.1",
+    "sass-loader": "^14.1.1",
     "sassdoc": "^2.7.4",
     "shuffle-seed": "^1.1.6",
+    "style-loader": "^3.3.4",
     "vinyl-named-with-path": "^1.0.0",
     "vinyl-paths": "^5.0.0",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
     "webpack-stream": "^7.0.0",
     "yargs": "^17.7.2"
-  },
-  "browserslist": [
-    "> 0.25%",
-    "IE 9"
-  ]
+  }
 }
