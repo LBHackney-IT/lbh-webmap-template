@@ -5,8 +5,7 @@
   "description": "Our basic webmap",
   "main": "./app/app.js",
   "scripts": {
-    "start-gulp": "gulp dev",
-    "start": "nodemon --exec babel-node app/app.js",
+    "start": "gulp dev",
     "build": "npx webpack --config webpack.config.js",
     "build-run": "node dist/lbh-webmap.min.js",
     "main": "nodemon app/app.js"

@@ -9,18 +9,10 @@ import * as sassPackage from 'sass'
 const sassCompiler = sass(sassPackage)
 import  postcss from "gulp-postcss";
 import  autoprefixer from "autoprefixer";
-import  gulpif from "gulp-if";
-import  terser from "gulp-terser";
-import  babel from 'gulp-babel';
-import GulpUglify from 'gulp-uglify';
-import  eol from "gulp-eol";
 import  rename from "gulp-rename";
 import  cssnano from "cssnano";
-import  webpack from "webpack-stream";
-import  named from "vinyl-named-with-path";
 import  plugin from "postcss-pseudo-classes"
-import {pipeline} from 'readable-stream'
-import concat from 'gulp-concat'
+
 
 plugin({
   // Work around a bug in pseudo classes plugin that badly transforms
@@ -54,9 +46,6 @@ const compileStylesheet = configPaths.src + "scss/all.scss";
 
 
 
-
-
-
 export const scssComplile  = gulp.task("scss:compile", () => {
   
     return gulp.src(compileStylesheet)
@@ -78,7 +67,9 @@ export const scssComplile  = gulp.task("scss:compile", () => {
 // Compile js task for preview ----------
 // --------------------------------------
 export const jsCompile = gulp.task("js:compile", () => {
-  return gulp.src("src/js/map/*js")
+  const srcFiles = configPaths.src + "/js/main.js";
+  return gulp
+    .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
         .pipe(exec("npx webpack --config webpack.config.js"))
         .pipe(exec.reporter())
 });
