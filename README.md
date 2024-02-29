@@ -310,16 +310,11 @@ Object properties:
 
     // functions will always Result into a table like below:
 ```
-<div style="display:flex; width:100%; justify-content:center;align-items:center;background-color:orange"><table>
-<tr><th>A</th><th>B</th></tr>
-<tr> <td>1</td><td>2</td></tr>
-<tr> <td>5</td><td>9</td></tr>
-</table>
-<div>-------------</div>
+<div style="display:flex; width:100%; justify-content:center;align-items:center;background-color:orange">
 <table>
-<tr><th>column</th><th>value</th></tr>
-<tr> <td>A_sum</td><td>6</td></tr>
-<tr> <td>B_count</td><td>2</td></tr>
+<tr><th>A</th><th>B</th><th></th><th></th><th>column</th><th>value</th></tr>
+<tr> <td>1</td><td>2</td><td></td><td>--------></td><td>A_sum</td><td>6</td></tr>
+<tr> <td>5</td><td>9</td><td></td><td></td><td>B_count</td><td>2</td></tr>
 </table>
 </div>
 <br>
