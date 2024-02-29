@@ -272,7 +272,7 @@ Object properties:
     //  "<="       --> Less than or equal to value,
     //  "contains" --> If attribute contains the value substring 
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **fields** to be cast into each corresponding data type key as **values**. Any column/field that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
 ```javascript
@@ -281,7 +281,7 @@ Object properties:
      "float32":["field_name_2","field_name_3"]
     };
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `groupBy` | Array | optional | A list of fields/cloumns to group the data. The **order** of the fields is important to the output. | `false` |
 | `aggregations` | Object | conditional | **Required** with a **groupBy** clause!<br> An Object with the field/column names as the **keys** and and Object of **"functions"** key with an arithmetic operations values array as the **values**.  | |
@@ -295,7 +295,7 @@ Object properties:
             },
     } 
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
 ```javascript
@@ -313,7 +313,7 @@ Object properties:
     //    field_name_1_sum    | value 
     //    field_name_2_count  | value 
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
 ```javascript
@@ -342,7 +342,7 @@ Object properties:
 
 
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `replacers` | Array | optional | Mostly useful when using functions. A list of operation to change/replace entries in the resultant Table. Each object entry will need an **attribute**, a **value**, and a **replacerValue**.| `false` |
 ```javascript
@@ -357,7 +357,7 @@ Object properties:
     // **Note** Table attribute/column names from using functions
     //      will default to column and value
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `sortBy` | Object | Optional | An object of resulting Table's field/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. Defaults to **false**. | `false` |
 ```javascript
@@ -370,7 +370,7 @@ Object properties:
     // **Note** If any columns have been renamed/replaced, please use the new names
     
 ```
-||||||
+| Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `round` | Object | optional | An object of resulting Table's field/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
 | `fillNa` | Object | optional | An object of resulting Table's field/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.| `false` |
