@@ -192,8 +192,9 @@ Object properties:
 | `icon2` | String | optional | A second FontAwesome icon can be used when an advanced style is required (e.g: an outline and a filled colour with different colours). Both icons will be stacked using the FontAwesome data-fa transformations.|
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
-| `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 17. Beyond zoom 17 the individual markers will be used as defined above. We use a purple cluster style with a level of transparency depending on the size of the cluster. |
+| `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 12 (default), or up to the value specified in the next option. Beyond this zoom threshold, the individual markers will be used as defined above. The clusters are styled using the markerColor option.|
 | `disableClusteringAtZoom` | Number | optional | This value is the zoom level at which the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
+| `enableSpiderfy` | Boolean | optional |  If `true`, Leaflet will use the spiderfyOnMaxZoom option, which means that a cluster might get spiderfied (all markers individual shown) when clicked on. The spiderfy only occurs if all items within the cluster are still clustered at the maximum zoom level or at the zoom level specified by disableClusteringAtZoom option.|
 
 ### Line Polygon Options
 
