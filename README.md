@@ -169,7 +169,7 @@ Object properties:
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
-|`spatialEnrichments`|Array| optional | This layer will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where `geographyLayer` = source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = attribute to be copied from enriching layer <br>`targetAttribute` = attribute name being added as enrichment to this layer<br>|
+|`spatialEnrichments`|Array| optional | This layer will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where :<br>`geographyLayer` = Source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = Attribute to be copied from enriching layer <br>`targetAttribute` = Attribute name being added as enrichment to this layer<br>|
 ```javascript
     [
        {
@@ -239,21 +239,21 @@ Object properties:
 
 ### Statistics Options
 
-| Option | Type | Required | Description |
-| --- | --- | --- | --- |
-| `sectionHeader` | String | optional | The name of the field to use as the title of the Table section. Defaults to "Tables" |
-| `accordionStatus` | String | required | If string "allExplanded" is entered, this will expand all Statistic Accordions on load. |
-| `statisticsTables` | Array | required | A list of Statistic tables to be shown |
+| Option | Type | Required | Description | Default |
+| --- | -- | --- | ---- | -- |
+| `sectionHeader` | String | optional | The name of the field to use as the title of the Tables section. | `"Tables"` |
+| `accordionStatus` | String | Optional | If string "allExplanded" is entered, this will expand all Statistic Accordions on load. | `false`|
+| `statisticsTables` | Array | required | A list of Statistic tables to be shown |  |
 
 ### Statistics Table Options
 
 * To avoid errors, please ommit **any** options **NOT** being used in your Tables.
 
-| Option | Type | Required | Description |
-| --- | --- | --- | --- |
-| `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table |
-| `scope` | Array | required | A list of map layer titles from the layers for whose data should be reference in **this** table creation. **Note** These must layers must all have the same data schema on the fields beings referenced |
-| `filters` | Array | optional | A list of object data filters to be applied to all the data in the **scope** for this table. Defaults to **false** |
+| Option | Type | Required | Description | Default |
+| --- | -- | --- | ---- | -- |
+| `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table. | |
+| `scope` | Array | required | A list of map layers' titles from the layers for whose data should be referenced in **this** table creation. **Note** These layers must all have the same data schema for the fields beings referenced |
+| `filters` | Array | optional | A list of object data filters to be applied to all the data in the **scope** for this table.| `false` |
 ```javascript
     [
         { 
@@ -264,27 +264,27 @@ Object properties:
     ]
 
     //_________________Operation options____________________:
-    //  "==="     --> aquals to value and type (String/Number/Boolean), 
-    //  ">"       --> greater than value,
-    //  "<"       --> less than value,
-    //  "!=="     --> not equal to value and type (String/Number/Boolean),
-    //  ">="      --> greater or equal to value,
-    //  "<="      --> less than or equal to value
-    // "contains" --> If attribute contains the value substring 
+    //  "==="      --> Equals to value and type (String/Number/Boolean), 
+    //  ">"        --> Greater than value,
+    //  "<"        --> Less than value,
+    //  "!=="      --> Not equal to value and type (String/Number/Boolean),
+    //  ">="       --> Greater or equal to value,
+    //  "<="       --> Less than or equal to value,
+    //  "contains" --> If attribute contains the value substring 
 ```
-|||||
-| --- | --- | --- | --- |
-| `dtypes` | Object | required | An object with number data types as keys "int32","float32" and array of fields to be cast into each corresponding data type key as values. Any column/feild that needs an arithmetic operation perform on it will need to be of Number type.|
+||||||
+| --- | -- | --- | ---- | -- |
+| `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **fields** to be cast into each corresponding data type key as **values**. Any column/field that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
 ```javascript
     {
      "int32":["field_name_1"],
      "float32":["field_name_2","field_name_3"]
     };
 ```
-|||||
-| --- | --- | --- | --- |
-| `groupBy` | Array | optional | A list of fields/cloumns to group the data. The order of the fields is important to the output.  Defaults to **false** |
-| `aggregations` | Object | conditional | **Required** with a **groupBy** clause!<br> An Object with the field/column names as the **keys** and and Object of **"functions"** key with an arithmetic operations values array as the **values**  |
+||||||
+| --- | -- | --- | ---- | -- |
+| `groupBy` | Array | optional | A list of fields/cloumns to group the data. The **order** of the fields is important to the output. | `false` |
+| `aggregations` | Object | conditional | **Required** with a **groupBy** clause!<br> An Object with the field/column names as the **keys** and and Object of **"functions"** key with an arithmetic operations values array as the **values**.  | |
 ```javascript
     {
             "field_name_1":{
@@ -295,9 +295,9 @@ Object properties:
             },
     } 
 ```
-|||||
-| --- | --- | --- | --- |
-| `functions` | Object | conditional | Cannot be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table. |
+||||||
+| --- | -- | --- | ---- | -- |
+| `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
 ```javascript
     {
               "sum": ["field_name_1"],
@@ -313,9 +313,9 @@ Object properties:
     //    field_name_1_sum    | value 
     //    field_name_2_count  | value 
 ```
-|||||
-| --- | --- | --- | --- |
-| `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**  |
+||||||
+| --- | -- | --- | ---- | -- |
+| `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
 ```javascript
 
     // If using groupBy and aggregations
@@ -342,9 +342,9 @@ Object properties:
 
 
 ```
-|||||
-| --- | --- | --- | --- |
-| `replacers` | Array | optional | Mostly useful when using functions. A list of operation to change/replace entries in the resultant Table. Each object entry will need an **attribute**, a **value**, and a **replacerValue**  |
+||||||
+| --- | -- | --- | ---- | -- |
+| `replacers` | Array | optional | Mostly useful when using functions. A list of operation to change/replace entries in the resultant Table. Each object entry will need an **attribute**, a **value**, and a **replacerValue**.| `false` |
 ```javascript
     [
         { 
@@ -357,25 +357,23 @@ Object properties:
     // **Note** Table attribute/column names from using functions
     //      will default to column and value
 ```
-|||||
-| --- | --- | --- | --- |
-| `sortBy` | Object | Optional | An object of resulting Table's field/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. |
+||||||
+| --- | -- | --- | ---- | -- |
+| `sortBy` | Object | Optional | An object of resulting Table's field/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. Defaults to **false**. | `false` |
 ```javascript
     {
         "column_A":"ascending",
         "column_B":"descending"
     }
-    // The final Table will result data sorted by first
+    // The final Table will result in data sorted by first
     // column_A ascending, then by column_B descending.
-    // **Note** If any columns have been renamed, please use the new names
+    // **Note** If any columns have been renamed/replaced, please use the new names
     
 ```
-|||||
-| --- | --- | --- | --- |
-| `round` | Object | optional | An object of resulting Table's field/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places. |
-| `fillNa` | Object | optional | An object of resulting Table's field/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.|
-
-
+||||||
+| --- | -- | --- | ---- | -- |
+| `round` | Object | optional | An object of resulting Table's field/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
+| `fillNa` | Object | optional | An object of resulting Table's field/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.| `false` |
 
 
 ## Troubleshooting
