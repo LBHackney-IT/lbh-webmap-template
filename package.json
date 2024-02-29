@@ -6,9 +6,7 @@
   "main": "./app/app.js",
   "scripts": {
     "start": "gulp dev",
-    "build": "npx webpack --config webpack.config.js",
-    "build-run": "node dist/lbh-webmap.min.js",
-    "main": "nodemon app/app.js"
+    "dev": "nodemon app/app.js"
   },
   "repository": {
     "type": "git",
