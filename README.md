@@ -359,14 +359,13 @@ Object properties:
 ```json
     [
         { 
-            "attribute"    : "column", 
-            "value"        : "target value_to_replace", // String | Number
-            "replacerValue": "Value to replace with" // String
+            "attribute"    : "field/column name from resulting table", 
+            "value"        : "target value_to_replace  String | Number", 
+            "replacerValue": "Value to replace with    String"
         }
     ]
-    // attribute = field/column name from resulting table
-    // **Note** Table attribute/column names from using functions
-    //      will default to column and value
+    
+    [" *Note* Table attribute/column names from using functions will default to column and value"]
 ```
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
@@ -376,9 +375,10 @@ Object properties:
         "column_A":"ascending",
         "column_B":"descending"
     }
-    // The final Table will result in data sorted by first
+    
+    ["// The final Table will result in data sorted by first
     // column_A ascending, then by column_B descending.
-    // **Note** If any columns have been renamed/replaced, please use the new names
+    // **Note** If any columns have been renamed/replaced, please use the new names"]
     
 ```
 | Option | Type | Required | Description | Default |
