@@ -263,7 +263,7 @@ Object properties:
         }
     ]
 ```
->_________________`Operator` options____________________:
+>_________________`operator` options____________________:
 >-  "==="&emsp;&emsp;&emsp;&ensp;--> Equals to value and type (String/Number/Boolean), 
 >-  ">"&emsp;&emsp;&emsp;&emsp;&emsp;--> Greater than value,
 >-  "<"&emsp;&emsp;&emsp;&emsp;&emsp;--> Less than value,
@@ -306,8 +306,11 @@ Object properties:
         "count": ["B"]
     } 
 ```
->Functions options: 
- `"sum"`, `"count"`, `"median"` ,` "mean"`, `"mode"`, `"max"`, `"min"`<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`"var"` --> variance , `"std"` --> standard deviation <br> `Functions` flag if used will always Result into a table like below:
+>`functions` ***key*** options: 
+> - `"sum"`, `"count"`, `"median"` ,` "mean"`, `"mode"`, `"max"`, 
+> - `"var"` --> variance , `"std"` --> standard deviation 
+>
+>`functions`; flag if used will always result into a table like below:
 <div style="display:flex; width:100%; justify-content:center;align-items:center;">
 <table>
 <tr><th>A</th><th>B</th><th></th><th></th><th>column</th><th>value</th></tr>
@@ -325,8 +328,7 @@ Object properties:
 {
     "field_name_1_count":"Number of A",
     "field_name_1_mean":"Average Number of A",
-    "field_name_2_count":"Number of B"
-               
+    "field_name_2_count":"Number of B"              
 }
 ```
 
@@ -351,7 +353,6 @@ Object properties:
 ```
 > ***Note*** Table attribute/column names from using functions will default to column and value
 <br>
-
 
 
 | Option | Type | Required | Description | Default |
