@@ -254,24 +254,25 @@ Object properties:
 | `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table. | |
 | `scope` | Array | required | A list of map layers' titles from the layers for whose data should be referenced in **this** table creation. **Note** These layers must all have the same data schema for the fields beings referenced |
 | `filters` | Array | optional | A list of object data filters to be applied to all the data in the **scope** for this table.| `false` |
-```javascript
+```json
     [
         { 
-            "attribute": "field_name_1", // Name of field/column
-            "operator": "===",  // condition to check             
-            "value": "value_to_compare_with" // value to check against
+            "attribute": "Name of field/column  | String",
+            "operator": "condition to check e.g '==='  | String",             
+            "value": "value to compare with i.e. check against | String / Number"
         }
     ]
-
-    //_________________Operation options____________________:
-    //  "==="      --> Equals to value and type (String/Number/Boolean), 
-    //  ">"        --> Greater than value,
-    //  "<"        --> Less than value,
-    //  "!=="      --> Not equal to value and type (String/Number/Boolean),
-    //  ">="       --> Greater or equal to value,
-    //  "<="       --> Less than or equal to value,
-    //  "contains" --> If attribute contains the value substring 
 ```
+>_________________`Operator` options____________________:
+>-  "==="&emsp;&emsp;&emsp;&ensp;--> Equals to value and type (String/Number/Boolean), 
+>-  ">"&emsp;&emsp;&emsp;&emsp;&emsp;--> Greater than value,
+>-  "<"&emsp;&emsp;&emsp;&emsp;&emsp;--> Less than value,
+>-  "!=="&emsp;&emsp;&emsp;&emsp;--> Not equal to value and type (String/Number/Boolean),
+>-  ">="&emsp;&emsp;&emsp;&emsp; --> Greater or equal to value,
+>-  "<="&emsp;&emsp;&emsp;&emsp; --> Less than or equal to value,
+>-  "contains"&emsp;&emsp;--> If attribute contains the value substring 
+
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **fields** to be cast into each corresponding data type key as **values**. Any column/field that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
@@ -299,18 +300,15 @@ Object properties:
 | --- | -- | --- | ---- | -- |
 | `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
 
-```javascript
+```json
     {
         "sum": ["A"],
         "count": ["B"]
     } 
-    //___________functions options_____________________
-    // "sum", "count", "median" , "mean", "mode", "max"
-    // "min", "var" --> variance , "std" --> standard deviation
-
-    // functions will always Result into a table like below:
 ```
-<div style="display:flex; width:100%; justify-content:center;align-items:center;background-color:orange">
+>Functions options: 
+ `"sum"`, `"count"`, `"median"` ,` "mean"`, `"mode"`, `"max"`, `"min"`<br> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;`"var"` --> variance , `"std"` --> standard deviation <br> `Functions` flag if used will always Result into a table like below:
+<div style="display:flex; width:100%; justify-content:center;align-items:center;">
 <table>
 <tr><th>A</th><th>B</th><th></th><th></th><th>column</th><th>value</th></tr>
 <tr> <td>1</td><td>2</td><td></td><td>--------></td><td>A_sum</td><td>6</td></tr>
@@ -322,46 +320,40 @@ Object properties:
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
-```javascript
-
-    // If using groupBy and aggregations
-        {
-                  "field_name_1_count":"Number of A",
-                  "field_name_1_mean":"Average Number of A",
-                  "field_name_2_count":"Number of B"
+>If using `groupBy` and `aggregations`. The **field/column** `name` + `_operation` become column titles (keys). These can be replaced with user friendly String values.
+```json
+{
+    "field_name_1_count":"Number of A",
+    "field_name_1_mean":"Average Number of A",
+    "field_name_2_count":"Number of B"
                
-        }
-        // The field/column title + _operation become column titles (keys)
-        // These can be replaced with user friendly String values
-
-    // If using functions 
-        // The table columns default the two labels: column & value
-
-                            { "value":" " }
-                            
-        // Since the first table column is always hidden by Default
-        // the empty string will replace the "value" column title.
-        // however this could be replaced with any String
-        // The table content will need to be replaced by replacers
-        // (see below)
-        
-
-
+}
 ```
+
+>If using `functions`
+```json 
+{ "value":" " }
+```                   
+> - The table columns default the two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. The table content will need to be replaced by `replacers` <br>(**see below**).
+
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `replacers` | Array | optional | Mostly useful when using functions. A list of operation to change/replace entries in the resultant Table. Each object entry will need an **attribute**, a **value**, and a **replacerValue**.| `false` |
 ```json
     [
         { 
-            "attribute"    : "field/column name from resulting table", 
-            "value"        : "target value_to_replace  String | Number", 
-            "replacerValue": "Value to replace with    String"
+            "attribute"    : "field/column name from resulting table | String", 
+            "value"        : "target value_to_replace |  String / Number", 
+            "replacerValue": "Value to replace with   |  String"
         }
     ]
-    
-    [" *Note* Table attribute/column names from using functions will default to column and value"]
 ```
+> ***Note*** Table attribute/column names from using functions will default to column and value
+<br>
+
+
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `sortBy` | Object | Optional | An object of resulting Table's field/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. Defaults to **false**. | `false` |
@@ -370,12 +362,10 @@ Object properties:
         "column_A":"ascending",
         "column_B":"descending"
     }
-
-    ["// The final Table will result in data sorted by first "]
-    ["// column_A ascending, then by column_B descending."]
-    ["// **Note** If any columns have been renamed/replaced, please use the new names"]
-    
 ```
+>The final Table will result in data sorted by first column_A ascending, then by column_B descending.<br>
+***Note*** If any columns have been **renamed/replaced**, please use the new names
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `round` | Object | optional | An object of resulting Table's field/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
