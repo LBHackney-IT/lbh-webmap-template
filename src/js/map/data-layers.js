@@ -9,7 +9,6 @@ import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
 import Table from "./table-view";
-import SpatialEnrichment from "./spatial-enrichment";
 
 
 class DataLayers {
@@ -32,7 +31,6 @@ class DataLayers {
     this.showAddressSearch = null;
     this.list = null;
     this.statistics = null;
-    this.spatialEnrichmentFlag = false;
   }
 
   pointToLayer (latlng, configLayer) {

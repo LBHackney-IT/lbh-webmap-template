@@ -169,8 +169,7 @@ Object properties:
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
-|`spatialEnrichments`|Array| optional | If sptialEnrichment Map flag is **true**. This layer will be enriched with extra attributes using spatial joins as defined in this list. Where `geographyLayer` = source of new attribute<br>
-|`spatialEnrichments`|Array| optional | If sptialEnrichment Map flag is **true**. This layer will be enriched with extra attributes using spatial joins as defined in the objects in this list. Where `geographyLayer` = source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = attribute to be copied from enriching layer <br>`targetAttribute` = attribute name being added as enrichment to this layer<br>|
+|`spatialEnrichments`|Array| optional | This layer will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where `geographyLayer` = source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = attribute to be copied from enriching layer <br>`targetAttribute` = attribute name being added as enrichment to this layer<br>|
 ```javascript
     [
        {
