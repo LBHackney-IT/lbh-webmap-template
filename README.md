@@ -298,21 +298,33 @@ Object properties:
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
+
 ```javascript
     {
-              "sum": ["field_name_1"],
-              "count": ["field_name_2"]
+        "sum": ["A"],
+        "count": ["B"]
     } 
     //___________functions options_____________________
     // "sum", "count", "median" , "mean", "mode", "max"
     // "min", "var" --> variance , "std" --> standard deviation
 
-    // functions will always Result into a table like:
-    //           __column__   | __value__
-    //  --------------------------------
-    //    field_name_1_sum    | value 
-    //    field_name_2_count  | value 
+    // functions will always Result into a table like below:
 ```
+<div style="display: flex; width:100%; justify-items:center; align-items:center">
+<table>
+    <tr><th>A</th><th>B</th></tr>
+    <tr> <td>1</td><td>2</td></tr>
+    <tr> <td>5</td><td>9</td></tr>
+    </table>
+    <div>-------------></div>
+    <table>
+    <tr><th>column</th><th>value</th></tr>
+    <tr> <td>A_sum</td><td>6</td></tr>
+    <tr> <td>B_count</td><td>2</td></tr>
+    </table>
+</div>
+<br>
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
