@@ -1,6 +1,7 @@
 "use strict";
 
 import gulp from 'gulp';
+import exec from "gulp-exec"
 import configPaths  from "../../config/paths.js";
 import  plumber from "gulp-plumber";
 import sass from 'gulp-sass'
@@ -58,7 +59,7 @@ const compileStylesheet = configPaths.src + "scss/all.scss";
 
 export const scssComplile  = gulp.task("scss:compile", () => {
   
-    return gulp.src("src/scss/all.scss")
+    return gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
     .pipe(sassCompiler()) //@FIXME
     // minify css add vendor prefixes and normalize to compiled css
@@ -77,61 +78,8 @@ export const scssComplile  = gulp.task("scss:compile", () => {
 // Compile js task for preview ----------
 // --------------------------------------
 export const jsCompile = gulp.task("js:compile", () => {
-  // for dist/ folder we only want compiled 'all.js' file
-  // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
-  const srcFiles = configPaths.src + "js/main.js";
-  // console.log("SRC FILE",srcFiles)
-  // return gulp
-  //   .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
-  //   .pipe(named())
-  //   .pipe(
-  //     webpack({
-  //       mode: isDist ? "production" : "development",
-  //       output: {
-  //         library: "LBHWebmap",
-  //         libraryTarget: "umd"
-  //       }
-  //     })
-  //   )
-  //   .pipe(babel({
-  //     presets: ["@babel/preset-env"]
-  //   }))
-  //   .pipe(
-  //     gulpif(
-  //       isDist,
-  //       terser()
-  //     )
-  //   )
-  //   .pipe(
-  //     rename({
-  //       basename: "lbh-webmap",
-  //       extname: ".min.js"
-  //     })
-  //   )
-  //   .pipe(eol())
-  //   .pipe(gulp.dest("dist/"));
   return gulp.src("src/js/map/*js")
-        .pipe(named())
-        .pipe(
-              webpack({
-                mode: isDist ? "production" : "development",
-                output: {
-                  library: "LBHWebmap",
-                  libraryTarget: "umd"
-                }
-              })
-            )
-        .pipe(babel({
-              presets: ["@babel/preset-env"]
-            }))
-        .pipe(concat("lbh-webmap.min.js"))
-        .pipe(terser())
-        //  .pipe(
-        //       rename({
-        //         basename: "lbh-webmap",
-        //         extname: ".min.js"
-        //       })
-        //     )
-        .pipe(gulp.dest('dist/'));
+        .pipe(exec("npx webpack --config webpack.config.js"))
+        .pipe(exec.reporter())
 });
 

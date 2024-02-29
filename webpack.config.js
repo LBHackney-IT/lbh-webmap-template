@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 const config = {
     mode:"development",
-    devtool:"source-map",
+    // devtool:"source-map",
     context : path.resolve(__dirname,"src"),
     entry:"/js/main.js",
     // watch:true,
@@ -17,7 +17,8 @@ const config = {
         filename:"lbh-webmap.min.js",
         path:path.resolve(__dirname,"dist"),
         library: "LBHWebmap",
-        libraryTarget: "umd"
+        libraryTarget: "umd",
+        // clean:true
     },
     module:{
         rules:[
@@ -30,10 +31,11 @@ const config = {
                         presets:["@babel/preset-env"]
                     }
                 }
-            },{
-                test:/\.scss$/i,
-                use:["style-loader","css-loader","postcss-loader","sass-loader"]
             }
+            // ,{
+            //     test:/\.scss$/,
+            //     use:["style-loader","css-loader","postcss-loader","sass-loader"]
+            // }
             
         ]
     }
