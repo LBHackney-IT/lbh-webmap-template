@@ -251,6 +251,21 @@ Object properties:
 
 * To avoid errors, please ommit **any** options **NOT** being used in your Tables.
 
+<details>
+
+> These option can be written in any order however they will be proccessed in the following order when creating a **table**:
+1.  `filters`
+2.  `dtypes`
+3.  `groupBy` + `aggregations` | **OR** | `functions`
+4.  `labels`
+4.  `fillNa`
+5.  `round`
+6.  `sortBy`
+7.  `replacers`
+
+</details>
+<br>
+
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
 | `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table. | |
@@ -265,7 +280,7 @@ Object properties:
         }
     ]
 ```
->_________________`operator` options____________________:
+>`operator` options:
 >-  "==="&emsp;&emsp;&emsp;&ensp;--> Equals to value and type (String/Number/Boolean), 
 >-  ">"&emsp;&emsp;&emsp;&emsp;&emsp;--> Greater than value,
 >-  "<"&emsp;&emsp;&emsp;&emsp;&emsp;--> Less than value,
