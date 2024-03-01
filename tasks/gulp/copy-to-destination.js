@@ -26,12 +26,13 @@ export const copyFiles = gulp.task("copy-files", () => {
     .pipe(gulp.dest("dist/"));
 });
 
-export const copy3rdParties = gulp.task("copy-3rd-parties", () => gulp
+export const copy3rdParties = gulp.task("copy-3rd-parties", () => {
+  return gulp
     .src([
       "node_modules/iframe-resizer/js/iframeResizer.contentWindow.{min.js,map}" // Needed to support iframe auto resizing when embedded
     ])
     .pipe(gulp.dest("dist/"))
-);
+  })
 
 
 
