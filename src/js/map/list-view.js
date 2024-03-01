@@ -21,7 +21,7 @@ class List {
     else{
       this.accordionExpandedClass = '';
     }
-    this.createMarkup();
+    // this.createMarkup();
   }
 
   createMarkup() {
@@ -49,27 +49,21 @@ class List {
             </h5>
           </div>`;
         }
-        
-        for (var feat of layerData.layer.getLayers()){
-          //for (var feature of layerData.data.features){
-          // html += `<div id="default-example-content-1" class="govuk-accordion__section-content" aria-labelledby="default-example-heading-1">
-          // <ul class="lbh-list lbh-list--bullet">
-          // <li>${feature.properties.organisation_name}</li>
-          // </ul></div>`;
+        for (const feature of layerData.data.features){
           html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
-          <h6>${feat.feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          <h6>${feature.properties[layerData.configLayer.listView.title]}</h6>`;
           if (layerData.configLayer.listView.fields) {
             html += `<p class="lbh-body-s">`;
             for (const field of layerData.configLayer.listView.fields) {
-              if (feat.feature.properties[field] !== "") {
+              if (feature.properties[field] !== "") {
                 if (
-                  feat.feature.properties[field.name] !== "" &&
-                  feat.feature.properties[field.name] !== null
+                  feature.properties[field.name] !== "" &&
+                  feature.properties[field.name] !== null
                 ) {
                   if (field.label != "") {
-                    html += `${field.label}</span>: ${feat.feature.properties[field.name]}<br>`;
+                    html += `${field.label}</span>: ${feature.properties[field.name]}<br>`;
                   } else {
-                    html += `${feat.feature.properties[field.name]}<br>`;
+                    html += `${feature.properties[field.name]}<br>`;
                   }
                 }     
               }

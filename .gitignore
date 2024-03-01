@@ -7,3 +7,4 @@ src/js/helpers/addressesProxy.js
 src/js/helpers/hackneyGeoserver.js
 .npmrc
 web.config
+.pre-commit-config.yaml

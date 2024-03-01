@@ -401,9 +401,8 @@ class Map {
         }
       this.addBoundaryLayer(this.boundaryGeoserverName);
     }
-    
     //Add the layers from config
-    if(this.mapConfig.layers[0].vectorTilesLayer){
+    if (this.mapConfig.layers[0].vectorTilesLayer){
       new VectorTileDataLayers(this).loadLayers();
     } 
     else {

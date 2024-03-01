@@ -8,6 +8,7 @@ import Search from "./search";
 import addressSearch from "./address-search";
 import List from "./list-view";
 import DrillDown from "./drill-down";
+import Table from "./table-view";
 
 
 class DataLayers {
@@ -29,6 +30,7 @@ class DataLayers {
     this.search = null;
     this.showAddressSearch = null;
     this.list = null;
+    this.statistics = null;
   }
 
   pointToLayer (latlng, configLayer) {
@@ -169,6 +171,7 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
     const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
 
 
@@ -315,7 +318,7 @@ class DataLayers {
       clusterLayer = L.markerClusterGroup({
         maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
-        spiderfyOnMaxZoom: false,
+        spiderfyOnMaxZoom: enableSpiderfy,
         showCoverageOnHover: false
       });
       clusterLayer.addLayer(layer);
@@ -415,24 +418,14 @@ class DataLayers {
       let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
       closestMarker.layer.openPopup();
     }
-
+    
     this.loadedLayerCount++;
+
+
 
     //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
     if (this.mapClass.blpuPolygon && this.loadedLayerCount == this.layerCount) {
       this.mapClass.blpuPolygon.bringToFront();
-    }
-
-    //only happens once, after the last layer has loaded - create filters above the map
-    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
-      this.filters = new Filters(this.mapClass, this.layersData);
-      this.filters.init();
-    }
-
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.list = new List(this.mapClass,this.layersData);
-      this.list.init();
     }
 
     //only happens once, after the last layer has loaded - add the drill down listener if true
@@ -440,6 +433,8 @@ class DataLayers {
         this.drilldown = new DrillDown(this.map);
         this.drilldown.init();
     }
+
+
       
     if (this.mapConfig.showLegend) {
       if (!configLayer.excludeFromLegend){
@@ -529,6 +524,24 @@ class DataLayers {
         this.search.createMarkup();
       }     
     }
+    
+    //only happens once, after the last layer has loaded - create filters above the map
+    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
+      this.filters = new Filters(this.mapClass, this.layersData);
+      this.filters.init();
+    }
+
+    //only happens once, after the last layer has loaded - create list view after the map
+    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+      this.list = new List(this.mapClass,this.layersData);
+      this.list.init();
+    }
+    //only happens once, after the last layer has loaded - create statistics tables after the map
+    if (this.mapConfig.statistics && this.loadedLayerCount == this.layerCount) {
+      this.statistics = new Table(this.mapClass,this.layersData);
+      this.statistics.init();
+    }
+
     //only happens once, after the last layer has loaded: address search
     if (this.loadedLayerCount == this.layerCount && this.mapConfig.showAddressSearch){
       this.showAddressSearch = new addressSearch(this.mapClass);
@@ -598,23 +611,23 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-            //If there is cql, we add the cql filter to the wfs call
-            if (configLayer.cqlFilter){
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-            //If not, we use the default wfs call
-            } else{
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-            }
-          //Fetch the url
-          fetch(url, {
-            method: "get"
-          })
-            .then(response => response.json())
-            .then(data => this.addWFSLayer(data, configLayer))
-            .catch(error => {
-              console.log(error);
-              alert("Something went wrong, please reload the page");
-            });     
+      //If there is cql, we add the cql filter to the wfs call
+      if (configLayer.cqlFilter){
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+      //If not, we use the default wfs call
+      } else{
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      }
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+      .then(response => response.json())
+      .then(data => this.addWFSLayer(data, configLayer))
+      .catch(error => {
+        console.log(error);
+        alert("Something went wrong, please reload the page");
+      });     
     }
   }
 }
