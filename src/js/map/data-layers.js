@@ -1,14 +1,15 @@
 import L, { Point } from "leaflet";
 import "leaflet.vectorgrid";
-import { pointToLayer } from "./metadata";
-import { MARKER_COLORS} from "./consts";
-import Personas from "./personas";
-import Filters from "./filters";
-import Search from "./search";
-import addressSearch from "./address-search";
-import List from "./list-view";
-import DrillDown from "./drill-down";
-import Table from "./table-view";
+import { pointToLayer } from "./metadata.js";
+import { MARKER_COLORS} from "./consts.js";
+import Personas from "./personas.js";
+import Filters from "./filters.js";
+import Search from "./search.js";
+import addressSearch from "./address-search.js";
+import List from "./list-view.js";
+import DrillDown from "./drill-down.js";
+import Table from "./table-view.js";
+
 
 
 class DataLayers {
@@ -31,6 +32,7 @@ class DataLayers {
     this.showAddressSearch = null;
     this.list = null;
     this.statistics = null;
+    this.spatialEnrichmentFlag = false;
   }
 
   pointToLayer (latlng, configLayer) {
@@ -171,7 +173,6 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
-    const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
     const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
 
 
@@ -318,7 +319,7 @@ class DataLayers {
       clusterLayer = L.markerClusterGroup({
         maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
-        spiderfyOnMaxZoom: enableSpiderfy,
+        spiderfyOnMaxZoom: false,
         showCoverageOnHover: false
       });
       clusterLayer.addLayer(layer);
