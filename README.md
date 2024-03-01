@@ -178,8 +178,14 @@ Object properties:
               "targetAttribute": "attribute_name_to_add_to_this_layer"
         }
     ]
-    // Only available for enriching a points layer only
 ```
+<details>
+
+<summmary>**NOTE**</summary>
+
+> [!NOTE]
+> Only available for enriching a points layer only
+</details>
 
 ### Point Style Options
 
