@@ -356,7 +356,7 @@ class Table {
       const tables = this.mapConfig.statistics.statisticsTables.map(tableConfig => this.createTable(tableConfig)).join("")
       
       let tableMarkup = `
-      <h4>TABLES</h4>
+      <div class="tableview-container"><h3>${this.table.sectionHeader?this.table.sectionHeader:'Tables'}</h3>
       <div class="govuk-accordion lbh-accordion" data-module="govuk-accordion" data-attribute="value">
       ${tables}
       </div>
