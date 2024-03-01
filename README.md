@@ -170,6 +170,7 @@ Object properties:
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
 |`spatialEnrichments`|Array| optional | This layer will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where :<br>`geographyLayer` = Source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = Attribute to be copied from enriching layer <br>`targetAttribute` = Attribute name being added as enrichment to this layer<br>|
+
 ```javascript
     [
        {
@@ -179,13 +180,8 @@ Object properties:
         }
     ]
 ```
-<details>
-
-<summmary>**NOTE**</summary>
-
-> [!NOTE]
 > Only available for enriching a points layer only
-</details>
+
 
 ### Point Style Options
 
@@ -370,8 +366,10 @@ Object properties:
         "column_B":"descending"
     }
 ```
+
 >The final Table will result in data sorted by first column_A ascending, then by column_B descending.<br>
-***Note*** If any columns have been **renamed/replaced**, please use the new names
+***Note*** If any columns have been **renamed/replaced**, please use the new names.
+<br>
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
