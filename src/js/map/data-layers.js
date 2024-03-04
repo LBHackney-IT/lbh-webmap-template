@@ -526,7 +526,6 @@ class DataLayers {
     
     //only happens once, after the last layer has loaded
     if (this.loadedLayerCount == this.layerCount && this.mapConfig.search){
-      console.log('after last layer: create markup for layer search')
       this.search.createMarkup();
     }     
     
