@@ -6,7 +6,7 @@ import Personas from "./personas";
 import Filters from "./filters";
 import Search from "./search";
 import addressSearch from "./address-search";
-import List from "./list-view";
+// import List from "./list-view";
 import DrillDown from "./drill-down";
 import Table from "./table-view";
 
@@ -531,13 +531,14 @@ class DataLayers {
       this.filters.init();
     }
 
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.list = new List(this.mapClass,this.layersData);
-      this.list.init();
-    }
-    //only happens once, after the last layer has loaded - create statistics tables after the map
-    if (this.mapConfig.statistics && this.loadedLayerCount == this.layerCount) {
+    //only happens once, after the last layer has loaded - create list view after the map - now created with the tables
+    // if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+    //   this.list = new List(this.mapClass,this.layersData);
+    //   this.list.init();
+    // }
+
+    //only happens once, after the last layer has loaded - create lists and statistics tables after the map
+    if ((this.mapConfig.statistics || this.mapConfig.list) && this.loadedLayerCount == this.layerCount) {
       this.statistics = new Table(this.mapClass,this.layersData);
       this.statistics.init();
     }

@@ -1,4 +1,4 @@
-// import { MARKER_COLORS } from "./consts";
+import { MARKER_COLORS } from "./consts";
 import SpatialEnrichment from "./spatial-enrichment"
 
 class Table {
@@ -12,14 +12,17 @@ class Table {
     this.list = null;
     this.accordionExpandedClass = null;
     // Retrieve all layer names from all the scopes - these will be assinged event listeners 
-    this.tableLayers = map.mapConfig.statistics.statisticsTables.reduce(
-      (accumulator, currentValue) => {
-        const scope = currentValue.scope
-        scope.map(layerName => accumulator.add(layerName))
-        return accumulator
-      },
-      new Set(),
-    );
+    if (this.mapConfig.statistics){
+      this.tableLayers = map.mapConfig.statistics.statisticsTables.reduce(
+        (accumulator, currentValue) => {
+          const scope = currentValue.scope
+          scope.map(layerName => accumulator.add(layerName))
+          return accumulator
+        },
+        new Set(),
+      );
+    }
+    
 
   }
 
@@ -45,10 +48,15 @@ class Table {
     else{
       this.accordionExpandedClass = '';
     }
-
-    this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this))
+    if (this.mapConfig.statistics){
+      this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this));
+    }
     this.list && this.createMarkup();
     this.table && this.createTables();
+
+    //Activate ALL components from lbh-frontend
+    window.LBHFrontend.initAll();
+
   }
   
   addlayerEventListeners(dataLayers,createTables,createListViews){
@@ -366,11 +374,12 @@ class Table {
     }
     //Activate ALL components from lbh-frontend
 
-    if(this.mapConfig.statistics.statisticsTables || this.mapConfig.list){
-      window.LBHFrontend.initAll();
-    }
+    // if(this.mapConfig.statistics.statisticsTables || this.mapConfig.list){
+    //   window.LBHFrontend.initAll();
+    // }
 
   }
+  
   createMarkup() {
     const listDiv =  document.getElementById('listview')
     listDiv&&listDiv.remove()
