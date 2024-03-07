@@ -1,4 +1,4 @@
-// import { MARKER_COLORS } from "./consts";
+import { MARKER_COLORS } from "./consts.js";
 import SpatialEnrichment from "./spatial-enrichment.js"
 
 class Table {
@@ -10,22 +10,24 @@ class Table {
     this.container = map.container;
     this.table = null;
     this.list = null;
+    console.log('Test log')
     this.accordionExpandedClass = null;
-    
     // Retrieve all layer names from all the scopes - these will be assinged event listeners 
-    this.tableLayers = map.mapConfig.statistics.statisticsTables.reduce(
-      (accumulator, currentValue) => {
-        const scope = currentValue.scope
-        scope.map(layerName => accumulator.add(layerName))
-        return accumulator
-      },
-      new Set(),
-    );
+    if (this.mapConfig.statistics){
+      console.log('Helloo',this.mapConfig.statistics.statisticsTables)
+      this.tableLayers = this.mapConfig.statistics.statisticsTables.reduce(
+        (accumulator, currentValue) => {
+          const scope = currentValue.scope
+          scope.map(layerName => accumulator.add(layerName))
+          return accumulator
+        },
+        new Set(),
+      );
+    }
 
   }
 
   init() {
-  
     this.list = this.mapConfig.list;
     this.table = this.mapConfig.statistics;
     this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
@@ -43,10 +45,16 @@ class Table {
     else{
       this.accordionExpandedClass = '';
     }
-
-    this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this))
     this.list && this.createMarkup();
-    this.table && this.createTables();
+    
+    //if tables are defined
+    if (this.mapConfig.statistics){
+      this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this));
+      this.createTables();
+    }
+
+    //Activate List components from lbh-frontend of no Statistics present
+    window.LBHFrontend.initAll();
   }
   
   addlayerEventListeners(dataLayers,createTables,createListViews){
@@ -63,12 +71,14 @@ class Table {
           layer.isVisible = true
           this.list && createListViews()
           this.table && createTables();
+          window.LBHFrontend.initAll()
         })
         
         layer.on('remove',()=>{
           layer.isVisible = false
           this.list && createListViews()
           this.table && createTables();
+          window.LBHFrontend.initAll()
         })
       }
       return null
@@ -371,14 +381,9 @@ class Table {
       ${tables}
       </div>
       `
-      
       this.mapClass.addMarkupToMapAfter(tableMarkup, "tableview", "tableview");
     }
-    //Activate ALL components from lbh-frontend
-
-    if(this.mapConfig.statistics.statisticsTables || this.mapConfig.list){
-      window.LBHFrontend.initAll();
-    }
+    
 
   }
   createMarkup() {
