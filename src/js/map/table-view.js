@@ -11,6 +11,7 @@ class Table {
     this.table = null;
     this.list = null;
     this.accordionExpandedClass = null;
+    
     // Retrieve all layer names from all the scopes - these will be assinged event listeners 
     this.tableLayers = map.mapConfig.statistics.statisticsTables.reduce(
       (accumulator, currentValue) => {
@@ -36,9 +37,6 @@ class Table {
 
 
     if (this.list && this.list.accordionStatus == 'allExpanded'){
-      this.accordionExpandedClass = 'govuk-accordion__section--expanded';
-    }
-    if (this.table && this.table.accordionStatus == 'allExpanded'){
       this.accordionExpandedClass = 'govuk-accordion__section--expanded';
     }
     //@TODO add 'firstExpanded' option
@@ -129,7 +127,7 @@ class Table {
     }
 
     const dataPresent  = filteredData.length > 0
-    console.log('DATA PRESENT ? ',dataPresent)
+    // console.log('DATA PRESENT ? ',dataPresent)
 
     //__________________________________________________________________________________________
 
@@ -152,14 +150,24 @@ class Table {
     }
     
     let new_df =  df
+   
+    //________Handle Errors before creating tables
+    if(dataPresent&&config.aggregations&&config.functions){
+      alert(`Error in rendering table: "${config.tableTitle}"`)
+      console.error('Cannot use Aggregations and Functions in the same Table. ')
+      return;
+    }
+    if(dataPresent&&config.aggregations&& !config.groupBy){
+      alert(`Error in rendering table: "${config.tableTitle}"`)
+      console.error('Cannot use Aggregations without a groupBy clause.')
+      return;
+    }
+
     //_____________________GROUP DATAFRAME and AGGREGATE________________
     if(dataPresent&&config.groupBy){
-
       new_df = df.groupby(config.groupBy).agg(
-        Object.fromEntries(
-          Object.entries(config.aggregations).map(([key,value])=> [key,value.functions])
-          )
-          )
+        config.aggregations
+      )
     }
 
     if(dataPresent&&config.functions){
@@ -187,10 +195,10 @@ class Table {
               results.push({column:`${col}_${key}`,value:new_df[col].mode()})
               break
             case('max'):
-              results.push({column:`${col}_${key}`,value:new_df[col].maximum()})
+              results.push({column:`${col}_${key}`,value:new_df[col]["$data"].reduce((a, b) => Math.max(a, b), -Infinity)})
               break
-            case('min'):
-              results.push({column:`${col}_${key}`,value:new_df[col].minimum()})
+              case('min'):
+              results.push({column:`${col}_${key}`,value:new_df[col]["$data"].reduce((a, b) => Math.min(a, b), Infinity)})
               break
             case('var'):
               results.push({column:`${col}_${key}`,value:new_df[col].var()})
@@ -199,16 +207,18 @@ class Table {
               results.push({column:`${col}_${key}`,value:new_df[col].std()})
               break
             default:
-              console.log('No aggregation provided')
+              results.push({column:`${col}_${key}`,value:'Error'})
+              console.error(`${key} is not a valid operator.`)
 
           }
           return null}
           )
       }
-      if(results.length >0){
+      if(results.length > 0){
         new_df = new dfd.DataFrame(results)
       }else{
-        return ''
+        console.error('No data from "functions" aggregations')
+        return;
       }
       
     }
@@ -330,7 +340,7 @@ class Table {
             </span>
           </h5>
         </div>
-        <div id="default-example-content-1" class="govuk-accordion__section-content">
+        <div id="default-example-content-2" class="govuk-accordion__section-content">
           <div class="table-container">
             <div class="table-wrapper">
               <table>

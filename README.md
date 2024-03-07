@@ -169,14 +169,15 @@ Object properties:
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
-|`spatialEnrichments`|Array| optional | This layer will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where :<br>`geographyLayer` = Source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = Attribute to be copied from enriching layer <br>`targetAttribute` = Attribute name being added as enrichment to this layer<br>|
+|`spatialEnrichments`|Array| optional | This layer's features will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where :<br>`geographyLayer` = Source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = Attribute to be copied from enriching layer <br>`targetAttribute` = Attribute name being added as enrichment to this layer<br>`placeholder` = Attribute **value** to be added to layer when there's no spatial match while enriching each feature.|
 
-```javascript
+```json
     [
        {
               "geographyLayer": "enriching_layer_title",
               "sourceAttribute": "enriching_layer_target_attribute",
-              "targetAttribute": "attribute_name_to_add_to_this_layer"
+              "targetAttribute": "attribute_name_to_add_to_this_layer",
+              "placeholder":"attribute_value when no spatial match found"
         }
     ]
 ```
@@ -268,13 +269,13 @@ Object properties:
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `tableTitle` | String | required | The name of the field to use as the **Title** of the Statistic Table. | |
+| `tableTitle` | String | required | The String to use as the **Title** of the Statistic Table. | |
 | `scope` | Array | required | A list of map layers' titles from the layers for whose data should be referenced in **this** table creation. **Note** These layers must all have the same data schema for the fields beings referenced |
 | `filters` | Array | optional | A list of object data filters to be applied to all the data in the **scope** for this table.| `false` |
 ```json
     [
         { 
-            "attribute": "Name of field/column  | String",
+            "attribute": "Name of attribute/column  | String",
             "operator": "condition to check e.g '==='  | String",             
             "value": "value to compare with i.e. check against | String / Number"
         }
@@ -292,30 +293,26 @@ Object properties:
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **fields** to be cast into each corresponding data type key as **values**. Any column/field that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
+| `dtypes` | Object | required | An object with `"int32","float32"` Number data types as **keys**  and array of **attributes** to be cast into each corresponding data type key as **values**. Any column/attribute that needs an arithmetic operation performed on it will need to be of `Number` type.| `false` |
 ```json
     {
-     "int32":["field_name_1"],
-     "float32":["field_name_2","field_name_3"]
+     "int32":["attribute_name_1"],
+     "float32":["attribute_name_2","attribute_name_3"]
     }
 ```
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `groupBy` | Array | optional | A list of fields/cloumns to group the data. The **order** of the fields is important to the output. | `false` |
-| `aggregations` | Object | conditional | **Required** with a **groupBy** clause!<br> An Object with the field/column names as the **keys** and and Object of **"functions"** key with an arithmetic operations values array as the **values**.  | |
+| `groupBy` | Array | optional | A list of attribute/columns to group the data. The **order** of the attributes is important to the output. | `false` |
+| `aggregations` | Object | conditional | **Required** with a **groupBy** clause!<br> An Object with the attribute/column names as the **keys** and an Array of  arithmetic operations as the **values**.  | |
 ```json
     {
-            "field_name_1":{
-                "functions":["count","mean"],
-            },
-            "field_name_2":{
-                "functions":["count"],
-            }
+            "attribute_name_1":["count","mean"],
+            "attribute_name_2":["count"]    
     } 
 ```
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of fields as **values**. Useful for when you need to perform the same operation on different fields and or perform different operations on different fields but displayed on the same table.|`false`|
+| `functions` | Object | conditional | **Cannot** be used in conjuction with **groupBy** and **aggregations**.<br>An object where the name of an operation is the **key** and an array of attributes as **values**. Useful for when you need to perform the same operation on different attributes and or perform different operations on different attributes but displayed on the same table.|`false`|
 
 ```json
     {
@@ -339,13 +336,14 @@ Object properties:
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `labels` | Object | conditional | An object where the the default field/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
->If using `groupBy` and `aggregations`. The **field/column** `name` + `_operation` become column titles (keys). These can be replaced with user friendly String values.
+| `labels` | Object | conditional | An object where the the default attribute/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
+>If using `groupBy` and `aggregations`. 
+- The **attribute/column** `name` + `_operation` become column titles (keys). These can be replaced with user friendly String values.
 ```json
 {
-    "field_name_1_count":"Number of A",
-    "field_name_1_mean":"Average Number of A",
-    "field_name_2_count":"Number of B"              
+    "attribute_name_1_count":"Number of A",
+    "attribute_name_1_mean":"Average Number of A",
+    "attribute_name_2_count":"Number of B"              
 }
 ```
 
@@ -353,7 +351,7 @@ Object properties:
 ```json 
 { "value":" " }
 ```                   
-> - The table columns default the two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. The table content will need to be replaced by `replacers` <br>(**see below**).
+- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. The table content will need to be replaced by `replacers` <br>(**see below**).
 
 
 | Option | Type | Required | Description | Default |
@@ -362,7 +360,7 @@ Object properties:
 ```json
     [
         { 
-            "attribute"    : "field/column name from resulting table | String", 
+            "attribute"    : "attribute/column name from resulting table | String", 
             "value"        : "target value_to_replace |  String / Number", 
             "replacerValue": "Value to replace with   |  String"
         }
@@ -374,7 +372,7 @@ Object properties:
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `sortBy` | Object | Optional | An object of resulting Table's field/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. Defaults to **false**. | `false` |
+| `sortBy` | Object | Optional | An object of resulting Table's attribute/column names as keys and sort order as values. Sorting will be handled in the order of the given keys and sort direction. Defaults to **false**. | `false` |
 ```json
     {
         "column_A":"ascending",
@@ -382,14 +380,15 @@ Object properties:
     }
 ```
 
->The final Table will result in data sorted by first column_A ascending, then by column_B descending.<br>
+- The final Table will result in data sorted by first column_A ascending, then by column_B descending.<br>
 ***Note*** If any columns have been **renamed/replaced**, please use the new names.
+<br>
 <br>
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `round` | Object | optional | An object of resulting Table's field/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
-| `fillNa` | Object | optional | An object of resulting Table's field/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.| `false` |
+| `round` | Object | optional | An object of resulting Table's attribute/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
+| `fillNa` | Object | optional | An object of resulting Table's attribute/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.| `false` |
 
 
 ## Troubleshooting
