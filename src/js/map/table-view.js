@@ -10,11 +10,10 @@ class Table {
     this.container = map.container;
     this.table = null;
     this.list = null;
-    console.log('Test log')
     this.accordionExpandedClass = null;
     // Retrieve all layer names from all the scopes - these will be assinged event listeners 
     if (this.mapConfig.statistics){
-      console.log('Helloo',this.mapConfig.statistics.statisticsTables)
+      
       this.tableLayers = this.mapConfig.statistics.statisticsTables.reduce(
         (accumulator, currentValue) => {
           const scope = currentValue.scope
@@ -46,7 +45,7 @@ class Table {
       this.accordionExpandedClass = '';
     }
     this.list && this.createMarkup();
-    
+
     //if tables are defined
     if (this.mapConfig.statistics){
       this.addlayerEventListeners(this.layersData,this.createTables.bind(this),this.createMarkup.bind(this));
