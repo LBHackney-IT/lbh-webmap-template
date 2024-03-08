@@ -194,6 +194,9 @@ class Table {
             case('count'):
               results.push({column:`${col}_${key}`,value:new_df[col].count()})
               break
+            case('count_distinct'):
+            results.push({column:`${col}_${key}`,value: (new Set(new_df[col]["$data"])).size})
+              break
             case('median'):
               results.push({column:`${col}_${key}`,value:new_df[col].median()})
               break
