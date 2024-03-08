@@ -348,13 +348,16 @@ Object properties:
 ```
 
 >If using `functions`
-```json 
-{ "value":" " }
+```javascript 
+{"value" : " "}  // white-space String will make the table [ "value" ] column label appear hidden.
 ```                   
 
-- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any non empty `String` (trying to overwrite the default with the empty string will generate an error).
+- The table columns default to two labels: `"column"` & `"value"`. Since the first table column is always hidden by default. The  `"value"` column title can be replaced with any non empty String.
+- ***Trying to overwrite the default label with the empty string ("")  will generate an error.***
 
-> ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` (**see below**) <br>.
+> ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` (**see below**).
+<br>
+<br>
 
 
 | Option | Type | Required | Description | Default |
