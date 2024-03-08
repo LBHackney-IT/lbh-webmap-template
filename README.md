@@ -352,7 +352,7 @@ Object properties:
 {"value" : " "}  // white-space String will make the table [ "value" ] column label appear hidden.
 ```                   
 
-- The table columns default to two labels: `"column"` & `"value"`. Since the first table column is always hidden by default. The  `"value"` column title can be replaced with any non empty String.
+- The table columns default to two labels: `"column"` & `"value"`. Since the first table column is always **hidden** by default. The  `"value"` column title can be replaced with any **non-empty** String.
 - ***Trying to overwrite the default label with the empty string ("")  will generate an error.***
 
 > ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` (**see below**).
