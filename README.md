@@ -351,9 +351,10 @@ Object properties:
 ```json 
 { "value":" " }
 ```                   
-- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. 
 
-> ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` <br>(**see below**).
+- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any non empty `String` (trying to overwrite the default with the empty string will generate an error).
+
+> ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` (**see below**) <br>.
 
 
 | Option | Type | Required | Description | Default |
