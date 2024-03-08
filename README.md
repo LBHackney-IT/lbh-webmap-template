@@ -336,7 +336,7 @@ Object properties:
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `labels` | Object | conditional | An object where the the default attribute/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
+| `labels` | Object | conditional | Use this option to replace column headers in the resultant Table with friendly names. An object where the the default attribute/column title after aggregations or applied functions is the **key**, and the renaming String as the **value**.  | |
 >If using `groupBy` and `aggregations`. 
 - The **attribute/column** `name` + `_operation` become column titles (keys). These can be replaced with user friendly String values.
 ```json
@@ -351,12 +351,14 @@ Object properties:
 ```json 
 { "value":" " }
 ```                   
-- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. The table content will need to be replaced by `replacers` <br>(**see below**).
+- The table columns default to two labels: column & value.<br> Since the first table column is always **hidden** by Default the empty string will replace the "value" column title. However this could be replaced with any `String`. 
+
+> ***Note*** This option affects the table header. The table content will need to be replaced by `replacers` <br>(**see below**).
 
 
 | Option | Type | Required | Description | Default |
 | --- | -- | --- | ---- | -- |
-| `replacers` | Array | optional | Mostly useful when using functions. A list of operation to change/replace entries in the resultant Table. Each object entry will need an **attribute**, a **value**, and a **replacerValue**.| `false` |
+| `replacers` | Array | optional | Use this option to change/replace entries (left most element of a line) in the resultant Table with friendly names. Mostly useful when using functions. This option is formatted as a list of replacement operations. Each object entry will need an **attribute**, a **value**, and a **replacerValue**.| `false` |
 ```json
     [
         { 
@@ -366,8 +368,10 @@ Object properties:
         }
     ]
 ```
-> ***Note*** Table attribute/column names from using functions will default to column and value
-<br>
+> ***Notes*** 
+Table attribute/column names from using functions will default to column and value<br>
+This option is used to replace values in the resultant Table. To replace null values in the source table, use `fillNa` (**see below**).<br>
+
 
 
 | Option | Type | Required | Description | Default |
@@ -380,8 +384,9 @@ Object properties:
     }
 ```
 
-- The final Table will result in data sorted by first column_A ascending, then by column_B descending.<br>
-***Note*** If any columns have been **renamed/replaced**, please use the new names.
+- The final Table will result in data sorted by first column_A ascending, then by column_B descending.
+
+> ***Note*** If any columns have been **renamed/replaced**, please use the new names.
 <br>
 <br>
 
