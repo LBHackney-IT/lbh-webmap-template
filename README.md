@@ -321,8 +321,8 @@ Object properties:
     } 
 ```
 >`functions` ***key*** options: 
-> - `"sum"`, `"count"`, `"median"` ,` "mean"`, `"mode"`, `"max"`, 
-> - `"var"` --> variance , `"std"` --> standard deviation 
+> - `"sum"`, `"count"`,`"count_distinct"`, `"median"` ,` "mean"`, `"mode"`, `"max"`, 
+> - `"var"` --> variance , `"std"` --> standard deviation
 >
 >`functions`; flag if used will always result into a table like below:
 <div style="display:flex; width:100%; justify-content:center;align-items:center;">
