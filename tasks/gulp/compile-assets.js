@@ -11,7 +11,13 @@ import  postcss from "gulp-postcss";
 import  autoprefixer from "autoprefixer";
 import  rename from "gulp-rename";
 import  cssnano from "cssnano";
-import  plugin from "postcss-pseudo-classes"
+import  plugin from "postcss-pseudo-classes";
+import named from "vinyl-named-with-path";
+import webpack from "webpack-stream";
+import babel from 'gulp-babel';
+import gulpif from "gulp-if";
+import eol from "gulp-eol";
+import terser from "gulp-terser";
 
 
 plugin({
@@ -31,7 +37,7 @@ plugin({
 // --------------------------------------
 
 // Set this to false to help with debugging, set to true for production
-const isDist = true;
+const isDist = false;
 
 const errorHandler = function(error) {
   // Log the error to the console
@@ -66,11 +72,47 @@ export const scssComplile  = gulp.task("scss:compile", () => {
 
 // Compile js task for preview ----------
 // --------------------------------------
-export const jsCompile = gulp.task("js:compile", () => {
+//new with webpack
+// export const jsCompile = gulp.task("js:compile", () => {
+//   const srcFiles = configPaths.src + "/js/main.js";
+//   return gulp
+//     .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
+//         .pipe(exec("npx webpack --config webpack.config.js"))
+//         .pipe(exec.reporter())
+// });
+
+//old with Gulp
+export const jsCompile  = gulp.task("js:compile", () => {
+  // for dist/ folder we only want compiled 'all.js' file
+  // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
   const srcFiles = configPaths.src + "/js/main.js";
   return gulp
     .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
-        .pipe(exec("npx webpack --config webpack.config.js"))
-        .pipe(exec.reporter())
+    .pipe(named())
+    .pipe(
+      webpack({
+        mode: isDist ? "production" : "development",
+        output: {
+          library: "LBHWebmap",
+          libraryTarget: "umd"
+        }
+      })
+    )
+    .pipe(babel({
+      presets: ["@babel/preset-env"]
+    }))
+    .pipe(
+      gulpif(
+        isDist,
+        terser()
+      )
+    )
+    .pipe(
+      rename({
+        basename: "lbh-webmap",
+        extname: ".min.js"
+      })
+    )
+    .pipe(eol())
+    .pipe(gulp.dest("dist/"));
 });
-
