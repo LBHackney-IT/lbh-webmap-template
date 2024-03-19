@@ -56,3 +56,7 @@
   padding: 0px 16px 16px 16px;
 }
 // End remove L.Control.Window undesired styles
+
+.leaflet-container :focus:not(:focus-visible) {
+  outline: 0;
+}
