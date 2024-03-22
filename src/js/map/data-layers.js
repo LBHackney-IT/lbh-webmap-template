@@ -55,10 +55,11 @@ class DataLayers {
       });
     } else if (configLayer.pointStyle.markerType === "DivIcon") {
       return L.marker(latlng, {
-        icon: L.divIcon({
-          className: `custom-div-icon ${configLayer.pointStyle.markerColor}`,
+        icon: new L.DivIcon.CustomColor({
+          className: "custom-div-icon",
           iconSize: "auto",
-          html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`
+          html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`,
+          color: MARKER_COLORS[configLayer.pointStyle.markerColor]
         }) 
       });
     } else {
@@ -641,5 +642,13 @@ class DataLayers {
     }
   }
 }
+
+L.DivIcon.CustomColor = L.DivIcon.extend({
+  createIcon: function(oldIcon) {
+         var icon = L.DivIcon.prototype.createIcon.call(this, oldIcon);
+         icon.style.backgroundColor = this.options.color;
+         return icon;
+  }
+})
 
 export default DataLayers;
