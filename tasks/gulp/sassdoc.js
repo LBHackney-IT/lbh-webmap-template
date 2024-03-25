@@ -1,8 +1,8 @@
-const sassdoc = require('sassdoc')
-const gulp = require('gulp')
-const paths = require('../../config/paths.json')
+import  sassdoc from 'sassdoc'
+import  gulp from 'gulp'
+import  paths from "../../config/paths.js";
 
-gulp.task('sassdoc', function () {
+const sassdocTask  = gulp.task('sassdoc', function () {
   return gulp.src([paths.src + '**/**/*.scss', `!${paths.src}/vendor/*`])
     .pipe(sassdoc({
       dest: paths.sassdoc,
@@ -23,3 +23,6 @@ gulp.task('sassdoc', function () {
     }))
     .resume()
 })
+
+
+export default sassdocTask;

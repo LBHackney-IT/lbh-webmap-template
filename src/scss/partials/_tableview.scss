@@ -1,0 +1,107 @@
+.tableview-container{
+	margin-top: 70px;
+}
+
+.tableview-container a {
+	@include lbh-link;
+}
+
+p.lbh-body-s{
+	margin-top:10px;
+}
+
+// JavaScript enabled
+.js-enabled {
+	
+	// This fix prevents a horizontal scrollbar if the accordion is in an iframe
+    .govuk-accordion__open-all {
+		padding-right: 1px;
+	  }
+}
+
+.table-container{
+	width: 100%;
+}
+.table-wrapper{
+	width: 100%;
+	height: auto;
+	max-height: 65vh;
+	overflow-y: auto;
+	overflow-x: auto;
+
+	table {
+		// font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+
+
+		th{
+			// font-weight: 14;
+			background-color: white;
+			border-bottom: 1px solid #363434;
+			position: sticky;
+			top: 0;
+			color: white;
+			margin-bottom: 5px;
+		}
+		th:nth-child(n+2){
+			text-align: center;
+		}
+		
+		td, th {
+			border-bottom: 1px solid #dddddd;
+			text-align: left;
+			padding: 8px;
+		}
+		// tr:nth-child(even) {
+			// 	background-color: #dddddd;
+			// }
+			/* width */
+		tr{
+				.table-row-data{
+					text-align: center;
+					// width: 100%;
+					// background-color: black;
+				}
+				.table-row-header{
+					margin: 2px 0px 2px 0px;
+				}
+			
+		}
+	
+	}
+	
+}
+.table-footer{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			.download-btn{
+				color: white;
+				font-weight: bold;
+				width: fit-content;
+				place-self: end;
+				cursor: pointer;
+
+			}
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}

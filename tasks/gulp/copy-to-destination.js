@@ -1,14 +1,16 @@
 "use strict";
 
-const gulp = require("gulp");
-const configPaths = require("../../config/paths.json");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const filter = require("gulp-filter");
+import  gulp from 'gulp'
+import  configPaths from "../../config/paths.js";
+import postcss from "gulp-postcss";
+import autoprefixer from "autoprefixer";
+import filter from "gulp-filter";
 
 const scssFiles = filter([configPaths.src + "**/*.scss"], { restore: true });
 
-gulp.task("copy-files", () => {
+
+
+export const copyFiles = gulp.task("copy-files", () => {
   return gulp
     .src([
       configPaths.src + "**/*",
@@ -24,9 +26,13 @@ gulp.task("copy-files", () => {
     .pipe(gulp.dest("dist/"));
 });
 
-gulp.task("copy-3rd-parties", () => gulp
+export const copy3rdParties = gulp.task("copy-3rd-parties", () => {
+  return gulp
     .src([
       "node_modules/iframe-resizer/js/iframeResizer.contentWindow.{min.js,map}" // Needed to support iframe auto resizing when embedded
     ])
     .pipe(gulp.dest("dist/"))
-);
+  })
+
+
+

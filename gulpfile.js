@@ -1,28 +1,28 @@
 "use strict";
-
-const paths = require("./config/paths.json");
-const gulp = require("gulp");
-const taskListing = require("gulp-task-listing");
+import  gulp from 'gulp'
+import taskListing from "gulp-task-listing";
+import paths from './config/paths.js';
 
 // Gulp sub-tasks
-require("./tasks/gulp/clean.js");
-require("./tasks/gulp/compile-assets.js");
-require("./tasks/gulp/nodemon.js");
-require("./tasks/gulp/watch.js");
+import clean from "./tasks/gulp/clean.js";
+import {scssComplile,jsCompile} from "./tasks/gulp/compile-assets.js";
+import nodemonTask from "./tasks/gulp/nodemon.js";
+import watchTask from "./tasks/gulp/watch.js";
 // new tasks
-require("./tasks/gulp/copy-to-destination.js");
-require("./tasks/gulp/asset-version.js");
-require("./tasks/gulp/sassdoc.js");
+import {copy3rdParties, copyFiles} from "./tasks/gulp/copy-to-destination.js";// fnc
+import updateAssetVersion from "./tasks/gulp/asset-version.js";
+import sassdocTask from "./tasks/gulp/sassdoc.js";
 
-// Umbrella scripts tasks for preview ---
-// Runs js compilation
-// --------------------------------------
-gulp.task("scripts", gulp.series("js:compile"));
 
 // Umbrella styles tasks for preview ----
 // Runs scss compilation
 // --------------------------------------
 gulp.task("styles", gulp.series("scss:compile"));
+
+// Umbrella scripts tasks for preview ---
+// Runs js compilation
+// --------------------------------------
+gulp.task("scripts", gulp.series("js:compile"));
 
 // Copy assets task ----------------------
 // Copies assets to dist

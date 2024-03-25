@@ -1,20 +1,20 @@
 "use strict";
 
-const gulp = require("gulp");
-const configPaths = require("../../config/paths.json");
-const sass = require("gulp-sass")(require('sass'));
-const plumber = require("gulp-plumber");
-const postcss = require("gulp-postcss");
-const autoprefixer = require("autoprefixer");
-const gulpif = require("gulp-if");
-const terser = require("gulp-terser");
-const babel = require('gulp-babel');
-const eol = require("gulp-eol");
-const rename = require("gulp-rename");
-const cssnano = require("cssnano");
-const webpack = require("webpack-stream");
-const named = require("vinyl-named-with-path");
-const postcsspseudoclasses = require("postcss-pseudo-classes")({
+import gulp from 'gulp';
+import exec from "gulp-exec"
+import configPaths  from "../../config/paths.js";
+import  plumber from "gulp-plumber";
+import sass from 'gulp-sass'
+import * as sassPackage from 'sass'
+const sassCompiler = sass(sassPackage)
+import  postcss from "gulp-postcss";
+import  autoprefixer from "autoprefixer";
+import  rename from "gulp-rename";
+import  cssnano from "cssnano";
+import  plugin from "postcss-pseudo-classes"
+
+
+plugin({
   // Work around a bug in pseudo classes plugin that badly transforms
   // :not(:whatever) pseudo selectors
   blacklist: [
@@ -44,13 +44,15 @@ const errorHandler = function(error) {
 // different entry points for both streams below and depending on destination flag
 const compileStylesheet = configPaths.src + "scss/all.scss";
 
-gulp.task("scss:compile", () => {
-  const compile = gulp
-    .src(compileStylesheet)
+
+
+export const scssComplile  = gulp.task("scss:compile", () => {
+  
+    return gulp.src(compileStylesheet)
     .pipe(plumber(errorHandler))
-    .pipe(sass())
+    .pipe(sassCompiler()) //@FIXME
     // minify css add vendor prefixes and normalize to compiled css
-    .pipe(gulpif(isDist, postcss([autoprefixer, cssnano])))
+    .pipe( postcss([autoprefixer, cssnano]))
     .pipe(
       rename({
         basename: "lbh-webmap",
@@ -59,42 +61,16 @@ gulp.task("scss:compile", () => {
     )
     .pipe(gulp.dest("dist/"));
 
-  return compile;
+    
 });
 
 // Compile js task for preview ----------
 // --------------------------------------
-gulp.task("js:compile", () => {
-  // for dist/ folder we only want compiled 'all.js' file
-  // const srcFiles = isDist ? configPaths.src + 'all.js' : configPaths.src + '**/*.js'
+export const jsCompile = gulp.task("js:compile", () => {
   const srcFiles = configPaths.src + "/js/main.js";
   return gulp
     .src([srcFiles, "!" + configPaths.src + "**/*.test.js"])
-    .pipe(named())
-    .pipe(
-      webpack({
-        mode: isDist ? "production" : "development",
-        output: {
-          library: "LBHWebmap",
-          libraryTarget: "umd"
-        }
-      })
-    )
-    .pipe(babel({
-      presets: ["@babel/preset-env"]
-    }))
-    .pipe(
-      gulpif(
-        isDist,
-        terser()
-      )
-    )
-    .pipe(
-      rename({
-        basename: "lbh-webmap",
-        extname: ".min.js"
-      })
-    )
-    .pipe(eol())
-    .pipe(gulp.dest("dist/"));
+        .pipe(exec("npx webpack --config webpack.config.js"))
+        .pipe(exec.reporter())
 });
+

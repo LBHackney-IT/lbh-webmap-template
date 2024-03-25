@@ -1,12 +1,12 @@
 "use strict";
 
-const configPaths = require("../../config/paths.json");
-const gulp = require("gulp");
-const fs = require("fs");
-const gulpif = require("gulp-if");
-const rename = require("gulp-rename");
-const del = require("del");
-const vinylPaths = require("vinyl-paths");
+import  gulp from 'gulp'
+import  configPaths from "../../config/paths.js";
+import * as fs from 'node:fs';
+import gulpif from "gulp-if";
+import rename from "gulp-rename";
+import * as del from 'del'
+import vinylPaths from "vinyl-paths";
 
 // check for the flag passed by the task
 
@@ -17,7 +17,7 @@ const isDist = true;
 // Update assets' versions ----------
 // Add all.package.json version
 // ----------------------------------
-gulp.task("update-assets-version", () => {
+const updateAssetVersion = gulp.task("update-assets-version", () => {
   const pkg = require("../../" + configPaths.package + "package.json");
   fs.writeFileSync(
     "dist/VERSION.txt",
@@ -44,3 +44,6 @@ gulp.task("update-assets-version", () => {
     )
     .pipe(gulp.dest("dist/"));
 });
+
+
+export default updateAssetVersion;

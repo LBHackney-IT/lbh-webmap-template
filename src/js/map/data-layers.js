@@ -1,13 +1,14 @@
 import L, { Point } from "leaflet";
 import "leaflet.vectorgrid";
-import { pointToLayer } from "./metadata";
-import { MARKER_COLORS} from "./consts";
-import Personas from "./personas";
-import Filters from "./filters";
-import Search from "./search";
-import addressSearch from "./address-search";
-import List from "./list-view";
-import DrillDown from "./drill-down";
+import { pointToLayer } from "./metadata.js";
+import { MARKER_COLORS} from "./consts.js";
+import Personas from "./personas.js";
+import Filters from "./filters.js";
+import Search from "./search.js";
+import addressSearch from "./address-search.js";
+// import List from "./list-view.js";
+import DrillDown from "./drill-down.js";
+import Table from "./table-view.js";
 
 
 class DataLayers {
@@ -29,9 +30,10 @@ class DataLayers {
     this.search = null;
     this.showAddressSearch = null;
     this.list = null;
+    this.statistics = null;
   }
 
-  pointToLayer (latlng, configLayer) {
+  pointToLayer (feature, latlng, configLayer) {
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
@@ -50,6 +52,15 @@ class DataLayers {
         weight: 1,
         color: MARKER_COLORS[configLayer.pointStyle.markerColor],
         fillOpacity: 0.6
+      });
+    } else if (configLayer.pointStyle.markerType === "DivIcon") {
+      return L.marker(latlng, {
+        icon: new L.DivIcon.CustomColor({
+          className: "custom-div-icon",
+          iconSize: "auto",
+          html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`,
+          color: MARKER_COLORS[configLayer.pointStyle.markerColor]
+        }) 
       });
     } else {
       return L.marker(latlng);
@@ -169,6 +180,7 @@ class DataLayers {
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
+    const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
     const maxClusterRadius = pointStyle && pointStyle.maxClusterRadius ? pointStyle && pointStyle.maxClusterRadius : 60;
 
 
@@ -192,6 +204,7 @@ class DataLayers {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         return this.pointToLayer(
+          feature,
           latlng,
           configLayer
         );
@@ -315,7 +328,7 @@ class DataLayers {
       clusterLayer = L.markerClusterGroup({
         maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
-        spiderfyOnMaxZoom: false,
+        spiderfyOnMaxZoom: enableSpiderfy,
         showCoverageOnHover: false
       });
       clusterLayer.addLayer(layer);
@@ -415,24 +428,14 @@ class DataLayers {
       let closestMarker = L.GeometryUtil.closestLayer(this.map, layer.getLayers(), this.map.getCenter());
       closestMarker.layer.openPopup();
     }
-
+    
     this.loadedLayerCount++;
+
+
 
     //only happens once, after the last layer has loaded - put the BLPUpolygon layer on top if it exists
     if (this.mapClass.blpuPolygon && this.loadedLayerCount == this.layerCount) {
       this.mapClass.blpuPolygon.bringToFront();
-    }
-
-    //only happens once, after the last layer has loaded - create filters above the map
-    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
-      this.filters = new Filters(this.mapClass, this.layersData);
-      this.filters.init();
-    }
-
-    //only happens once, after the last layer has loaded - create list view after the map
-    if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
-      this.list = new List(this.mapClass,this.layersData);
-      this.list.init();
     }
 
     //only happens once, after the last layer has loaded - add the drill down listener if true
@@ -440,6 +443,8 @@ class DataLayers {
         this.drilldown = new DrillDown(this.map);
         this.drilldown.init();
     }
+
+
       
     if (this.mapConfig.showLegend) {
       if (!configLayer.excludeFromLegend){
@@ -529,6 +534,24 @@ class DataLayers {
       this.search.createMarkup();
     }     
     
+    //only happens once, after the last layer has loaded - create filters above the map
+    if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
+      this.filters = new Filters(this.mapClass, this.layersData);
+      this.filters.init();
+    }
+
+    // only happens once, after the last layer has loaded - create list view after the map - now created with the tables
+    // if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
+    //   this.list = new List(this.mapClass,this.layersData);
+    //   this.list.init();
+    // }
+
+    // Only happens once, after the last layer has loaded - create list view and or statistics tables after the map
+    if ((this.mapConfig.statistics||this.mapConfig.list) && this.loadedLayerCount == this.layerCount) {
+      this.statistics = new Table(this.mapClass,this.layersData);
+      this.statistics.init();
+    }
+
     //only happens once, after the last layer has loaded: address search
     if (this.loadedLayerCount == this.layerCount && this.mapConfig.showAddressSearch){
       this.showAddressSearch = new addressSearch(this.mapClass);
@@ -598,25 +621,33 @@ class DataLayers {
     for (const configLayer of this.mapConfig.layers) {
       //Get the right geoserver WFS link using the hostname
       let url = '';
-            //If there is cql, we add the cql filter to the wfs call
-            if (configLayer.cqlFilter){
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
-            //If not, we use the default wfs call
-            } else{
-              url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
-            }
-          //Fetch the url
-          fetch(url, {
-            method: "get"
-          })
-            .then(response => response.json())
-            .then(data => this.addWFSLayer(data, configLayer))
-            .catch(error => {
-              console.log(error);
-              alert("Something went wrong, please reload the page");
-            });     
+      //If there is cql, we add the cql filter to the wfs call
+      if (configLayer.cqlFilter){
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName + "&cql_filter=" + configLayer.cqlFilter;
+      //If not, we use the default wfs call
+      } else{
+        url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
+      }
+      //Fetch the url
+      fetch(url, {
+        method: "get"
+      })
+      .then(response => response.json())
+      .then(data => this.addWFSLayer(data, configLayer))
+      .catch(error => {
+        console.log(error);
+        alert("Something went wrong, please reload the page");
+      });     
     }
   }
 }
+
+L.DivIcon.CustomColor = L.DivIcon.extend({
+  createIcon: function(oldIcon) {
+         var icon = L.DivIcon.prototype.createIcon.call(this, oldIcon);
+         icon.style.backgroundColor = this.options.color;
+         return icon;
+  }
+})
 
 export default DataLayers;

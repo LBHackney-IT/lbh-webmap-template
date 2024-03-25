@@ -1,4 +1,4 @@
-import "./matchMediaPolyfill";
+import "./matchMediaPolyfill.js";
 
 const isMobile = () => !window.matchMedia("(min-width: 48.0625em)").matches;
 

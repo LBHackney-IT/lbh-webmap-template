@@ -1,5 +1,6 @@
-import MAPBOX_ACCESS_KEY from "../helpers/mapbox";
-import OS_RASTER_API_KEY from "../helpers/osdata";
+import MAPBOX_ACCESS_KEY from "../helpers/mapbox.js";
+import OS_RASTER_API_KEY from "../helpers/osdata.js";
+
 
 const MIN_ZOOM = 4;
 const CENTER_DESKTOP_LEGEND_FULLSCREEN = [51.534, -0.083];
