@@ -29,7 +29,6 @@ class Search {
   </details>
     </section>`;
     
-    console.log('adding search markup to map');
     this.mapClass.addMarkupToTop(html, "search", "search");
         
       //extension of search plugin that does NOT add the searched layer to the map

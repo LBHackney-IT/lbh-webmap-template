@@ -527,13 +527,12 @@ class DataLayers {
       // this.search = new Search(this.mapClass, layer);
       // this.search.init();
       this.search.searchLayer.addLayer(layer);
-      
-      //only happens once, after the last layer has loaded
-      if (this.loadedLayerCount == this.layerCount){
-        console.log('after last layer: create markup for layer search')
-        this.search.createMarkup();
-      }     
-    }
+    }  
+    
+    //only happens once, after the last layer has loaded
+    if (this.loadedLayerCount == this.layerCount && this.mapConfig.search){
+      this.search.createMarkup();
+    }     
     
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
