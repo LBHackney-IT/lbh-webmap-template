@@ -398,7 +398,30 @@ This option is used to replace values in the resultant Table. To replace null va
 | --- | -- | --- | ---- | -- |
 | `round` | Object | optional | An object of resulting Table's attribute/column names as keys and the Number of decimal places to round the column data to:<br>e.g. ```{"column_A":2}``` will round column_A to **2** decimal places.|`false` |
 | `fillNa` | Object | optional | An object of resulting Table's attribute/column names as keys and the value to fill the data with as value:<br> e.g. ```{"column_A":0}``` will fill the resulting table with 0 in column_A where the values are **NaN**.| `false` |
+| `tableTotals` | Object | Optional | An object with `column` **and or** `row` as keys. The values object keys are `title`, `labels` **and or** `round`. | `false` |
+```javascript
+    {
+        "row":{
+            "title":"Title of the Total row e.g. 'Total (AB)' ", // String defaults to 'Total'
+            "labels":["A","B"] // if not stated, all columns of number type will be summed up.
+            "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
+        },
+        "column":{
+                "title":"Title of the Total column e.g. 'Total (All)' ", // String defaults to 'Total (All)'
+                "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
+                "labels":["A","C","Total(AB)"] // if not stated, all rows of the table columns of number type will be summed up. 
+                //if labels are used please,specify all required table columns including any defaults if needed.
+        }
+    }
+```
+<table>
+<tr><th> </th><th>A</th><th>B</th><th>C</th><th></th><th></th></td><th></th><th></th><th>A</th><th>B</th><th>C</th><th>Total (AB)</th>
+<tr><td>Y</td><th>1</th><td>2</td><td>4</td><td></td><td>--------><th> </th><th>y</th><th>1</th><th>2</th><th>4</th><th>3</th>
+<tr><td>Z</td><th>2</th><td>9</td><td>6</td><td></td><td></td><td><th>z</th><th>2</th><th>9</th><th>6</th><th>11</th>
+<tr><td></td><th></th><td></td><td></td><td></td><td></td><td><th>Total (All)</th><th>3</th><th></th><th>10</th><th>14</th>
+</table>
 
+<br><br>
 
 ## Troubleshooting
 
