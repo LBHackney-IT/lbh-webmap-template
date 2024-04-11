@@ -401,17 +401,17 @@ This option is used to replace values in the resultant Table. To replace null va
 | `tableTotals` | Object | Optional | An object with `column` **and or** `row` as keys. The values object keys are `title`, `labels` **and or** `round`. | `false` |
 ```javascript
     {
-        "row":{
-            "title":"Title of the Total row e.g. 'Total (AB)' ", // String defaults to 'Total'
+        "row":{ //sum the elements of a row and display results in a new column on the right end of the table
+            "title":"Title of the Total column e.g. 'Total (AB)' ", // String defaults to 'Total'
             "boldText": true, // Enable bold text in table cell data
-            "labels":["A","B"] // if not stated, all columns of number type will be summed up.
-            "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
+            "labels":["A","B"] // Labels of the columns to include in the total. if not stated, all columns of number type will be summed up.
+            "round": 2, // number of decimal places for the totals || Integer 0=< x >=4
         },
-        "column":{
-                "title":"Title of the Total column e.g. 'Total (All)' ", // String defaults to 'Total (All)'
+        "column":{ //sum the elements of a column and display results in a new row at the bottom of the table
+                "title":"Title of the Total row e.g. 'Total (All)' ", // String defaults to 'Total (All)'
                 "boldText": false, // Disable bold text in table cell data.
-                "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
-                "labels":["A","C","Total(AB)"] // if not stated, all rows of the table columns of number type will be summed up. 
+                "round": 2, // number of decimal places for the totals || Integer 0=< x >=4
+                "labels":["A","C","Total(AB)"] // Labels of the columns for which we want to calculate the sum. If not stated, all columns will have their sum in the Total (All) row. 
                 //if labels are used please,specify all required table columns including any defaults if needed.
         }
     }
