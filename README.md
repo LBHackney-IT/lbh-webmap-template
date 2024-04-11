@@ -403,11 +403,13 @@ This option is used to replace values in the resultant Table. To replace null va
     {
         "row":{
             "title":"Title of the Total row e.g. 'Total (AB)' ", // String defaults to 'Total'
+            "boldText": true, // Enable bold text in table cell data
             "labels":["A","B"] // if not stated, all columns of number type will be summed up.
             "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
         },
         "column":{
                 "title":"Title of the Total column e.g. 'Total (All)' ", // String defaults to 'Total (All)'
+                "boldText": false, // Disable bold text in table cell data.
                 "round": 2, // number of decimal places for the Totals row || Integer 0=< x >=4
                 "labels":["A","C","Total(AB)"] // if not stated, all rows of the table columns of number type will be summed up. 
                 //if labels are used please,specify all required table columns including any defaults if needed.

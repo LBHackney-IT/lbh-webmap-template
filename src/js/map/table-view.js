@@ -87,7 +87,6 @@ class Table {
 
   
   createTable(config){
-
     //________helper functions
     const roundNumber = (x,decimalPlaces=2) => {
       const factor = 10 ** decimalPlaces;
@@ -341,6 +340,7 @@ class Table {
     // console.log('TABLE DATA: ',tableData)
     const tableHeaders = dataPresent ? Object.keys(tableData[0]) :[]
     let tableHeaderString = dataPresent ? tableHeaders.map((header,index)=>{
+      // if(rowTotal.boldText&&index==tableHeaders.length-1) 
       if(index>0){
         return `<th><h6>${header}</h6></th>`
       }else{
@@ -356,7 +356,10 @@ class Table {
     return `<tr>  
             ${
               tableHeaders.map((header,index) => {
-              if(index==0){
+              if(rowTotal?.boldText && index==tableHeaders.length-1){
+                return `<td class="table-row-data" style="font-weight: 550;">${rowData[header]}</td>`
+
+              }else if(index == 0){
                 return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
               }
               else{
@@ -375,9 +378,9 @@ class Table {
       const fieldTT = tableData.reduce((acc,currentVal) => typeof currentVal[header] === "number" ? acc += currentVal[header] : acc
           ,0)
       if(colTotal.labels){
-         return `<td class="table-row-data"  style="font-weight: 800;">${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}</td>`
+         return `<td class="table-row-data"  ${colTotal.boldText &&'style="font-weight: 800;"'}>${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}</td>`
       }else{
-        return `<td class="table-row-data"  style="font-weight: 800;">${roundNumber(fieldTT,(colTotal.round ?? 2))}</td>`
+        return `<td class="table-row-data"   ${colTotal.boldText &&'style="font-weight: 800;"'}>${roundNumber(fieldTT,(colTotal.round ?? 2))}</td>`
       }
     } 
     ).join(''):''
