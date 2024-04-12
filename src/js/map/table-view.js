@@ -87,7 +87,16 @@ class Table {
 
   
   createTable(config){
-
+    //________helper functions
+    const roundNumber = (x,decimalPlaces=2) => {
+      const factor = 10 ** decimalPlaces;
+      if(parseFloat(x)){
+        return Math.round(parseFloat(x)*factor)/factor
+      }else{
+        return(x)
+      }
+    }
+    
     //________Prep table content 
     let totalRows = 0
     let combinedData = []
@@ -143,10 +152,9 @@ class Table {
     const df = dataPresent ? new dfd.DataFrame(filteredData):null
 
     // console.log(df.columns)
-    console.log(config.tableTitle)
+    console.info(config.tableTitle)
     // console.log('FILTERED DATA : ',filteredData)
 
-    
     
     // Configure data types for aggregation functions to run correctly e.g change strings into numbers
     if(dataPresent&&config.dtypes){
@@ -252,21 +260,13 @@ class Table {
       })
     }
     
-    
     let tableData = dataPresent ? dfd.toJSON(new_df, {format: "column"}) :[]
     
     
     //_______Rounding Specific Columns________________________
     if(dataPresent&&config.round){
       
-      const roundNumber = (x,decimalPlaces) => {
-        const factor = 10 ** decimalPlaces;
-        if(parseFloat(x)){
-          return Math.round(parseFloat(x)*factor)/factor
-        }else{
-          return(x)
-        }
-      }
+      
       tableData.map((tr)=>{
         Object.entries(tr).map(([col,data])=>{
           if(config.round&&Object.keys(config.round).includes(col)){
@@ -314,11 +314,33 @@ class Table {
 
     }
 
-  
+
+    const rowTotal = config?.tableTotals?.row
+    const colTotal = config?.tableTotals?.column
+
+    // We can add the row wise totals by manipulating the table data itself before column wise totalls.
+    if(rowTotal){
+          tableData = tableData.map((row,index)=>{
+            let row_total = 0
+            if(!rowTotal.labels){
+              row_total =  Object.values(row).filter((value)=> typeof value === "number").reduce((acc,currentVal) => acc += currentVal,0)
+            }else{
+              let filterd_row_objects =  Object.fromEntries(
+                Object.entries(row)
+                    .filter(([key, _]) => rowTotal.labels
+                    .includes(key)))
+              row_total = Object.values(filterd_row_objects).filter((value)=> typeof value === "number").reduce((acc,currentVal) => acc += currentVal,0) 
+            }
+            row[rowTotal.title ?? "Total"] = roundNumber(row_total,(rowTotal.round ?? 2))
+            return row
+          })
+    }
+    
 
     // console.log('TABLE DATA: ',tableData)
     const tableHeaders = dataPresent ? Object.keys(tableData[0]) :[]
-    const tableHeaderString = dataPresent ? tableHeaders.map((header,index)=>{
+    let tableHeaderString = dataPresent ? tableHeaders.map((header,index)=>{
+      // if(rowTotal.boldText&&index==tableHeaders.length-1) 
       if(index>0){
         return `<th><h6>${header}</h6></th>`
       }else{
@@ -326,23 +348,43 @@ class Table {
       }
     }).join('') : "No Data Present"
     
+      
+
+
+    
     const tableRows = dataPresent ? tableData.map((rowData)=>{
     return `<tr>  
             ${
               tableHeaders.map((header,index) => {
-              if(index==0){
+              if(rowTotal?.boldText && index==tableHeaders.length-1){
+                return `<td class="table-row-data" style="font-weight: 550;">${rowData[header]}</td>`
+
+              }else if(index == 0){
                 return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
               }
               else{
                 return `<td class="table-row-data">${rowData[header]}</td>`
               }
-            }).join('')
+            }).join('') 
           } 
         </tr>
       `
       }
     ).join('') : ""
-  
+
+    
+    
+    const tableTotals = dataPresent && colTotal ? tableHeaders.slice(1).map((header,index) => { 
+      const fieldTT = tableData.reduce((acc,currentVal) => typeof currentVal[header] === "number" ? acc += currentVal[header] : acc
+          ,0)
+      if(colTotal.labels){
+         return `<td class="table-row-data"  ${colTotal.boldText &&'style="font-weight: 800;"'}>${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}</td>`
+      }else{
+        return `<td class="table-row-data"   ${colTotal.boldText &&'style="font-weight: 800;"'}>${roundNumber(fieldTT,(colTotal.round ?? 2))}</td>`
+      }
+    } 
+    ).join(''):''
+
 
     return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
         <div class="govuk-accordion__section-header">
@@ -360,6 +402,10 @@ class Table {
                   ${tableHeaderString}
                 </tr>
                 ${tableRows}
+                <tr>
+                    ${colTotal ? `<td class="table-row-data" style="text-align: left;font-weight: 800;">${colTotal.title??'Total (All)'}</td>`:''}
+                    ${tableTotals}
+                </tr>
               </table>
             </div>
             
