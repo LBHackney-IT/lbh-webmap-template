@@ -40,9 +40,10 @@ class DataLayers {
           icon: configLayer.pointStyle.icon,
           prefix: "fa",
           markerColor: configLayer.pointStyle.markerColor,
-          spin: false
+          extraClasses: configLayer.pointStyle.blinkingMarker ? 'blink' : ''
         }),
-        alt: configLayer.layerName
+        alt: configLayer.layerName,
+        opacity: configLayer.pointStyle.markerOpacity || 1,
       });
     } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
@@ -51,7 +52,7 @@ class DataLayers {
         stroke: true,
         weight: 1,
         color: MARKER_COLORS[configLayer.pointStyle.markerColor],
-        fillOpacity: 0.6
+        fillOpacity: configLayer.pointStyle.markerOpacity || 0.6
       });
     } else if (configLayer.pointStyle.markerType === "DivIcon") {
       return L.marker(latlng, {
