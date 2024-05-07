@@ -7,12 +7,13 @@
 
 {% block content %}
   {% block map %}
+    <a href="#after-map" class="govuk-skip-link lbh-skip-link">Skip map content</a>
     <div class="map__container">
         <div class="map__wrapper">
             <div class="map" id="map"></div>
         </div>         
     </div>
-
+    <div id="after-map"></div>
   {% endblock %}
 {% endblock %}
 {% block bodyEnd %}
