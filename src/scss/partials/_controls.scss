@@ -32,13 +32,19 @@
   transform: translateX(-110%);
   transition: transform 500ms;
   z-index: 1;
-
+  
   @include govuk-media-query($from: desktop) {
     @include lbh-rem(height, 600);
     @include lbh-rem(margin-left, 0); 
     background: transparent;
     border: none;
   }
+}
+.controls_hidden_skip {
+  position: absolute;
+  left: 5;
+  top: 0;
+  z-index: 10;
 }
 
 .controls--open .controls__sidebar {
