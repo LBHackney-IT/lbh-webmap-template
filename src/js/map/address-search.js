@@ -107,12 +107,12 @@ class addressSearch {
           <span class="govuk-visually-hidden">Error:</span>
         </span> 
         <div>
-          <input type="Search"
+          <input type="Search" aria-label="Enter postcode to search"
               class="govuk-input  lbh-input govuk-input--width-10"
             id="postcode" 
             placeholder="${this.addressSearchClue}"
           />
-          <button id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
+          <button aria-label="Find address" id="search-button" class="govuk-button  lbh-button" data-module="govuk-button"">
             Find address
           </button>
         </div>

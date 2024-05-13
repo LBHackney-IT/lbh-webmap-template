@@ -342,7 +342,7 @@ class Table {
     let tableHeaderString = dataPresent ? tableHeaders.map((header,index)=>{
       // if(rowTotal.boldText&&index==tableHeaders.length-1) 
       if(index>0){
-        return `<th><h6>${header}</h6></th>`
+        return `<th tabindex="0"><h6>${header}</h6></th>`
       }else{
         return `<th><h6>${' '}</h6></th>`
       }
@@ -357,13 +357,14 @@ class Table {
             ${
               tableHeaders.map((header,index) => {
               if(rowTotal?.boldText && index==tableHeaders.length-1){
-                return `<td class="table-row-data" style="font-weight: 550;">${rowData[header]}</td>`
+                // return `<td class="table-row-data" style="font-weight: 550;">${rowData[header]}</td>` || Accessibility change
+                return `<td tabindex="0" class="table-row-data"><strong class="bold-table-totals-col">${rowData[header]}</strong></td>`
 
               }else if(index == 0){
-                return `<td class="table-row-header"><h6>${rowData[header]}</h6></td>`
+                return `<td tabindex="0" class="table-row-header"><h6><strong>${rowData[header]}</strong></h6></td>`
               }
               else{
-                return `<td class="table-row-data">${rowData[header]}</td>`
+                return `<td tabindex="0" class="table-row-data">${rowData[header]}</td>`
               }
             }).join('') 
           } 
@@ -378,9 +379,11 @@ class Table {
       const fieldTT = tableData.reduce((acc,currentVal) => typeof currentVal[header] === "number" ? acc += currentVal[header] : acc
           ,0)
       if(colTotal.labels){
-         return `<td class="table-row-data"  ${colTotal.boldText &&'style="font-weight: 800;"'}>${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}</td>`
+        //  return `<td class="table-row-data"  ${colTotal.boldText &&'style="font-weight: 800;"'}>${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}</td>` || Accessibility change
+         return `<td tabindex="0" class="table-row-data">${colTotal.boldText?'<strong class="bold-table-totals-row">':''}${colTotal.labels.includes(header)? roundNumber(fieldTT,(colTotal.round ?? 2)):''}${colTotal.boldText?'</strong>':''}</td>`
       }else{
-        return `<td class="table-row-data"   ${colTotal.boldText &&'style="font-weight: 800;"'}>${roundNumber(fieldTT,(colTotal.round ?? 2))}</td>`
+        // return `<td class="table-row-data"   ${colTotal.boldText &&'style="font-weight: 800;"'}>${roundNumber(fieldTT,(colTotal.round ?? 2))}</td>` || Accessibility change
+        return `<td tabindex="0" class="table-row-data" >${colTotal.boldText?'<strong class="bold-table-totals-row">':''}${roundNumber(fieldTT,(colTotal.round ?? 2))}${!colTotal.boldText?'</strong>':''}</td>`
       }
     } 
     ).join(''):''
@@ -389,7 +392,7 @@ class Table {
     return  `<div class="govuk-accordion__section ${config.expanded&&'govuk-accordion__section--expanded'}">
         <div class="govuk-accordion__section-header">
           <h5 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button">
+            <span class="govuk-accordion__section-button" aria-label="${config.tableTitle}">
             ${config.tableTitle}
             </span>
           </h5>
@@ -403,7 +406,7 @@ class Table {
                 </tr>
                 ${tableRows}
                 <tr>
-                    ${colTotal ? `<td class="table-row-data" style="text-align: left;font-weight: 800;">${colTotal.title??'Total (All)'}</td>`:''}
+                    ${colTotal ? `<td tabindex="0" class="table-row-data" style="text-align: left;"><strong class="bold-table-totals-row">${colTotal.title??'Total (All)'}</strong></td>`:''}
                     ${tableTotals}
                 </tr>
               </table>
@@ -447,7 +450,7 @@ class Table {
           html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
             <div class="govuk-accordion__section-header">
             <h5 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button">
+            <span class="govuk-accordion__section-button" aria-label="${layerData.configLayer.title}">
             ${layerData.configLayer.title} &nbsp <i class="fas fa-${layerData.configLayer.pointStyle.icon}" style="color:${MARKER_COLORS[layerData.configLayer.pointStyle.markerColor]}"></i>
             </span>
             </h5>
@@ -457,7 +460,7 @@ class Table {
           html += `<div class="govuk-accordion__section ${this.accordionExpandedClass}">
             <div class="govuk-accordion__section-header">
             <h5 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button">
+            <span class="govuk-accordion__section-button" aria-label="${layerData.configLayer.title}">
             ${layerData.configLayer.title}
             </span>
             </h5>
@@ -465,9 +468,9 @@ class Table {
         }
         for (const feature of layerData.data.features){
           html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
-          <h6>${feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          <h6 tabindex="0">${feature.properties[layerData.configLayer.listView.title]}</h6>`;
           if (layerData.configLayer.listView.fields) {
-            html += `<p class="lbh-body-s">`;
+            html += `<p tabindex="0" class="lbh-body-s">`;
             for (const field of layerData.configLayer.listView.fields) {
               if (feature.properties[field] !== "") {
                 if (
