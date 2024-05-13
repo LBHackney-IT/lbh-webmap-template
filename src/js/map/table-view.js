@@ -468,9 +468,9 @@ class Table {
         }
         for (const feature of layerData.data.features){
           html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
-          <h6 tabindex="0">${feature.properties[layerData.configLayer.listView.title]}</h6>`;
+          <h6>${feature.properties[layerData.configLayer.listView.title]}</h6>`;
           if (layerData.configLayer.listView.fields) {
-            html += `<p tabindex="0" class="lbh-body-s">`;
+            html += `<p class="lbh-body-s">`;
             for (const field of layerData.configLayer.listView.fields) {
               if (feature.properties[field] !== "") {
                 if (
