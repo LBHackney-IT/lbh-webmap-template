@@ -28,7 +28,7 @@ const createTitle = (map, mapTitle, mapSummary, about, aboutTitle, showTitleInMe
 
   if (aboutTitle) {
     title += `${aboutTitle}:`;
-    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
+    dataTooltip = `<button aria-label="Open map about details" class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
   const metadataWindow = L.control.window(map, {
     title,
