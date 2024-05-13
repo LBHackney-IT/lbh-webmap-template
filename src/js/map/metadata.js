@@ -88,7 +88,7 @@ const createTitleFullscreen = (map, mapTitle, mapSummary, about, aboutTitle, sho
   }
   if (aboutTitle) {
     title += `${aboutTitle}:`;
-    dataTooltip = `<button class="lbh-link metadata__link">${aboutTitle}</button>`;
+    dataTooltip = `<button aria-label="Open map about details" class="lbh-link metadata__link">${aboutTitle}</button>`;
   }
   const metadataWindow = L.control.window(map, {
     title,
@@ -140,13 +140,13 @@ class Metadata {
     let metadataText = "";
     
     for (const feature of data.features) {
-      metadataText += `<div class="metadata__feature"><h3 class="lbh-heading-h6">${feature.properties.title}</h3>`;
+      metadataText += `<div tabindex="0" class="metadata__feature"><h3 class="lbh-heading-h6">${feature.properties.title}</h3>`;
       if (feature.properties.abstract) {
-        metadataText += `<p class="lbh-body-xs">${feature.properties.abstract}</p>`;
+        metadataText += `<p tabindex="0" class="lbh-body-xs">${feature.properties.abstract}</p>`;
       }
-      metadataText += `<p class="lbh-body-xs"><b>Source:</b> ${feature.properties.source}<br></p>`;
+      metadataText += `<p tabindex="0" class="lbh-body-xs"><b>Source:</b> ${feature.properties.source}<br></p>`;
       if (feature.properties.lastupdatedate_textual) {
-        metadataText += `<p class="lbh-body-xs"><b>Last updated:</b> ${feature.properties.lastupdatedate_textual}</p>`;
+        metadataText += `<p tabindex="0" class="lbh-body-xs"><b>Last updated:</b> ${feature.properties.lastupdatedate_textual}</p>`;
       }
       metadataText += "</div>";
     }
@@ -201,7 +201,7 @@ class Metadata {
         .then(response => response.json())
         .then(data => this.addMetadata(data, mapTitle, mapSummary, aboutTitle, showTitleInMetadataBoxOnMobile));
       } else if (about) {
-        about = `<div class="metadata__feature"><p class="lbh-body-xs">${about}</p></div>`;
+        about = `<div tabindex="0" class="metadata__feature"><p class="lbh-body-xs">${about}</p></div>`;
         if(this.isFullScreen){
         control = createTitleFullscreen(this.map, mapTitle, mapSummary, about, aboutTitle, showTitleInMetadataBoxOnMobile);
         if (control) {
