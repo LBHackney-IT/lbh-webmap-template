@@ -27,7 +27,7 @@ Version: 1.0
   (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx) {
    .awesome-marker {
     background-image: url('../images/markers-soft@2x.png');
-    background-size: 1368px 46px;
+    background-size: 1692px 46px;
    }
    .awesome-marker-shadow {
     background-image: url('../images/markers-shadow@2x.png');
@@ -207,6 +207,41 @@ Version: 1.0
     background-position: -1330px 0;
   }
 
+  .awesome-marker-icon-colorblind1_red {
+    background-position: -1366px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_lightorange {
+    background-position: -1402px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_darkblue {
+    background-position: -1438px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_orange {
+    background-position: -1474px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_darkgrey {
+    background-position: -1510px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_mediumgrey {
+    background-position: -1546px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_lightgrey {
+    background-position: -1582px 0;
+  }
+
+  .awesome-marker-icon-colorblind1_mediumblue {
+    background-position: -1618px 0;
+  }
+  
+  .awesome-marker-icon-colorblind1_lightblue {
+    background-position: -1654px 0;
+  }
   .awesome-marker-square {
     background-position-y: -46px;
   }
