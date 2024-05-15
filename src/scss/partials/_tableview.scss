@@ -34,6 +34,12 @@ p.lbh-body-s{
 		border-collapse: collapse;
 		width: 100%;
 
+		.bold-table-totals-row{
+			font-weight: 800;
+		}
+		.bold-table-totals-col{
+			font-weight: 550;
+		}
 
 		th{
 			// font-weight: 14;
