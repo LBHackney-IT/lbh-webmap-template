@@ -9,6 +9,7 @@ import addressSearch from "./address-search.js";
 // import List from "./list-view.js";
 import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
+import Accessibility from "./accessiblity.js";
 
 
 class DataLayers {
@@ -473,11 +474,11 @@ class DataLayers {
            
         } else {
           if (this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems){
-            legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            legendEntry = `<div layer-name="${layerName}" class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
               MARKER_COLORS[markerColor]
               }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
           } else {
-            legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
+            legendEntry = `<div layer-name="${layerName}" class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
               MARKER_COLORS[markerColor]
               }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
               layer
@@ -557,6 +558,13 @@ class DataLayers {
       this.showAddressSearch = new addressSearch(this.mapClass);
       this.showAddressSearch.init();
     }
+
+    //TEST aCCESSIBLITY
+    if (this.loadedLayerCount == this.layerCount){
+      let AccessibilityControl = new Accessibility(undefined);
+      AccessibilityControl.init()
+    }
+
   }
 
   createControl() {

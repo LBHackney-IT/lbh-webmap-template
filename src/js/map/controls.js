@@ -6,6 +6,7 @@ import {
 } from "./consts.js";
 import { isMobile } from "../helpers/isMobile.js";
 import "classlist-polyfill";
+import Accessibility from "./accessiblity.js";
 
 class Controls {
   constructor(mapClass) {
@@ -19,6 +20,7 @@ class Controls {
   }
 
   init() {
+    
     this.createMarkup();
     
     //TODO: test if fullscreen mode and use the different markup createMarkupFullScreen()
@@ -38,15 +40,21 @@ class Controls {
       this.clear.addEventListener("click", () => {
         this.closeIfMobile();
         this.mapClass.clear();
+        let AccessibilityControl = new Accessibility(undefined)
+        AccessibilityControl.addKeyEnterListenersToLayers()
       });
       this.toggleClearButton();
     }
+    this.showHiddenSkipMapContentBtn(false)
+
+    
+
   }
 
  
   createMarkup() {
     const html = `
-      <button id="controls-toggle" class="controls__sidebar-toggle">
+      <button aria-label="Toggle sidebar control visibility" id="controls-toggle" class="controls__sidebar-toggle">
         <i class="fa-regular fa-sliders controls__sidebar-toggle-icon"></i>
         <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--hide">${(this
           .mapConfig.controlsText &&
@@ -57,7 +65,7 @@ class Controls {
           this.mapConfig.controlsText.showLegendText) ||
           CONTROLS_SHOW_LEGEND_TEXT}</span>
       </button>
-      <button id="map-clear" class="controls__clear" style="display:none">
+      <button aria-label="Clear map overlay layers" id="map-clear" class="controls__clear" style="display:none">
         <i class="fa-regular fa-xmark controls__clear-icon"></i>
         <span class="controls__clear-text">${(this.mapConfig.controlsText &&
           this.mapConfig.controlsText.clearMapText) ||
@@ -65,11 +73,18 @@ class Controls {
       </button>
       <div class="container container__mask"> 
         <sidebar class="controls__sidebar">
-          <div id="legend" class="legend"></div>
+          <div class="legend">
+            <div id="legend" class="legend"></div>
+            <a aria-label="Skip Map Content" href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
+          </div>
+        </sidebar>
+        <sidebar class="controls_hidden_skip" id="controls_hidden_skip">
+            <a aria-label="Skip Map Content" href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
         </sidebar>
       </div>
     `;
     this.mapClass.addMarkupToTop(html, "controls", "controls");
+  
   }
 
   createMarkupFullScreen() {
@@ -95,11 +110,15 @@ class Controls {
     <div class="container container__mask">  
         <sidebar class="controls__sidebar">
           <div id="legend" class="legend"></div>
+          <a href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
           <div id="controls-toggle" class="legend_toggle_hamburger_button">
             <span></span>
             <span></span>
             <span></span>
           </div>
+        </sidebar>
+        <sidebar class="controls_hidden_skip" id="controls_hidden_skip">
+            <a href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
         </sidebar>
       </div>    
     `;
@@ -135,8 +154,11 @@ class Controls {
   toggleControls() {
     if (this.controls.classList.contains(CONTROLS_OPEN_CLASS)) {
       this.closeControls();
+      this.allowLegendTabbing()
     } else {
-      this.openControls();
+      this.allowLegendTabbing()
+      setTimeout(()=>this.openControls(),50)
+      // this.openControls();
     }
   }
 
@@ -155,6 +177,26 @@ class Controls {
       this.closeControls();
     }
   }
+  allowLegendTabbing(){
+    
+    // let legend = document.getElementById('legend')
+    const sidebar = document.querySelectorAll('.controls__sidebar')[0];
+    // console.log('SIDEBAR',sidebar)
+    const attribute = 'style'
+    if(sidebar.hasAttribute(attribute)){
+      sidebar.removeAttribute(attribute)
+      this.showHiddenSkipMapContentBtn(false)
+      // document.getElementById("controls_hidden_skip").setAttribute(attribute,"display:none")
+    }else{
+      setTimeout(()=>sidebar.setAttribute(attribute,"display:none"),300)
+      this.showHiddenSkipMapContentBtn(true)
+    }
+  }
+
+  showHiddenSkipMapContentBtn(isShowing){
+    document.getElementById("controls_hidden_skip").setAttribute('style',`display:${isShowing?'block':'none'}`)
+  }
+
 }
 
 export default Controls;

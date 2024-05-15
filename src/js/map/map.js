@@ -344,6 +344,9 @@ class Map {
     // Disable zoom and other buttons specifically on mobile devices, not based on screensize.
      if (!L.Browser.mobile && !this.isFullScreen) {
       L.control.zoom({ position: "topright" }).addTo(this.map);
+      let zoomControlElement = document.querySelector('.leaflet-control-zoom-in');
+      // Assign an ID to the zoom control element
+      zoomControlElement.id = 'custom-zoom-control-in';
     } 
     // Add reset button specifically on non-mobile devices, not based on screensize.
     if (this.mapConfig.showResetZoomButton && !L.Browser.mobile && !this.isFullScreen) {

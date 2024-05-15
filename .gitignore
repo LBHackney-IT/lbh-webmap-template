@@ -6,4 +6,5 @@ src/js/helpers/osdata.js
 src/js/helpers/addressesProxy.js
 src/js/helpers/hackneyGeoserver.js
 .npmrc
+.pre-commit-config.yaml
 web.config
