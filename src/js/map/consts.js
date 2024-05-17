@@ -41,7 +41,7 @@ const TILE_LAYER_OPTIONS_OS = {
   fadeAnimation: false,
   opacity: 1,
   attribution:
-    'Map data &copy; Crown copyright and database rights 2021 <a href="https://www.ordnancesurvey.co.uk/">Ordnance Survey</a> 100019635.' ,
+    '&copy; Crown copyright and database rights 2024 Ordnance Survey 100019635 | <a id="exit-map-link" href="https://map2.hackney.gov.uk/maps-and-geographical-apps/">Hackney map gallery</a>' ,
   maxZoom: 19,
   accessToken: OS_RASTER_API_KEY
 };
