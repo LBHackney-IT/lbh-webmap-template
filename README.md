@@ -164,7 +164,8 @@ Object properties:
 | `followLinkOnClick` | String | optional | Set to the name of the field containing a hyperlink. If set, clicking on a feature will follow the link. Links starting with http open in a blank tab, others are just moving to different sections of the page.|
 | `openPopupClosestToMapCentre` | Boolean | optional | If `true`, the feature closest to the map center will have its popup open on load. Use if you're planning to use coordinates in the URL. If the closest feature is in a markerCluster, its popup won't open.|
 | `pointStyle` | Object | required | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
-| `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
+| `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer or if rangeStyle is defined. [See Line Polygon Options for details](#line-polygon-options) |
+| `rangeStyle` | Object | optional | Used to configure colour range style for points, lines or polygons. [See Range Styling Options details](#range-styling-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
@@ -210,6 +211,41 @@ Object properties:
 | `fillOpacity` | Number | Required | Opacity of the fill between 0 and 1. |
 | `layerLineDash` | Number | Optional | The line dash style.|
 | `weight` | Number | Required | Weight of the stroke in pixels. |
+
+
+### Range Styling Options
+
+* Layer styling option which heavily depends on d3 functions
+* Inherits all `Line Polygon Options` except styleName and fillColour, [See Line Polygon Options for details](#line-polygon-options)
+* If defined,  `Line Polygon Options` can be `ignored` however for **point layers**, <br>  `Point Style Options`
+must still be defined seperately [See Point Style Options for details](#point-style-options).
+
+```json
+    "rangeStyle":{
+                    "property":"e.g. field_name_count",
+                    "pallete":"interpolateRdYlGn",
+                    "threshold":null,
+                    "spacing":30,
+                    "legendTitle":"e.g Count",
+                    "stroke": true,
+                    "strokeColor": "grey",
+                    "opacity": 0,
+                    "fillOpacity": 0.4,
+                    "layerLineDash": "",
+                    "weight": 2,
+                    }
+```
+
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `property` | String | Required | Layer's property/field value to be used for caluculating color |
+| `pallete` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
+| `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
+| `legendTitle` | Integer | Optional | Legend Title - small text tht gove above the color legend |
+| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to 30| 
+
+
 
 ### Popup Options
 

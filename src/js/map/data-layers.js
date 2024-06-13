@@ -10,6 +10,9 @@ import addressSearch from "./address-search.js";
 import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
 import Accessibility from "./accessiblity.js";
+import { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator } from "../helpers/range-styles.js";
+
+
 
 
 class DataLayers {
@@ -34,12 +37,13 @@ class DataLayers {
     this.statistics = null;
   }
 
-  pointToLayer (feature, latlng, configLayer) {
+  pointToLayer (feature, latlng, configLayer,rangeColor=null) {
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
           icon: configLayer.pointStyle.icon,
           prefix: "fa",
+          iconColor: rangeColor??configLayer.pointStyle.markerColor,
           markerColor: configLayer.pointStyle.markerColor,
           spin: false
         }),
@@ -47,11 +51,11 @@ class DataLayers {
       });
     } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
-        fillColor: MARKER_COLORS[configLayer.pointStyle.markerColor],
+        fillColor: rangeColor ?? MARKER_COLORS[configLayer.pointStyle.markerColor],
         radius: configLayer.pointStyle.circleMarkerRadius || 6,
         stroke: true,
         weight: 1,
-        color: MARKER_COLORS[configLayer.pointStyle.markerColor],
+        color:rangeColor ?? MARKER_COLORS[configLayer.pointStyle.markerColor],
         fillOpacity: 0.6
       });
     } else if (configLayer.pointStyle.markerType === "DivIcon") {
@@ -60,7 +64,7 @@ class DataLayers {
           className: "custom-div-icon",
           iconSize: "auto",
           html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`,
-          color: MARKER_COLORS[configLayer.pointStyle.markerColor]
+          color: rangeColor??MARKER_COLORS[configLayer.pointStyle.markerColor]
         }) 
       });
     } else {
@@ -187,27 +191,46 @@ class DataLayers {
 
     var clusterLayer = null;
 
+    const hexPolygon = configLayer.hexPolygon;
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
     const opacity = linePolygonStyle && linePolygonStyle.opacity;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
     const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
     const weight = linePolygonStyle && linePolygonStyle.weight;
-
+    
     const baseLayerStyles = {
       stroke: linePolygonStyle && linePolygonStyle.stroke,
       color: linePolygonStyle && linePolygonStyle.strokeColor,
       fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
       weight: linePolygonStyle && linePolygonStyle.weight
     };
+    
+    //rangeStyles
+    const rangeStyle = configLayer.rangeStyle;
+    const rangeLegendSpacing = rangeStyle?.spacing??30
+    const featuresData = rangeStyle && getFeatureData(data,rangeStyle.property)
+    const { minValue, maxValue } = featuresData? rangeStyle && getMinMax(featuresData) : {minValue:0,maxValue:0}
+    const interpolator = rangeStyle && colorInterpolator(minValue,maxValue,rangeStyle.pallete)
+    const bins = featuresData && createBins(featuresData,rangeStyle.threshold)
+    const scaleRange = bins && getScaleRange(bins,rangeStyle.threshold)
+    const scaleLegend = scaleRange && `<svg viewBox="0 0 310 20" xmlns="http://www.w3.org/2000/svg" class="control__count">
+    ${scaleRange.map((x,i)=>`<rect x=${i*rangeLegendSpacing} y="10" width="${rangeLegendSpacing}" height="10" fill="${interpolator(x)}"></rect>`)}
+    </svg>`
+    const scaleLegendLabels = scaleRange && `<svg viewBox="0 0 310 22" xmlns="http://www.w3.org/2000/svg" class="control__count">
+    ${scaleRange.map((x,i)=> i % 2 == 0 || i==0 || scaleRange.length-1==i ?`<text x=${i>0?i*rangeLegendSpacing-5:i*rangeLegendSpacing} y="20" font-size="12" font-weight="bold">${x}</text>`:'')}
+    </svg>`
+    const scaleLegendTitle = scaleLegend && rangeStyle.legendTitle
 
     const layer = new L.GeoJSON(data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
+        let rangeColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property]):null
         return this.pointToLayer(
           feature,
           latlng,
-          configLayer
+          configLayer,
+          rangeColor
         );
       },
       onEachFeature: (feature, layer) => {
@@ -262,8 +285,14 @@ class DataLayers {
         }
       },
       sortOrder: sortOrder,
-      style: () => {
-        if (layerStyle === "default") {
+      style: (feature) => {
+
+        if(rangeStyle){
+          return {...baseLayerStyles,...rangeStyle,...{
+            fillColor: interpolator(feature.properties[rangeStyle.property]),
+          }
+          };
+        }else if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
             opacity: opacity,
             fillColor: fillColor,
@@ -277,7 +306,7 @@ class DataLayers {
           return Object.assign(baseLayerStyles, {
             fillColor: colorHex
           });
-        }
+        } 
       }
     });
 
@@ -449,7 +478,7 @@ class DataLayers {
       
     if (this.mapConfig.showLegend) {
       if (!configLayer.excludeFromLegend){
-        let legendEntry = '';
+
         const count = layer.getLayers().length;
         const countLabel = configLayer.countLabel || 'items';
         
@@ -459,39 +488,38 @@ class DataLayers {
         else {
           this.layers.push(layer);
         }
-        if (markerIcon2){
-          if (this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems){
-            legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColorIcon2]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-          } else{
-            legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColorIcon2]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-              layer
-              )}" class="control__count">${count} ${countLabel} shown</span></div></div>`;          
-          }
-           
-        } else {
-          if (this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems){
-            legendEntry = `<div layer-name="${layerName}" class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColor]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-          } else {
-            legendEntry = `<div layer-name="${layerName}" class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColor]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-              layer
-              )}" class="control__count">${count} ${countLabel} shown</span></div></div>`;         
-          }
-        }
+        
+        const legendEntry = `
+              <div layer-name="${layerName}" class="legend-entry">
+                <div>
+                  <span aria-hidden="true" class="control__active-border" style="background:${MARKER_COLORS[markerColorIcon2??markerColor]}"></span>
+                </div>
+                <div>
+                  <span class="fa-layers fa-fw">
+                    <i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i>
+                    ${markerIcon2&&markerColorIcon2?`<i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i>`:''}
+                  </span>
+                </div>
+                <div class="legend-entry-text">
+                  <span class="control__text">${layerName}
+                    ${this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems ?'':
+                     `</br>
+                     <span id="map-layer-count-${layer.getLayerId( layer)}" class="control__count">
+                      ${count}&nbsp;${countLabel}&nbsp;shown
+                    </span>`}
+                  </span>
+                </div>
+              </div>
+              ${scaleLegendTitle?`<span style="font-size:0.6rem;margin-top:10px" class="control__count"><strong>${scaleLegendTitle}</strong></span>`:''}
+              ${scaleRange?scaleLegend:''}
+              ${scaleRange?scaleLegendLabels:''}
+            `;         
         if (cluster){
           this.overlayMaps[legendEntry] = clusterLayer;
         }
         else{
           this.overlayMaps[legendEntry] = layer;
         }  
-       
       }
       
       const layerPersonas = configLayer.personas;
