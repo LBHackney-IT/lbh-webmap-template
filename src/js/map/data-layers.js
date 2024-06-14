@@ -493,6 +493,7 @@ class DataLayers {
               <div layer-name="${layerName}" class="legend-entry">
                 <div>
                   <span aria-hidden="true" class="control__active-border" style="background:${MARKER_COLORS[markerColorIcon2??markerColor]}"></span>
+                 ${scaleRange&&rangeStyle.gradientLegendBorder? `<span aria-hidden="true" class="control__active-border" style="background: linear-gradient(to bottom, ${interpolator(minValue)},${interpolator(maxValue)})"></span>`:''}
                 </div>
                 <div>
                   <span class="fa-layers fa-fw">

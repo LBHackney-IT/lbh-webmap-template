@@ -220,6 +220,51 @@ Object properties:
 * If defined,  `Line Polygon Options` can be `ignored` however for **point layers**, <br>  `Point Style Options`
 must still be defined seperately [See Point Style Options for details](#point-style-options).
 
+<details>
+    <h3>Pallete Options</h3>
+    ________________________Sequential (Single-Hue) Scales
+    <ul>
+        <li>"interpolateBlues</li>
+        <li>"interpolateGreens</li>
+        <li>"interpolateGreys</li>
+        <li>"interpolateOranges</li>
+        <li>"interpolatePurples</li>
+        <li>"interpolateReds</li>
+    </ul>
+    ________________________Sequential (Multi-Hue) Scales
+    <ul>
+        <li>"interpolateBuGn"</li>
+        <li>"interpolateBuPu"</li>
+        <li>"interpolateGnBu"</li>
+        <li>"interpolateOrRd"</li>
+        <li>"interpolatePuBuGn"</li>
+        <li>"interpolatePuBu"</li>
+        <li>"interpolatePuRd"</li>
+        <li>"interpolateRdPu"</li>
+        <li>"interpolateYlGnBu"</li>
+        <li>"interpolateYlGn"</li>
+        <li>"interpolateYlOrBr"</li>
+        <li>"interpolateYlOrRd"</li>
+    </ul>
+    _________________________Diverging Scales
+    <ul>
+        <li>"interpolateBrBG"</li>
+        <li>"interpolatePRGn"</li>
+        <li>"interpolatePiYG"</li>
+        <li>"interpolatePuOr"</li>
+        <li>"interpolateRdBu"</li>
+        <li>"interpolateRdGy"</li>
+        <li>"interpolateRdYlBu"</li>
+        <li>"interpolateRdYlGn"</li>
+        <li>"interpolateSpectral"</li>
+    </ul>
+    _________________________Cyclical Scales
+    <ul>
+        <li>"interpolateRainbow"</li>
+        <li>"interpolateSinebow"</li>
+    </ul>
+</details>
+
 ```json
     "rangeStyle":{
                     "property":"e.g. field_name_count",
@@ -227,6 +272,7 @@ must still be defined seperately [See Point Style Options for details](#point-st
                     "threshold":null,
                     "spacing":30,
                     "legendTitle":"e.g Count",
+                    "gradientLegendBorder":false,
                     "stroke": true,
                     "strokeColor": "grey",
                     "opacity": 0,
@@ -239,11 +285,12 @@ must still be defined seperately [See Point Style Options for details](#point-st
 
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
-| `property` | String | Required | Layer's property/field value to be used for caluculating color |
+| `property` | String | Required | Layer's property/field value to be used for caluculating color, the propety must be of `number` type.  |
 | `pallete` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
 | `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
-| `legendTitle` | Integer | Optional | Legend Title - small text tht gove above the color legend |
-| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to 30| 
+| `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
+| `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color pallete |
+| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
 
 
 
