@@ -11,6 +11,7 @@ import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
 import Accessibility from "./accessiblity.js";
 import { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator } from "../helpers/range-styles.js";
+import createH3Geojson from "../helpers/h3-layer.js";
 
 
 
@@ -191,7 +192,7 @@ class DataLayers {
 
     var clusterLayer = null;
 
-    const hexPolygon = configLayer.hexPolygon;
+    const h3HexLayer = configLayer?.h3HexLayer;
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
     const opacity = linePolygonStyle && linePolygonStyle.opacity;
@@ -206,10 +207,16 @@ class DataLayers {
       weight: linePolygonStyle && linePolygonStyle.weight
     };
     
+    //h3HexagonLayer
+    const h3geojson = h3HexLayer && createH3Geojson(data,
+      h3HexLayer.partitionCountProperty,
+      h3HexLayer.resolution
+    )
+    
     //rangeStyles
     const rangeStyle = configLayer.rangeStyle;
     const rangeLegendSpacing = rangeStyle?.spacing??30
-    const featuresData = rangeStyle && getFeatureData(data,rangeStyle.property)
+    const featuresData = rangeStyle && getFeatureData(h3geojson||data,rangeStyle.property)
     const { minValue, maxValue } = featuresData? rangeStyle && getMinMax(featuresData) : {minValue:0,maxValue:0}
     const interpolator = rangeStyle && colorInterpolator(minValue,maxValue,rangeStyle.pallete)
     const bins = featuresData && createBins(featuresData,rangeStyle.threshold)
@@ -222,7 +229,7 @@ class DataLayers {
     </svg>`
     const scaleLegendTitle = scaleLegend && rangeStyle.legendTitle
 
-    const layer = new L.GeoJSON(data, {
+    const layer = new L.GeoJSON(h3geojson||data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         let rangeColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property]):null
