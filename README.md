@@ -204,7 +204,7 @@ Object properties:
 
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
-| `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. |
+| `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. <br>`"ranges"` - This option is for polygons which need to be styled by colour ranges based on numeric values. If chosen, [Range Styling Options](#range-styling-options) must also be defined.|
 | `stroke` | Boolean | Required | Indicates whether polygons have borders. 
 | `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string. |
 | `opacity` | Number | Required | A number between 0 and 1 defining the layer opacity. | 
@@ -216,10 +216,8 @@ Object properties:
 
 ### Range Styling Options
 
-* Layer styling option which heavily depends on d3 functions
-* Inherits all `Line Polygon Options` except styleName and fillColour, [See Line Polygon Options for details](#line-polygon-options)
-* If defined,  `Line Polygon Options` can be `ignored` however for **point layers**, <br>  `Point Style Options`
-must still be defined seperately [See Point Style Options for details](#point-style-options).
+* Layer styling option which heavily depends on d3 functions.
+* Complements the basic [Line Polygon Style Options](#line-polygon-options) and [Point Style Options](#point-style-options) with extra options to represent data by ranges. `Line Polygon Style Options` and/or `Point Style Options` must still be defined seperately.
 
 <details>
     <h3>palette Options</h3>
@@ -274,12 +272,6 @@ must still be defined seperately [See Point Style Options for details](#point-st
                     "spacing":30,
                     "legendTitle":"e.g count",
                     "gradientLegendBorder":false,
-                    "stroke": true,
-                    "strokeColor": "grey",
-                    "opacity": 0,
-                    "fillOpacity": 0.4,
-                    "layerLineDash": "",
-                    "weight": 2,
                     }
 ```
 
