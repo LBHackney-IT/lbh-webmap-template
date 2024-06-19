@@ -195,15 +195,14 @@ class DataLayers {
     const h3HexLayer = configLayer?.h3HexLayer;
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
-    const opacity = linePolygonStyle && linePolygonStyle.opacity;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
-    const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
-    const weight = linePolygonStyle && linePolygonStyle.weight;
     
     const baseLayerStyles = {
       stroke: linePolygonStyle && linePolygonStyle.stroke,
       color: linePolygonStyle && linePolygonStyle.strokeColor,
       fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
+      opacity: linePolygonStyle && linePolygonStyle.opacity,
+      layerLineDash: linePolygonStyle && linePolygonStyle.layerLineDash,
       weight: linePolygonStyle && linePolygonStyle.weight
     };
     
@@ -218,7 +217,7 @@ class DataLayers {
     const rangeLegendSpacing = rangeStyle?.spacing??30
     const featuresData = rangeStyle && getFeatureData(h3geojson||data,rangeStyle.property)
     const { minValue, maxValue } = featuresData? rangeStyle && getMinMax(featuresData) : {minValue:0,maxValue:0}
-    const interpolator = rangeStyle && colorInterpolator(minValue,maxValue,rangeStyle.pallete)
+    const interpolator = rangeStyle && colorInterpolator(minValue,maxValue,rangeStyle.palette)
     const bins = featuresData && createBins(featuresData,rangeStyle.threshold)
     const scaleRange = bins && getScaleRange(bins,rangeStyle.threshold)
     const scaleLegend = scaleRange && `<svg viewBox="0 0 310 20" xmlns="http://www.w3.org/2000/svg" class="control__count">
@@ -301,9 +300,7 @@ class DataLayers {
           };
         }else if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
-            opacity: opacity,
-            fillColor: fillColor,
-            dashArray: layerLineDash
+            fillColor: fillColor
           });
         } else if (layerStyle === "random polygons") {
           //Create a random style and uses it as fillColor.
@@ -329,7 +326,7 @@ class DataLayers {
       layer.on("mouseover", event => {
         if (event.propagatedFrom instanceof L.Polygon || event.propagatedFrom instanceof L.Polyline) {
           event.propagatedFrom.setStyle({
-            weight: weight + 2
+            weight: baseLayerStyles.weight + 2
           });
         }
       });
@@ -338,20 +335,20 @@ class DataLayers {
         if (!(event.propagatedFrom.getPopup() && event.propagatedFrom.getPopup().isOpen())){
           //go back to normal weight only if there is no open popup
           event.propagatedFrom.setStyle({
-            weight: weight
+            weight: baseLayerStyles.weight
           });
         }   
       });
 
       layer.on("popupopen", event => {
         event.propagatedFrom.setStyle({
-          weight: weight + 2
+          weight: baseLayerStyles.weight + 2
         });
       });
       
       layer.on("popupclose", event => {
         event.propagatedFrom.setStyle({
-          weight: weight
+          weight: baseLayerStyles.weight
         });
       });
     }
