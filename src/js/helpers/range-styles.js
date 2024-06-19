@@ -39,8 +39,8 @@ const getScaleRange=(bins)=>{
       return scaleRange
 }
 
-const colorInterpolator=(min, max,pallete)=>{
-    const interpolatorFunction = scaleSequential().domain([min,max]).interpolator(d3Chrom[pallete]);
+const colorInterpolator=(min, max,palette)=>{
+    const interpolatorFunction = scaleSequential().domain([min,max]).interpolator(d3Chrom[palette]);
     return interpolatorFunction
 }
 

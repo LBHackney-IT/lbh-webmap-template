@@ -222,7 +222,7 @@ Object properties:
 must still be defined seperately [See Point Style Options for details](#point-style-options).
 
 <details>
-    <h3>Pallete Options</h3>
+    <h3>palette Options</h3>
     ________________________Sequential (Single-Hue) Scales
     <ul>
         <li>"interpolateBlues</li>
@@ -269,7 +269,7 @@ must still be defined seperately [See Point Style Options for details](#point-st
 ```json
     "rangeStyle":{
                     "property":"e.g. field_name_count",
-                    "pallete":"interpolateRdYlGn",
+                    "palette":"interpolateRdYlGn",
                     "threshold":null,
                     "spacing":30,
                     "legendTitle":"e.g count",
@@ -287,10 +287,10 @@ must still be defined seperately [See Point Style Options for details](#point-st
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
 | `property` | String | Required | Layer's property/field value to be used for caluculating color, the propety must be of `number` type.  |
-| `pallete` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
+| `palette` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
 | `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
 | `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
-| `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color pallete |
+| `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color palette |
 | `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
 
 
