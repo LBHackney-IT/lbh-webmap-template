@@ -513,11 +513,14 @@ class DataLayers {
                       ${count}&nbsp;${countLabel}&nbsp;shown
                     </span>`}
                   </span>
+
                 </div>
               </div>
-              ${scaleLegendTitle?`<span style="font-size:0.6rem;margin-top:10px" class="control__count"><strong>${scaleLegendTitle}</strong></span>`:''}
+              ${scaleRange?'<div class="range-legend control__count">':''}
+              ${scaleLegendTitle?scaleLegendTitle:''}
               ${scaleRange?scaleLegend:''}
-              ${scaleRange?scaleLegendLabels:''}
+              ${scaleRange?`<span style="font-size:0.6rem">${scaleLegendLabels}</span>`:''}
+              ${scaleRange?'</div>':''}
             `;         
         if (cluster){
           this.overlayMaps[legendEntry] = clusterLayer;
