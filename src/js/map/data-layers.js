@@ -241,7 +241,7 @@ class DataLayers {
     const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
     const colorPicker = categories && getCategoryColor(categories,categoryStyle.pallete||"schemePastel1")
     const categoryLegend = categories &&  `<div style="display:flex; flex-direction:row; flex-wrap:wrap;margin-top:10px" class="control__count">
-        ${categories.map((category)=>`<svg width="${categoryStyle.spacing||120}" height="16">
+        ${categories.map((category)=>`<svg width="${categoryStyle.spacing||14+category.length*10}" height="16">
                                             <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
                                             <text x="25" y="12" font-size="12" font-weight="medium">${category}</text>
                                       </svg>`).join("")}
@@ -252,8 +252,6 @@ class DataLayers {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         let featureColor = null
-        let color
-
         if(rangeStyle){
           featureColor = interpolator(feature.properties[rangeStyle.property])
         }
