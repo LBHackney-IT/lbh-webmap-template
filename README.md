@@ -195,6 +195,7 @@ Object properties:
 | `icon` | String | optional | FontAwesome icon name of the marker when `markerType` is set to `"AwesomeMarker"`. |
 | `icon2` | String | optional | A second FontAwesome icon can be used when an advanced style is required (e.g: an outline and a filled colour with different colours). Both icons will be stacked using the FontAwesome data-fa transformations.|
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
+| `iconColor` | String | optional | Colour of the marker's icon when `markerType` is set to `"AwesomeMarker"` and using [Categorical Styles](#categorical-styling-options) .This can take any arbitrary color string e.g `"black"` or `"rgb(255, 165, 0)"` or `"#hexColor"` . Defaults to "white" |
 | `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 12 (default), or up to the value specified in the next option. Beyond this zoom threshold, the individual markers will be used as defined above. The clusters are styled using the markerColor option.|
 | `disableClusteringAtZoom` | Number | optional | This value is the zoom level at which the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
@@ -217,9 +218,7 @@ Object properties:
 ### Range Styling Options
 
 * Layer styling option which heavily depends on d3 functions
-* Inherits all `Line Polygon Options` except styleName and fillColour, [See Line Polygon Options for details](#line-polygon-options)
-* If defined,  `Line Polygon Options` can be `ignored` however for **point layers**, <br>  `Point Style Options`
-must still be defined seperately [See Point Style Options for details](#point-style-options).
+* If defined,  **Line Polygon Options** and  `Point Style Options` must still be defined seperately. [Polygon Options](#line-polygon-options)  -||-  [Point Style Options](#point-style-options) .
 
 <details>
     <h3>Pallete Options</h3>
@@ -274,24 +273,56 @@ must still be defined seperately [See Point Style Options for details](#point-st
                     "spacing":30,
                     "legendTitle":"e.g count",
                     "gradientLegendBorder":false,
-                    "stroke": true,
-                    "strokeColor": "grey",
-                    "opacity": 0,
-                    "fillOpacity": 0.4,
-                    "layerLineDash": "",
-                    "weight": 2,
                     }
 ```
 
 
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
-| `property` | String | Required | Layer's property/field value to be used for caluculating color, the propety must be of `number` type.  |
-| `pallete` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
+| `property` | String | Required | Layer's property/field value to be used for calculating color, the propety must be of `number` type.  |
+| `pallete` | String | Required | d3's interpolate colors e.g. `interpolateRdYlGn`. 
 | `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
 | `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
 | `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color pallete |
 | `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
+
+
+
+### Categorical Styling Options
+
+* Layer styling option which heavily depends on d3 functions
+* If defined,  **Line Polygon Options** and  `Point Style Options` must still be defined seperately. [Polygon Options](#line-polygon-options)  -||-  [Point Style Options](#point-style-options) .
+* **Note** for when using Point Styles, for best results, please only define **either** `markerColor` **or** `iconColor`(glyph). The ommitted option will automatically use the categorical pallete for the style. If marker color is ommitted, `pallete` must be defined using a colors strings array (available colors defined in `consts.js`)
+
+<details>
+    <h3>Pallete Options</h3>
+    <ul>
+        <li>schemeCategory10</li>
+        <li>schemeAccent</li>
+        <li>schemeDark2</li>
+        <li>schemePaired</li>
+        <li>schemePastel1</li>
+        <li>schemePastel2</li>
+        <li>schemeSet1</li>
+        <li>schemeSet2</li>
+        <li>schemeSet3</li> 
+    </ul>
+</details>
+
+```json
+    "rangeStyle":{
+                    "property":"e.g. field_name_count",
+                    "pallete":"schemeSet1 or ['list','of','colors']",
+                    "spacing":30,
+                    }
+```
+
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `property` | String | Required | Layer's property/field value to be used for calculating color, the field must be of categorical values.  |
+| `pallete` | Optional | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
+| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
 
 
 

@@ -10,7 +10,8 @@ import addressSearch from "./address-search.js";
 import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
 import Accessibility from "./accessiblity.js";
-import { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator } from "../helpers/range-styles.js";
+import { getFeatureData,getMinMax,createBins,getScaleRange,
+  colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
 import createH3Geojson from "../helpers/h3-layer.js";
 
 
@@ -39,24 +40,30 @@ class DataLayers {
   }
 
   pointToLayer (feature, latlng, configLayer,rangeColor=null) {
+    let configMarkerColor = configLayer.pointStyle.markerColor
+    let configIconColor = configLayer.pointStyle.iconColor
+    if(!configIconColor&&!configMarkerColor){
+      console.error('Markers missing markerColor')
+      return L.marker(latlng);
+    }
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
           icon: configLayer.pointStyle.icon,
           prefix: "fa",
-          iconColor: rangeColor??configLayer.pointStyle.markerColor,
-          markerColor: configLayer.pointStyle.markerColor,
+          iconColor: configIconColor??rangeColor??"white",
+          markerColor: configMarkerColor ?? Object.entries(MARKER_COLORS).find(([key, val]) => val === rangeColor)?.[0],
           spin: false
         }),
         alt: configLayer.layerName
       });
     } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
-        fillColor: rangeColor ?? MARKER_COLORS[configLayer.pointStyle.markerColor],
+        fillColor: rangeColor ?? MARKER_COLORS[configMarkerColor],
         radius: configLayer.pointStyle.circleMarkerRadius || 6,
         stroke: true,
         weight: 1,
-        color:rangeColor ?? MARKER_COLORS[configLayer.pointStyle.markerColor],
+        color:rangeColor ?? MARKER_COLORS[configMarkerColor],
         fillOpacity: 0.6
       });
     } else if (configLayer.pointStyle.markerType === "DivIcon") {
@@ -65,7 +72,7 @@ class DataLayers {
           className: "custom-div-icon",
           iconSize: "auto",
           html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`,
-          color: rangeColor??MARKER_COLORS[configLayer.pointStyle.markerColor]
+          color: rangeColor??MARKER_COLORS[configMarkerColor]
         }) 
       });
     } else {
@@ -201,10 +208,10 @@ class DataLayers {
     const weight = linePolygonStyle && linePolygonStyle.weight;
     
     const baseLayerStyles = {
-      stroke: linePolygonStyle && linePolygonStyle.stroke,
-      color: linePolygonStyle && linePolygonStyle.strokeColor,
-      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
-      weight: linePolygonStyle && linePolygonStyle.weight
+      stroke: linePolygonStyle?.stroke ?? true,
+      color: linePolygonStyle?.strokeColor,
+      fillOpacity: linePolygonStyle?.fillOpacity,
+      weight: linePolygonStyle?.weight
     };
     
     //h3HexagonLayer
@@ -229,15 +236,35 @@ class DataLayers {
     </svg>`
     const scaleLegendTitle = scaleLegend && rangeStyle.legendTitle
 
+    //categoryStyle
+    const categoryStyle = configLayer.categoryStyle;
+    const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
+    const colorPicker = categories && getCategoryColor(categories,categoryStyle.pallete||"schemePastel1")
+    const categoryLegend = categories &&  `<div style="display:flex; flex-direction:row; flex-wrap:wrap;margin-top:10px" class="control__count">
+        ${categories.map((category)=>`<svg width="${categoryStyle.spacing||120}" height="16">
+                                            <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
+                                            <text x="25" y="12" font-size="12" font-weight="medium">${category}</text>
+                                      </svg>`).join("")}
+        </div>`
+    
+
     const layer = new L.GeoJSON(h3geojson||data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
-        let rangeColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property]):null
+        let featureColor = null
+        let color
+
+        if(rangeStyle){
+          featureColor = interpolator(feature.properties[rangeStyle.property])
+        }
+        else if( categoryStyle){
+         featureColor = colorPicker(feature.properties[categoryStyle.property])
+        }
         return this.pointToLayer(
           feature,
           latlng,
           configLayer,
-          rangeColor
+          featureColor,
         );
       },
       onEachFeature: (feature, layer) => {
@@ -294,11 +321,15 @@ class DataLayers {
       sortOrder: sortOrder,
       style: (feature) => {
 
-        if(rangeStyle){
-          return {...baseLayerStyles,...rangeStyle,...{
-            fillColor: interpolator(feature.properties[rangeStyle.property]),
+        if(rangeStyle || categoryStyle){
+          const styleColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property])
+          : colorPicker(feature.properties[categoryStyle.property]) 
+          let styles = {...linePolygonStyle,...{
+            fillColor: styleColor },
+            color: linePolygonStyle?.strokeColor ||  styleColor
           }
-          };
+          return styles;
+
         }else if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
             opacity: opacity,
@@ -521,6 +552,7 @@ class DataLayers {
               ${scaleLegendTitle?`<span style="font-size:0.6rem;margin-top:10px" class="control__count"><strong>${scaleLegendTitle}</strong></span>`:''}
               ${scaleRange?scaleLegend:''}
               ${scaleRange?scaleLegendLabels:''}
+              ${categories?categoryLegend:''}
             `;         
         if (cluster){
           this.overlayMaps[legendEntry] = clusterLayer;

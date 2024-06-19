@@ -1,5 +1,5 @@
 
-import L from "leaflet";
+import L, { icon } from "leaflet";
 import "proj4leaflet";
 import {getWFSurl, getWMSurl} from "../helpers/hackneyGeoserver.js";
 import {isMobile,isMobile as isMobileFn,mobileDesktopSwitch} from "../helpers/isMobile.js";
