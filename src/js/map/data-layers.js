@@ -192,7 +192,7 @@ class DataLayers {
 
     var clusterLayer = null;
 
-    const h3HexLayer = configLayer?.h3HexLayer;
+    const h3HexLayer = configLayer.h3HexLayer;
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
@@ -519,7 +519,7 @@ class DataLayers {
               ${scaleRange?'<div class="range-legend control__count">':''}
               ${scaleLegendTitle?scaleLegendTitle:''}
               ${scaleRange?scaleLegend:''}
-              ${scaleRange?`<span style="font-size:0.6rem">${scaleLegendLabels}</span>`:''}
+              ${scaleRange?`<span class="range-legend-count-label">${scaleLegendLabels}</span>`:''}
               ${scaleRange?'</div>':''}
             `;         
         if (cluster){

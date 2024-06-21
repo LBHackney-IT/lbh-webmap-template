@@ -337,3 +337,7 @@ input:not(:checked) + span span.control__active-border {
 .range-legend {
   margin: 15px 0px 0px 11px;
 }
+
+.range-legend-count-label {
+  font-size: 0.6rem;
+}
