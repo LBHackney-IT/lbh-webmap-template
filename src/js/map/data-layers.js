@@ -191,6 +191,7 @@ class DataLayers {
     const markerIcon2 = pointStyle && pointStyle.icon2;
     const markerColor = pointStyle && pointStyle.markerColor;
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
+    const iconColor = pointStyle && pointStyle.iconColor;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
     const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
@@ -240,7 +241,7 @@ class DataLayers {
     const categoryStyle = configLayer.categoryStyle;
     const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
     const colorPicker = categories && getCategoryColor(categories,categoryStyle.pallete||"schemePastel1")
-    const categoryLegend = categories &&  `<div style="display:flex; flex-direction:row; flex-wrap:wrap;margin-top:10px" class="control__count">
+    const categoryLegend = categories &&  `<div class="categorical-legend control__count">
         ${categories.map((category)=>`<svg width="${categoryStyle.spacing||14+category.length*10}" height="16">
                                             <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
                                             <text x="25" y="12" font-size="12" font-weight="medium">${category}</text>
@@ -528,7 +529,7 @@ class DataLayers {
         const legendEntry = `
               <div layer-name="${layerName}" class="legend-entry">
                 <div>
-                  <span aria-hidden="true" class="control__active-border" style="background:${MARKER_COLORS[markerColorIcon2??markerColor]}"></span>
+                  <span aria-hidden="true" class="control__active-border" style="background:${MARKER_COLORS[markerColor??'black']}"></span>
                  ${scaleRange&&rangeStyle.gradientLegendBorder? `<span aria-hidden="true" class="control__active-border" style="background: linear-gradient(to bottom, ${interpolator(minValue)},${interpolator(maxValue)})"></span>`:''}
                 </div>
                 <div>

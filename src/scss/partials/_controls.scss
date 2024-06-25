@@ -333,3 +333,10 @@ input:not(:checked) + span span.control__active-border {
   @include lbh-rem(padding-left, 10);
   @include lbh-rem(padding-top, 2);
 }
+
+.categorical-legend {
+  margin: 15px 0px 0px 10px;
+  display: flex; 
+  flex-direction: row; 
+  flex-wrap: wrap;
+}
