@@ -552,6 +552,7 @@ class DataLayers {
               ${scaleRange?scaleLegend:''}
               ${scaleRange?`<span class="range-legend-count-label">${scaleLegendLabels}</span>`:''}
               ${scaleRange?'</div>':''}
+               ${categories?categoryLegend:''}
             `;         
         if (cluster){
           this.overlayMaps[legendEntry] = clusterLayer;
