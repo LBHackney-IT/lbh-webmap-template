@@ -341,3 +341,9 @@ input:not(:checked) + span span.control__active-border {
 .range-legend-count-label {
   font-size: 0.6rem;
 }
+.categorical-legend {
+    margin: 15px 0px 0px 10px;
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
+}

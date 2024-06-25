@@ -1,5 +1,6 @@
 import * as d3Chrom from "d3-scale-chromatic";
-import{ min,max,bin,scaleSequential} from "d3"
+import{ min,max,bin,scaleSequential,scaleOrdinal, color} from "d3"
+import { MARKER_COLORS } from "../map/consts.js";
 
 
 const getFeatureData=(geojson,property)=>{
@@ -44,4 +45,22 @@ const colorInterpolator=(min, max,palette)=>{
     return interpolatorFunction
 }
 
-export { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator};
+function getDistinctValues(data,property){
+    let categories = data.features.map(feature => feature.properties?.[property])
+    categories = new Set(categories)
+    
+    return Array.from(categories).sort()
+}
+function getCategoryColor (data,colorPallete="schemePastel1"){
+    let colorPicker
+    if(typeof colorPallete == "string"){
+        colorPicker = scaleOrdinal().domain(data).range(d3Chrom[colorPallete]);
+    }else{
+        colorPicker = scaleOrdinal().domain(data).range(colorPallete.map(color => MARKER_COLORS[color]));
+
+    }
+    return colorPicker
+
+}
+
+export { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator,getDistinctValues,getCategoryColor};
