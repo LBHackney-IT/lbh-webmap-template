@@ -247,7 +247,11 @@ input:not(:checked) + span span.control__active-border {
 }
 
 .leaflet-control-layers-selector:checked + span .control__count {
+  display: block;
   opacity: 1;
+}
+.leaflet-control-layers-selector:not(:checked) + span .control__count {
+  display: none;
 }
 
 .leaflet-control-layers-selector + span .fas,
