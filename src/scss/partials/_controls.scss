@@ -172,6 +172,7 @@
     justify-content: flex-start;
     background: #ecebeb;
     position: relative;
+    min-height: 70px;
   }
 
   &:checked + span {
