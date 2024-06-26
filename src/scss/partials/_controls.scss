@@ -332,6 +332,9 @@ input:not(:checked) + span span.control__active-border {
 
 .legend-entry-text {
   @include lbh-rem(padding-left, 10);
+  .control__count{
+    padding-top: 4px
+  }
 }
 
 .legend-entry-text-hidden-items {
