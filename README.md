@@ -75,6 +75,7 @@ The options for the data file are as follows:
 | `showBoundary` | Boolean | optional | If `true` the Hackney boundary will be added to the map. The Hackney boundary is the default boundary. If `true` and a boundaryGeoserverName is added, the boundary displayed will be the custom one instead.| 
 | `boundaryGeoserverName` | String | optional | If the boundaryGeoserverName is not empty and showBoundary is `true`, the custom boundary will be added instead.|
 | `showLegend` | Boolean | optional | If `true` a legend will show on the map. |
+| `hideLegendOnLoad` | Boolean | optional | If `true` a legend will be hidden from the map by default. |
 | `showLayersOnLoad` | Boolean | optional | If `true` all the layers will appear on the map. If  `false` or omitted, no layer will appear. Default is `false`|
 | `showFirstLayerOnLoad` | Boolean | optional | If `true` the layer with `sortOrder = 1` will appear on the map, and only this one. If `false` or omitted, the behaviour reverts to `showLayersOnLoad`. Default is `false`|
 | `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. [Control options defined below](#controls-options)||

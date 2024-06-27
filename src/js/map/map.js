@@ -377,6 +377,12 @@ class Map {
       this.controls.init();
     }
     //.log(this.map);
+    if (this.mapConfig.hideLegendOnLoad) {
+      let controls_toggle = document.getElementById("controls-toggle")
+      if(controls_toggle){
+        controls_toggle.click()
+      }
+    }
   }
 
   createMapContent() {
