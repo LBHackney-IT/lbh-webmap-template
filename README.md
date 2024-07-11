@@ -167,6 +167,7 @@ Object properties:
 | `pointStyle` | Object | required | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
 | `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer or if rangeStyle is defined. [See Line Polygon Options for details](#line-polygon-options) |
 | `rangeStyle` | Object | optional | Used to configure colour range style for points, lines or polygons. [See Range Styling Options details](#range-styling-options) |
+| `categoryStyle` | Object | optional | Used to configure colour category style for points, lines or polygons. [See Category Styling Options details](#categorical-styling-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
@@ -311,7 +312,7 @@ Object properties:
 </details>
 
 ```json
-    "rangeStyle":{
+    "categoryStyle":{
                     "property":"e.g. field_name_count",
                     "pallete":"schemeSet1 or ['list','of','colors']",
                     "spacing":30,
