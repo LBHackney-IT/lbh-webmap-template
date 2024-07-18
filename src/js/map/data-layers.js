@@ -31,6 +31,7 @@ class DataLayers {
     this.personas = [];
     this.layerControl = null;
     this.personasClass = null;
+    this.personasMode = null;
     this.filters = null;
     this.layersData = [];
     this.search = null;
@@ -579,10 +580,12 @@ class DataLayers {
         this.createControl();
 
         if (this.mapConfig.personas && this.mapConfig.personas.length > 0) {
+          this.personasMode = this.mapConfig.personas.personasMode?this.mapConfig.personas.personasMode:'switch';
           this.personasClass = new Personas(
             this.mapClass,
             this.layers,
             this.personas,
+            this.personasMode,
             this.layerControl,
             this.overlayMaps,
             this.filters
