@@ -58,12 +58,12 @@ class Personas {
         this.switchGroup(persona, keepAllInLayerControl);
       }
       else if (this.personasMode === 'add') {
-        if (button.classList.contains("personas__button--added")){
-          button.classList.remove("personas__button--added");
+        if (button.classList.contains(PERSONA_ADDED_CLASS)){
+          button.classList.remove(PERSONA_ADDED_CLASS);
           this.removeGroup(persona, keepAllInLayerControl);
         }
         else {
-          button.classList.add("personas__button--added");
+          button.classList.add(PERSONA_ADDED_CLASS);
           this.controls.showClearButton();
           this.addGroup(persona, keepAllInLayerControl);
         }
@@ -129,6 +129,11 @@ class Personas {
   }
 
   addGroup(persona, keepAllInLayerControl) {
+    //remove filters
+    if (this.filters) {
+      this.filters.clearFilters();
+    }
+    
     //add layers from that group
     for (const layer of persona.layers) {
       this.map.addLayer(layer);

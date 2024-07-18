@@ -158,6 +158,7 @@ const MARKER_COLORS = {
 };
 
 const PERSONA_ACTIVE_CLASS = "personas__button--active";
+const PERSONA_ADDED_CLASS = "personas__button--added";
 const CONTROLS_OPEN_CLASS = "controls--open";
 const CONTROLS_SHOW_LEGEND_TEXT = "Show list of categories";
 const CONTROLS_HIDE_LEGEND_TEXT = "Hide list of categories";
@@ -184,6 +185,7 @@ export {
   TILE_LAYER_OPTIONS_OS,
   MARKER_COLORS,
   PERSONA_ACTIVE_CLASS,
+  PERSONA_ADDED_CLASS,
   CONTROLS_OPEN_CLASS,
   CONTROLS_SHOW_LEGEND_TEXT,
   CONTROLS_HIDE_LEGEND_TEXT,
