@@ -78,6 +78,12 @@
   cursor: default;
 }
 
+
+.personas__button--added {
+  background: #ffffff;
+  color: #000;
+}
+
 .personas__button:active .personas__icon--base,
 .personas__button--active .personas__icon--base {
   display: none;
