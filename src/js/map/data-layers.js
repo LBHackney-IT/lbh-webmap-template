@@ -580,7 +580,7 @@ class DataLayers {
         this.createControl();
 
         if (this.mapConfig.personas && this.mapConfig.personas.length > 0) {
-          this.personasMode = this.mapConfig.personas.personasMode?this.mapConfig.personas.personasMode:'switch';
+          this.personasMode = this.mapConfig.personasMode?this.mapConfig.personasMode:'switch';
           this.personasClass = new Personas(
             this.mapClass,
             this.layers,
