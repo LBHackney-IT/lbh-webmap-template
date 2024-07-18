@@ -1,11 +1,13 @@
 import { scrollTo } from "../helpers/scrollTo.js";
 import { PERSONA_ACTIVE_CLASS } from "./consts.js";
+import { PERSONA_ADDED_CLASS } from "./consts.js";
 import "classlist-polyfill";
 
 class Personas {
-  constructor(map, layers, personas, layerControl, overlayMaps, filters) {
+  constructor(map, layers, personas, personasMode, layerControl, overlayMaps, filters) {
     this.container = map.container;
     this.personas = personas;
+    this.personasMode = personasMode;
     this.layers = layers;
     this.controls = map.controls;
     this.map = map.map;
@@ -48,13 +50,27 @@ class Personas {
     const button = document.getElementById(`persona-button-${i}`);
     button.addEventListener("click", e => {
       e.stopPropagation();
-      this.removeActiveClass();
-      button.classList.add(PERSONA_ACTIVE_CLASS);
-      this.controls.showClearButton();
+      if (this.personasMode === 'switch'){
+        this.removeActiveClass();
+        button.classList.add(PERSONA_ACTIVE_CLASS);
+        this.controls.showClearButton();
+        //bit of code that switches the group
+        this.switchGroup(persona, keepAllInLayerControl);
+      }
+      else if (this.personasMode === 'add') {
+        if (button.classList.contains("personas__button--added")){
+          button.classList.remove("personas__button--added");
+          this.removeGroup(persona, keepAllInLayerControl);
+        }
+        else {
+          button.classList.add("personas__button--added");
+          this.controls.showClearButton();
+          this.addGroup(persona, keepAllInLayerControl);
+        }
+      }
+      
 
-      this.switchGroup(persona, keepAllInLayerControl);
-
-      //bit of code that switches the group
+      
 
       if (this.isEmbed || this.isFullScreen) {
         this.focusAfterPersona();
@@ -86,7 +102,7 @@ class Personas {
   }
 
   switchGroup(persona, keepAllInLayerControl) {
-    //remove all layers
+    //remove all layers   
     for (const layer of this.layers) {
       this.map.removeLayer(layer);
       //if the keep option is set to false, remove the corresponding entry in the layer control
@@ -94,11 +110,10 @@ class Personas {
         this.layerControl.removeLayer(layer);
       }
     }
-
     if (this.filters) {
       this.filters.clearFilters();
     }
-
+    
     //add layers from that group
     for (const layer of persona.layers) {
       this.map.addLayer(layer);
@@ -109,6 +124,36 @@ class Personas {
             this.layerControl.addOverlay(this.overlayMaps[key], key);
           }
         }
+      }
+    }
+  }
+
+  addGroup(persona, keepAllInLayerControl) {
+    //add layers from that group
+    for (const layer of persona.layers) {
+      this.map.addLayer(layer);
+      // if the keep option is set to false, we now need to re-add the layers to the control
+      if (!keepAllInLayerControl) {
+        for (const key in this.overlayMaps) {
+          if (this.overlayMaps[key] == layer) {
+            this.layerControl.addOverlay(this.overlayMaps[key], key);
+          }
+        }
+      }
+    }
+
+    if (this.filters) {
+      this.filters.clearFilters();
+    }
+  }
+
+  removeGroup(persona, keepAllInLayerControl) {
+    //remove layers from that group
+    for (const layer of persona.layers) {
+      this.map.removeLayer(layer);
+      //if the keep option is set to false, remove the corresponding entry in the layer control
+      if (!keepAllInLayerControl) {
+        this.layerControl.removeLayer(layer);
       }
     }
   }
