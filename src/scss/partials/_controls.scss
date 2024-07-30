@@ -172,6 +172,7 @@
     justify-content: flex-start;
     background: #ecebeb;
     position: relative;
+    min-height: 71px;
   }
 
   &:checked + span {
@@ -247,7 +248,11 @@ input:not(:checked) + span span.control__active-border {
 }
 
 .leaflet-control-layers-selector:checked + span .control__count {
+  display: block;
   opacity: 1;
+}
+.leaflet-control-layers-selector:not(:checked) + span .control__count {
+  display: none;
 }
 
 .leaflet-control-layers-selector + span .fas,
@@ -327,9 +332,26 @@ input:not(:checked) + span span.control__active-border {
 
 .legend-entry-text {
   @include lbh-rem(padding-left, 10);
+  .control__count{
+    padding-top: 4px
+  }
 }
 
 .legend-entry-text-hidden-items {
   @include lbh-rem(padding-left, 10);
   @include lbh-rem(padding-top, 2);
+}
+
+.range-legend {
+  margin: 15px 0px 0px 11px;
+}
+
+.range-legend-count-label {
+  font-size: 0.6rem;
+}
+.categorical-legend {
+    margin: 15px 0px 0px 10px;
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap;
 }

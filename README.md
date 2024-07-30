@@ -75,6 +75,7 @@ The options for the data file are as follows:
 | `showBoundary` | Boolean | optional | If `true` the Hackney boundary will be added to the map. The Hackney boundary is the default boundary. If `true` and a boundaryGeoserverName is added, the boundary displayed will be the custom one instead.| 
 | `boundaryGeoserverName` | String | optional | If the boundaryGeoserverName is not empty and showBoundary is `true`, the custom boundary will be added instead.|
 | `showLegend` | Boolean | optional | If `true` a legend will show on the map. |
+| `hideLegendOnLoad` | Boolean | optional | If `true` a legend will be hidden from the map by default. |
 | `showLayersOnLoad` | Boolean | optional | If `true` all the layers will appear on the map. If  `false` or omitted, no layer will appear. Default is `false`|
 | `showFirstLayerOnLoad` | Boolean | optional | If `true` the layer with `sortOrder = 1` will appear on the map, and only this one. If `false` or omitted, the behaviour reverts to `showLayersOnLoad`. Default is `false`|
 | `controlsText` | Object | optional | If `showLegend` is `true`, you can optionally set custom values for the text that will get displayed to show and hide the legend and to clear the map, otherwise defaults will display. [Control options defined below](#controls-options)||
@@ -164,11 +165,14 @@ Object properties:
 | `followLinkOnClick` | String | optional | Set to the name of the field containing a hyperlink. If set, clicking on a feature will follow the link. Links starting with http open in a blank tab, others are just moving to different sections of the page.|
 | `openPopupClosestToMapCentre` | Boolean | optional | If `true`, the feature closest to the map center will have its popup open on load. Use if you're planning to use coordinates in the URL. If the closest feature is in a markerCluster, its popup won't open.|
 | `pointStyle` | Object | required | Configures marker style in point layers. Leave empty if the layer is not a point layer. [See Point Style Options for details](#point-style-options) |
-| `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer. [See Line Polygon Options for details](#line-polygon-options) |
+| `linePolygonStyle` | Object | optional | Used to configure style for lines or polygons. Leave empty if the layer is a point layer or if rangeStyle is defined. [See Line Polygon Options for details](#line-polygon-options) |
+| `rangeStyle` | Object | optional | Used to configure colour range style for points, lines or polygons. [See Range Styling Options details](#range-styling-options) |
+| `categoryStyle` | Object | optional | Used to configure colour category style for points, lines or polygons. [See Category Styling Options details](#categorical-styling-options) |
 | `popup` | Object | optional | Used to configure the popups for the layer. [See Popup Options for details](#popup-options) |
 | `tooltip` | Object | optional | Used to configure the tooltips for the layer. [See Tooltip Options for details](#tooltip-options) |
 | `searchable` | Boolean | optional | If `true`, and if there is a `search` object defined for this map, the layer will be included in the search. The layer must have an attribute with the name specified in `searchField` in the `search` object. |
 | `listView` | Object | optional | If listView is configured, and if there is a `list` defined for this map, the features of this layer will be listed in an accordion below the map. This object describe which fields are displayed in the list entry. [See ListView Options for details](#listview-options) |
+| `h3HexLayer` | Object | optional | If h3HaxLayer is configured is  defined for this layer, the features of this layer will be aggregated into hex bins and A hex grid will be plotted on the map. [See H3HexLayer Options for details](#h3hexlayer-options) |
 |`spatialEnrichments`|Array| optional | This layer's features will be enriched with extra attributes using spatial joins (point on area only) as defined in the objects in this list. Where :<br>`geographyLayer` = Source of new attribute, must be the title of a layer in the Layers' Array<br>`sourceAttribute` = Attribute to be copied from enriching layer <br>`targetAttribute` = Attribute name being added as enrichment to this layer<br>`placeholder` = Attribute **value** to be added to layer when there's no spatial match while enriching each feature.|
 
 ```json
@@ -193,6 +197,7 @@ Object properties:
 | `icon` | String | optional | FontAwesome icon name of the marker when `markerType` is set to `"AwesomeMarker"`. |
 | `icon2` | String | optional | A second FontAwesome icon can be used when an advanced style is required (e.g: an outline and a filled colour with different colours). Both icons will be stacked using the FontAwesome data-fa transformations.|
 | `markerColor` | String | optional | Colour of the marker when `markerType` is set to `"AwesomeMarker"` or `"CircleMarker"`. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
+| `iconColor` | String | optional | Colour of the marker's icon when `markerType` is set to `"AwesomeMarker"` and using [Categorical Styles](#categorical-styling-options) .This can take any arbitrary color string e.g `"black"` or `"rgb(255, 165, 0)"` or `"#hexColor"` . Defaults to "white" |
 | `markerIcon2` | String | optional | Colour of the second marker when there is a second icon `icon2` is required. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `cluster` | Boolean | optional | If `true`, Leaflet will use the ClusterMarker plugin up to zoom 12 (default), or up to the value specified in the next option. Beyond this zoom threshold, the individual markers will be used as defined above. The clusters are styled using the markerColor option.|
 | `disableClusteringAtZoom` | Number | optional | This value is the zoom level at which the clustering will be disabled. It can only be used if the cluster is `true`. If the cluster is `true` and the zoom is empty, the clustering will be disabled at the zoom level 12.|
@@ -202,7 +207,7 @@ Object properties:
 
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
-| `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. |
+| `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. <br>`"ranges"` - This option is for polygons which need to be styled by colour ranges based on numeric values. If chosen, [Range Styling Options](#range-styling-options) must also be defined.|
 | `stroke` | Boolean | Required | Indicates whether polygons have borders. 
 | `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string. |
 | `opacity` | Number | Required | A number between 0 and 1 defining the layer opacity. | 
@@ -210,6 +215,134 @@ Object properties:
 | `fillOpacity` | Number | Required | Opacity of the fill between 0 and 1. |
 | `layerLineDash` | Number | Optional | The line dash style.|
 | `weight` | Number | Required | Weight of the stroke in pixels. |
+
+
+### Range Styling Options
+
+* Layer styling option which heavily depends on d3 functions.
+* Complements the basic [Line Polygon Style Options](#line-polygon-options) and [Point Style Options](#point-style-options) with extra options to represent data by ranges. `Line Polygon Style Options` and/or `Point Style Options` must still be defined seperately.
+
+<details>
+    <h3>palette Options</h3>
+    ________________________Sequential (Single-Hue) Scales
+    <ul>
+        <li>"interpolateBlues</li>
+        <li>"interpolateGreens</li>
+        <li>"interpolateGreys</li>
+        <li>"interpolateOranges</li>
+        <li>"interpolatePurples</li>
+        <li>"interpolateReds</li>
+    </ul>
+    ________________________Sequential (Multi-Hue) Scales
+    <ul>
+        <li>"interpolateBuGn"</li>
+        <li>"interpolateBuPu"</li>
+        <li>"interpolateGnBu"</li>
+        <li>"interpolateOrRd"</li>
+        <li>"interpolatePuBuGn"</li>
+        <li>"interpolatePuBu"</li>
+        <li>"interpolatePuRd"</li>
+        <li>"interpolateRdPu"</li>
+        <li>"interpolateYlGnBu"</li>
+        <li>"interpolateYlGn"</li>
+        <li>"interpolateYlOrBr"</li>
+        <li>"interpolateYlOrRd"</li>
+    </ul>
+    _________________________Diverging Scales
+    <ul>
+        <li>"interpolateBrBG"</li>
+        <li>"interpolatePRGn"</li>
+        <li>"interpolatePiYG"</li>
+        <li>"interpolatePuOr"</li>
+        <li>"interpolateRdBu"</li>
+        <li>"interpolateRdGy"</li>
+        <li>"interpolateRdYlBu"</li>
+        <li>"interpolateRdYlGn"</li>
+        <li>"interpolateSpectral"</li>
+    </ul>
+    _________________________Cyclical Scales
+    <ul>
+        <li>"interpolateRainbow"</li>
+        <li>"interpolateSinebow"</li>
+    </ul>
+</details>
+
+```json
+    "rangeStyle":{
+                    "property":"e.g. field_name_count",
+                    "palette":"interpolateRdYlGn",
+                    "threshold":null,
+                    "spacing":30,
+                    "legendTitle":"e.g count",
+                    "gradientLegendBorder":false,
+                    }
+```
+
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `property` | String | Required | Layer's property/field value to be used for caluculating color, the propety must be of `number` type.  |
+| `palette` | String | Required | d3's interpolates colors e.g. `interpolateRdYlGn`. 
+| `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
+| `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
+| `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color palette |
+| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
+
+
+
+### Categorical Styling Options
+
+* Layer styling option which heavily depends on d3 functions
+* If defined,  **Line Polygon Options** and  `Point Style Options` must still be defined seperately. [Polygon Options](#line-polygon-options)  -||-  [Point Style Options](#point-style-options) .
+* **Note** for when using Point Styles, for best results, please only define **either** `markerColor` **or** `iconColor`(glyph). The ommitted option will automatically use the categorical pallete for the style. If marker color is ommitted, `pallete` must be defined using a colors strings array (available colors defined in `consts.js`)
+
+<details>
+    <h3>Pallete Options</h3>
+    <ul>
+        <li>schemeCategory10</li>
+        <li>schemeAccent</li>
+        <li>schemeDark2</li>
+        <li>schemePaired</li>
+        <li>schemePastel1</li>
+        <li>schemePastel2</li>
+        <li>schemeSet1</li>
+        <li>schemeSet2</li>
+        <li>schemeSet3</li> 
+    </ul>
+</details>
+
+```json
+    "categoryStyle":{
+                    "property":"e.g. field_name_count",
+                    "pallete":"schemeSet1 or ['list','of','colors']",
+                    "spacing":30,
+                    }
+```
+
+
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `property` | String | Required | Layer's property/field value to be used for calculating color, the field must be of categorical values.  |
+| `pallete` | Optional | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
+| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
+
+
+
+### H3HexLayer Options
+* Recommended to be used in conjuction with [Range Styling Options](#range-styling-options)
+
+```json
+    "h3HexLayer":{
+                "resolution":9,
+                "partitionCountProperty":"e.g. description",
+              },
+```
+| Option | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resolution` | Integer | required | The resolution for the h3 hexagons to be used.Must be number between `8-12`. Higher resoltuion means fine grained detail and will therefore take longer to proccess. Defaults to `9` |
+| `partitionCountProperty` | String | optional | An optional string for the field/property_name of the layer for which to perform partitioned counts. This is useful when the user needs these values available in the `tooltips / popups`. Please use fields/properties with **categorical** values only. |
+
+> [&#8505;] This option takes the **Points** geojson input and converts into hexagons geojson, where each hexagon has the property `count` of the number of points which it overlaps/contains. 
 
 ### Popup Options
 

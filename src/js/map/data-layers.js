@@ -10,6 +10,11 @@ import addressSearch from "./address-search.js";
 import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
 import Accessibility from "./accessiblity.js";
+import { getFeatureData,getMinMax,createBins,getScaleRange,
+  colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
+import createH3Geojson from "../helpers/h3-layer.js";
+
+
 
 
 class DataLayers {
@@ -34,24 +39,31 @@ class DataLayers {
     this.statistics = null;
   }
 
-  pointToLayer (feature, latlng, configLayer) {
+  pointToLayer (feature, latlng, configLayer,rangeColor=null) {
+    let configMarkerColor = configLayer.pointStyle.markerColor
+    let configIconColor = configLayer.pointStyle.iconColor
+    if(!configIconColor&&!configMarkerColor){
+      console.error('Markers missing markerColor')
+      return L.marker(latlng);
+    }
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
           icon: configLayer.pointStyle.icon,
           prefix: "fa",
-          markerColor: configLayer.pointStyle.markerColor,
+          iconColor: configIconColor??rangeColor??"white",
+          markerColor: configMarkerColor ?? Object.entries(MARKER_COLORS).find(([key, val]) => val === rangeColor)?.[0],
           spin: false
         }),
         alt: configLayer.layerName
       });
     } else if (configLayer.pointStyle.markerType === "CircleMarker") {
       return L.circleMarker(latlng, {
-        fillColor: MARKER_COLORS[configLayer.pointStyle.markerColor],
+        fillColor: rangeColor ?? MARKER_COLORS[configMarkerColor],
         radius: configLayer.pointStyle.circleMarkerRadius || 6,
         stroke: true,
         weight: 1,
-        color: MARKER_COLORS[configLayer.pointStyle.markerColor],
+        color:rangeColor ?? MARKER_COLORS[configMarkerColor],
         fillOpacity: 0.6
       });
     } else if (configLayer.pointStyle.markerType === "DivIcon") {
@@ -60,7 +72,7 @@ class DataLayers {
           className: "custom-div-icon",
           iconSize: "auto",
           html: `${feature.properties[configLayer.pointStyle.divIconLabel]}`,
-          color: MARKER_COLORS[configLayer.pointStyle.markerColor]
+          color: rangeColor??MARKER_COLORS[configMarkerColor]
         }) 
       });
     } else {
@@ -179,6 +191,7 @@ class DataLayers {
     const markerIcon2 = pointStyle && pointStyle.icon2;
     const markerColor = pointStyle && pointStyle.markerColor;
     const markerColorIcon2 = pointStyle && pointStyle.markerColorIcon2;
+    const iconColor = pointStyle && pointStyle.iconColor;
     const cluster = pointStyle && pointStyle.cluster;
     const disableClusteringAtZoom = pointStyle && pointStyle.disableClusteringAtZoom ? pointStyle && pointStyle.disableClusteringAtZoom : 12;
     const enableSpiderfy = pointStyle && pointStyle.enableSpiderfy ? pointStyle && pointStyle.enableSpiderfy : false;
@@ -187,27 +200,70 @@ class DataLayers {
 
     var clusterLayer = null;
 
+    const h3HexLayer = configLayer.h3HexLayer;
     const linePolygonStyle = configLayer.linePolygonStyle;
     const layerStyle = linePolygonStyle && linePolygonStyle.styleName;
-    const opacity = linePolygonStyle && linePolygonStyle.opacity;
     const fillColor = linePolygonStyle && linePolygonStyle.fillColor;
-    const layerLineDash = linePolygonStyle && linePolygonStyle.layerLineDash;
-    const weight = linePolygonStyle && linePolygonStyle.weight;
-
+    
     const baseLayerStyles = {
-      stroke: linePolygonStyle && linePolygonStyle.stroke,
-      color: linePolygonStyle && linePolygonStyle.strokeColor,
-      fillOpacity: linePolygonStyle && linePolygonStyle.fillOpacity,
-      weight: linePolygonStyle && linePolygonStyle.weight
-    };
 
-    const layer = new L.GeoJSON(data, {
+      opacity: linePolygonStyle && linePolygonStyle.opacity,
+      layerLineDash: linePolygonStyle && linePolygonStyle.layerLineDash,
+      stroke: linePolygonStyle?.stroke ?? true,
+      color: linePolygonStyle?.strokeColor,
+      fillOpacity: linePolygonStyle?.fillOpacity,
+      weight: linePolygonStyle?.weight
+    };
+    
+    //h3HexagonLayer
+    const h3geojson = h3HexLayer && createH3Geojson(data,
+      h3HexLayer.partitionCountProperty,
+      h3HexLayer.resolution
+    )
+    
+    //rangeStyles
+    const rangeStyle = configLayer.rangeStyle;
+    const rangeLegendSpacing = rangeStyle?.spacing??30
+    const featuresData = rangeStyle && getFeatureData(h3geojson||data,rangeStyle.property)
+    const { minValue, maxValue } = featuresData? rangeStyle && getMinMax(featuresData) : {minValue:0,maxValue:0}
+    const interpolator = rangeStyle && colorInterpolator(minValue,maxValue,rangeStyle.palette)
+    const bins = featuresData && createBins(featuresData,rangeStyle.threshold)
+    const scaleRange = bins && getScaleRange(bins,rangeStyle.threshold)
+    const scaleLegend = scaleRange && `<svg viewBox="0 0 310 20" xmlns="http://www.w3.org/2000/svg" class="control__count">
+    ${scaleRange.map((x,i)=>`<rect x=${i*rangeLegendSpacing} y="10" width="${rangeLegendSpacing}" height="10" fill="${interpolator(x)}"></rect>`)}
+    </svg>`
+    const scaleLegendLabels = scaleRange && `<svg viewBox="0 0 310 22" xmlns="http://www.w3.org/2000/svg" class="control__count">
+    ${scaleRange.map((x,i)=> i % 2 == 0 || i==0 || scaleRange.length-1==i ?`<text x=${i>0?i*rangeLegendSpacing-5:i*rangeLegendSpacing} y="20" font-size="12" font-weight="bold">${x}</text>`:'')}
+    </svg>`
+    const scaleLegendTitle = scaleLegend && rangeStyle.legendTitle
+
+    //categoryStyle
+    const categoryStyle = configLayer.categoryStyle;
+    const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
+    const colorPicker = categories && getCategoryColor(categories,categoryStyle.pallete||"schemePastel1")
+    const categoryLegend = categories &&  `<div class="categorical-legend control__count">
+        ${categories.map((category)=>`<svg width="${categoryStyle.spacing||14+category.length*10}" height="16">
+                                            <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
+                                            <text x="25" y="12" font-size="12" font-weight="medium">${category}</text>
+                                      </svg>`).join("")}
+        </div>`
+    
+
+    const layer = new L.GeoJSON(h3geojson||data, {
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
+        let featureColor = null
+        if(rangeStyle){
+          featureColor = interpolator(feature.properties[rangeStyle.property])
+        }
+        else if( categoryStyle){
+         featureColor = colorPicker(feature.properties[categoryStyle.property])
+        }
         return this.pointToLayer(
           feature,
           latlng,
-          configLayer
+          configLayer,
+          featureColor,
         );
       },
       onEachFeature: (feature, layer) => {
@@ -262,12 +318,20 @@ class DataLayers {
         }
       },
       sortOrder: sortOrder,
-      style: () => {
-        if (layerStyle === "default") {
+      style: (feature) => {
+
+        if(rangeStyle || categoryStyle){
+          const styleColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property])
+          : colorPicker(feature.properties[categoryStyle.property]) 
+          let styles = {...linePolygonStyle,...{
+            fillColor: styleColor },
+            color: linePolygonStyle?.strokeColor ||  styleColor
+          }
+          return styles;
+
+        }else if (layerStyle === "default") {
           return Object.assign(baseLayerStyles, {
-            opacity: opacity,
-            fillColor: fillColor,
-            dashArray: layerLineDash
+            fillColor: fillColor
           });
         } else if (layerStyle === "random polygons") {
           //Create a random style and uses it as fillColor.
@@ -277,7 +341,7 @@ class DataLayers {
           return Object.assign(baseLayerStyles, {
             fillColor: colorHex
           });
-        }
+        } 
       }
     });
 
@@ -293,7 +357,7 @@ class DataLayers {
       layer.on("mouseover", event => {
         if (event.propagatedFrom instanceof L.Polygon || event.propagatedFrom instanceof L.Polyline) {
           event.propagatedFrom.setStyle({
-            weight: weight + 2
+            weight: baseLayerStyles.weight + 2
           });
         }
       });
@@ -302,20 +366,20 @@ class DataLayers {
         if (!(event.propagatedFrom.getPopup() && event.propagatedFrom.getPopup().isOpen())){
           //go back to normal weight only if there is no open popup
           event.propagatedFrom.setStyle({
-            weight: weight
+            weight: baseLayerStyles.weight
           });
         }   
       });
 
       layer.on("popupopen", event => {
         event.propagatedFrom.setStyle({
-          weight: weight + 2
+          weight: baseLayerStyles.weight + 2
         });
       });
       
       layer.on("popupclose", event => {
         event.propagatedFrom.setStyle({
-          weight: weight
+          weight: baseLayerStyles.weight
         });
       });
     }
@@ -449,7 +513,7 @@ class DataLayers {
       
     if (this.mapConfig.showLegend) {
       if (!configLayer.excludeFromLegend){
-        let legendEntry = '';
+
         const count = layer.getLayers().length;
         const countLabel = configLayer.countLabel || 'items';
         
@@ -459,39 +523,43 @@ class DataLayers {
         else {
           this.layers.push(layer);
         }
-        if (markerIcon2){
-          if (this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems){
-            legendEntry = `<div class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColorIcon2]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-          } else{
-            legendEntry = `<div class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColorIcon2]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i><i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-              layer
-              )}" class="control__count">${count} ${countLabel} shown</span></div></div>`;          
-          }
-           
-        } else {
-          if (this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems){
-            legendEntry = `<div layer-name="${layerName}" class="legend-entry-hidden-items"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColor]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text-hidden-items"><span class="control__text">${layerName}</span></div></div>`;          
-          } else {
-            legendEntry = `<div layer-name="${layerName}" class="legend-entry"><div><span aria-hidden="true" class="control__active-border" style="background:${
-              MARKER_COLORS[markerColor]
-              }"></span></div><div><span class="fa-layers fa-fw"><i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i></span></div><div class="legend-entry-text"><span class="control__text">${layerName}</br><span id="map-layer-count-${layer.getLayerId(
-              layer
-              )}" class="control__count">${count} ${countLabel} shown</span></div></div>`;         
-          }
-        }
+        
+        const legendEntry = `
+              <div layer-name="${layerName}" class="legend-entry">
+                <div>
+                  <span aria-hidden="true" class="control__active-border" style="background:${MARKER_COLORS[markerColor??'black']}"></span>
+                 ${scaleRange&&rangeStyle.gradientLegendBorder? `<span aria-hidden="true" class="control__active-border" style="background: linear-gradient(to bottom, ${interpolator(minValue)},${interpolator(maxValue)})"></span>`:''}
+                </div>
+                <div>
+                  <span class="fa-layers fa-fw">
+                    <i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i>
+                    ${markerIcon2&&markerColorIcon2?`<i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i>`:''}
+                  </span>
+                </div>
+                <div class="legend-entry-text">
+                  <span class="control__text">${layerName}
+                    ${this.mapConfig.hideNumberOfItems || configLayer.hideNumberOfItems ?'':
+                     `</br>
+                     <span id="map-layer-count-${layer.getLayerId( layer)}" class="control__count">
+                      ${count}&nbsp;${countLabel}&nbsp;shown
+                    </span>`}
+                  </span>
+
+                </div>
+              </div>
+              ${scaleRange?'<div class="range-legend control__count">':''}
+              ${scaleLegendTitle?scaleLegendTitle:''}
+              ${scaleRange?scaleLegend:''}
+              ${scaleRange?`<span class="range-legend-count-label">${scaleLegendLabels}</span>`:''}
+              ${scaleRange?'</div>':''}
+               ${categories?categoryLegend:''}
+            `;         
         if (cluster){
           this.overlayMaps[legendEntry] = clusterLayer;
         }
         else{
           this.overlayMaps[legendEntry] = layer;
         }  
-       
       }
       
       const layerPersonas = configLayer.personas;
