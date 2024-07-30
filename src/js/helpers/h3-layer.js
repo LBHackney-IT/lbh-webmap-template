@@ -4,7 +4,8 @@ import { latLngToCell,gridDisk,gridDiskDistances,edgeLength,UNITS} from "h3-js";
 
 
 
-
+//_________Future Functions Start - Ignore these functions____
+//
 function normalizeLayer(layer, zeroBaseline = false) {
     const hexagons = Object.keys(layer);
     // Pass one, get max (and min if needed)
@@ -47,10 +48,15 @@ function bufferPointsLinear(geojson, radius) {
     // return normalizeLayer(layer);
     return layer;
 }
+//_________future Functions End____________________________________
+
+
 // Transform a kilometer measurement to a k-ring radius
 function kmToRadius(km,index) {
 return Math.floor(km / edgeLength(index, UNITS.km));
 }
+
+// hex bining logic using h3 cells 
 function countPoints(geojson,property,h3Resolution) {
     const layer = {};
     geojson.features.forEach(feature => {
@@ -75,6 +81,7 @@ function countPoints(geojson,property,h3Resolution) {
     return layer
 }
 
+// transform the h3cells into a Feature collection 
 const createH3Geojson =(data,property,h3Resolution=9) =>{
 
     const hexagons = countPoints(data,property,h3Resolution||9)
