@@ -28,6 +28,7 @@
     "govuk-frontend": "^3.5.0",
     "h3-js": "^4.1.0",
     "iframe-resizer": "^4.2.10",
+    "jszip": "^3.10.1",
     "lbh-frontend": "^2.0.0",
     "leaflet": "^1.9.4",
     "leaflet-control-custom": "^1.0.0",

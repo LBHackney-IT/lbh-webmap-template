@@ -9,6 +9,7 @@ import addressSearch from "./address-search.js";
 // import List from "./list-view.js";
 import DrillDown from "./drill-down.js";
 import Table from "./table-view.js";
+import DataDownload from "./data-download.js";
 import Accessibility from "./accessiblity.js";
 import { getFeatureData,getMinMax,createBins,getScaleRange,
   colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
@@ -601,7 +602,7 @@ class DataLayers {
     //only happens once, after the last layer has loaded
     if (this.loadedLayerCount == this.layerCount && this.mapConfig.search){
       this.search.createMarkup();
-    }     
+    }    
     
     //only happens once, after the last layer has loaded - create filters above the map
     if (this.mapConfig.filtersSection && this.loadedLayerCount == this.layerCount) {
@@ -609,6 +610,11 @@ class DataLayers {
       this.filters.init();
     }
 
+    // Only happens once, after the last layer has loaded - create list view and or statistics tables after the map
+    if (this.mapConfig.layerDownloads && this.loadedLayerCount == this.layerCount) {
+      this.dataDownloads = new DataDownload(this.mapClass,this.layersData,true);
+      this.dataDownloads.init();
+    }
     // only happens once, after the last layer has loaded - create list view after the map - now created with the tables
     // if (this.mapConfig.list && this.loadedLayerCount == this.layerCount) {
     //   this.list = new List(this.mapClass,this.layersData);
@@ -704,6 +710,7 @@ class DataLayers {
       } else{
         url = this.mapClass.geoserver_wfs_url + configLayer.geoserverLayerName;
       }
+      configLayer.url = url
       //Fetch the url
       fetch(url, {
         method: "get"
