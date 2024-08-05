@@ -44,8 +44,8 @@ class DataDownload {
                             <div class="govuk-checkboxes govuk-checkboxes--small lbh-checkboxes">
                                 ${this.mapConfig.layerDownloads.map(layer =>
                                     `<div class="govuk-checkboxes__item">
-                                        <input class="govuk-checkboxes__input downloads_select" id="download-${layer}" name="download" type="checkbox" value="${layer}">
-                                        <label class="govuk-label govuk-checkboxes__label" for="download-${layer}">${layer}</label>
+                                        <input class="govuk-checkboxes__input downloads_select" id="download-${layer.replace("/","-")}" name="download" type="checkbox" value="${layer}">
+                                        <label class="govuk-label govuk-checkboxes__label" for="download-${layer}">${layerreplace("/","-")}</label>
                                     </div>`
                                 ).join('')}
                             </div>
@@ -72,7 +72,7 @@ class DataDownload {
     }
     bindLayerSelectCheckboxes(){
         this.layerDownloads?.forEach(layer => {
-            let fileDownloadCheckbox = document.getElementById(`download-${layer}`);
+            let fileDownloadCheckbox = document.getElementById(`download-${layer.replace("/","-")}`);
             fileDownloadCheckbox.checked = true
             fileDownloadCheckbox?.addEventListener("change", this.handleDownloadSelection.bind(this));
         });
