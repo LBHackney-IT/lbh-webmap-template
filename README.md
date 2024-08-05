@@ -63,6 +63,7 @@ The options for the data file are as follows:
 | Option    | Type   | Required | Description                                                                                                                                                                                                |
 | --------- | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `layers` | Array | required | An array of layers to be added to the map. [Layer options defined below](#layer-options). |
+| `layerDownloads` | Array | optional | An array of layer titles from the above `layers` array to be be made available for download.|
 | `baseStyle` | String | required | style to use for the base map. Possible values:<br>`OSlight`: OS Light style. <br>`OSoutdoor`: OS Outdoor style. <br>`OSroad`: OS Road style.<br>We removed the MapBox option in Sept 2021.<br> CRS: EPSG:27700 - British National Grid by default. EPSG3857 - WGS 84 when we use vector tile layers|
 | `title` | String | optional | Title of the map that displays in the title box and the metadata box |
 | `showTitleInMetadataBoxOnMobile` | Boolean | optional | If `true`, the title will be added on the info box on mobile. |
