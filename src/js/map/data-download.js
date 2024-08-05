@@ -85,7 +85,7 @@ class DataDownload {
     }
     handleSingleFiles(layerObj,fileType){
         
-        let layerName = layerObj.configLayer.title
+        let layerName = layerObj.configLayer.title.replace("/","-")
         let layerData = layerObj.data
         let url = layerObj.configLayer.url
         url = url.replace("application/json","text/csv")
@@ -118,7 +118,7 @@ class DataDownload {
             }
         })).then((dataBlobs) => {
             console.log(dataBlobs)
-            const addLayers = dataBlobs.map(eachBlob => zip.file(`${eachBlob.layerName}.${eachBlob.fileType}`, eachBlob.blob))
+            const addLayers = dataBlobs.map(eachBlob => zip.file(`${eachBlob.layerName.replace("/","-")}.${eachBlob.fileType}`, eachBlob.blob))
             return addLayers
         }).then((data)=>{
             zip.generateAsync({ type: 'blob' }).then(blob => {
