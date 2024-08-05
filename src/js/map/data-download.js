@@ -47,14 +47,14 @@ class DataDownload {
                                         <input class="govuk-checkboxes__input downloads_select" id="download-${layer}" name="download" type="checkbox" value="${layer}">
                                         <label class="govuk-label govuk-checkboxes__label" for="download-${layer}">${layer}</label>
                                     </div>`
-                                )}
+                                ).join('')}
                             </div>
                         </fieldset>
                     <div>
                 <div>
                 <div>
-                    <button value="csv" id="csv-download-btn" class="govuk-button lbh-button download-btn">Download&nbsp;CSV&nbsp;<i class="fa-solid fa-file-csv"></i></button>
-                    <button value="json" id="json-download-btn"class="govuk-button lbh-button download-btn">Download&nbsp;JSON&nbsp;<i class="fa-solid fa-file-code"></i></button>
+                    <button aria-label="Download CSV Map Data" value="csv" id="csv-download-btn" class="govuk-button lbh-button download-btn">Download&nbsp;CSV&nbsp;<i class="fa-solid fa-file-csv"></i></button>
+                    <button aria-label="Download JSON Map Data" value="json" id="json-download-btn"class="govuk-button lbh-button download-btn">Download&nbsp;JSON&nbsp;<i class="fa-solid fa-file-code"></i></button>
                 </div>
             </details>
         `
