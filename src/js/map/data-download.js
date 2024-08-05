@@ -45,7 +45,7 @@ class DataDownload {
                                 ${this.mapConfig.layerDownloads.map(layer =>
                                     `<div class="govuk-checkboxes__item">
                                         <input class="govuk-checkboxes__input downloads_select" id="download-${layer.replace("/","-")}" name="download" type="checkbox" value="${layer}">
-                                        <label class="govuk-label govuk-checkboxes__label" for="download-${layer}">${layerreplace("/","-")}</label>
+                                        <label class="govuk-label govuk-checkboxes__label" for="download-${layer}">${layer.replace("/","-")}</label>
                                     </div>`
                                 ).join('')}
                             </div>
