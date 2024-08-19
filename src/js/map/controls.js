@@ -43,11 +43,12 @@ class Controls {
       this.clear.addEventListener("click", () => {
         this.closeIfMobile();
         this.mapClass.clear();
-        let AccessibilityControl = new Accessibility(undefined)
-        AccessibilityControl.addKeyEnterListenersToLayers()
       });
       this.toggleClearButton();
     }
+    // add aria-labels to each legend entry with layer names.
+    let AccessibilityControl = new Accessibility(undefined)
+    AccessibilityControl.addKeyEnterListenersToLayers()
 
   }
 
