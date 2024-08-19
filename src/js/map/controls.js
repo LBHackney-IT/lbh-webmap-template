@@ -6,6 +6,7 @@ import {
 } from "./consts.js";
 import { isMobile } from "../helpers/isMobile.js";
 import "classlist-polyfill";
+import Accessibility from "./accessiblity.js";
 
 class Controls {
   constructor(mapClass) {
