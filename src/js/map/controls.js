@@ -43,6 +43,8 @@ class Controls {
       this.clear.addEventListener("click", () => {
         this.closeIfMobile();
         this.mapClass.clear();
+        let AccessibilityControl = new Accessibility(undefined)
+        AccessibilityControl.addKeyEnterListenersToLayers()
       });
       this.toggleClearButton();
     }
