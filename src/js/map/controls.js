@@ -51,7 +51,7 @@ class Controls {
  
   createMarkup() {
     const html = `
-      <button id="controls-toggle" class="controls__sidebar-toggle">
+      <button aria-label="Toggle sidebar control visibility" id="controls-toggle" class="controls__sidebar-toggle">
         <i class="fa-regular fa-sliders controls__sidebar-toggle-icon"></i>
         <span class="controls__sidebar-toggle-text controls__sidebar-toggle-text--hide">${(this
           .mapConfig.controlsText &&
@@ -62,7 +62,7 @@ class Controls {
           this.mapConfig.controlsText.showLegendText) ||
           CONTROLS_SHOW_LEGEND_TEXT}</span>
       </button>
-      <button id="map-clear" class="controls__clear" style="display:none">
+      <button aria-label="Clear map overlay layers" id="map-clear" class="controls__clear" style="display:none">
         <i class="fa-regular fa-xmark controls__clear-icon"></i>
         <span class="controls__clear-text">${(this.mapConfig.controlsText &&
           this.mapConfig.controlsText.clearMapText) ||
@@ -72,11 +72,11 @@ class Controls {
         <sidebar class="controls__sidebar">
           <div class="legend">
             <div id="legend" class="legend"></div>
-            <a href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
+            <a aria-label="Skip Map Content" href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
           </div>
         </sidebar>
         <sidebar class="controls_hidden_skip" id="controls_hidden_skip">
-            <a href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
+            <a aria-label="Skip Map Content" href="#custom-zoom-control-in" class="govuk-skip-link lbh-skip-link">Skip Map Content</a>
         </sidebar>
       </div>
     `;
@@ -151,7 +151,7 @@ class Controls {
   toggleControls() {
     if (this.controls.classList.contains(CONTROLS_OPEN_CLASS)) {
       this.closeControls();
-      this.allowLegendTabbing(false)
+      this.allowLegendTabbing()
     } else {
       this.allowLegendTabbing()
       setTimeout(()=>this.openControls(),50)
