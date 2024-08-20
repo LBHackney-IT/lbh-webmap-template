@@ -20,7 +20,7 @@ class Controls {
   }
 
   init() {
-    
+   
     this.createMarkup();
     
     //TODO: test if fullscreen mode and use the different markup createMarkupFullScreen()
@@ -32,6 +32,9 @@ class Controls {
 
     if (!isMobile()) {
       this.openControls();
+      this.allowLegendTabbing()
+    }else{
+      this.allowLegendTabbing(false)
     }
 
     this.map.addEventListener("click", this.closeIfMobile.bind(this));
@@ -40,14 +43,12 @@ class Controls {
       this.clear.addEventListener("click", () => {
         this.closeIfMobile();
         this.mapClass.clear();
-        let AccessibilityControl = new Accessibility(undefined)
-        AccessibilityControl.addKeyEnterListenersToLayers()
       });
       this.toggleClearButton();
     }
-    this.showHiddenSkipMapContentBtn(false)
-
-    
+    // add aria-labels to each legend entry with layer names.
+    let AccessibilityControl = new Accessibility(undefined)
+    AccessibilityControl.addKeyEnterListenersToLayers()
 
   }
 
@@ -177,26 +178,23 @@ class Controls {
       this.closeControls();
     }
   }
-  allowLegendTabbing(){
+  allowLegendTabbing(status=true){
     
-    // let legend = document.getElementById('legend')
     const sidebar = document.querySelectorAll('.controls__sidebar')[0];
-    // console.log('SIDEBAR',sidebar)
     const attribute = 'style'
-    if(sidebar.hasAttribute(attribute)){
-      sidebar.removeAttribute(attribute)
-      this.showHiddenSkipMapContentBtn(false)
-      // document.getElementById("controls_hidden_skip").setAttribute(attribute,"display:none")
+    if(status){
+      sidebar.removeAttribute(attribute)//show side bar
+      document.getElementById("controls_hidden_skip").setAttribute(attribute,"display:none")
     }else{
-      setTimeout(()=>sidebar.setAttribute(attribute,"display:none"),300)
-      this.showHiddenSkipMapContentBtn(true)
+      document.getElementById("controls_hidden_skip").setAttribute(attribute,"display:block")
+      setTimeout(()=>sidebar.setAttribute(attribute,"display:none"),300)//hide side bar
+
     }
   }
 
   showHiddenSkipMapContentBtn(isShowing){
     document.getElementById("controls_hidden_skip").setAttribute('style',`display:${isShowing?'block':'none'}`)
   }
-
 }
 
 export default Controls;
