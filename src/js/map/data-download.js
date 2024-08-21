@@ -9,6 +9,7 @@ class DataDownload {
         this.layerDownloads = map.mapConfig.layerDownloads;
         this.initialLoad = initialLoad
         this.selectedLayers = map.mapConfig.layerDownloads;
+        this.downloadSectionTitle = null;
     }
 
     init() {
@@ -16,11 +17,12 @@ class DataDownload {
         this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
         // If data-downloads are defined
         if (this.mapConfig.layerDownloads){
-        this.createdownloadsMarkUp();
-        // Activate component components from lbh-frontend
-        this.initialLoad && window.LBHFrontend.initAll();
-        this.bindDownloadButtons()
-        this.bindLayerSelectCheckboxes()
+            this.downloadSectionTitle = this.mapConfig.layerDownloads.downloadSectionTitle || 'Downloads';
+            this.createdownloadsMarkUp();
+            // Activate component components from lbh-frontend
+            this.initialLoad && window.LBHFrontend.initAll();
+            this.bindDownloadButtons();
+            this.bindLayerSelectCheckboxes();
         }
     }
     createdownloadsMarkUp(){
@@ -34,9 +36,9 @@ class DataDownload {
         let downloadsMarkup = `
             <details class="govuk-details lbh-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
-                    <span class="govuk-details__summary-text">
-                    <h6>Downloads</h6>
-                    </span>
+                    <span class="govuk-details__summary-text">`
+                    + this.downloadSectionTitle
+                    +`</span>
                 </summary>
                 <div class="govuk-details__text">
                     <div class="govuk-form-group lbh-form-group filters__form-group">
