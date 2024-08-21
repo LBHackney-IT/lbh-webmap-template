@@ -3,23 +3,25 @@ import { blob as D3Blob } from "d3";
 
 class DataDownload {
     constructor(map, layersData,initialLoad=false) {
+        const downloadsInfo = map.mapConfig.layerDownloads
+        const downloadList = Array.isArray(downloadsInfo) ? downloadsInfo: downloadsInfo?.layers;
+        const downloadTitle = downloadsInfo?.downloadSectionTitle || 'Downloads';
         this.mapClass = map;
         this.mapConfig = map.mapConfig;
         this.layersData = layersData;
-        this.layerDownloads = map.mapConfig.layerDownloads;
+        this.layerDownloads = downloadList;
         this.initialLoad = initialLoad
-        this.selectedLayers = map.mapConfig.layerDownloads;
-        this.downloadSectionTitle = null;
+        this.selectedLayers = downloadList;
+        this.downloadSectionTitle = downloadTitle ;
+        
     }
-
     init() {
 
         this.layersData.sort((a, b) => (a.layer.options.sortOrder > b.layer.options.sortOrder) ? 1 : -1);
-        // If data-downloads are defined
-        if (this.mapConfig.layerDownloads){
-            this.downloadSectionTitle = this.mapConfig.layerDownloads.downloadSectionTitle || 'Downloads';
+        // INFO If data-downloads are defined
+        if (this.layerDownloads){
             this.createdownloadsMarkUp();
-            // Activate component components from lbh-frontend
+            // INFO Activate component components from lbh-frontend
             this.initialLoad && window.LBHFrontend.initAll();
             this.bindDownloadButtons();
             this.bindLayerSelectCheckboxes();
@@ -44,7 +46,7 @@ class DataDownload {
                     <div class="govuk-form-group lbh-form-group filters__form-group">
                         <fieldset class="govuk-fieldset filters__fieldset" aria-label="data downloads">
                             <div class="govuk-checkboxes govuk-checkboxes--small lbh-checkboxes">
-                                ${this.mapConfig.layerDownloads.map(layer =>
+                                ${this.layerDownloads.map(layer =>
                                     `<div class="govuk-checkboxes__item">
                                         <input class="govuk-checkboxes__input downloads_select" id="download-${layer.replace("/","-")}" name="download" type="checkbox" value="${layer}">
                                         <label class="govuk-label govuk-checkboxes__label" for="download-${layer.replace("/","-")}">${layer}</label>
@@ -70,7 +72,7 @@ class DataDownload {
         }else{
             this.selectedLayers = this.selectedLayers.filter(layer => layer!= layerName)
         }
-        console.log(this.selectedLayers)
+        // console.log(this.selectedLayers)
     }
     bindLayerSelectCheckboxes(){
         this.layerDownloads?.forEach(layer => {
@@ -96,7 +98,7 @@ class DataDownload {
             getCSV().then(blob => this.createDownloadLink(blob,`${layerName}.${fileType}`))
         }else if(fileType == "json"){
             const jsonData = JSON.stringify(layerData, null, 2); // Pretty print JSON
-            // Create a Blob from the JSON string
+            // INFO Create a Blob from the JSON string
             let blob = new Blob([jsonData], { type: 'application/json' });
             blob&&this.createDownloadLink(blob,`${layerName}.${fileType}`)
         }  
@@ -104,7 +106,7 @@ class DataDownload {
     handleZipFiles(layerObjs,fileType){
         // Initialize JSZip
         const zip = new JSZip();
-        // Convert each JSON object to CSV and add to the zip
+        // INFO Convert each JSON object to CSV and add to the zip
         Promise.all(layerObjs.map(layerObj => {
             let layerName = layerObj.configLayer.title
             let layerData = layerObj.data
@@ -119,7 +121,7 @@ class DataDownload {
                  return {blob:jsonData,fileType,layerName}
             }
         })).then((dataBlobs) => {
-            console.log(dataBlobs)
+            // console.log(dataBlobs)
             const addLayers = dataBlobs.map(eachBlob => zip.file(`${eachBlob.layerName.replace("/","-")}.${eachBlob.fileType}`, eachBlob.blob))
             return addLayers
         }).then((data)=>{
@@ -130,7 +132,7 @@ class DataDownload {
 
     }
     createDownloadLink(blob,fileName){
-        // Create a download link
+        // INFO Create a download link
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.setAttribute('hidden', '');
