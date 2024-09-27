@@ -169,7 +169,7 @@ class addressSearch {
           this.longitude=this.results[this.index].longitude;
           //this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
           //this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";  
-          document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
+          document.getElementById("selectedAddress").innerHTML += "<option value=\""+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"\" id=\"selected\">" + this.full_address + "</option>";    
         }
 
         //If there is more than 1 page, we call the load Address API Page function to add the page to the proxy call
@@ -218,7 +218,7 @@ class addressSearch {
           this.longitude=this.results[this.index].longitude;
           //this.popUpText = "ADDRESS: " + this.full_address + "<br>" + "UPRN: " + this.uprn +"<br>" + "PRIMARY USAGE: " + this.usage.toUpperCase() +"<br>" + "WARD: " + this.ward.toUpperCase() +"<br>" ;
           //this.selectedAddress.innerHTML += "<option value='"+ this.index +"' id='selected'>" + this.full_address + "</option>";  
-          document.getElementById("selectedAddress").innerHTML += "<option value='"+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"' id='selected'>" + this.full_address + "</option>";    
+          document.getElementById("selectedAddress").innerHTML += "<option value=\""+ this.latitude + ":" + this.longitude + ":" + this.uprn + ":" + this.ward + ":" + this.usage + ":" + this.full_address +"\" id=\"selected\">" + this.full_address + "</option>";    
         }
       }
     )
