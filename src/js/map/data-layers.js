@@ -241,7 +241,7 @@ class DataLayers {
     //categoryStyle
     const categoryStyle = configLayer.categoryStyle;
     const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
-    const colorPicker = categories && getCategoryColor(categories,categoryStyle.pallete||"schemePastel1")
+    const colorPicker = categories && getCategoryColor(categories,categoryStyle.palette||"schemePastel1")
     const categoryLegend = categories &&  `<div class="categorical-legend control__count">
         ${categories.map((category)=>`<svg width="${categoryStyle.spacing||14+category.length*10}" height="16">
                                             <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
@@ -533,7 +533,7 @@ class DataLayers {
                 </div>
                 <div>
                   <span class="fa-layers fa-fw">
-                    <i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]}"></i>
+                    <i class="${markerIcon}" style="color:${markerColor?MARKER_COLORS[markerColor]:iconColor=='white'?'black':iconColor}"></i>
                     ${markerIcon2&&markerColorIcon2?`<i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i>`:''}
                   </span>
                 </div>
