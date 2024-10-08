@@ -533,7 +533,7 @@ class DataLayers {
                 </div>
                 <div>
                   <span class="fa-layers fa-fw">
-                    <i class="${markerIcon}" style="color:${MARKER_COLORS[markerColor]??iconColor=='white'?'black':iconColor}"></i>
+                    <i class="${markerIcon}" style="color:${markerColor?MARKER_COLORS[markerColor]:iconColor=='white'?'black':iconColor}"></i>
                     ${markerIcon2&&markerColorIcon2?`<i class="${markerIcon2}" data-fa-transform="shrink-2" style="color:${MARKER_COLORS[markerColorIcon2]}"></i>`:''}
                   </span>
                 </div>
