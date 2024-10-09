@@ -355,3 +355,13 @@ input:not(:checked) + span span.control__active-border {
     flex-direction: row; 
     flex-wrap: wrap;
 }
+.permanent-tooltip::before {
+  display: none; //hide floating arrow
+}
+.hidden-tooltip{
+  display: none;
+}
+.labels-btn-active{
+  background-color: #00664f;
+  color: white;
+}

@@ -293,7 +293,9 @@ class DataLayers {
             const tooltip = L.tooltip().setContent(tooltipString);
             layer.bindTooltip(tooltip, { 
               direction: configLayer.tooltip.direction || 'auto',
-              offset: configLayer.tooltip.offset || [0,0]
+              offset: configLayer.tooltip.offset || [0,0],
+              permanent:configLayer.tooltip?.permanent,//if true make tooltip act as label
+              className:`${configLayer.tooltip?.permanent?"permanent-tooltip":'regular-tootip'}`
             });
           }          
         }
