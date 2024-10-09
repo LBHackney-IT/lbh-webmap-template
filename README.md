@@ -90,6 +90,7 @@ The options for the data file are as follows:
 | `showFullScreenButton` | Boolean | optional | If `true` a button with fullscreen function will be added to the map. |
 | `showResetZoomButton` | Boolean | optional | If `true` a button resetting the zoom to show the full extent of Hackney will be added to the map. (Non mobile devices only) | 
 | `showPickCoordinatesButton` | Boolean | optional | If `true` a button to pick coordinates (latitude and longitude) and copy them into clipboard will be added to the map.| 
+| `showToggleLabelsButton` | Boolean | optional | If `true` a button to toggle permanent labels' visibility will be added to the map.| 
 | `performDrillDown` | Boolean | optional | If `true` a combined/drill down popUp window will be switched on. If `false`, the single default popUp window will be used instead. The default value is `false`. |
 | `personas` | Array | optional | An array of objects that defines any "personas" to be added to the map. Each object will produce a button at the top of the map, which when clicked will turn on a group of layers. [Persona options defined below](#persona-options) |
 | `showAddressSearch` | Object | optional | A collapsible search bar to be displayed at the top of the map to navigate to an address. Uses Hackney addresses API though a proxy. Can search for postcodes and free-text address elements (e.g. Maurice bishop, 210 Mare Street, E8 1HH.) You can set this to `true` to use the defaults. [Address search options defined below](#address-search-options)|
@@ -374,6 +375,7 @@ Object properties:
 | `afterTitle` | String | optional | An optional string to appear beneath the title in the tooltip. |
 | `fields` | Array | optional | A list of field objects to show in the tooltip with the following properties:<br>`label` (String): a label shown in bold before the field value<br>`name` (String): geoserver field name (matches the table column name) |
 | `afterFields` | String | optional | Text to display after the final field. |
+| `permanent` | Bool | optional | Option to turn tooltips into layer labels. |
 
 
 ### ListView Options
