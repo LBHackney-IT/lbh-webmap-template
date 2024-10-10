@@ -51,12 +51,12 @@ function getDistinctValues(data,property){
     
     return Array.from(categories).sort()
 }
-function getCategoryColor (data,colorPallete="schemePastel1"){
+function getCategoryColor (data,colorPalette="schemePastel1"){
     let colorPicker
-    if(typeof colorPallete == "string"){
-        colorPicker = scaleOrdinal().domain(data).range(d3Chrom[colorPallete]);
+    if(typeof colorPalette == "string"){
+        colorPicker = scaleOrdinal().domain(data).range(d3Chrom[colorPalette]);
     }else{
-        colorPicker = scaleOrdinal().domain(data).range(colorPallete.map(color => MARKER_COLORS[color]));
+        colorPicker = scaleOrdinal().domain(data).range(colorPalette.map(color => MARKER_COLORS[color]));
 
     }
     return colorPicker

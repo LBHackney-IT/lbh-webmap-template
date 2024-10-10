@@ -435,6 +435,10 @@ class Map {
         this.errorOutsideHackney
       ).init();
     }
+    // Add labels button
+    if(this.mapConfig?.showToggleLabelsButton&&this.mapConfig.layers.some(layer => layer?.tooltip.hasOwnProperty('permanent'))){
+      this.addLabelControlButton()
+    }
   }
 
   addBaseLayer() {
@@ -542,6 +546,37 @@ class Map {
       { position: "topright" }
     ).addTo(this.map);
   }
+
+  addLabelControlButton() {
+   // Create an EasyButton and add a custom class on creation
+   L.easyButton({
+    position: 'topright',  // Choose the position for the button (optional)
+    states: [{
+        stateName: 'labels-btn',
+        icon: "far fa-tags",  // Use an icon or HTML for the button
+        title: 'Toggle labels',             // Tooltip for the button
+        onClick: function(btn, map) {
+            btn.button.classList.toggle('labels-btn-active');
+            // Get all child elements of the button
+            const children = btn.button.children;
+            // Loop through each child element and toggle the 'active' class
+            for (let i = 0; i < children.length; i++) {
+                children[i].classList.toggle('labels-btn-active');
+            }
+            // Query all elements with the leaflet-tooltip class
+            const tooltips = document.querySelectorAll('.leaflet-tooltip');
+            // Filter tooltips to check if they have the permanent-tooltip class
+            tooltips.forEach(tooltip => {
+                if (tooltip.classList.contains('permanent-tooltip')) {
+                  tooltip.classList.toggle('hidden-tooltip');
+                } 
+            });
+        },
+        
+      }],
+    }).addTo(this.map);
+  }
+  
 
   addPickCoordinatesButton() {
     const pickCoordinates = (e) => {     

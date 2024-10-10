@@ -355,3 +355,8 @@ input:not(:checked) + span span.control__active-border {
     flex-direction: row; 
     flex-wrap: wrap;
 }
+
+.labels-btn-active{
+  background-color: #00664f;
+  color: white;
+}

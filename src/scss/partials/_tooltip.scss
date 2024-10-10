@@ -59,3 +59,12 @@
 .tooltip:hover .tooltiptextinlegend {
   opacity: 1;
 }
+.permanent-tooltip {
+  @include lbh-rem(right, -50);
+}
+.permanent-tooltip::before {
+  display: none; //hide floating arrow
+}
+.hidden-tooltip{
+  display: none;
+}
