@@ -209,11 +209,11 @@ class DataLayers {
     const baseLayerStyles = {
 
       opacity: linePolygonStyle && linePolygonStyle.opacity,
-      layerLineDash: linePolygonStyle && linePolygonStyle.layerLineDash,
       stroke: linePolygonStyle?.stroke ?? true,
       color: linePolygonStyle?.strokeColor,
       fillOpacity: linePolygonStyle?.fillOpacity,
-      weight: linePolygonStyle?.weight
+      weight: linePolygonStyle?.weight,
+      dashArray:linePolygonStyle?.layerLineDash
     };
     
     //h3HexagonLayer
