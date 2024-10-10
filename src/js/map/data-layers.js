@@ -139,9 +139,9 @@ class DataLayers {
     let stringTooltip = "";
     if (title !== "notitle") {
       if (title) {
-        stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${feature.properties[title]}</h3>`;
+        stringTooltip = `<h3 class="lbh-heading-h6">${feature.properties[title]}</h3>`;
       } else {
-        stringTooltip = `<h3 class="lbh-heading-h6 popup__title">${layerName}</b></h3>`;
+        stringTooltip = `<h3 class="lbh-heading-h6">${layerName}</b></h3>`;
       }
     }
 
@@ -169,7 +169,7 @@ class DataLayers {
       stringTooltip += `<p class="popup__text">${afterFields}</p>`;
     }
 
-    if (stringTooltip === '<h3 class="lbh-heading-h6 popup__title"></h3>')
+    if (stringTooltip === '<h3 class="lbh-heading-h6"></h3>')
       return ''
     else
       return stringTooltip;
