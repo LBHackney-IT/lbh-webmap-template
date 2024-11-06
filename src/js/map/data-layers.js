@@ -14,6 +14,7 @@ import Accessibility from "./accessiblity.js";
 import { getFeatureData,getMinMax,createBins,getScaleRange,
   colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
 import createH3Geojson from "../helpers/h3-layer.js";
+import { color } from "d3";
 
 
 
@@ -326,8 +327,10 @@ class DataLayers {
           const styleColor = rangeStyle ? interpolator(feature.properties[rangeStyle.property])
           : colorPicker(feature.properties[categoryStyle.property]) 
           let styles = {...linePolygonStyle,...{
-            fillColor: styleColor },
-            color: linePolygonStyle?.strokeColor ||  styleColor
+            fillColor: styleColor,
+            color: linePolygonStyle?.strokeColor ||  styleColor,
+            dashArray:linePolygonStyle?.layerLineDash || ''
+          }
           }
           return styles;
 
