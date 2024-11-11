@@ -297,7 +297,7 @@ Object properties:
 | `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
 | `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
 | `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color palette |
-| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
+| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block. Defaults to **30px**.| 
 
 
 
@@ -335,7 +335,7 @@ Object properties:
 | --- | --- | --- | --- |
 | `property` | String | Required | Layer's property/field value to be used for calculating color, the field must be of categorical values.  |
 | `pallete` | Optional | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
-| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
+| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **14 + (label length x 10) px**, which allows for short labels to display inline. To force only one label per line, try **240** px.| 
 
 
 
