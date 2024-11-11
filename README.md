@@ -327,6 +327,7 @@ Object properties:
                     "property":"e.g. field_name_count",
                     "pallete":"schemeSet1 or ['list','of','colors']",
                     "spacing":30,
+                    "categoryCount":false
                     }
 ```
 
@@ -334,8 +335,9 @@ Object properties:
 | Option | Type | Required | Description |
 | --- | --- | --- | --- |
 | `property` | String | Required | Layer's property/field value to be used for calculating color, the field must be of categorical values.  |
-| `pallete` | Optional | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
-| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
+| `pallete` | String | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
+| `spacing` | Integer | Optional | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
+| `categoryCount` | Boolean | Optional | If true, the feature count for each category will be included on the legend. Defaults to `false` | 
 
 
 

@@ -63,4 +63,9 @@ function getCategoryColor (data,colorPalette="schemePastel1"){
 
 }
 
-export { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator,getDistinctValues,getCategoryColor};
+function getCategoryCounts(data,property,category){
+    const numberOfFeatures = data.features.filter(feature => feature.properties?.[property] == category && feature.geometry)
+    return `&nbsp;(${numberOfFeatures?.length})`
+}
+
+export { getFeatureData,getMinMax,createBins,getScaleRange,colorInterpolator,getDistinctValues,getCategoryColor,getCategoryCounts};
