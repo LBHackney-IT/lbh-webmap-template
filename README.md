@@ -220,7 +220,7 @@ Object properties:
 | --- | --- | --- | --- |
 | `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. <br>`"ranges"` - This option is for polygons which need to be styled by colour ranges based on numeric values. If chosen, [Range Styling Options](#range-styling-options) must also be defined.|
 | `stroke` | Boolean | Required | Indicates whether polygons have borders. 
-| `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string. |
+| `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string.<br> **Not required when using range/categorical styles with LineString layers!** |
 | `opacity` | Number | Required | A number between 0 and 1 defining the layer opacity. | 
 | `fillColor` | String | Required | Fill color for polygons. `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `fillOpacity` | Number | Required | Opacity of the fill between 0 and 1. |
