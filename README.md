@@ -220,7 +220,7 @@ Object properties:
 | --- | --- | --- | --- |
 | `styleName` | String | Required | The styleName will be used to identify the style of the layer. The following options are available:<br>`"default"` - The default style can be used with lines and polygons. In this style, you choose the colour and properties of the fill and stroke (see other style properties for more details).<br>`"random polygons"` - This option can be chosen for lines and polygons which need to be styled with one colour per object. We do not need to specify the fillcolor since this is done by the function. <br>`"ranges"` - This option is for polygons which need to be styled by colour ranges based on numeric values. If chosen, [Range Styling Options](#range-styling-options) must also be defined.|
 | `stroke` | Boolean | Required | Indicates whether polygons have borders. 
-| `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string. |
+| `strokeColor` | Text | Required | Color of the stroke. See variable `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours, or enter a hex code string.<br> **Not required when using range/categorical styles with LineString layers!** |
 | `opacity` | Number | Required | A number between 0 and 1 defining the layer opacity. | 
 | `fillColor` | String | Required | Fill color for polygons. `MARKER_COLORS` in `src/js/map/consts.js` to get the list of colours. |
 | `fillOpacity` | Number | Required | Opacity of the fill between 0 and 1. |
@@ -297,7 +297,7 @@ Object properties:
 | `threshold` | Integer | Optional | Number of bins d3 should `try` to use to group data  |
 | `legendTitle` | String | Optional | Legend Title - small text tht gove above the color legend |
 | `gradientLegendBorder` | Boolean | Optional | Enable to add a gradient active border to the legend entry based on the color palette |
-| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block defaults to **30px** | 
+| `spacing` | Number | Required | A number of pixels to define the width of each range legend colour block. Defaults to **30px**.| 
 
 
 
@@ -335,7 +335,7 @@ Object properties:
 | --- | --- | --- | --- |
 | `property` | String | Required | Layer's property/field value to be used for calculating color, the field must be of categorical values.  |
 | `pallete` | Optional | Required | d3's categorical color sets colors e.g. `schemeSet1` or you can give your own list of color strings as defined in the `consts.js` file defaults to `schemePastel1`. 
-| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **120px** | 
+| `spacing` | Optional | Required | A number of pixels to define the width of each categorical legend color circle and text entry; defaults to **14 + (label length x 10) px**, which allows for short labels to display inline. To force only one label per line, try **240** px.| 
 
 
 

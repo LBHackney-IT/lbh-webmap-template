@@ -342,19 +342,32 @@ input:not(:checked) + span span.control__active-border {
   @include lbh-rem(padding-top, 2);
 }
 
-.range-legend {
-  margin: 15px 0px 0px 11px;
+
+.leaflet-control-layers-overlays {
+  .range-legend {
+    margin: 15px 0px 0px 11px;
+  }
+  
+  .range-legend-count-label {
+    font-size: 0.6rem;
+  }
+  .categorical-legend {
+      margin: 15px 0px 0px 10px;
+      display: flex; 
+      flex-direction: row; 
+      flex-wrap: wrap;
+  }
+  label {
+    // Target hover on the label
+    &:hover {
+      .categorical-legend,.range-legend svg text {
+        fill: white; // Change the text color on hover
+        font-weight: bold;
+      }
+    }
+  }
 }
 
-.range-legend-count-label {
-  font-size: 0.6rem;
-}
-.categorical-legend {
-    margin: 15px 0px 0px 10px;
-    display: flex; 
-    flex-direction: row; 
-    flex-wrap: wrap;
-}
 
 .labels-btn-active{
   background-color: #00664f;
