@@ -2,7 +2,7 @@
 
 ## About
 
-This is our Webmap template, which should be used to create webmaps for Hackney. Various functionalities can be added to the map as options, such as filters, address search, list views, statistics tables and other charts in the future. Examples of maps created with this webmap template can be found in the [Hackney index of maps and geographical apps](https://map2.hackney.gov.uk/maps-and-geographical-apps/). Please contact Sandrine Balley (sandrine.balley@hackney.gov.uk), Marta Villalobos (marta.villalobos@hackney.gov.uk) or Cliff Chavhundura (cliff.chavhundura@hackney.gov.uk) if you have any questions or suggestions.
+This is our Webmap template, which should be used to create webmaps for Hackney. Various functionalities can be added to the map as options, such as filters, address search, list views, statistics tables and other charts in the future. Examples of maps created with this webmap template can be found in the [Hackney index of maps and geographical apps](https://map2.hackney.gov.uk/maps-and-geographical-apps/). Please contact Marta Villalobos (marta.villalobos@hackney.gov.uk), Cliff Chavhundura (cliff.chavhundura@hackney.gov.uk) or Sandrine Balley (sandrine.balley@gmail.com) if you have any questions or suggestions.
 
 ## Prerequisites
 
