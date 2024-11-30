@@ -12,7 +12,7 @@ import Table from "./table-view.js";
 import DataDownload from "./data-download.js";
 import Accessibility from "./accessiblity.js";
 import { getFeatureData,getMinMax,createBins,getScaleRange,
-  colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
+  colorInterpolator,getDistinctValues,getCategoryColor,getCategoryCounts } from "../helpers/dynamic-styles.js";
 import createH3Geojson from "../helpers/h3-layer.js";
 import { color } from "d3";
 
@@ -177,6 +177,8 @@ class DataLayers {
   }
 
   addWFSLayer(data, configLayer) {
+    // filter out null geometries
+    data.features = data.features.filter(feature => feature?.geometry)
     const layerName = configLayer.title;
     const sortOrder =
       configLayer.sortOrder && !isNaN(configLayer.sortOrder)
@@ -237,15 +239,15 @@ class DataLayers {
     ${scaleRange.map((x,i)=> i % 2 == 0 || i==0 || scaleRange.length-1==i ?`<text x=${i>0?i*rangeLegendSpacing-5:i*rangeLegendSpacing} y="20" font-size="12" font-weight="bold">${x}</text>`:'')}
     </svg>`
     const scaleLegendTitle = scaleLegend && rangeStyle.legendTitle
-
     //categoryStyle
     const categoryStyle = configLayer.categoryStyle;
+    const categoryCount = categoryStyle?.categoryCount;
     const categories = categoryStyle && getDistinctValues(data,categoryStyle.property)
     const colorPicker = categories && getCategoryColor(categories,categoryStyle.palette||"schemePastel1")
     const categoryLegend = categories &&  `<div class="categorical-legend control__count">
         ${categories.map((category)=>`<svg width="${categoryStyle.spacing||14+category.length*10}" height="16">
                                             <circle cx="7" cy="7" r="7" fill="${colorPicker(category)}"></circle>
-                                            <text x="25" y="12" font-size="12" font-weight="medium">${category}</text>
+                                            <text x="25" y="12" font-size="12" font-weight="medium">${category}${categoryCount?getCategoryCounts(data,categoryStyle.property,category):''}</text>
                                       </svg>`).join("")}
         </div>`
     
