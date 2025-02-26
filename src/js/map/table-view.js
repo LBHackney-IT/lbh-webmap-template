@@ -489,6 +489,10 @@ class Table {
           }          
           html += `</div>`;
         }
+        if(layerData.data.features.length == 0){
+          html += `<div id="default-example-content-1" class="govuk-accordion__section-content">
+            <h6>No Data</h6></div>`;
+        }
         html += `</div>`;
       }
     }
