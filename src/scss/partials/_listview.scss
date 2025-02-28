@@ -106,3 +106,8 @@ p.lbh-body-s{
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+
+/* Added padding to the bottom of embeded maps */
+.govuk-template__body {
+    padding-bottom: 30px;
+}
