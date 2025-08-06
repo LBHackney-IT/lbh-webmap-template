@@ -16,8 +16,6 @@ const config = {
     output:{
         filename:"lbh-webmap.min.js",
         path:path.resolve(__dirname,"dist"),
-        library: "LBHWebmap",
-        libraryTarget: "umd",
         // clean:true
     },
     module:{
