@@ -3,20 +3,43 @@
   "type": "module",
   "version": "2.0.0",
   "description": "Our basic webmap",
-  "main": "./app/app.js",
   "scripts": {
-    "start": "gulp dev",
-    "dev": "nodemon app/app.js"
+    "build:js": "parcel build src/js/main.js --target js",
+    "build:css": "parcel build src/scss/all.scss --dist-dir dist ",
+    "postbuild:rename": "node tasks/renamebuildfiles.js",
+    "postbuild:copy-iframe-resizer": "node tasks/copyiframeresizertodist.js",
+    "postbuild:clean": "npm run postbuild:rename && npm run postbuild:copy-iframe-resizer",
+    "build": "npm run build:js && npm run build:css && npm run postbuild:clean",
+    "build-js-nodemon":"npm run build:js && npm run postbuild:clean",
+    "postbuild:start": "node app/app.js",
+    "build:start": "npm run build:js && npm run build:css && npm run postbuild:clean && npm run postbuild:start"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LBHackney-IT/lbh-webmap-template.git"
   },
-  "author": "Sandrine Balley (sandrine.balley@hackney.gov.uk), Marta Villalobos (marta.villalobos@hackney.gov.uk), Emma Lewis (emma.lewis@hackney.gov.uk)",
+  "author": "Sandrine Balley (sandrine.balley@hackney.gov.uk), Marta Villalobos (marta.villalobos@hackney.gov.uk), Emma Lewis (emma.lewis@hackney.gov.uk), Cliff Chavhundura (cliff.chavhundura@hackney.gov.uk)",
   "license": "MIT",
+  "targets": {
+    "js": {
+      "distDir": "dist"
+    },
+    "css": {
+      "distDir": "dist",
+      "publicUrl": "./"
+    }
+  },
+  "sass": {
+    "includePaths": [
+      "node_modules",
+      "node_modules/lbh-frontend/lbh/",
+      "node_modules/lbh-frontend/lbh/components"
+    ]
+  },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@fortawesome/fontawesome-pro": "^6.5.1",
+    "@tailwindcss/cli": "^4.1.11",
     "@turf/boolean-point-in-polygon": "^6.5.0",
     "@turf/turf": "^6.5.0",
     "babel-loader": "^9.1.3",
@@ -24,6 +47,7 @@
     "d3": "^7.9.0",
     "d3-scale": "^4.0.2",
     "d3-scale-chromatic": "^3.1.0",
+    "express": "^5.1.0",
     "geojson2h3": "^1.2.0",
     "govuk-frontend": "^3.5.0",
     "h3-js": "^4.1.0",
@@ -41,46 +65,31 @@
     "leaflet.awesome-markers": "^2.0.5",
     "leaflet.markercluster": "^1.5.3",
     "leaflet.vectorgrid": "^1.3.0",
+    "nunjucks": "^3.2.4",
     "proj4leaflet": "^1.0.2",
     "pubsub-js": "^1.9.4",
     "whatwg-fetch": "^3.6.20"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "autoprefixer": "^10.4.17",
-    "babel-eslint": "^10.1.0",
-    "cssnano": "^6.0.3",
-    "del": "^7.1.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.1.3",
-    "express": "^4.18.2",
-    "gulp": "^4.0.2",
-    "gulp-exec": "^5.0.0",
-    "gulp-filter": "^9.0.1",
-    "gulp-if": "^3.0.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^10.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sass": "^5.1.0",
-    "gulp-task-listing": "^1.1.1",
-    "nodemon": "^3.0.3",
-    "postcss": "^8.4.35",
-    "postcss-loader": "^8.1.1",
-    "postcss-preset-env": "^9.4.0",
-    "postcss-pseudo-classes": "^0.4.0",
-    "postcss-scss": "^4.0.9",
-    "prettier": "^3.2.5",
-    "readable-stream": "^4.5.2",
-    "sass": "^1.70.0",
-    "sass-loader": "^14.1.1",
-    "sassdoc": "^2.7.4",
-    "style-loader": "^3.3.4",
-    "vinyl-named-with-path": "^1.0.0",
-    "vinyl-paths": "^5.0.0",
-    "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4",
-    "yargs": "^17.7.2"
+    "@parcel/transformer-sass": "^2.15.4",
+    "@tailwindcss/postcss": "^4.1.11",
+    "assert": "^2.1.0",
+    "autoprefixer": "^10.4.21",
+    "browserify-zlib": "^0.2.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
+    "nodemon": "^3.1.10",
+    "parcel": "^2.15.4",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "sass": "^1.89.2",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "string_decoder": "^1.3.0",
+    "tailwindcss": "^4.1.11",
+    "url": "^0.11.4",
+    "util": "^0.12.5",
+    "vm-browserify": "^1.1.2"
   }
 }

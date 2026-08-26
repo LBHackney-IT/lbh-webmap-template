@@ -15,6 +15,7 @@ import { getFeatureData,getMinMax,createBins,getScaleRange,
   colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
 import createH3Geojson from "../helpers/h3-layer.js";
 import { color } from "d3";
+import * as turf from '@turf/turf';
 
 
 
@@ -39,6 +40,17 @@ class DataLayers {
     this.showAddressSearch = null;
     this.list = null;
     this.statistics = null;
+
+    this.map.on('moveend', () => {
+      console.log('Map stopped moving....');
+      console.log(this.layers);
+      console.log(this.layersData);
+      this.layersData.filter((layerObj)=> layerObj.layer.options.dynamicFilter).forEach(layerObj => {
+        this.updateLayerForMapBounds(this.map, layerObj.layer, layerObj.data)
+      });;
+  
+    });
+
   }
 
   pointToLayer (feature, latlng, configLayer,rangeColor=null) {
@@ -251,6 +263,8 @@ class DataLayers {
     
 
     const layer = new L.GeoJSON(h3geojson||data, {
+      title:configLayer.title,
+      dynamicFilter:configLayer.dynamicFilter,
       color: MARKER_COLORS[markerColor],
       pointToLayer: (feature, latlng) => {
         let featureColor = null
@@ -727,6 +741,43 @@ class DataLayers {
       });     
     }
   }
+  getMapBoundsPolygon(map) {
+    const bounds = map.getBounds();
+
+    const southWest = bounds.getSouthWest();
+    const northEast = bounds.getNorthEast();
+
+    return turf.polygon([[
+      [southWest.lng, southWest.lat],
+      [northEast.lng, southWest.lat],
+      [northEast.lng, northEast.lat],
+      [southWest.lng, northEast.lat],
+      [southWest.lng, southWest.lat]
+    ]]);
+  }
+
+  getFeaturesIntersectingMap(map, geojson) {
+    const boundsPolygon = this.getMapBoundsPolygon(map);
+
+    return geojson.features.filter(feature =>
+      turf.booleanIntersects(feature, boundsPolygon)
+    );
+  }
+  updateLayerForMapBounds(map, layer, geojson) {
+    const features = this.getFeaturesIntersectingMap(map, geojson);
+
+    console.log('Visible features',features.length);
+    
+
+    layer.clearLayers();
+
+    layer.addData({
+      type: 'FeatureCollection',
+      features
+    });
+  }
+
+
 }
 
 L.DivIcon.CustomColor = L.DivIcon.extend({

@@ -1,0 +1,5 @@
+{
+  "watch": ["src","templates","app"],
+  "ext": "js,ts,scss,css,html,json",
+  "exec": "npm run build-js-nodemon"
+}
