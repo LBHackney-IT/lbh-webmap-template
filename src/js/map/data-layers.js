@@ -757,12 +757,7 @@ class DataLayers {
   }
   updateLayerForMapBounds(map, layer, geojson) {
     const features = this.getFeaturesIntersectingMap(map, geojson);
-
-    console.log('Visible features',features.length);
-    
-
     layer.clearLayers();
-
     layer.addData({
       type: 'FeatureCollection',
       features
