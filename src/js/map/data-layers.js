@@ -41,15 +41,7 @@ class DataLayers {
     this.list = null;
     this.statistics = null;
 
-    this.map.on('moveend', () => {
-      console.log('Map stopped moving....');
-      console.log(this.layers);
-      console.log(this.layersData);
-      this.layersData.filter((layerObj)=> layerObj.layer.options.dynamicFilter).forEach(layerObj => {
-        this.updateLayerForMapBounds(this.map, layerObj.layer, layerObj.data)
-      });;
-  
-    });
+    this.handleMapMoveEnd()
 
   }
 
@@ -777,6 +769,14 @@ class DataLayers {
     });
   }
 
+  handleMapMoveEnd(){
+    this.map.on('moveend', () => {
+      this.layersData.filter((layerObj)=> layerObj.layer.options.dynamicFilter).forEach(layerObj => {
+        this.updateLayerForMapBounds(this.map, layerObj.layer, layerObj.data)
+      });;
+  
+    });
+  }
 
 }
 
