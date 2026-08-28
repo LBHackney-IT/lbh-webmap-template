@@ -9,14 +9,16 @@
     "postbuild:rename": "node tasks/renamebuildfiles.js",
     "postbuild:copy-iframe-resizer": "node tasks/copyiframeresizertodist.js",
     "postbuild:clean": "npm run postbuild:rename && npm run postbuild:copy-iframe-resizer",
-    "build": "npm run build:js && npm run build:css && npm run postbuild:clean",
+    "build": "npm run build:js && npm run build:css",
+    "buildandclean": "npm run build:js && npm run build:css && npm run postbuild:clean",
     "build-js-nodemon":"npm run build:js && npm run postbuild:clean",
     "postbuild:start": "node app/app.js",
-    "build:start": "npm run build:js && npm run build:css && npm run postbuild:clean && npm run postbuild:start"
+    "buildstart": "npm run build:js && npm run build:css && npm run postbuild:start",
+    "buildcleanstart": "npm run build:js && npm run build:css && npm run postbuild:clean && npm run postbuild:start"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LBHackney-IT/lbh-webmap-template.git"
+    "url": "git+https://github.com/LBHackney-IT/lbh-webmap-template-v2.git"
   },
   "author": "Sandrine Balley (sandrine.balley@hackney.gov.uk), Marta Villalobos (marta.villalobos@hackney.gov.uk), Emma Lewis (emma.lewis@hackney.gov.uk), Cliff Chavhundura (cliff.chavhundura@hackney.gov.uk)",
   "license": "MIT",
