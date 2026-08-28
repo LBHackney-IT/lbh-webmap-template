@@ -6,15 +6,12 @@
   "scripts": {
     "build:js": "parcel build src/js/main.js --target js",
     "build:css": "parcel build src/scss/all.scss --dist-dir dist ",
-    "postbuild:rename": "node tasks/renamebuildfiles.js",
-    "postbuild:copy-iframe-resizer": "node tasks/copyiframeresizertodist.js",
-    "postbuild:clean": "npm run postbuild:rename && npm run postbuild:copy-iframe-resizer",
-    "build": "npm run build:js && npm run build:css",
-    "buildandclean": "npm run build:js && npm run build:css && npm run postbuild:clean",
     "build-js-nodemon":"npm run build:js && npm run postbuild:clean",
-    "postbuild:start": "node app/app.js",
-    "buildstart": "npm run build:js && npm run build:css && npm run postbuild:start",
-    "buildcleanstart": "npm run build:js && npm run build:css && npm run postbuild:clean && npm run postbuild:start"
+    "postbuild:copy-iframe-resizer": "node tasks/copyiframeresizertodist.js",
+    "build": "npm run build:js && npm run build:css && npm run postbuild:copy-iframe-resizer",
+    "serve": "node app/app.js",
+    "buildstart": "npm run build && npm run serve"
+    
   },
   "repository": {
     "type": "git",

@@ -10,26 +10,8 @@
 @import "leaflet.markercluster/dist/MarkerCluster.css";
 @import "leaflet-gesture-handling/dist/leaflet-gesture-handling.css";
 @import "govuk-frontend/govuk/components/table/_table.scss";
-// @import "node_modules/lbh-frontend/lbh/all";
-@import "core/all";
-@import "helpers/all";
-@import "objects/all";
-@import "overrides/all";
-@import "settings/all";
-@import "tools/all";
-@import "utilities/all";
-@import "lbh-button/button";
-@import "lbh-accordion/accordion";
-@import "lbh-skip-link/skip-link";
-@import "lbh-back-link/back-link";
-@import "lbh-checkboxes/checkboxes";
-@import "lbh-input/input";
-@import "lbh-details/details";
-@import "lbh-header/header";
-@import "lbh-radios/radios";
-@import "lbh-panel/panel";
-@import "lbh-select/select";
-@import "lbh-table/table";
+@import "node_modules/lbh-frontend/lbh/all";
+
 //Partials - component styles
 @import "./partials/address-search";
 @import "./partials/awesome-markers-with-more-colours";
