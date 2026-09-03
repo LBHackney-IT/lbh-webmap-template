@@ -4,9 +4,9 @@
   "version": "2.0.0",
   "description": "Our basic webmap",
   "scripts": {
-    "build:js": "parcel build src/js/main.js --target js",
-    "build:css": "parcel build src/scss/all.scss --dist-dir dist ",
-    "build-js-nodemon":"npm run build:js && npm run postbuild:clean",
+    "build:js": "parcel build src/js/main.js --no-source-maps --target js",
+    "build:css": "parcel build src/scss/all.scss --no-source-maps --dist-dir dist ",
+    "build-js-nodemon":"npm run build:js",
     "postbuild:copy-iframe-resizer": "node tasks/copyiframeresizertodist.js",
     "build": "npm run build:js && npm run build:css && npm run postbuild:copy-iframe-resizer",
     "serve": "node app/app.js",
