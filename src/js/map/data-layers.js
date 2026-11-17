@@ -1,6 +1,5 @@
-import L, { Point } from "leaflet";
+import L from "leaflet";
 import "leaflet.vectorgrid";
-import { pointToLayer } from "./metadata.js";
 import { MARKER_COLORS} from "./consts.js";
 import Personas from "./personas.js";
 import Filters from "./filters.js";
@@ -14,7 +13,6 @@ import Accessibility from "./accessiblity.js";
 import { getFeatureData,getMinMax,createBins,getScaleRange,
   colorInterpolator,getDistinctValues,getCategoryColor } from "../helpers/dynamic-styles.js";
 import createH3Geojson from "../helpers/h3-layer.js";
-import { color } from "d3";
 import * as turf from '@turf/turf';
 
 
@@ -48,17 +46,30 @@ class DataLayers {
   pointToLayer (feature, latlng, configLayer,rangeColor=null) {
     let configMarkerColor = configLayer.pointStyle.markerColor
     let configIconColor = configLayer.pointStyle.iconColor
+    let icon = configLayer.pointStyle.icon
     if(!configIconColor&&!configMarkerColor){
       console.error('Markers missing markerColor')
       return L.marker(latlng);
     }
+    if(configLayer?.categoryStyle?.iconMap){
+      console.log(rangeColor);
+      
+      const iconMapProp = configLayer.categoryStyle.iconMap.property
+      const iconMap = configLayer.categoryStyle.iconMap.icons
+      if(iconMapProp && iconMap){
+        icon = iconMap[feature.properties[iconMapProp]]
+      }else{
+        console.error('Missing icons map or property value for this config:');
+        console.dir(configLayer)
+      }
+    }
     if (configLayer.pointStyle.markerType === "AwesomeMarker") {
       return L.marker(latlng, {
         icon: L.AwesomeMarkers.icon({
-          icon: configLayer.pointStyle.icon,
+          icon,
           prefix: "fa",
-          iconColor: configIconColor??rangeColor??"white",
-          markerColor: configMarkerColor ?? Object.entries(MARKER_COLORS).find(([key, val]) => val === rangeColor)?.[0],
+          iconColor: configIconColor ?? rangeColor ?? "white",
+          markerColor: rangeColor?Object.entries(MARKER_COLORS).find(([key, val]) => val === rangeColor)?.[0] : configMarkerColor,
           spin: false
         }),
         alt: configLayer.layerName
@@ -86,11 +97,12 @@ class DataLayers {
     }
   };
   
-  createMarkerPopup(configLayer, feature, layerName) {
+  createMarkerPopup(configLayer, feature, layerName,featureColor) {
     const title = configLayer.popup.title;
     const afterTitle = configLayer.popup.afterTitle;
     const fields = configLayer.popup.fields;
-    const afterFields = configLayer.popup.afterFields;
+    const afterFields = configLayer.popup.after;
+    const subtitle = configLayer.popup.subtitle;
 
     let stringPopup = "";
     if (title !== "notitle") {
@@ -104,21 +116,30 @@ class DataLayers {
     if (afterTitle) {
       stringPopup += `<p class="popup__text">${afterTitle}</p>`;
     }
+    if (subtitle) {
+      stringPopup += `<p class="${subtitle.class??''}" style="color:${subtitle.color?subtitle.color:featureColor??''};${subtitle.style??''}">${feature.properties[subtitle.text]}</p>`;
+    }
 
     if (fields) {
       for (const field of fields) {
+          let label = field.label
+          let name = field.name
+          let value = feature.properties[name]
+          let nameStyle = field.nameStyle ?? "popup__text"
+          let iconPrefix = field.iconPrefix
+          let iconSuffix = field.iconSuffix 
         if (
-          feature.properties[field.name] !== "" &&
-          feature.properties[field.name] !== null
+          value !== "" &&
+          value !== null
         ) {
           if (field.label != "") {
-            stringPopup += `<p class="popup__text"><span class="popup__label">${
-              field.label
-            }</span>: ${feature.properties[field.name]}</p>`;
-          } else {
-            stringPopup += `<p class="popup__text">${
-              feature.properties[field.name]
-            }</p>`;
+            stringPopup += `<p class="popup__text">
+              <span class="popup__label">${field.label}</span>:
+              <span class="" style="${nameStyle}">${value??''}</span>
+            </p>`
+          } 
+            else {
+              stringPopup += `<p class="${nameStyle}">${value}</p>`;
           }
         }
       }
@@ -266,6 +287,9 @@ class DataLayers {
         else if( categoryStyle){
          featureColor = colorPicker(feature.properties[categoryStyle.property])
         }
+        //pointToLayer (feature, latlng, configLayer,rangeColor=null)
+        // console.log(configLayer.title,featureColor);
+        
         return this.pointToLayer(
           feature,
           latlng,
@@ -274,11 +298,16 @@ class DataLayers {
         );
       },
       onEachFeature: (feature, layer) => {
+        let featureColor = null
+        if(categoryStyle){
+         featureColor = colorPicker(feature.properties[categoryStyle.property])
+        }
         if (configLayer.popup) {
           const popupString = this.createMarkerPopup(
             configLayer,
             feature,
-            layerName
+            layerName,
+            featureColor
           );
           if (popupString){
             const popup = L.popup({ closeButton: true }).setContent(popupString);
@@ -397,6 +426,7 @@ class DataLayers {
 
     if (cluster) {
       //set the clusters color
+      const clusterColor = MARKER_COLORS[markerColor]
       document.documentElement.style.setProperty(
         '--cluster-color', MARKER_COLORS[markerColor]
       );
@@ -405,7 +435,31 @@ class DataLayers {
         maxClusterRadius: maxClusterRadius,
         disableClusteringAtZoom: disableClusteringAtZoom,
         spiderfyOnMaxZoom: enableSpiderfy,
-        showCoverageOnHover: false
+        showCoverageOnHover: false,
+        iconCreateFunction: (cluster) => {
+          const count = cluster.getChildCount();
+          // const color = '#ef4444'; // Any hex color
+          return new L.DivIcon({
+            html: `
+              <div style="
+                background-color: ${clusterColor};
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 0 0 3px ${clusterColor}66;
+                color: #ffffff;
+                font-weight: medium;
+              ">
+                <span>${count}</span>
+              </div>
+            `,
+            className: 'custom-cluster-icon',
+            iconSize: new L.Point(40, 40)
+          });
+        }
       });
       clusterLayer.addLayer(layer);
       //add the sortorder as an option to the clusterLayer (needed for the legend)
